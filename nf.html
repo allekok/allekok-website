@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html dir="rtl">
+    <head>
+        <script>
+            
+            var intt = setInterval(function() {
+                if(window.XMLHttpRequest){
+                    xmlhttp=new XMLHttpRequest();
+                    
+                }else{
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                    
+                }
+                xmlhttp.onreadystatechange=function(){
+                    if(xmlhttp.readyState==4&&xmlhttp.status==200){
+                        if(xmlhttp.responseText == "Sitemap: http://allekok.com/sitemap.xml") {
+                            alert("no");
+                            clearInterval(intt);
+                        }
+                    }
+                }
+                xmlhttp.open("GET","http://allekok.com/robots.txt",true);
+                xmlhttp.send();
+                
+            },1500);
+            
+        </script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            ئاڵەکۆک
+        </title>
+        <style>
+            @font-face{font-family:'kurd';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/ea/droidarabicnaskh/v7/DroidNaskh-Regular.eot);src:url("//fonts.gstatic.com/ea/droidarabicnaskh/v7/DroidNaskh-Regular.eot?#iefix") format('embedded-opentype'),url(//fonts.gstatic.com/ea/droidarabicnaskh/v7/DroidNaskh-Regular.woff2) format('woff2'),url(//fonts.gstatic.com/ea/droidarabicnaskh/v7/DroidNaskh-Regular.woff) format('woff'),url(//fonts.gstatic.com/ea/droidarabicnaskh/v7/DroidNaskh-Regular.ttf) format('truetype')}
+            .loader {
+                border:2px solid #eee;
+                border-top:2px solid #666;
+                border-radius:50%;
+                width:30px;
+                height:30px;
+                animation:spin 0.7s linear infinite;margin:5px auto;
+            }
+            h1 {
+                font-family:'kurd';
+                font-weight:normal;
+            }
+            @keyframes spin{0%{transform:rotate(0deg);}
+            100%{transform:rotate(360deg);}
+            }
+        </style>
+    </head>
+    <body style="text-align:center;">
+        <img src="style/img/poets/pro-460/pro-460_0.jpg" style="max-width:100%;" alt="ئاڵەکۆک">
+        <h1>
+            دیتنی ئەم لاپەڕە پێویستی بە 
+            <i style="color:#666;">ئینتێرنێت</i> 
+            هەیە.
+        </h1>
+        <div class='loader'></div>
+    </body>
+</html>

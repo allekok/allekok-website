@@ -1,0 +1,276 @@
+<?php
+
+if(! defined('ABSPATH'))    define('ABSPATH', '/home/allekokc/public_html/');
+
+	require_once("../script/php/colors.php");
+	require_once("../script/php/constants.php");
+	require_once("../script/php/functions.php");
+
+$title = _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; نووسینی شێعر";
+$desc = "نووسینی شێعر لەسەر ئاڵەکۆک";
+$keys = _KEYS;
+$t_desc = "";
+$t_class = "ltitle";
+$color_num = 0;
+
+	require('../script/php/header.php');
+	
+	if(! empty($_GET['name']) ) $_name1 = filter_var($_GET['name'], FILTER_SANITIZE_STRING);
+	if(! empty($_GET['poet']) ) $_poet1 = filter_var($_GET['poet'], FILTER_SANITIZE_STRING);
+	if(! empty($_GET['book']) ) $_book1 = filter_var($_GET['book'], FILTER_SANITIZE_STRING);
+?>
+
+<div id="poets">
+<p id='adrs'>
+    <?php
+        $__allekok_url = _SITE;
+    ?>
+<a href="<?php echo $__allekok_url; ?>" style='background-image:url(/style/img/allekok.png);background-repeat:no-repeat;background-position: 3.7em 0.1em;padding-right: 1.8em;background-size: 1.6em;'>ئاڵەکۆک</a>
+<i style='vertical-align:middle;' class='material-icons'>keyboard_arrow_left</i>
+
+<a href="first.php">
+    <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
+</a>
+<i style='vertical-align:middle;' class='material-icons'>keyboard_arrow_left</i>
+
+<i style='vertical-align:middle;' class='material-icons'>note_add</i>
+    نووسینی شێعر
+</p>
+
+    <h1 style="background: rgba(0, 153, 255,0.05);color: rgb(0, 138, 230);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0;">
+        نووسینی شێعر
+    </h1>
+    
+    <div style="color:#444; font-size:0.6em;opacity:0;" id="pitew-stats">stats</div>
+
+<script>
+    if(localStorage.getItem("contributor") !== null) {
+        var contri = JSON.parse(localStorage.getItem("contributor"));
+        var res = document.getElementById("pitew-stats");
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.onload = function() {
+            if(this.responseText !== "") {
+                res.innerHTML = "جەنابتان تا ئێستا " +
+                this.responseText + 
+                "شێعرتان لەسەر ئاڵەکۆک نووسیوە.";
+                
+                res.style.animation = "tL 1.2s ease forwards";
+            }
+        }
+        
+        xmlhttp.open("get", `stats.php?contributor=${contri.name}`, true);
+        xmlhttp.send();
+    }
+    function check() {
+        var cntr = document.querySelector("#contributorTxt");
+        var poet = document.querySelector("#poetTxt");
+        
+        if(poet.value == "") {
+            poet.style.borderTopColor = "#09f";
+            poet.style.background = "";
+            document.querySelector('#frmUpload').style.display = "none";
+            return;
+        }
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = function() {
+                var res = JSON.parse(this.responseText);
+                if(res.new === 1) {
+                    
+                    document.querySelector('#frmUpload').style.animation = "tL .5s forwards";
+                    document.querySelector('#frmUpload').style.display = "block";
+                    document.querySelector('#poetDescTxt').focus();
+                    
+                    document.querySelector("#dsds").outerHTML = `<a id='dsds' href='poet-image.php?name=${document.querySelector('#contributorTxt').value}&poet=${document.querySelector('#poetTxt').value}' target='_blank' class='button' style='display:inline-block;cursor:pointer;font-size: 0.7em;padding:1em;'>
+                    هەڵبژاردنی وێنە
+                    </a>`;
+                } else {
+                    if(document.querySelector('#frmUpload').style.display == "block") {
+                        document.querySelector('#frmUpload').style.display = "none";
+                        document.querySelector('#bookTxt').focus();
+                    }
+                }
+                
+                if(res.id != "0") {
+                    poet.style.borderTopColor = colors[res.id][0];
+                    poet.style.backgroundColor = colors[res.id][2];
+                    poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
+                    poet.style.backgroundRepeat = "no-repeat";
+                    poet.style.backgroundSize = "auto 100%";
+                    poet.style.backgroundPosition = "left center";
+                } else {
+                    poet.style.borderTopColor = "#09f";
+                    poet.style.background = "";
+                }
+            }
+            xmlhttp.open("get", "isitnew.php?name="+cntr.value+"&poet="+poet.value, true);
+            xmlhttp.send();
+    }
+</script>
+    
+    <div style="max-width: 800px;margin: auto;">
+
+        <form id="frmComm" action="append.php" method="POST">
+            
+            <input type="text" onblur="check()" id="contributorTxt" name="contributor" style="font-size:0.7em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:2.5em;border-top:3px solid #09f;display:block;margin:auto;box-shadow: 0 5px 10px -5px #ddd;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
+            <span style="font-size: 0.5em;display: block;color: #444;text-align: right;text-indent: 1.5em;padding:0.4em 0.5em 0.05em">
+                ئەو شێعرە بە نێوی خۆتان لەسەر ئاڵەکۆک دادەندرێ.
+            </span>
+            
+            <div style="border-top:1px solid #ddd;margin:0.4em 0 0.8em;"></div>
+            
+            <input type="text" onblur="check()" id="poetTxt" name="poet" style="font-size:0.7em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:2.5em;border-top:3px solid #09f;display:block;margin:1em auto 0;box-shadow: 0 5px 10px -5px #ddd;" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
+            <?php if(isset($_poet1)) { ?>
+            <script>check()</script>
+            <?php } ?>
+            
+            <!-- file upload sec -->
+            <div id="frmUpload" style="max-width:800px;margin:auto;display:none;">
+                <textarea id="poetDescTxt" name="poetDesc" style="font-size:0.6em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:8em;border-top:3px solid #09f;display:block;margin:1em auto;box-shadow: 0 5px 10px -5px #ddd;" placeholder="سەبارەت بە شاعیر (وەکوو: ناسناوی ئەدەبی، شوێن و ڕێکەوتی لەدایکبوون یان هەر زانیاریەکی تر کە پێتان خۆشە لەسەر ئاڵەکۆک دابندرێ.)"></textarea>
+                
+                    <div style="padding:1.2em 0.3em 0.1em; text-align:right; text-indent:1em;font-size:0.5em;color:#222;">
+                        ئەگەر دەتانهەوێ وێنەی شاعیر لەسەر ئاڵەکۆک دابندرێ، لەسەر "هەڵبژاردنی وێنە" کرتە بکەن.
+                    </div>
+                    
+                <a href='poet-image.php?name=' target="_blank" id="dsds" class='button' style="display:inline-block;cursor:pointer;font-size: 0.7em;padding:1em;">
+                    هەڵبژاردنی وێنە
+                    </a>
+            </div>
+            
+            <input type="text" id="bookTxt" name="book" style="font-size:0.7em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:2.5em;border-top:3px solid #09f;display:block;margin:1em auto 0;box-shadow: 0 5px 10px -5px #ddd;" value="<?php echo $_book1; ?>" placeholder="نێوی کتێب">
+            
+            <input type="text" id="poemNameTxt" name="poemName" style="font-size:0.7em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:2.5em;border-top:3px solid #09f;display:block;margin:1em auto 0;box-shadow: 0 5px 10px -5px #ddd;" placeholder="نێوی شێعر">
+
+            <textarea id="poemConTxt" name="poem" style="font-size:0.7em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:20em;border-top:3px solid #09f;display:block;margin:1em auto 0;box-shadow: 0 5px 10px -5px #ddd;" placeholder="شێعر *"></textarea>
+
+            <div class='loader' id="commloader" style="width:0.8em;height:0.8em;display:none;"></div>
+            
+            <div id="message"></div>
+
+            <button type="submit" class="button bth" style="font-size: 0.7em;width: 45%;max-width: 150px;background-color: #09f;color: white;margin-top:0.5em;">ناردن</button>
+            
+            <button type="button" id="clearBtn" class='button' style="font-size: 0.7em;width: 45%;max-width: 150px;margin-top:0.5em;">پاک کردنەوە</button>
+        </form>
+        
+    </div>
+    <div style="margin-top:2em;">
+        <a class='button' href="poem-list.php">
+             ئەو شێعرانەی کە نووسیوتانە
+        </a>
+    </div>
+    
+</div>
+
+<script>
+    
+    window.onload = function() {
+        var contributor = localStorage.getItem("contributor");
+        
+        if( contributor != null) {
+            contributor = JSON.parse(contributor);
+            
+            document.querySelector("#contributorTxt").value = contributor.name;
+        }
+    }
+    
+    function pitew() {
+        
+        var contributor = document.querySelector("#contributorTxt");
+        var poet = document.querySelector("#poetTxt");
+        var poetDesc = document.querySelector("#poetDescTxt");
+        var book = document.querySelector("#bookTxt");
+        var poemName = document.querySelector("#poemNameTxt");
+        var poem = document.querySelector("#poemConTxt");
+        
+        var loader = document.querySelector("#commloader");
+        
+        var mess = document.querySelector("#message");
+        
+        if(poet.value == "") {
+            poet.style.background = "rgba(204,51,0,0.1)";
+            poet.style.borderTopColor = "rgb(204,51,0)";
+            poet.focus();
+            setTimeout(function() {
+                poet.style.background = "";
+                poet.style.borderTopColor = "#09f";
+            }, 2000);
+            return;
+        }
+        if(poem.value == "") {
+            poem.style.background = "rgba(204,51,0,0.1)";
+            poem.style.borderTopColor = "rgb(204,51,0)";
+            poem.focus();
+            setTimeout(function() {
+                poem.style.background = "";
+                poem.style.borderTopColor = "#09f";
+            }, 2000);
+            return;
+        }
+        
+        loader.style.display="block";
+        
+        var quest = `contributor=${contributor.value}&poet=${poet.value}&book=${book.value}&poemName=${poemName.value}&poem=${encodeURIComponent(poem.value)}&poetDesc=${encodeURIComponent(poetDesc.value)}`;
+        
+        var xmlhttp = new XMLHttpRequest();
+        
+        xmlhttp.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                
+                var res = JSON.parse(xmlhttp.responseText);
+                
+                loader.style.display="none";
+                
+                mess.innerHTML = res.message;
+                
+                if(res.state == 1) {
+                    poemName.value = poem.value = poetDesc = "";
+                    document.querySelector("#frmUpload").style.display = "none";
+
+                    var contrib = {
+                        name : res.contributor.name,
+                        ID : res.contributor.ID
+                    };
+                    
+                    localStorage.setItem("contributor", JSON.stringify(contrib));
+                } 
+            }
+        }
+        
+        xmlhttp.open("post", "append.php", true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send(quest);
+        
+        
+    }
+    
+    var frmPitew = document.querySelector("#frmComm");
+    
+    if( frmPitew !== null ) {
+        frmPitew.addEventListener("submit", function(e) {
+            e.preventDefault();
+            pitew();
+            });
+    }
+    
+    var clearBtn = document.querySelector("#clearBtn");
+    
+    clearBtn.addEventListener("click", function() {
+        
+        var poet = document.querySelector("#poetTxt");
+        var book = document.querySelector("#bookTxt");
+        var poemName = document.querySelector("#poemNameTxt");
+        var poem = document.querySelector("#poemConTxt");
+        var poetDesc = document.querySelector("#poetDescTxt");
+        
+        var mess = document.querySelector("#message");
+        
+        mess.innerHTML = poet.value = book.value = poemName.value = poem.value = poetDesc.value = "";
+        poet.style.background = "";
+        poet.style.borderTopColor = "#09f";
+        document.querySelector("#frmUpload").style.display = "none";
+    });
+</script>
+
+<?php
+	require_once("../script/php/footer.php");
+?>

@@ -1,0 +1,27 @@
+
+<meta charset="utf-8">
+<script src="/script/js/main.js" async></script>
+
+<textarea id="in" style="font-size:3em; width:100%; display:block;min-height:5em;"></textarea>
+<button type="button" id="btn">convert</button>
+
+
+<script>
+
+document.querySelector("#btn").onclick = function() {
+    
+    var these = [/style='font-size: inherit;background: #06d; color: white; padding: 0 10px;'/g,/ڕۆژی لەدایکبوون/g,/ڕۆژی مردن/g,/ساڵی لەدایکبوون/g,/ساڵی مردن/g];
+    var those = ["target='_blank' rel='noopener noreferrer nofollow' class='button' style='font-size: inherit;'","ڕێکەوتی لەدایکبوون","ڕێکەوتی مردن","ڕێکەوتی لەدایکبوون","ڕێکەوتی مردن"];
+    
+    var input = document.querySelector('#in');
+    var output = input.value;
+    
+    for(var the in these) {
+        output = output.replace(these[the], those[the]);
+
+    }
+    
+    input.value = output;
+    Clipboard.copy(output);
+}
+</script>
