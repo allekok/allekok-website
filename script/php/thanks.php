@@ -7,7 +7,7 @@
     }
 </style>
 <div id="poets" style="margin-bottom:4em;max-width:800px">
-    <h1 style="margin-bottom:.5em">
+    <h1 style="margin-bottom:.5em;font-size:1em">
         سپاس و پێ‌زانین بۆ:
     </h1>
     

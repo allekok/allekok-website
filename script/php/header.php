@@ -24,7 +24,7 @@
 <head>
     <script>
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('/sw.js', {scope: '/'});
+            navigator.serviceWorker.register('/sw.js', {scope: '/'});
         }
         var uritg = "<?php echo _SITE; ?>";
     
@@ -48,7 +48,7 @@
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel='stylesheet' href='/style/css/main.css' />
+	<link rel='stylesheet' href='/style/css/main2.4.css' />
 
 	<meta name="description" content="<?php echo($desc); ?>">
 	<meta name="keywords" content="<?php echo($keys); ?>">
@@ -62,21 +62,17 @@
     <meta property="og:image" content="<?php echo($ogimg); ?>" />
     
   <style>
-  <?php if($color_num && $color_num != (count($colors)-1)) { ?>
         header {
-            background:<?php echo $colors[$color_num][0]; ?>;
-            color:<?php echo $colors[$color_num][1]; ?>;
+            border-top:.4em solid <?php if($color_num) {echo $colors[$color_num][0];}else{echo "transparent";} ?>;
         }
-        
-  <?php } ?>
       .seartog {
           position:absolute;
           right:.4em;
           cursor:pointer;
-          top:<?php if(isset($fhs)) {echo("1");}else{echo("0.5");} ?>em;
+          top:<?php if(isset($fhs)) {echo("1");}else{echo("1");} ?>em;
       }
       .seartog-i {
-          font-size:<?php if(isset($fhs)){echo("1.6");}else{echo("1.2");} ?>em;
+          font-size:<?php if(isset($fhs)){echo("1.6");}else{echo("1.6");} ?>em;
       }
     @keyframes ll {
         0% {text-shadow:none;}
@@ -93,9 +89,6 @@
         50% { border-radius:0 0 <?php if($fhclass){echo "30% 30%";}else{echo "27% 27%";}?>;box-shadow: 0 8px 2px -6px #aaa; }
         100% { border-radius:0 0 <?php if($fhclass){echo "12% 12%";}else{echo "15% 15%";}?>;box-shadow: none;}
     }
-    header {
-        border-radius:0 0 <?php if($fhclass){echo "12% 12%";}else{echo "15% 15%";}?>;
-    }
     .ptr {
         margin-top:1em;
         padding: 0.75em 0 0.1em;
@@ -110,39 +103,15 @@
     .gallery {
         margin-top:0.5em;
     }
-    #note_add_title {
-        display:inline-block;
-    }
-    .bks p {
-        border-radius:5px;
-    }
     @media only screen and (max-width:450px){#poets{padding-bottom:0;}
-        .poetimg{width:100%;margin: 0;
-        border-radius: 0;
-        display:block;
-        box-shadow: none;
-        padding:0;
-        }
-        .bks {
-            display:block;width:100%;padding:0;margin-top:0;
+        .poetimg {
+            width:85%;
         }
         .bks a {
             max-width:100%;
         }
-        .bks p {
-            border-radius:0;
-        }
-        .poetimg .pro-460{width:100%;border-radius:0;box-shadow:none;}
         .gallery {
             margin-bottom:-17px;
-            margin-top:0;
-        }
-        #note_add_title {
-            display:none;
-        }
-        #new_poem_a {
-            background:<?php echo $colors[$color_num][0]; ?>;
-            color:<?php echo $colors[$color_num][1]; ?>;
         }
     }
     @media only screen and (max-width:371px){
@@ -191,8 +160,8 @@
     <i class="material-icons seartog-i"<?php if(!$color_num)    echo " style='color:red'"; ?>>bookmark</i>
 </div>
 
-<a class="<?php echo($t_class) ?>" href="<?php echo _SITE; ?>"><h1><?php echo _TITLE; ?></h1></a>
-<?php echo($t_desc) ?>
+<a class="<?php echo($t_class) ?>" href="<?php echo _SITE; ?>"><h1 style="color: #555;"><span style="<?php if($color_num == 0) {echo "color:rgb(0,210,50)";} ?>">ئاڵە</span>کۆک</h1></a>
+    <span style='color:#555'><?php echo($t_desc) ?></span>
 </header>
 
 <?php include("search-sec.php"); ?>

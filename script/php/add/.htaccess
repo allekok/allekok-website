@@ -1,0 +1,4 @@
+AuthName "add"
+AuthUserFile "/home/allekokc/.htpasswds/public_html/script/php/add/passwd"
+AuthType Basic
+require valid-user

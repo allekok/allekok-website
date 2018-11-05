@@ -48,7 +48,7 @@ function toggle_Like() {
                 favs[a] = JSON.parse(favs[a]);
                 clrNum = favs[a].poetID;
 
-                favsS += `<a style='background:${colors[clrNum][2]};' href='${uritg+favs[a].url}'>${favs[a].poetName} <i style='vertical-align:middle;font-size: inherit;height: 0.6em;' class='material-icons'>keyboard_arrow_left</i> ${favs[a].book} <i style='vertical-align:middle;font-size: inherit;height: 0.6em;' class='material-icons'>keyboard_arrow_left</i> ${favs[a].poem} </a>`;
+                favsS += `<a style='background:${colors[clrNum][2]};' href='${uritg+favs[a].url}'><i style='vertical-align:middle;font-size: inherit;height: 0.6em;color:${colors[clrNum][0]};' class='material-icons'>bookmark</i> ${favs[a].poetName} <i style='vertical-align:middle;font-size: inherit;height: 0.6em;' class='material-icons'>keyboard_arrow_left</i> ${favs[a].book} <i style='vertical-align:middle;font-size: inherit;height: 0.6em;' class='material-icons'>keyboard_arrow_left</i> ${favs[a].poem} </a>`;
             }
         }
           
@@ -341,56 +341,6 @@ function save_fs(how) {
         1.get poem's font size from localStorage
 **/
 
-    // scrol fs
-    var hon = document.querySelector("#hon");
-    
-if(hon !== null) {
-    
-    var ww;
-    
-    window.onscroll = function() {
-        var y = 0;
-        var header = document.querySelector("header");
-        var adrs = document.querySelector("#adrs");
-        var bhon = document.querySelector("#bhon");
-        var nav = document.querySelector(".nav");
-        var tLres = document.querySelector("#tL-res");
-        var search = document.querySelector("#search");
-        var hon = document.querySelector("#hon");
-        
-        var fontsize = document.querySelector(".fontsize");
-        
-        ww = fontsize.offsetWidth;
-        
-        y = header.scrollHeight + adrs.scrollHeight + bhon.scrollHeight;
-        
-        if(tLres.style.display != "none") {
-            y += tLres.scrollHeight;
-        }
-        if(search.style.display != "none") {
-            y += search.scrollHeight;
-        }
-        
-        
-        if(document.body.scrollTop >= y || document.documentElement.scrollTop >= y) {
-            //style --> fixed position
-            honpx = fontsize.offsetHeight + nav.offsetHeight + "px";
-            if(window.innerWidth > 720) {
-            hon.style.paddingTop = "calc(1em + "+honpx+")";
-            }
-            fontsize.classList.add("fsFixed");
-            fontsize.style.top = nav.scrollHeight + "px";
-            nav.classList.add("navFixed");
-
-        } else {
-            hon.style.paddingTop = "";
-            fontsize.classList.remove("fsFixed");
-            nav.classList.remove("navFixed");
-            
-        }
-    };
-}
-
 function isJson(str) {
     try {
         JSON.parse(str);
@@ -400,21 +350,22 @@ function isJson(str) {
     return true;
 }
 
-    /// check if liked
-    var likeico = document.getElementById('like-icon');
+
+/// check if liked
+var likeico = document.getElementById('like-icon');
+
+var favs = localStorage.getItem('favorites');
+
+if(favs != null && typeof poemV2 !== 'undefined') {
+    favs = favs.split("[fav]");
     
-    var favs = localStorage.getItem('favorites');
+    where = favs.indexOf(poemV2);
     
-    if(favs != null && typeof poemV2 !== 'undefined') {
-        favs = favs.split("[fav]");
-        
-        where = favs.indexOf(poemV2);
-        
-        if(where > -1) {
-            likeico.innerHTML = "bookmark";
-            likeico.style.animation = "ll 0.4s ease-out forwards";
-        }
+    if(where > -1) {
+        likeico.innerHTML = "bookmark";
+        likeico.style.animation = "ll 0.4s ease-out forwards";
     }
+}
     
     
 var favs = localStorage.getItem('favorites');

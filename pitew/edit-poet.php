@@ -20,26 +20,17 @@ $color_num = 0;
 ?>
 
 <div id="poets">
-<p id='adrs'>
-    <?php
-        $__allekok_url = _SITE;
-    ?>
-<a href="<?php echo $__allekok_url; ?>" style='background-image:url(/style/img/allekok.png);background-repeat:no-repeat;background-position: 3.7em 0.1em;padding-right: 1.8em;background-size: 1.6em;'>ئاڵەکۆک</a>
-<i style='vertical-align:middle;' class='material-icons'>keyboard_arrow_left</i>
-
+<div id='adrs'>
 <a href="first.php">
     <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
 </a>
-<i style='vertical-align:middle;' class='material-icons'>keyboard_arrow_left</i>
-
+<i style='font-style:normal;'> &rsaquo; </i>
+<div id="current-location" style="color: rgb(154, 205, 50);">
 <i style='vertical-align:middle;' class='material-icons'>person</i>
 نووسینی زانیاری سەبارەت بە شاعیران
-</p>
+</div>
 
-    <h1 style="background: rgba(154, 205, 50, 0.05);color: rgb(154, 205, 50);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0;">
-        نووسینی زانیاری سەبارەت بە شاعیران
-    
-    </h1>
+</div>
     
     <div style="max-width: 800px;margin: auto;">
         
@@ -75,13 +66,13 @@ $color_num = 0;
 
         <form id="frmComm" action="save.php" method="POST">
             
-            <input type="text" id="contributorTxt" name="contributor" style="font-size:0.7em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:2.5em;border-top:3px solid rgb(154, 205, 50);display:block;margin:auto;box-shadow: 0 5px 10px -5px #ddd;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
+            <input type="text" id="contributorTxt" name="contributor" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid rgb(154, 205, 50);" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
             
 
-            <input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:0.7em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:2.5em;border-top:3px solid rgb(154, 205, 50);display:block;margin:1em auto 0;box-shadow: 0 5px 10px -5px #ddd;" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
+            <input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid rgb(154, 205, 50);margin-top:1em" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
             <?php if(isset($_poet1)) { ?> <script>check()</script> <?php } ?>
            
-            <textarea id="poetDescTxt" name="poetDesc" style="font-size:0.7em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:15em;border-top:3px solid rgb(154, 205, 50);display:block;margin:1em auto 0;box-shadow: 0 5px 10px -5px #ddd;" placeholder="زانیاریەکان سەبارەت بە شاعیر *"></textarea>
+            <textarea id="poetDescTxt" name="poetDesc" style="font-size:0.7em;max-width:94%;min-width:94%;min-height:15em;border-top:3px solid rgb(154, 205, 50);margin-top:1em" placeholder="زانیاریەکان سەبارەت بە شاعیر *"></textarea>
 
             <div class='loader' id="commloader" style="display:none;border-top:1px solid rgb(154, 205, 50)"></div>
             

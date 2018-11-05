@@ -31,9 +31,9 @@
 
         <form id="frmComm" action="/script/php/append.php" method="POST">
 
-            <textarea placeholder="بیر و ڕاتان سەبارەت بە ئاڵەکۆک بنووسن..." id="commTxt" style="font-size:0.65em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:95%;width:95%;min-height:5em;display:block;border-top: 3px solid #ddd;box-shadow:0 5px 10px -5px #ddd;"></textarea>
+            <textarea placeholder="بیر و ڕاتان سەبارەت بە ئاڵەکۆک بنووسن..." id="commTxt" style="font-size:0.65em;max-width:95%;width:95%;min-height:8.5em"></textarea>
 
-            <div class='loader' id="commloader" style="width:0.8em;height:0.8em;display:none;"></div>
+            <div class='loader' id="commloader" style="display:none;"></div>
 
             <button type="submit" style="font-size: 0.65em;width: 50%;padding: 0.8em 0;max-width: 150px;cursor:pointer;margin-top:0.5em;" class='button'>ناردن</button>
         </form>
@@ -55,7 +55,7 @@
                     mt_rand(1,22),
                 );
             ?>
-            <div class='loader' style="border-top: 2px dashed <?php echo $colors[$rnds[0]][0]; ?>;border-bottom: 2px dashed <?php echo $colors[$rnds[1]][0]; ?>;border-right: 2px dashed <?php echo $colors[$rnds[2]][0]; ?>;border-left: 2px dashed <?php echo $colors[$rnds[3]][0]; ?>;border-radius:100%;width:30px;height:30px;padding:0;animation-duration:0.7s;"></div>
+            <div class='loader' style="border-top: 2px dashed <?php echo $colors[$rnds[0]][0]; ?>;border-bottom: 2px dashed <?php echo $colors[$rnds[1]][0]; ?>;border-right: 2px dashed <?php echo $colors[$rnds[2]][0]; ?>;border-left: 2px dashed <?php echo $colors[$rnds[3]][0]; ?>;border-radius:100%;padding:0;animation-duration:0.7s;"></div>
             
             <script>
                 var http = new XMLHttpRequest();

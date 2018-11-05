@@ -19,31 +19,22 @@ $color_num = 0;
 
 <div id="poets">
     
-<p id='adrs'>
-    <?php
-        $__allekok_url = _SITE;
-    ?>
-<a href="<?php echo $__allekok_url; ?>" style='background-image:url(/style/img/allekok.png);background-repeat:no-repeat;background-position: 3.7em 0.1em;padding-right: 1.8em;background-size: 1.6em;'>ئاڵەکۆک</a>
-<i style='vertical-align:middle;' class='material-icons'>keyboard_arrow_left</i>
-
+<div id='adrs'>
 <a href="first.php">
     <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
 </a>
-<i style='vertical-align:middle;' class='material-icons'>keyboard_arrow_left</i>
-<a href="edit-poet.php">
+<i style='font-style:normal;'> &rsaquo; </i>
+<a href="edit-poet.php" style="color: rgb(154, 205, 50);">
     <i style='vertical-align:middle;' class='material-icons'>person</i>
     نووسینی زانیاری سەبارەت بە شاعیران
 </a>
-<i style='vertical-align:middle;' class='material-icons'>keyboard_arrow_left</i>
-<i style='vertical-align:middle;' class='material-icons'></i>
+<i style='font-style:normal;'> &rsaquo; </i>
+<div id="current-location" style="color: rgb(154, 205, 50);">
     زانیاریەکان
-</p>
+</div>
 
-    <h1 style="background: rgba(154, 205, 50, 0.05);color: rgb(154, 205, 50);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0;">
-        ئەو زانیاریانەی کە نووسیوتانە
-    </h1>
-    <br>
-    
+</div>
+    <div>
     <section class='eplist' style='background:#eee'>یارمەتیدەر</section><section style='background:#eee' class='eplist'>شاعیر</section><section class='eplist' style='background:#eee;text-align: unset;text-indent: unset;padding: .5em 0;'>زانیاریەکان</section>
     
     <?php
@@ -87,6 +78,7 @@ $color_num = 0;
           if(! in_array($v, $_Vs) ) return $v;
         }
     ?>
+    </div>
 </div>
 
 <?php

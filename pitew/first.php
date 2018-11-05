@@ -4,6 +4,7 @@
 	require_once("../script/php/constants.php");
 	require_once("../script/php/functions.php");
 
+$ptw = 1;
 $title = _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک";
 $desc = "پتەوکردنی ئاڵەکۆک - چۆن دەتوانن ئاڵەکۆک دەوڵەمەندتر کەن؟";
 $keys = _KEYS;
@@ -14,20 +15,11 @@ $color_num = 0;
 	require('../script/php/header.php');
 ?>
 
-<div id="poets" style="max-width:850px">
+<div id="poets" style="max-width:1000px">
     
-<p id='adrs'>
-    <?php
-        $__allekok_url = _SITE;
-    ?>
-<a href="<?php echo $__allekok_url; ?>" style='background-image:url(/style/img/allekok.png);background-repeat:no-repeat;background-position: 3.7em 0.1em;padding-right: 1.8em;background-size: 1.6em;'>ئاڵەکۆک</a>
-<i style='vertical-align:middle;' class='material-icons'>keyboard_arrow_left</i>
-<i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;font-size:1.05em' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
-</p>
-
-    <h1 style="background: #f4f4f4;color: #222;display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0;">
-        پتەوکردنی ئاڵەکۆک
-    
+    <h1 style="color: #222;display: inline-block;margin: 1em 0;font-size: 1.2em;">
+        <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> 
+         پتەوکردنی ئاڵەکۆک
     </h1>
     <br>
     <section class='pitewsec'>

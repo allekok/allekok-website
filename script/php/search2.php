@@ -7,14 +7,8 @@
 }
 
 #myInput {
-    border-box: box-sizing;
-    border: none;
-    border-bottom: 1px solid #ddd;
     width:100%;
-    padding:0.4em 0.6em;
 }
-
-#myInput:focus {outline: 3px solid #ddd;}
 
 .dropdown {
     position: relative;
@@ -109,7 +103,7 @@ function selectText(e) {
 </script>
 
 <div>
-    <form id="search-form" action="/" method="GET"><input type="text" id="search-key" class='search-key-php' name="q" placeholder="گەڕان بۆ ..." value="<?php echo htmlspecialchars($_GET['q']); ?>"><button type="submit" id="search-btn" class='button'>گەڕان</button></form>
+    <form id="search-form" action="/" method="GET"><input type="text" id="search-key" class='search-key-php' name="q" placeholder="گەڕان بۆ ..." value="<?php echo htmlspecialchars($_GET['q']); ?>"><button type="submit" id="search-btn" class='button'><i class='material-icons' style='font-size:2em;'>search</i></button></form>
 </div>
 
 <section class='sli' style="text-align:right">
@@ -117,6 +111,7 @@ function selectText(e) {
         <p style='text-align:right;font-size:0.6em;padding-bottom:.6em'>
         گەڕان لە شێعرەکانی: 
         </p>
+    <div style="text-align:center">
         <div class="dropdown">
             <?php
                 $db = "index";
@@ -160,6 +155,8 @@ function selectText(e) {
             ?>
           </div>
         </div>
+    </div>
+        
         <div style="margin:1em auto" class='chkboxs'>
             <p style='text-align:right;font-size:0.6em;padding-bottom:0.6em'>
                 گەڕان لە: 
@@ -174,7 +171,7 @@ function selectText(e) {
                             شاعیران
                         </span>
                     </div>
-                    <form onsubmit="event.preventDefault();search_deep(which_PT_selected(), checks());" style="background: #fff;border-bottom: 3px solid #ddd;padding: 0em .3em;">
+                    <form onsubmit="event.preventDefault();search_deep(which_PT_selected(), checks());" style="background: #fff;border-bottom: 1px solid #ddd;padding: 0em .3em;">
                         <p style='text-align: right;font-size: .45em;display: inline-block;width: 50%;box-sizing: border-box;max-width:10em;padding:1.2em 0;vertical-align:middle'>
                         ئەژماری شاعیران:</p><input type="text" id="PtsNumTxt" value="10" onfocus="selectText(this)" style="direction: ltr;text-align: center;box-sizing: border-box;font-size: .45em;display: inline-block;width: 23%;max-width: 100px;border: 1px solid #ddd;margin-left: 2%;border-radius: 2px;padding:.7em;vertical-align:middle"><button class='button' type="submit" style="width: 25%;font-size: .45em;text-align: center;box-sizing: border-box;max-width:60px;padding:.7em;vertical-align:middle">
                             گەڕان
@@ -192,7 +189,7 @@ function selectText(e) {
                         کتێبەکان
                     </span>
                 </div>
-                <form onsubmit="event.preventDefault();search_deep(which_PT_selected(), checks());" style="background: #fff;border-bottom: 3px solid #ddd;padding: 0em .3em;">
+                <form onsubmit="event.preventDefault();search_deep(which_PT_selected(), checks());" style="background: #fff;border-bottom: 1px solid #ddd;padding: 0em .3em;">
                     <p style='text-align: right;font-size: .45em;display: inline-block;width: 50%;box-sizing: border-box;max-width:10em;padding:1.2em 0;vertical-align:middle'>
                     ئەژماری کتێبەکان:</p><input type="text" id="BksNumTxt" value="15" onfocus="selectText(this)" style="direction: ltr;text-align: center;box-sizing: border-box;font-size: .45em;display: inline-block;width: 23%;max-width: 100px;border: 1px solid #ddd;margin-left: 2%;border-radius: 2px;padding:.7em;vertical-align:middle"><button class='button' type="submit" style="width: 25%;font-size: .45em;text-align: center;box-sizing: border-box;max-width:60px;padding:.7em;vertical-align:middle">
                         گەڕان
@@ -216,7 +213,7 @@ function selectText(e) {
                         دەقی شێعرەکان
                     </span>
                 </div>
-                <form onsubmit="event.preventDefault();search_deep(which_PT_selected(), checks());" style="background: #fff;border-bottom: 3px solid #ddd;box-shadow: 0 5px 10px -5px #ddd;padding: 0em .3em;">
+                <form onsubmit="event.preventDefault();search_deep(which_PT_selected(), checks());" style="background: #fff;border-bottom: 1px solid #ddd;box-shadow: 0 5px 10px -5px #ddd;padding: 0em .3em;">
                     <p style='text-align: right;font-size: .45em;display: inline-block;width: 50%;box-sizing: border-box;max-width:10em;padding:1.2em 0;vertical-align:middle'>
                     ئەژماری شێعرەکان:</p><input type="text" id="ResNumTxt" value="20" onfocus="selectText(this)" style="direction: ltr;text-align: center;box-sizing: border-box;font-size: .45em;display: inline-block;width: 23%;max-width: 100px;border: 1px solid #ddd;margin-left: 2%;border-radius: 2px;padding:.7em;vertical-align:middle"><button class='button' type="submit" style="width: 25%;font-size: .45em;text-align: center;box-sizing: border-box;max-width:60px;padding:.7em;vertical-align:middle">
                         گەڕان

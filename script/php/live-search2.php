@@ -113,7 +113,7 @@ $s_poet = array();
 	
 if($e_max !== 0) {
     $e = 0;
-    $e_max = !(filter_var($_GET['bk'], FILTER_VALIDATE_INT)===false) ? $_GET['bk'] : 10;
+    $e_max = !(filter_var($_GET['bk'], FILTER_VALIDATE_INT)===false) ? $_GET['bk'] : 5;
 
 	$q = ($_selPT == "") ? "select book,book_desc,poet_address,book_address,rbook,rtakh from books where len>{$qlen} order by rtakh ASC" : "select book,book_desc,poet_address,book_address,rbook,rtakh from books where len>{$qlen} and rtakh='{$_selPT}' order by rtakh ASC";
 	$query = mysqli_query($conn,$q);
@@ -174,7 +174,7 @@ if($e<$e_max) {
 	
 if($h_max !== 0) {
     $h = 0;
-    $h_max = !(filter_var($_GET['pm'], FILTER_VALIDATE_INT)===false) ? $_GET['pm'] : 15;
+    $h_max = !(filter_var($_GET['pm'], FILTER_VALIDATE_INT)===false) ? $_GET['pm'] : 10;
 
 	        $q = ($_selPT == "") ? "SELECT name,hdesc,poet_address,book_address,poem_address,poem,rbook,rname,rtakh FROM poems where len>{$qlen} ORDER BY Cipi DESC" : "SELECT name,hdesc,poet_address,book_address,poem_address,poem,rbook,rname,rtakh FROM poems where len>{$qlen} and rtakh='{$_selPT}' ORDER BY Cipi DESC";
 	        $query = mysqli_query($conn,$q);

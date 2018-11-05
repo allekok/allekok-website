@@ -8,7 +8,7 @@ $tbl = "tbl{$p}_{$b}";
 
 $db = "index";
 $q = "select id, lang from {$tbl}";
-require("script/php/condb.php");
+require("../../condb.php");
 
 while($pm = mysqli_fetch_assoc($query)) {
     

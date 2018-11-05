@@ -21,26 +21,18 @@ $color_num = 0;
 ?>
 
 <div id="poets">
-<p id='adrs'>
-    <?php
-        $__allekok_url = _SITE;
-    ?>
-<a href="<?php echo $__allekok_url; ?>" style='background-image:url(/style/img/allekok.png);background-repeat:no-repeat;background-position: 3.7em 0.1em;padding-right: 1.8em;background-size: 1.6em;'>ئاڵەکۆک</a>
-<i style='vertical-align:middle;' class='material-icons'>keyboard_arrow_left</i>
-
+<div id='adrs'>
 <a href="first.php">
     <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
 </a>
-<i style='vertical-align:middle;' class='material-icons'>keyboard_arrow_left</i>
-
-<i style='vertical-align:middle;' class='material-icons'>note_add</i>
+<i style='font-style:normal;'> &rsaquo; </i>
+<div id='current-location' style="color: rgb(0, 138, 230);">
+    <i style='vertical-align:middle;' class='material-icons'>note_add</i>
     نووسینی شێعر
-</p>
+</div>
 
-    <h1 style="background: rgba(0, 153, 255,0.05);color: rgb(0, 138, 230);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0;">
-        نووسینی شێعر
-    </h1>
-    
+</div>
+
     <div style="color:#444; font-size:0.6em;opacity:0;" id="pitew-stats">stats</div>
 
 <script>
@@ -112,21 +104,18 @@ $color_num = 0;
 
         <form id="frmComm" action="append.php" method="POST">
             
-            <input type="text" onblur="check()" id="contributorTxt" name="contributor" style="font-size:0.7em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:2.5em;border-top:3px solid #09f;display:block;margin:auto;box-shadow: 0 5px 10px -5px #ddd;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
-            <span style="font-size: 0.5em;display: block;color: #444;text-align: right;text-indent: 1.5em;padding:0.4em 0.5em 0.05em">
-                ئەو شێعرە بە نێوی خۆتان لەسەر ئاڵەکۆک دادەندرێ.
-            </span>
+            <input type="text" onblur="check()" id="contributorTxt" name="contributor" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
             
-            <div style="border-top:1px solid #ddd;margin:0.4em 0 0.8em;"></div>
+            <div style="border-top:1px solid #ddd;margin:.8em 0;"></div>
             
-            <input type="text" onblur="check()" id="poetTxt" name="poet" style="font-size:0.7em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:2.5em;border-top:3px solid #09f;display:block;margin:1em auto 0;box-shadow: 0 5px 10px -5px #ddd;" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
+            <input type="text" onblur="check()" id="poetTxt" name="poet" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
             <?php if(isset($_poet1)) { ?>
             <script>check()</script>
             <?php } ?>
             
             <!-- file upload sec -->
             <div id="frmUpload" style="max-width:800px;margin:auto;display:none;">
-                <textarea id="poetDescTxt" name="poetDesc" style="font-size:0.6em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:8em;border-top:3px solid #09f;display:block;margin:1em auto;box-shadow: 0 5px 10px -5px #ddd;" placeholder="سەبارەت بە شاعیر (وەکوو: ناسناوی ئەدەبی، شوێن و ڕێکەوتی لەدایکبوون یان هەر زانیاریەکی تر کە پێتان خۆشە لەسەر ئاڵەکۆک دابندرێ.)"></textarea>
+                <textarea id="poetDescTxt" name="poetDesc" style="font-size:0.6em;max-width:94%;min-width:94%;border-top:3px solid #09f;margin-top:1em;min-height:9em" placeholder="سەبارەت بە شاعیر (وەکوو: ناسناوی ئەدەبی، شوێن و ڕێکەوتی لەدایکبوون یان هەر زانیاریەکی تر کە پێتان خۆشە لەسەر ئاڵەکۆک دابندرێ.)"></textarea>
                 
                     <div style="padding:1.2em 0.3em 0.1em; text-align:right; text-indent:1em;font-size:0.5em;color:#222;">
                         ئەگەر دەتانهەوێ وێنەی شاعیر لەسەر ئاڵەکۆک دابندرێ، لەسەر "هەڵبژاردنی وێنە" کرتە بکەن.
@@ -137,13 +126,13 @@ $color_num = 0;
                     </a>
             </div>
             
-            <input type="text" id="bookTxt" name="book" style="font-size:0.7em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:2.5em;border-top:3px solid #09f;display:block;margin:1em auto 0;box-shadow: 0 5px 10px -5px #ddd;" value="<?php echo $_book1; ?>" placeholder="نێوی کتێب">
+            <input type="text" id="bookTxt" name="book" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;margin-top:1em;" value="<?php echo $_book1; ?>" placeholder="نێوی کتێب">
             
-            <input type="text" id="poemNameTxt" name="poemName" style="font-size:0.7em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:2.5em;border-top:3px solid #09f;display:block;margin:1em auto 0;box-shadow: 0 5px 10px -5px #ddd;" placeholder="نێوی شێعر">
+            <input type="text" id="poemNameTxt" name="poemName" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;margin-top:1em;" placeholder="نێوی شێعر">
 
-            <textarea id="poemConTxt" name="poem" style="font-size:0.7em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:20em;border-top:3px solid #09f;display:block;margin:1em auto 0;box-shadow: 0 5px 10px -5px #ddd;" placeholder="شێعر *"></textarea>
+            <textarea id="poemConTxt" name="poem" style="font-size:0.7em;max-width:94%;min-width:94%;min-height:20em;border-top:3px solid #09f;margin-top:1em;" placeholder="شێعر *"></textarea>
 
-            <div class='loader' id="commloader" style="width:0.8em;height:0.8em;display:none;"></div>
+            <div class='loader' id="commloader" style="display:none;"></div>
             
             <div id="message"></div>
 

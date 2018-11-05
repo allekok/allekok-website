@@ -2,7 +2,9 @@
 
 $db = "index";
 $q = "select id, takh, bks from auth";
-require("script/php/condb.php");
+require("../../condb.php");
+
+$column_name = "link";
 
 
 while($pt = mysqli_fetch_assoc($query)) {
@@ -16,7 +18,7 @@ while($pt = mysqli_fetch_assoc($query)) {
         
         $tbl = "tbl{$pt['id']}_{$t}";
         
-        $q = "ALTER TABLE `{$tbl}` ADD `lang` TEXT NOT NULL AFTER `likes`;";
+        $q = "ALTER TABLE `{$tbl}` ADD `{$column_name}` TEXT NOT NULL AFTER `likes`;";
         if(mysqli_query($conn, $q)) {
             echo "true <hr>";
         } else {

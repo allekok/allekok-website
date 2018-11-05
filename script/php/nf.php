@@ -5,7 +5,7 @@
 <html dir="rtl">
     <head>
 
-        <link rel="stylesheet" href="/style/css/main.css">
+        <link rel="stylesheet" href="/style/css/main2.3.css">
         <script type="text/javascript">
     var uritg = "<?php echo _SITE; ?>";
   </script>
@@ -41,7 +41,7 @@
     </head>
     <body style="text-align:center;background: white;">
         <img src="/style/img/poets/profile/profile_0.jpg" style="max-width:100%;display:block;margin:auto" alt="ئاڵەکۆک">
-        <h1>
+        <h1 style='font-size:1em'>
             ئەم لاپەڕە لەسەر ئاڵەکۆک نیە.
         </h1>
 

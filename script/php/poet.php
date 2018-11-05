@@ -1,21 +1,6 @@
 <div id="poets" class="poetarticle">
 
 <div class='poet'<?php if($row['kind']=='bayt') echo " style='margin-bottom:0;'"; ?>>
-<p id='adrs'>
-    <?php
-        $__allekok_url = ($row['kind'] == "dead" || $row['kind'] == "bayt") ? "/" : "/?new";
-    ?>
-<a href="<?php echo $__allekok_url; ?>" style='background-image:url(/style/img/allekok.png);background-repeat:no-repeat;background-position: 3.7em 0.1em;padding-right: 1.8em;background-size: 1.6em;'>ئاڵەکۆک</a>
-<i style='vertical-align:middle;' class='material-icons'>keyboard_arrow_left</i>
-
-<?php
-echo "<i style='vertical-align:middle;' class='material-icons'>person</i>" . " " . $row['profname'];
-?>
-</p>
-<?php
-    if($row['kind'] != "bayt") {
-        
-?>
 
 <?php
     $imgsrc = get_poet_image($ath, "pro-460", 1);
@@ -94,11 +79,17 @@ echo "<i style='vertical-align:middle;' class='material-icons'>person</i>" . " "
         
         <?php
     }
-}
     ?>
 </div>
+<div id='adrs'>
+<div id="current-location">
+<?php
+    echo $row['profname'];
+?>
+</div>
+</div>
 <div class='bks'<? if($row['kind']=='bayt') { echo " style='padding:0;width:100%;display:block;'";} ?>>
-<p style="border-top: .53em solid <?php echo($colors[$row['id']][0]) ?>;background: #f6f6f6;"><?php if($row['kind'] != "bayt") { ?> بەرهەمەکانی <?php echo $row['profname']; } else { echo "بەیتەکان"; }?></p>
+<p style="background-color: <?php echo($colors[$row['id']][0]) ?>;color: <?php echo($colors[$row['id']][1]) ?>;"><?php if($row['kind'] != "bayt") { ?> بەرهەمەکانی <?php echo $row['profname']; } else { echo "بەیتەکان"; }?></p>
 <?php
 $rbks = explode(',',$row['bks']);
 $rbkscomp = explode(',',$row['bks_completion']);
@@ -120,12 +111,7 @@ $rbks[$i] . '</a>');
         
 ?>
 
-<h3 id="poetnm-mas" style="background:#eee;color:#222;">
-<?php
-echo "سەبارەت بە " . $row['profname'];  
-?>
-</h3>
-<div class="poetdesc" style="box-shadow: 0 6px 20px -18px #aaa;background-color:#f6f6f6;">
+<div class="poetdesc">
     
 <?php 
 //echo $row['hdesc'];
@@ -135,14 +121,12 @@ if(strlen($row['hdesc'])>0) {
     foreach($_hd as $__hd) {
         $__hd = explode("[t]",$__hd);
         
-        echo "<h3 class='poetnm' style='border-bottom:1px solid #eee; padding:.85em 0;'>";
-        echo "<div style='color:#333; font-size:inherit;padding: 0 .7em 0 .2em;display: inline-block;width: 35%;box-sizing: border-box;max-width:10em;vertical-align:top;border-left:1px solid #ddd'>";
+        echo "<h3 class='poetnm'>";
+        echo "<span style='color:#555'>";
         echo $__hd[0];
-        echo "</div>";
-        
-        echo "<div style='font-size:inherit;padding: 0 .7em 0 .2em;display: inline-block;width: 65%;box-sizing: border-box;'>";
+        echo "</span>";
+        echo " : ";
         echo $__hd[1];
-        echo "</div>";
         echo "</h3>";
     }
     

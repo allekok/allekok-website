@@ -1,20 +1,18 @@
-<meta charset="utf-8">
 <?php
 require_once("../../constants.php");
 require_once("../../sanKuText.php");
 
+header("Content-type: text/html; charset=UTF-8");
 
-$con = mysqli_connect(_HOST,_USER,_PASS);
+$db = "index";
+$q = "select * from auth";
+require("../../condb.php");
 
-mysqli_set_charset($con,"utf8");
-mysqli_select_db($con,"allekokc_index");
+$aths_num = mysqli_num_rows($query);
+echo "poets: " . $aths_num;
 
-$q = mysqli_query($con, "SELECT * from auth");
-
-$aths_num = mysqli_num_rows($q);
-echo "aths: " . $aths_num;
-
-while($res=mysqli_fetch_assoc($q)) {
+while($res=mysqli_fetch_assoc($query)) {
+    
     $res['bks'] = explode(",",$res['bks']);
     $res['rbks'] = $res['bks'];
     for($b=0;$b<count($res['bks']);$b++) {
@@ -30,56 +28,41 @@ while($res=mysqli_fetch_assoc($q)) {
     $aths[$res['id']] = $res;
 }
 
+// first save imp, C, Cipi cloumns.
 
-//truncate table poems
-mysqli_select_db($con,"allekokc_search");
+mysqli_select_db($conn,"allekokc_search");
 
-//but first save imp, C, Cipi cloumns.
+$C_query = mysqli_query($conn, "select * From poems");
 
-$C_query = mysqli_query($con, "select * From poems");
-
-$Cs = array();
-//$Cs_address = array();
-
-$Cs_num = 0;
+$Cs = [];
 
 while($C_res = mysqli_fetch_assoc($C_query)) {
-    $Cs[$Cs_num] = array('rname'=>$C_res['rname'], 'imp'=>$C_res['imp'], 'C'=>$C_res['C'], 'Cipi'=>$C_res['Cipi']);
-    
-    //$Cs_address[$Cs_num] = $C_res['poet_address'].$C_res['book_address'].$C_res['poem_address'];
-    
-    $Cs_num++;
+    $Cs[] = array('rname'=>$C_res['rname'], 'imp'=>$C_res['imp'], 'C'=>$C_res['C'], 'Cipi'=>$C_res['Cipi']);
 }
 
-mysqli_query($con,"TRUNCATE TABLE poems");
-echo "<pre>";
+// remove poems table.
+mysqli_query($conn,"TRUNCATE TABLE poems");
 
-//$j=0;
-//$p=0;
-//$Cs_num=0;
 $kurdish_nums = array('۰','۱','۲','۳','۴','۵','۶','۷','۸','۹','۰','۱','۲','۳','۴','۵','۶','۷','۸','۹');
 $other_nums = array('0','1','2','3','4','5','6','7','8','9','٠','١','٢','٣','٤','٥','٦','٧','٨','٩');
 $Cs_key = 0;
 foreach($aths as $ath) {
-    //mysqli_select_db($con,"allekokc_search");
-    
+
     $rtakh = $ath['rtakh'];
     $poet_takh = $ath['takh'];
     $poet_address = $ath['address'];
     
     for($i=0;$i<count($ath['bks']);$i++) {
-        //$j++;
-        //$id = $j;
+
         $book = $ath['bks'][$i];
         $rbook = $ath['rbks'][$i];
         $book_address = "book:" . ($i+1);
-        mysqli_select_db($con,"allekokc_index");
+        mysqli_select_db($conn,"allekokc_index");
         $_tbl = "tbl" . $ath['id'] . "_" . ($i+1);
-        $q = mysqli_query($con,"select * from " . $_tbl);
+        $q = mysqli_query($conn,"select * from " . $_tbl);
         
         while($res=mysqli_fetch_assoc($q)) {
-            //$p++;
-            //$res['pid'] = $p;
+
             $res['rname'] = $res['name'];
             $res['name'] = san_data($res['name']);
             
@@ -87,13 +70,8 @@ foreach($aths as $ath) {
             $res['rpoem'] = str_replace(["\n","\r"], [" &bull; ",""], preg_replace("/\n+\s+\n+/"," &bull; ",trim(mb_substr(filter_var($res['hon'], FILTER_SANITIZE_STRING), 0 , 150))));
             
             
-            //$res['hon'] = str_replace($kurdish_nums, "", $res['hon']);
-            //$res['hon'] = str_replace($other_nums, "", $res['hon']);
-            
-            
             $res['hon'] = san_data($res['hon']);
             $res['hon_true'] = san_data($res['hon'], true);
-            
             
             
             $res['hdesc'] = san_data($res['hdesc']);
@@ -105,7 +83,7 @@ foreach($aths as $ath) {
         }
         
 
-        mysqli_select_db($con,"allekokc_search");
+        mysqli_select_db($conn,"allekokc_search");
         
         foreach($poems as $pm) {
             
@@ -139,7 +117,7 @@ foreach($aths as $ath) {
             
             $qq = "INSERT INTO `poems`(`name`,`hdesc`,`poet_address`,`book_address`,`poem_address`,`poem`,`rname`,`rbook`,`rtakh`,`imp`,`C`,`Cipi`,`len`,`poem_true`,`rpoem`) VALUES ('$pname','$phdesc','$poet_address','$book_address','$pa'," . '"' . $phon . '"' . ",'$rname','$rbook','$rtakh',$imp,$C,$Cipi,$phonlen,'$phon_true','$rpoem')";
             //echo $qq . "<br><br>";
-            $q = mysqli_query($con, $qq);
+            $q = mysqli_query($conn, $qq);
             
             if($q) {
                 //echo "true";
@@ -156,5 +134,5 @@ foreach($aths as $ath) {
     
 }
 
-mysqli_close($con);
+mysqli_close($conn);
 ?>

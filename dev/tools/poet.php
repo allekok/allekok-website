@@ -10,8 +10,8 @@ $pt = filter_var($_REQUEST['poet'], FILTER_SANITIZE_STRING);
 
 if($pt == "all") {
     $k = $_GET['k'];
-    if($k == "new") {
-        $k = " WHERE kind='new'";
+    if($k == "alive") {
+        $k = " WHERE kind='alive'";
     } elseif($k == "dead") {
         $k = " WHERE kind='dead'";
     } elseif($k == "bayt") {
@@ -22,7 +22,7 @@ if($pt == "all") {
     
 $all = [];
     $db = "index";
-    $q = "select id from auth order by takh ASC" . $k;
+    $q = "select id from auth{$k} order by takh ASC";
     require("../../script/php/condb.php");
     
     while($res = mysqli_fetch_assoc($query)) {

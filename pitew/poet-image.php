@@ -16,8 +16,8 @@ if(! defined('ABSPATH'))    define('ABSPATH', '/home/allekokc/public_html/');
         $_profile = $_FILES["profile"];
         $_poet = filter_var($_COOKIE['poet'], FILTER_SANITIZE_STRING);
         $_name = filter_var($_COOKIE['name'], FILTER_SANITIZE_STRING);
-        $_poet = str_replace("/","",$_poet);
-        $_name = str_replace("/","",$_name);
+        $_poet = str_replace(["/","\\",":","*","?","|","\"","<",">"],"",$_poet);
+        $_name = str_replace(["/","\\",":","*","?","|","\"","<",">"],"",$_name);
         $t = time();
         
         $_cnn = $_name ? $_name : $_SERVER['REMOTE_ADDR'];
@@ -50,28 +50,17 @@ $color_num = 0;
 
 <div id="poets">
     
-<p id='adrs'>
-    <?php
-        $__allekok_url = _SITE;
-    ?>
-<a href="<?php echo $__allekok_url; ?>" style='background-image:url(/style/img/allekok.png);background-repeat:no-repeat;background-position: 3.7em 0.1em;padding-right: 1.8em;background-size: 1.6em;'>ئاڵەکۆک</a>
-<i style='vertical-align:middle;' class='material-icons'>keyboard_arrow_left</i>
-
+<div id='adrs'>
 <a href="first.php">
     <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
 </a>
-<i style='vertical-align:middle;' class='material-icons'>keyboard_arrow_left</i>
-
+<i style='font-style:normal;'> &rsaquo; </i>
+<div id="current-location" style="color: rgb(128, 0, 128);">
 <i style='vertical-align:middle;' class='material-icons'>image</i>
     ناردنی وێنەی شاعیران
-</p>
+    </div>
+</div>
 
-    <h1 style="background: rgba(128, 0, 128, 0.05);color: rgb(128, 0, 128);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0;">
-        ناردنی وێنەی شاعیران
-    
-    </h1>
-    <br>
-    
     <script>
     function check() {
         var poet = document.querySelector("#poetTxt");
@@ -108,8 +97,8 @@ $color_num = 0;
         </div>
     <!-- file upload sec -->
     <form id="frmUpload" method="POST" enctype="multipart/form-data" style="max-width:800px;margin:auto;padding-top:1em;font-size:0.7em">
-        <input type="text" id="cntriTxt" name="cntri" style="font-size:1em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:2.5em;border-top:3px solid rgb(128, 0, 128);display:block;margin:0.5em auto 1.5em;box-shadow: 0 5px 10px -5px #ddd;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
-        <input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:1em;padding:0.6em 3% 0.6em 2%;text-align:right;max-width:94%;min-width:94%;min-height:2.5em;border-top:3px solid rgb(128, 0, 128);display:block;margin:0.5em auto 1.5em;box-shadow: 0 5px 10px -5px #ddd;" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
+        <input type="text" id="cntriTxt" name="cntri" style="font-size:1em;max-width:94%;min-width:94%;border-top:3px solid rgb(128, 0, 128);" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
+        <input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:1em;max-width:94%;min-width:94%;border-top:3px solid rgb(128, 0, 128);margin-top:1em;margin-bottom:1em" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
         <?php if(isset($_poet1)) { ?>
             <script>check()</script>
         <?php } ?>

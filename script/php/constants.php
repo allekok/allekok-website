@@ -10,7 +10,7 @@ define("_SITE","https://".$_SERVER['HTTP_HOST']."/");
 define("_TITLE","ئاڵەکۆک");
 define("_DESC","شێعری کوردی");
 define("_KEYS","شیعر,هۆنراوە,کورد,کوردستان,شاعیرانی کورد,هەڵبەست,شعر,کرد,کردستان,شاعر,کوردی,allakok,alakok,alekok,ئاڵەکۆک,allekok,آلکوک,هەڵەکووک,هەڵەکوک");
-if(! defined('ABSPATH'))    define('ABSPATH', "");
+if(! defined('ABSPATH'))    define('ABSPATH', "/home/allekokc/public_html/");
 
 #comments
 #define("MAX_REPORTS_TO_BLOCK", 3);

@@ -36,8 +36,11 @@ if(filter_var($_bk, FILTER_VALIDATE_INT)) {
     
     $_tbl = "tbl{$poet['id']}_{$_bk}";
     
-    $q = "SELECT name from {$_tbl}";
+    $q = "SELECT name from {$_tbl} order by id";
     $query = mysqli_query($conn, $q);
+    
+    $pms_num = $query ? mysqli_num_rows($query) : 0;
+    
     $poems = [];
     
     while($r = mysqli_fetch_assoc($query)) {
@@ -50,6 +53,7 @@ if(filter_var($_bk, FILTER_VALIDATE_INT)) {
         "book" => $poet['bks'][$_bk-1],
         "bookID" => $_bk,
         "desc" => $poet['bksdesc'][$_bk-1],
+        "poems-num" => $pms_num,
         "poems" => $poems,
         ];
         
@@ -65,8 +69,11 @@ if(filter_var($_bk, FILTER_VALIDATE_INT)) {
     
     $_tbl = "tbl{$poet['id']}_{$_bk}";
     
-    $q = "SELECT name from {$_tbl}";
+    $q = "SELECT name from {$_tbl} order by id";
     $query = mysqli_query($conn, $q);
+    
+    $pms_num = $query ? mysqli_num_rows($query) : 0;
+
     $poems = [];
     
     while($r = mysqli_fetch_assoc($query)) {
@@ -79,6 +86,7 @@ if(filter_var($_bk, FILTER_VALIDATE_INT)) {
         "book" => $poet['bks'][$_bk-1],
         "bookID" => $_bk,
         "desc" => $poet['bksdesc'][$_bk-1],
+        "poems-num" => $pms_num,
         "poems" => $poems,
         ];
         

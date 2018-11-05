@@ -3,8 +3,6 @@
 require_once("../../script/php/constants.php");
 require("../../script/php/functions.php");
 
-header("Content-type:application/json; charset=UTF-8");
-
 $null = json_encode(null);
 
 $_pt = filter_var($_REQUEST['poet'], FILTER_SANITIZE_STRING);
@@ -93,7 +91,14 @@ $reses = [
     "bookID" => $_bk,
     "poems" => $poems,
     ];
-echo json_encode($reses);
+    
+$reses_str = json_encode($reses);
+$ll = mb_strlen($reses_str);
+
+header("Content-type:application/json; charset=UTF-8");
+header("x-con-len:{$ll}");
+
+echo $reses_str;
 
 mysqli_close($conn);
 

@@ -6,6 +6,7 @@
 	require_once("../../script/php/constants.php");
 	require_once("../../script/php/functions.php");
 
+$dev = 1;
 $title = _TITLE . " &raquo; کۆد";
 $desc = "ئاڵەکۆک - کۆد";
 $keys = _KEYS;
@@ -17,7 +18,7 @@ $color_num = 0;
 ?>
 <div id="poets">
     
-    <h1><a style="background: #222;color: #19e31b;display: inline-block;padding: 0.3em 0.8em 0;border-radius: 5px;margin: 1em 0 0.5em;text-decoration:none" href='/dev/tools/'>
+    <h1 style="font-size:1.2em;"><a style="background: #222;color: #19e31b;display: inline-block;padding: 0.3em 0.8em 0;border-radius: 5px;margin: 1em 0 0.5em;text-decoration:none" href='/dev/tools/'>
         ئاڵەکۆک 
     <sup style="font-size:0.55em; vertical-align:top;">
         єv∂
@@ -119,7 +120,10 @@ $color_num = 0;
             https://allekok.com/dev/tools/poet.php?poet=1,هێمن,3
             </code>
             ئەو نیشانیەی سەرەوە، زانیاریەکانی سەبارەت بە شاعیری ژمارە 1(هەژار)، شاعیری ژمارە 3(وەفایی) و هێمن،تان نیشان دەدا.
-            <br></p>
+            <br>
+            &bull; 
+            بۆ وەرگرتنی زانیاریەکانی تەواوی شاعیران، بە جێی ناوی شاعیر بنووسن all .
+            </p>
             <div class='hr'></div>
             <h2>
             <span style='font-size:1.3em; color:green'>&bull;</span>
@@ -176,6 +180,9 @@ $color_num = 0;
             <code>
                 https://allekok.com/dev/tools/poem.php?poet=1&book=3&poem=1,3&html
             </code>
+            <br>
+            &bull; 
+            بۆ وەرگرتنی تەواوی شێعرەکانی یەک کتێب بە جێی ژمارەی شێعر بنووسن all .
         </p>
         <div class='hr'></div>
         <h2>
@@ -185,36 +192,36 @@ $color_num = 0;
         <code style="background:rgba(0,255,0,.05);border-left-color:green">
             https://allekok.com/dev/tools/search.php?q=وشە&poet=ناوی شاعیر&pt=ئەژماری شاعیران&bk=ئەژماری کتێبەکان&pm=ئەژماری شێعرەکان&k=چۆنیەتی گەڕان
         </code>
-        &bull;
-        q: 
+        &bull; 
+         q: 
         ئەو وشەیەی کە دەتانهەوێ بەدووی دا بگەڕێن
         <br>
-        &bull;
-        poet: 
+        &bull; 
+         poet: 
         گەڕان لە شێعرەکانی ئەم شاعیرەدا. سەرنج بدەن کە دەبێ نێوی شاعیر کە لە لاپەڕەی یەکەمی ئاڵەکۆک‌دا هاتووە بنووسن.
         <br>
-        &bull;
-        pt: 
+        &bull; 
+         pt: 
         ئەژماری ئاکامەکان لە گەڕان بەنێو شاعیران‌دا
         <br>
-        &bull;
-        bk: 
+        &bull; 
+         bk: 
         ئەژماری ئاکامەکان لە گەڕان بەنێو کتێبەکان‌دا
         <br>
-        &bull;
-        pm: 
+        &bull; 
+         pm: 
         ئەژماری ئاکامەکان لە گەڕان بەنێوە شێعرەکان‌دا
         <br>
-        &bull;
-        k: <br>
+        &bull; 
+         k: <br>
         <span style="padding-right:1em;text-indent:0;display:block;">
-         &bull; 
+         &bull;  
          ئەگەر بنووسن 1، گەڕانەکان تەنیا لە سەرناوی شێعرەکان‌دا دەبێ.
          <br>
-         &bull;
+         &bull;  
          ئەگەر بنووسن 2، گەڕانەکان تەنیا لە دەقی شێعرەکان‌دا دەبێ.
          <br>
-         &bull;
+         &bull;  
          ئەگەر بنووسن 3 یان هیچ نەنووسن، گەڕانەکان هەردوو نێوی شێعر و دەقی شێعردا دەبێ.
          </span>
          <br>
