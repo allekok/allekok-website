@@ -46,6 +46,10 @@
                     
                 }
                 
+                $q = "select takh from auth where id={$r['naddress'][0][1]}";
+                $query = mysqli_query($conn, $q);
+                $r['ptn'] = mysqli_fetch_assoc($query)['takh'];
+                
                 $q = "select name from tbl{$r['naddress'][0][1]}_{$r['naddress'][1][1]} where id={$r['naddress'][2][1]}";
                 $query = mysqli_query($conn, $q);
                 $r['pmn'] = mysqli_fetch_assoc($query)['name'];

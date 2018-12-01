@@ -1,6 +1,6 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v107').then(function(cache) {
+    caches.open('v108').then(function(cache) {
       return cache.addAll([
         '/style/img/poets/profile/profile_0.jpg',
         '/style/img/poets/profile/profile_1.jpg',
@@ -58,8 +58,9 @@ self.addEventListener('install', function(event) {
         '/style/img/poets/profile/profile_61.jpg',
         '/style/img/poets/profile/profile_82.jpg',
         '/style/img/poets/profile/profile_83.jpg',
-        '/script/js/main1.4.js',
-        '/style/css/main2.4.css',
+        '/script/js/main1.4.js?v10',
+        '/style/css/main2.5.css?v6',
+        '/favicon.ico',
         '/style/font/DroidNaskh-Regular.woff',
         '/style/font/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
         '/nf.html',
@@ -69,7 +70,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
-  var cacheWhitelist = ['v107'];
+  var cacheWhitelist = ['v108'];
 
   event.waitUntil(
     caches.keys().then(function(keyList) {
@@ -87,7 +88,7 @@ self.addEventListener('fetch', function(event) {
     caches.match(event.request).then(function(resp) {
       return resp || fetch(event.request).then(function(response) {
         //let responseClone = response.clone();
-        //    caches.open('v107').then(function(cache) {
+        //    caches.open('v108').then(function(cache) {
         //      cache.put(event.request, responseClone);
         //    });
         

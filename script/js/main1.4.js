@@ -1,134 +1,112 @@
-
 function toggle_search() {
-    //toggle_search Function, show/hide the search form.
 
-    var s=document.getElementById('search');
+    var s = document.getElementById('search');
     var sk = document.getElementById("search-key");
-    var h=document.querySelector('header');
-    var tS=document.getElementById('tS');
+    var h = document.querySelector('header');
+    var tS = document.getElementById('tS');
 
     if(s.style.display !== "block") {
 
         s.style.display = "block";
         sk.focus();
         tS.style.opacity="1";
-        h.style.animation="concentrate 1s ease forwards";
+        h.style.animation="concentrate 1s forwards";
     } else {
 
         s.style.display="none";
         tS.style.opacity="";
-        h.style.animation="smile 1s ease forwards";
+        h.style.animation="smile 1s forwards";
     }
 
 }
 
-/// **************** ///
 
 function toggle_Like() {
-  var tL_res = document.getElementById('tL-res');
-  var tL = document.getElementById('tL');
-  
-  if(tL_res.style.display == "block") {
-      tL_res.style.display = "none";
-      tL.style.opacity = "";
-      return;
-  }
-  
-  var favs = localStorage.getItem("favorites");
-  
-  if(favs !== null) {
-        favs = favs.split('[fav]');
-        favs = favs.reverse();
-        
-        var favsS = "";
-        var clrNum = 0;
-        
-        for ( var a in favs ) {
-            if( favs[a] != "" ) {
-                favs[a] = JSON.parse(favs[a]);
-                clrNum = favs[a].poetID;
-
-                favsS += `<a class='link' style='border-bottom:1px solid #eee' href='${uritg+favs[a].url}'><i style='vertical-align:middle;font-size: 2em;height: .85em;color:${colors[clrNum][0]};' class='material-icons'>bookmark</i> <span style='font-size:.85em; color:#555;'>${favs[a].poetName} <i style='vertical-align:middle;font-size: inherit;height: 0.6em;' class='material-icons'>keyboard_arrow_left</i> ${favs[a].book} <i style='vertical-align:middle;font-size: inherit;height: 0.6em;' class='material-icons'>keyboard_arrow_left</i></span> ${favs[a].poem} </a>`;
-            }
+    
+    var tL_res = document.getElementById('tL-res');
+    var tL = document.getElementById('tL');
+    
+    if(tL_res.style.display == "block") {
+        tL_res.style.display = "none";
+        tL.style.opacity = "";
+        return;
+    }
+    
+    var favs = localStorage.getItem("favorites");
+    favs = favs.split('[fav]');
+    favs = favs.reverse();
+    
+    var favsS = "";
+    var clrNum = 0;
+    
+    for( var a in favs ) {
+        if( favs[a] !== "" ) {
+            favs[a] = JSON.parse(favs[a]);
+            clrNum = favs[a].poetID;
+            
+            favsS += `<a class='link' style='border-bottom:1px solid #eee' href='${uritg+favs[a].url}'><i style='vertical-align:middle;font-size:2em;height:.85em;color:${colors[clrNum][0]};' class='material-icons'>bookmark</i> <span style='font-size:.85em; color:#555;'>${favs[a].poetName} <i style='vertical-align:middle;font-size: inherit;height: 0.6em;' class='material-icons'>keyboard_arrow_left</i> ${favs[a].book} <i style='vertical-align:middle;font-size: inherit;height: 0.6em;' class='material-icons'>keyboard_arrow_left</i></span> ${favs[a].poem} </a>`;
         }
-          
-          document.getElementById('tL-res-res').innerHTML = favsS;
-          
-          tL_res.style.animation = "tL 0.6s";
-          tL_res.style.display = "block";
-          tL.style.opacity = "1";
-  }
+    }
+    
+    document.getElementById('tL-res-res').innerHTML = favsS;
+    
+    tL_res.style.animation = "tL 0.6s";
+    tL_res.style.display = "block";
+    tL.style.opacity = "1";
 }
 
 
-/// ******************** ///
-
 function search(e) {
-    // Search Function ---> Send search phrases ajaxly to server.
     
     var str=document.getElementById("search-key").value;
     var sres=document.getElementById("search-res");
     var s=document.getElementById('search');
+    var loading = "<div class='loader' id='loader'></div>";
+    var xmlhttp=new XMLHttpRequest();
 
-    // the below line is from some source.
     var C = (typeof e.which === "number") ? e.which : e.keyCode;
     var noActionKeys = [16, 17, 18, 91, 20, 9, 93, 37, 38, 39, 40, 32, 224, 13];
     
     if(noActionKeys.indexOf(C) === -1) {
 
     // 27 keyCode = Esc Key
-    if(C == 27) {
+    if(C === 27) {
         s.style.display="none";
         return;
-
+        
     } else {
-        var loading = "<div class='loader' id='loader'></div>";
         var sbtn = document.querySelector("#live-search-form #search-btn");
-
+        
         if(str.length<3) {
             sres.style.display="none";
-            sres.innerHTML= loading;
+            sres.innerHTML = loading;
             sbtn.innerHTML = "<i class='material-icons' style='font-size:2em;'>search</i>";
             return;
         }
         
         sres.innerHTML=loading;
         sres.style.display="block";
-        var xmlhttp=new XMLHttpRequest();
         
-        xmlhttp.onreadystatechange=function() {
-            if(this.readyState==4 && this.status==200) {
-
-                sres.innerHTML=this.responseText;
-                sbtn.innerHTML = "گەڕانی زۆرتر";
-            }
+        var request = "/script/php/live-search2.php?q="+str;
+        xmlhttp.open("GET",request);
+        xmlhttp.onload=function() {
+            sres.innerHTML = this.responseText;
+            sbtn.innerHTML = "گەڕانی زۆرتر";
         }
     }
 
-    var request = "/script/php/live-search2.php?q="+str;
-
-    xmlhttp.open("GET",request,true);
     xmlhttp.send();
 
     // the End of noActionKeys, IF....
     } else {
         if(str === "") {
             sres.style.display="none";
-            sres.innerHTML= loading;
+            sres.innerHTML=loading;
             return;
         } 
     }
 }
 
-
-/**
-    functions:
-        1.window.Clipboard = function()
-        2.copyPoem()
-        3.Liked()
-        4.save_fs()
-
-**/
 
 window.Clipboard = (function(window, document, navigator) {
     var textArea,
@@ -179,7 +157,7 @@ window.Clipboard = (function(window, document, navigator) {
 
 function copyPoem() {
     var text = document.getElementById("hon").innerHTML;
-    copySec = document.getElementById("copy-sec");
+    var copySec = document.getElementById("copy-sec");
 
     var htmlchars = [
         /<div class="ptr">/gi,
@@ -224,11 +202,11 @@ function copyPoem() {
     
     Clipboard.copy(text);
     
-    copySec.innerHTML = "<div style='width: 100%;height: 100%;position: absolute;right: -0.02em;top:-0.001em;background: none;border: 0;box-shadow: none;'></div><i class='material-icons' style='vertical-align:middle;'>check</i> کۆپی کرا.";
-    copySec.style.backgroundColor = "#ccffcc";
+    copySec.innerHTML = "<div style='width: 100%;height: 100%;position: absolute;right: -0.02em;top:-0.001em;border: 0;background:none;box-shadow: none;'></div><i class='material-icons' style='vertical-align:middle;'>check</i> کۆپی کرا.";
+    copySec.style.backgroundColor = "#cfc";
         
     setTimeout(function(){
-        copySec.innerHTML = "<div style='width: 100%;height: 100%;position: absolute;right: -0.02em;top:-0.001em;background: none;border: 0;box-shadow: none;'></div><i class='material-icons' style='vertical-align:middle;'>content_copy</i> کۆپی کردن ";
+        copySec.innerHTML = "<div style='width: 100%;height: 100%;position: absolute;right: -0.02em;top:-0.001em;background:none;border: 0;box-shadow: none;'></div><i class='material-icons' style='vertical-align:middle;'>content_copy</i> کۆپی کردن ";
         copySec.style.backgroundColor = "";
     
     },3000);
@@ -241,11 +219,11 @@ function Liked() {
     var ico = document.getElementById("like-icon");
     var favs = localStorage.getItem('favorites');
     
-    if(favs != null) {
+    if(favs !== null) {
         console.log("! null");
         favs = favs.split("[fav]");
         
-        where = favs.indexOf(poemV2);
+        var where = favs.indexOf(poemV2);
         
         if(where > -1) {
             console.log("founded");
@@ -332,13 +310,6 @@ function save_fs(how) {
     hon.style.fontSize = newfs + "px";
 }
 
-/* footer.js */
-
-/**
-
-    functions:
-        1.get poem's font size from localStorage
-**/
 
 function isJson(str) {
     try {
@@ -355,10 +326,10 @@ var likeico = document.getElementById('like-icon');
 
 var favs = localStorage.getItem('favorites');
 
-if(favs != null && typeof poemV2 !== 'undefined') {
+if(favs !== null && typeof poemV2 !== 'undefined') {
     favs = favs.split("[fav]");
     
-    where = favs.indexOf(poemV2);
+    var where = favs.indexOf(poemV2);
     
     if(where > -1) {
         likeico.innerHTML = "bookmark";
@@ -384,6 +355,7 @@ var tL = document.getElementById('tL');
 
     }
 
+
 /// *************** ///
 
 var live_search_form = document.getElementById('live-search-form');
@@ -397,14 +369,11 @@ live_search_form.addEventListener("submit", function(e) {
     }
 });
 
-/// ******************** ///
-
 
 var tLLL = document.getElementById("tL");
 if( tLLL !== null ) {
 	tLLL.addEventListener("click", toggle_Like);
 }
-
 
 var tSSS = document.getElementById("tS");
 if( tSSS !== null) {

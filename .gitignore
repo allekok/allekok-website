@@ -30,4 +30,7 @@ error_log
 *error_log
 */error_log
 
+stats.txt
+*/stats.txt
+
 # End of https://www.gitignore.io/api/linux

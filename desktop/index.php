@@ -17,17 +17,12 @@ $color_num = 0;
 
 <div id="poets" style="max-width:850px">
 
-    <h1 style="color: rgb(255, 0, 102);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0;font-size:1.2em;">
+    <h1 style="color: rgb(255, 0, 102);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0 0;font-size:1.2em;">
         بەرنامەی دێسکتاپی ئاڵەکۆک
     </h1>
-    <br>
-    <p style="text-align:right; font-size:.65em;text-indent:1em;line-height:2.5;padding:0 1em;">
-        بە داگرتنی بەرنامەی دێسکتاپی ئاڵەکۆک، دەسڕسی تەواوتان دەبێ بە هەموو شێعرەکانی ماڵپەڕی ئاڵەکۆک.
-        </p><p style="text-align:right; font-size:.65em;text-indent:1em;line-height:2.5;padding:0 1em;">
-        شێوەی بەکارهێنانی بەم جۆرەیە کە هەر کتێبی شێعرێک کە دەیخوێننەوە، لەسەر کامپیوتێڕەکەشتان دادەبەزێندرێ و بۆ کاتەکانی تر پێویستی‌تان بە ئینتێڕنێت نابێت بۆ خوێندەنەوەی شێعرەکانی ئەم کتێبە.
-        </p><p style="text-align:right; font-size:.65em;text-indent:1em;line-height:2.5;padding:0 1em;">
-            تکایە دوای بەکارهێنانی ئەم بەرنامە، بیروڕای خۆتان سەبارەت بە بەرنامەی دێسکتاپی ئاڵەکۆک لە بەشی بیروڕای خوارەوەی ئەم لاپەڕەدا بنووسن.
-    </p>
+    <small style='font-size:.6em; margin-top:-.6em;display:block;'>
+        وەشانی ۱.۰.۰
+    </small>
     <h2 style="padding-top:1.5em;font-size:1em">
         دابەزاندن بۆ: 
     </h2>

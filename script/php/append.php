@@ -17,7 +17,7 @@ $header = "<i class='h'>{$date} +++++ {$ip}</i>";
 $uri = "res/about.comments";
 
 $rnd = mt_rand(1,(count($colors)-2));
-$div = "<div style='background-color:{$colors[$rnd][2]};color:{$colors[$rnd][3]};'>";
+$div = "<div style='background:linear-gradient({$colors[$rnd][2]}, #fdfdfd);color:#000;'>";
 
 if(filesize($uri)>0) {
     $comment = $sign . $div . $comm . $header . "</div>";

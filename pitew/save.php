@@ -14,11 +14,7 @@
         
         $_poetDesc .= "\nend\n";
         
-        if(file_exists($_uri)) {
-            $f = fopen($_uri, "a");
-        } else {
-            $f = fopen($_uri, "w");
-        }
+        $f = fopen($_uri, "a");
         fwrite($f, $_poetDesc);
         fclose($f);
         

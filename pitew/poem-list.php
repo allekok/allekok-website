@@ -51,11 +51,20 @@ $color_num = 0;
         $_pmnum = num_convert(mysqli_num_rows($query), "en", "ckb");
     ?>
     <div style="color:#555; font-size:0.6em;margin:1em 0 0">
-        ژمارەی شێعرەکان: 
-        <?php
-            echo $_pmnum;
+        ژمارەی شێعرەکان<?php
+            if($_name1) {
+                echo "ی \"$_name1\"";
+            }
+            echo " &rsaquo; <span style='letter-spacing:1.5px;'>". $_pmnum . "</span>";
         ?>
-    </div><br>
+    </div>
+    <div style='text-align:right;margin:.3em 0'>
+        <?php if($_name1) { ?>
+        <a class='button' href="/pitew/poem-list.php">
+            تەواوی ئەو شێعرانەی نووسراون
+        </a>
+        <?php } ?>
+    </div>
     <section class='pmlist' style='background:#eee'>یارمەتیدەر</section><section style='background:#eee;text-align:center' class='pmlist'>شێعر</section>
 
     <?php

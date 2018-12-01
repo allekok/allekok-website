@@ -17,10 +17,12 @@ $color_num = 0;
 
 <div id="poets" style="max-width:850px">
 
-    <h1 style="color: rgb(255, 102, 0);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0;font-size:1.2em;">
+    <h1 style="color: rgb(255, 102, 0);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0 0;font-size:1.2em;">
         بەرنامەی مۆبایلی ئاڵەکۆک
     </h1>
-    <br>
+    <small style='font-size:.6em; margin-top:-.6em;display:block;'>
+        وەشانی ۱.۰.۰
+    </small>
     <style>
         .pitewsec a {
             color:#000;

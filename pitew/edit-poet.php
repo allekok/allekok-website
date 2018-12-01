@@ -86,7 +86,7 @@ $color_num = 0;
     </div>
     
     <div style="margin-top:2em;">
-        <a class='button' href="poetdesc-list.php">
+        <a id='desc-list' class='button' href="poetdesc-list.php">
              ئەو زانیاریانەی کە نووسیوتانە
         </a>
     </div>
@@ -102,6 +102,7 @@ $color_num = 0;
             contributor = JSON.parse(contributor);
             
             document.querySelector("#contributorTxt").value = contributor.name;
+            document.querySelector('#desc-list').href += "?name=" + contributor.name;
         }
     }
     

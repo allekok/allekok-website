@@ -105,10 +105,13 @@ $color_num = 0;
         <form id="frmComm" action="append.php" method="POST">
             
             <input type="text" onblur="check()" id="contributorTxt" name="contributor" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
+            <p style="text-align: right;text-indent: 1em;padding: .5em 1em 0;font-size: .5em;color: #444;">
+                ئەو شێعرە بە نێوی خۆتان لەسەر ئاڵەکۆک دادەندرێ.
+            </p>
             
             <div style="border-top:1px solid #ddd;margin:.8em 0;"></div>
             
-            <input type="text" onblur="check()" id="poetTxt" name="poet" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
+            <input type="text" onblur="check()" id="poetTxt" name="poet" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;" value="<?php echo $_poet1; ?>" placeholder="ناوی شاعیر *">
             <?php if(isset($_poet1)) { ?>
             <script>check()</script>
             <?php } ?>
@@ -126,11 +129,11 @@ $color_num = 0;
                     </a>
             </div>
             
-            <input type="text" id="bookTxt" name="book" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;margin-top:1em;" value="<?php echo $_book1; ?>" placeholder="نێوی کتێب">
+            <input type="text" id="bookTxt" name="book" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;margin-top:1em;" value="<?php echo $_book1; ?>" placeholder="ناوی کتێب">
             
-            <input type="text" id="poemNameTxt" name="poemName" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;margin-top:1em;" placeholder="نێوی شێعر">
+            <input type="text" id="poemNameTxt" name="poemName" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;margin-top:1em;" placeholder="سەرناوی شێعر">
 
-            <textarea id="poemConTxt" name="poem" style="font-size:0.7em;max-width:94%;min-width:94%;min-height:20em;border-top:3px solid #09f;margin-top:1em;" placeholder="شێعر *"></textarea>
+            <textarea id="poemConTxt" name="poem" style="font-size:0.7em;max-width:94%;min-width:94%;min-height:20em;border-top:3px solid #09f;margin-top:1em;" placeholder="دەقی شێعر *"></textarea>
 
             <div class='loader' id="commloader" style="display:none;"></div>
             
@@ -143,7 +146,7 @@ $color_num = 0;
         
     </div>
     <div style="margin-top:2em;">
-        <a class='button' href="poem-list.php">
+        <a id='poems-list' class='button' href="poem-list.php">
              ئەو شێعرانەی کە نووسیوتانە
         </a>
     </div>
@@ -159,7 +162,9 @@ $color_num = 0;
             contributor = JSON.parse(contributor);
             
             document.querySelector("#contributorTxt").value = contributor.name;
+            document.querySelector('#poems-list').href += "?name=" + contributor.name;
         }
+        
     }
     
     function pitew() {

@@ -195,7 +195,7 @@
 		<title>
 		    نووسینی شێعر
 		    </title>
-		<link rel="stylesheet" href="/style/css/main.css">
+		<link rel="stylesheet" href="/style/css/main2.5.css">
 
 		<style>
 			* {

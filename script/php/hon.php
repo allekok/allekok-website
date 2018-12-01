@@ -67,7 +67,7 @@ echo($rrid_k . ". " . $row[1]['name']);
             <div style="width: 100%;height: 100%;position: absolute;right: -0.02em;top:-0.001em;background: none;border: 0;box-shadow: none;"></div>
             <i style='vertical-align:middle;' class='material-icons'>content_copy</i> کۆپی کردن 
         </div><?php 
-        echo "|<i id='extlnkico' style='cursor:pointer;color: #666;vertical-align: middle;padding:0 .2em;font-size: 1.8em;height: .8em;' class='material-icons' title='سەبارەت بە شێعر'>settings</i>";
+        echo "|<i id='extlnkico' style='cursor:pointer;color: #666;vertical-align: middle;padding:0 .2em;font-size: 1.8em;height: .8em;' class='material-icons' title='سەبارەت بە شێعر'>more_horiz</i>";
 
         if(! ($ath==10 && $bk==1 && $row[1]['id']==1) ) { ?><div id='fav-sec' class='fav' style="background:none; font-size:1.8em; box-shadow:none; border:0;float:left;height:0.9em;position:relative;padding-left:5px;padding-top:.25em;">
             <div style="width: 100%;height: 100%;position: absolute;right: -0.02em;top:-0.001em;background: none;border: 0;box-shadow: none;"></div>
@@ -76,7 +76,7 @@ echo($rrid_k . ". " . $row[1]['name']);
         <?php } ?>
     </div>
 
-<div style='display:none;font-size: .55em;background: #f8f8f8;max-width: 500px;margin: auto auto .5em;padding: .5em;border-radius: 2px;box-shadow: 0 4px 20px -20px #000;text-align: right; border: 1px solid #eee;' id='extlnk'>
+<div style='display:none;font-size: .55em;background: #f8f8f8;max-width: 500px;margin: auto auto .5em;padding: .5em 1em;border-radius: 0 0 2px 2px;box-shadow: 0 4px 20px -20px #000;text-align: right; border: 1px solid #eee;border-top:0;' id='extlnk'>
 <?php
     if($row[1]['link'] != "") {
         $ext_lnk = explode("[t]", $row[1]['link']);
@@ -94,42 +94,60 @@ echo($rrid_k . ". " . $row[1]['name']);
     <button class='button' type="button" id="convertToLatBtn" style="font-size: .9em;margin-right: .5em;">ئەلفوبێی لاتین</button>
     <div class='loader' id='convertToLat-loading' style='width:1.5em; height:1.5em; display:none;margin-right:1em;vertical-align:middle;'></div>
 </div>
-<form id="wordFrm" style='text-align: center;border-top: 1px solid #ddd;padding: 1em 0;background: linear-gradient(#f2f2f2, #f8f8f8, #f8f8f8, #f8f8f8);'>
-    <section style="display: inline-block;width: 35%;font-size: .9em;text-align: right;">
-        گەڕان بۆ واتای وشە : 
-    </section><section style="display: inline-block;width: 40%;">
-        <input type="text" id="wordTxt" style="width: 100%;padding: .63em 1em;" placeholder="وشە...">
-    </section><section style="display: inline-block;width: 12%;">
-        <button id="wordBtn" class='button' type="submit" style="font-size: 1.3em;padding: .5em 0;width: 100%;text-align: center;background:none; box-shadow:none;"><i class='material-icons'>search</i></button>
-    </section>
-    <div id="wordRes" style="text-align:right">
+<div style='text-align: center;border-top: 1px solid #ddd;padding: 1em 0;background: linear-gradient(#f2f2f2, #f8f8f8, #f8f8f8, #f8f8f8);'>
+    <form id="wordFrm">
+        <section style="display: inline-block;width: 35%;font-size: .9em;text-align: right;">
+            گەڕان بۆ واتای وشە : 
+        </section><section style="display: inline-block;width: 40%;">
+            <input type="text" id="wordTxt" style="width: 100%;padding: .63em 1em;border-top:1px solid #eee;" placeholder="وشە...">
+        </section><section style="display: inline-block;width: 12%;">
+            <button id="wordBtn" class='button' type="submit" style="font-size: 1.3em;padding: .5em 0;width: 100%;text-align: center;background:none; box-shadow:none;"><i class='material-icons'>search</i></button>
+        </section>
+    </form>
+    <div id="wordRes" style="text-align:right; margin-top:.5em">
         <div id="wordResFerheng">
             
         </div>
         <style>
             #wordResKawa button {
                 color:#00e;
+                cursor:pointer;
+                font-size:inherit;
+                background:none;
+            }
+            #wordMore {
+                text-align:left;
+            }
+            #wordMore a {
+                display: inline-block;
+                text-align: center;
+                background: <?php echo $colors[$color_num][0]; ?>;
+                color: <?php echo $colors[$color_num][1]; ?>;
+                margin: .6em 0 0;
+                padding: .3em .8em;
             }
         </style>
         <div id="wordResKawa">
             
         </div>
+        <div id="wordMore">
+            
+        </div>
     </div>
-</form>
+</div>
 </div>
 
 <div id='hon' style="max-width:950px;margin:auto">
 <?php
-$hon = $row[1]['hon'];
 
-echo  $hon;
+echo  $row[1]['hon'];
 
 ?>
 </div>
 <script>
     var lsfs = localStorage.getItem('fontsize');
     var hhon = document.getElementById('hon');
-    if (lsfs != null && !isNaN(lsfs) && hhon !=null) {      
+    if (lsfs != null && !isNaN(lsfs)) {      
         
         hhon.style.fontSize=lsfs+"px";
     }
@@ -146,21 +164,21 @@ echo  $hon;
 
 <div id="hon-comments">
     
-<div style="padding: 1em .3em;font-size: 0.65em;">
-    بیر و ڕای خۆتان سەبارەت بەو شێعرە بنووسن.
-</div>
-        <form id="frmComm" style="max-width: 700px;margin: auto;" action="/script/php/comments-add.php" method="POST">
-            
-            <input type="text" name='name' id='commNameTxt' placeholder="نێوی خۆتان لێرە بنووسن.">
-
-            <textarea placeholder="بیر و ڕای خۆتان سەبارەت بەو شێعرە لێرە بنووسن... *" id="commTxt" name='comment'></textarea>
-
-            <div class='loader' id="commloader" style="display:none;border-top:1px solid <?php echo $colors[$ath][0]; ?>"></div>
-            
-            <div id="message"></div>
-
-            <button class='button bth' type="submit" style="font-size: .7em;width: 50%;padding: 1em 0;max-width: 150px;background-color: <?php echo $colors[$ath][0]; ?>;color: <?php echo $colors[$ath][1]; ?>;cursor:pointer;margin:0.5em 0;">ناردن</button>
-        </form>
+    <div style="padding: 1em .3em;font-size: 0.65em;">
+        بیر و ڕای خۆتان سەبارەت بەو شێعرە بنووسن.
+    </div>
+    <form id="frmComm" style="max-width: 700px;margin: auto;" action="/script/php/comments-add.php" method="POST">
+        
+        <input type="text" name='name' id='commNameTxt' placeholder="نێوی خۆتان لێرە بنووسن.">
+    
+        <textarea placeholder="بیر و ڕای خۆتان سەبارەت بەو شێعرە لێرە بنووسن... *" id="commTxt" name='comment'></textarea>
+    
+        <div class='loader' id="commloader" style="display:none;border-top:1px solid <?php echo $colors[$ath][0]; ?>"></div>
+        
+        <div id="message"></div>
+    
+        <button class='button bth' type="submit" style="font-size: .7em;width: 50%;padding: 1em 0;max-width: 150px;background-color: <?php echo $colors[$ath][0]; ?>;color: <?php echo $colors[$ath][1]; ?>;cursor:pointer;margin:0.5em 0;">ناردن</button>
+    </form>
         
 <script>
     
@@ -250,7 +268,7 @@ echo  $hon;
 </div>
 
 <script>
-    //window.addEventListener("load", function() {
+    window.addEventListener("load", function() {
         
         <?php
             $db = 'index';
@@ -312,7 +330,6 @@ echo  $hon;
         
         ///
         
-    //});
     
     var sups = document.querySelectorAll("sup");
     var fs = document.querySelector(".fontsize");
@@ -325,6 +342,7 @@ echo  $hon;
             });
         });
     }
+    
     
     document.querySelector("#extlnkico").addEventListener("click" , function() {
         
@@ -378,7 +396,7 @@ echo  $hon;
     });
     
     
-    const loader = "<div class='loader' style='width:1.5em; height:1.5em; vertical-align:middle;'></div>";
+    const loaderMin = "<div class='loader' style='width:1.8em; height:1.8em; vertical-align:middle; margin:1em auto;'></div>";
     
     
     document.querySelector("#wordFrm").addEventListener("submit", function(e) {
@@ -388,16 +406,19 @@ echo  $hon;
             q.focus();
             return;
         }
+        document.getElementById("wordMore").innerHTML = "";
         search_ferheng(q.value, "#wordResFerheng");
         search_farhangumejuikawa(q.value, "#wordResKawa");
     });
     
     function search_ferheng (q, t) {
         t = document.querySelector(t);
-        t.innerHTML = loader;
+        t.innerHTML = loaderMin;
         var res, fin = "";
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onload = function() {
+            
+            document.getElementById("wordMore").innerHTML = `<a target='_blank' href='https://allekok.com/tewar/?q=${q}'>گەڕانی زیاتر لە "تەوار"دا</a>`;
             
             if (this.responseText == "null") {
                 t.innerHTML = "";
@@ -410,12 +431,13 @@ echo  $hon;
             
             for( var a in res ) {
                 
-                fin += "<div><section><a rel='noopener noreferrer nofollow' href='"+res[a].link+"' style='color:#00e'>"+res[a].title+"</a></section>";
+                fin += "<div><section><a target='_blank' rel='noopener noreferrer nofollow' href='"+res[a].link+"' style='color:#00e'>"+res[a].title+"</a></section>";
                 fin += "<section style='font-size: .87em;text-indent: 1em;'>"+res[a].desc+"</section></div>";
             }
             
             t.style.animation="loaded 1s ease forwards";
             t.innerHTML = fin;
+            
         }
         xmlhttp.open("get", `/tewar/ferheng.info.php?q=${q}&n=1`, true);
         xmlhttp.send();
@@ -423,7 +445,7 @@ echo  $hon;
     
     function search_farhangumejuikawa (q, t) {
         t = document.querySelector(t);
-        t.innerHTML = loader;
+        t.innerHTML = loaderMin;
         var res, fin = "";
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onload = function() {
@@ -445,10 +467,14 @@ echo  $hon;
             
             t.style.animation="loaded 1s ease forwards";
             t.innerHTML = fin;
+            var frms = t.getElementsByTagName("form");
+            frms[0].setAttribute("target", "_blank");
         }
         xmlhttp.open("get", `/tewar/farhangumejuikawa.com.php?q=${q}&n=1`, true);
         xmlhttp.send();
     }
+    
+    });
 </script>
 
 </div>

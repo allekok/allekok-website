@@ -34,6 +34,21 @@ $color_num = 0;
 </div>
 
 </div>
+
+<?php
+    
+    $_name = filter_var($_GET['name'], FILTER_SANITIZE_STRING);
+    $_poet = filter_var($_GET['poet'], FILTER_SANITIZE_STRING);
+    ?>
+    
+    <div style='text-align:right;margin:.3em 0'>
+        <?php if($_name) { ?>
+        <a class='button' href="/pitew/poetdesc-list.php">
+            تەواوی ئەو زانیاریانەی نووسراون
+        </a>
+        <?php } ?>
+    </div>
+    
     <div>
     <section class='eplist' style='background:#eee'>یارمەتیدەر</section><section style='background:#eee' class='eplist'>شاعیر</section><section class='eplist' style='background:#eee;text-align: unset;text-indent: unset;padding: .5em 0;'>زانیاریەکان</section>
     
@@ -42,6 +57,8 @@ $color_num = 0;
     $_list = make_list(ABSPATH."pitew/res/");
     if(!empty($_list)) {
         foreach($_list as $_l) {
+            if(! empty($_name) and $_name !== $_l['name'])  continue;
+            if(! empty($_poet) and $_poet !== $_l['poet'])  continue;
             echo "<section class='eplist'>" . $_l['name'] . "</section><section class='eplist'>" . $_l['poet'] . "</section><section class='eplist'>" . "{$_l['content']}</section>";
         }
     } else {

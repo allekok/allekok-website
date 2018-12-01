@@ -6,7 +6,7 @@
 	require_once("../script/php/constants.php");
 	require_once("../script/php/functions.php");
 
-$title = _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; بیر و ڕاکان";
+$title = _TITLE . " &raquo; بیر و ڕاکان";
 $desc = "بیر و ڕای ئێوە سەبارەت بە شێعرەکان";
 $keys = _KEYS;
 $t_desc = "";
@@ -68,7 +68,7 @@ $color_num = 0;
                     for(a in res) {
                         
                         
-                        newComm += "<div class='comment' style='margin-bottom:16px;'><div class='comm-name'><i style='font-style:normal;padding-left:.2em;font-size:1.4em;color:"+ colors[res[a].pt][0] +"'>&bull;</i>"+res[a].name+"<span style='color:#444;font-size:.7em'> سەبارەت بە شێعری </span><a style='font-size:.75em;border-radius:3px;padding:.1em .3em;background:"+colors[res[a].pt][2]+";' href='/"+res[a].address+"'>"+res[a].pmn+"</a><span style='color:#444;font-size:.7em'> نووسیویەتی:</span></div><div class='comm-body'>"+res[a].comment+"</div><div class='comm-footer'>"+res[a].date+"</div></div>";
+                        newComm += "<div class='comment' style='margin-bottom:16px;'><div class='comm-name'><i style='font-style:normal;padding-left:.2em;font-size:1.4em;color:"+ colors[res[a].pt][0] +"'>&bull;</i>"+res[a].name+"<span style='color:#444;font-size:.7em'> سەبارەت بە شێعری </span><a style='font-size:.75em;border-radius:3px;padding:.1em .3em;background:"+colors[res[a].pt][2]+";' href='/"+res[a].address+"'>"+res[a].ptn+" &rsaquo; "+res[a].pmn+"</a><span style='color:#444;font-size:.7em'> نووسیویەتی:</span></div><div class='comm-body'>"+res[a].comment+"</div><div class='comm-footer'>"+res[a].date+"</div></div>";
                     }
                     
                     comments.innerHTML = newComm;

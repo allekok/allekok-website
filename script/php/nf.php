@@ -5,11 +5,10 @@
 <html dir="rtl">
     <head>
 
-        <link rel="stylesheet" href="/style/css/main2.3.css">
+        <link rel="stylesheet" href="/style/css/main2.4.css">
         <script type="text/javascript">
     var uritg = "<?php echo _SITE; ?>";
   </script>
-        <script async src="/script/js/main.js" type="text/javascript"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>
@@ -59,6 +58,6 @@
         <script type="text/javascript">
             document.getElementById("search-key").focus();
         </script>
-<script async src="/script/js/header.js"></script>
+<script async src="/script/js/main1.4.js"></script>
     </body>
 </html>

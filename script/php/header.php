@@ -1,5 +1,10 @@
 <!DOCTYPE HTML>
 <?php
+    // statistics
+    $f = fopen("stats.txt", "a");
+    $dttd = date("Y m d h:i:sa");
+    fwrite($f, "{$_SERVER['REMOTE_ADDR']}\t{$dttd}\t{$_SERVER['REQUEST_URI']}\t{$_SERVER['HTTP_REFERER']}\n");
+    fclose($f);
 
         if(!isset($color_num) && !$is_it_search) {
             $color_num = 0;
@@ -48,11 +53,11 @@
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel='stylesheet' href='/style/css/main2.4.css' />
+	<link rel='stylesheet' href='/style/css/main2.5.css?v6' />
 
 	<meta name="description" content="<?php echo($desc); ?>">
 	<meta name="keywords" content="<?php echo($keys); ?>">
-	<link href="/style/img/favicon.ico" rel="shortcut icon"/>
+	<link href="/favicon.ico" rel="shortcut icon"/>
 	<link rel="apple-touch-icon" href="/style/img/poets/profile/profile_0.jpg">
 	
 	<meta property="og:title" content="<?php echo($desc); ?>" />
@@ -144,13 +149,15 @@
     .d {
         font-size:0.8em;
         color:#333;
+        padding:1em;
     }
   </style>
 </head>
 
 <body>
-    
+
 <header <?php if(isset($fhclass)) {echo("class='$fhclass'");} ?>>
+    
     <?php if(!$is_it_search) { ?>
 <div id='tS' role='button' class='seartog'>
     <i class="material-icons seartog-i">search</i>
@@ -162,7 +169,9 @@
 
 <a class="<?php echo($t_class) ?>" href="<?php echo _SITE; ?>"><h1 style="color: #555;"><span style="<?php if($color_num == 0) {echo "color:rgb(0,210,50)";} ?>">ئاڵە</span>کۆک</h1></a>
     <span style='color:#555'><?php echo($t_desc) ?></span>
+    
 </header>
+
 
 <?php include("search-sec.php"); ?>
 <div id="tL-res" style="display:none;">

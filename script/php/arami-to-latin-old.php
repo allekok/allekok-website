@@ -90,32 +90,6 @@
     }
     
     function convert_aramic_to_latin ( $word ) {
-        
-        // very common exception!
-        if($word == "و") {
-            return "u";
-        }
-        
-        $always_vocals = [
-            "aramic"=>['ە',
-                'ه‌',
-                'ێ',
-                'ۆ',
-                'ا',
-                'وو',
-                'آ'],
-            "latin"=>["e",
-                "e",
-                "ê",
-                "o",
-                "a",
-                "û",
-                "a"],
-            ];
-        
-        $word = str_replace($always_vocals["aramic"], $always_vocals["latin"], $word);
-
-        
         $non_vocals = [
             "aramic" => ['ب',
             'ج',
@@ -146,24 +120,30 @@
             'ح',
             'غ',
             'ع',
-            'ص',
-            'ض',
             ],
-            "latin" => ['b','c','ç','d','f','g','h','j','k','l','ľ','m','n','p','q','r','ř','s','ş','t','v','w','x','y','z','','ĥ','ẍ','ȁ','s','z'],
+            "latin" => ['b','c','ç','d','f','g','h','j','k','l','ľ','m','n','p','q','r','ř','s','ş','t','v','w','x','y','z','','ĥ','ẍ',''],
             ];
             
         $vocals = [
-            "aramic" => [
+            "aramic" => ['ە',
+            'ێ',
             'ی',
+            'ۆ',
+            'وو',
             'و',
+            'ا',
             ],
-            "latin" => ['î','u'],
+            "latin" => ['e','ê','î','o','û','u','a'],
             ];
             
         $special = "i";
         
         $chars = [];
         
+        // very common exception!
+        if($word == "و") {
+            return "u";
+        }
         
         preg_match_all('/./u', $word, $chars);
 
@@ -186,8 +166,6 @@
             }
             else {
                 
-                $_n2 = ($final['type'][$k+1] == "n");
-                $_v2 = ($final['type'][$k+1] == "v");
                 $_n = in_array($ch, $non_vocals['aramic']);
                 $_v = in_array($ch, $vocals['aramic']);
                 $_v0 = ($final['type'][$k-1] == "v");
@@ -213,10 +191,6 @@
                     $final['type'][$k+1] = 'n';
                     
                     $k++;
-                }
-                else {
-                    $final["chars"][$k] = $ch;
-                    $final['type'][$k] = 'v';
                 }
                 
             }

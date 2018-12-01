@@ -10,7 +10,6 @@ $bbk = !$bbk[1] ? $bbk[0] : "{$bbk[0]}<i style='color: {$colors[$ath][3]};font-s
 <div id='adrs'>
 <a href="/poet:<?php echo $ath; ?>">
 <?php
-
 echo $info['takh'];
 ?>
 </a>
@@ -25,12 +24,16 @@ echo $info['takh'];
     if($bknowcomp[$bk-1] == 100) {
         
         echo("<i class='material-icons bk-comp' title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسراوەتەوە'>check</i>");
-    
-        echo("<span class='tt' id='bk-comp-tt'>تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسراوەتەوە</span>");
+
     }
 ?>
 </div>
+<?php
+if($bknowcomp[$bk-1] == 100) {
 
+    echo("<span class='tt' id='bk-comp-tt'>تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسراوەتەوە</span>");
+}
+?>
 </div>
 <?php
 if(! empty($bknowdesc[$bk-1])) {
