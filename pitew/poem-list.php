@@ -13,7 +13,7 @@ if(! defined('ABSPATH'))    define('ABSPATH', '/home/allekokc/public_html/');
     
     // //////////
 
-$title = _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; نووسینی شێعر &raquo; شێعرەکان";
+$title = $_name1 ? _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; نووسینی شێعر &raquo; شێعرەکانی \"$_name1\"" :  _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; نووسینی شێعر &raquo; شێعرەکان";
 $desc = "ئەو شێعرانەی کە نووسیوتانە";
 $keys = _KEYS;
 $t_desc = "";
@@ -31,12 +31,12 @@ $color_num = 0;
     <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
 </a>
 <i style='font-style:normal;'> &rsaquo; </i>
-<a href="index.php" style="color: rgb(0, 138, 230);">
+<a href="index.php">
     <i style='vertical-align:middle;' class='material-icons'>note_add</i>
     نووسینی شێعر
 </a>
 <i style='font-style:normal;'> &rsaquo; </i>
-<div id="current-location" style="color: rgb(0, 138, 230);">
+<div id="current-location">
     <i style='vertical-align:middle;' class='material-icons'></i>
     شێعرەکان
 </div>
@@ -73,6 +73,7 @@ $color_num = 0;
     while($_l = mysqli_fetch_assoc($query)) {
         $_l['status'] = json_decode($_l['status'], true);
         if($_l['poem-name'] === "") $_l['poem-name'] = "شێعر";
+        if($_l["contributor"] === "")   $_l["contributor"] = "ناشناس";
         
         echo "<section class='pmlist'>{$_l['contributor']}</section><section class='pmlist'><a class='link' href='/{$_l['status']['url']}'><span style='color:#666;'>{$_l['poet']}</span> &rsaquo; {$_l['poem-name']}</a></section>";
     }

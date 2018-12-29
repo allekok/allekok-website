@@ -26,9 +26,16 @@ $color_num = 0;
     <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
 </a>
 <i style='font-style:normal;'> &rsaquo; </i>
-<div id='current-location' style="color: rgb(0, 138, 230);">
+<div id='current-location'>
     <i style='vertical-align:middle;' class='material-icons'>note_add</i>
     نووسینی شێعر
+</div>
+
+<div style='font-size:.65em;'>
+    دەتوانن بۆ نووسینەوەی شێعر ئەم دیوانانە بەکار بهێنن: 
+    <a style='color:#00e;display:inline-block;' href="/pitew/pdfs.php">
+    داگرتنی دیوانی شاعیران
+    </a>
 </div>
 
 </div>
@@ -56,10 +63,18 @@ $color_num = 0;
     function check() {
         var cntr = document.querySelector("#contributorTxt");
         var poet = document.querySelector("#poetTxt");
+        var txts = document.querySelectorAll("input, textarea");
+        var btns = document.querySelectorAll("button[type=submit]");
         
         if(poet.value == "") {
-            poet.style.borderTopColor = "#09f";
-            poet.style.background = "";
+            txts.forEach(function(e) {
+                e.style.borderTopColor = "";
+                e.style.background = "";
+            });
+            btns.forEach(function(e) {
+                e.style.background = "#777";
+                e.style.color = "#fff";
+            });
             document.querySelector('#frmUpload').style.display = "none";
             return;
         }
@@ -84,15 +99,28 @@ $color_num = 0;
                 }
                 
                 if(res.id != "0") {
-                    poet.style.borderTopColor = colors[res.id][0];
+                    txts.forEach(function(e) {
+                        e.style.borderTopColor = colors[res.id][0];
+                    });
+                    btns.forEach(function(e) {
+                        e.style.background = colors[res.id][0];
+                        e.style.color = colors[res.id][1];
+                    });
+                    
                     poet.style.backgroundColor = colors[res.id][2];
                     poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
                     poet.style.backgroundRepeat = "no-repeat";
                     poet.style.backgroundSize = "auto 100%";
                     poet.style.backgroundPosition = "left center";
                 } else {
-                    poet.style.borderTopColor = "#09f";
-                    poet.style.background = "";
+                    txts.forEach(function(e) {
+                        e.style.borderTopColor = "";
+                        e.style.background = "";
+                    });
+                    btns.forEach(function(e) {
+                        e.style.background = "#777";
+                        e.style.color = "#fff";
+                    });
                 }
             }
             xmlhttp.open("get", "isitnew.php?name="+cntr.value+"&poet="+poet.value, true);
@@ -104,21 +132,19 @@ $color_num = 0;
 
         <form id="frmComm" action="append.php" method="POST">
             
-            <input type="text" onblur="check()" id="contributorTxt" name="contributor" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
+            <input type="text" onblur="check()" id="contributorTxt" name="contributor" style="font-size:0.7em;max-width:94%;min-width:94%;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
             <p style="text-align: right;text-indent: 1em;padding: .5em 1em 0;font-size: .5em;color: #444;">
                 ئەو شێعرە بە نێوی خۆتان لەسەر ئاڵەکۆک دادەندرێ.
             </p>
             
             <div style="border-top:1px solid #ddd;margin:.8em 0;"></div>
             
-            <input type="text" onblur="check()" id="poetTxt" name="poet" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;" value="<?php echo $_poet1; ?>" placeholder="ناوی شاعیر *">
-            <?php if(isset($_poet1)) { ?>
-            <script>check()</script>
-            <?php } ?>
+            <input type="text" onblur="check()" id="poetTxt" name="poet" style="font-size:0.7em;max-width:94%;min-width:94%;" value="<?php echo $_poet1; ?>" placeholder="ناوی شاعیر *">
+            
             
             <!-- file upload sec -->
             <div id="frmUpload" style="max-width:800px;margin:auto;display:none;">
-                <textarea id="poetDescTxt" name="poetDesc" style="font-size:0.6em;max-width:94%;min-width:94%;border-top:3px solid #09f;margin-top:1em;min-height:9em" placeholder="سەبارەت بە شاعیر (وەکوو: ناسناوی ئەدەبی، شوێن و ڕێکەوتی لەدایکبوون یان هەر زانیاریەکی تر کە پێتان خۆشە لەسەر ئاڵەکۆک دابندرێ.)"></textarea>
+                <textarea id="poetDescTxt" name="poetDesc" style="font-size:0.6em;max-width:94%;min-width:94%;margin-top:1em;min-height:9em" placeholder="سەبارەت بە شاعیر (وەکوو: ناسناوی ئەدەبی، شوێن و ڕێکەوتی لەدایکبوون یان هەر زانیاریەکی تر کە پێتان خۆشە لەسەر ئاڵەکۆک دابندرێ.)"></textarea>
                 
                     <div style="padding:1.2em 0.3em 0.1em; text-align:right; text-indent:1em;font-size:0.5em;color:#222;">
                         ئەگەر دەتانهەوێ وێنەی شاعیر لەسەر ئاڵەکۆک دابندرێ، لەسەر "هەڵبژاردنی وێنە" کرتە بکەن.
@@ -129,20 +155,23 @@ $color_num = 0;
                     </a>
             </div>
             
-            <input type="text" id="bookTxt" name="book" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;margin-top:1em;" value="<?php echo $_book1; ?>" placeholder="ناوی کتێب">
+            <input type="text" id="bookTxt" name="book" style="font-size:0.7em;max-width:94%;min-width:94%;margin-top:1em;" value="<?php echo $_book1; ?>" placeholder="ناوی کتێب">
             
-            <input type="text" id="poemNameTxt" name="poemName" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid #09f;margin-top:1em;" placeholder="سەرناوی شێعر">
+            <input type="text" id="poemNameTxt" name="poemName" style="font-size:0.7em;max-width:94%;min-width:94%;margin-top:1em;" placeholder="سەرناوی شێعر">
 
-            <textarea id="poemConTxt" name="poem" style="font-size:0.7em;max-width:94%;min-width:94%;min-height:20em;border-top:3px solid #09f;margin-top:1em;" placeholder="دەقی شێعر *"></textarea>
+            <textarea id="poemConTxt" name="poem" style="font-size:0.7em;max-width:94%;min-width:94%;min-height:20em;margin-top:1em;" placeholder="دەقی شێعر *"></textarea>
 
             <div class='loader' id="commloader" style="display:none;"></div>
             
             <div id="message"></div>
 
-            <button type="submit" class="button bth" style="font-size: 0.7em;width: 45%;max-width: 150px;background-color: #09f;color: white;margin-top:0.5em;">ناردن</button>
+            <button type="submit" class="button bth" style="font-size: 0.7em;width: 45%;max-width: 150px;margin-top:0.5em;background:#777;color:#fff;">ناردن</button>
             
             <button type="button" id="clearBtn" class='button' style="font-size: 0.7em;width: 45%;max-width: 150px;margin-top:0.5em;">پاک کردنەوە</button>
         </form>
+        <?php if(isset($_poet1)) { ?>
+        <script>check()</script>
+        <?php } ?>
         
     </div>
     <div style="margin-top:2em;">
@@ -181,23 +210,11 @@ $color_num = 0;
         var mess = document.querySelector("#message");
         
         if(poet.value == "") {
-            poet.style.background = "rgba(204,51,0,0.1)";
-            poet.style.borderTopColor = "rgb(204,51,0)";
             poet.focus();
-            setTimeout(function() {
-                poet.style.background = "";
-                poet.style.borderTopColor = "#09f";
-            }, 2000);
             return;
         }
         if(poem.value == "") {
-            poem.style.background = "rgba(204,51,0,0.1)";
-            poem.style.borderTopColor = "rgb(204,51,0)";
             poem.focus();
-            setTimeout(function() {
-                poem.style.background = "";
-                poem.style.borderTopColor = "#09f";
-            }, 2000);
             return;
         }
         
@@ -259,8 +276,17 @@ $color_num = 0;
         var mess = document.querySelector("#message");
         
         mess.innerHTML = poet.value = book.value = poemName.value = poem.value = poetDesc.value = "";
-        poet.style.background = "";
-        poet.style.borderTopColor = "#09f";
+        var txts = document.querySelectorAll("input, textarea");
+        var btns = document.querySelectorAll("button[type=submit]");
+        txts.forEach(function(e) {
+            e.style.borderTopColor = "";
+            e.style.background = "";
+        });
+        btns.forEach(function(e) {
+            e.style.background = "#777";
+            e.style.color = "#fff";
+        });
+        
         document.querySelector("#frmUpload").style.display = "none";
     });
 </script>

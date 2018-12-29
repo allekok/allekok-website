@@ -55,7 +55,7 @@ $color_num = 0;
     <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
 </a>
 <i style='font-style:normal;'> &rsaquo; </i>
-<div id="current-location" style="color: rgb(128, 0, 128);">
+<div id="current-location">
 <i style='vertical-align:middle;' class='material-icons'>image</i>
     ناردنی وێنەی شاعیران
     </div>
@@ -64,10 +64,20 @@ $color_num = 0;
     <script>
     function check() {
         var poet = document.querySelector("#poetTxt");
+        var txts = document.querySelectorAll("input, textarea");
+        var btns = document.querySelectorAll("button[type=submit]");
+        var upldlikebtn = document.getElementById("upldlikebtn");
         
         if(poet.value == "") {
-            poet.style.borderTopColor = "rgb(128, 0, 128)";
-            poet.style.background = "";
+            txts.forEach(function(e) {
+                e.style.borderTopColor = "";
+                e.style.background = "";
+            });
+            btns.forEach(function(e) {
+                e.style.background = "#777";
+                e.style.color = "#fff";
+            });
+            upldlikebtn.style.background = "";
             return;
         }
 
@@ -76,15 +86,29 @@ $color_num = 0;
                 var res = JSON.parse(this.responseText);
                 
                 if(res.id != "0") {
-                    poet.style.borderTopColor = colors[res.id][0];
+                    txts.forEach(function(e) {
+                        e.style.borderTopColor = colors[res.id][0];
+                    });
+                    btns.forEach(function(e) {
+                        e.style.background = colors[res.id][0];
+                        e.style.color = colors[res.id][1];
+                    });
+                    upldlikebtn.style.background = colors[res.id][2];
                     poet.style.backgroundColor = colors[res.id][2];
                     poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
                     poet.style.backgroundRepeat = "no-repeat";
                     poet.style.backgroundSize = "auto 100%";
                     poet.style.backgroundPosition = "left center";
                 } else {
-                    poet.style.borderTopColor = "rgb(128, 0, 128)";
-                    poet.style.background = "";
+                    txts.forEach(function(e) {
+                        e.style.borderTopColor = "";
+                        e.style.background = "";
+                    });
+                    btns.forEach(function(e) {
+                        e.style.background = "#777";
+                        e.style.color = "#fff";
+                    });
+                    upldlikebtn.style.background = "";
                 }
             }
             xmlhttp.open("get", "isitnew.php?poet="+poet.value, true);
@@ -97,12 +121,10 @@ $color_num = 0;
         </div>
     <!-- file upload sec -->
     <form id="frmUpload" method="POST" enctype="multipart/form-data" style="max-width:800px;margin:auto;padding-top:1em;font-size:0.7em">
-        <input type="text" id="cntriTxt" name="cntri" style="font-size:1em;max-width:94%;min-width:94%;border-top:3px solid rgb(128, 0, 128);" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
-        <input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:1em;max-width:94%;min-width:94%;border-top:3px solid rgb(128, 0, 128);margin-top:1em;margin-bottom:1em" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
-        <?php if(isset($_poet1)) { ?>
-            <script>check()</script>
-        <?php } ?>
-        <div class='file-btn button' role='button' onclick="document.querySelector('input[name=profile]').click()" style="display:inline-block;font-size: 1.7em;">
+        <input type="text" id="cntriTxt" name="cntri" style="font-size:1em;max-width:94%;min-width:94%;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
+        <input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:1em;max-width:94%;min-width:94%;margin-top:1em;margin-bottom:1em" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
+        
+        <div class='file-btn button' role='button' onclick="document.querySelector('input[name=profile]').click()" style="display:inline-block;font-size: 1.7em;" id='upldlikebtn'>
             هەڵبژاردنی وێنە
             </div><br>
             <div style='font-size:.7em; color:#555;'>
@@ -112,8 +134,11 @@ $color_num = 0;
             </div>
         <input type="file" style='display:none;' name="profile">
         <div id="frmUploadMess"></div>
-        <button class='button bth' type="submit" style="width: 45%;max-width: 150px;background-color:rgb(128, 0, 128);color:white;margin-top:1em;font-size: 1em;">ناردن</button>
+        <button class='button bth' type="submit" style="width: 45%;max-width: 150px;background-color:#777;color:#fff;margin-top:1em;font-size: 1em;">ناردن</button>
     </form>
+    <?php if(isset($_poet1)) { ?>
+        <script>check()</script>
+    <?php } ?>
     
     <div style="margin-top:2em;">
         <a class='button' href="image-list.php">
@@ -138,13 +163,7 @@ $color_num = 0;
             var fl = document.querySelector("input[name=profile]");
             var flbtn = document.querySelector(".file-btn");
             if(poetTxt.value == "") {
-                poetTxt.style.borderTopColor = "rgb(204,51,0)";
-                poetTxt.style.background = "rgba(204,51,0,0.1)";
                 poetTxt.focus();
-                setTimeout(function() {
-                    poetTxt.style.borderTopColor = "rgb(128, 0, 128)";
-                    poetTxt.style.background = "";
-                }, 2000);
                 return;
             }
             if(fl.value == "") {
@@ -178,7 +197,7 @@ $color_num = 0;
             document.cookie = "name="+nameTxt.value;
             
             document.querySelector("#frmUpload").submit();
-            document.querySelector("#frmUploadMess").innerHTML="<div class='loader' style='border-top:1px solid rgb(128, 0, 128)'></div>";
+            document.querySelector("#frmUploadMess").innerHTML="<div class='loader'></div>";
             
         });
     </script>

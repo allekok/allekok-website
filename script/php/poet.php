@@ -163,7 +163,7 @@ if(strlen($row['hdesc'])>0) {
             foreach($result as $e) {
                 echo "
                 <a style=\"font-size:0.53em;color:#444;padding:1em;display:block;background:#f3f3f3\" href=\"/pitew/poetdesc-list.php?name={$e[0]}&poet={$e[1]}\">
-                &laquo;{$e[0]}&raquo;
+                &laquo;".num_convert($e[0], "en", "ckb")."&raquo;
                 سەبارەت بە 
                 &laquo;{$e[1]}&raquo;
                 </a>";

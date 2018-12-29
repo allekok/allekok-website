@@ -17,12 +17,9 @@ $color_num = 0;
 
 <div id="poets" style="max-width:850px">
 
-    <h1 style="color: rgb(255, 0, 102);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0 0;font-size:1.2em;">
+    <h1 style="display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0 0;font-size:1.2em;">
         بەرنامەی دێسکتاپی ئاڵەکۆک
     </h1>
-    <small style='font-size:.6em; margin-top:-.6em;display:block;'>
-        وەشانی ۱.۰.۰
-    </small>
     <h2 style="padding-top:1.5em;font-size:1em">
         دابەزاندن بۆ: 
     </h2>
@@ -75,6 +72,9 @@ $color_num = 0;
             <h3>
                 ویندۆز
                 <br>
+                <small style='font-size:.6em; margin-top:-.6em;display:block;'>
+                    وەشانی ۱.۰.۰
+                </small>
                 <small>
                     <a href="https://github.com/allekok/allekok-desktop/releases/download/v1.0.0/allekok.Setup.1.0.0.windows.amd64.exe">
                         دابەزاندن بۆ ویندۆزی ۶۴بیتی
@@ -101,8 +101,11 @@ $color_num = 0;
             <h3>
                 لینوکس
                 <br>
+                <small style='font-size:.6em; margin-top:-.6em;display:block;'>
+                    وەشانی ۱.۱.۰
+                </small>
                 <small>
-                    <a href="https://github.com/allekok/allekok-desktop/releases/download/v1.0.0/allekok-1.0.0-linux-amd64.AppImage">
+                    <a href="https://github.com/allekok/allekok-desktop/releases/download/v1.1.0/allekok-1.1.0-x86_64.AppImage">
                         دابەزاندن بۆ لینوکسی ۶۴بیتی
                     </a>
                     <br>
@@ -112,7 +115,7 @@ $color_num = 0;
                     <p style="text-align:right; font-size:.85em;text-indent:1em;padding-top:2em;">
                         بۆ وەشانەکانی تر سەردانی لینکی خوارەوە بکەن.
                     </p>
-                    <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/allekok/allekok-desktop/releases/tag/v1.0.0" style="color:inherit;font-size:inherit;display:inline-block">
+                    <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/allekok/allekok-desktop/releases/" style="color:inherit;font-size:inherit;display:inline-block">
                         وەشانەکانی تر...
                     </a>
                 </small>
@@ -166,7 +169,7 @@ $color_num = 0;
                 
                 var txt = document.querySelector("#QAtxt");
                 var t = document.querySelector("#QAres");
-                var loader = "<div class='loader' style='border-top:2px solid rgb(255, 0, 102)'></div>";
+                var loader = "<div class='loader'></div>";
                 
                 if(txt.value == "") {
                     txt.focus();

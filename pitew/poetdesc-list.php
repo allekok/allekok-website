@@ -24,12 +24,12 @@ $color_num = 0;
     <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
 </a>
 <i style='font-style:normal;'> &rsaquo; </i>
-<a href="edit-poet.php" style="color: rgb(154, 205, 50);">
+<a href="edit-poet.php">
     <i style='vertical-align:middle;' class='material-icons'>person</i>
     نووسینی زانیاری سەبارەت بە شاعیران
 </a>
 <i style='font-style:normal;'> &rsaquo; </i>
-<div id="current-location" style="color: rgb(154, 205, 50);">
+<div id="current-location">
     زانیاریەکان
 </div>
 
@@ -41,28 +41,53 @@ $color_num = 0;
     $_poet = filter_var($_GET['poet'], FILTER_SANITIZE_STRING);
     ?>
     
-    <div style='text-align:right;margin:.3em 0'>
-        <?php if($_name) { ?>
-        <a class='button' href="/pitew/poetdesc-list.php">
-            تەواوی ئەو زانیاریانەی نووسراون
-        </a>
-        <?php } ?>
-    </div>
+    <style>
+        .epld {
+            color:#444;
+            padding:1em;
+            border:0;
+            font-size:.6em;
+            text-align:right;
+        }
+        .epld-title {
+            background:#eee;
+            padding:1em;
+        }
+        .epld-body {
+            padding:1em;
+            background:#fafafa;
+            text-indent:1em;
+            border:1px solid #eee;
+        }
+        #num_pdl {
+            color:#555;
+            font-size:.55em;
+        }
+    </style>
     
     <div>
-    <section class='eplist' style='background:#eee'>یارمەتیدەر</section><section style='background:#eee' class='eplist'>شاعیر</section><section class='eplist' style='background:#eee;text-align: unset;text-indent: unset;padding: .5em 0;'>زانیاریەکان</section>
     
     <?php
     
     $_list = make_list(ABSPATH."pitew/res/");
+    $_count = 0; $_html = "";
     if(!empty($_list)) {
         foreach($_list as $_l) {
             if(! empty($_name) and $_name !== $_l['name'])  continue;
-            if(! empty($_poet) and $_poet !== $_l['poet'])  continue;
-            echo "<section class='eplist'>" . $_l['name'] . "</section><section class='eplist'>" . $_l['poet'] . "</section><section class='eplist'>" . "{$_l['content']}</section>";
+            if(! empty($_poet) and $_poet !== $_l['poet']) {
+                $_count++;
+                continue;
+            }
+            $_html .= "<div class='epld'><section class='epld-title'>&laquo;" . num_convert($_l['name'],"en","ckb") . "&raquo; سەبارەت بە &laquo;" . $_l['poet'] . "&raquo; نووسیویەتی: </section><section class='epld-body'>" . "{$_l['content']}</section></div>";
+            $_count++;
         }
     } else {
         echo "<span style='color:#999;font-size:1em;display:block'>&bull;</span>";
+    }
+    
+    if(!($_name and $_poet)) {
+        $n_str = empty($_name) ? "" : "ی &laquo;$_name&raquo;";
+        echo "<div id='num_pdl'>ئەژماری نووسراوەکان" . num_convert($n_str, "en", "ckb") . ": " . num_convert($_count, "en", "ckb") . "</div>";
     }
     
         function make_list($_dir) {
@@ -95,6 +120,25 @@ $color_num = 0;
           if(! in_array($v, $_Vs) ) return $v;
         }
     ?>
+    
+    <div style='text-align:right;margin:.3em 0'>
+        <?php if($_name) { ?>
+        <a class='button' href="/pitew/poetdesc-list.php">
+            تەواوی ئەو زانیاریانەی نووسراون
+        </a>
+        <?php } ?>
+    </div>
+    
+    <div>
+        <?php
+            if(empty($_html)) {
+                echo "<span style='color:#999;font-size:1em;display:block'>&bull;</span>";
+            } else {
+                echo $_html;
+            }
+        ?>
+    </div>
+    
     </div>
 </div>
 

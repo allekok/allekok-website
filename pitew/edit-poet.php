@@ -25,7 +25,7 @@ $color_num = 0;
     <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
 </a>
 <i style='font-style:normal;'> &rsaquo; </i>
-<div id="current-location" style="color: rgb(154, 205, 50);">
+<div id="current-location">
 <i style='vertical-align:middle;' class='material-icons'>person</i>
 نووسینی زانیاری سەبارەت بە شاعیران
 </div>
@@ -37,9 +37,17 @@ $color_num = 0;
     <script>
     function check() {
         var poet = document.querySelector("#poetTxt");
+        var txts = document.querySelectorAll("input, textarea");
+        var btns = document.querySelectorAll("button[type=submit]");
         if(poet.value == "") {
-            poet.style.borderTopColor = "rgb(154, 205, 50)";
-            poet.style.background = "";
+            txts.forEach(function(e) {
+                e.style.borderTopColor = "";
+                e.style.background = "";
+            });
+            btns.forEach(function(e) {
+                e.style.background = "#777";
+                e.style.color = "#fff";
+            });
             return;
         }
 
@@ -48,15 +56,27 @@ $color_num = 0;
                 var res = JSON.parse(this.responseText);
                 
                 if(res.id != "0") {
-                    poet.style.borderTopColor = colors[res.id][0];
+                    txts.forEach(function(e) {
+                        e.style.borderTopColor = colors[res.id][0];
+                    });
+                    btns.forEach(function(e) {
+                        e.style.background = colors[res.id][0];
+                        e.style.color = colors[res.id][1];
+                    });
                     poet.style.backgroundColor = colors[res.id][2];
                     poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
                     poet.style.backgroundRepeat = "no-repeat";
                     poet.style.backgroundSize = "auto 100%";
                     poet.style.backgroundPosition = "left center";
                 } else {
-                    poet.style.borderTopColor = "rgb(154, 205, 50)";
-                    poet.style.background = "";
+                    txts.forEach(function(e) {
+                        e.style.borderTopColor = "";
+                        e.style.background = "";
+                    });
+                    btns.forEach(function(e) {
+                        e.style.background = "#777";
+                        e.style.color = "#fff";
+                    });
                 }
             }
             xmlhttp.open("get", "isitnew.php?poet="+poet.value, true);
@@ -66,22 +86,23 @@ $color_num = 0;
 
         <form id="frmComm" action="save.php" method="POST">
             
-            <input type="text" id="contributorTxt" name="contributor" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid rgb(154, 205, 50);" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
+            <input type="text" id="contributorTxt" name="contributor" style="font-size:0.7em;max-width:94%;min-width:94%;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
             
 
-            <input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:0.7em;max-width:94%;min-width:94%;border-top:3px solid rgb(154, 205, 50);margin-top:1em" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
-            <?php if(isset($_poet1)) { ?> <script>check()</script> <?php } ?>
+            <input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:0.7em;max-width:94%;min-width:94%;margin-top:1em" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
            
-            <textarea id="poetDescTxt" name="poetDesc" style="font-size:0.7em;max-width:94%;min-width:94%;min-height:15em;border-top:3px solid rgb(154, 205, 50);margin-top:1em" placeholder="زانیاریەکان سەبارەت بە شاعیر *"></textarea>
+            <textarea id="poetDescTxt" name="poetDesc" style="font-size:0.7em;max-width:94%;min-width:94%;min-height:15em;margin-top:1em" placeholder="زانیاریەکان سەبارەت بە شاعیر *"></textarea>
 
-            <div class='loader' id="commloader" style="display:none;border-top:1px solid rgb(154, 205, 50)"></div>
+            <div class='loader' id="commloader" style="display:none;"></div>
             
             <div id="message"></div>
 
-            <button type="submit" class="button bth" style="font-size: 0.7em;width: 45%;max-width: 150px;background-color: rgb(154, 205, 50);color: #fff;margin-top:0.5em;">ناردن</button>
+            <button type="submit" class="button bth" style="font-size: 0.7em;width: 45%;max-width: 150px;background-color: #777;color: #fff;margin-top:0.5em;">ناردن</button>
             
             <button type="button" id="clearBtn" class='button' style="font-size: 0.7em;width: 45%;max-width: 150px;margin-top:0.5em;">پاک کردنەوە</button>
         </form>
+        
+        <?php if(isset($_poet1)) { ?> <script>check()</script> <?php } ?>
         
     </div>
     
@@ -115,28 +136,12 @@ $color_num = 0;
         var loader = document.querySelector(".loader");
         
         if(poet.value === "") {
-            poet.style.borderColor = "rgb(204,51,0)";
-            poet.style.background = "rgba(204,51,0,0.1)";
             poet.focus();
-            
-            setTimeout(function() {
-                poet.style.borderColor = "rgb(154, 205, 50)";
-                poet.style.background = "";
-            }, 2000);
-            
             return;
         }
         
         if(poetDesc.value === "") {
-            poetDesc.style.borderColor = "rgb(204,51,0)";
-            poetDesc.style.background = "rgba(204,51,0,0.1)";
             poetDesc.focus();
-            
-            setTimeout(function() {
-                poetDesc.style.borderColor = "rgb(154, 205, 50)";
-                poetDesc.style.background = "";
-            }, 2000);
-            
             return;
         }
         
@@ -186,8 +191,17 @@ $color_num = 0;
         var mess = document.querySelector("#message");
         
         mess.innerHTML = poet.value = poetDesc.value = "";
-        poet.style.background = "";
-        poet.style.borderTopColor = "rgb(154, 205, 50)";
+        
+        var txts = document.querySelectorAll("input, textarea");
+        var btns = document.querySelectorAll("button[type=submit]");
+        txts.forEach(function(e) {
+            e.style.borderTopColor = "";
+            e.style.background = "";
+        });
+        btns.forEach(function(e) {
+            e.style.background = "#777";
+            e.style.color = "#fff";
+        });
     });
 </script>
 

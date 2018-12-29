@@ -55,11 +55,13 @@ while($row = mysqli_fetch_assoc($query)) {
 $rid_k = num_convert($row['id'],"en","ckb");
     
 ?>
-<a href="/poet:<?php echo $ath; ?>/book:<?php echo $bk; ?>/poem:<?php echo $row['id']; ?>">
+<div style="display:flex;">
+    <button style="background:none;padding:0 .5em;" type="button" title="نیشان‌دانی بەشی سەرەتای ئەم شێعرە"><i class="material-icons" style="vertical-align: middle;">keyboard_arrow_down</i></button><a href="/poet:<?php echo $ath; ?>/book:<?php echo $bk; ?>/poem:<?php echo $row['id']; ?>">
 <?php
 echo($rid_k . ". " . $row['name']);
 ?>
 </a>
+</div>
 <?php
 }
 ?>
@@ -78,6 +80,31 @@ if(bk_comp !== null) {
        }
     });
 }
+
+function show_summary(button) {
+    var href = button.parentNode.querySelector("a").getAttribute("href");
+    href = href.split("/");
+    button.innerHTML = "<div class='loader' style='width:2.2em;height:2.2em'></div>";
+    var pt = href[1].split(":")[1];
+    var bk = href[2].split(":")[1];
+    var pm = href[3].split(":")[1];
+    
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", `/script/php/poem-summary.php?pt=${pt}&bk=${bk}&pm=${pm}`);
+    xmlhttp.onload = function() {
+        button.innerHTML = "<i class=\"material-icons\" style=\"vertical-align: middle;\">keyboard_arrow_down</i>";
+        var san_txt = this.responseText.replace(/\n/g, "<br>");
+        button.parentNode.outerHTML += `<div style='background: #f6f6f6;padding: 1em;font-size: .55em;'>${san_txt}</div>`;
+    }
+    xmlhttp.send();
+}
+
+document.querySelectorAll("#sp button").forEach(function(e) {
+    e.addEventListener("click", function () {
+        show_summary(e);
+    });
+});
+
 </script>
 
 </div>

@@ -1,6 +1,6 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v108').then(function(cache) {
+    caches.open('v109').then(function(cache) {
       return cache.addAll([
         '/style/img/poets/profile/profile_0.jpg',
         '/style/img/poets/profile/profile_1.jpg',
@@ -58,8 +58,10 @@ self.addEventListener('install', function(event) {
         '/style/img/poets/profile/profile_61.jpg',
         '/style/img/poets/profile/profile_82.jpg',
         '/style/img/poets/profile/profile_83.jpg',
-        '/script/js/main1.4.js?v10',
-        '/style/css/main2.5.css?v6',
+        '/style/img/poets/profile/profile_85.jpg',
+        '/style/img/poets/profile/profile_87.jpg',
+        '/script/js/main1.4.js?v15',
+        '/style/css/main2.5.css?v29',
         '/favicon.ico',
         '/style/font/DroidNaskh-Regular.woff',
         '/style/font/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
@@ -70,7 +72,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
-  var cacheWhitelist = ['v108'];
+  var cacheWhitelist = ['v109'];
 
   event.waitUntil(
     caches.keys().then(function(keyList) {

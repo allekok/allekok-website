@@ -127,7 +127,10 @@ function san_data($in, $last=false) {
     $in = str_replace($from_nums, $to_nums, $in);
     $in = str_replace($other_letters,$kurdish_letters,$in);
     
-    if($last === true)  $in = str_replace("ه","",$in);
+    if($last === true) {
+        $in = str_replace("ه","",$in);
+        $in = str_replace($to_nums, "", $in);
+    }
     
     // $in = str_replace(" ", "", $in);
     /* The above line will remove all the spaces in the $in string.

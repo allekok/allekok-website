@@ -14,7 +14,7 @@ require_once('functions.php');
 if(!empty($q1)) {
     
     $qlen = strlen($q1);
-    $q2 = san_data($q_sp,true);
+    // $q2 = san_data($q_sp,true);
 	$_selPT = filter_var($_GET['selPT'], FILTER_SANITIZE_STRING);
 	
 	$r_max = $_GET['pt'];
@@ -30,7 +30,7 @@ if(!empty($q1)) {
 
 if($r_max !== 0) {
     $r = 0;
-    $r_max = !(filter_var($_GET['pt'], FILTER_VALIDATE_INT)===false) ? $_GET['pt'] : 5;
+    $r_max = !(filter_var($_GET['pt'], FILTER_VALIDATE_INT)===false) ? $_GET['pt'] : 4;
     
     if($_selPT == "") {
 $s_poet = array();
@@ -43,9 +43,7 @@ $s_poet = array();
 	    if($r<$r_max) {
 	        $res = $s_poet[$i];
 	        
-		    $s_poet_takh=$res['takh'];
-        	
-    		if(stristr($s_poet_takh,$q1)) {
+    		if(stristr($res['takh'],$q1)) {
     		    
     		    $s_poet[$i]['f'] = 1;
     		    
@@ -72,14 +70,8 @@ $s_poet = array();
     	for($i=0; $i<count($s_poet); $i++) {
     	    if($r<$r_max) {
     	        $res = $s_poet[$i];
-    	        
-    		    $s_poet_name=$res['name'];
-    		    
-    		    $s_poet_prof=$res['profname'];
-    		    
-    		    $s_poet_hdesc=$res['hdesc'];
             
-        		if((stristr($s_poet_name,$q1) || stristr($s_poet_prof,$q1) || stristr($s_poet_hdesc,$q1)) && !$res['f']) {
+        		if((stristr($res['name'],$q1) || stristr($res['profname'],$q1) || stristr($res['hdesc'],$q1)) && !$res['f']) {
         		    $s_poet[$i]['f'] = 1;
         		    
         			$res_poet1 .= "<section>";
@@ -113,7 +105,7 @@ $s_poet = array();
 	
 if($e_max !== 0) {
     $e = 0;
-    $e_max = !(filter_var($_GET['bk'], FILTER_VALIDATE_INT)===false) ? $_GET['bk'] : 5;
+    $e_max = !(filter_var($_GET['bk'], FILTER_VALIDATE_INT)===false) ? $_GET['bk'] : 4;
 
 	$q = ($_selPT == "") ? "select book,book_desc,poet_address,book_address,rbook,rtakh from books where len>{$qlen} order by rtakh ASC" : "select book,book_desc,poet_address,book_address,rbook,rtakh from books where len>{$qlen} and rtakh='{$_selPT}' order by rtakh ASC";
 	$query = mysqli_query($conn,$q);
@@ -128,9 +120,7 @@ if($e_max !== 0) {
 	    if($e<$e_max) {
 	        $res = $s_book[$i];
 	        
-		    $s_bk = $res['book'];
-
-			if(stristr($s_bk,$q1)) {
+			if(stristr($res['book'],$q1)) {
 			    
 			    $s_book[$i]['f'] = 1;
 			    
@@ -148,9 +138,7 @@ if($e<$e_max) {
 	    if($e<$e_max) {
 	        $res = $s_book[$i];
 	        
-		    $s_bk_desc = $res['book_desc'];
-
-			if( !$res['f'] && stristr($s_bk_desc,$q1) ) {
+			if( !$res['f'] && stristr($res['book_desc'],$q1) ) {
 			    
 			    $s_book[$i]['f'] = 1;
 			    
@@ -174,7 +162,7 @@ if($e<$e_max) {
 	
 if($h_max !== 0) {
     $h = 0;
-    $h_max = !(filter_var($_GET['pm'], FILTER_VALIDATE_INT)===false) ? $_GET['pm'] : 10;
+    $h_max = !(filter_var($_GET['pm'], FILTER_VALIDATE_INT)===false) ? $_GET['pm'] : 7;
 
 	        $q = ($_selPT == "") ? "SELECT name,hdesc,poet_address,book_address,poem_address,poem,rbook,rname,rtakh FROM poems where len>{$qlen} ORDER BY Cipi DESC" : "SELECT name,hdesc,poet_address,book_address,poem_address,poem,rbook,rname,rtakh FROM poems where len>{$qlen} and rtakh='{$_selPT}' ORDER BY Cipi DESC";
 	        $query = mysqli_query($conn,$q);
@@ -193,11 +181,8 @@ $s_poem = array();
 	            $res = $s_poem[$i];
 	            
 	             if($h<$h_max) {
-
-                	$s_name = $res['name'];
-
                 	
-	                if(stristr($s_name,$q1)) {
+	                if(stristr($res['name'],$q1)) {
 	                    
 	                    $s_poem[$i]['f'] = 1;
 	                    
@@ -220,12 +205,7 @@ $s_poem = array();
 	            
 	             if($h<$h_max) {
 
-                	$s_hon = $res['poem'];
-                	
-                	$s_hon_desc = $res['hdesc'];
-                	
-                	
-	                if((stristr($s_hon,$q1) or stristr($s_hon_desc,$q1)) && !$res['f']) {
+	                if((stristr($res['poem'],$q1) or stristr($res['hdesc'],$q1)) && !$res['f']) {
 	                    
 	                    $s_poem[$i]['f'] = 1;
 	                    

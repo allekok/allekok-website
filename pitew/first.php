@@ -24,40 +24,45 @@ $color_num = 0;
     <br>
     <section class='pitewsec'>
         <a href="index.php">
-            <i class='material-icons' style='color:rgb(0, 138, 230)'>note_add</i>
+            <i class='material-icons'>note_add</i>
             <h3>
                 نووسینی شێعر
                 <br>
                 <small>
-                    ئەگەر بۆخۆتان شاعیرن و دەتانهەوێ شێعرەکانتان لەسەر ئاڵەکۆک دابنێن یان ئەگەر دەتانهەوێ شێعری شاعیرانی پێشووتر بنووسنەوە، لێرە کرتە بکەن.
+                    ئەگەر دەتوانهەوێ لە نووسینەوەی شێعری شاعیران‌دا یارمیتی‌مان بدەن، لێرە کرتە بکەن. ئەگەر دەقی شێعرێک‌و لەلایە کە لەسەر ئاڵەکۆک نییە، زۆر بەنرخ دەبێ ئەگەر لێرە کرتە بکەن و بۆمان بنێرن، تا دوای پێداچوونەوە بە نێوی خۆتان لەسەر ئاڵەکۆک دابندرێ.
+                    <br>
+                    دەتوانن بۆ نووسینەوەی شێعر لەم دیوانانە کەڵک وەرگرن: 
+                    <a style='color:#00e;display:inline-block;' href="/pitew/pdfs.php">
+                    داگرتنی دیوانی شاعیران
+                    </a>
                 </small>
             </h3>
         </a>
     </section><section class='pitewsec'>
         <a href="poet-image.php">
-            <i class='material-icons' style='color:purple;'>image</i>
+            <i class='material-icons'>image</i>
             <h3>
                 ناردنی وێنەی شاعیران
                 <br>
                 <small>
-                    ئەگەر وێنەی یەکێک لەو شاعیرانەی کە لەسەر ئاڵەکۆک وێنەیان نیە لەلاتانە، یان وێنەیەکی باشتری هەرکام لە شاعیران‌و لەلایە، بۆ ناردنی لێرە کرتە بکەن.
+                    ئەگەر وێنەی هەریەک لەو شاعیرانەی کە لەسەر ئاڵەکۆک وێنەیان نیە لەلاتانە، یان بە تێ‌بینی خۆتان وێنەیەکی باشتری هەرکام لە شاعیران‌و لەلایە، بۆ ناردنی لێرە کرتە بکەن.
                 </small>
             </h3>
         </a>
     </section><section class='pitewsec'>
         <a href="edit-poet.php">
-            <i class='material-icons' style='color:yellowgreen;'>person</i>
+            <i class='material-icons'>person</i>
             <h3>
                 نووسینی زانیاری سەبارەت بە شاعیران
                 <br>
                 <small>
-                    ئەگەر زانیاری زیادترتان سەبارەت بە هەریەک لە شاعیران هەیە یان هەڵەیەک لە زانیاریەکانی سەر ئاڵەکۆک دەبینن، دەتوانن بە کرتە کردن لێرە ئاگادارمان کەنەوە
+                    ئەگەر زانیاری زیاترتان سەبارەت بە هەریەک لە شاعیران هەیە دەتوانن لێرە کرتە بکەن و بینووسن. هەروەها ئەگەر هەڵەیەک لە زانیاریەکانی سەر ئاڵەکۆک سەبارەت بەهەرکام لە شاعیران دەبینن، دەتوانن بە کرتە کردن لێرە بۆمان بنووسن، تا پێداچوونەوەی بەسەردا بکەیین.
                 </small>
             </h3>
         </a>
     </section><section class='pitewsec'>
         <a href="/comments/">
-            <i class='material-icons' style='color:red;'>insert_drive_file</i>
+            <i class='material-icons'>question_answer</i>
             <h3>
                 ڕاست‌کردنەوەی هەڵەکانی ناو شێعر
                 <br>
@@ -68,7 +73,7 @@ $color_num = 0;
         </a>
     </section></section><section class='pitewsec'>
         <a href="/about">
-            <i class='material-icons' style='color:blue;'><img src='/style/img/poets/profile/profile_0.jpg' style='opacity: 0.75;border: 2px dashed;border-radius: 100%;width: 0.9em;margin-bottom: 0.1em;'></i>
+            <i class='material-icons' style='color:blue;'><img src='/style/img/poets/profile/profile_0.jpg' style='opacity: 0.75;border: 2px dashed #666;border-radius: 100%;width: 0.9em;margin-bottom: 0.1em;'></i>
             <h3>
                 ئاڵەکۆک؟
                 <br>
@@ -78,6 +83,112 @@ $color_num = 0;
             </h3>
         </a>
     </section>
+    <style>
+        #QAtxt {
+            font-size: 0.65em;
+
+            padding: 0.6em 3% 0.6em 2%;
+            
+            text-align: right;
+            
+            max-width: 90%;
+            
+            width: 90%;
+            
+            min-height: 8em;
+            
+            display: block;
+            
+            border-top: 3px solid rgb(221, 221, 221);
+            
+            box-shadow: rgb(221, 221, 221) 0px 5px 10px -5px;
+            
+            box-sizing: border-box;
+            
+            margin: 1em auto 0;
+            
+            height: 155px;
+        }
+        .btn {
+            font-size: 0.65em;
+            width: 50%;
+            padding: 0.8em 0;
+            max-width: 150px;
+            cursor: pointer;
+            margin-top: 0.5em;
+        }
+        .hr {
+            border-top:3px dashed #ccc;
+        }
+    </style>
+    
+    <div style="border-top:1px solid #ddd;margin:1em 0 0.8em;"></div>
+    
+    <div style="max-width:800px; margin:auto; padding:0 1em;">
+        <h3 style="font-size: .7em;">
+            ئەگەر پرسیارێک‌و سەبارەت بە "پتەوکردنی ئاڵەکۆک" هەیە دەتوانن لێرە بیپرسن.
+        </h3>
+        <small style="color:#555; font-size:.5em; display:block;">
+            بۆ وەرگرتنی وەڵامی پرسیارەکەتان، سەردانی ئەم لاپەڕە بکەنەوە.
+        </small>
+        <form id="frmQA" action="save.php" method="POST">
+            <textarea id="QAtxt" placeholder="پرسیارەکەو لێرە بنووسن..."></textarea>
+            <div id="QAres"></div>
+            <button type="submit" class='button btn'>ناردن</button>
+        </form>
+        
+        <div>
+            <?php
+                if(filesize("QA.txt") > 0) {
+                    
+                    $f = fopen("QA.txt", "r");
+                    $cc = fread($f, filesize("QA.txt"));
+                    $cc = explode("\nend\n", $cc);
+                    
+                    echo "<h3 style='border-top: 1px solid #ddd;margin-top: 2em;font-size: .7em;padding: 1em;'>پرسیار و وەڵامەکان</h3>";
+                    $cc = array_reverse($cc);
+                    
+                    foreach($cc as $c) {
+                        if(!empty($c)) {
+                            $c = str_replace(['[code]', '[/code]', "\n"], ['<code>', '</code>', '<br>'], $c);
+                            echo "<div class='comment'><div class='comm-body'>".$c."</div></div>";
+                        }
+                    }
+                    
+                    fclose($f);
+                }
+            
+            ?>
+        </div>
+        
+        <script>
+        
+            document.querySelector("#frmQA").addEventListener("submit", function(e) {
+                e.preventDefault();
+                
+                var txt = document.querySelector("#QAtxt");
+                var t = document.querySelector("#QAres");
+                var loader = "<div class='loader'></div>";
+                
+                if(txt.value == "") {
+                    txt.focus();
+                    return;
+                }
+                
+                t.innerHTML = loader;
+                
+                var x = new XMLHttpRequest();
+                x.onload = function() {
+                    if(this.responseText == "1") {
+                        t.innerHTML = "<span style='background:rgba(0,255,0,.08); color:green;display:block;padding:1em; font-size:.6em;'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
+                        txt.value = "";
+                    }
+                }
+                x.open("POST", "save-comment.php", true);
+                x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                x.send(`txt=${encodeURIComponent(txt.value)}`);
+            });
+        </script>
     
 </div>
 

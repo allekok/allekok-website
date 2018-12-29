@@ -135,4 +135,7 @@ foreach($aths as $ath) {
 }
 
 mysqli_close($conn);
+
+$now = date("Y-m-d H:i:s");
+file_put_contents(ABSPATH . "last-update.txt", $now);
 ?>

@@ -6,3 +6,13 @@
 {"ver":7,"poetID":77}
 {"ver":8,"poetID":24}
 {"ver":9,"poetID":85}
+{"ver":10,"poetID":85}
+{"ver":11,"poetID":85}
+{"ver":12,"poetID":86}
+{"ver":13,"poetID":39}
+{"ver":14,"poetID":39}
+{"ver":15,"poetID":87}
+{"ver":16,"poetID":87}
+{"ver":17,"poetID":87}
+{"ver":18,"poetID":87}
+{"ver":19,"poetID":52}

@@ -2,8 +2,8 @@
 
 #mysql
 define("_HOST", "localhost");
-define("_USER","allekokc_msqlmas");
-define("_PASS",'T1m$IR(H1ysm2R33u{');
+define("_USER","");
+define("_PASS",'');
 
 #site
 define("_SITE","https://".$_SERVER['HTTP_HOST']."/");

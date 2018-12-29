@@ -12,16 +12,27 @@
     <div class='fnav'>
         <div class='fnav-stats'>
             <div class='fnav-stats-caption'>
-                <i id='poets-num'>---</i>
+                <?php include("stats.php"); ?>
+                <i id='poets-num'><?php echo $aths_num; ?></i>
                 شاعیر
                 <i class='material-icons'>keyboard_arrow_left</i>
-                <i id='poems-num'>---</i>
+                <i id='poems-num'><?php echo $hons_num; ?></i>
                 شێعر
             </div>
         </div>
+        <div style="font-size:.5em; margin-top:1em;">
+            <span style="color:#666;">
+                ئاخیرین نوێ کردنەوەی شێعرەکان: 
+            </span>
+            <span style="direction:ltr; letter-spacing: .5px; display:inline-block; color:#444;">
+            <?php
+                echo num_convert(file_get_contents(ABSPATH . "last-update.txt"), "en", "ckb");
+                ?>
+            </span>
+        </div>
 
     </div>
-    <div style="width:95%;max-width:550px;border-top:1px solid #ddd; padding:0.5em 0 0; margin:auto;">
+    <div style="width:95%;max-width:550px;border-top:1px solid #eee; padding:.5em 0 0; margin:auto;">
         
         <p style="font-size:0.75em;padding-bottom:0.5em;">
             ئاڵەکۆک‌تان بەلاوە چۆنە؟
@@ -31,18 +42,18 @@
 
         <form id="frmComm" action="/script/php/append.php" method="POST">
 
-            <textarea placeholder="بیر و ڕاتان سەبارەت بە ئاڵەکۆک بنووسن..." id="commTxt" style="font-size:0.65em;max-width:95%;width:95%;min-height:8.5em"></textarea>
+            <textarea placeholder="بیر و ڕاتان سەبارەت بە ئاڵەکۆک بنووسن..." id="commTxt" style="font-size:.65em;max-width:95%;width:95%;min-height:8.5em"></textarea>
 
-            <div class='loader' id="commloader" style="display:none;"></div>
+            <div class='loader' id="commloader" style="display:none;margin:.5em auto .2em;width:1.5em;height:1.5em;"></div>
 
-            <button type="submit" style="font-size: 0.65em;width: 50%;padding: 0.8em 0;max-width: 150px;cursor:pointer;margin-top:0.5em;" class='button'>ناردن</button>
+            <button type="submit" style="font-size: .65em;width: 50%;max-width: 150px;margin-top:0.5em;" class='button'>ناردن</button>
         </form>
 
         <?php
         $uri = "script/php/res/about.comments";
         if(filesize($uri)>0) { $nzuri = 1; } ?>
-
-        <div id="Acomms-title" style="border-top: 1px solid #ccc;margin: 0.4em 0 0.2em;padding: 0.4em 0 0.2em;font-size: 0.8em;<?php if(!$nzuri){echo 'display:none';} ?>">
+        
+        <div id="Acomms-title" style="margin:1em 0 .5em;font-size: .8em;<?php if(!$nzuri){echo 'display:none';} ?>">
             بیر و ڕاکان سەبارەت بە ئاڵەکۆک
         </div>
 
@@ -59,16 +70,12 @@
             
             <script>
                 var http = new XMLHttpRequest();
-
-                http.onreadystatechange = function() {
-                    if(this.status == 200 && this.readyState == 4) {
-                        document.getElementById("Acomms").innerHTML=this.responseText;
-                            document.getElementById("Acomms").style.animation="tL-top 0.8s cubic-bezier(.18,.89,.32,1.28)";
-                    }
+                http.onload = function () {
+                    var Acomms = document.getElementById("Acomms");
+                    Acomms.innerHTML=this.responseText;
+                    Acomms.style.animation="tL-top 0.8s cubic-bezier(.18,.89,.32,1.28)";
                 }
-
-                http.open("POST","/script/php/about-comments.php",true);
-                http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                http.open("get","/script/php/about-comments.php");
                 http.send();
             </script>
         </div>
@@ -97,14 +104,7 @@ function append() {
     var request = "comm="+encodeURIComponent(comm.value);
 
     if(comm.value === "") {
-        //res.innerHTML = nullError;
-        comm.style.borderTop = "3px solid rgb(204,51,0)";
-        comm.style.background = "rgba(204,51,0,0.1)";
         comm.focus();
-        setTimeout(function() {
-            comm.style.borderTop = "3px solid #ddd";
-            comm.style.background = "";
-        }, 2000);
         return 0;
     }
 
@@ -119,52 +119,43 @@ function append() {
     }
 
     loader.style.display = "block";
-     comm.style.backgroundColor = "#eee";
-     comm.style.color = "#999";
+    comm.style.backgroundColor = "#eee";
+    comm.style.color = "#999";
 
-    httpd.onreadystatechange = function() {
+    httpd.onload = function() {
 
-        if(this.status == 200 && this.readyState == 4) {
+        var respond = JSON.parse(this.responseText);
 
-            var respond = JSON.parse(this.responseText);
+        if(respond.message == "ok") {
 
-            if(respond.message == "ok") {
+            res.innerHTML = succMess;
+            comm.style.borderTop = "2px solid #06d";
 
-                res.innerHTML = succMess;
-                comm.style.borderTop = "2px solid #06d";
+            var Acomms = document.getElementById('Acomms');
+            var AcommsTitle = document.getElementById('Acomms-title');
 
-                var Acomms = document.getElementById('Acomms');
-                var AcommsTitle = document.getElementById('Acomms-title');
+            Acomms.style.display = "block";
+            AcommsTitle.style.display = "block";
+            Acomms.innerHTML = respond.comm + Acomms.innerHTML;
+            window.location = "#Acomms-title";
+            comm.value="";
 
-                Acomms.style.display = "block";
-                AcommsTitle.style.display = "block";
-                Acomms.innerHTML = respond.comm + Acomms.innerHTML;
-                window.location = "#Acomms-title";
-                comm.value="";
-
-            } else {
-                res.innerHTML = failMess;
-                comm.style.borderTop = "2px solid rgb(204,51,0)";
-                setTimeout(function() {
-                    comm.style.borderTop = "3px solid #ddd";
-                }, 3000);
-            }
-
-            loader.style.display = "none";
-             comm.style.backgroundColor = "";
-             comm.style.color = "";
-             
-             setTimeout(function() {
-                 res.innerHTML = "";
+        } else {
+            res.innerHTML = failMess;
+            comm.style.borderTop = "2px solid rgb(204,51,0)";
+            setTimeout(function() {
                 comm.style.borderTop = "3px solid #ddd";
-             }, 3500);
-
+            }, 3000);
         }
+
+        loader.style.display = "none";
+        comm.style.backgroundColor = "";
+        comm.style.color = "";
+         
     }
 
-    httpd.open("POST","/script/php/append.php",true);
+    httpd.open("POST","/script/php/append.php");
     httpd.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-
     httpd.send(request);
 
 }
@@ -176,29 +167,6 @@ function append() {
             append();
         }
 
-    });
-
-    window.addEventListener("load", function() {
-        var nums = document.querySelector(".fnav-stats-caption");
-        var poets_num = document.getElementById("poets-num");
-        var poems_num = document.getElementById("poems-num");
-
-        xmlhttp = new XMLHttpRequest();
-
-        xmlhttp.onreadystatechange=function() {
-            if (this.readyState==4 && this.status==200) {
-                var respond = JSON.parse(this.responseText);
-                poets_num.innerHTML = respond["poets-num"];
-                poems_num.innerHTML = respond["poems-num"];
-
-                nums.style.animation="tL 2s ease-in forwards";
-
-            }
-        }
-        xmlhttp.open("GET","/script/php/stats.php",true);
-        xmlhttp.send();
-        
-        ///////////////////////
     });
 
 </script>

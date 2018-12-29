@@ -24,12 +24,12 @@ $color_num = 0;
     <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
 </a>
 <i style='font-style:normal;'> &rsaquo; </i>
-<a href="poet-image.php" style="color: rgb(128, 0, 128);">
+<a href="poet-image.php">
     <i style='vertical-align:middle;' class='material-icons'>image</i>
     ناردنی وێنەی شاعیران
 </a>
 <i style='font-style:normal;'> &rsaquo; </i>
-<div id="current-location" style="color: rgb(128, 0, 128);">
+<div id="current-location">
     وێنەکان
 </div>
 

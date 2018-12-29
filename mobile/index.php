@@ -17,7 +17,7 @@ $color_num = 0;
 
 <div id="poets" style="max-width:850px">
 
-    <h1 style="color: rgb(255, 102, 0);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0 0;font-size:1.2em;">
+    <h1 style="display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0 0;font-size:1.2em;">
         بەرنامەی مۆبایلی ئاڵەکۆک
     </h1>
     <small style='font-size:.6em; margin-top:-.6em;display:block;'>
@@ -109,9 +109,11 @@ $color_num = 0;
                     
                     echo "<h3 style='border-top: 1px solid #ddd;margin-top: 2em;font-size: .7em;padding: 1em;'>بیر و بۆچوونەکان</h3>";
                     
+                    $cc = array_reverse($cc);
+                    
                     foreach($cc as $c) {
                         if(!empty($c)) {
-                            $c = str_replace(['[code]', '[/code]'], ['<code>', '</code>'], $c);
+                            $c = str_replace(['[code]', '[/code]', "\n"], ['<code>', '</code>', '<br>'], $c);
                             echo "<div class='comment'><div class='comm-body'>".$c."</div></div>";
                         }
                     }
@@ -129,7 +131,7 @@ $color_num = 0;
                 
                 var txt = document.querySelector("#QAtxt");
                 var t = document.querySelector("#QAres");
-                var loader = "<div class='loader' style='border-top:2px solid rgb(255, 102, 0)'></div>";
+                var loader = "<div class='loader'></div>";
                 
                 if(txt.value == "") {
                     txt.focus();

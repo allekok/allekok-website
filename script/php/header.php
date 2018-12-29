@@ -25,27 +25,12 @@
             $ogimg = _SITE.get_poet_image(0, "pro-460",0);
         }
     ?>
-<html dir="rtl">
+<html dir="rtl" lang="ckb">
 <head>
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js', {scope: '/'});
-        }
-        var uritg = "<?php echo _SITE; ?>";
-    
-        var colors = [<?php
-        
-        require_once("colors.php");
-
-        foreach ($colors as $c) {
-            
-            echo "['{$c[0]}', '{$c[1]}', '{$c[2]}', '{$c[3]}'],";
-            
-        }
-    
-    ?>];
-    
+        if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', {scope: '/'});
     </script>
+    <link rel='stylesheet' href='/style/css/main2.5.css?v29' />
 			
 	<title>
 	    <?php echo($title); ?>
@@ -53,7 +38,6 @@
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel='stylesheet' href='/style/css/main2.5.css?v6' />
 
 	<meta name="description" content="<?php echo($desc); ?>">
 	<meta name="keywords" content="<?php echo($keys); ?>">
@@ -72,7 +56,7 @@
         }
       .seartog {
           position:absolute;
-          right:.4em;
+          left:.4em;
           cursor:pointer;
           top:<?php if(isset($fhs)) {echo("1");}else{echo("1");} ?>em;
       }
@@ -151,7 +135,25 @@
         color:#333;
         padding:1em;
     }
+    .dltr {
+        direction:ltr;
+        text-align:left;
+    }
   </style>
+    <script>
+        var uritg = "<?php echo _SITE; ?>";
+        var colors = [<?php
+        
+        require_once("colors.php");
+        
+        foreach ($colors as $c) {
+            
+            echo "['{$c[0]}', '{$c[1]}', '{$c[2]}', '{$c[3]}'],";
+            
+        }
+        
+        ?>];
+    </script>
 </head>
 
 <body>
@@ -163,11 +165,11 @@
     <i class="material-icons seartog-i">search</i>
 </div>
     <?php } ?>
-<div class='seartog' role='button' id="tL" style="left:.3em;right:auto;display:none;">
+<div class='seartog' role='button' id="tL" style="right:.3em;left:auto;display:none;">
     <i class="material-icons seartog-i"<?php if(!$color_num)    echo " style='color:red'"; ?>>bookmark</i>
 </div>
 
-<a class="<?php echo($t_class) ?>" href="<?php echo _SITE; ?>"><h1 style="color: #555;"><span style="<?php if($color_num == 0) {echo "color:rgb(0,210,50)";} ?>">ئاڵە</span>کۆک</h1></a>
+<a class="<?php echo($t_class) ?>" href="<?php echo _SITE; ?>"><h1 style="color:<?php if($color_num == 0) {echo "rgb(0,210,50)";} else { echo "#555"; } ?>">ئاڵەکۆک</h1></a>
     <span style='color:#555'><?php echo($t_desc) ?></span>
     
 </header>

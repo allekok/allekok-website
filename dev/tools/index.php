@@ -271,11 +271,11 @@ $color_num = 0;
             بۆ وەرگرتنی وەڵامی پرسیارەکەتان سەردانی ئەم لاپەڕەیە بکەنەوە.
         </small>
         <form id="frmQA" action="save.php" method="POST">
-            <button type="button" class='button' style="display: inline-block;padding: .7em;font-size: .45em;cursor: pointer;margin: 0 auto 5px 10px;" onclick="make_code()">Code</button><span style="font-size:.45em">ئەگەر کۆدی تێدایە لە پرسیارەکەتان تکایە "Code" بەکار بێنن.
+            <button type="button" class='button' style="display: inline-block;padding: .7em;font-size: .45em;cursor: pointer;margin: 0 auto 5px 10px;background:#19e31b;color:#222;font-weight:bold;font-family:monospace;" onclick="make_code()">Code</button><span style="font-size:.45em">ئەگەر کۆدی تێدایە لە پرسیارەکەتان تکایە "Code" بەکار بێنن.
             </span>
             <textarea id="QAtxt"></textarea>
             <div id="QAres"></div>
-            <button type="submit" class='button btn'>ناردن</button>
+            <button type="submit" class='button btn' style="background:#222; color:#19e31b;">ناردن</button>
         </form>
         
         <div>

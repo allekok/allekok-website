@@ -1,9 +1,13 @@
 <style>
     p {
-        font-size: 0.6em;margin:0.3em 0.6em 0;line-height:3;border-bottom: 2px dashed #eee;text-align: right;padding:.2em 1em;
+        font-size:.6em;border-bottom: 2px dashed #f2f2f2;text-align: right;padding:.6em .2em;
     }
-    a {
-        font-size: inherit;padding:0 0.6em;border-radius:2px;
+    #poets a {
+        font-size: inherit;padding:0 .6em;border-radius:2px;display:inline-block;margin:.1em 0;
+    }
+    #poets a:hover {
+        text-decoration:none;
+        box-shadow:0 3px 5px -2px #aaa;
     }
 </style>
 <div id="poets" style="margin-bottom:4em;max-width:800px">
@@ -12,32 +16,32 @@
     </h1>
     
     <p>
-        <a href="http://ganjoor.net/" target='_blank' rel='noopener noreferrer nofollow' style="color:<?php echo $colors[2][3]; ?>;background-color:<?php echo $colors[2][2]; ?>;">گنجور</a> &rsaquo; بۆ بوون بە هۆی دروست بوونی ئاڵەکۆک
+        <a href="http://ganjoor.net/" target='_blank' rel='noopener noreferrer nofollow' style="background-color:#f9cea4;">گنجور</a> &rsaquo; بۆ بوون بە هۆی دروست بوونی ئاڵەکۆک
     </p>
     <p>
-        <a href="https://plus.google.com/+RebwarTahir" target='_blank' rel='noopener noreferrer nofollow' style="color:<?php echo $colors[3][3]; ?>;background-color:<?php echo $colors[3][2]; ?>;">Rebwar Tahir</a> &rsaquo; بۆ بەشێکی زۆر لە وێنەی شاعیران
+        <a href="https://plus.google.com/+RebwarTahir" target='_blank' rel='noopener noreferrer nofollow' style="color:#fff;background-color:#dd5144;font-weight:bold;">Rebwar Tahir</a> &rsaquo; بۆ بەشێکی زۆر لە وێنەی شاعیران
     </p>
     <p>
-        <a href="http://www.vejinbooks.com/" target='_blank' rel='noopener noreferrer nofollow' style="color:<?php echo $colors[13][3]; ?>;background-color:<?php echo $colors[13][2]; ?>;">ڤەژین بوکس</a> &rsaquo; بۆ بەشێکی زۆر لە شێعرەکان
+        <a href="http://www.vejinbooks.com/" target='_blank' rel='noopener noreferrer nofollow' style="color:#900000;">ڤەژین بوکس</a> &rsaquo; بۆ بەشێکی زۆر لە شێعرەکان
     </p>
     <p>
-        <a href="http://diyako.yageyziman.com/هۆنراوە/" target='_blank' rel='noopener noreferrer nofollow' style="color:<?php echo $colors[15][3]; ?>;background-color:<?php echo $colors[15][2]; ?>;">فێرگەی زمانی کوردی</a> &rsaquo; بۆ دیوانی شێعری بەشێک لە شاعیران
+        <a href="http://diyako.yageyziman.com/هۆنراوە/" target='_blank' rel='noopener noreferrer nofollow' style="color:#fff;background-color:#1e73be;">فێرگەی زمانی کوردی</a> &rsaquo; بۆ دیوانی شێعری بەشێک لە شاعیران
     </p>
     <p>
-        <a href="http://www.bokan.de/laperekan/Edebiat/awat/Awat.htm" target='_blank' rel='noopener noreferrer nofollow' style="color:<?php echo $colors[6][3]; ?>;background-color:<?php echo $colors[6][2]; ?>;">Rojhalat/Bokan</a> &rsaquo; بۆ 
+        <a href="http://www.bokan.de/laperekan/Edebiat/awat/Awat.htm" target='_blank' rel='noopener noreferrer nofollow' style="color:#820e0e;background-color:#fcc601;">رۆژهەڵات / بۆکان</a> &rsaquo; بۆ 
         <a href="<?php echo _SITE; ?>poet:62/book:1" style="color:<?php echo $colors[18][3]; ?>;background-color:<?php echo $colors[18][2]; ?>;">دیوانی شاری دڵی، ئاوات</a>
     </p>
     <p>
-        <a href="https://t.me/chapkagolibevena" target='_blank' rel='noopener noreferrer nofollow' style="color:<?php echo $colors[1][3]; ?>;background-color:<?php echo $colors[1][2]; ?>;">کاناڵی تێلێگرامی چەپکەگوڵ</a> و کەماڵ ڕەحمانی &rsaquo; بۆ 
+        <a href="https://t.me/chapkagolibevena" target='_blank' rel='noopener noreferrer nofollow' style="color:#fff;background-color:#0088cc;">کەناڵی تێلێگرامی چەپکەگوڵ</a> و <a href="<?php echo _SITE; ?>poet:80" style="color:<?php echo $colors[80][1]; ?>;background-color:<?php echo $colors[80][0]; ?>;">کەماڵ ڕەحمانی</a> &rsaquo; بۆ
         <a href="<?php echo _SITE; ?>poet:65/book:1" style="color:<?php echo $colors[21][3]; ?>;background-color:<?php echo $colors[21][2]; ?>;">دیوانی شەونمی، حەقیقی</a>
     </p>
     <p>
-        <a href="https://allekok.com/poet:80" style="color:<?php echo $colors[80][3]; ?>;background-color:<?php echo $colors[80][2]; ?>;">کەماڵ ڕەحمانی</a>
+        <a href="<?php echo _SITE; ?>poet:80" style="color:<?php echo $colors[80][1]; ?>;background-color:<?php echo $colors[80][0]; ?>;">کەماڵ ڕەحمانی</a>
         &rsaquo;
         بۆ
-        <a href="https://allekok.com/pitew/poem-list.php?name=%DA%A9%DB%95%D9%85%D8%A7%DA%B5%20%DA%95%DB%95%D8%AD%D9%85%D8%A7%D9%86%DB%8C" style="color:rgb(0, 138, 230);background-color:rgba(0, 153, 255,0.05);">
+        <a href="https://allekok.com/pitew/poem-list.php?name=%DA%A9%DB%95%D9%85%D8%A7%DA%B5%20%DA%95%DB%95%D8%AD%D9%85%D8%A7%D9%86%DB%8C" style="color:#333;background-color:#eee;">
              نووسینی 
-        <span style="color:#444; opacity:0;" id="pitew-stats">.....</span>
+        <span style="color:#666; opacity:0;" id="pitew-stats">.....</span>
         شێعر لەسەر ئاڵەکۆک
         </a>
     
@@ -60,12 +64,23 @@
     </p>
     
     <p>
-        <a href="http://telegram.me/Kurdish_Poetry" target='_blank' rel='noopener noreferrer nofollow' style="color:<?php echo $colors[20][3]; ?>;background-color:<?php echo $colors[20][2]; ?>;">کەناڵی تێلێگرامی شیعر و هۆنراوە</a>
+        <a href="http://telegram.me/Kurdish_Poetry" target='_blank' rel='noopener noreferrer nofollow' style="color:#fff;background-color:#0088cc;">کەناڵی تێلێگرامی شیعر و هۆنراوە</a>
         &rsaquo; 
         بۆ بەشێکی چووک لە 
         <a href="/poet:82/book:1" style="color:<?php echo $colors[16][3]; ?>;background-color:<?php echo $colors[16][2]; ?>;">
          شێعرەکانی سافیی هیرانی
         </a>
+    </p>
+    <p>
+        <a href="https://www.kurditgroup.org/" style="color:#26678c">
+            کوردئایتیگرووپ
+        </a>
+        &rsaquo; بۆ  
+        <a href="https://www.kurditgroup.org/fontconvertor" style="color:#26678c">ئامێری وەرگێڕی فۆنت 
+        </a>
+         کە بۆ نووسینەوەی 
+        <a href="<?php echo _SITE; ?>poet:85/book:1" style="background:<?php echo $colors[85][2]; ?>; color:<?php echo $colors[85][3]; ?>">
+        دیوانی یانەی‌دڵانی، مدهۆش</a>  بەکار هاتووە.
     </p>
     <p style="text-align:center;">
         سپاس بۆ هەموو ئەو کەسانەی کە لە پتەوکردنی ئاڵەکۆک‌دا یارمەتی‌مان دەدەن.

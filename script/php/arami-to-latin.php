@@ -31,11 +31,11 @@
     }
     
     function get_poem_kind ($poem) {
-        if(stristr($poem , "<div class='b'>")) {
-            return "classic";
+        if(stristr($poem , "<div class='n'>")) {
+            return "new";
         }
         else {
-            return "new";
+            return "classic";
         }
     }
     
@@ -57,6 +57,11 @@
         $ar_signs =array('ِ', 'ُ', 'ٓ', 'ٰ', 'ْ', 'ٌ', 'ٍ', 'ً', 'ّ', 'َ');
         
         $line = str_replace($ar_signs , "" , $line);
+        
+        $line = str_replace(
+            ["ى"],
+            ["ی"],
+            $line);
         
         
         $from_nums = [
@@ -95,6 +100,9 @@
         if($word == "و") {
             return "u";
         }
+        if($word == "چ") {
+            return "çi";
+        }
         
         $always_vocals = [
             "aramic"=>['ە',
@@ -102,15 +110,13 @@
                 'ێ',
                 'ۆ',
                 'ا',
-                'وو',
-                'آ'],
+                'وو'],
             "latin"=>["e",
                 "e",
                 "ê",
                 "o",
                 "a",
-                "û",
-                "a"],
+                "û"],
             ];
         
         $word = str_replace($always_vocals["aramic"], $always_vocals["latin"], $word);
@@ -148,16 +154,21 @@
             'ع',
             'ص',
             'ض',
+            'ط',
+            'ظ',
+            "ي",
+            'ك',
             ],
-            "latin" => ['b','c','ç','d','f','g','h','j','k','l','ľ','m','n','p','q','r','ř','s','ş','t','v','w','x','y','z','','ĥ','ẍ','ȁ','s','z'],
+            "latin" => ['b','c','ç','d','f','g','h','j','k','l','ľ','m','n','p','q','r','ř','s','ş','t','v','w','x','y','z','','ĥ','ẍ','ȁ','s','z','t','z','y','k'],
             ];
             
         $vocals = [
             "aramic" => [
             'ی',
             'و',
+            "ي",
             ],
-            "latin" => ['î','u'],
+            "latin" => ['î','u','î'],
             ];
             
         $special = "i";
@@ -243,7 +254,7 @@
             $poem = "<div class='b'>" . $poem . "</div>";
         }
         elseif($poem_kind == "new") {
-            $poem = "<div class='n'><div class='m'>" . $poem . "</div></div>";
+            $poem = "<div class='n'><div class='m dltr'>" . $poem . "</div></div>";
         }
         
         return $poem;

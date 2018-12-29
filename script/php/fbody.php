@@ -11,16 +11,8 @@ require('condb.php');
 
 ?>
 
-<script>
-window.onload = function() {
-    document.querySelector("#tS").style.display="none";
-    document.querySelector("#search").style.display="block";
-    document.querySelector("#search").style.marginTop=".3em";
-}
-</script>
-
-<div id='poets' style='padding-top:unset;'>
-    <div style="animation:tL .8s;padding:1em 0 1em;">
+<div id='poets' style='padding-top:.5em;'>
+    <div style="animation:tL .8s;padding:0 0 1em;">
         <?php if(isset($_GET['new'])) { ?>
         <span style="display: block;font-size: .55em;color: #444;padding: 1em;background-color: #f3f3f3;margin-top: 1em;">
           مەبەست لە شاعیرانی نوێ، ئەو شاعیرانەن کە لە ژیان دا ماون.

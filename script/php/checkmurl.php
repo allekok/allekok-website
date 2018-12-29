@@ -78,8 +78,8 @@ if($query = mysqli_query($conn,$q)) {
 
 $_msqnr = mysqli_num_rows($query);
 
-            $_ids = array($id-1,$id,$id+1);
-            $q = "SELECT * FROM $_tbl WHERE id BETWEEN $_ids[0] and $_ids[2]";
+$_ids = array($id-1,$id,$id+1);
+$q = "SELECT * FROM $_tbl WHERE id BETWEEN $_ids[0] and $_ids[2]";
 
 $query = mysqli_query($conn,$q);
 if(mysqli_num_rows($query)>0 && ($_ids[1] != 0 && $_ids[1] <= $_msqnr)) {

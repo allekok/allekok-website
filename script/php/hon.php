@@ -1,10 +1,8 @@
-
 <script>
     var pID = <?php echo $info['id']; ?>;
     var bID = <?php echo $bk; ?>;
     var mID = <?php echo $row[1]['id']; ?>;
     
-    var http_adrs = `poet=${pID}&book=${bID}&poem=${mID}`;
     var poem_adrs = `poet:${pID}/book:${bID}/poem:${mID}`;
     
     var poemV2 = JSON.stringify({
@@ -14,7 +12,6 @@
         book: "<?php echo $bknow[$bk-1]; ?>",
         poem: "<?php echo $row[1]['name']; ?>",
     });
-    
 </script>
 
 <div id="poets">
@@ -58,25 +55,23 @@ echo($rrid_k . ". " . $row[1]['name']);
 </div>
 
     <div class='fontsize'>
-        <i style='vertical-align:middle;font-size:1.4em;height:0.6em;padding-right:5px;color:#666;' class='material-icons'>format_size</i>
-        <div class='bigger' style="position:relative;padding:.7em 1em">
-            <div style="width: 100%;height: 100%;position: absolute;right: -0.03em;background: none;border: 0;box-shadow: none;"></div><i style='vertical-align:middle;' class='material-icons'>arrow_upward</i>
-        </div><div class='smaller' style="position:relative;margin-left:0.4em;padding:.7em 1em">
-            <div style="width: 100%;height: 100%;position: absolute;right: -0.02em;top:-0.001em;background: none;border: 0;box-shadow: none;"></div><i style='vertical-align:middle;' class='material-icons'>arrow_downward</i>
-        </div>|<div id='copy-sec' class='copy' style="position:relative;margin:0 0.4em;font-size:.83em;padding:.7em .3em;">
-            <div style="width: 100%;height: 100%;position: absolute;right: -0.02em;top:-0.001em;background: none;border: 0;box-shadow: none;"></div>
+        <i style='vertical-align:middle;font-size:1.4em;height:0.6em;color:#555;' class='material-icons'>format_size</i>
+        <button class='bigger' style="padding:.85em 1.1em">
+            <i style='vertical-align:middle;' class='material-icons'>arrow_upward</i>
+        </button><button class='smaller' style="margin-left:0.4em;padding:.85em 1.1em">
+            <i style='vertical-align:middle;' class='material-icons'>arrow_downward</i>
+        </button>|<button id='copy-sec' class='copy' style="margin:0 0.4em;font-size:.83em;padding:.85em .3em;">
             <i style='vertical-align:middle;' class='material-icons'>content_copy</i> کۆپی کردن 
-        </div><?php 
-        echo "|<i id='extlnkico' style='cursor:pointer;color: #666;vertical-align: middle;padding:0 .2em;font-size: 1.8em;height: .8em;' class='material-icons' title='سەبارەت بە شێعر'>more_horiz</i>";
+        </button><?php 
+        echo "|<i id='extlnkico' style='cursor:pointer;color: #444;vertical-align: middle;padding:0 .2em;font-size: 1.8em;height: .8em;' class='material-icons' title='سەبارەت بە شێعر'>more_horiz</i>";
 
-        if(! ($ath==10 && $bk==1 && $row[1]['id']==1) ) { ?><div id='fav-sec' class='fav' style="background:none; font-size:1.8em; box-shadow:none; border:0;float:left;height:0.9em;position:relative;padding-left:5px;padding-top:.25em;">
-            <div style="width: 100%;height: 100%;position: absolute;right: -0.02em;top:-0.001em;background: none;border: 0;box-shadow: none;"></div>
+        if(! ($ath==10 && $bk==1 && $row[1]['id']==1) ) { ?><button id='fav-sec' class='fav' style="background:none; font-size:1.8em; box-shadow:none; border:0;float:left;padding-left:5px;padding-top:.25em;">
             <i class='material-icons' id='like-icon' style='color: <?php echo $colors[$ath][0]; ?>;vertical-align: top;font-size: 1.3em;'>bookmark_border</i>
-        </div>
+        </button>
         <?php } ?>
     </div>
 
-<div style='display:none;font-size: .55em;background: #f8f8f8;max-width: 500px;margin: auto auto .5em;padding: .5em 1em;border-radius: 0 0 2px 2px;box-shadow: 0 4px 20px -20px #000;text-align: right; border: 1px solid #eee;border-top:0;' id='extlnk'>
+<div style='display:none;font-size: .55em;background: #fafafa;max-width: 500px;margin: auto auto .5em;padding: .5em 1em;border-radius: 0 0 2px 2px;box-shadow: 0 4px 20px -20px #000;text-align: right; border: 1px solid #eee;border-top:0;' id='extlnk'>
 <?php
     if($row[1]['link'] != "") {
         $ext_lnk = explode("[t]", $row[1]['link']);
@@ -89,12 +84,12 @@ echo($rrid_k . ". " . $row[1]['name']);
         echo "</div>";
     }
 ?>
-<div style="padding: 1em 0;">
+<div style="padding: 1.1em 0;">
     <i class='material-icons' style="vertical-align: middle;">translate</i>
     <button class='button' type="button" id="convertToLatBtn" style="font-size: .9em;margin-right: .5em;">ئەلفوبێی لاتین</button>
     <div class='loader' id='convertToLat-loading' style='width:1.5em; height:1.5em; display:none;margin-right:1em;vertical-align:middle;'></div>
 </div>
-<div style='text-align: center;border-top: 1px solid #ddd;padding: 1em 0;background: linear-gradient(#f2f2f2, #f8f8f8, #f8f8f8, #f8f8f8);'>
+<div style='text-align: center;border-top: 2px dashed #e1e1e1;padding: .5em 0;'>
     <form id="wordFrm">
         <section style="display: inline-block;width: 35%;font-size: .9em;text-align: right;">
             گەڕان بۆ واتای وشە : 
@@ -119,12 +114,14 @@ echo($rrid_k . ". " . $row[1]['name']);
                 text-align:left;
             }
             #wordMore a {
-                display: inline-block;
                 text-align: center;
                 background: <?php echo $colors[$color_num][0]; ?>;
                 color: <?php echo $colors[$color_num][1]; ?>;
-                margin: .6em 0 0;
                 padding: .3em .8em;
+            }
+            #wordMore a:hover {
+                text-decoration:none;
+                box-shadow:0 3px 5px -2px #aaa;
             }
         </style>
         <div id="wordResKawa">
@@ -338,7 +335,7 @@ echo  $row[1]['hon'];
     if(sups.length > 0) {
         sups.forEach(function(e) {
             e.addEventListener("click",function() {
-                window.scrollTo(0, document.querySelector(".m.d.cf:last-child").offsetTop - (fs.offsetHeight+nav.offsetHeight+10));
+                window.scrollTo(0, document.querySelector(".m.d.cf:last-child").offsetTop - 10);
             });
         });
     }
@@ -427,7 +424,7 @@ echo  $row[1]['hon'];
             
             var res = JSON.parse(this.responseText);
             
-            fin += "<span class='tp' style='background: #e9e9e9;display: block;font-size: .9em;padding: .3em .5em;'>فەرهەنگی ئەناهیتا: </span>";
+            fin += "<span class='tp' style='background: #f3f3f3;display: block;font-size: .9em;padding: .3em .5em;'>فەرهەنگی ئەناهیتا: </span>";
             
             for( var a in res ) {
                 
@@ -457,7 +454,7 @@ echo  $row[1]['hon'];
             
             var res = JSON.parse(this.responseText);
             
-            fin += "<span class='tp' style='background: #e9e9e9;display: block;font-size: .9em;padding: .3em .5em;'>فەرهەنگی کاوە: </span>";
+            fin += "<span class='tp' style='background: #f3f3f3;display: block;font-size: .9em;padding: .3em .5em;'>فەرهەنگی کاوە: </span>";
             
             for( var a in res ) {
                 

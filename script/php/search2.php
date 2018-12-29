@@ -191,7 +191,7 @@ function selectText(e) {
                 </div>
                 <form onsubmit="event.preventDefault();search_deep(which_PT_selected(), checks());" style="background: #fff;border-bottom: 1px solid #ddd;padding: 0em .3em;">
                     <p style='text-align: right;font-size: .45em;display: inline-block;width: 50%;box-sizing: border-box;max-width:10em;padding:1.2em 0;vertical-align:middle'>
-                    ئەژماری کتێبەکان:</p><input type="text" id="BksNumTxt" value="15" onfocus="selectText(this)" style="direction: ltr;text-align: center;box-sizing: border-box;font-size: .45em;display: inline-block;width: 23%;max-width: 100px;border: 1px solid #ddd;margin-left: 2%;border-radius: 2px;padding:.7em;vertical-align:middle"><button class='button' type="submit" style="width: 25%;font-size: .45em;text-align: center;box-sizing: border-box;max-width:60px;padding:.7em;vertical-align:middle">
+                    ئەژماری کتێبەکان:</p><input type="text" id="BksNumTxt" value="10" onfocus="selectText(this)" style="direction: ltr;text-align: center;box-sizing: border-box;font-size: .45em;display: inline-block;width: 23%;max-width: 100px;border: 1px solid #ddd;margin-left: 2%;border-radius: 2px;padding:.7em;vertical-align:middle"><button class='button' type="submit" style="width: 25%;font-size: .45em;text-align: center;box-sizing: border-box;max-width:60px;padding:.7em;vertical-align:middle">
                         گەڕان
                     </button>
                 </form>
@@ -215,7 +215,7 @@ function selectText(e) {
                 </div>
                 <form onsubmit="event.preventDefault();search_deep(which_PT_selected(), checks());" style="background: #fff;border-bottom: 1px solid #ddd;box-shadow: 0 5px 10px -5px #ddd;padding: 0em .3em;">
                     <p style='text-align: right;font-size: .45em;display: inline-block;width: 50%;box-sizing: border-box;max-width:10em;padding:1.2em 0;vertical-align:middle'>
-                    ئەژماری شێعرەکان:</p><input type="text" id="ResNumTxt" value="20" onfocus="selectText(this)" style="direction: ltr;text-align: center;box-sizing: border-box;font-size: .45em;display: inline-block;width: 23%;max-width: 100px;border: 1px solid #ddd;margin-left: 2%;border-radius: 2px;padding:.7em;vertical-align:middle"><button class='button' type="submit" style="width: 25%;font-size: .45em;text-align: center;box-sizing: border-box;max-width:60px;padding:.7em;vertical-align:middle">
+                    ئەژماری شێعرەکان:</p><input type="text" id="ResNumTxt" value="10" onfocus="selectText(this)" style="direction: ltr;text-align: center;box-sizing: border-box;font-size: .45em;display: inline-block;width: 23%;max-width: 100px;border: 1px solid #ddd;margin-left: 2%;border-radius: 2px;padding:.7em;vertical-align:middle"><button class='button' type="submit" style="width: 25%;font-size: .45em;text-align: center;box-sizing: border-box;max-width:60px;padding:.7em;vertical-align:middle">
                         گەڕان
                     </button>
                 </form>

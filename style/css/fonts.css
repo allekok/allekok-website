@@ -1,0 +1,8 @@
+@font-face{font-family:'kurd';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/ea/droidarabicnaskh/v7/DroidNaskh-Regular.eot);src:url("//fonts.gstatic.com/ea/droidarabicnaskh/v7/DroidNaskh-Regular.eot?#iefix") format('embedded-opentype'),url(//fonts.gstatic.com/ea/droidarabicnaskh/v7/DroidNaskh-Regular.woff2) format('woff2'),url(//fonts.gstatic.com/ea/droidarabicnaskh/v7/DroidNaskh-Regular.woff) format('woff'),url(//fonts.gstatic.com/ea/droidarabicnaskh/v7/DroidNaskh-Regular.ttf) format('truetype')}
+/* fallback */
+            @font-face {
+              font-family: 'Material Icons';
+              font-style: normal;
+              font-weight: 400;
+              src: url(/style/font/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
+            }

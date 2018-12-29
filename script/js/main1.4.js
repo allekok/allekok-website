@@ -1,28 +1,23 @@
 function toggle_search() {
-
     var s = document.getElementById('search');
     var sk = document.getElementById("search-key");
     var h = document.querySelector('header');
     var tS = document.getElementById('tS');
 
     if(s.style.display !== "block") {
-
         s.style.display = "block";
         sk.focus();
         tS.style.opacity="1";
         h.style.animation="concentrate 1s forwards";
     } else {
-
         s.style.display="none";
         tS.style.opacity="";
         h.style.animation="smile 1s forwards";
     }
-
 }
 
 
 function toggle_Like() {
-    
     var tL_res = document.getElementById('tL-res');
     var tL = document.getElementById('tL');
     
@@ -32,19 +27,15 @@ function toggle_Like() {
         return;
     }
     
-    var favs = localStorage.getItem("favorites");
-    favs = favs.split('[fav]');
+    var favs=localStorage.getItem("favorites").split('[fav]'), favsS="", clrNum=0;
     favs = favs.reverse();
-    
-    var favsS = "";
-    var clrNum = 0;
     
     for( var a in favs ) {
         if( favs[a] !== "" ) {
             favs[a] = JSON.parse(favs[a]);
             clrNum = favs[a].poetID;
             
-            favsS += `<a class='link' style='border-bottom:1px solid #eee' href='${uritg+favs[a].url}'><i style='vertical-align:middle;font-size:2em;height:.85em;color:${colors[clrNum][0]};' class='material-icons'>bookmark</i> <span style='font-size:.85em; color:#555;'>${favs[a].poetName} <i style='vertical-align:middle;font-size: inherit;height: 0.6em;' class='material-icons'>keyboard_arrow_left</i> ${favs[a].book} <i style='vertical-align:middle;font-size: inherit;height: 0.6em;' class='material-icons'>keyboard_arrow_left</i></span> ${favs[a].poem} </a>`;
+            favsS += `<a class='link' style='border-bottom:1px solid #eee' href='/${favs[a].url}'><i style='vertical-align:middle;font-size:2em;height:.85em;color:${colors[clrNum][0]};' class='material-icons'>bookmark</i> <span style='font-size:.85em; color:#555;'>${favs[a].poetName} &rsaquo; ${favs[a].book} &rsaquo;</span> ${favs[a].poem} </a>`;
         }
     }
     
@@ -57,11 +48,10 @@ function toggle_Like() {
 
 
 function search(e) {
-    
     var str=document.getElementById("search-key").value;
     var sres=document.getElementById("search-res");
     var s=document.getElementById('search');
-    var loading = "<div class='loader' id='loader'></div>";
+    var loading = "<div class='loader'></div>";
     var xmlhttp=new XMLHttpRequest();
 
     var C = (typeof e.which === "number") ? e.which : e.keyCode;
@@ -92,7 +82,7 @@ function search(e) {
         xmlhttp.onload=function() {
             sres.innerHTML = this.responseText;
             sbtn.innerHTML = "گەڕانی زۆرتر";
-        }
+        };
     }
 
     xmlhttp.send();
@@ -187,11 +177,11 @@ function copyPoem() {
         /<\/i>/gi,
         /<center>/gi,
         /<\/center>/gi,
-        /&nbsp;/gi
+        /&nbsp;/gi,
+        /<div class="m dltr">/gi,
     ];
 
     for(var hc in htmlchars) {
-
         text = text.replace(htmlchars[hc], "");
     }
     
@@ -202,19 +192,18 @@ function copyPoem() {
     
     Clipboard.copy(text);
     
-    copySec.innerHTML = "<div style='width: 100%;height: 100%;position: absolute;right: -0.02em;top:-0.001em;border: 0;background:none;box-shadow: none;'></div><i class='material-icons' style='vertical-align:middle;'>check</i> کۆپی کرا.";
+    copySec.innerHTML = "<i class='material-icons' style='vertical-align:middle;'>check</i> کۆپی کرا.";
     copySec.style.backgroundColor = "#cfc";
         
     setTimeout(function(){
-        copySec.innerHTML = "<div style='width: 100%;height: 100%;position: absolute;right: -0.02em;top:-0.001em;background:none;border: 0;box-shadow: none;'></div><i class='material-icons' style='vertical-align:middle;'>content_copy</i> کۆپی کردن ";
+        copySec.innerHTML = "<i class='material-icons' style='vertical-align:middle;'>content_copy</i> کۆپی کردن ";
         copySec.style.backgroundColor = "";
     
     },3000);
 }
 
     
-function Liked() {
-
+function Liked () {
     var tL = document.getElementById('tL');
     var ico = document.getElementById("like-icon");
     var favs = localStorage.getItem('favorites');
@@ -320,7 +309,6 @@ function isJson(str) {
     return true;
 }
 
-
 /// check if liked
 var likeico = document.getElementById('like-icon');
 
@@ -370,32 +358,32 @@ live_search_form.addEventListener("submit", function(e) {
 });
 
 
-var tLLL = document.getElementById("tL");
-if( tLLL !== null ) {
-	tLLL.addEventListener("click", toggle_Like);
+var draft = document.getElementById("tL");
+if( draft !== null ) {
+	draft.addEventListener("click", toggle_Like);
 }
 
-var tSSS = document.getElementById("tS");
-if( tSSS !== null) {
-	tSSS.addEventListener("click", toggle_search);
+draft = document.getElementById("tS");
+if( draft !== null) {
+	draft.addEventListener("click", toggle_search);
 }
 
-var favSecc = document.getElementById("fav-sec");
-if( favSecc !== null) {
-    favSecc.addEventListener("click", Liked);
+draft = document.getElementById("fav-sec");
+if( draft !== null) {
+    draft.addEventListener("click", Liked);
 }
 
-
-var copySecc = document.getElementById("copy-sec");
-if( copySecc !== null) {
-    copySecc.addEventListener("click", copyPoem);
-}
-var smallerr = document.querySelector(".smaller");
-if( smallerr !== null) {
-    smallerr.addEventListener("click", function(){save_fs('smaller')});
+draft = document.getElementById("copy-sec");
+if( draft !== null) {
+    draft.addEventListener("click", copyPoem);
 }
 
-var biggerr = document.querySelector(".bigger");
-if( biggerr !== null) {
-    biggerr.addEventListener("click", function(){save_fs('bigger')});
+draft = document.querySelector(".smaller");
+if( draft !== null) {
+    draft.addEventListener("click", function(){save_fs('smaller')});
+}
+
+draft = document.querySelector(".bigger");
+if( draft !== null) {
+    draft.addEventListener("click", function(){save_fs('bigger')});
 }
