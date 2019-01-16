@@ -32,27 +32,16 @@ $color_num = 0;
         }
         #QAtxt {
             font-size: 0.65em;
-
             padding: 0.6em 3% 0.6em 2%;
-            
             text-align: right;
-            
             max-width: 90%;
-            
             width: 90%;
-            
             min-height: 8em;
-            
             display: block;
-            
             border-top: 3px solid rgb(221, 221, 221);
-            
             box-shadow: rgb(221, 221, 221) 0px 5px 10px -5px;
-            
             box-sizing: border-box;
-            
             margin: 1em auto 0;
-            
             height: 155px;
         }
         .btn {
@@ -129,7 +118,7 @@ $color_num = 0;
     
     <div style="border-top:1px solid #ddd;margin:1em 0 0.8em;"></div>
     
-    <div style="max-width:800px; margin:auto; padding:0 1em;">
+    <div style="max-width:800px; margin:auto; padding:0 .2em;">
         <h3 style="font-size: .7em;">
             بیروڕای خۆتان سەبارەت بە بەرنامەی دێسکتاپی ئاڵەکۆک لێرە بنووسن.
         </h3>

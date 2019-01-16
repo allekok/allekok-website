@@ -43,7 +43,7 @@ if(! empty($bknowdesc[$bk-1])) {
 }
 ?>
 
-<form style='text-align:right;margin: .8em .5em .8em;' action="" method="post">
+<form style='text-align:right;margin: 0 .2em;' action="" method="post">
     <input type="hidden" style="display:none;" name="order" value="asc">
     <button type='submit' style="cursor:pointer;padding: 1em .8em;" class='button'><i class='material-icons'>sort_by_alpha</i> بەڕیز کردنی شێعرەکان لە ئا ڕا</button>
     <a id="new_poem_a" style="background:<?php echo $colors[$color_num][0]; ?>;color:<?php echo $colors[$color_num][1]; ?>;display: inline-block;float: left;font-size: 1.15em;padding: .5em .3em;" class="material-icons button" title="نووسینی شێعرێکی تازە" href="/pitew/index.php?poet=<?php echo $info['takh'] ; ?>&book=<?php echo $bknow[$bk-1]; ?>"><i class="material-icons" style="font-size: inherit;height: 0;vertical-align: top;">note_add</i></a>
@@ -56,7 +56,7 @@ $rid_k = num_convert($row['id'],"en","ckb");
     
 ?>
 <div style="display:flex;">
-    <button style="background:none;padding:0 .5em;" type="button" title="نیشان‌دانی بەشی سەرەتای ئەم شێعرە"><i class="material-icons" style="vertical-align: middle;">keyboard_arrow_down</i></button><a href="/poet:<?php echo $ath; ?>/book:<?php echo $bk; ?>/poem:<?php echo $row['id']; ?>">
+    <button style="background:none;padding:0 .5em;" type="button" title="نیشان‌دانی بەشی سەرەتای ئەم شێعرە"><i class="material-icons" style="vertical-align: middle;font-size:1.5em;">keyboard_arrow_down</i></button><a href="/poet:<?php echo $ath; ?>/book:<?php echo $bk; ?>/poem:<?php echo $row['id']; ?>">
 <?php
 echo($rid_k . ". " . $row['name']);
 ?>

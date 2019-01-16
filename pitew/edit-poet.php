@@ -57,13 +57,13 @@ $color_num = 0;
                 
                 if(res.id != "0") {
                     txts.forEach(function(e) {
-                        e.style.borderTopColor = colors[res.id][0];
+                        e.style.borderTopColor = colors[color_num(res.id)][0];
                     });
                     btns.forEach(function(e) {
-                        e.style.background = colors[res.id][0];
-                        e.style.color = colors[res.id][1];
+                        e.style.background = colors[color_num(res.id)][0];
+                        e.style.color = colors[color_num(res.id)][1];
                     });
-                    poet.style.backgroundColor = colors[res.id][2];
+                    poet.style.backgroundColor = colors[color_num(res.id)][2];
                     poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
                     poet.style.backgroundRepeat = "no-repeat";
                     poet.style.backgroundSize = "auto 100%";

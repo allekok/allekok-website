@@ -1,2 +1,0 @@
-AuthName "php"
-AuthUserFile "/home/allekokc/.htpasswds/public_html/script/php/passwd"

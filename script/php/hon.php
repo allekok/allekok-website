@@ -66,7 +66,7 @@ echo($rrid_k . ". " . $row[1]['name']);
         echo "|<i id='extlnkico' style='cursor:pointer;color: #444;vertical-align: middle;padding:0 .2em;font-size: 1.8em;height: .8em;' class='material-icons' title='سەبارەت بە شێعر'>more_horiz</i>";
 
         if(! ($ath==10 && $bk==1 && $row[1]['id']==1) ) { ?><button id='fav-sec' class='fav' style="background:none; font-size:1.8em; box-shadow:none; border:0;float:left;padding-left:5px;padding-top:.25em;">
-            <i class='material-icons' id='like-icon' style='color: <?php echo $colors[$ath][0]; ?>;vertical-align: top;font-size: 1.3em;'>bookmark_border</i>
+            <i class='material-icons' id='like-icon' style='color: <?php echo $colors[$color_num][0]; ?>;vertical-align: top;font-size: 1.3em;'>bookmark_border</i>
         </button>
         <?php } ?>
     </div>
@@ -170,11 +170,11 @@ echo  $row[1]['hon'];
     
         <textarea placeholder="بیر و ڕای خۆتان سەبارەت بەو شێعرە لێرە بنووسن... *" id="commTxt" name='comment'></textarea>
     
-        <div class='loader' id="commloader" style="display:none;border-top:1px solid <?php echo $colors[$ath][0]; ?>"></div>
+        <div class='loader' id="commloader" style="display:none;border-top:1px solid <?php echo $colors[$color_num][0]; ?>"></div>
         
         <div id="message"></div>
     
-        <button class='button bth' type="submit" style="font-size: .7em;width: 50%;padding: 1em 0;max-width: 150px;background-color: <?php echo $colors[$ath][0]; ?>;color: <?php echo $colors[$ath][1]; ?>;cursor:pointer;margin:0.5em 0;">ناردن</button>
+        <button class='button bth' type="submit" style="font-size: .7em;width: 50%;padding: 1em 0;max-width: 150px;background-color: <?php echo $colors[$color_num][0]; ?>;color: <?php echo $colors[$color_num][1]; ?>;cursor:pointer;margin:0.5em 0;">ناردن</button>
     </form>
         
 <script>
@@ -261,7 +261,7 @@ echo  $row[1]['hon'];
     بیر و ڕاکان سەبارەت بەو شێعرە
 </div>
 <div id='hon-comments-body' style='padding:0 .2em'></div>
-    <div class='loader' id="commmloader" style="display:none;border-top:1px solid <?php echo $colors[$ath][0]; ?>"></div>
+    <div class='loader' id="commmloader" style="display:none;border-top:1px solid <?php echo $colors[$color_num][0]; ?>"></div>
 </div>
 
 <script>
@@ -300,7 +300,7 @@ echo  $row[1]['hon'];
                     
                     for(a in res) {
                         
-                        newComm += "<div class='comment'><div class='comm-name'><i style='font-style:normal;font-size:1.4em;padding-left:.3em;color:<?php echo $colors[$ath][0]; ?>'>&bull;</i>"+res[a].name+":</div><div class='comm-body'>"+res[a].comment+"</div><div class='comm-footer'>"+res[a].date+"</div></div>";
+                        newComm += "<div class='comment'><div class='comm-name'><i style='font-style:normal;font-size:1.4em;padding-left:.3em;color:<?php echo $colors[$color_num][0]; ?>'>&bull;</i>"+res[a].name+":</div><div class='comm-body'>"+res[a].comment+"</div><div class='comm-footer'>"+res[a].date+"</div></div>";
                     }
                     
                     comments.innerHTML = newComm;

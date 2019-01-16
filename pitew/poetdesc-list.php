@@ -43,25 +43,30 @@ $color_num = 0;
     
     <style>
         .epld {
-            color:#444;
-            padding:1em;
-            border:0;
-            font-size:.6em;
-            text-align:right;
+            padding: 1em;
+            font-size: .6em;
+            text-align: right;
+            border-bottom: 2px dashed #e9e9e9;
         }
         .epld-title {
-            background:#eee;
-            padding:1em;
+            padding: 0 1em;
+            border-right: 5px solid #666;
+            color: #000;
+            font-size: 1em;
+            font-weight: bold;
         }
         .epld-body {
-            padding:1em;
-            background:#fafafa;
-            text-indent:1em;
-            border:1px solid #eee;
+            padding: 1em;
+            border-right: 5px solid #eee;
+            text-align: justify;
+            color:#222;
         }
         #num_pdl {
-            color:#555;
-            font-size:.55em;
+            color: #444;
+            font-size: .55em;
+            display: inline-block;
+            background: #f3f3f3;
+            padding: .5em 1em;
         }
     </style>
     

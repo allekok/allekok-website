@@ -4,7 +4,7 @@
         <script>
         
             function check_connection () {
-                xmlhttp=new XMLHttpRequest();
+                var xmlhttp=new XMLHttpRequest();
                 
                 xmlhttp.open("GET",`//allekok.com/robots.txt?${Date.now()}`);
                 xmlhttp.onload = function () {
@@ -17,7 +17,7 @@
                         setTimeout(function() {
                             console.log("trying to connect...");
                             check_connection();
-                        } , 1000);
+                        } , 1500);
                     }
                 }
                 

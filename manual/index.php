@@ -30,27 +30,16 @@ $color_num = 0;
         }
         #QAtxt {
             font-size: 0.65em;
-
             padding: 0.6em 3% 0.6em 2%;
-            
             text-align: right;
-            
             max-width: 90%;
-            
             width: 90%;
-            
             min-height: 8em;
-            
             display: block;
-            
             border-top: 3px solid rgb(221, 221, 221);
-            
             box-shadow: rgb(221, 221, 221) 0px 5px 10px -5px;
-            
-            box-sizing: border-box;
-            
+            box-sizing: border-box;            
             margin: 1em auto 0;
-            
             height: 155px;
         }
         .btn {
@@ -82,17 +71,18 @@ $color_num = 0;
         main h2 {
             font-size:1.3em;
             color:rgb(0,210,50);
-            text-indent:1em;
             margin-top:1em;
         }
         main h3 {
             font-size:1.1em;
             color:rgb(0,210,50);
-            text-indent:2em;
             margin-top:1em;
         }
+        main h1, main h2, main h3 {
+            text-align:right;
+        }
         main ul, ol {
-            padding-right:3em;
+            padding-right:2em;
             color:#333;
         }
         main p {
@@ -111,7 +101,7 @@ $color_num = 0;
         }
     </style>
     
-    <main style="font-size:.65em;text-align:right;padding:1em;">
+    <main style="font-size:.65em;text-align:justify;padding:1em;">
 
     </main>
     
@@ -189,7 +179,7 @@ $color_num = 0;
     
     <div style="border-top:1px solid #ddd;margin:1em 0 0.8em;"></div>
     
-    <div style="max-width:800px; margin:auto; padding:0 1em;">
+    <div style="max-width:800px; margin:auto; padding:0 .2em;">
         <h3 style="font-size: .7em;">
             ئەگەر پرسیارێک‌و سەبارەت بە "چۆنیەتی بەکارهێنانی ئاڵەکۆک" هەیە دەتوانن لێرە بیپرسن.
         </h3>

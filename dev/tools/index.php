@@ -46,31 +46,20 @@ $color_num = 0;
             padding-top:1em;
         }
         p {
-            text-indent: 2em; text-align:right; padding:1em 0;font-size:0.6em;
+            text-indent: 2em; padding:1em 0;font-size:0.6em;
         }
         #QAtxt {
             font-size: 0.65em;
-
             padding: 0.6em 3% 0.6em 2%;
-            
             text-align: right;
-            
             max-width: 90%;
-            
             width: 90%;
-            
             min-height: 8em;
-            
             display: block;
-            
             border-top: 3px solid rgb(221, 221, 221);
-            
             box-shadow: rgb(221, 221, 221) 0px 5px 10px -5px;
-            
             box-sizing: border-box;
-            
             margin: auto;
-            
             height: 155px;
         }
         .btn {
@@ -85,7 +74,7 @@ $color_num = 0;
             border-top:3px dashed #ccc;
         }
     </style>
-    <div style="max-width: 800px; margin:auto; padding:1em;line-height:2.3">
+    <div style="max-width: 800px; margin:auto; padding:1em;line-height:2.3; text-align:justify;">
         <p style="border-bottom:1px solid #ddd"><a href="/dev/" style="color: #00e;">
             بۆ داگرتنی کۆدەکانی ئاڵەکۆک لێرە کرتە بکەن.
         </a></p>
@@ -263,7 +252,7 @@ $color_num = 0;
 	    }
     </script>
     
-    <div style="max-width:800px; margin:auto; padding:0 1em">
+    <div style="max-width:800px; margin:auto; padding:0 .2em">
         <h3 style="font-size: .7em;">
             ئەگەر سەبارەت بەم بابەتە پرسیارێک‌و هەیە لێرە بینووسن.
         </h3>

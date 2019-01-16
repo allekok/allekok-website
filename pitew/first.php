@@ -124,7 +124,7 @@ $color_num = 0;
     
     <div style="border-top:1px solid #ddd;margin:1em 0 0.8em;"></div>
     
-    <div style="max-width:800px; margin:auto; padding:0 1em;">
+    <div style="max-width:800px; margin:auto; padding:0 .2em;">
         <h3 style="font-size: .7em;">
             ئەگەر پرسیارێک‌و سەبارەت بە "پتەوکردنی ئاڵەکۆک" هەیە دەتوانن لێرە بیپرسن.
         </h3>
@@ -147,11 +147,14 @@ $color_num = 0;
                     
                     echo "<h3 style='border-top: 1px solid #ddd;margin-top: 2em;font-size: .7em;padding: 1em;'>پرسیار و وەڵامەکان</h3>";
                     $cc = array_reverse($cc);
-                    
+                    $i = 1;
                     foreach($cc as $c) {
                         if(!empty($c)) {
                             $c = str_replace(['[code]', '[/code]', "\n"], ['<code>', '</code>', '<br>'], $c);
-                            echo "<div class='comment'><div class='comm-body'>".$c."</div></div>";
+                            echo "<div class='comment'";
+                            if($i%2) echo " style='background:#f3f3f3'";
+                            echo "><div class='comm-body'>".$c."</div></div>";
+                            $i++;
                         }
                     }
                     

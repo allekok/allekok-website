@@ -4,34 +4,25 @@
             ئاڵەکۆک، هەلێکە بۆ خوێندنەوەی شێعری کوردی.
         </p>
     </div>
-    <!---
-
-    If you wanna know who I am, go here: <?php echo _SITE; ?>quest/
-
-    -->
-    <div class='fnav'>
-        <div class='fnav-stats'>
-            <div class='fnav-stats-caption'>
-                <?php include("stats.php"); ?>
-                <i id='poets-num'><?php echo $aths_num; ?></i>
-                شاعیر
-                <i class='material-icons'>keyboard_arrow_left</i>
-                <i id='poems-num'><?php echo $hons_num; ?></i>
-                شێعر
-            </div>
-        </div>
-        <div style="font-size:.5em; margin-top:1em;">
-            <span style="color:#666;">
-                ئاخیرین نوێ کردنەوەی شێعرەکان: 
-            </span>
-            <span style="direction:ltr; letter-spacing: .5px; display:inline-block; color:#444;">
-            <?php
-                echo num_convert(file_get_contents(ABSPATH . "last-update.txt"), "en", "ckb");
-                ?>
-            </span>
-        </div>
-
+    <div class='stats-min'>
+        <?php include("stats.php"); ?>
+        <i class='sub-num'><?php echo $aths_num; ?></i>
+        شاعیر
+        &rsaquo;
+        <i class='sub-num'><?php echo $hons_num; ?></i>
+        شێعر
     </div>
+    <div style="font-size:.5em;">
+        <span style="color:#666;">
+            ئاخیرین نوێ کردنەوەی شێعرەکان: 
+        </span>
+        <span style="direction:ltr;letter-spacing:.5px;display:inline-block;color:#444;font-weight:bold">
+        <?php
+            echo num_convert(file_get_contents(ABSPATH . "last-update.txt"), "en", "ckb");
+            ?>
+        </span>
+    </div>
+
     <div style="width:95%;max-width:550px;border-top:1px solid #eee; padding:.5em 0 0; margin:auto;">
         
         <p style="font-size:0.75em;padding-bottom:0.5em;">

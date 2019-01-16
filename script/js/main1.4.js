@@ -16,6 +16,9 @@ function toggle_search() {
     }
 }
 
+function color_num (pID) {
+    return (pID%22) ? (pID - (22 * Math.floor(pID/22))) : 22;
+}
 
 function toggle_Like() {
     var tL_res = document.getElementById('tL-res');
@@ -33,7 +36,7 @@ function toggle_Like() {
     for( var a in favs ) {
         if( favs[a] !== "" ) {
             favs[a] = JSON.parse(favs[a]);
-            clrNum = favs[a].poetID;
+            clrNum = color_num(favs[a].poetID);
             
             favsS += `<a class='link' style='border-bottom:1px solid #eee' href='/${favs[a].url}'><i style='vertical-align:middle;font-size:2em;height:.85em;color:${colors[clrNum][0]};' class='material-icons'>bookmark</i> <span style='font-size:.85em; color:#555;'>${favs[a].poetName} &rsaquo; ${favs[a].book} &rsaquo;</span> ${favs[a].poem} </a>`;
         }
@@ -209,23 +212,18 @@ function Liked () {
     var favs = localStorage.getItem('favorites');
     
     if(favs !== null) {
-        console.log("! null");
         favs = favs.split("[fav]");
         
         var where = favs.indexOf(poemV2);
         
         if(where > -1) {
-            console.log("founded");
-            
             favs = favs.join('[fav]');
             var sd = poemV2 + "[fav]";
             favs = favs.replace(sd,"");
             
             if(favs.length>6) {
-                console.log("remove and replace for more than one item");
                 localStorage.setItem('favorites',favs);
             } else {
-                console.log("remove");
                 localStorage.removeItem('favorites');
                 tL.style.display = "none";
             }
@@ -235,7 +233,6 @@ function Liked () {
             ico.style.animation = "";
             
         } else {
-            console.log("! founded");
             
             favs = favs.join('[fav]');
             favs += poemV2 + "[fav]";
@@ -247,8 +244,6 @@ function Liked () {
             
         }
     } else {
-        
-        console.log("null");
         
         favs = poemV2 + "[fav]";
         localStorage.setItem('favorites',favs);
@@ -321,7 +316,7 @@ if(favs !== null && typeof poemV2 !== 'undefined') {
     
     if(where > -1) {
         likeico.innerHTML = "bookmark";
-        likeico.style.color = colors[JSON.parse(poemV2).poetID][0];
+        likeico.style.color = colors[color_num(JSON.parse(poemV2).poetID)][0];
         likeico.style.backgroundColor = "";
         likeico.style.animation = "ll 0.4s ease-out forwards";
     }

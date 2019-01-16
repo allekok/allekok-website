@@ -5,7 +5,7 @@
 <html dir="rtl">
     <head>
 
-        <link rel="stylesheet" href="/style/css/main2.4.css">
+        <link rel="stylesheet" href="/style/css/main2.5.css">
         <script type="text/javascript">
     var uritg = "<?php echo _SITE; ?>";
   </script>

@@ -1,4 +1,7 @@
 <?php
+
+require_once("constants.php");
+
 function num_convert($_num, $_from, $_to) {
     
 	$_en = array('0','1','2','3','4','5','6','7','8','9');
@@ -44,6 +47,10 @@ function get_poet_image($_pID, $_size, $_slash) {
 
 	return $_img;
 
+}
+
+function color_num ($ath) {
+    return ($ath%22) ? $ath - (22 * floor($ath/22)) : 22;
 }
 
 require_once("sanKuText.php");

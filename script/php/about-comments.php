@@ -16,7 +16,7 @@ if($fs = filesize($uri)) {
     foreach($conts as $c) {
         if($_n == $_GET['num']) break 1;
         
-        $c = str_replace("\n", "<br>", $c);
+        if(!$_GET["plain"]) $c = str_replace("\n", "<br>", $c);
         
         echo $c;
         $_n++;

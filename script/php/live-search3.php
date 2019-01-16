@@ -114,7 +114,7 @@ $s_poet = array();
     		    $s_poet_hdesc=san_data($res['hdesc'],true);
     		    
             
-        		if((stristr($s_poet_takh,$q2) || stristr($s_poet_name,$q2) || stristr($s_poet_prof,$q2) || stristr($s_poet_hdesc,$q2)) && !$res['f']) {
+        		if((@stristr($s_poet_takh,$q2) || @stristr($s_poet_name,$q2) || @stristr($s_poet_prof,$q2) || @stristr($s_poet_hdesc,$q2)) && !$res['f']) {
         			$res_poet1 .= "<section>";
         			$res_poet1 .= "<a href='/".$res['uri'] ."'>";
         			
@@ -203,7 +203,7 @@ if($e<$e_max) {
 	        $s_bk = san_data($res['book'], true);
 		    $s_bk_desc = san_data($res['book_desc'],true);
 
-			if( !$res['f'] && (stristr($s_bk,$q2) || stristr($s_bk_desc,$q2)) ) {
+			if( !$res['f'] && (@stristr($s_bk,$q2) || @stristr($s_bk_desc,$q2)) ) {
 			    
 				$res_book1 .= "<a href='/". $res['poet_address'] ."/" . $res['book_address'] . "'><i>" . $res['rtakh'] . "</i> &rsaquo; " . $res['rbook'] . "</a>";
 				$e++;

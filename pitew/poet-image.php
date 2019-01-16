@@ -87,14 +87,14 @@ $color_num = 0;
                 
                 if(res.id != "0") {
                     txts.forEach(function(e) {
-                        e.style.borderTopColor = colors[res.id][0];
+                        e.style.borderTopColor = colors[color_num(res.id)][0];
                     });
                     btns.forEach(function(e) {
-                        e.style.background = colors[res.id][0];
-                        e.style.color = colors[res.id][1];
+                        e.style.background = colors[color_num(res.id)][0];
+                        e.style.color = colors[color_num(res.id)][1];
                     });
-                    upldlikebtn.style.background = colors[res.id][2];
-                    poet.style.backgroundColor = colors[res.id][2];
+                    upldlikebtn.style.background = colors[color_num(res.id)][2];
+                    poet.style.backgroundColor = colors[color_num(res.id)][2];
                     poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
                     poet.style.backgroundRepeat = "no-repeat";
                     poet.style.backgroundSize = "auto 100%";
@@ -127,10 +127,14 @@ $color_num = 0;
         <div class='file-btn button' role='button' onclick="document.querySelector('input[name=profile]').click()" style="display:inline-block;font-size: 1.7em;" id='upldlikebtn'>
             هەڵبژاردنی وێنە
             </div><br>
-            <div style='font-size:.7em; color:#555;'>
-                &bull; فۆرمەتی وێنەکەتان دەبێ JPG, JPEG, PNG بێت.
+            <div style="padding-top:.2em;font-size:.7em; color:#555;font-family:'kurd',monospace">
+                &bull; فۆرمەتی وێنەکەتان دەبێ 
+                <span style='background:#eee;padding:0 .2em'>JPG, JPEG, PNG</span>
+                بێت.
                 <br>
-                &bull; گەورەیی وێنەکە نابێ لە 5MB زیاتر بێت.
+                &bull; گەورەیی وێنەکە نابێ لە 
+                <span style='background:#eee;padding:0 .2em'>5MB</span>
+                زیاتر بێت.
             </div>
         <input type="file" style='display:none;' name="profile">
         <div id="frmUploadMess"></div>
@@ -167,10 +171,11 @@ $color_num = 0;
                 return;
             }
             if(fl.value == "") {
+                var old_bkg = flbtn.style.background;
                 flbtn.style.background = "rgba(204,51,0,0.2)";
                 
                 setTimeout(function() {
-                    flbtn.style.background = "";
+                    flbtn.style.background = old_bkg;
                 }, 2000);
                 return;
             }

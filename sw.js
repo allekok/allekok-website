@@ -1,6 +1,8 @@
+const cache_ver = "v110";
+
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v109').then(function(cache) {
+    caches.open(cache_ver).then(function(cache) {
       return cache.addAll([
         '/style/img/poets/profile/profile_0.jpg',
         '/style/img/poets/profile/profile_1.jpg',
@@ -58,10 +60,14 @@ self.addEventListener('install', function(event) {
         '/style/img/poets/profile/profile_61.jpg',
         '/style/img/poets/profile/profile_82.jpg',
         '/style/img/poets/profile/profile_83.jpg',
+        '/style/img/poets/profile/profile_84.jpg',
         '/style/img/poets/profile/profile_85.jpg',
         '/style/img/poets/profile/profile_87.jpg',
-        '/script/js/main1.4.js?v15',
-        '/style/css/main2.5.css?v29',
+        '/style/img/poets/profile/profile_88.jpg',
+        '/style/img/poets/profile/profile_59.jpg',
+        '/style/img/poets/profile/profile_36.jpg',
+        '/script/js/main1.4.js?v20',
+        '/style/css/main2.5.css?v40',
         '/favicon.ico',
         '/style/font/DroidNaskh-Regular.woff',
         '/style/font/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
@@ -72,7 +78,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
-  var cacheWhitelist = ['v109'];
+  var cacheWhitelist = [cache_ver];
 
   event.waitUntil(
     caches.keys().then(function(keyList) {
@@ -90,7 +96,7 @@ self.addEventListener('fetch', function(event) {
     caches.match(event.request).then(function(resp) {
       return resp || fetch(event.request).then(function(response) {
         //let responseClone = response.clone();
-        //    caches.open('v108').then(function(cache) {
+        //    caches.open(cache_ver).then(function(cache) {
         //      cache.put(event.request, responseClone);
         //    });
         

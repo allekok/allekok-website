@@ -26,7 +26,7 @@ $color_num = 0;
     </h1>
     
     <div style="line-height:2.3">
-        <p style="font-size:0.6em; text-indent: 2em; text-align:right; max-width: 800px; margin:auto;padding:0 0.6em;">
+        <p style="font-size:0.6em; text-indent: 2em; text-align:justify; max-width: 800px; margin:auto;padding:0 0.6em;">
             ئەو لاپەڕە بە تایبەتی بۆ ئەو کەسانەیە کە شارەزان لە نووسینی کۆدی کامپیوتێڕی دا. ئێوە دەتوانن کۆدەکانی ئاڵەکۆک، داگرن بۆ سەر کامپیوتێڕ یان سێروێری خۆتان.
             <p style="font-size:0.6em; font-weight:bold;">
             خوێندنەوە، گۆڕین و بڵاوکردنەوەی کۆدەکانی ئاڵەکۆک ئازادە.

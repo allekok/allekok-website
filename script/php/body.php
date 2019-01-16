@@ -4,7 +4,6 @@ $title = _TITLE;
 $desc = _DESC;
 $keys = _KEYS;
 $t_desc = "";
-$t_class = "ltitle";
 
 if( !empty($_GET['ath']) || !empty($_GET['bk']) || !empty($_GET['id']) || !empty($_GET['q']) ) {
     
@@ -15,27 +14,26 @@ if( !empty($_GET['ath']) || !empty($_GET['bk']) || !empty($_GET['id']) || !empty
     
     require('checkmurl.php');
 
-} elseif($_REQUEST['job'] === "about") {
-  $t_class = "ltitle";
-  $about = 1;
-  $color_num = 0;
-  $title .= "؟"; 
-  $desc = $title;
-  include('header.php');
-  include('about.php');
+} elseif($_GET['job'] === "about") {
+    $about = 1;
+    $color_num = 0;
+    $title .= "؟"; 
+    $desc = $title;
+    include('header.php');
+    include('about.php');
     
-} elseif($_REQUEST['job'] === "thanks") {
-  $t_class = "ltitle";
-  $thanks = 1;
-  $color_num = 0;
-  $title = _TITLE . " &raquo; سپاس و پێزانین";
-  $desc = $title;
-  include('header.php');
-  include('thanks.php');
+} elseif($_GET['job'] === "thanks") {
+    $thanks = 1;
+    $color_num = 0;
+    $title = _TITLE . " &raquo; سپاس و پێزانین";
+    $desc = $title;
+    include('header.php');
+    include('thanks.php');
     
 } else {
     $t_desc = "<h2>"._DESC."</h2>";
-    $t_class = "ftitle";
     include('header.php');
     include('fbody.php');
 }
+
+?>

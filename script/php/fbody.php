@@ -11,7 +11,7 @@ require('condb.php');
 
 ?>
 
-<div id='poets' style='padding-top:.5em;'>
+<div id='poets'>
     <div style="animation:tL .8s;padding:0 0 1em;">
         <?php if(isset($_GET['new'])) { ?>
         <span style="display: block;font-size: .55em;color: #444;padding: 1em;background-color: #f3f3f3;margin-top: 1em;">
@@ -26,16 +26,16 @@ while($row=mysqli_fetch_assoc($query)) {
 
     $imgsrc = get_poet_image($row['id'], "profile", 1);
 ?>
-<section class="psec"><a href="/poet:<?php echo $row['id'] ?>"><img alt="<?php echo $row['profname']; ?>" src="<?php echo $imgsrc; ?>"><h3><?php  echo $row['takh'];  ?></h3></a></section><?php
+<section class="psec"><a href="/poet:<?php echo $row['id'] ?>"><img alt="<?php echo $row['profname']; ?>" src="<?php echo $imgsrc; ?>"><h3 title="<?php echo $row['profname']; ?>"><?php  echo $row['takh'];  ?></h3></a></section><?php
 }
 
 }
 mysqli_close($conn);
 
 ?>
-</div><div style="padding: 1em 0 0;border-top: 1px solid #eee;background:linear-gradient(to bottom, #f8f8f8, #fdfdfd);">
+</div><div style="padding: 1em 0 0;border-top: 2px dashed #eee;">
         <?php if(isset($_GET['new'])) { ?>
-        <a style='display: inline-block;font-size: .6em;color: #555;margin: 0 0 0 1em;background:#f2f2f2;padding:1em;' href="/">شاعیرانی کۆچ‌کردوو</a><?php } else { ?><a style='display: inline-block;font-size: .6em;color: #555;margin: 0 0 0 1em;background:#f2f2f2;padding:1em;' href="/?new">شاعیرانی نوێ</a><?php } ?><a style='display: inline-block;font-size: .6em;color: #555;margin: 0 1em 0 0;background:#f2f2f2;padding:1em;' href="/poet:73">بەیتی کوردی</a>
+        <a class='button' style='display: inline-block;margin: 0 0 0 1em;' href="/">شاعیرانی کۆچ‌کردوو</a><?php } else { ?><a class='button' style='display: inline-block;margin: 0 0 0 1em;' href="/?new">شاعیرانی نوێ</a><?php } ?><a class='button' style='display: inline-block;margin: 0 1em 0 0;' href="/poet:73">بەیتی کوردی</a>
     </div>
 
 

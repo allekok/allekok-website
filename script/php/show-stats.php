@@ -4,14 +4,18 @@
     require("constants.php");
     $f = fopen(ABSPATH . "stats.txt", "r");
     $cnt = $cnt_rl = 0;
-    $today = $average = [0, 0];
+    $today = $average = $google = [0, 0];
     $dttd = date("Y m d");
     
     while(!feof($f)) {
         $l = explode("\t", fgets($f));
         if(trim($l[3]) != "") {
             $cnt_rl++;
-            if(strstr($l[1], $dttd))  $today[1]++;
+            if(strstr($l[1], $dttd))  {
+                $today[1]++;
+                if(strstr($l[3], "google")) $google[1]++;
+            }
+            if(strstr($l[3], "google")) $google[0]++;
         }
         
         if(strstr($l[1], $dttd))  $today[0]++;
@@ -38,5 +42,8 @@
     
     echo "average (total visits):\t{$average[0]}\n";
     echo "average (real visits):\t{$average[1]}\n\n";
+    
+    echo "GOGOLE(2day) -> {$google[1]}\n";
+    echo "GOGOLE(total) -> {$google[0]}\n\n";
     
 ?>

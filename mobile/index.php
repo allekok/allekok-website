@@ -89,7 +89,7 @@ $color_num = 0;
     
     <div style="border-top:1px solid #ddd;margin:1em 0 0.8em;"></div>
     
-    <div style="max-width:800px; margin:auto; padding:0 1em;">
+    <div style="max-width:800px; margin:auto; padding:0 .2em;">
         <h3 style="font-size: .7em;">
             بیروڕای خۆتان سەبارەت بە بەرنامەی مۆبایلی ئاڵەکۆک لێرە بنووسن.
         </h3>

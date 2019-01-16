@@ -8,19 +8,12 @@
 
         if(!isset($color_num) && !$is_it_search) {
             $color_num = 0;
-            $fhclass="fheader";
-            $fhs = "y";
 
         } elseif($is_it_search && !isset($color_num)) {
             $color_num = count($colors) - 1;
-            $fhclass="fheader";
-            $fhs = "y";
-
         }
         if(isset($color_num) && $color_num!=0 && !$thanks && !$about && !$is_it_search) {
-
-                $ogimg = _SITE . get_poet_image($color_num, "profile",0);
-            
+            $ogimg = _SITE . get_poet_image($ath, "profile",0);
         } else {
             $ogimg = _SITE.get_poet_image(0, "pro-460",0);
         }
@@ -30,8 +23,7 @@
     <script>
         if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', {scope: '/'});
     </script>
-    <link rel='stylesheet' href='/style/css/main2.5.css?v29' />
-			
+    <link rel='stylesheet' href='/style/css/main2.5.css?v40' />
 	<title>
 	    <?php echo($title); ?>
 	</title>
@@ -51,46 +43,26 @@
     <meta property="og:image" content="<?php echo($ogimg); ?>" />
     
   <style>
-        header {
-            border-top:.4em solid <?php if($color_num) {echo $colors[$color_num][0];}else{echo "transparent";} ?>;
-        }
-      .seartog {
-          position:absolute;
-          left:.4em;
-          cursor:pointer;
-          top:<?php if(isset($fhs)) {echo("1");}else{echo("1");} ?>em;
-      }
-      .seartog-i {
-          font-size:<?php if(isset($fhs)){echo("1.6");}else{echo("1.6");} ?>em;
-      }
-    @keyframes ll {
-        0% {text-shadow:none;}
-        20% {text-shadow:0 0 10px <?php echo $colors[$color_num][0]; ?>;}
-        100% {text-shadow:0 0 20px <?php echo $colors[$color_num][0]; ?>;}
-    }
-    @keyframes concentrate {
-        0% { border-radius:0 0 <?php if($fhclass){echo "12% 12%";}else{echo "15% 15%";}?>;box-shadow: 0 8px 2px -8px #ccc; }
-        70% { border-radius:0 0 <?php if($fhclass){echo "25% 25%";}else{echo "22% 22%";}?>;box-shadow: 0 8px 2px -6px #aaa; }
-        100% { border-radius:0;box-shadow: 0 8px 2px -8px #ccc; }
-    }
-    @keyframes smile {
-        0% { border-radius:0;box-shadow: 0 8px 2px -8px #ccc; }
-        50% { border-radius:0 0 <?php if($fhclass){echo "30% 30%";}else{echo "27% 27%";}?>;box-shadow: 0 8px 2px -6px #aaa; }
-        100% { border-radius:0 0 <?php if($fhclass){echo "12% 12%";}else{echo "15% 15%";}?>;box-shadow: none;}
+    body {
+        border-top:.4em solid <?php if($color_num) {echo $colors[$color_num][0];}else{echo "transparent";} ?>;
     }
     .ptr {
-        margin-top:1em;
-        padding: 0.75em 0 0.1em;
-        font-size:1em;
         background:<?php echo($colors[$color_num][2]) ?>;
     }
     <?php if($color_num) { ?>
+    @keyframes ll {
+        0% {text-shadow:none;}
+        20% {text-shadow:0 0 10px <?php echo $colors[$color_num][0]; ?>;}
+        50% {text-shadow:0 0 20px <?php echo $colors[$color_num][0]; ?>;}
+        100% {text-shadow:none;}
+    }
     sup {
         color:<?php echo($colors[$color_num][3]) ?>;
         padding:0 2px;
     }
     .gallery {
         margin-top:0.5em;
+        margin-bottom:-1em;
     }
     @media only screen and (max-width:450px){#poets{padding-bottom:0;}
         .poetimg {
@@ -98,9 +70,6 @@
         }
         .bks a {
             max-width:100%;
-        }
-        .gallery {
-            margin-bottom:-17px;
         }
     }
     @media only screen and (max-width:371px){
@@ -112,32 +81,8 @@
         }
     }
     <?php } ?>
-    
     .bk-comp {
         color:<?php echo($colors[$color_num][0]) ?>;
-        vertical-align: middle;
-        text-shadow: 0 0 3px #fff;
-        font-size: 0.8em;
-        font-weight: bold;
-        height: 0.4em;
-        padding-right: 0.2em;
-        cursor:pointer;
-    }
-    .h {
-    direction:rtl;
-    }
-    .ptrh {
-        font-size:0.58em;
-        padding-bottom:0.9em;
-    }
-    .d {
-        font-size:0.8em;
-        color:#333;
-        padding:1em;
-    }
-    .dltr {
-        direction:ltr;
-        text-align:left;
     }
   </style>
     <script>
@@ -158,7 +103,7 @@
 
 <body>
 
-<header <?php if(isset($fhclass)) {echo("class='$fhclass'");} ?>>
+<header>
     
     <?php if(!$is_it_search) { ?>
 <div id='tS' role='button' class='seartog'>
