@@ -143,6 +143,7 @@ if(strlen($row['hdesc'])>0) {
     <div>
         <?php
             $_uri = ABSPATH . "pitew/res/";
+            if(file_exists($_uri)) {
             $dir = opendir($_uri);
             $result = [];
             while(false !== ($e = readdir($dir))) {
@@ -160,6 +161,7 @@ if(strlen($row['hdesc'])>0) {
                 سەبارەت بە 
                 &laquo;{$e[1]}&raquo;...
                 </a>";
+            }
             }
             ?>
     </div>
