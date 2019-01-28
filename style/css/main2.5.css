@@ -122,8 +122,9 @@ header h2{font-size:.65em;margin-top:-.5em;}
 #search-res section{margin:0 4px;display:inline-block;max-width:68px;width:18%;}
 #search-res section img{border-radius:100%;width:100%;box-shadow:0 3px 4px -3px #aaa;display:block;}
 #search-res #poets{padding:0;margin-bottom:3px;}
-.search-hon a{margin:.5em .1em;padding:12px 10px;display:block;text-align:right;background:#f2f2f2;border-radius:2px;border:1px solid #ccc;}
-.search-hon a:hover{background:#fff;border:1px solid #bbb;box-shadow:1px 1px 1px #ccc;}
+.search-hon div{margin:.3em .1em;padding:0 10px;background:#f2f2f2;border-radius:2px;border:1px solid #ccc;text-align:right;}
+.search-hon div:hover{background:#fff;border:1px solid #bbb;box-shadow:1px 1px 1px #ccc;}
+.search-hon a{width:100%;display:block;text-align:right;padding:12px 0;}
 .search-hon a i, .search-book a i{font-size:.85em;color:#444;}
 .search-book a{margin:.3em;display:inline-block;padding:12px 10px;border-radius:2px;border:1px solid #ddd;background:#eee;color:#000;font-size:1em;}
 .search-book a:hover{background:#fff;border:1px solid #bbb;box-shadow:1px 1px 1px #ccc;}
