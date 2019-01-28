@@ -304,6 +304,25 @@ function isJson(str) {
     return true;
 }
 
+function ss(button) {
+    var href = button.parentNode.querySelector("a").getAttribute("href");
+    href = href.substr(href.indexOf("=")+1);
+    href = href.split("/");
+    button.innerHTML = "<i class='loader' style='width:2.2em;height:2.2em;display:block;'></i>";
+    var pt = href[0].split(":")[1];
+    var bk = href[1].split(":")[1];
+    var pm = href[2].split(":")[1];
+    
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", `/script/php/poem-summary.php?pt=${pt}&bk=${bk}&pm=${pm}`);
+    xmlhttp.onload = function() {
+        button.innerHTML = "<i class=\"material-icons\" style=\"vertical-align: middle;\">keyboard_arrow_down</i>";
+        var san_txt = this.responseText.replace(/\n/g, "<br>");
+        button.parentNode.outerHTML += `<div style='background: #f8f8f8;padding: 1em;font-size: .55em;border:0;'>${san_txt}</div>`;
+    }
+    xmlhttp.send();
+}
+
 /// check if liked
 var likeico = document.getElementById('like-icon');
 
