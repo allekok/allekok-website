@@ -1,0 +1,30 @@
+# rename this file to ".htaccess"
+
+# URLS
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^allekok\.com [NC]
+RewriteCond %{SERVER_PORT} 80 
+RewriteRule ^(.*)$ https://allekok.com/$1 [R,L]
+
+RewriteCond %{HTTP_HOST} www.allekok\.com [NC]
+RewriteCond %{SERVER_PORT} 80 
+RewriteRule ^(.*)$ https://www.allekok.com/$1 [R,L]
+
+RewriteRule ^poet:([0-9]+)/?$ index.php?ath=$1    [NC,L]  # poets
+
+RewriteRule ^poet:([0-9]+)/book:([0-9]+)/?$ index.php?ath=$1&bk=$2    [NC,L]  # books
+
+RewriteRule ^poet:([0-9]+)/book:([0-9]+)/page:([0-9]+)/?$ index.php?ath=$1&bk=$2&bpg=$3   [NC,L]  # books - pages
+
+RewriteRule ^poet:([0-9]+)/book:([0-9]+)/poem:([0-9]+)/?$ index.php?ath=$1&bk=$2&id=$3    [NC,L]  # poems
+
+RewriteRule ^about/? index.php?job=about    [NC,L]  # about page
+
+RewriteRule ^thanks/? index.php?job=thanks    [NC,L]  # thanks page
+
+RewriteRule ^new/? index.php?new    [NC,L]  # new page
+
+# 1 year cache for static assets
+<filesMatch ".(woff|woff2|jpg|jpeg|png|ico)$">
+Header set Cache-Control "max-age=31536000, public"
+</filesMatch>
