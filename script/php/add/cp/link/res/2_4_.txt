@@ -1,7 +1,0 @@
-{"m": 1, "c": [0, 0, 0, 0], "v": ""}
-{"m": 2, "c": [0, 0, 0, 0], "v": "http://vejinbooks.com/view/%D8%A6%D8%A7%D9%81%D8%A7%D8%AA/%D9%BE%DB%95%D8%B1%DB%8C%D8%B2%D8%A7%D8%AF_%D9%88_%DA%AF%D9%88%DA%B5%DB%95%DA%A9%DB%95%DB%8C_%D8%AF%D9%88%DA%98%D9%85%D9%86%DB%8C"}
-{"m": 3, "c": [0, 0, 0, 0], "v": "http://vejinbooks.com/view/%D8%AF%DB%95%D8%B1%D8%A8%DB%95%D9%86%D8%AF%DB%8C_%D9%BE%DB%95%D9%BE%D9%88%D9%88%D9%84%DB%95/III"}
-{"m": 4, "c": [0, 0, 0, 0], "v": ""}
-{"m": 5, "c": [0, 0, 0, 0], "v": "http://vejinbooks.com/view/%D8%AF%DB%95%D8%B1%D8%A8%DB%95%D9%86%D8%AF%DB%8C_%D9%BE%DB%95%D9%BE%D9%88%D9%88%D9%84%DB%95/I"}
-{"m": 6, "c": [0, 0, 0, 0], "v": ""}
-{"m": 7, "c": [0, 0, 0, 0], "v": ""}
