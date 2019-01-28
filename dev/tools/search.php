@@ -26,7 +26,7 @@ if(!empty($q1)) {
     $_k = $_GET['k'];  // 1 => poem-name, 2 => poem, 3 => poem-name + poem 
 	
 	$db = 'search';
-	$q = "SELECT id,name,takh,profname,hdesc,uri,rtakh FROM poets where len>{$qlen} order by rtakh ASC";
+	$q = "SELECT id,name,takh,profname,hdesc,uri,rtakh FROM poets where len>={$qlen} order by rtakh ASC";
 	require("../../script/php/condb.php");
 
 
@@ -137,7 +137,7 @@ if($e_max !== 0) {
     $e = 0;
     $e_max = !(filter_var($_GET['bk'], FILTER_VALIDATE_INT)===false) ? $_GET['bk'] : 10;
 
-	$q = ($_selPT == "") ? "select book,book_desc,poet_address,book_address,rbook,rtakh from books where len>{$qlen} order by rtakh ASC" : "select book,book_desc,poet_address,book_address,rbook,rtakh from books where len>{$qlen} and rtakh='{$_selPT}' order by rtakh ASC";
+	$q = ($_selPT == "") ? "select book,book_desc,poet_address,book_address,rbook,rtakh from books where len>={$qlen} order by rtakh ASC" : "select book,book_desc,poet_address,book_address,rbook,rtakh from books where len>={$qlen} and rtakh='{$_selPT}' order by rtakh ASC";
 	$query = mysqli_query($conn,$q);
 	
 	$s_book = array();
@@ -243,7 +243,7 @@ if($h_max !== 0) {
     $h = 0;
     $h_max = !(filter_var($_GET['pm'], FILTER_VALIDATE_INT)===false) ? $_GET['pm'] : 15;
 
-	        $q = ($_selPT == "") ? "SELECT name,hdesc,poet_address,book_address,poem_address,poem,poem_true,rbook,rname,rtakh,rpoem FROM poems where len>{$qlen} ORDER BY Cipi DESC" : "SELECT name,hdesc,poet_address,book_address,poem_address,poem,poem_true,rbook,rname,rtakh,rpoem FROM poems where len>{$qlen} and rtakh='{$_selPT}' ORDER BY Cipi DESC";
+	        $q = ($_selPT == "") ? "SELECT name,hdesc,poet_address,book_address,poem_address,poem,poem_true,rbook,rname,rtakh FROM poems where len>={$qlen} ORDER BY Cipi DESC" : "SELECT name,hdesc,poet_address,book_address,poem_address,poem,poem_true,rbook,rname,rtakh FROM poems where len>={$qlen} and rtakh='{$_selPT}' ORDER BY Cipi DESC";
 	        $query = mysqli_query($conn,$q);
 
             $s_poem = array();
