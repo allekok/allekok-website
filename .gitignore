@@ -31,3 +31,6 @@ style/img/poets/new/*
 
 # poet's descriptions
 pitew/res/*
+
+# about.comments
+script/php/res/about.comments
