@@ -102,7 +102,7 @@ $color_num = 0;
     </style>
     
     <main style="font-size:.65em;text-align:justify;padding:1em;">
-
+    <div class='loader'></div>
     </main>
     
     <script src="https://cdn.rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js"></script>
