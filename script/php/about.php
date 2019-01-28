@@ -12,18 +12,18 @@
         <i class='sub-num'><?php echo $hons_num; ?></i>
         شێعر
     </div>
-    <div style="font-size:.5em;">
+    <div style="font-size:.65em;">
         <span style="color:#666;">
             ئاخیرین نوێ کردنەوەی شێعرەکان: 
         </span>
-        <span style="direction:ltr;letter-spacing:.5px;display:inline-block;color:#444;font-weight:bold">
+        <span style="direction:ltr;letter-spacing:.5px;display:inline-block;color:#222;">
         <?php
             echo num_convert(file_get_contents(ABSPATH . "last-update.txt"), "en", "ckb");
             ?>
         </span>
     </div>
 
-    <div style="width:95%;max-width:550px;border-top:1px solid #eee; padding:.5em 0 0; margin:auto;">
+    <div style="width:95%;max-width:550px;border-top:1px solid #eee; padding:.5em 0 0; margin:.5em auto;">
         
         <p style="font-size:0.75em;padding-bottom:0.5em;">
             ئاڵەکۆک‌تان بەلاوە چۆنە؟
