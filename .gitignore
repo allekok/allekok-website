@@ -27,10 +27,10 @@ last-update.txt
 pdfs.txt
 
 # uploaded images
-style/img/poets/new/*
+style/img/poets/new/
 
 # poet's descriptions
-pitew/res/*
+pitew/res/
 
 # about.comments
 script/php/res/about.comments
