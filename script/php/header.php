@@ -23,7 +23,7 @@
     <script>
         if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', {scope: '/'});
     </script>
-    <link rel='stylesheet' href='/style/css/main2.5.css?v40' />
+    <link rel='stylesheet' href='/style/css/main2.5.css?v41' />
 	<title>
 	    <?php echo($title); ?>
 	</title>
