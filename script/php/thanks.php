@@ -78,7 +78,20 @@
         &rsaquo; بۆ  
         <a href="https://www.kurditgroup.org/fontconvertor" style="color:#26678c">ئامێری وەرگێڕی فۆنت 
         </a>
-         کە بۆ نووسینەوەی 
+         کە بۆ نووسینەوەی بەشێک لە 
+        <a href="<?php echo _SITE; ?>poet:85/book:1" style="background:<?php echo $colors[19][2]; ?>; color:<?php echo $colors[19][3]; ?>">
+        دیوانی یانەی‌دڵانی، مدهۆش</a>  بەکار هاتووە.
+    </p>
+    <p>
+        <i style="color:#4699EC;">
+        ئاکۆ مەحموودی، ئاسۆ مەحموودی 
+        </i>
+        &rsaquo;
+        بۆ 
+        <a href="https://www.allekok.com/Kurdi-Nus/Kurdi%20Nus%204.0%20Kurdish.html" style="color:#4699EC;">
+            ئامێری پەڵک کوردی‌نووس ۴.۰
+        </a>
+         کە بۆ نووسینەوەی بەشێک لە 
         <a href="<?php echo _SITE; ?>poet:85/book:1" style="background:<?php echo $colors[19][2]; ?>; color:<?php echo $colors[19][3]; ?>">
         دیوانی یانەی‌دڵانی، مدهۆش</a>  بەکار هاتووە.
     </p>
