@@ -67,11 +67,12 @@ foreach($aths as $ath) {
             $res['name'] = san_data($res['name']);
             
             
-            $res['rpoem'] = str_replace(["\n","\r"], [" &bull; ",""], preg_replace("/\n+\s+\n+/"," &bull; ",trim(mb_substr(filter_var($res['hon'], FILTER_SANITIZE_STRING), 0 , 150))));
+            // $res['rpoem'] = str_replace(["\n","\r"], [" &bull; ",""], preg_replace("/\n+\s+\n+/"," &bull; ",trim(mb_substr(filter_var($res['hon'], FILTER_SANITIZE_STRING), 0 , 150))));
             
             
-            $res['hon'] = san_data($res['hon']);
+            
             $res['hon_true'] = san_data($res['hon'], true);
+            $res['hon'] = san_data($res['hon']);
             
             
             $res['hdesc'] = san_data($res['hdesc']);
@@ -95,7 +96,7 @@ foreach($aths as $ath) {
             $pa = $pm['address'];
             $rname = $pm['rname'];
             $phonlen = $pm['len'];
-            $rpoem = $pm['rpoem'];
+            // $rpoem = $pm['rpoem'];
             
             // Cssssss
             
@@ -115,7 +116,7 @@ foreach($aths as $ath) {
             $C = $pm['Cs']['C'];
             $Cipi = $pm['Cs']['Cipi'];
             
-            $qq = "INSERT INTO `poems`(`name`,`hdesc`,`poet_address`,`book_address`,`poem_address`,`poem`,`rname`,`rbook`,`rtakh`,`imp`,`C`,`Cipi`,`len`,`poem_true`,`rpoem`) VALUES ('$pname','$phdesc','$poet_address','$book_address','$pa'," . '"' . $phon . '"' . ",'$rname','$rbook','$rtakh',$imp,$C,$Cipi,$phonlen,'$phon_true','$rpoem')";
+            $qq = "INSERT INTO `poems`(`name`,`hdesc`,`poet_address`,`book_address`,`poem_address`,`poem`,`rname`,`rbook`,`rtakh`,`imp`,`C`,`Cipi`,`len`,`poem_true`) VALUES ('$pname','$phdesc','$poet_address','$book_address','$pa'," . '"' . $phon . '"' . ",'$rname','$rbook','$rtakh',$imp,$C,$Cipi,$phonlen,'$phon_true')";
             //echo $qq . "<br><br>";
             $q = mysqli_query($conn, $qq);
             
