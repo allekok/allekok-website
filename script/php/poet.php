@@ -155,10 +155,10 @@ if(strlen($row['hdesc'])>0) {
             
             foreach($result as $e) {
                 echo "
-                <a style=\"font-size:0.53em;color:#444;padding:1em;display:block;background:#f3f3f3\" href=\"/pitew/poetdesc-list.php?name={$e[0]}&poet={$e[1]}\">
-                &laquo;".num_convert($e[0], "en", "ckb")."&raquo;
+                <a style=\"font-size:.55em;color:#222;padding:1em;display:block;background:#f6f6f6;border-bottom:1px solid #e6e6e6;\" href=\"/pitew/poetdesc-list.php?name={$e[0]}&poet={$e[1]}\">
+                &laquo;".num_convert(str_replace("&#34;","\"",$e[0]), "en", "ckb")."&raquo;
                 سەبارەت بە 
-                &laquo;{$e[1]}&raquo;
+                &laquo;{$e[1]}&raquo;...
                 </a>";
             }
             ?>
