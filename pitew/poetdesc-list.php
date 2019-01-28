@@ -83,7 +83,7 @@ $color_num = 0;
                 $_count++;
                 continue;
             }
-            $_html .= "<div class='epld'><section class='epld-title'>&laquo;" . num_convert($_l['name'],"en","ckb") . "&raquo; سەبارەت بە &laquo;" . $_l['poet'] . "&raquo; نووسیویەتی: </section><section class='epld-body'>" . "{$_l['content']}</section></div>";
+            $_html .= "<div class='epld'><section class='epld-title'><a href='{$_l["uri"]}' title='وەشانی plain/text'><i class='material-icons' style='font-size: 1.5em;vertical-align: middle;'>insert_drive_file</i></a> &laquo;" . num_convert(str_replace("&#34;","\"",$_l['name']),"en","ckb") . "&raquo; سەبارەت بە &laquo;" . $_l['poet'] . "&raquo; نووسیویەتی: </section><section class='epld-body'>" . "{$_l['content']}</section></div>";
             $_count++;
         }
     } else {
@@ -92,7 +92,7 @@ $color_num = 0;
     
     if(!($_name and $_poet)) {
         $n_str = empty($_name) ? "" : "ی &laquo;$_name&raquo;";
-        echo "<div id='num_pdl'>ئەژماری نووسراوەکان" . num_convert($n_str, "en", "ckb") . ": " . num_convert($_count, "en", "ckb") . "</div>";
+        echo "<div id='num_pdl'>ئەژماری نووسراوەکان" . num_convert(str_replace("&#34;","\"",$n_str), "en", "ckb") . ": " . num_convert($_count, "en", "ckb") . "</div>";
     }
     
         function make_list($_dir) {
@@ -111,8 +111,10 @@ $color_num = 0;
                 $entry["name"] = $entry[0];
                 $entry["poet"] = $entry[1];
                 $entry["uri"] = $uri;
-                $entry["content"] = str_replace(["end","\n"], ["","<br>"], file_get_contents($uri2));
-                array_unshift($entry, filemtime("/home/allekokc/public_html" . $uri));
+                $entry["content"] = file_get_contents($uri2);
+                $entry["content"] = substr($entry["content"],0,strlen($entry["content"])-4);
+                $entry["content"] = str_replace(["\nend\n","\n"], ["<div style='border-top:1px solid #ddd;margin:1em;'></div>","<br>"], $entry["content"]);
+                array_unshift($entry, filemtime($uri2));
                 $_list[] = $entry;
             }
           }
