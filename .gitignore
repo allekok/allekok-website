@@ -15,3 +15,19 @@ script/php/constants.php
 
 # .htaccess
 .htaccess
+
+# update files
+update-log.txt
+update-version.txt
+
+# last update time
+last-update.txt
+
+# list of pdfs
+pdfs.txt
+
+# uploaded images
+style/img/poets/new/*
+
+# poet's descriptions
+pitew/res/*
