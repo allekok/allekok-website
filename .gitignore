@@ -35,3 +35,6 @@ stats.txt
 
 # End of https://www.gitignore.io/api/linux
 test_dev/
+
+# ignore config file
+script/php/constants.php
