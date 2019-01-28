@@ -1,0 +1,1127 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>pellk Kurdî Nûs 4.0</title>
+    <style type="text/css">
+html, body
+{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+body
+{
+    background-color: #E8E8E8;
+    color: #333333;
+    text-align: center;
+}        
+body, h3, textarea
+{
+    font-family: Tahoma, Helvetica, DejaVu Sans, sans-serif;
+    font-size: 10pt;
+}
+h1
+{
+    color: #4699EC;
+    font-weight: bold;
+    font-family: Georgia, Times, serif;
+    font-size: xx-large;
+    margin: 0 0 4px 0;
+}
+h2
+{
+    margin: 15px 0;
+    font-family: Georgia, Times, serif;
+    font-size: 16pt;
+    color: #4699EC;
+}
+h3
+{
+    margin: 15px 0 5px 0;
+}
+.max h1
+{
+    font-size: 14pt;
+}
+a
+{
+    color: #4699EC;
+    text-decoration: none;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+ul
+{
+    list-style: none;
+    padding-left: 1em;
+}
+p
+{
+    margin: 0;
+}
+#help p
+{
+    margin: 12pt 0;
+}
+#wrapper
+{
+    border-collapse: collapse;
+}
+#wrapper td
+{
+    padding: 0;
+    vertical-align: top;
+}
+.normal
+{
+    width: 760px;
+    margin: 0 auto;
+}
+.max
+{
+    width: 100%;
+    height: 100%;
+}
+#heading
+{
+    text-align: right;
+    height: 1px;
+}
+.max #heading
+{
+    
+}
+#heading a
+{
+    color: #777777;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    padding: 3px 8px;
+    margin-top: 10px;
+    margin-right: 5px;
+    font-weight: bold;
+    float: left;
+}
+.max #heading a
+{
+    margin-top: 2px;
+}
+#heading a.selected
+{
+    background-color: #4699EC;
+    color: White;
+}
+#heading p
+{
+    margin-bottom: 5px;
+}
+.max #heading p
+{
+    display: none;
+}
+#sidebar
+{
+    width: 190px;
+}
+.normal #sidebar .short
+{
+    display: none;
+}
+.max #sidebar .full
+{
+    display: none;
+}
+.max #sidebar
+{
+    width: 40px;
+}
+#sidebar a
+{
+    float: right;
+    clear: both;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    margin: 2px 0;
+}
+#sidebar a.selected
+{
+    width: 100%;
+    background: #FFFFFF;
+    font-size: 14pt;
+    padding: 10px 0;
+    border-radius: 9px 0 0 9px;
+}
+.max #sidebar a.selected
+{
+    border-radius: 7px 0 0 7px;
+    font-size: 12pt;
+    padding: 8px 0;
+}
+#sidebar a.unselected
+{
+    width: 85%;
+    background: #F2F2F2;
+    font-size: 11pt;
+    padding: 6px 0;
+    color: #333333;
+    border-radius: 7px 0 0 7px;
+}
+.max #sidebar a.unselected
+{
+    font-size: 10pt;
+    padding: 3px 0;
+}
+#sidebar a:hover.selected
+{
+    text-decoration: none;
+}
+#sidebar a:hover.unselected
+{
+    text-decoration: underline;
+}
+#spacer
+{
+    height: 25px;
+}
+#main
+{
+    height: 100%;
+}
+#converting, #typeArabic, #options, #help
+{
+    background: #FFFFFF;
+    border-radius: 7px;
+    padding: 15px;
+    text-align: left;
+    height: 95%;
+}
+#converting
+{
+    text-align: right;
+}
+textarea
+{
+    width: 100%;
+    height: 170px;
+}
+#txtIn
+{
+    margin-bottom: 15px;
+    border: solid 1px #999999;
+}
+.max #txtIn, .max #txtOut
+{
+    width: 49%;
+    height: 100%;
+}
+.max #txtIn
+{
+    float: left;
+    margin-bottom: 0;
+}
+#txtOut
+{
+    border: solid 1px #E0E0E0;
+}
+#txtArabic
+{
+    direction: rtl;
+    height: 350px;
+}
+.max #txtArabic
+{
+    height: 100%;
+}
+#help
+{
+    display: none;
+}
+#footer
+{
+    background: #E8E8E8;
+    text-align: center;
+    padding: 5px;
+    display: block;
+}
+.max #footer
+{
+    display: none;
+}
+.example
+{
+    font-style: italic;
+    color: Black;
+    background-color: #EEEEEE;
+    padding: 0 3px;
+}
+.error
+{
+    position: absolute;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    background-color: #550000;
+    color: White;
+    font-size: 15pt;
+    font-family: Georgia, Times, serif;
+    padding: 30px;
+}
+.error h1
+{
+    color: Red;
+}
+    </style>
+</head>
+<body onload="changeTab(1)">
+    <noscript>
+        <div class="error">
+            <h1>Scripts have been disabled on your browser.</h1>
+            <p>If you're using Internet Explorer, click the yellow bar at the top of the page.</p>
+        </div>
+    </noscript>
+<!--[if lt IE 8]>
+    <style type="text/css">
+        #main { width: 570px; }
+        .max #main { width: 98%; }
+    </style>
+<![endif]-->
+    <table id="wrapper" class="normal">
+        <tr id="heading">
+            <td colspan="2">
+                <a id="maximiseButton" href="#" onclick="return maximise()">Maximise</a>
+                <a id="optionsButton" href="#" onclick="return showOptions()">Options</a>
+                <a id="helpButton" href="#" onclick="return showHelp()">Help</a>
+                <h1>pellk Kurdî Nûs 4.0</h1>
+                <p>A portable, platform-independent, open source tool for converting different Kurdish scripts</p>
+            </td>
+        </tr>
+        <tr>
+            <td id="sidebar">
+                <div id="spacer"></div>
+		        <a id="tab1" class="selected" href="#" onclick="return changeTab(1)">
+                    <span class="full">Arabic to Latin</span>
+                    <span class="short" title="Arabic to Latin">AL</span>
+                </a>
+		        <a id="tab2" class="unselected" href="#" onclick="return changeTab(2)">
+                    <span class="full">Latin to Arabic</span>
+                    <span class="short" title="Latin to Arabic">LA</span>
+                </a>
+		        <a id="tab3" class="unselected" href="#" onclick="return changeTab(3)">
+                    <span class="full">Standardise Arabic</span>
+                    <span class="short" title="Standardise Arabic">S</span>
+                </a>
+		        <a id="tab4" class="unselected" href="#" onclick="return changeTab(4)">
+                    <span class="full">Type Latin</span>
+                    <span class="short" title="Type Latin">L</span>
+                </a>
+		        <a id="tab5" class="unselected" href="#" onclick="return changeTab(5)">
+                    <span class="full">Type Arabic</span>
+                    <span class="short" title="Type Arabic">A</span>
+                </a>
+            </td>
+            <td id="main">
+                <div id="converting">
+                    <textarea id="txtIn" onblur="convert()" onkeyup="convert()" onmousedown="convert()" onmouseup="convert()"></textarea>
+                    <textarea id="txtOut"></textarea>
+                </div>
+                <div id="typeArabic">
+                    <textarea id="txtArabic" onkeypress="return getKeyStroke(event)"></textarea>
+                </div>
+                <div id="options">
+                    <h2>Options</h2>
+                    <p><input type="checkbox" id="chkConvertNumbers" checked="checked" /><label for="chkConvertNumbers">Convert numbers to Arabic</label></p>
+                    <p><input type="checkbox" id="chkConnectSuffixes" checked="checked" /><label for="chkConnectSuffixes">Recognise separated suffixes (when converting to Arabic)</label></p>
+                    <p><input type="checkbox" id="chkDilan" /><label for="chkDilan">Convert Arabic based on Dilan fonts</label></p>
+                    <p><input type="checkbox" id="chkAliWeb" checked="checked" /><label for="chkAliWeb">Convert Arabic based on Ali Web fonts</label></p>
+                    <p><input type="checkbox" id="chkTreatI" /><label for="chkTreatI">Treat i as î (when converting to Arabic)</label></p>
+                    <p><input type="checkbox" id="chkOnsetI" checked="checked" /><label for="chkOnsetI">Allow syllables starting with 2 consonants (when converting to Latin)</label></p>
+                    <p><input type="checkbox" id="chkCapitaliseSentence" checked="checked" /><label for="chkCapitaliseSentence">Capitalise sentences (when converting to Latin)</label></p>
+                    <h3>Arabic keyboard layout:</h3>
+                    <ul>
+				        <li>
+					        <input id="optBakur" checked="checked" name="optArabicKeyboard" type="radio" />
+					        <label for="optBakur"><strong>Northern</strong> (best for Latin-labelled keyboards)</label>
+                        </li>
+				        <li>
+					        <input id="optRojhellat" name="optArabicKeyboard" type="radio" />
+					        <label for="optRojhellat"><b>Eastern</b> (best for Farsi-labelled keyboards)</label>
+                        </li>
+				        <li>
+					        <input id="optBashur" name="optArabicKeyboard" type="radio" />
+					        <label for="optBashur"><b>Southern</b> (best for Arabic-labelled keyboards)</label>
+                        </li>
+			        </ul>
+                </div>
+                <div id="help">
+<h2>Help, Usage Notes, and Known Issues</h2>
+<p>
+    Kurdî Nûs is a portable, platform-independent, free (open source) tool for converting
+    different Kurdish scripts.
+</p>
+<h3>Disclaimer</h3>
+<p>
+    Although Kurdî Nûs does its best in converting Kurdish texts, we never claim that
+    the conversion is error-free and perfect. Therefore, please proofread the output
+    converted text.
+</p>
+<h3>Interface</h3>
+<p>
+    CSS styles and scripts must be enabled in your browser.
+</p>
+<p>
+    You may start by picking your desired conversion type among the tabs on the left
+    side (Arabic to Latin is chosen by default). On the main part of the page, you might
+    see one or two boxes, based on the tab you have selected.
+</p>
+<p>
+    For the first four tabs, you can type or paste your text in the top box and see
+    the converted result in the bottom one immediately as you type, no matter how large
+    the text is. If, after pasting your text using the mouse, you don't see the converted
+    text, just click one of the boxes.
+</p>
+<p>
+    In order to use the last tab (Type Arabic), your computer's current keyboard must
+    be US English and the Caps Lock must be off. When you type keep typing in the only
+    text box in this tab, you are expected to see Arabic script Kurdish.
+</p>
+<p>
+    To make use of the whole screen for better productivity, you can click the Maximise
+    button at the top left side of the page. In maximised view, the input text box (wherein
+    you or paste your text) is moved to the left and the conversion output is on the
+    right. Tab labels are also contracted. You can see the full tab labels, however,
+    by hovering the mouse over them. You can return to normal view at any moment, by
+    clicking the Restore button (replacing by Maximise button).
+</p>
+<p>
+    Clicking the Options or Help buttons does not affect your work. You can return to
+    your previous tab by clicking these buttons again or by directly clicking the tabs.
+    Any changes to the Options are applied when you leave the Options page.
+</p>
+<h2>Conversion</h2>
+<h3>Latin to Arabic conversion</h3>
+<p>
+    Latin-to-Arabic conversion helps you convert Kurdish texts written in standard Latin
+    script to standard Arabic script, for example, <span class="example">pellk</span>
+    to <span class="example">پەڵک</span>. The result is totally compliant with Unicode
+    standard for Kurdish language.
+</p>
+<p>
+    By default, European numbers are converted to Arabic numbers. However, you might
+    choose to leave the numbers intact in Options.
+</p>
+<p>
+    Unfortunately, due to a mere imitation of the European languages (and often an overgeneralisation
+    of this), some people treat certain Kurdish language suffixes as independent words
+    in Latin texts. For instance, the preposition 'a' in <span class="example">hevala me</span>
+    is written separately: <span class="example">heval a me</span>. Linguistically speaking,
+    suffixes naturally come after a base morpheme. In other words, they never form a
+    separate word, and therefore, must never be separated from the stem word. Even though
+    by default Kurdî Nûs recognises a number of such separated suffixes and sticks them
+    to the stem word in the converted Arabic Script, we still think this is a linguistic
+    mistake and thus, we have provided the user with the option to disable such a conversion.
+    For more information see 'Recognise separated suffixes' under Options.
+</p>
+<p>
+    Kurdî Nûs converts every 'h' and 'x' to 'ھ' and 'غ', respectively. Consequently,
+    you should proofread your converted text to scan for 'ھ' and 'غ' letters that have
+    to be corrected as 'ح' and 'خ'.
+</p>
+<p>
+    Latin-to-Arabic part can also be used for the purpose of typing Arabic texts in
+    case you are used to English typing. This means you can see the converted Arabic
+    version immediately as you are typing. For special Latin Kurdish letters that are
+    not in common with English, which are ê, î, û, ç, and ş, you can type ee, ii, uu,
+    ch, and sh instead, respectively. There is also an option meant for making typing
+    faster: you can choose the i letters to be treated as î.
+</p>
+<h3>Arabic to Latin conversion</h3>
+<p>
+    Arabic-to-Latin conversion helps you convert Kurdish texts written in Arabic script
+    to standard Latin script (Hawar alphabet), for example, <span class="example">پەڵک</span>
+    to <span class="example">pellk</span>. Even though a variety of input Arabic script
+    alphabets and fonts is supported, if you are trying to convert an Arabic text written
+    using Dilan fonts (which are a set of non-standard non-Unicode types developed by
+    KurdSoft.com), you should tick the option ‘Convert Arabic based on Dilan fonts’.
+</p>
+<p>
+    A usual controversial problem on the way of Latin Kurdish script orthography (and
+    thus any conversion to it) is consonant cluster and the vowel ‘i’. This problem
+    is two-fold: first of all, the vowel ‘i’ is not considered an alphabet letter in
+    Arabic script. Therefore, a machine conversion from Arabic script to Latin script
+    has to guess the possible i letters according to the context. For example,
+    <span class="example">کرد</span> should be converted to <span class="example">kird</span>,
+    but <span class="example">کرا</span> to <span class="example">kra</span>. While
+    a comprehensive dictionary of all Kurdish words in both scripts could help such
+    a conversion get (almost) flawless, it was not an applicable and sound idea to include
+    a large database in a portable and platform-independent software project. So we
+    decided to insert the hidden i vowels according to phonological rules. Secondly,
+    Sorani Kurdish arguably allows two consonants in the onset of a syllable. For example,
+    <span class="example">zman</span> is a one-syllable word. On the other hand, this
+    is invalid in Kurmanci, so an extra i is required: <span class="example">ziman</span>.
+    By default, Kurdî Nûs expects a Sorani text (with two consonants allowed in the
+    nucleus of a syllable). However, you can choose to disallow this in Options. While
+    the output converted text is as close to perfection as possible, still there might
+    be spelling errors, especially because of phonological ambiguity.
+</p>
+<p>
+    Since letter casing is not available in Arabic script orthography, it is not possible
+    to detect the proper names and then capitalise them in the output Latin-converted
+    text. Sentences, nevertheless, are capitalised by default, which can be disabled
+    in Options.
+</p>
+<h3>Arabic Script Standardisation</h3>
+<p>
+    You can convert your old and/or non-Unicode Arabic script texts to standard Arabic
+    script in ‘Standardise Arabic’ tab, the most notable application of which is in
+    the Web. For example, given your text written with Ali Fonts (an old set of non-Unicode
+    types still popular in Iran and Iraq) is <span class="example">تاظطة</span>, the
+    standard version will be <span class="example">تاڤگە</span>. Even though a variety
+    of input Arabic script alphabets and fonts is supported, if you are trying to standardise
+    an Arabic text written using Dilan fonts (which are a set of non-standard non-Unicode
+    types developed by KurdSoft.com), you should tick the option ‘Convert Arabic based
+    on Dilan fonts’.
+</p>
+<h3>Typing in Latin Script</h3>
+<p>
+    There might be cases when you have to type your Latin Kurdish text while your computer
+    does not have a Kurdish keyboard layout installed. ‘Type Latin’ tab helps you type
+    Latin Kurdish with a normal English keyboard. For special Latin Kurdish letters
+    that are not in common with English, which are ê, î, û, ç, and ş, you can type ee,
+    ii, uu, ch, and sh instead, respectively. Use the capitalised versions of the same
+    conventions for capital letters, for example, EE or Ee for Ê.
+</p>
+<h3>Typing in Arabic Script</h3>
+<p>
+    There might be cases when you have to type your Arabic Kurdish text while your computer
+    does not have a Kurdish keyboard layout installed. First of all, you can choose
+    which Kurdish keyboard layout you are accustomed to in Options. For example, your
+    keyboard keys might be labelled with Farsi letters. In this case, using the same
+    keys for the same letters can facilitate your typing.
+</p>
+<h2>Options</h2>
+<h3>Convert numbers to Arabic</h3>
+<p>
+    When convertin Latin script texts to Arabic script or when standardising an Arabic
+    text, European numbers are converted to Arabic numbers. For example, <span class="example">
+    123</span> is converted to <span class="example">١٢٣</span>.
+</p>
+<h3>Recognise separated suffixes</h3>
+<p>
+    Recognises several suffixes intentionally separated from the base word. These suffixes
+    are -m, -î, -e, -în, -in, -a, -ê, -ên. In the output Arabic text, they will not
+    be separate anymore. For example, <span class="example">heval a me</span> is converted
+    to <span class="example">ھەڤالا مە</span> instead of <span class="example">ھەڤال ئا
+    مە</span>. For more information, see Latin to Arabic conversion under Converion.
+</p>
+<h3>Convert Arabic based on Dilan fonts</h3>
+<p>
+    Tick this option if you are going to convert an Arabic script text to Latin script,
+    or to standardise an Arabic text, written with Dilan fonts (which are a set of non-standard
+    non-Unicode types developed by KurdSoft.com).
+</p>
+<h3>Convert Arabic based on Ali Web fonts</h3>
+<p>
+    Tick this option if you are going to convert an Arabic script text to Latin script,
+    or to standardise an Arabic text, written with Ali Web fonts, such as Ali_Web_Malper.
+</p>
+<h3>Treat i as î</h3>
+<p>
+    If you want to use Latin-to-Arabic tab for typing Arabic texts using an English
+    keyboard, this option make you faster, as you type one i for î. For example, <span
+    class="example">tir</span> is converted to <span class="example">تیر</span>
+    instead of <span class="example">تر</span>. For more information, see 'Latin to
+    Arabic conversion' under Conversion.
+</p>
+<h3>Allow syllables starting with 2 consonants</h3>
+<p>
+    Tick this option if your Arabic script text is written in Sorani Kurdish, as Sorani
+    Kurdish allows two consonants in the onset of a syllable. For example, <span class="example">
+    زمان</span> is converted to <span class="example">zman</span> instead of <span class="example">
+    ziman</span>.
+</p>
+<h3>Capitalise sentences</h3>
+<p>
+    Capitalises the first word of every sentence converted from Arabic script to Latin
+    script.
+</p>
+<h3>Arabic keyboard layout</h3>
+<p>
+    Choose the Kurdish keyboard layout you are accustomed to. For example, your keyboard
+    keys might be labelled with Farsi letters. In this case, using the same keys for
+    the same letters can facilitate your typing.
+</p>
+<h2>System Requirements</h2>
+<p>
+    You can use Kurdî Nûs on all popular operating systems without installation or administrator
+    privileges. Kurdî Nûs is tested and fully functional on these browsers: Mozilla
+    Firefox, Google Chrome, Microsoft Internet Explorer 7 and above, Apple Safari, and
+    Opera.
+</p>
+<h3>Internet Explorer Users</h3>
+<p>
+    For security reasons, Microsoft Internet Explorer disables all local scripts in
+    a page. To enable them, after opening Kurdî Nûs, click the yellow bar at the top
+    the page.
+</p>
+<h2>About</h2>
+<p>
+    Kurdî Nûs (/kurdi:nu:s/) is a free software project developed by pellk Software
+    Development Institute based in Merîwan, Eastern Kurdistan (Iran).
+</p>
+<p>
+    Among many programming languages, technologies and platforms, we decided to create
+    Kurdî Nûs in HTML. Because the whole program is a single HTML file that is suitable
+    for moving around with you on removable storage devices or sending via the internet.
+    Moreover, it can be opened and run by any modern browser on any Operating System
+    and platform, since the web is an open technology. No installation is needed or
+    there are no hardware/software requirements. HTML files are open-source by nature.
+    In order to view the source code, just right click the opened page and choose ‘View
+    Page Source’. The code is a mixture of HTML tags, CSS styles, and JavaScript code.
+    For simplification purposes, we have applied indentation to the code. In addition,
+    wherever required, we have provided remarks to clarify the code.
+</p>
+<p>
+    This project is hosted on SourceForge.net and licensed under GPL. For updates and
+    more information, visit <a href="https://sourceforge.net/projects/kurdinus/">the project’s page</a>.
+</p>
+<p>
+    <i>Ako Mahmoodi, Aso Mehmûdî</i>
+</p>
+                </div>
+                <div id="footer">
+                    ©2010 <a href="http://pellk.net/">pellk</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+
+var curTab = 1; //current tab
+var tabText = new Array('', '', '', '');
+
+//Latin to Arabic Array
+var sConvertLatin2Arabic = new Array(
+    '(^|[^a-zêîûçş0-9\'’])([aeiouêîû])', '$1ئ$2', //insert hamza
+    '(ئ)([uû])([^êîûçşa-z0-9])', 'و$3', //omit the inserted hamza for 'u' (=and)
+    'a', 'ا',
+    'b', 'ب',
+    'ch|ç', 'چ',
+    'c', 'ج',
+    'd', 'د',
+    'ee|ê|é', 'ێ',
+    'e', 'ە',
+    'f', 'ف',
+    'gh', 'غ',
+    'g', 'گ',
+    'hh', 'ح',
+    'sh|ş', 'ش',
+    'h', 'ھ',
+    'î|y|í', 'ی',
+    'j', 'ژ',
+    'k', 'ک',
+    'll', 'ڵ',
+    'l', 'ل',
+    'm', 'م',
+    'n', 'ن',
+    'o', 'ۆ',
+    'p', 'پ',
+    'q', 'ق',
+    'rr', 'ڕ',
+    'r', 'ر',
+    's', 'س',
+    't', 'ت',
+    'uu|û|ú', 'وو',
+    'u|w', 'و',
+    'v', 'ڤ',
+    'x', 'خ',
+    'z', 'ز',
+    '\'|’', 'ع',
+    '\\u003F', '؟', //question mark
+    '\,', '،',
+    '\;', '؛'
+);
+
+var sSuffixes = new Array(
+    '[ ]+()ئ(م|ی|ە|ین|ن|ا|ێ|ێن)($|[^ء-يٱ-ە])', //e.g. ziman a
+    '[ ]+()(یی|یە|یا|یێ|یێن)($|[^ء-يٱ-ە])', //e.g. zana ye
+    '([^ء-يٱ-ە])ئ(م|ی|ە|ین|ن|ا|ێ|ێن)($|[^ء-يٱ-ە])' //e.g. (ziman)a
+);
+
+var sCapitalLetters = new Array(
+    'ê', 'Ê',
+    'î', 'Î',
+    'û', 'Û',
+    'ç', 'Ç',
+    'ş', 'Ş'
+);
+
+// Arabic to Latin Array
+var sConvertArabic2Latin = new Array(
+    //managing 'و' and 'ی'
+    'و([اێۆە])', 'w$1', //و + vowel => w (e.g. wan)
+    'ی([اێۆە])', 'y$1', //ی + vowel => y (e.g. yas)
+    '([اێۆە])و', '$1w', //vowel + و => w (e.g. kew)
+    '([اێۆە])ی', '$1y', //vowel + ی => y (e.g. bey)
+    '(^|[^ء-يٱ-ەwy])و([^ء-يٱ-ەwy])', '$1û$2', //non-letter + 'و' + non-letter => û (=and)
+    '(^|[^ء-يٱ-ەwy])و', '$1w', //non-letter + 'و' => w (e.g. wtar)
+    'یو', 'îw', //'ی' + 'و' => îw (e.g. nîw)
+    'یی', 'îy', //'ی' + 'ی' => îy (e.g. kanîy)
+    'وی', 'uy', //'و' + 'ی' => uy (e.g. buyn)
+    'وو', 'û', //'و' + 'و' => û (e.g. bû)
+    'ی', 'î',
+    'و', 'u',
+    'uu', 'û', //'و' + 'و' => û (e.g. bû)
+
+    '([ء-يٱ-ەîuûwy])ڕ', '$1rr', //when 'ڕ' not at the beginning of a word => rr
+    'ر|ڕ', 'r',
+    'ش', 'ş',
+    'ئ', '',
+    'ا', 'a',
+    'ب', 'b',
+    'چ', 'ç',
+    'ج', 'c',
+    'د', 'd',
+    'ێ', 'ê',
+    'ە|ه‌', 'e',
+    'ف', 'f',
+    'خ|غ', 'x',
+    'گ', 'g',
+    'ح|ھ', 'h',
+    'ژ', 'j',
+    'ک', 'k',
+    'ڵ', 'll',
+    'ل', 'l',
+    'م', 'm',
+    'ن', 'n',
+    'ۆ', 'o',
+    'پ', 'p',
+    'ق', 'q',
+    'س', 's',
+    'ت', 't',
+    'ڤ', 'v',
+    'ز', 'z',
+    'ع', '\'',
+    '‌', '',
+    '؟', '?',
+    '،', '\,',
+    '؛', '\;',
+    '٠|۰', '0',
+    '١|۱', '1',
+    '٢|۲', '2',
+    '٣|۳', '3',
+    '٤|۴', '4',
+    '٥|۵', '5',
+    '٦|۶', '6',
+    '٧|۷', '7',
+    '٨|۸', '8',
+    '٩|۹', '9',
+    '»|«', '"',
+	'ـ', '',
+
+    //insert i where applicable
+
+    'll', 'Ľ', //temporary conversion to avoid seeing ll as 2 letters
+    'rr', 'Ŕ', //temporary conversion to avoid seeing rr as 2 letters
+    '([bcçdfghjklĽmnpqrŔsştvwxz])([fjlĽmnrŔsşvwxyz])([fjlĽmnrŔsşvwxyz])([^aeêiîouûy])', '$1$2i$3$4', //e.g. grft -> grift
+    '([aeêiîouû])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])\\b', '$1$2$3i$4', //e.g. cejnt -> cejnit
+    '([fjlĽrŔsşwyz])([fjlĽmnrŔsşvwxyz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2$3', //e.g. wrd -> wird
+    '([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1i$2$3', //e.g. prd -> pird
+    '([^aeêiîouû])([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1$2i$3$4', //repeat the latter expression, in case skipped
+    '(^|[^aeêiîouy])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])($|[^aeêiîouû])', '$1$2i$3$4', //e.g. ktk -> kitk
+	'(^|[^a-zçşêîûĽŔ])([bcçdfghjklĽmnpqrŔsştvwxz])(\\s)', '$1$2i$3', //e.g. j -> ji
+    'Ľ', 'll', //revert the temporary conversion
+    'Ŕ', 'rr' //revert the temporary conversion
+);
+
+var sOnsetI = new Array(
+    '([bcçdfghjklmnpqrsştvwxz])([wy][aeêiîouû])', '$1i$2', //e.g. dyar -> diyar
+    '(^|[^a-zêîûçş0-9\'’])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1$2i$3', //e.g. bra -> bira
+    '([bcçdfghjklmnpqrsştvwxz][bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2' //e.g. aşkra -> aşkira
+);
+
+// Standardize Arabic scripts Array
+var sConvertStandardise = new Array(
+	'‌{1,}', '‌', //omit multiple successive zero-width non-joiners
+    'لاَ|لأ|لآ', 'ڵا',
+    'لً|لَ', 'ڵ',
+    'ض', 'چ',
+    'ث', 'پ',
+    'ظ', 'ڤ',
+    'ط', 'گ',
+    'ىَ|يَ|یَ', 'ێ',
+    'رِ', 'ڕ',
+    'ؤ|وَ', 'ۆ',
+    'ي|ى', 'ی',
+    'ذ', 'ژ',
+    'ك', 'ک',
+    // using unicode: 06D5 (Arabic letter Ae) for E
+    // using unicode: 06BE (Arabic letter He Doachashmee) for H
+    'ه‍', 'ھ',
+    'ه($|[^ء-يٱ-ە])', 'ە$1',
+    'ە‌', 'ە',
+    'ة', 'ە',
+    'ه', 'ھ', // rest of هs are H
+    '([ء-يٱ-ە])‌([^ء-يٱ-ە])', '$1$2'
+);
+
+var sAliWeb = new Array(
+    'ص', 'ێ',
+    'أ', 'ڕ'
+);
+
+var sConvertDilan = new Array(
+	'ص', 'ڵ',
+	'ث', 'ێ',
+	'ذ', 'ڕ'
+);
+
+// Latin type Array
+var sConvertLatin = new Array(
+    //typed, Hawar
+    'ee', 'ê',
+    'ii', 'î',
+    'uu', 'û',
+    'Ee|EE', 'Ê',
+    'Ii|II', 'Î',
+    'Uu|UU', 'Û',
+    'ch', 'ç',
+    'sh', 'ş',
+    'Ch|CH', 'Ç',
+    'Sh|SH', 'Ş'
+);
+
+var sNumbers = new Array(
+    '0', '٠',
+    '1', '١',
+    '2', '٢',
+    '3', '٣',
+    '4', '٤',
+    '5', '٥',
+    '6', '٦',
+    '7', '٧',
+    '8', '٨',
+    '9', '٩'
+);
+
+//Arabic type Array
+var sKeyboardLayouts = new Array(
+//English keyboard, Rojhellat keyboard, Bakur keyboard, Bashur Keyboard
+
+    //numbers row
+    '`', 'پ', '', 'ژ',
+    '1', '١', '١', '١',
+    '2', '٢', '٢', '٢',
+    '3', '٣', '٣', '٣',
+    '4', '٤', '٤', '٤',
+    '5', '٥', '٥', '٥',
+    '6', '٦', '٦', '٦',
+    '7', '٧', '٧', '٧',
+    '8', '٨', '٨', '٨',
+    '9', '٩', '٩', '٩',
+    '0', '٠', '٠', '٠',
+    '-', '-', '+', '-',
+    '=', '=', '\'', '=',
+
+    //numbers row shifted
+    '~', '~', '~', '~',
+    '!', '!', '!', '!',
+    '@', '@', '@', '@',
+    '#', '#', '#', '#',
+    '$', '$', '$', '$',
+    '%', '%', '%', '%',
+    '^', '÷', '^', '^',
+    '&', '×', '&', '&',
+    '*', '*', '*', '*',
+    '(', ')', ')', ')',
+    ')', '(', '(', '(',
+    '_', 'ـ', '_', '_',
+    '+', '+', '+', '+',
+
+    //letters top row     
+    'q', 'ڵ', 'ق', 'چ',
+    'w', 'ۆ', 'و', 'ص',
+    'e', 'ێ', 'ە', 'پ',
+    'r', 'ق', 'ر', 'ق',
+    't', 'ف', 'ت', 'ف',
+    'y', 'غ', 'ی', 'غ',
+    'u', 'ع', 'و', 'ع',
+    'i', 'ە', 'ئ', 'ھ',
+    'o', 'خ', 'ۆ', 'خ',
+    'p', 'ح', 'پ', 'ح',
+    '[', 'ج', 'وو', 'ج',
+    ']', 'چ', 'ش', 'د',
+    '\\', 'ژ', 'چ', '\\',
+
+    //letters top row shifted    
+    'Q', 'ض', '`', 'ض',
+    'W', 'ص', 'وو', '}',
+    'E', 'ث', 'ي', 'ث',
+    'R', 'ك', 'ڕ', '{',
+    'T', 'ي', 'ط', 'ڤ',
+    'Y', '_', 'ێ', 'إ',
+    'U', '', 'ء', '',
+    'I', 'ه‌', 'ع', '÷',
+    'O', ',', 'ؤ', '×',
+    'P', '‍', 'ث', '؛',
+    '{', ']', ']', '>',
+    '}', '[', '[', '<',
+    '|', '|', '|', '|',
+
+    //letters mid row
+    'a', 'ش', 'ا', 'ش',
+    's', 'س', 'س', 'س',
+    'd', 'ی', 'د', 'ی',
+    'f', 'ب', 'ف', 'ب',
+    'g', 'ل', 'گ', 'ل',
+    'h', 'ا', 'ھ', 'ا',
+    'j', 'ت', 'ژ', 'ت',
+    'k', 'ن', 'ک', 'ن',
+    'l', 'م', 'ل', 'م',
+    ';', 'ک', 'ێ', 'ک',
+    '\'', 'گ', 'ی', 'گ',
+
+    //letters mid row shifted
+    'A', '»', 'آ', ']',
+    'S', '«', 'ش', '[',
+    'D', 'ێ', 'ذ', 'ێ',
+    'F', '', 'إ', '',
+    'G', 'ڵ', 'غ', 'ڵ',
+    'H', 'ئا', 'ە', 'أ',
+    'J', 'ء', 'أ', 'ـ',
+    'K', '}', 'ك', '،',
+    'L', '{', 'ڵ', '/',
+    ':', ':', ':', 'ك',
+    '"', '؛', '"', 'ط',
+
+    //letters bottom row
+    'z', 'ڤ', 'ز', 'ئ',
+    'x', 'ھ', 'خ', 'ء',
+    'c', 'ز', 'ج', 'ۆ',
+    'v', 'ر', 'ڤ', 'ر',
+    'b', 'ڕ', 'ب', 'لا',
+    'n', 'د', 'ن', 'ی',
+    'm', 'ئ', 'م', 'ە',
+    ',', 'و', '،', 'و',
+    '.', '.', '.', 'ز',
+    '/', '/', '-', '/',
+
+    //letters bottom row shifted
+    'Z', 'ظ', 'ض', '',
+    'X', 'ط', 'ص', 'وو',
+    'C', 'ژ', 'چ', 'ؤ',
+    'V', 'ڕ', 'ظ', 'ڕ',
+    'B', '‌', 'ى', 'ڵا',
+    'N', '‌ذ', 'ة', 'آ',
+    'M', 'ة', 'ـ', 'ة',
+    '<', 'ۆ', '>', ',',
+    '>', '،', '<', '.',
+    '?', '؟', '؟', '؟'
+);
+
+function changeTab(tab) {
+    //preserve tab text
+    tabText[curTab - 1] = document.getElementById('txtIn').value;
+    document.getElementById('txtIn').value = tabText[tab - 1];
+
+    //change the tab
+    document.getElementById('tab' + curTab).className = 'unselected';
+    document.getElementById('tab' + tab).className = 'selected';
+
+    document.getElementById('options').style.display = document.getElementById('help').style.display = 'none';
+    document.getElementById('optionsButton').className = document.getElementById('helpButton').className = '';
+            
+    if (tab == 5) {
+        document.getElementById('converting').style.display = 'none';
+        document.getElementById('typeArabic').style.display = 'block';
+    }
+    else {
+        document.getElementById('converting').style.display = 'block';
+        document.getElementById('typeArabic').style.display = 'none';
+
+    }
+
+    //set the options related to the picked tab
+    switch (tab) {
+        case 1: //Arabic to Latin
+            document.getElementById('txtIn').dir = 'rtl';
+            document.getElementById('txtOut').dir = 'ltr';
+            break;
+        case 2: //Latin to Arabic
+            document.getElementById('txtIn').dir = 'ltr';
+            document.getElementById('txtOut').dir = 'rtl';
+            break;
+        case 3: //Standardise Arabic
+            document.getElementById('txtIn').dir = 'rtl';
+            document.getElementById('txtOut').dir = 'rtl';
+            break;
+        case 4: //Type Latin
+            document.getElementById('txtIn').dir = 'ltr';
+            document.getElementById('txtOut').dir = 'ltr';
+            break;
+    }
+
+    //set the passed function parameter as the current tab
+    curTab = tab;
+    convert();
+
+    return false;
+}
+
+function convert() {
+    var s = document.getElementById('txtIn').value;
+    switch (curTab) {
+        case 1: //Arabic to Latin
+            // standardize Arabic before converting Arabic to Latin
+            if (document.getElementById('chkDilan').checked)
+                for (i = 0; i < sConvertDilan.length; i += 2)
+                    s = s.replace(new RegExp(sConvertDilan[i], 'g'), sConvertDilan[i + 1]);
+            if (document.getElementById('chkAliWeb').checked)
+                for (i = 0; i < sAliWeb.length; i += 2)
+                    s = s.replace(new RegExp(sAliWeb[i], 'g'), sAliWeb[i + 1]);
+            for (i = 0; i < sConvertStandardise.length; i += 2)
+                s = s.replace(new RegExp(sConvertStandardise[i], 'g'), sConvertStandardise[i + 1]);
+
+            //main conversion
+            for (i = 0; i < sConvertArabic2Latin.length; i += 2)
+                s = s.replace(new RegExp(sConvertArabic2Latin[i], 'gim'), sConvertArabic2Latin[i + 1]);
+
+            s = s.replace(new RegExp('ll', 'gim'), 'Ľ').replace(new RegExp('rr', 'gim'), 'Ŕ'); //temporary conversion
+
+            //add extra i's for Kurmanci texts
+            if (!document.getElementById('chkOnsetI').checked)
+                for (i = 0; i < sOnsetI.length; i += 2)
+                    s = s.replace(new RegExp(sOnsetI[i], 'gim'), sOnsetI[i + 1]); //e.g. bra -> bira
+
+            s = s.replace(new RegExp('Ľ', 'gim'), 'll').replace(new RegExp('Ŕ', 'gim'), 'rr'); //temporary conversion
+
+            //capitalise the first words of sentences
+            if (document.getElementById('chkCapitaliseSentence').checked)
+                s = s.replace(new RegExp('(^|\r\n|[\\.\\u003F!] [^a-zêîûçş0-9\'’]*)([a-zêîûçş])', 'gm'), function (m, p1, p2) {
+                    for (i = 0; i < sCapitalLetters.length; i += 2)
+                        p2.replace(sCapitalLetters[i], sCapitalLetters[i + 1]);
+                    return p1 + p2.toUpperCase();
+                });
+
+            break;
+
+        case 2: //Latin to Arabic
+            //main conversion            
+            for (i = 0; i < sConvertLatin2Arabic.length; i += 2)
+                s = s.replace(new RegExp(sConvertLatin2Arabic[i], 'gim'), sConvertLatin2Arabic[i + 1]);
+
+            //convert numbers
+            if (document.getElementById('chkConvertNumbers').checked)
+                for (i = 0; i < sNumbers.length; i += 2)
+                    s = s.replace(new RegExp(sNumbers[i], 'g'), sNumbers[i + 1]);
+
+            //convert ii and i based on the option selected
+            if (!document.getElementById('chkTreatI').checked)
+                s = s.replace(new RegExp('ii', 'gi'), 'ی').replace(new RegExp('i', 'gi'), '');
+            else
+                s = s.replace(new RegExp('i', 'gi'), 'ی');
+
+            //when user chooses to recoginse the dependent verb 'to be' can be separated (e.g. kurd in = kurdin)
+            if (document.getElementById('chkConnectSuffixes').checked)
+                for (i = 0; i < sSuffixes.length; i++)
+                    s = s.replace(new RegExp(sSuffixes[i], 'gim'), '$1$2$3');
+
+            break;
+
+        case 3: //Standardise Arabic
+            //do Dilan conversions if requested
+            if (document.getElementById('chkDilan').checked)
+                for (i = 0; i < sConvertDilan.length; i += 2)
+                    s = s.replace(new RegExp(sConvertDilan[i], 'g'), sConvertDilan[i + 1]);
+
+            //Ali Web fonts
+            if (document.getElementById('chkAliWeb').checked)
+                for (i = 0; i < sAliWeb.length; i += 2)
+                    s = s.replace(new RegExp(sAliWeb[i], 'g'), sAliWeb[i + 1]);
+           
+            //main conversion
+            for (i = 0; i < sConvertStandardise.length; i += 2)
+                s = s.replace(new RegExp(sConvertStandardise[i], 'g'), sConvertStandardise[i + 1]);
+
+            //convert numbers if requested
+            if (document.getElementById('chkConvertNumbers').checked)
+                for (i = 0; i < sNumbers.length; i += 2)
+                    s = s.replace(new RegExp(sNumbers[i], 'g'), sNumbers[i + 1]);
+            break;
+
+        case 4: //Type Latin
+            for (i = 0; i < sConvertLatin.length; i += 2)
+                s = s.replace(new RegExp(sConvertLatin[i], 'g'), sConvertLatin[i + 1]);
+            break;
+    }
+    document.getElementById('txtOut').value = s;
+}
+    
+function getKeyStroke(e) {
+    //get the pressed key
+    var c = String.fromCharCode(window.event ? e.keyCode : e.which);
+
+    //which keyboard layout is selected
+    var keybrd;
+    if (document.getElementById('optRojhellat').checked)
+        keybrd = 1;
+    else if (document.getElementById('optBakur').checked)
+        keybrd = 2
+    else
+        keybrd = 3;
+
+    //find a substitute for the keyboard input based on the selected keyboard layout
+    for (i = 0; i < sKeyboardLayouts.length; i += 4)
+        if (sKeyboardLayouts[i] == c) {
+            document.getElementById('txtArabic').value += sKeyboardLayouts[i + keybrd];
+            return false;
+        }
+
+    //there's no equivalent for the pressed key so don't change it
+    return true;
+}
+
+function maximise() {
+    if (document.getElementById('wrapper').className == 'normal') {
+        document.getElementById('wrapper').className = 'max';
+        document.getElementById('maximiseButton').innerHTML = 'Restore';
+    }
+    else {
+        document.getElementById('wrapper').className = 'normal';
+        document.getElementById('maximiseButton').innerHTML = 'Maximise';
+    }
+    return false;
+}
+
+function showHelp() {
+    var showOrHide = document.getElementById('help').style.display != 'block';
+    document.getElementById('helpButton').className = showOrHide ? 'selected' : '';
+    document.getElementById('optionsButton').className = '';
+    document.getElementById('help').style.display = showOrHide ? 'block' : 'none';
+    document.getElementById('converting').style.display = document.getElementById('typeArabic').style.display = document.getElementById('options').style.display = 'none';
+    if (showOrHide)
+        document.getElementById('tab' + curTab).className = 'unselected';
+    else
+        changeTab(curTab);
+    return false;
+}
+
+function showOptions() {
+    var showOrHide = document.getElementById('options').style.display != 'block';
+    document.getElementById('optionsButton').className = showOrHide ? 'selected' : '';
+    document.getElementById('helpButton').className = '';
+    document.getElementById('options').style.display = showOrHide ? 'block' : 'none';
+    document.getElementById('converting').style.display = document.getElementById('typeArabic').style.display = document.getElementById('help').style.display = 'none';
+    if (showOrHide)
+        document.getElementById('tab' + curTab).className = 'unselected';
+    else
+        changeTab(curTab);
+    return false;
+}
+
+    </script>
+</body>
+</html>

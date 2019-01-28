@@ -1,0 +1,1130 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>پەڵک کوردی‌نووس ٤.٠</title>
+    <style type="text/css">
+    @font-face{font-family:'kurd';font-style:normal;font-weight:400;src:url('/style/font/DroidNaskh-Regular.woff') format('woff');font-display:swap;}
+    * {
+        font-family:'kurd', arial;
+    }
+html, body
+{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+body
+{
+    background-color: #E8E8E8;
+    color: #333333;
+    text-align: center;
+	direction: rtl;
+}        
+body, h3, textarea
+{
+    font-size: 10pt;
+}
+h1
+{
+    color: #4699EC;
+    font-weight: bold;
+    font-size: xx-large;
+    margin: 4px 0 4px 0;
+}
+h2
+{
+    margin: 15px 0;
+    font-size: 16pt;
+    color: #4699EC;
+}
+h3
+{
+    margin: 15px 0 5px 0;
+}
+.max h1
+{
+    font-size: 14pt;
+}
+a
+{
+    color: #4699EC;
+    text-decoration: none;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+ul
+{
+    list-style: none;
+    padding-right: 1em;
+}
+p
+{
+    margin: 0;
+}
+#help p
+{
+    margin: 12pt 0;
+}
+#wrapper
+{
+    border-collapse: collapse;
+}
+#wrapper td
+{
+    padding: 0;
+    vertical-align: top;
+}
+.normal
+{
+    width: 760px;
+    margin: 0 auto;
+}
+.max
+{
+    width: 100%;
+    height: 100%;
+}
+#heading
+{
+    text-align: left;
+    height: 1px;
+}
+.max #heading
+{
+    
+}
+#heading a
+{
+    color: #777777;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    padding: 3px 8px;
+    margin-top: 10px;
+    margin-right: 5px;
+    font-weight: bold;
+    float: right;
+}
+.max #heading a
+{
+    margin-top: 2px;
+}
+#heading a.selected
+{
+    background-color: #4699EC;
+    color: White;
+}
+#heading p
+{
+    margin-bottom: 5px;
+}
+.max #heading p
+{
+    display: none;
+}
+#sidebar
+{
+    width: 190px;
+}
+.normal #sidebar .short
+{
+    display: none;
+}
+.max #sidebar .full
+{
+    display: none;
+}
+.max #sidebar
+{
+    width: 40px;
+}
+#sidebar a
+{
+    float: left;
+    clear: both;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    margin: 2px 0;
+}
+#sidebar a.selected
+{
+    width: 100%;
+    background: #FFFFFF;
+    font-size: 14pt;
+    padding: 10px 0;
+    border-radius: 0 9px 9px 0;
+}
+.max #sidebar a.selected
+{
+    border-radius: 0 7px 7px 0;
+    font-size: 12pt;
+    padding: 8px 0;
+}
+#sidebar a.unselected
+{
+    width: 85%;
+    background: #F2F2F2;
+    font-size: 11pt;
+    padding: 6px 0;
+    color: #333333;
+    border-radius: 0 7px 7px 0;
+}
+.max #sidebar a.unselected
+{
+    font-size: 10pt;
+    padding: 3px 0;
+}
+#sidebar a:hover.selected
+{
+    text-decoration: none;
+}
+#sidebar a:hover.unselected
+{
+    text-decoration: underline;
+}
+#spacer
+{
+    height: 25px;
+}
+#main
+{
+    height: 100%;
+}
+#converting, #typeArabic, #options, #help
+{
+    background: #FFFFFF;
+    border-radius: 7px;
+    padding: 15px;
+    text-align: right;
+    height: 95%;
+}
+#converting
+{
+    text-align: left;
+}
+textarea
+{
+    width: 100%;
+    height: 170px;
+}
+#txtIn
+{
+    margin-bottom: 15px;
+    border: solid 1px #999999;
+}
+.max #txtIn, .max #txtOut
+{
+    width: 49%;
+    height: 100%;
+}
+.max #txtIn
+{
+    float: right;
+    margin-bottom: 0;
+}
+#txtOut
+{
+    border: solid 1px #E0E0E0;
+}
+#txtArabic
+{
+    direction: rtl;
+    height: 350px;
+}
+.max #txtArabic
+{
+    height: 100%;
+}
+#help
+{
+    display: none;
+}
+#footer
+{
+    background: #E8E8E8;
+    text-align: center;
+    padding: 5px;
+    display: block;
+	direction: ltr;
+}
+.max #footer
+{
+    display: none;
+}
+.example
+{
+    font-style: italic;
+    color: Black;
+    background-color: #EEEEEE;
+    padding: 0 3px;
+}
+.error
+{
+    position: absolute;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    background-color: #550000;
+    color: White;
+    font-size: 15pt;
+    padding: 30px;
+}
+.error h1
+{
+    color: Red;
+}
+    </style>
+</head>
+<body onload="changeTab(1)">
+    <noscript>
+        <div class="error">
+            <h1>سکریپتەکان لە وێبگەڕەکەتدا ناچالاککراون</h1>
+            <p>ئەگەر Internet Explorer بەکاردێنی، لەسەر شریتە زەردەکەی سەرەوەی پەڕەکەدا کلیک بکە و Allow Blocked Contents لێبدە.</p>
+        </div>
+    </noscript>
+<!--[if lt IE 8]>
+    <style type="text/css">
+        #main { width: 570px; }
+        .max #main { width: 98%; }
+    </style>
+<![endif]-->
+    <table id="wrapper" class="normal">
+        <tr id="heading">
+            <td colspan="2">
+                <a id="maximiseButton" href="#" onclick="return maximise()">گەورەکردنەوە</a>
+                <a id="optionsButton" href="#" onclick="return showOptions()">ھەڵبژاردەکان</a>
+                <a id="helpButton" href="#" onclick="return showHelp()">ڕێنوێنی</a>
+                <h1>پەڵک کوردی‌نووس 4.0</h1>
+                <p>ئامرازێکی ھەڵگرتنی، سەکۆسەربەست و سەرچاوەکراوە بۆ گۆڕینی ئەلفوبێکانی کوردی</p>
+            </td>
+        </tr>
+        <tr>
+            <td id="sidebar">
+                <div id="spacer"></div>
+		        <a id="tab1" class="selected" href="#" onclick="return changeTab(1)">
+                    <span class="full">کوردی > Kurdî</span>
+                    <span class="short" title="کوردی > Kurdî">ک‌K</span>
+                </a>
+		        <a id="tab2" class="unselected" href="#" onclick="return changeTab(2)">
+                    <span class="full">Kurdî > کوردی</span>
+                    <span class="short" title="Kurdî > کوردی">K‌ک</span>
+                </a>
+		        <a id="tab3" class="unselected" href="#" onclick="return changeTab(3)">
+                    <span class="full">بەیونیکۆدکردن</span>
+                    <span class="short" title="ستانداردکردنی یونیکۆدەکان">ی</span>
+                </a>
+		        <a id="tab4" class="unselected" href="#" onclick="return changeTab(4)">
+                    <span class="full">Taypî Kurdî</span>
+                    <span class="short" title="تایپکردنی ئەلفوبێی لاتینی">K</span>
+                </a>
+		        <a id="tab5" class="unselected" href="#" onclick="return changeTab(5)">
+                    <span class="full">تایپی کوردی</span>
+                    <span class="short" title="تایپکردنی ئەلفوبێی عەرەبیی کوردی">ک</span>
+                </a>
+            </td>
+            <td id="main">
+                <div id="converting">
+                    <textarea id="txtIn" onblur="convert()" onkeyup="convert()" onmousedown="convert()" onmouseup="convert()"></textarea>
+                    <textarea id="txtOut"></textarea>
+                </div>
+                <div id="typeArabic">
+                    <textarea id="txtArabic" onkeypress="return getKeyStroke(event)"></textarea>
+                </div>
+                <div id="options">
+                    <h2>ھەڵبژاردەکان</h2>
+                    <p><input type="checkbox" id="chkConvertNumbers" checked="checked" /><label for="chkConvertNumbers">ژمارەکان بکە بە عەرەبی</label></p>
+                    <p><input type="checkbox" id="chkConnectSuffixes" checked="checked" /><label for="chkConnectSuffixes">پاشگرە جیاکراوەکان بناسەوە (لە کاتی گۆڕین بۆ ئەلفوبێی عەرەبی)</label></p>
+                    <p><input type="checkbox" id="chkDilan" /><label for="chkDilan">بە فۆنتەکانی دیلان نووسراوە</label></p>
+                    <p><input type="checkbox" id="chkAliWeb" checked="checked" /><label for="chkAliWeb">بە فۆنتەکانی عەلی وێب نووسراوە</label></p>
+                    <p><input type="checkbox" id="chkTreatI" /><label for="chkTreatI">i بە î بناسەوە (لە کاتی گۆڕین بۆ ئەلفوبێی عەرەبی)</label></p>
+                    <p><input type="checkbox" id="chkOnsetI" checked="checked" /><label for="chkOnsetI">ڕێگەبدە بڕگەکان بە دوو نەبزوێنیشەوە دەستپێبکەن (لە کاتی گۆڕین بۆ لاتینی)</label></p>
+                    <p><input type="checkbox" id="chkCapitaliseSentence" checked="checked" /><label for="chkCapitaliseSentence">پیتی سەرەتای ڕستەکان گەورەبکەوە (لە کاتی گۆڕین بۆ لاتینی)</label></p>
+                    <h3>دیمەنی تەختەکلیلی بەشی تایپی کوردی:</h3>
+                    <ul>
+				        <li>
+					        <input id="optBakur" checked="checked" name="optArabicKeyboard" type="radio" />
+					        <label for="optBakur"><strong>باکوور</strong> (باشترە بۆ تەختەکلیلی ئینگلیزی)</label>
+                        </li>
+				        <li>
+					        <input id="optRojhellat" name="optArabicKeyboard" type="radio" />
+					        <label for="optRojhellat"><b>ڕۆژھەڵات</b> (باشترە بۆ تەختەکلیلی فارسی)</label>
+                        </li>
+				        <li>
+					        <input id="optBashur" name="optArabicKeyboard" type="radio" />
+					        <label for="optBashur"><b>باشوور</b> (باشترە بۆ تەختەکلیلی عەرەبی)</label>
+                        </li>
+			        </ul>
+                </div>
+                <div id="help">
+<h2>ڕێنوێنی، خاڵەکانی بەکارھێنان و کێشە پێزانراوەکان</h2>
+<p>
+    کوردی‌نووس ئامرازێکی ھەڵگرتنی، سەکۆسەربەست و ئازاد (سەرچاوەکراوە)یە بۆ گۆڕینی ئەلفوبێکانی
+    کوردی.
+</p>
+<h3>نابەرپرسی</h3>
+<p>
+    ئەگەرچی کوردی‌نووس ئەو پەڕی تێکۆشانی خۆی بۆ بە دروستی گۆڕینی دەقە کوردییەکان دەکات،
+    بەڵام ھەرگیز مانای ئەوە نییە دەقی ئاکام تەواوە و ھیچ ھەڵەیەکی تێدا نییە. کەوایە،
+    تکایە پێداچوونەوەیەک لەسەر دەقە گۆڕدراوەکەدا بکە.
+</p>
+<h3>شێوازی بەکارھێنان</h3>
+<p>
+    سەرەتا دەبێ دڵنیا بیت کە لە وێبگەڕەکەتدا ڕێگەدراوە بە شێوازەکانی CSS و سکریپتەکان.
+</p>
+<p>
+    بە ھەڵبژاردنی جۆری گۆڕانی دڵخوازت لە نێوان بەشەکانی لای ڕاستەوە دەستپێدەکەی. لە
+    حالەتی بنچینەییدا بەشی کوردی>Kurdî (گۆڕینی ئەلفوبێی لاتینی بۆ ئەلفوبێی عەرەبیی کوردی)
+    ھەڵبژێردراوە. لە ناوەڕاستی پەڕەکەدا بە پێی ئەوە کە لە کام بەشدایت دوو یان یەک چوارچێوە
+    دەبینی.
+</p>
+<p>
+    لە گشت بەشەکاندا بێجگە بەشی «تایپی کوردی» دەتوانی دەقەکەت لە چوارچێوەی سەرەوەدا
+    تایپ بکەیت یان بیلکێنیتەوە و ئاکامی گۆڕینەکە ھەرچەند دەقەکە زۆریش بێت خێرا لە چوارچێوەی
+    خوارەوەدا ببینی. ئەگەر بۆ لکاندنەوەی دەقەکەت لە مشک کەڵکت وەرگرت و ئاکامەکە خێرا
+    نیشان نەدرا، لە سەر یەکێک لە چوارچێوەکاندا کلیکێک بکە.
+</p>
+<p>
+    بۆ بەکارھێنانی دوایین بەش کە بۆ تایپکردنی ڕاستەوخۆی کوردی بە ئەلفوبێی عەرەبییە دەبێ
+    دیمەنی تەختەکلیلی ئێستای کۆمپیوتەرەکت لەسەر US English دا بێت و Caps Lock کوژاوە
+    بێت. دەستبکە بە تایپکردن لە چوارچێوەکەدا و ڕاستەوخۆ دەقەکە بە ئەلفوبێی عەرەبی دەبینی.
+</p>
+<p>
+    بۆ کەڵک وەرگرتن لە سەرانسەری پەردەکە دەتوانی لەسەر دوگمەی «گەورەکردنەوە» لە ڕاستی
+    سەرەوەی پەڕەکە کلیک بکەیت. لە حاڵەتی گەورەکراودا ئەو چوارچێوە دەقەکەتت تێیدەخست،
+    دەکەوێتە لای ڕاست و دەقە گۆڕدراوەکە دەکەوێتە لای چەپەوە. سەرناوی بەشەکان لە ڕاستی
+    پەڕەکەدا چکۆلە دەبنەوە، بۆ بینینی ناوی تەواویان تیری مشکەکە لەسەریاندا بوەستێنە.
+    بۆ گەڕانەوە بۆ حاڵەتی ئاسایی لەسەر دوگمەی «گەڕانەوە» لە ڕاستی سەرەوەی پەڕەکەدا کلیک
+    بکە.
+</p>
+<p>
+    کلیک کردن لەسەر دوگمەکانی «ڕێنوێنی» یان «ھەڵبژاردەکان» کاریگەری نییە لەسەر ئەو دەقانە
+    خراونەتە ناو بەشە جیاکان. دیسان لەسەر ئەم دوگمانە کلیک بکە بۆ گەڕانەوە بۆ ئەو بەشە
+    تێیدا بووی. ھەر گۆڕانکارییەک کە لە ھەڵبژاردەکاندا درابێت ھەر لەدوای دەرچوون لە بەشی
+    ھەڵبژاردەکان، ئاکامەکان دەگۆڕێ.
+</p>
+<h2>گۆڕین</h2>
+<h3>کوردی > Kurdî (گۆڕینی ئەلفوبێی لاتینی بۆ ئەلفوبێی عەرەبیی کوردی)</h3>
+<p>
+    گۆڕینی ئەلفوبێی لاتینی بۆ ئەلفوبێی عەرەبی یارمەتی دەدات بۆ گواستنەوەی ئەو دەقە کوردییانە
+    کە بە ئەلفوبێی ستانداردی لاتینی (ئەلفوبێی ھاوار) نووسراون بۆ ئەلفوبێی ستانداردی
+    عەرەبی، بۆ نموونە، <span class="example">pellk</span> بۆ <span class="example">پەڵک</span>.
+    ئاکام بە تەواوی گونجاوە لەگەڵ ستانداردی یونیکۆد بۆ زمانی کوردی.
+</p>
+<p>
+    لە حاڵەتی بنچینەییدا ژمارە ئەورووپایییەکان دەگۆڕدرێن بۆ ژمارە عەرەبییەکان. بەڵام
+    دەتوانی لە ھەڵبژاردەکاندا ھەلیبژێری کە وەک خۆیان بمێننەوە.
+</p>
+<p>
+    بەداخەوە، بە ھۆی لاساییکردنەوە لە زمانە ئەورووپایییەکان، بڕێ کەس چەند پاشگرێکی زمانی
+    کوردی وەک وشەیەکی جیا لە دەقە لاتینییەکاندا بەکاردێنن. بۆ نموونە، «a» لە <span class="example">
+        hevala me</span> بە جیا دەنووسرێ: <span class="example">heval a me</span>. لە
+    زمانناسیدا، پاشگرەکان بە شێوەی سروشتی دوابەدوای بنەمۆرفیمێکدا دێن و یەک وشە پێکدێنن
+    و نابێ لەیەک جیا بکرێنەوە. ھەرچەن کوردی‌نووس لە حاڵەتی بنچینەییدا ئەم ھەڵەیە ڕاستناکاتەوە
+    بەڵام دەتوانی لە ھەڵبژاردەکاندا بەشی «پاشگرە جیاکراوەکان بناسەوە» چالاک بکەیت و
+    لە دەقی ئەلفوبێی عەرەبیی ئاکامدا ئەم ھەڵەیە ڕاستبکەیتەوە.
+</p>
+<p>
+    کوردی‌نووس ھەرچی h و x لە دەقەدایە بە ڕیز دەکات بە «ھ» و «خ». کەوایە دەبێ پێداچوونەوەیەک
+    بە دەقە گۆڕدراوەکەدا بکەیت بۆ ڕاستکردنەوەی ئەوانەی کە دروستەکەیان «ح» یان «غ» یە.
+</p>
+<p>
+    ھەروەھا ئەگەر عادەتت ھەیە بە تایپکردنی ئینگلیزی دەتوانی بەشی «گۆڕینی ئەلفوبێی لاتینی
+    بۆ ئەلفوبێی عەرەبی» بۆ تایپکردنی کوردی بە ئەلفوبێی عەرەبی بەکاربێنی. ئەمە بەو مانایە
+    دەتوانی ڕاستەوخۆ دەقە گۆڕدراوەکە ببینی. بۆ پیتە تایبەتەکانی کوردی کە لە ئینگلیزیدا
+    نین ( ê و î و û و ç و ş) بە ڕیز دەتوانی (ee و ii و uu و ch و sh) تایپ بکەیت. ھەروەھا
+    دەتوانی بۆ خێراترکردنی تایپکردنت لە ھەڵبژاردەکاندا «i بە î بناسەوە» چالاک بکەیتەوە.
+</p>
+<h3>Kurdî > کوردی (گۆڕینی ئەلفوبێی عەرەبی بۆ ئەلفوبێی لاتینیی کوردی)</h3>
+<p>
+    گۆڕینی ئەلفوبێی عەرەبی بۆ ئەلفوبێی لاتینی یارمەتیت ئەدات دەقە کوردییەکانت کە بە
+    ئەلفوبێی عەرەبی نووسراون بگۆڕیتەوە بۆ ئەلفوبێی ستانداردی لاتینیی کوردی (ئەلفوبێی
+    ھاوار). بۆ نموونە <span class="example">پەڵک</span> بۆ <span class="example">pellk</span>.
+    ئەگەر دەقەکەت بە فۆنتەکانی دیلان (ژمارەیەک فۆنتی ناستانداردی کوردیی بەرھەمی KurdSoft.com)
+    تایپکراون لە ھەڵبژاردەکاندا دەبێ «بە فۆنتەکانی دیلان نووسراوە» چالاک بکەیت.
+</p>
+<p>
+    شەڕ و کێشەیەکی ھەمیشەیی کە لە نووسینی کوردی بە ئەلفوبێی لاتینیدا و لە ئاکامیشدا
+    لە گۆڕینی ئەلفوبێی عەرەبی بۆ لاتینیدا ھەیە، «پێکگەیشتنی نەبزوێنەکان» (consonant
+    cluster) و بزوێنی «i»ە. ئەم کێشە دوو لای ھەیە: یەکەم ئەوەیە بزوێنی i لە ئەلفوبێی
+    عەرەبیی کوردیدا نانووسرێت. کەوایە ئامرازێک کە ئەلفوبێی عەرەبی دەگۆڕێتەوە بۆ لاتینی،
+    دەبێ بە پێی جۆری وشەکان، ھەڵبدات لە کوێ دەبێ i دابنێت. بۆ نموونە <span class="example">
+        کرد</span> دەبێ بگۆڕدرێ بۆ <span class="example">kird</span>، بەڵام <span class="example">
+            کرا</span> دەبێ بکرێ بە <span class="example">kra</span>. ھەرچەند بۆ گۆڕینێکی
+    بێ ھەڵە، فەرھەنگێکی وشە کوردییەکان بە ھەردوو ئەلفوبێکە پێویستە، بەلام دروستکردن
+    و تێخستنی بنکەدراوەیەکی مەزنی وا، لە پرۆژەیەکی نەرمامێریی بچووکی ھەڵگرتنی و سەکۆسەربەستدا،
+    جێبەجێ نەدەکرا. بڕیارمان دا بزوێنی شاراوەی i لەسەر بنەمای ڕێساکانی فۆنۆلۆژیای زمانی
+    کوردی بخەینە ناو دەقە گۆڕدراوەکە. دووەم ئەوەیە کە پشتڕاستیش دەکرێتەوە کە کوردیی
+    سۆرانی ڕێگە دەدات بە دوو نەبزوێن لە سەرەتای بڕگە (syllable)دا. بۆ نموونە <span class="example">
+        zman</span> وشەیەکی یەک‌بڕگەیییە. بەڵام بە پێچەوانەوە لە کورمانجیدا iیەکی دیکە
+    پێویستە: <span class="example">ziman</span>. ھەرچەندە لە حاڵەتی بنچینەییدا کوردی‌نووس
+    چاوەڕێی دەقێکی سۆرانییە بە ڕێگەدان بە دوو نەبزوێن لە ناوکی بڕگەیەکدا، بەڵام لە ھەڵبژاردەکاندا
+    دەکرێ ڕێگە نەدەی بە دوو نەبزوێن لە بڕگەیەکدا. ھەرچەندە دەقە گۆڕدراوەکە زۆر نزیکە
+    بە دەقێکی بێ ھەڵە، بەڵام لەوانەیە دیسان بڕێ ھەڵەی ڕێنووسی تێدا ببێت، بەتایبەت بە
+    ھۆی ناڕوونیی فۆنۆلۆژیایی.
+</p>
+<p>
+    چونکوو ئەلفوبێی عەرەبی پیتی گەورە و بچووکی نییە، دۆزینەوە ناوەکان و گەورەکردنەوەی
+    یەکەم پیتیان لە ئەلفوبێی لاتینیی ئاکام لە بەرنامەیەکی سادەدا دەستنادات. بەڵام لە
+    حاڵەتی بنچینەییدا پیتی یەکەمی ڕستەکە گەورەدەکرێتەوە کە دەکرێ لە ھەڵبژاردەکاندا ئەوەش
+    ناچالاک بکەیت.
+</p>
+<h3>بەیونیکۆدکردن (ستانداردکردنی پیتەکانی ئەلفوبێی عەربیی کوردی)</h3>
+<p>
+    دەتوانی پیتەکانی دەقە کوردییە کۆنەکانت و ئەوانەی بە فۆنتە ناستانداردەکان نووسراون
+    لە بەشی «بەیونیکۆدکردن»دا بکەیت بە پیتە دروستەکانی زمانی کوردی لە یونیکۆددا. ئەم
+    بەشە بەتایبەت بۆ وێب زۆر بەکاردێت. بۆ نموونە بە فۆنتەکانی عەلی (ژمارەیەک فۆنتی بەرھەمی
+    ١٩٩٧ کە ھێشتا بڕێ جار بەکاردێت چونکوو پێویستی بە دامەزرانی تەختەکلیلی کوردی نییە)
+    تایپکراوە: <span class="example">تاظطة</span> کە دەقی ستانداردکراوەکەی دەبێ بە:
+    <span class="example">تاڤگە</span>. ھەروەھا ئەو دەقانەش کە بە تەختەکلیلە نوێترەکان
+    وەک KurdITGroup نووسراون لەوانەیە لە چەند پیتێک وەک «ە» و «ھ» ستاندارد نەبن. ئەگەر
+    دەقەکەت بە فۆنتەکانی دیلان (ژمارەیەک فۆنتی ناستانداردی کوردیی بەرھەمی KurdSoft.com)
+    تایپکراون لە ھەڵبژاردەکاندا دەبێ «بە فۆنتەکانی دیلان نووسراوە» چالاک بکەیت. بۆ زانیاریی
+    زیاتر سەبارەت بە ستانداردی یونیکۆد بۆ کوردی سەردانی <a href="https://ckb.wikipedia.org/wiki/">
+        ویکیپیدیای کوردی</a> بکە.
+</p>
+<h3>تایپکردن بە ئەلفوبێی لاتینی</h3>
+<p>
+    لەوانەیە جارەبەجار پێویستت بە تایپکردنی دەقێکی کورتی کوردی بە لاتینی بێت بەڵام تەختەکلیلی
+    کوردیی لاتینی لەسەر کۆمپیوتەرەکەت دانەمزرابێت. بەشی «Taypî Kurdî» یارمەتیت دەدات
+    بە تەختەکلیلێکی ئاساییی ئینگلیزی، کوردی تایپ بکەیت. بۆ ئەو پیتە تایبەتانەی کوردی
+    کە لە ئینگلیزیدا نین (ê و î و û و ç و ş) دەتوانی بە ڕیز ee و ii و uu و ch و sh تایپ
+    بکەیت. بۆ گەورەکردنی پیتەکان ھەر لە پیتە گەورەکانی ئینگلیزییەکان کەڵک وەرگرە، بۆ
+    نموونە: EE یان Ee بۆ Ê.
+</p>
+<h3>تایپکردن بە ئەلفوبێی عەرەبیی کوردی</h3>
+<p>
+    لەوانەیە جارەبەجار پێویستت بە تایپکردنی دەقێکی کورتی کوردی بە ئەلفوبێی عەرەبی بێت
+    بەڵام تەختەکلیلی کوردی لەسەر کۆمپیوتەرەکەت دانەمزرابێت. بەشی «تایپی کوردی» یارمەتیت
+    دەدات بە تەختەکلیلێکی ئاساییی ئینگلیزی کوردی تایپ بکەیت. پێش ھەموو شتێک، لە ھەڵبژاردەکاندا
+    ئەو دیمەنی تەختەکلیلە وا عادەتت پێ کردووە ھەڵبژێرە. بۆ نموونە ئەگەر تەختەکلیلەکەت
+    پیتە فارسییەکانی پێوەیە و تا ئێستا زۆرتر فارسیت تایپ کردووە، تەختەکلیلی ڕۆژھەڵات
+    زۆر یارمەتیت دەدات بۆ خێراکردنی تایپکردنت.
+</p>
+<h2>ھەڵبژاردەکان</h2>
+<h3>ژمارەکان بکە بە عەرەبی</h3>
+<p>
+    لە کاتی گۆرانی دەقی ئەلفوبێی لاتینی بۆ ئەلفوبێی عەرەبی یان لە کاتی بەیونیکۆدکردنی
+    دەقێکی ئەلفوبێی عەرەبی، ژمارە ئەورووپایییەکان دەکرێن بە ژمارە عەرەبییەکان. بۆ نموونە
+    <span class="example">123</span> دەکرێ بە <span class="example">١٢٣</span>. دەتوانی
+    ئەم کردارە ناچالاک بکەیتەوە.
+</p>
+<h3>پاشگرە جیاکراوەکان بناسەوە</h3>
+<p>
+    لە ئەلفوبێی لاتینیدا چەند پاشگرێک (im و î و e و în و in و a و ê و ên) کە جاربەجار
+    لە بن‌وشەکەیان جیادەکرێنەوە دەناسێتەوە و لە دەقی ئەلفوبێی عەرەبیی ئاکامدا دەیلکێنێتەوە
+    بە بن‌وشەکەیانەوە. بۆ نموونە <span class="example">heval a me</span> دەگۆڕدرێ بۆ
+    <span class="example">ھەڤالا مە</span> بە جێگەی <span class="example">ھەڤال ئا مە</span>.
+    بۆ زانیاریی زۆرتر بەشی «گۆڕینی ئەلفوبێی لاتینی بۆ ئەلفوبێی عەرەبیی کوردی» بخوێنەوە.
+</p>
+<h3>بە فۆنتەکانی دیلان نووسراوە</h3>
+<p>
+    ئەگەر دەقێکت ھەیە کە بە فۆنتەکانی دیلان (ژمارەیەک فۆنتی ناستانداردی کوردیی بەرھەمی
+    KurdSoft.com) تایپکراوە و دەتەوێ بیکەیت بە ئەلفوبێی لاتینی یان بە بیکەیت بە ستانداردی
+    یونیکۆدی ئەلفوبێی عەرەبیی کوردی ئەم ھەڵبژاردنە چالاک بکە.
+</p>
+<h3>بە فۆنتەکانی عەلی وێب نووسراوە</h3>
+<p>
+    ئەگەر دەقێکت ھەیە کە بە فۆنتەکانی عەلی وێب (بۆ وێنە Ali_Web_Malper) تایپ کراوە و
+    دەتەوێ بیکەیت بە ئەلفوبێی لاتینی یان بە بیکەیت بە ستانداردی یونیکۆدی ئەلفوبێی عەرەبیی
+    کوردی ئەم ھەڵبژاردنە چالاک بکە.
+</p>
+<h3>i بە î بناسەوە</h3>
+<p>
+    لە کاتی بەکارھێنانی بەشی گۆڕینی ئەلفوبێی لاتینی بۆ ئەلفوبێی عەرەبیی کوردی بۆ تایپکردنی
+    کوردی بە ئەلفوبێی عەرەبی بە تەختەکلیلی ئینگلیزییەوە، بۆ خێراکردنی تایپکردنت دەتوانی
+    یەک i بە جێگەی î تایپ بکەیت. بۆ نموونە <span class="example">tir</span> دەگۆڕدرێ
+    بۆ <span class="example">تیر</span> لە جێگەی <span class="example">تر</span>.بۆ
+    زانیاریی زۆرتر بەشی «گۆڕینی ئەلفوبێی عەرەبی بۆ ئەلفوبێی لاتینیی کوردی» بخوێنەوە.
+</p>
+<h3>ڕێگەبدە بڕگەکان بە دوو نەبزوێنیشەوە دەستپێبکەن</h3>
+<p>
+    ئەگەر دەقێکی کوردیی سۆرانیت ھەیە کە بە ئەلفوبێی عەرەبی نووسراوە و دەتەوێ بیکەی بە
+    ئەلفوبێی لاتینی ئەم ھەڵبژاردە چالاک بکە، چونکوو لە کوردیی سۆرانیدا سەرەتای یەک بڕگە
+    (syllable) دەتوانێ بە دوو نەبزوێن (consonant)یشەوە دەستپێبکات. بۆ نموونە <span class="example">
+        زمان</span> دەگۆڕدرێ بۆ <span class="example">zman</span> بە جێگەی <span class="example">
+            ziman</span>.
+</p>
+<h3>پیتی سەرەتای ڕستەکان گەورەبکەوە</h3>
+<p>
+    پیتی سەرەتای ھەموو ڕستەیەک کە لە ئەلفوبێی عەرەبییەوە گۆڕدراوە بۆ لاتینی گەورە دەکاتەوە.
+</p>
+<h3>دیمەنی تەختەکلیلی بەشی تایپی کوردی</h3>
+<p>
+    ئەو دیمەنی تەختەکلیلە کە عادەتت پێکردووە ھەڵبژێرە. بۆ نموونە ئەگەر تەختەکلیلەکەت
+    پیتە فارسییەکانی پێوەیە و تا ئێستا زۆرتر فارسیت تایپ کردووە، تەختەکلیلی ڕۆژھەڵات
+    زۆر یارمەتیت دەدات بۆ خێراکردنی تایپکردنت.
+</p>
+<h2>ویستەمەنییە سیستەمییەکان</h2>
+<p>
+    دەتوانی کوردی‌نووس لەسەر ھەموو سیستەمە ناسراوەکانی کارپێکردن بەکاربێنی، بێ دامەزراندن
+    و بێ مافەکان بەڕێوبەری. کوردی‌نووس لە سەر ئەم وێبگەڕانە تاقی کراوەتەوە و بە باشی
+    کاردەکات: Mozilla Firefox و Google Chrome و Windows Internet Explorer 7 و سەرتر
+    و Apple Safari و Opera.
+</p>
+<h3>بەکارھێنەرانی Internet Explorer</h3>
+<p>
+    بە ھۆی ئاسایشی زۆرتر، وێبگەڕی Windows Internet Explorer ھەموو سکریپتە ناوخۆکانی
+    پەڕەکە لەکار دەخات. بۆ ڕێگەدان بەو سکریپتانە، لەدوای کردنەوەی کوردی‌نووس، لەسەر
+    شریتە زەردەکە لە سەرەوەی پەڕەکەدا کلیک بکە.
+</p>
+<h2>سەبارەت</h2>
+<p>
+    کوردی‌نووس پرۆژەیەکی نەرمامێریی ئازادە و بەرھەمی «دامەزراوەی پەڵک بۆ بەرنامەداڕشتن»ە
+    لە شاری مەریوان لە کوردستان.
+</p>
+<p>
+    لە نێوان ژمارەیەکی زۆری زمان و تەکنۆلۆژیا و سەکۆی بەرنامەنووسین، بڕیارمان دا کوردی‌نووس
+    بکەین بە HTML. چونکوو سەرانسەری بەرنامەکە یەک فایلی HTML دەبێ کە دەتوانی لە بیرگە
+    ھەڵگرتنییەکدا بە ئاسانی لەگەڵ خۆتدا جێبەجێی بکەیت یان لە ئەنتەرنێتدا بە ساکاری کەڵکی
+    لێوەرگری. تەنیا وێبگەڕێکی مۆدێڕنی پێویستە کە بە ھۆی کراوە بوونی تەکنۆلۆژیای وێب
+    لە ھەموو سیستەمێکی کارپێکردن و سەکۆیەکدا لەبەردەستدایە. پێویستی بە دامەزران نییە
+    و پێشنیازێکی نەرم‌ئامێر و ڕەق‌ئامێری نییە. فایلە HTMLـەکان لە سروشتدا سەرچاوەکراوەن،
+    بۆ بینینی کۆدی سەرچاوە تەنیا کلیکی ڕاست بکە لەسەر پەڕە کراوەکەدا و «View Page Source»
+    لێبدە. کۆدەکەی تێکەڵاوێکە لە تاگەکانی HTML و شێوازەکانی CSS و کۆدەکانی JavaScript.
+    لە کۆدەکەدا لە شوێنە پێویستەکاندا شرۆڤەمان داناوە بۆ ڕوونکردنەوەی کۆدەکە.
+</p>
+<p>
+    خانەخوێ ئەم پرۆژە SourceForge.net ـە و لە ژێر مۆڵەتنامەی GPLدایە. بۆ نوێکردنەوەکان
+    و زانیاریی زۆرتر، سەردانی <a href="https://sourceforge.net/projects/kurdinus/">پەڕەی
+        پرۆژەکە</a> بکە.
+</p>
+<p>
+    <i>ئاکۆ مەحموودی، ئاسۆ مەحموودی </i>
+</p>
+                </div>
+                <div id="footer">
+                    ©2010 <a href="http://pellk.net/">pellk</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+
+var curTab = 1; //current tab
+var tabText = new Array('', '', '', '');
+
+//Latin to Arabic Array
+var sConvertLatin2Arabic = new Array(
+    '(^|[^a-zêîûçş0-9\'’])([aeiouêîû])', '$1ئ$2', //insert hamza
+    '(ئ)([uû])([^êîûçşa-z0-9])', 'و$3', //omit the inserted hamza for 'u' (=and)
+    'a', 'ا',
+    'b', 'ب',
+    'ch|ç', 'چ',
+    'c', 'ج',
+    'd', 'د',
+    'ee|ê|é', 'ێ',
+    'e', 'ە',
+    'f', 'ف',
+    'gh', 'غ',
+    'g', 'گ',
+    'hh', 'ح',
+    'sh|ş', 'ش',
+    'h', 'ھ',
+    'î|y|í', 'ی',
+    'j', 'ژ',
+    'k', 'ک',
+    'll', 'ڵ',
+    'l', 'ل',
+    'm', 'م',
+    'n', 'ن',
+    'o', 'ۆ',
+    'p', 'پ',
+    'q', 'ق',
+    'rr', 'ڕ',
+    'r', 'ر',
+    's', 'س',
+    't', 'ت',
+    'uu|û|ú', 'وو',
+    'u|w', 'و',
+    'v', 'ڤ',
+    'x', 'خ',
+    'z', 'ز',
+    '\'|’', 'ع',
+    '\\u003F', '؟', //question mark
+    '\,', '،',
+    '\;', '؛'
+);
+
+var sSuffixes = new Array(
+    '[ ]+()ئ(م|ی|ە|ین|ن|ا|ێ|ێن)($|[^ء-يٱ-ە])', //e.g. ziman a
+    '[ ]+()(یی|یە|یا|یێ|یێن)($|[^ء-يٱ-ە])', //e.g. zana ye
+    '([^ء-يٱ-ە])ئ(م|ی|ە|ین|ن|ا|ێ|ێن)($|[^ء-يٱ-ە])' //e.g. (ziman)a
+);
+
+var sCapitalLetters = new Array(
+    'ê', 'Ê',
+    'î', 'Î',
+    'û', 'Û',
+    'ç', 'Ç',
+    'ş', 'Ş'
+);
+
+// Arabic to Latin Array
+var sConvertArabic2Latin = new Array(
+    //managing 'و' and 'ی'
+    'و([اێۆە])', 'w$1', //و + vowel => w (e.g. wan)
+    'ی([اێۆە])', 'y$1', //ی + vowel => y (e.g. yas)
+    '([اێۆە])و', '$1w', //vowel + و => w (e.g. kew)
+    '([اێۆە])ی', '$1y', //vowel + ی => y (e.g. bey)
+    '(^|[^ء-يٱ-ەwy])و([^ء-يٱ-ەwy])', '$1û$2', //non-letter + 'و' + non-letter => û (=and)
+    '(^|[^ء-يٱ-ەwy])و', '$1w', //non-letter + 'و' => w (e.g. wtar)
+    'یو', 'îw', //'ی' + 'و' => îw (e.g. nîw)
+    'یی', 'îy', //'ی' + 'ی' => îy (e.g. kanîy)
+    'وی', 'uy', //'و' + 'ی' => uy (e.g. buyn)
+    'وو', 'û', //'و' + 'و' => û (e.g. bû)
+    'ی', 'î',
+    'و', 'u',
+    'uu', 'û', //'و' + 'و' => û (e.g. bû)
+
+    '([ء-يٱ-ەîuûwy])ڕ', '$1rr', //when 'ڕ' not at the beginning of a word => rr
+    'ر|ڕ', 'r',
+    'ش', 'ş',
+    'ئ', '',
+    'ا', 'a',
+    'ب', 'b',
+    'چ', 'ç',
+    'ج', 'c',
+    'د', 'd',
+    'ێ', 'ê',
+    'ە|ه‌', 'e',
+    'ف', 'f',
+    'خ|غ', 'x',
+    'گ', 'g',
+    'ح|ھ', 'h',
+    'ژ', 'j',
+    'ک', 'k',
+    'ڵ', 'll',
+    'ل', 'l',
+    'م', 'm',
+    'ن', 'n',
+    'ۆ', 'o',
+    'پ', 'p',
+    'ق', 'q',
+    'س', 's',
+    'ت', 't',
+    'ڤ', 'v',
+    'ز', 'z',
+    'ع', '\'',
+    '‌', '',
+    '؟', '?',
+    '،', '\,',
+    '؛', '\;',
+    '٠|۰', '0',
+    '١|۱', '1',
+    '٢|۲', '2',
+    '٣|۳', '3',
+    '٤|۴', '4',
+    '٥|۵', '5',
+    '٦|۶', '6',
+    '٧|۷', '7',
+    '٨|۸', '8',
+    '٩|۹', '9',
+    '»|«', '"',
+	'ـ', '',
+
+    //insert i where applicable
+
+    'll', 'Ľ', //temporary conversion to avoid seeing ll as 2 letters
+    'rr', 'Ŕ', //temporary conversion to avoid seeing rr as 2 letters
+    '([bcçdfghjklĽmnpqrŔsştvwxz])([fjlĽmnrŔsşvwxyz])([fjlĽmnrŔsşvwxyz])([^aeêiîouûy])', '$1$2i$3$4', //e.g. grft -> grift
+    '([aeêiîouû])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])\\b', '$1$2$3i$4', //e.g. cejnt -> cejnit
+    '([fjlĽrŔsşwyz])([fjlĽmnrŔsşvwxyz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2$3', //e.g. wrd -> wird
+    '([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1i$2$3', //e.g. prd -> pird
+    '([^aeêiîouû])([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1$2i$3$4', //repeat the latter expression, in case skipped
+    '(^|[^aeêiîouy])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])($|[^aeêiîouû])', '$1$2i$3$4', //e.g. ktk -> kitk
+	'(^|[^a-zçşêîûĽŔ])([bcçdfghjklĽmnpqrŔsştvwxz])(\\s)', '$1$2i$3', //e.g. j -> ji
+    'Ľ', 'll', //revert the temporary conversion
+    'Ŕ', 'rr' //revert the temporary conversion
+);
+
+var sOnsetI = new Array(
+    '([bcçdfghjklmnpqrsştvwxz])([wy][aeêiîouû])', '$1i$2', //e.g. dyar -> diyar
+    '(^|[^a-zêîûçş0-9\'’])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1$2i$3', //e.g. bra -> bira
+    '([bcçdfghjklmnpqrsştvwxz][bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2' //e.g. aşkra -> aşkira
+);
+
+// Standardize Arabic scripts Array
+var sConvertStandardise = new Array(
+	'‌{1,}', '‌', //omit multiple successive zero-width non-joiners
+    'لاَ|لأ|لآ', 'ڵا',
+    'لً|لَ', 'ڵ',
+    'ض', 'چ',
+    'ث', 'پ',
+    'ظ', 'ڤ',
+    'ط', 'گ',
+    'ىَ|يَ|یَ', 'ێ',
+    'رِ', 'ڕ',
+    'ؤ|وَ', 'ۆ',
+    'ي|ى', 'ی',
+    'ذ', 'ژ',
+    'ك', 'ک',
+    // using unicode: 06D5 (Arabic letter Ae) for E
+    // using unicode: 06BE (Arabic letter He Doachashmee) for H
+    'ه‍', 'ھ',
+    'ه($|[^ء-يٱ-ە])', 'ە$1',
+    'ە‌', 'ە',
+    'ة', 'ە',
+    'ه', 'ھ', // rest of هs are H
+    '([ء-يٱ-ە])‌([^ء-يٱ-ە])', '$1$2'
+);
+
+var sAliWeb = new Array(
+    'ص', 'ێ',
+    'أ', 'ڕ'
+);
+
+var sConvertDilan = new Array(
+	'ص', 'ڵ',
+	'ث', 'ێ',
+	'ذ', 'ڕ'
+);
+
+// Latin type Array
+var sConvertLatin = new Array(
+    //typed, Hawar
+    'ee', 'ê',
+    'ii', 'î',
+    'uu', 'û',
+    'Ee|EE', 'Ê',
+    'Ii|II', 'Î',
+    'Uu|UU', 'Û',
+    'ch', 'ç',
+    'sh', 'ş',
+    'Ch|CH', 'Ç',
+    'Sh|SH', 'Ş'
+);
+
+var sNumbers = new Array(
+    '0', '٠',
+    '1', '١',
+    '2', '٢',
+    '3', '٣',
+    '4', '٤',
+    '5', '٥',
+    '6', '٦',
+    '7', '٧',
+    '8', '٨',
+    '9', '٩'
+);
+
+//Arabic type Array
+var sKeyboardLayouts = new Array(
+//English keyboard, Rojhellat keyboard, Bakur keyboard, Bashur Keyboard
+
+    //numbers row
+    '`', 'پ', '', 'ژ',
+    '1', '١', '١', '١',
+    '2', '٢', '٢', '٢',
+    '3', '٣', '٣', '٣',
+    '4', '٤', '٤', '٤',
+    '5', '٥', '٥', '٥',
+    '6', '٦', '٦', '٦',
+    '7', '٧', '٧', '٧',
+    '8', '٨', '٨', '٨',
+    '9', '٩', '٩', '٩',
+    '0', '٠', '٠', '٠',
+    '-', '-', '+', '-',
+    '=', '=', '\'', '=',
+
+    //numbers row shifted
+    '~', '~', '~', '~',
+    '!', '!', '!', '!',
+    '@', '@', '@', '@',
+    '#', '#', '#', '#',
+    '$', '$', '$', '$',
+    '%', '%', '%', '%',
+    '^', '÷', '^', '^',
+    '&', '×', '&', '&',
+    '*', '*', '*', '*',
+    '(', ')', ')', ')',
+    ')', '(', '(', '(',
+    '_', 'ـ', '_', '_',
+    '+', '+', '+', '+',
+
+    //letters top row     
+    'q', 'ڵ', 'ق', 'چ',
+    'w', 'ۆ', 'و', 'ص',
+    'e', 'ێ', 'ە', 'پ',
+    'r', 'ق', 'ر', 'ق',
+    't', 'ف', 'ت', 'ف',
+    'y', 'غ', 'ی', 'غ',
+    'u', 'ع', 'و', 'ع',
+    'i', 'ە', 'ئ', 'ھ',
+    'o', 'خ', 'ۆ', 'خ',
+    'p', 'ح', 'پ', 'ح',
+    '[', 'ج', 'وو', 'ج',
+    ']', 'چ', 'ش', 'د',
+    '\\', 'ژ', 'چ', '\\',
+
+    //letters top row shifted    
+    'Q', 'ض', '`', 'ض',
+    'W', 'ص', 'وو', '}',
+    'E', 'ث', 'ي', 'ث',
+    'R', 'ك', 'ڕ', '{',
+    'T', 'ي', 'ط', 'ڤ',
+    'Y', '_', 'ێ', 'إ',
+    'U', '', 'ء', '',
+    'I', 'ه‌', 'ع', '÷',
+    'O', ',', 'ؤ', '×',
+    'P', '‍', 'ث', '؛',
+    '{', ']', ']', '>',
+    '}', '[', '[', '<',
+    '|', '|', '|', '|',
+
+    //letters mid row
+    'a', 'ش', 'ا', 'ش',
+    's', 'س', 'س', 'س',
+    'd', 'ی', 'د', 'ی',
+    'f', 'ب', 'ف', 'ب',
+    'g', 'ل', 'گ', 'ل',
+    'h', 'ا', 'ھ', 'ا',
+    'j', 'ت', 'ژ', 'ت',
+    'k', 'ن', 'ک', 'ن',
+    'l', 'م', 'ل', 'م',
+    ';', 'ک', 'ێ', 'ک',
+    '\'', 'گ', 'ی', 'گ',
+
+    //letters mid row shifted
+    'A', '»', 'آ', ']',
+    'S', '«', 'ش', '[',
+    'D', 'ێ', 'ذ', 'ێ',
+    'F', '', 'إ', '',
+    'G', 'ڵ', 'غ', 'ڵ',
+    'H', 'ئا', 'ە', 'أ',
+    'J', 'ء', 'أ', 'ـ',
+    'K', '}', 'ك', '،',
+    'L', '{', 'ڵ', '/',
+    ':', ':', ':', 'ك',
+    '"', '؛', '"', 'ط',
+
+    //letters bottom row
+    'z', 'ڤ', 'ز', 'ئ',
+    'x', 'ھ', 'خ', 'ء',
+    'c', 'ز', 'ج', 'ۆ',
+    'v', 'ر', 'ڤ', 'ر',
+    'b', 'ڕ', 'ب', 'لا',
+    'n', 'د', 'ن', 'ی',
+    'm', 'ئ', 'م', 'ە',
+    ',', 'و', '،', 'و',
+    '.', '.', '.', 'ز',
+    '/', '/', '-', '/',
+
+    //letters bottom row shifted
+    'Z', 'ظ', 'ض', '',
+    'X', 'ط', 'ص', 'وو',
+    'C', 'ژ', 'چ', 'ؤ',
+    'V', 'ڕ', 'ظ', 'ڕ',
+    'B', '‌', 'ى', 'ڵا',
+    'N', '‌ذ', 'ة', 'آ',
+    'M', 'ة', 'ـ', 'ة',
+    '<', 'ۆ', '>', ',',
+    '>', '،', '<', '.',
+    '?', '؟', '؟', '؟'
+);
+
+function changeTab(tab) {
+    //preserve tab text
+    tabText[curTab - 1] = document.getElementById('txtIn').value;
+    document.getElementById('txtIn').value = tabText[tab - 1];
+
+    //change the tab
+    document.getElementById('tab' + curTab).className = 'unselected';
+    document.getElementById('tab' + tab).className = 'selected';
+
+    document.getElementById('options').style.display = document.getElementById('help').style.display = 'none';
+    document.getElementById('optionsButton').className = document.getElementById('helpButton').className = '';
+            
+    if (tab == 5) {
+        document.getElementById('converting').style.display = 'none';
+        document.getElementById('typeArabic').style.display = 'block';
+    }
+    else {
+        document.getElementById('converting').style.display = 'block';
+        document.getElementById('typeArabic').style.display = 'none';
+
+    }
+
+    //set the options related to the picked tab
+    switch (tab) {
+        case 1: //Arabic to Latin
+            document.getElementById('txtIn').dir = 'rtl';
+            document.getElementById('txtOut').dir = 'ltr';
+            break;
+        case 2: //Latin to Arabic
+            document.getElementById('txtIn').dir = 'ltr';
+            document.getElementById('txtOut').dir = 'rtl';
+            break;
+        case 3: //Standardise Arabic
+            document.getElementById('txtIn').dir = 'rtl';
+            document.getElementById('txtOut').dir = 'rtl';
+            break;
+        case 4: //Type Latin
+            document.getElementById('txtIn').dir = 'ltr';
+            document.getElementById('txtOut').dir = 'ltr';
+            break;
+    }
+
+    //set the passed function parameter as the current tab
+    curTab = tab;
+    convert();
+
+    return false;
+}
+
+function convert() {
+    var s = document.getElementById('txtIn').value;
+    switch (curTab) {
+        case 1: //Arabic to Latin
+            // standardize Arabic before converting Arabic to Latin
+            if (document.getElementById('chkDilan').checked)
+                for (i = 0; i < sConvertDilan.length; i += 2)
+                    s = s.replace(new RegExp(sConvertDilan[i], 'g'), sConvertDilan[i + 1]);
+            if (document.getElementById('chkAliWeb').checked)
+                for (i = 0; i < sAliWeb.length; i += 2)
+                    s = s.replace(new RegExp(sAliWeb[i], 'g'), sAliWeb[i + 1]);
+            for (i = 0; i < sConvertStandardise.length; i += 2)
+                s = s.replace(new RegExp(sConvertStandardise[i], 'g'), sConvertStandardise[i + 1]);
+
+            //main conversion
+            for (i = 0; i < sConvertArabic2Latin.length; i += 2)
+                s = s.replace(new RegExp(sConvertArabic2Latin[i], 'gim'), sConvertArabic2Latin[i + 1]);
+
+            s = s.replace(new RegExp('ll', 'gim'), 'Ľ').replace(new RegExp('rr', 'gim'), 'Ŕ'); //temporary conversion
+
+            //add extra i's for Kurmanci texts
+            if (!document.getElementById('chkOnsetI').checked)
+                for (i = 0; i < sOnsetI.length; i += 2)
+                    s = s.replace(new RegExp(sOnsetI[i], 'gim'), sOnsetI[i + 1]); //e.g. bra -> bira
+
+            s = s.replace(new RegExp('Ľ', 'gim'), 'll').replace(new RegExp('Ŕ', 'gim'), 'rr'); //temporary conversion
+
+            //capitalise the first words of sentences
+            if (document.getElementById('chkCapitaliseSentence').checked)
+                s = s.replace(new RegExp('(^|\r\n|[\\.\\u003F!] [^a-zêîûçş0-9\'’]*)([a-zêîûçş])', 'gm'), function (m, p1, p2) {
+                    for (i = 0; i < sCapitalLetters.length; i += 2)
+                        p2.replace(sCapitalLetters[i], sCapitalLetters[i + 1]);
+                    return p1 + p2.toUpperCase();
+                });
+
+            break;
+
+        case 2: //Latin to Arabic
+            //main conversion            
+            for (i = 0; i < sConvertLatin2Arabic.length; i += 2)
+                s = s.replace(new RegExp(sConvertLatin2Arabic[i], 'gim'), sConvertLatin2Arabic[i + 1]);
+
+            //convert numbers
+            if (document.getElementById('chkConvertNumbers').checked)
+                for (i = 0; i < sNumbers.length; i += 2)
+                    s = s.replace(new RegExp(sNumbers[i], 'g'), sNumbers[i + 1]);
+
+            //convert ii and i based on the option selected
+            if (!document.getElementById('chkTreatI').checked)
+                s = s.replace(new RegExp('ii', 'gi'), 'ی').replace(new RegExp('i', 'gi'), '');
+            else
+                s = s.replace(new RegExp('i', 'gi'), 'ی');
+
+            //when user chooses to recoginse the dependent verb 'to be' can be separated (e.g. kurd in = kurdin)
+            if (document.getElementById('chkConnectSuffixes').checked)
+                for (i = 0; i < sSuffixes.length; i++)
+                    s = s.replace(new RegExp(sSuffixes[i], 'gim'), '$1$2$3');
+
+            break;
+
+        case 3: //Standardise Arabic
+            //do Dilan conversions if requested
+            if (document.getElementById('chkDilan').checked)
+                for (i = 0; i < sConvertDilan.length; i += 2)
+                    s = s.replace(new RegExp(sConvertDilan[i], 'g'), sConvertDilan[i + 1]);
+
+            //Ali Web fonts
+            if (document.getElementById('chkAliWeb').checked)
+                for (i = 0; i < sAliWeb.length; i += 2)
+                    s = s.replace(new RegExp(sAliWeb[i], 'g'), sAliWeb[i + 1]);
+            
+            //main conversion
+            for (i = 0; i < sConvertStandardise.length; i += 2)
+                s = s.replace(new RegExp(sConvertStandardise[i], 'g'), sConvertStandardise[i + 1]);
+
+            //convert numbers if requested
+            if (document.getElementById('chkConvertNumbers').checked)
+                for (i = 0; i < sNumbers.length; i += 2)
+                    s = s.replace(new RegExp(sNumbers[i], 'g'), sNumbers[i + 1]);
+            break;
+
+        case 4: //Type Latin
+            for (i = 0; i < sConvertLatin.length; i += 2)
+                s = s.replace(new RegExp(sConvertLatin[i], 'g'), sConvertLatin[i + 1]);
+            break;
+    }
+    document.getElementById('txtOut').value = s;
+}
+    
+function getKeyStroke(e) {
+    //get the pressed key
+    var c = String.fromCharCode(window.event ? e.keyCode : e.which);
+
+    //which keyboard layout is selected
+    var keybrd;
+    if (document.getElementById('optRojhellat').checked)
+        keybrd = 1;
+    else if (document.getElementById('optBakur').checked)
+        keybrd = 2
+    else
+        keybrd = 3;
+
+    //find a substitute for the keyboard input based on the selected keyboard layout
+    for (i = 0; i < sKeyboardLayouts.length; i += 4)
+        if (sKeyboardLayouts[i] == c) {
+            document.getElementById('txtArabic').value += sKeyboardLayouts[i + keybrd];
+            return false;
+        }
+
+    //there's no equivalent for the pressed key so don't change it
+    return true;
+}
+
+function maximise() {
+    if (document.getElementById('wrapper').className == 'normal') {
+        document.getElementById('wrapper').className = 'max';
+        document.getElementById('maximiseButton').innerHTML = 'گەڕاندنەوە';
+    }
+    else {
+        document.getElementById('wrapper').className = 'normal';
+        document.getElementById('maximiseButton').innerHTML = 'گەورەکردنەوە';
+    }
+    return false;
+}
+
+function showHelp() {
+    var showOrHide = document.getElementById('help').style.display != 'block';
+    document.getElementById('helpButton').className = showOrHide ? 'selected' : '';
+    document.getElementById('optionsButton').className = '';
+    document.getElementById('help').style.display = showOrHide ? 'block' : 'none';
+    document.getElementById('converting').style.display = document.getElementById('typeArabic').style.display = document.getElementById('options').style.display = 'none';
+    if (showOrHide)
+        document.getElementById('tab' + curTab).className = 'unselected';
+    else
+        changeTab(curTab);
+    return false;
+}
+
+function showOptions() {
+    var showOrHide = document.getElementById('options').style.display != 'block';
+    document.getElementById('optionsButton').className = showOrHide ? 'selected' : '';
+    document.getElementById('helpButton').className = '';
+    document.getElementById('options').style.display = showOrHide ? 'block' : 'none';
+    document.getElementById('converting').style.display = document.getElementById('typeArabic').style.display = document.getElementById('help').style.display = 'none';
+    if (showOrHide)
+        document.getElementById('tab' + curTab).className = 'unselected';
+    else
+        changeTab(curTab);
+    return false;
+}
+
+    </script>
+</body>
+</html>
