@@ -34,3 +34,6 @@ pitew/res/*
 
 # about.comments
 script/php/res/about.comments
+
+# QAs
+QA.txt
