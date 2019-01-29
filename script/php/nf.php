@@ -1,6 +1,6 @@
 <?php
-    $color_num = 999;
-    ?>
+$color_num = 0;
+?>
 <!DOCTYPE HTML>
 <html dir="rtl">
     <head>
