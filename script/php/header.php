@@ -6,13 +6,10 @@
     fwrite($f, "{$_SERVER['REMOTE_ADDR']}\t{$dttd}\t{$_SERVER['REQUEST_URI']}\t{$_SERVER['HTTP_REFERER']}\n");
     fclose($f);
 
-        if(!isset($color_num) && !$is_it_search) {
+        if(!isset($color_num)) {
             $color_num = 0;
-
-        } elseif($is_it_search && !isset($color_num)) {
-            $color_num = count($colors) - 1;
         }
-        if(isset($color_num) && $color_num!=0 && !$thanks && !$about && !$is_it_search) {
+        if($color_num!=0) {
             $ogimg = _SITE . get_poet_image($ath, "profile",0);
         } else {
             $ogimg = _SITE.get_poet_image(0, "pro-460",0);
