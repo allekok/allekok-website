@@ -1,3 +1,18 @@
+<?php
+    
+include_once("../script/php/constants.php");
+include_once(ABSPATH . "script/php/colors.php");
+include_once(ABSPATH . "script/php/functions.php");
+
+$title = _TITLE . "؟";
+$desc = $title;
+$keys = _KEYS;
+$t_desc = "";
+$color_num = 0;
+
+include(ABSPATH . "script/php/header.php");
+?>
+
 <div id="poets">
     <div>
         <p style="font-size:0.75em;">
@@ -5,7 +20,7 @@
         </p>
     </div>
     <div class='stats-min'>
-        <?php include("stats.php"); ?>
+        <?php include(ABSPATH . "script/php/stats.php"); ?>
         <i class='sub-num'><?php echo $aths_num; ?></i>
         شاعیر
         &rsaquo;
@@ -18,7 +33,7 @@
         </span>
         <span style="direction:ltr;letter-spacing:.5px;display:inline-block;color:#222;">
         <?php
-            echo num_convert(file_get_contents(ABSPATH . "last-update.txt"), "en", "ckb");
+            echo num_convert(@file_get_contents(ABSPATH . "last-update.txt"), "en", "ckb");
             ?>
         </span>
     </div>
@@ -31,7 +46,7 @@
 
         <div id="message"></div>
 
-        <form id="frmComm" action="/script/php/append.php" method="POST">
+        <form id="frmComm" action="/about/append.php" method="POST">
 
             <textarea placeholder="بیر و ڕاتان سەبارەت بە ئاڵەکۆک بنووسن..." id="commTxt" style="font-size:.65em;max-width:95%;width:95%;min-height:8.5em"></textarea>
 
@@ -41,14 +56,14 @@
         </form>
 
         <?php
-        $uri = "script/php/res/about.comments";
-        if(filesize($uri)>0) { $nzuri = 1; } ?>
+        $uri = ABSPATH . "about/res/about.comments";
+if(file_exists($uri) and filesize($uri)>0) { $nzuri = 1; } ?>
         
-        <div id="Acomms-title" style="margin:1em 0 .5em;font-size: .8em;<?php if(!$nzuri){echo 'display:none';} ?>">
+        <div id="Acomms-title" style="margin:1em 0 .5em;font-size: .8em;<?php if(!isset($nzuri)){echo 'display:none';} ?>">
             بیر و ڕاکان سەبارەت بە ئاڵەکۆک
         </div>
 
-        <div id="Acomms" style="font-size:0.8em;<?php if(!$nzuri){echo('display:none;');} ?>">
+        <div id="Acomms" style="font-size:0.8em;<?php if(!isset($nzuri)){echo('display:none;');} ?>">
             <?php
                 $rnds = array(
                     mt_rand(1,22),
@@ -66,7 +81,7 @@
                     Acomms.innerHTML=this.responseText;
                     Acomms.style.animation="tL-top 0.8s cubic-bezier(.18,.89,.32,1.28)";
                 }
-                http.open("get","/script/php/about-comments.php");
+                http.open("get","/about/about-comments.php");
                 http.send();
             </script>
         </div>
@@ -145,7 +160,7 @@ function append() {
          
     }
 
-    httpd.open("POST","/script/php/append.php");
+    httpd.open("POST","/about/append.php");
     httpd.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     httpd.send(request);
 
@@ -161,3 +176,8 @@ function append() {
     });
 
 </script>
+
+
+<?php
+	include_once(ABSPATH . "script/php/footer.php");
+?>

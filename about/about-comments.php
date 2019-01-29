@@ -4,7 +4,7 @@
 
 $uri = "res/about.comments";
 
-if($fs = filesize($uri)) {
+if(file_exists($uri) and $fs = filesize($uri)) {
 
     $f = fopen($uri, "r");
     
