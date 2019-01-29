@@ -6,6 +6,8 @@ if(! defined('ABSPATH'))    define('ABSPATH', "/home/allekokc/public_html/");
 define("_HOST", "localhost");
 define("_USER","");
 define("_PASS","");
+define("_DB_PREFIX","");
+// this constant is used in "condb.php". -> Database name = _DB_PREFIX . $db;
 
 // site
 define("_SITE","http://".$_SERVER["HTTP_HOST"]."/"); // could be "https://..."
