@@ -2,19 +2,20 @@
 <?php
     // statistics
     $f = fopen("stats.txt", "a");
-    $dttd = date("Y m d h:i:sa");
-    fwrite($f, "{$_SERVER['REMOTE_ADDR']}\t{$dttd}\t{$_SERVER['REQUEST_URI']}\t{$_SERVER['HTTP_REFERER']}\n");
-    fclose($f);
+$dttd = date("Y m d h:i:sa");
+$reff = empty($_SERVER['HTTP_REFERER']) ? "" : $_SERVER['HTTP_REFERER'];
+fwrite($f, "{$_SERVER['REMOTE_ADDR']}\t{$dttd}\t{$_SERVER['REQUEST_URI']}\t{$reff}\n");
+fclose($f);
 
-        if(!isset($color_num)) {
-            $color_num = 0;
-        }
-        if($color_num!=0) {
-            $ogimg = _SITE . get_poet_image($ath, "profile",0);
-        } else {
-            $ogimg = _SITE.get_poet_image(0, "pro-460",0);
-        }
-    ?>
+if(!isset($color_num)) {
+    $color_num = 0;
+}
+if($color_num!=0) {
+    $ogimg = _SITE . get_poet_image($ath, "profile",0);
+} else {
+    $ogimg = _SITE.get_poet_image(0, "pro-460",0);
+}
+?>
 <html dir="rtl" lang="ckb">
 <head>
     <script>
@@ -102,7 +103,7 @@
 
 <header>
     
-    <?php if(!$is_it_search) { ?>
+<?php if(!isset($is_it_search)) { ?>
 <div id='tS' role='button' class='seartog'>
     <i class="material-icons seartog-i">search</i>
 </div>
@@ -111,7 +112,7 @@
     <i class="material-icons seartog-i"<?php if(!$color_num)    echo " style='color:red'"; ?>>bookmark</i>
 </div>
 
-<a class="<?php echo($t_class) ?>" href="<?php echo _SITE; ?>"><h1 style="color:<?php if($color_num == 0) {echo "rgb(0,210,50)";} else { echo "#555"; } ?>">ئاڵەکۆک</h1></a>
+<a href="<?php echo _SITE; ?>"><h1 style="color:<?php if($color_num == 0) {echo "rgb(0,210,50)";} else { echo "#555"; } ?>">ئاڵەکۆک</h1></a>
     <span style='color:#555'><?php echo($t_desc) ?></span>
     
 </header>
