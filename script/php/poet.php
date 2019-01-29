@@ -81,16 +81,15 @@
     }
     ?>
 </div>
-<div class='bks'<? if($row['kind']=='bayt') { echo " style='padding:0;width:100%;display:block;'";} ?>>
+<div class='bks'<?php if($row['kind']=='bayt') { echo " style='padding:0;width:100%;display:block;'";} ?>>
 <p style="background-color: <?php echo($colors[$color_num][0]) ?>;color: <?php echo($colors[$color_num][1]) ?>;"><?php if($row['kind'] != "bayt") { ?> بەرهەمەکانی <?php echo $row['profname']; } else { echo "بەیتەکان"; }?></p>
 <?php
 $rbks = explode(',',$row['bks']);
-$rbkscomp = explode(',',$row['bks_completion']);
 for($i=0;$i<count($rbks);$i++) {
 
 $rbks[$i] = explode("/", $rbks[$i]);
 
-$rbks[$i] = !$rbks[$i][1] ? $rbks[$i][0] : "<i style='font-style: normal;font-size: .8em;color: #444;'>{$rbks[$i][0]}</i><i style='color: {$colors[$color_num][3]};font-size: .9em;padding: 0 .1em;'>/</i>{$rbks[$i][1]}";
+$rbks[$i] = !isset($rbks[$i][1]) ? $rbks[$i][0] : "<i style='font-style: normal;font-size: .8em;color: #444;'>{$rbks[$i][0]}</i><i style='color: {$colors[$color_num][3]};font-size: .9em;padding: 0 .1em;'>/</i>{$rbks[$i][1]}";
 
 $b = $i+1;
 echo("<a href='/poet:" . $row['id'] . "/book:" . $b . "'>" . 
