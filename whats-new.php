@@ -186,7 +186,7 @@ $color_num = 0;
                     document.getElementById("Acomms").style.animation="tL-top 0.8s cubic-bezier(.18,.89,.32,1.28)";
                 }
 
-                http.open("get","/script/php/about-comments.php?num=3&ch="+Date.now());
+                http.open("get","/about/about-comments.php?num=3&ch="+Date.now());
                 http.send();
             </script>
             

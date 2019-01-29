@@ -121,7 +121,7 @@ mysqli_close($conn);
 
 // about.php
 echo "\n*about.php*\n";
-echo filter_var(file_get_contents("https://allekok.com/script/php/about-comments.php?num=1"), FILTER_SANITIZE_STRING) . "\n";
+echo filter_var(file_get_contents("https://allekok.com/about/about-comments.php?num=1"), FILTER_SANITIZE_STRING) . "\n";
 
 // allekok-desktop
 echo "\n*allekok-desktop*\n";
