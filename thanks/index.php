@@ -1,3 +1,18 @@
+<?php
+
+include_once("../script/php/constants.php");
+include_once(ABSPATH . "script/php/colors.php");
+include_once(ABSPATH . "script/php/functions.php");
+
+$title = _TITLE . " &raquo; سپاس و پێزانین";
+$desc = $title;
+$keys = _KEYS;
+$t_desc = "";
+$color_num = 0;
+
+include(ABSPATH . "script/php/header.php");
+?>
+
 <style>
     p {
         font-size:.6em;border-bottom: 2px dashed #f2f2f2;text-align: right;padding:.6em .2em;
@@ -100,3 +115,8 @@
     </p>
     
 </div>
+
+
+<?php
+	include_once("../script/php/footer.php");
+?>
