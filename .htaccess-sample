@@ -18,10 +18,6 @@ RewriteRule ^poet:([0-9]+)/book:([0-9]+)/page:([0-9]+)/?$ index.php?ath=$1&bk=$2
 
 RewriteRule ^poet:([0-9]+)/book:([0-9]+)/poem:([0-9]+)/?$ index.php?ath=$1&bk=$2&id=$3    [NC,L]  # poems
 
-RewriteRule ^about/? index.php?job=about    [NC,L]  # about page
-
-RewriteRule ^thanks/? index.php?job=thanks    [NC,L]  # thanks page
-
 RewriteRule ^new/? index.php?new    [NC,L]  # new page
 
 # 1 year cache for static assets
