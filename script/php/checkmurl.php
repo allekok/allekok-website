@@ -1,35 +1,32 @@
 <?php 
 
-$db = 'index';
+$db = "index";
 
-if ($ath!=null && $bk==null && $id==null) {
+if ($ath!=null and $bk==null) {
     // poet.php page
     
-    $q = "SELECT id,takh,profname,hdesc,bks,kind FROM auth WHERE id={$ath}";
-    
-    require('condb.php');
+    $q = "SELECT id,takh,profname,name,hdesc,bks,kind FROM auth WHERE id={$ath}";    
+    include("condb.php");
 
-    if(mysqli_num_rows($query)===1) {
-        
-        $row = mysqli_fetch_assoc($query);
+    if($row = mysqli_fetch_assoc($query)) {
 
-        $title = "ئاڵەکۆک &raquo; " . $row['profname'];
-        
+        $title = _TITLE . " &raquo; " . $row["profname"];        
         $desc = "شێعرەکانی " . $row['profname'];
+        $keys = "{$row["takh"]},{$row["profname"]},{$row["name"]}," . "شاعیر,شێعر,شعر";
         
-        $keys = $row['takh'] . "," . $row['profname'] . "," . $row['name'] . "," . "شاعیر,شێعر,شعر";
-    
         $color_num = color_num($ath);
-        require('header.php');
-        require('poet.php');
+        
+        include("header.php");
+        include("poet.php");
+        
     } else {
         include("nf.php");
     }
     mysqli_close($conn);
 
-} elseif ($ath!=null && $bk!=null && $id==null) {
+} elseif ($ath!=null and $bk!=null and $id==null) {
     
-    $_ordasc = ($_POST['order']=="asc") ? "`name`" : "`id`";
+    $_ordasc = @($_POST['order']=="asc") ? "`name`" : "`id`";
     
 
     $q = 'SELECT * FROM auth WHERE id=' . $ath;
@@ -61,7 +58,7 @@ if ($ath!=null && $bk==null && $id==null) {
         require('header.php');
         require('fbody.php');
     }
-} elseif ($ath!=null && $bk!=null && $id!=null) {
+} elseif ($ath!=null and $bk!=null and $id!=null) {
 
     $q = 'SELECT * FROM auth WHERE id=' . $ath;
     require('condb.php');
