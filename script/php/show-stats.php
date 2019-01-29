@@ -22,8 +22,9 @@
         $cnt++;
     }
     fclose($f);
-    
-    $date1 = date_create("2018-11-08 05:55:36pm");
+
+$first_attempt = "2019-01-29 12:00:01am";
+    $date1 = date_create("2019-01-29 12:00:01am");
     $date2 = date_create(date("Y-m-d h:i:sa"));
     $diff = date_diff($date1,$date2,true);
     
@@ -36,7 +37,7 @@
     echo "total visits:\t{$cnt}\n";
     echo "real visits:\t{$cnt_rl}\t(referral url included)\n\n";
     
-    echo "first moment:\t2018-11-08 05:55:36pm\n";
+    echo "first moment:\t{$first_attempt}\n";
     echo "elapsed days:\t{$diff->days}\n";
     echo "elapsed hours:\t{$diff->h}:{$diff->i}:{$diff->s}\n\n";
     
