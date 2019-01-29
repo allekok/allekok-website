@@ -3,7 +3,7 @@
 <img src="<?php echo get_poet_image($info['id'], 'profile', true); ?>" style="display: block;margin: auto;border-radius: 100%;max-width:120px;box-shadow: 0 3px 4px -3px #aaa;" alt="<?php echo $info['profname']; ?>"><?php 
 $bbk = explode("/", $bknow[$bk-1]);
 
-$bbk = !$bbk[1] ? $bbk[0] : "{$bbk[0]}<i style='color: {$colors[$ath][3]};font-size: .9em;padding: 0 .1em;'> / </i>{$bbk[1]}";
+$bbk = !isset($bbk[1]) ? $bbk[0] : "{$bbk[0]}<i style='color: {$colors[$ath][3]};font-size: .9em;padding: 0 .1em;'> / </i>{$bbk[1]}";
 
 ?>
 
