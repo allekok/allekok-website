@@ -12,30 +12,12 @@ if( !empty($_GET['ath']) or !empty($_GET['bk']) or !empty($_GET['id']) or !empty
     // https://allekok.com/?q={$q}
     
     $ath = filter_var($_GET['ath'], FILTER_SANITIZE_NUMBER_INT);
-    $bk = filter_var($_GET['bk'], FILTER_SANITIZE_NUMBER_INT);
-    $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
-    $q = filter_var($_GET['q'], FILTER_SANITIZE_STRING);
+    $bk = empty($_GET["bk"]) ? null : filter_var($_GET['bk'], FILTER_SANITIZE_NUMBER_INT);
+    $id = empty($_GET["id"]) ? null : filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
+    $q = empty($_GET["q"]) ? null : filter_var($_GET['q'], FILTER_SANITIZE_STRING);
     
     require('checkmurl.php');
 
-} elseif($_GET['job'] === "about") {
-    // https://allekok.com/about
-    
-    $color_num = 0;
-    $title .= "؟"; 
-    $desc = $title;
-    include('header.php');
-    include('about.php');
-    
-} elseif($_GET['job'] === "thanks") {
-    // https://allekok.com/thanks
-    
-    $color_num = 0;
-    $title = _TITLE . " &raquo; سپاس و پێزانین";
-    $desc = $title;
-    include('header.php');
-    include('thanks.php');
-    
 } else {
     // https://allekok.com/
     
