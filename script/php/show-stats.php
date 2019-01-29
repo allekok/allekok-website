@@ -29,7 +29,7 @@ $date2 = date_create(date("Y-m-d h:i:sa"));
 $diff = date_diff($date1,$date2,true);
     
 $average[0] = ($diff->days==0) ? $cnt : round ($cnt / $diff->days);
-$average[1] = ($diff->days==0) ? $cnt : round ($cnt_rl / $diff->days);
+$average[1] = ($diff->days==0) ? $cnt_rl : round ($cnt_rl / $diff->days);
     
 echo "today total visits:\t{$today[0]}\n";
 echo "today real visits:\t{$today[1]}\n\n";
