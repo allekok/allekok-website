@@ -5,7 +5,7 @@ $color_num = 0;
 <html dir="rtl">
     <head>
 
-        <link rel="stylesheet" href="/style/css/main2.5.css">
+        <link rel="stylesheet" href="/style/css/main.css?v2">
         <script type="text/javascript">
     var uritg = "<?php echo _SITE; ?>";
   </script>
@@ -58,6 +58,6 @@ $color_num = 0;
         <script type="text/javascript">
             document.getElementById("search-key").focus();
         </script>
-<script async src="/script/js/main1.4.js"></script>
+<script async src="/script/js/main.js?v2"></script>
     </body>
 </html>
