@@ -1,6 +1,6 @@
 <?php
 
-if(! defined('ABSPATH'))    define('ABSPATH', "/home/allekokc/public_html/");
+if(! defined('ABSPATH'))    define('ABSPATH', "/");
 
 // mysql
 define("_HOST", "localhost");
