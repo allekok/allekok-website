@@ -2,29 +2,12 @@
 <html dir="rtl" lang="ckb">
     <head>
         <script>
-        
-            function check_connection () {
-                var xmlhttp=new XMLHttpRequest();
-                
-                xmlhttp.open("GET",`//allekok.com/robots.txt?${Date.now()}`);
-                xmlhttp.onload = function () {
-                    if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                        // connection resolved.
-                        window.location.reload();
-                    }
-                    else {
-                        // try again to connect.
-                        setTimeout(function() {
-                            console.log("trying to connect...");
-                            check_connection();
-                        } , 1500);
-                    }
-                }
-                
-                xmlhttp.send();
-            }
-            
-            check_connection();
+	 var repeater = setInterval(function() {
+	     if(navigator.onLine) {
+		 window.location.reload();
+		 clearInterval(repeater);
+	     }
+	 }, 1000);
         </script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
