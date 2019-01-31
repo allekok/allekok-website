@@ -155,8 +155,7 @@
 					$ef_ln = fgets($ef);
 					if(trim($ef_ln)) {
 					    $ef_ln = num_convert(str_replace("&#34;","\"",$ef_ln), "en", "ckb");
-					    $ef_ln = mb_substr($ef_ln,0,70);
-					    $ef_ln .= "...";
+					    $ef_ln = mb_substr($ef_ln,0,75);
 					    break;
 					}
 				    }
@@ -169,10 +168,11 @@
 			    
 			    foreach($result as $n) {
 				echo "
-                <a style=\"font-size:.55em;color:#222;padding:.5em;display:block;background:#f6f6f6;border-bottom:1px solid #e6e6e6;\" href=\"/pitew/poetdesc-list.php?name={$n[0][0]}&poet={$n[0][1]}\">
+                <a style=\"font-size:.53em;color:#222;padding:.5em;display:block;background:#f6f6f6;border-bottom:1px solid #e6e6e6;\" href=\"/pitew/poetdesc-list.php?name={$n[0][0]}&poet={$n[0][1]}\"><span style='display:block'>
                 &laquo;".num_convert(str_replace("&#34;","\"",$n[0][0]), "en", "ckb")."&raquo;
 نووسیویەتی:
-<br><span style='border-right:5px solid #ddd;padding-right:.5em;color:#000;font-size:.9em'>{$n[1]}</span>
+</span>
+<span style='border-right:5px solid #ddd;padding-right:.5em;color:#000;font-size:.9em;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-right:.5em;'>{$n[1]}</span>
 				     </a>";
 			    }
 			}
