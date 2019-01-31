@@ -155,7 +155,7 @@
 					$ef_ln = fgets($ef);
 					if(trim($ef_ln)) {
 					    $ef_ln = num_convert(str_replace("&#34;","\"",$ef_ln), "en", "ckb");
-					    $ef_ln = mb_substr($ef_ln,0,75);
+					    $ef_ln = mb_substr($ef_ln,0,100);
 					    break;
 					}
 				    }
