@@ -149,26 +149,32 @@
 				
 				$e = explode("_", str_replace(".txt","",$pe));
 				if($e[1] === $row['takh']) {
-				    $result[] = $e;
 				    
 				    $ef = fopen("{$_uri}{$pe}", "r");
 				    while(!feof($ef)) {
 					$ef_ln = fgets($ef);
-					if(trim($ef_ln)) break;
+					if(trim($ef_ln)) {
+					    $ef_ln = num_convert(str_replace("&#34;","\"",$ef_ln), "en", "ckb");
+					    $ef_ln = mb_substr($ef_ln,0,50);
+					    $ef_ln .= "...";
+					    break;
+					}
 				    }
 				    fclose($ef);
+
+				    $result[] = [$e, $ef_ln];
 				}
 			    }
 			    closedir($dir);
 			    
-			    foreach($result as $e) {
+			    foreach($result as $n) {
 				echo "
-                <a style=\"font-size:.55em;color:#222;padding:1em;display:block;background:#f6f6f6;border-bottom:1px solid #e6e6e6;\" href=\"/pitew/poetdesc-list.php?name={$e[0]}&poet={$e[1]}\">
-                &laquo;".num_convert(str_replace("&#34;","\"",$e[0]), "en", "ckb")."&raquo;
+                <a style=\"font-size:.55em;color:#222;padding:1em;display:block;background:#f6f6f6;border-bottom:1px solid #e6e6e6;\" href=\"/pitew/poetdesc-list.php?name={$n[0][0]}&poet={$n[0][1]}\">
+                &laquo;".num_convert(str_replace("&#34;","\"",$n[0][0]), "en", "ckb")."&raquo;
                 سەبارەت بە 
-                &laquo;{$e[1]}&raquo;
+                &laquo;{$n[0][1]}&raquo;
 نووسیویەتی:
-<br><span style='border-right:5px solid #ddd;padding-right:.5em;'>".num_convert(str_replace("&#34;","\"",$ef_ln), "en", "ckb")."...</span>
+<br><span style='border-right:5px solid #ddd;padding-right:.5em;'>{$n[1]}</span>
 				     </a>";
 			    }
 			}
