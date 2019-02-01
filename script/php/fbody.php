@@ -21,18 +21,10 @@ require("condb.php");
 	<?php
 	
 	if($query) {
-
 	    while($row=mysqli_fetch_assoc($query)) {
-
 		$imgsrc = get_poet_image($row['id'], "profile", 1);
-	?>
-	    <section class="psec"><a href="/poet:<?php echo $row['id'] ?>"><img alt="<?php echo $row['profname']; ?>" src="<?php echo $imgsrc; ?>"><h3 title="<?php echo $row['profname']; ?>"><?php  echo $row['takh'];  ?></h3></a></section><?php
-																													       }
-
-																													       }
-																													       mysqli_close($conn);
-
-																													       ?>
+	?><section class="psec"><a href="/poet:<?php echo $row['id'] ?>"><img alt="<?php echo $row['profname']; ?>" src="<?php echo $imgsrc; ?>"><h3 title="<?php echo $row['profname']; ?>"><?php echo $row['takh']; ?></h3></a></section><?php } } mysqli_close($conn); ?>
+	
     </div><div style="padding: 1em 0 0;border-top: 2px dashed #eee;">
         <?php if(isset($_GET['new'])) { ?>
             <a class='button' style='display: inline-block;margin: 0 0 0 1em;' href="/">شاعیرانی کۆچ‌کردوو</a><?php } else { ?><a class='button' style='display: inline-block;margin: 0 0 0 1em;' href="/?new">شاعیرانی نوێ</a><?php } ?><a class='button' style='display: inline-block;margin: 0 1em 0 0;' href="/poet:73">بەیتی کوردی</a>

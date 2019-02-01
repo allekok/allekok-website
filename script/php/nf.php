@@ -5,37 +5,37 @@ $color_num = 0;
 <html dir="rtl">
     <head>
 
-        <link rel="stylesheet" href="/style/css/main.css?v3">
+        <link rel="stylesheet" href="/style/css/main.css?v4">
         <script type="text/javascript">
-    var uritg = "<?php echo _SITE; ?>";
-  </script>
+	 var uritg = "<?php echo _SITE; ?>";
+	</script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>
             ئاڵەکۆک
         </title>
         <style>
-            #search {
-                display: block;
-            }
-            #search-key {
-                background: #fafafa;
-            }
-            #live-search-form {
-                box-shadow: 0 2px 2px #eee;
-            }
-            .nf_p a {
-                border-bottom: 1px solid #ccc;
-                color:#444;
-                font-size: 0.6em;
-                padding:0.1em 0.3em;
-                margin:0 0.5em;
-            }
-            .nf_p a:hover {
-                text-decoration: none;
-                border-bottom: 0;
-                background: #eee;
-            }
+         #search {
+             display: block;
+         }
+         #search-key {
+             background: #fafafa;
+         }
+         #live-search-form {
+             box-shadow: 0 2px 2px #eee;
+         }
+         .nf_p a {
+             border-bottom: 1px solid #ccc;
+             color:#444;
+             font-size: 0.6em;
+             padding:0.1em 0.3em;
+             margin:0 0.5em;
+         }
+         .nf_p a:hover {
+             text-decoration: none;
+             border-bottom: 0;
+             background: #eee;
+         }
         </style>
     </head>
     <body style="text-align:center;background: white;">
@@ -56,8 +56,8 @@ $color_num = 0;
         <?php include("search-sec.php"); ?>
 
         <script type="text/javascript">
-            document.getElementById("search-key").focus();
+         document.getElementById("search-key").focus();
         </script>
-<script async src="/script/js/main.js?v2"></script>
+	<script async src="/script/js/main.js?v2"></script>
     </body>
 </html>
