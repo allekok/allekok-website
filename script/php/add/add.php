@@ -403,6 +403,7 @@ if($dbcache=='') {
 		    "poetID" => intval(substr($db, 3)),
 		    "bookID" => intval(substr($tblcache, 1)),
 		    "poemID" => $rowd,
+		    "op" => "edit",
 		];
 		$log = json_encode($log) . "\n";
 		fwrite($f, $log);
@@ -445,6 +446,7 @@ if($dbcache=='') {
 		"poetID" => intval(substr($db, 3)),
 		"bookID" => intval(substr($tblcache, 1)),
 		"poemID" => $rowd,
+		"op" => "add",
 	    ];
 	    $log = json_encode($log) . "\n";
 	    fwrite($f, $log);
