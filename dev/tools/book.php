@@ -55,8 +55,8 @@ if(filter_var($_bk, FILTER_VALIDATE_INT)) {
         "desc" => $poet['bksdesc'][$_bk-1],
         "poems-num" => $pms_num,
         "poems" => $poems,
-        ];
-        
+    ];
+    
     echo json_encode($res);
     
 } else {
@@ -88,8 +88,8 @@ if(filter_var($_bk, FILTER_VALIDATE_INT)) {
         "desc" => $poet['bksdesc'][$_bk-1],
         "poems-num" => $pms_num,
         "poems" => $poems,
-        ];
-        
+    ];
+    
     echo json_encode($res);
     
 }

@@ -1,35 +1,32 @@
 <?php
 
-    if(! defined('ABSPATH'))    define('ABSPATH', '/home/allekokc/public_html/');
+include_once("../script/php/constants.php");
+include_once(ABSPATH . "script/php/colors.php");
+include_once(ABSPATH . "script/php/functions.php");
 
-	require_once("../script/php/colors.php");
-	require_once("../script/php/constants.php");
-	require_once("../script/php/functions.php");
-	
-$dev = 1;
 $title = _TITLE . " &raquo; کۆد &raquo; داگرتنی کۆد";
 $desc = "داگرتنی کۆدەکانی ئاڵەکۆک";
 $keys = _KEYS;
 $t_desc = "";
-$t_class = "ltitle";
 $color_num = 0;
 
-	require('../script/php/header.php');
+include(ABSPATH . 'script/php/header.php');
 ?>
+
 <div id="poets">
     
     <h1 style="font-size:1.2em;"><a style="background: #222;color: #19e31b;display: inline-block;padding: 0.3em 0.8em 0;border-radius: 5px;margin: 1em 0 0.5em;text-decoration:none;" href='/dev/tools/'>
         ئاڵەکۆک 
-    <sup style="font-size:0.55em; vertical-align:top;">
-        єv∂
-    </sup></a>
+	<sup style="font-size:0.55em; vertical-align:top;">
+            єv∂
+	</sup></a>
     </h1>
     
     <div style="line-height:2.3">
         <p style="font-size:0.6em; text-indent: 2em; text-align:justify; max-width: 800px; margin:auto;padding:0 0.6em;">
             ئەو لاپەڕە بە تایبەتی بۆ ئەو کەسانەیە کە شارەزان لە نووسینی کۆدی کامپیوتێڕی دا. ئێوە دەتوانن کۆدەکانی ئاڵەکۆک، داگرن بۆ سەر کامپیوتێڕ یان سێروێری خۆتان.
             <p style="font-size:0.6em; font-weight:bold;">
-            خوێندنەوە، گۆڕین و بڵاوکردنەوەی کۆدەکانی ئاڵەکۆک ئازادە.
+		خوێندنەوە، گۆڕین و بڵاوکردنەوەی کۆدەکانی ئاڵەکۆک ئازادە.
             </p>
             
         </p>
@@ -71,5 +68,5 @@ $color_num = 0;
 </div>
 
 <?php
-	require_once("../script/php/footer.php");
+include_once(ABSPATH . "script/php/footer.php");
 ?>

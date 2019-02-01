@@ -36,7 +36,7 @@ foreach($_pms as $_pm) {
     
     if(filter_var($_bk, FILTER_VALIDATE_INT)) {
         
-    
+	
         if($_bk > count($poet['bks']) )    die($null);
         
         $_tbl = "tbl{$poet['id']}_{$_bk}";
@@ -73,7 +73,7 @@ foreach($_pms as $_pm) {
         while($r = mysqli_fetch_assoc($query)) {
             $poems[] = $r;
         }
-            
+        
     }
 }
 
@@ -90,8 +90,8 @@ $reses = [
     "book" => $poet['bks'][$_bk-1],
     "bookID" => $_bk,
     "poems" => $poems,
-    ];
-    
+];
+
 $reses_str = json_encode($reses);
 $ll = mb_strlen($reses_str);
 

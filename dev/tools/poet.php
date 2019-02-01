@@ -1,12 +1,13 @@
 <?php
 
-require_once("../../script/php/constants.php");
-require("../../script/php/functions.php");
-require("../../script/php/colors.php");
+include_once("../../script/php/constants.php");
+include_once(ABSPATH . "script/php/functions.php");
+include_once(ABSPATH . "script/php/colors.php");
 
+// output: JSON
 header("Content-type: application/json; charset=UTF-8");
 
-$pt = filter_var($_REQUEST['poet'], FILTER_SANITIZE_STRING);
+$pt = filter_var($_GET['poet'], FILTER_SANITIZE_STRING);
 
 if($pt == "all") {
     $k = $_GET['k'];
@@ -20,10 +21,10 @@ if($pt == "all") {
         $k = "";
     }
     
-$all = [];
+    $all = [];
     $db = "index";
     $q = "select id from auth{$k} order by takh ASC";
-    require("../../script/php/condb.php");
+    include(ABSPATH . "script/php/condb.php");
     
     while($res = mysqli_fetch_assoc($query)) {
         $all[] = get_poet($res['id'], $colors)[0];
@@ -51,7 +52,7 @@ function get_poet($pt, $colors) {
             $q = "SELECT * FROM `auth` WHERE `name`='{$pt}' or `takh`='{$pt}' or `profname`='{$pt}'";
         }
         $db = "index";
-        require("../../script/php/condb.php");
+        require(ABSPATH . "script/php/condb.php");
         
         if(mysqli_num_rows($query) == 1) {
             $res = mysqli_fetch_assoc($query);
