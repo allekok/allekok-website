@@ -398,6 +398,7 @@ if($dbcache=='') {
 		fclose($f);
 		
 		$f = fopen("../../../desktop/update/books/update-log.txt","a");
+		$f2 = fopen("../../../pitew/news.txt","r+");
 		$log = [
 		    "ver" => $new_ver,
 		    "poetID" => intval(substr($db, 3)),
@@ -407,7 +408,10 @@ if($dbcache=='') {
 		];
 		$log = json_encode($log) . "\n";
 		fwrite($f, $log);
+		fseek($f2, 0);
+		fwrite($f2, $log);
 		fclose($f);
+		fclose($f2);
 		
 	    } else {
 		echo("<div class='not r'>
@@ -441,6 +445,7 @@ if($dbcache=='') {
 	    fclose($f);
 	    
 	    $f = fopen("../../../desktop/update/books/update-log.txt","a");
+	    $f2 = fopen("../../../pitew/news.txt","r+");
 	    $log = [
 		"ver" => $new_ver,
 		"poetID" => intval(substr($db, 3)),
@@ -450,7 +455,10 @@ if($dbcache=='') {
 	    ];
 	    $log = json_encode($log) . "\n";
 	    fwrite($f, $log);
+	    fseek($f2, 0);
+	    fwrite($f2, $log);
 	    fclose($f);
+	    fclose($f2);
 	    
 	} else {
 	    echo("<div class='not r'>
