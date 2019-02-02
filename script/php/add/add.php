@@ -408,8 +408,8 @@ if($dbcache=='') {
 		];
 		$log = json_encode($log) . "\n";
 		fwrite($f, $log);
-		fseek($f2, 0);
-		fwrite($f2, $log);
+		$old_f2 = file_get_contents("../../../pitew/news.txt");
+		fwrite($f2, $log . $old_f2);
 		fclose($f);
 		fclose($f2);
 		
@@ -455,8 +455,8 @@ if($dbcache=='') {
 	    ];
 	    $log = json_encode($log) . "\n";
 	    fwrite($f, $log);
-	    fseek($f2, 0);
-	    fwrite($f2, $log);
+	    $old_f2 = file_get_contents("../../../pitew/news.txt");
+	    fwrite($f2, $log . $old_f2);
 	    fclose($f);
 	    fclose($f2);
 	    
