@@ -454,7 +454,7 @@ if($dbcache=='') {
 		"poetID" => intval(substr($db, 3)),
 		"bookID" => intval(substr($tblcache, 1)),
 		"poemID" => $rowd,
-		"op" => "edit",
+		"op" => "add",
 		"date"=>$now,
 	    ];
 	    $log = json_encode($log) . "\n";
