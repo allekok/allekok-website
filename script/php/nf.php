@@ -58,6 +58,6 @@ $color_num = 0;
         <script type="text/javascript">
          document.getElementById("search-key").focus();
         </script>
-	<script async src="/script/js/main.js?v2"></script>
+	<script async src="/script/js/main.js?v3"></script>
     </body>
 </html>

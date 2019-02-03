@@ -1,3 +1,136 @@
+// source: KurdiNus 4.0
+// Arabic to Latin Array
+var sConvertArabic2Latin = new Array(
+    //managing 'و' and 'ی'
+    'و([اێۆە])', 'w$1', //و + vowel => w (e.g. wan)
+    'ی([اێۆە])', 'y$1', //ی + vowel => y (e.g. yas)
+    '([اێۆە])و', '$1w', //vowel + و => w (e.g. kew)
+    '([اێۆە])ی', '$1y', //vowel + ی => y (e.g. bey)
+    '(^|[^ء-يٱ-ەwy])و([^ء-يٱ-ەwy])', '$1û$2', //non-letter + 'و' + non-letter => û (=and)
+    '(^|[^ء-يٱ-ەwy])و', '$1w', //non-letter + 'و' => w (e.g. wtar)
+    'یو', 'îw', //'ی' + 'و' => îw (e.g. nîw)
+    'یی', 'îy', //'ی' + 'ی' => îy (e.g. kanîy)
+    'وی', 'uy', //'و' + 'ی' => uy (e.g. buyn)
+    'وو', 'û', //'و' + 'و' => û (e.g. bû)
+    'ی', 'î',
+    'و', 'u',
+    'uu', 'û', //'و' + 'و' => û (e.g. bû)
+
+    '([ء-يٱ-ەîuûwy])ڕ', '$1rr', //when 'ڕ' not at the beginning of a word => rr
+    'ر|ڕ', 'r',
+    'ش', 'ş',
+    'ئ', '',
+    'ا', 'a',
+    'ب', 'b',
+    'چ', 'ç',
+    'ج', 'c',
+    'د', 'd',
+    'ێ', 'ê',
+    'ە|ه‌', 'e',
+    'ف', 'f',
+    'خ|غ', 'x',
+    'گ', 'g',
+    'ح|ھ', 'h',
+    'ژ', 'j',
+    'ک', 'k',
+    'ڵ', 'll',
+    'ل', 'l',
+    'م', 'm',
+    'ن', 'n',
+    'ۆ', 'o',
+    'پ', 'p',
+    'ق', 'q',
+    'س', 's',
+    'ت', 't',
+    'ڤ', 'v',
+    'ز', 'z',
+    'ع', '\'',
+    '‌', '',
+    '؟', '?',
+    '،', '\,',
+    '؛', '\;',
+    '٠|۰', '0',
+    '١|۱', '1',
+    '٢|۲', '2',
+    '٣|۳', '3',
+    '٤|۴', '4',
+    '٥|۵', '5',
+    '٦|۶', '6',
+    '٧|۷', '7',
+    '٨|۸', '8',
+    '٩|۹', '9',
+    '»|«', '"',
+    'ـ', '',
+
+    //insert i where applicable
+
+    'll', 'Ľ', //temporary conversion to avoid seeing ll as 2 letters
+    'rr', 'Ŕ', //temporary conversion to avoid seeing rr as 2 letters
+    '([bcçdfghjklĽmnpqrŔsştvwxz])([fjlĽmnrŔsşvwxyz])([fjlĽmnrŔsşvwxyz])([^aeêiîouûy])', '$1$2i$3$4', //e.g. grft -> grift
+    '([aeêiîouû])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])\\b', '$1$2$3i$4', //e.g. cejnt -> cejnit
+    '([fjlĽrŔsşwyz])([fjlĽmnrŔsşvwxyz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2$3', //e.g. wrd -> wird
+    '([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1i$2$3', //e.g. prd -> pird
+    '([^aeêiîouû])([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1$2i$3$4', //repeat the latter expression, in case skipped
+    '(^|[^aeêiîouy])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])($|[^aeêiîouû])', '$1$2i$3$4', //e.g. ktk -> kitk
+    '(^|[^a-zçşêîûĽŔ])([bcçdfghjklĽmnpqrŔsştvwxz])(\\s)', '$1$2i$3', //e.g. j -> ji
+    'Ľ', 'll', //revert the temporary conversion
+    'Ŕ', 'rr' //revert the temporary conversion
+);
+
+var sOnsetI = new Array(
+    '([bcçdfghjklmnpqrsştvwxz])([wy][aeêiîouû])', '$1i$2', //e.g. dyar -> diyar
+    '(^|[^a-zêîûçş0-9\'’])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1$2i$3', //e.g. bra -> bira
+    '([bcçdfghjklmnpqrsştvwxz][bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2' //e.g. aşkra -> aşkira
+);
+
+// Standardize Arabic scripts Array
+var sConvertStandardise = new Array(
+    '‌{1,}', '‌', //omit multiple successive zero-width non-joiners
+    'لاَ|لأ|لآ', 'لا',
+    'لً|لَ', 'ل',
+    'ص','س',
+    'ض', 'ز',
+    'ث', 'س',
+    'ظ', 'ز',
+    'ط', 'ت',
+    'ىَ|يَ|یَ', 'ی',
+    'رِ', 'ر',
+    'ؤ|وَ', 'و',
+    'ي|ى', 'ی',
+    'ذ', 'ز',
+    'ك', 'ک',
+    // using unicode: 06D5 (Arabic letter Ae) for E
+    // using unicode: 06BE (Arabic letter He Doachashmee) for H
+    'ه‍', 'ھ',
+    'ه($|[^ء-يٱ-ە])', 'ە$1',
+    'ە‌', 'ە',
+    'ة', 'ە',
+    'ه', 'ھ', // rest of هs are H
+    '([ء-يٱ-ە])‌([^ء-يٱ-ە])', '$1$2'
+);
+
+function arami_to_latin(s) {
+    
+    // standardize Arabic before converting Arabic to Latin
+    for (i = 0; i < sConvertStandardise.length; i += 2)
+        s = s.replace(new RegExp(sConvertStandardise[i], 'g'), sConvertStandardise[i + 1]);
+
+    //main conversion
+    for (i = 0; i < sConvertArabic2Latin.length; i += 2)
+        s = s.replace(new RegExp(sConvertArabic2Latin[i], 'gim'), sConvertArabic2Latin[i + 1]);
+
+    s = s.replace(new RegExp('ll', 'gim'), 'Ľ').replace(new RegExp('rr', 'gim'), 'Ŕ'); //temporary conversion
+
+    //add extra i's for Kurmanci texts
+    for (i = 0; i < sOnsetI.length; i += 2)
+        s = s.replace(new RegExp(sOnsetI[i], 'gim'), sOnsetI[i + 1]); //e.g. bra -> bira
+
+    s = s.replace(new RegExp('Ľ', 'gim'), 'll').replace(new RegExp('Ŕ', 'gim'), 'rr'); //temporary conversion
+
+    return s;
+}
+
+// allekok.com
 function toggle_search() {
     var s = document.getElementById('search');
     var sk = document.getElementById("search-key");

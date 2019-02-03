@@ -1,3 +1,6 @@
+// This file is service worker file. we call this file in almost every page of allekok.com
+// to cache the most static resources and that improves speed and efficiency of loading site.
+
 const cache_ver = "v110";
 
 self.addEventListener('install', function(event) {
@@ -66,7 +69,7 @@ self.addEventListener('install', function(event) {
 		'/style/img/poets/profile/profile_88.jpg',
 		'/style/img/poets/profile/profile_59.jpg',
 		'/style/img/poets/profile/profile_36.jpg',
-		'/script/js/main.js?v2',
+		'/script/js/main.js?v3',
 		'/style/css/main.css?v4',
 		'/favicon.ico',
 		'/style/font/DroidNaskh-Regular.woff',
