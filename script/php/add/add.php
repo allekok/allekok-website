@@ -399,12 +399,14 @@ if($dbcache=='') {
 		
 		$f = fopen("../../../desktop/update/books/update-log.txt","a");
 		$f2 = fopen("../../../pitew/news.txt","r+");
+		$now = date("Y-m-d H:i:s");
 		$log = [
 		    "ver" => $new_ver,
 		    "poetID" => intval(substr($db, 3)),
 		    "bookID" => intval(substr($tblcache, 1)),
 		    "poemID" => $rowd,
 		    "op" => "edit",
+		    "date"=>$now,
 		];
 		$log = json_encode($log) . "\n";
 		fwrite($f, $log);
@@ -446,12 +448,14 @@ if($dbcache=='') {
 	    
 	    $f = fopen("../../../desktop/update/books/update-log.txt","a");
 	    $f2 = fopen("../../../pitew/news.txt","r+");
+	    $now = date("Y-m-d H:i:s");
 	    $log = [
 		"ver" => $new_ver,
 		"poetID" => intval(substr($db, 3)),
 		"bookID" => intval(substr($tblcache, 1)),
 		"poemID" => $rowd,
-		"op" => "add",
+		"op" => "edit",
+		"date"=>$now,
 	    ];
 	    $log = json_encode($log) . "\n";
 	    fwrite($f, $log);
