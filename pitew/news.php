@@ -4,7 +4,7 @@ include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = "";
+$title = _TITLE . " &raquo; تازەکان";
 $desc = $title;
 $keys = _KEYS;
 $t_desc = "";
@@ -25,13 +25,14 @@ include(ABSPATH . "script/php/header.php");
      }
     </style>
     <h1 style="color: #222;display: inline-block;margin: 1em 0;font-size: 1.2em;">
-        تازەکانی ئاڵەکۆک
+	<i class="material-icons">new_releases</i>
+            تازەکانی ئاڵەکۆک
     </h1>
     <main style="max-width:800px;margin:auto;font-size:.6em;text-align:right;">
 	<?php
 	// get new added poems.
 	
-	$n = 100; // number of poems
+	$n = filter_var(@$_GET["n"],FILTER_VALIDATE_INT) ? $_GET["n"] : 20; // number of poems
 	$i = 0; // counter
 	
 	$uri = "news.txt";
@@ -62,7 +63,7 @@ include(ABSPATH . "script/php/header.php");
 	    $poem = mysqli_fetch_assoc($query)["name"];
 
 	    mysqli_close($conn);
-	    echo "<a class='link' href='/poet:$pt/book:$bk/poem:$pm'><span style='color:" . $colors[color_num($pt)][0] . ";'>&bull;</span> <i>$poet &rsaquo; $book &rsaquo;</i> $poem</a>";
+	    echo "<a class='link' href='/poet:$pt/book:$bk/poem:$pm'><span style='color:" . $colors[color_num($pt)][0] . ";font-weight:bold;'>&rsaquo;</span> <i>$poet &rsaquo; $book &rsaquo;</i> $poem</a>";
 	    $i++;
 	}
 	
