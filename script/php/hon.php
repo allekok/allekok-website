@@ -358,7 +358,7 @@
 	 var origin_poem = document.querySelector("#hon").innerHTML;
 
 	 function poem_kind() {
-	     if(origin_poem.indexOf("<div class='n'>") !=-1) {
+	     if(origin_poem.indexOf("<div class=\"n\">") !=-1) {
 		 return "new";
 	     }
 	     return "classic";
@@ -372,7 +372,7 @@
              
              if(toarami == "") {
 		 var ltn = arami_to_latin(tar.innerText).replace(/\n/g, "<br>");
-		 tar.innerHTML = poem_kind()=="new" ? "<div class='n'><div class='m'>" + ltn + "</div></div>" : "<div class='b'>" + ltn + "</div>";
+		 tar.innerHTML = poem_kind()=="new" ? "<div class=\"n\"><div class=\"m dltr\">" + ltn + "</div></div>" : "<div class=\"b\">" + ltn + "</div>";
 		 tar.style.animation = "tL .5s";
 		 convertToLatBtn.innerHTML = newLabel;
 		 tar.style.direction = "ltr";
