@@ -1,25 +1,23 @@
 <?php
 
-	require_once("../script/php/colors.php");
-	require_once("../script/php/constants.php");
-	require_once("../script/php/functions.php");
+include_once("../script/php/constants.php");
+include_once(ABSPATH . "script/php/colors.php");
+include_once(ABSPATH . "script/php/functions.php");
 
-$ptw = 1;
 $title = _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک";
 $desc = "پتەوکردنی ئاڵەکۆک - چۆن دەتوانن ئاڵەکۆک دەوڵەمەندتر کەن؟";
 $keys = _KEYS;
 $t_desc = "";
-$t_class = "ltitle";
 $color_num = 0;
 
-	require('../script/php/header.php');
+include(ABSPATH . 'script/php/header.php');
 ?>
 
 <div id="poets" style="max-width:1000px">
     
     <h1 style="color: #222;display: inline-block;margin: 1em 0;font-size: 1.2em;">
         <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> 
-         پتەوکردنی ئاڵەکۆک
+        پتەوکردنی ئاڵەکۆک
     </h1>
     <br>
     <section class='pitewsec'>
@@ -33,7 +31,7 @@ $color_num = 0;
                     <br>
                     دەتوانن بۆ نووسینەوەی شێعر لەم دیوانانە کەڵک وەرگرن: 
                     <a style='color:#00e;display:inline-block;' href="/pitew/pdfs.php">
-                    داگرتنی دیوانی شاعیران
+			داگرتنی دیوانی شاعیران
                     </a>
                 </small>
             </h3>
@@ -84,42 +82,31 @@ $color_num = 0;
         </a>
     </section>
     <style>
-        #QAtxt {
-            font-size: 0.65em;
-
-            padding: 0.6em 3% 0.6em 2%;
-            
-            text-align: right;
-            
-            max-width: 90%;
-            
-            width: 90%;
-            
-            min-height: 8em;
-            
-            display: block;
-            
-            border-top: 3px solid rgb(221, 221, 221);
-            
-            box-shadow: rgb(221, 221, 221) 0px 5px 10px -5px;
-            
-            box-sizing: border-box;
-            
-            margin: 1em auto 0;
-            
-            height: 155px;
-        }
-        .btn {
-            font-size: 0.65em;
-            width: 50%;
-            padding: 0.8em 0;
-            max-width: 150px;
-            cursor: pointer;
-            margin-top: 0.5em;
-        }
-        .hr {
-            border-top:3px dashed #ccc;
-        }
+     #QAtxt {
+         font-size: 0.65em;
+         padding: 0.6em 3% 0.6em 2%;
+         text-align: right;
+         max-width: 90%;
+         width: 90%;
+         min-height: 8em;
+         display: block;
+         border-top: 3px solid rgb(221, 221, 221);
+         box-shadow: rgb(221, 221, 221) 0px 5px 10px -5px;
+         box-sizing: border-box;
+         margin: 1em auto 0;
+         height: 155px;
+     }
+     .btn {
+         font-size: 0.65em;
+         width: 50%;
+         padding: 0.8em 0;
+         max-width: 150px;
+         cursor: pointer;
+         margin-top: 0.5em;
+     }
+     .hr {
+         border-top:3px dashed #ccc;
+     }
     </style>
     
     <div style="border-top:1px solid #ddd;margin:1em 0 0.8em;"></div>
@@ -139,62 +126,62 @@ $color_num = 0;
         
         <div>
             <?php
-                if(filesize("QA.txt") > 0) {
-                    
-                    $f = fopen("QA.txt", "r");
-                    $cc = fread($f, filesize("QA.txt"));
-                    $cc = explode("\nend\n", $cc);
-                    
-                    echo "<h3 style='border-top: 1px solid #ddd;margin-top: 2em;font-size: .7em;padding: 1em;'>پرسیار و وەڵامەکان</h3>";
-                    $cc = array_reverse($cc);
-                    $i = 1;
-                    foreach($cc as $c) {
-                        if(!empty($c)) {
-                            $c = str_replace(['[code]', '[/code]', "\n"], ['<code>', '</code>', '<br>'], $c);
-                            echo "<div class='comment'";
-                            if($i%2) echo " style='background:#f3f3f3'";
-                            echo "><div class='comm-body'>".$c."</div></div>";
-                            $i++;
-                        }
+            if(filesize("QA.txt") > 0) {
+                
+                $f = fopen("QA.txt", "r");
+                $cc = fread($f, filesize("QA.txt"));
+                $cc = explode("\nend\n", $cc);
+                
+                echo "<h3 style='border-top: 1px solid #ddd;margin-top: 2em;font-size: .7em;padding: 1em;'>پرسیار و وەڵامەکان</h3>";
+                $cc = array_reverse($cc);
+                $i = 1;
+                foreach($cc as $c) {
+                    if(!empty($c)) {
+                        $c = str_replace(['[code]', '[/code]', "\n"], ['<code>', '</code>', '<br>'], $c);
+                        echo "<div class='comment'";
+                        if($i%2) echo " style='background:#f3f3f3'";
+                        echo "><div class='comm-body'>".$c."</div></div>";
+                        $i++;
                     }
-                    
-                    fclose($f);
                 }
+                
+                fclose($f);
+            }
             
             ?>
         </div>
         
         <script>
-        
-            document.querySelector("#frmQA").addEventListener("submit", function(e) {
-                e.preventDefault();
-                
-                var txt = document.querySelector("#QAtxt");
-                var t = document.querySelector("#QAres");
-                var loader = "<div class='loader'></div>";
-                
-                if(txt.value == "") {
-                    txt.focus();
-                    return;
-                }
-                
-                t.innerHTML = loader;
-                
-                var x = new XMLHttpRequest();
-                x.onload = function() {
-                    if(this.responseText == "1") {
-                        t.innerHTML = "<span style='background:rgba(0,255,0,.08); color:green;display:block;padding:1em; font-size:.6em;'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
-                        txt.value = "";
-                    }
-                }
-                x.open("POST", "save-comment.php", true);
-                x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                x.send(`txt=${encodeURIComponent(txt.value)}`);
-            });
+         
+         document.querySelector("#frmQA").addEventListener("submit", function(e) {
+             e.preventDefault();
+             
+             var txt = document.querySelector("#QAtxt");
+             var t = document.querySelector("#QAres");
+             var loader = "<div class='loader'></div>";
+             
+             if(txt.value == "") {
+                 txt.focus();
+                 return;
+             }
+             
+             t.innerHTML = loader;
+             
+             var x = new XMLHttpRequest();
+             x.onload = function() {
+                 if(this.responseText == "1") {
+                     t.innerHTML = "<span style='background:rgba(0,255,0,.08); color:green;display:block;padding:1em; font-size:.6em;'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
+                     txt.value = "";
+                 }
+             }
+             x.open("POST", "save-comment.php");
+             x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+             x.send(`txt=${encodeURIComponent(txt.value)}`);
+         });
         </script>
-    
+	
+    </div>
 </div>
-
 <?php
-	require_once("../script/php/footer.php");
+include_once(ABSPATH . "script/php/footer.php");
 ?>
