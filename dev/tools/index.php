@@ -279,7 +279,10 @@ include(ABSPATH . 'script/php/header.php');
                 
                 foreach($cc as $c) {
                     if(!empty($c)) {
-                        $c = str_replace(['[code]', '[/code]'], ['<code>', '</code>'], $c);
+			$c = preg_replace(
+			    ["/\[code\]\n*/","/\n*\[\/code\]/"],
+			    ["<code>","</code>"], $c);
+                        $c = str_replace(["\n"], ["<br>"], $c);
                         echo "<div class='comment'><div class='comm-body'>".$c."</div></div>";
                     }
                 }
