@@ -111,8 +111,8 @@ include(ABSPATH . 'script/php/header.php');
 		$e = [
 		    "filemtime"=>filemtime($path.$e_name),
 		    "filename"=>$e_name,
-		    "poet"=>$exp_e_name[0],
-		    "name"=>$exp_e_name[1],
+		    "name"=>$exp_e_name[0],
+		    "poet"=>$exp_e_name[1],
 		    "content"=>$content,
 		];
 		$list[] = $e;
