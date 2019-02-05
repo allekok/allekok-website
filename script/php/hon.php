@@ -86,7 +86,7 @@
 	?>
 	<div style="padding: 1.1em 0;">
 	    <i class='material-icons' style="vertical-align: middle;">translate</i>
-	    <button class='button' type="button" id="convertToLatBtn" style="font-size: .9em;margin-right: .5em;">ئەلفوبێی لاتین</button>
+	    <button class='button' type="button" id="convertToLatBtn" style="font-size: .9em;margin-right: .5em;">Elfubêy Latîn</button>
 	</div>
 	<div style='text-align: center;border-top: 2px dashed #e1e1e1;padding: .5em 0;'>
 	    <form id="wordFrm">
