@@ -13,7 +13,7 @@ include_once(\"../script/php/constants.php\");
 include_once(ABSPATH . \"script/php/functions.php\");
 
     \$title = \"{$properties["title"]}\";
-    \$desc = $title;
+    \$desc = \$title;
     \$keys = _KEYS;
     \$t_desc = \"\";
     \$color_num = 0;
