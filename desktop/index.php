@@ -88,10 +88,10 @@ include(ABSPATH . "script/php/header.php");
             لینوکس
             <br>
             <small style='font-size:.6em; margin-top:-.6em;display:block;'>
-                وەشانی ۱.۱.۰
+                وەشانی ۱.۲.۰
             </small>
             <small>
-                <a href="https://github.com/allekok/allekok-desktop/releases/download/v1.1.0/allekok-1.1.0-x86_64.AppImage">
+                <a href="https://github.com/allekok/allekok-desktop/releases/download/v1.2.0/allekok-1.2.0-x86_64.AppImage">
                     دابەزاندن بۆ لینوکسی ۶۴بیتی
                 </a>
                 <br>
@@ -171,7 +171,7 @@ include(ABSPATH . "script/php/header.php");
                      txt.value = "";
                  }
              }
-             x.open("POST", "save.php", true);
+             x.open("POST", "save.php");
              x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
              x.send(`txt=${encodeURIComponent(txt.value)}`);
          });
