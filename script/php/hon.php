@@ -354,7 +354,7 @@
 	 
 	 var convertToLatBtn = document.querySelector("#convertToLatBtn");
 	 var defLabel = convertToLatBtn.innerHTML;
-	 var newLabel = "ئەلفوبێی ئارامی";
+	 var newLabel = "ئەلفوبێی عەرەبی";
 	 var origin_poem = document.querySelector("#hon").innerHTML;
 
 	 function poem_kind() {
