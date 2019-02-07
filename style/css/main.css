@@ -182,5 +182,5 @@ footer{padding:1.5em 0;width:100%;font-size:.56em;text-align:center;}
 footer a{display:inline-block;color:#555;padding:.5em 0;margin:0 .3em;border-bottom:1px solid #ddd;}
 footer a:hover{border-bottom:none;background:#eee;}
 footer i{font-size:1.4em;}
-@font-face{font-family:'kurd';font-style:normal;font-weight:400;src:url('/style/font/DroidNaskh-Regular.woff') format('woff');font-display:swap;}
-@font-face{font-family:'Material Icons';font-style:normal;font-weight:400;src:url('/style/font/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2') format('woff2');font-display:swap;}
+@font-face{font-family:'kurd';font-display:swap;font-style:normal;font-weight:400;src:url('/style/font/DroidNaskh-Regular.woff2') format('woff2');}
+@font-face{font-family:'Material Icons';font-display:swap;font-style:normal;font-weight:400;src:url('/style/font/Material-Icons.woff2') format('woff2');}
