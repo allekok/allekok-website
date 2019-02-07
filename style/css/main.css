@@ -100,7 +100,7 @@ header h2{font-size:.65em;margin-top:-.5em;}
 #adrs a:hover{background-color:#eee;}
 #current-location{padding:.5em .3em;display:inline-block;color:inherit;font-size:inherit;}
 #sp div{text-align:right;border-bottom:1px solid #eee;font-size:.7em;}
-#sp a{padding:1em .5em;width:100%;}
+#sp a{padding:1em .3em;width:100%;}
 #bkon{font-size:.9em;padding:5px 4px;color:#000;margin-bottom:.8em;}
 #bhon{font-size:.9em;padding:10px 4px 5px;color:#000;text-align:center;}
 #bkondesc{padding:.5em .2em;font-size:.6em;color:#444;display:block;background-color:#f3f3f3;}
@@ -108,7 +108,7 @@ header h2{font-size:.65em;margin-top:-.5em;}
 #hon p{font-size:.58em;padding:0 0 7px;transition:none;-webkit-transition:none;}
 #hon{margin:0 auto 1;padding:1em 7px;}
 #hon,.b,.m1,.m2,.n,.m,.m3, .b span, .ptr,#hon sup{transition:none;-webkit-transition:none;}
-#sp{padding:0 .6em 1.5em .6em;max-width:95%;margin:auto;}
+#sp{padding:0 .5em 1.5em;margin:auto;}
 #search{width:100%;display:none;margin-bottom:.5em;}
 #search-key{font-size:.65em;border:1px solid #eee;border-left-color:#f6f6f6;width:65%;display:inline-block;text-align:right;background-color:#f6f6f6;}
 #search-key:focus{background-color:#fff;}
