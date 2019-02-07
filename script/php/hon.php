@@ -160,7 +160,7 @@
 
     <div id="hon-comments">
 	
-	<div style="padding: 1em .3em;font-size: 0.65em;">
+	<div style="padding:1em .3em;font-size:.65em;color:#444;">
             بیر و ڕای خۆتان سەبارەت بەو شێعرە بنووسن.
 	</div>
 	<form id="frmComm" style="max-width: 700px;margin: auto;" action="/script/php/comments-add.php" method="POST">
