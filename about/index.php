@@ -31,7 +31,7 @@ include(ABSPATH . "script/php/header.php");
         <span style="color:#666;">
             ئاخیرین نوێ کردنەوەی شێعرەکان: 
         </span>
-        <span style="letter-spacing:.5px;display:inline-block;color:#222;">
+        <span style="display:inline-block;color:#222;">
             <?php
             $last_update_date = date_create(@file_get_contents(ABSPATH . "last-update.txt"));
 	    $now = date_create(date("Y-m-d H:i:s"));
