@@ -16,7 +16,7 @@ include(ABSPATH . "script/php/header.php");
 <div id="poets">
     <style>
      .item {
-	 border-bottom:1px solid #e8e8e8;
+	 border-bottom:1px solid #f0f0f0;
      }
      .link {
 	 display:block;
