@@ -98,7 +98,10 @@ include(ABSPATH . 'script/php/header.php');
                     $_count++;
                     continue;
 		}
-		$_html .= "<div class='epld'><section class='epld-title'><a href='/pitew/res/{$_l["filename"]}' title='وەشانی plain/text'><i class='material-icons' style='font-size: 1.5em;vertical-align: middle;'>insert_drive_file</i></a> &laquo;" . num_convert(str_replace("&#34;","\"",$_l['name']),"en","ckb") . "&raquo; سەبارەت بە &laquo;" . $_l['poet'] . "&raquo; نووسیویەتی: </section><section class='epld-body' style='overflow:hidden;max-height:150px;'>" . "{$_l['content']}</section><div style='text-align:left;'><button class='epld-expand button' onclick='expand(this)'>زیاتر <i class='material-icons'>keyboard_arrow_down</i></button></div></div>";
+		$_html .= "<div class='epld'><section class='epld-title'><a href='/pitew/res/{$_l["filename"]}' title='وەشانی plain/text'><i class='material-icons' style='font-size: 1.5em;vertical-align: middle;'>insert_drive_file</i></a> &laquo;" . num_convert(str_replace("&#34;","\"",$_l['name']),"en","ckb") . "&raquo; سەبارەت بە &laquo;" . $_l['poet'] . "&raquo; نووسیویەتی: </section><section class='epld-body'";
+		if(empty($_name) or empty($_poet)) $_html .= " style='overflow:hidden;max-height:150px;'";
+		$_html .= ">{$_l['content']}</section>";
+		if(empty($_name) or empty($_poet)) $_html .= "<div style='text-align:left;'><button class='epld-expand button' onclick='expand(this)'>زیاتر <i class='material-icons'>keyboard_arrow_down</i></button></div></div>";
 		$_count++;
             }
 	} else {
