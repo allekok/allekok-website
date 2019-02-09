@@ -65,7 +65,25 @@ include(ABSPATH . 'script/php/header.php');
          background: #f3f3f3;
          padding: .5em 1em;
      }
+     .epld-expand {
+	 font-size:1em;
+	 padding:.5em;
+     }
     </style>
+    <script>
+     function expand(item) {
+	 var parent = item.parentNode.parentNode.querySelector(".epld-body");
+	 if(parent.style.overflow != "hidden") {
+	     parent.style.overflow = "hidden";
+	     parent.style.maxHeight = "200px";
+	     item.innerHTML = "زیاتر <i class='material-icons'>keyboard_arrow_down</i>";
+	 } else {
+	     parent.style.overflow = "";
+	     parent.style.maxHeight = "";
+	     item.innerHTML = "<i class='material-icons'>keyboard_arrow_up</i>";	     
+	 }
+     }
+    </script>
     
     <div>
 	
@@ -80,7 +98,7 @@ include(ABSPATH . 'script/php/header.php');
                     $_count++;
                     continue;
 		}
-		$_html .= "<div class='epld'><section class='epld-title'><a href='/pitew/res/{$_l["filename"]}' title='وەشانی plain/text'><i class='material-icons' style='font-size: 1.5em;vertical-align: middle;'>insert_drive_file</i></a> &laquo;" . num_convert(str_replace("&#34;","\"",$_l['name']),"en","ckb") . "&raquo; سەبارەت بە &laquo;" . $_l['poet'] . "&raquo; نووسیویەتی: </section><section class='epld-body'>" . "{$_l['content']}</section></div>";
+		$_html .= "<div class='epld'><section class='epld-title'><a href='/pitew/res/{$_l["filename"]}' title='وەشانی plain/text'><i class='material-icons' style='font-size: 1.5em;vertical-align: middle;'>insert_drive_file</i></a> &laquo;" . num_convert(str_replace("&#34;","\"",$_l['name']),"en","ckb") . "&raquo; سەبارەت بە &laquo;" . $_l['poet'] . "&raquo; نووسیویەتی: </section><section class='epld-body' style='overflow:hidden;max-height:150px;'>" . "{$_l['content']}</section><div style='text-align:left;'><button class='epld-expand button' onclick='expand(this)'>زیاتر <i class='material-icons'>keyboard_arrow_down</i></button></div></div>";
 		$_count++;
             }
 	} else {
