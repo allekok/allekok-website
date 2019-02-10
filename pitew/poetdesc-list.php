@@ -125,9 +125,10 @@ include(ABSPATH . 'script/php/header.php');
 				      str_replace([".txt"],
 						  "",$e_name));
 		
-		$content = trim(file_get_contents($path . $e_name));
+		$content = file_get_contents($path . $e_name);
 		$content = substr($content,0,strlen($content)-4);
 		$content = str_replace(["\nend\n","\n"],["<div style='border-top:1px solid #ddd;margin:1em;'></div>","<br>"],$content);
+		$content = trim($content);
 		
 		$e = [
 		    "filemtime"=>filemtime($path.$e_name),
