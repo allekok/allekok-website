@@ -15,7 +15,7 @@ include(ABSPATH . 'script/php/header.php');
 
 <div id="poets">
     
-    <h1 style="font-size:1.2em;"><a style="background: #222;color: #19e31b;display: inline-block;padding: 0.3em 0.8em 0;border-radius: 5px;margin: 1em 0 0.5em;text-decoration:none" href='/dev/tools/'>
+    <h1 style="font-size:1.2em;"><a style="background: #222;color: #19e31b;display: inline-block;padding: 0.3em 0.8em 0;border-radius: 5px;margin: .5em 0;text-decoration:none" href='/dev/tools/'>
         ئاڵەکۆک 
 	<sup style="font-size:0.55em; vertical-align:top;">
             єv∂
@@ -72,8 +72,11 @@ include(ABSPATH . 'script/php/header.php');
      }
     </style>
     <div style="max-width: 800px; margin:auto; padding:1em;line-height:2.3; text-align:justify;">
-        <p style="border-bottom:1px solid #ddd"><a href="/dev/" style="color: #00e;">
+        <p style="border-bottom:1px solid #ddd;padding-top:0;"><a href="/dev/" style="color: #00e;display:block;"> - 
             بۆ داگرتنی کۆدەکانی ئاڵەکۆک لێرە کرتە بکەن.
+        </a>
+	<a href="https://github.com/allekok/allekok-plain/" style="color: #00e;display:block;"> - 
+            بۆ داگرتنی شێعرەکانی ئاڵەکۆک لێرە کرتە بکەن.
         </a></p>
         <p>
             بەخێربێن! لەو بەشە کۆمەڵێک ئامێرمان دابین کردووە کە ئێوەی پڕۆگرامێر(بەرنامەنووس) بتوانن لە دەیتابەیسەکانی ئاڵەکۆک بۆ بەرنامەکەتان کەڵک وەرگرن.
@@ -201,13 +204,13 @@ include(ABSPATH . 'script/php/header.php');
 		    &bull; 
 		    k: <br>
 		    <span style="padding-right:1em;text-indent:0;display:block;">
-			&bull;  
+			- 
 			ئەگەر بنووسن 1، گەڕانەکان تەنیا لە سەرناوی شێعرەکان‌دا دەبێ.
 			<br>
-			&bull;  
+			- 
 			ئەگەر بنووسن 2، گەڕانەکان تەنیا لە دەقی شێعرەکان‌دا دەبێ.
 			<br>
-			&bull;  
+			- 
 			ئەگەر بنووسن 3 یان هیچ نەنووسن، گەڕانەکان هەردوو نێوی شێعر و دەقی شێعردا دەبێ.
 		    </span>
 		    <br>
