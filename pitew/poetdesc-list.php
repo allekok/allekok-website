@@ -76,7 +76,7 @@ include(ABSPATH . 'script/php/header.php');
 	 var parent = item.parentNode.parentNode.querySelector(".epld-body");
 	 if(parent.style.overflow != "hidden") {
 	     parent.style.overflow = "hidden";
-	     parent.style.maxHeight = "200px";
+	     parent.style.maxHeight = "150px";
 	     item.innerHTML = "زیاتر <i class='material-icons'>keyboard_arrow_down</i>";
 	 } else {
 	     parent.style.overflow = "";
