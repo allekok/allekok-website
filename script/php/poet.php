@@ -89,7 +89,7 @@
 
 		    $rbks[$i] = explode("/", $rbks[$i]);
 
-		    $rbks[$i] = !isset($rbks[$i][1]) ? $rbks[$i][0] : "<i style='font-style: normal;font-size: .8em;color: #444;'>{$rbks[$i][0]}</i><i style='color: {$colors[$color_num][3]};font-size: .9em;padding: 0 .1em;'>/</i>{$rbks[$i][1]}";
+		    $rbks[$i] = !isset($rbks[$i][1]) ? $rbks[$i][0] : "<i style='font-style: normal;font-size: .8em;color: #444;'>{$rbks[$i][0]}</i><i style='color: {$colors[$color_num][0]};font-size: .9em;padding: 0 .1em;'>/</i>{$rbks[$i][1]}";
 
 		    $b = $i+1;
 		    echo("<a href='/poet:" . $row['id'] . "/book:" . $b . "'>" . 
@@ -131,7 +131,7 @@
 		    <?php
 		    $edit_uri = "/pitew/edit-poet.php?poet={$row['takh']}";  
 		    ?>
-		    <a style="font-size:0.53em;color:#444;padding:1em;display:block" href="<?php echo $edit_uri; ?>">
+		    <a style="font-size:.54em;color:#444;padding:1em;display:block" href="<?php echo $edit_uri; ?>">
 			زانیاری زیاترتان سەبارەت بە 
 			&laquo;
 			<?php echo $row['takh']; ?>
@@ -168,7 +168,7 @@
 			    
 			    foreach($result as $n) {
 				echo "
-                <a style=\"font-size:.53em;color:#222;padding:.5em;display:block;background:#f6f6f6;border-bottom:1px solid #e6e6e6;\" href=\"/pitew/poetdesc-list.php?name={$n[0][0]}&poet={$n[0][1]}\"><span style='display:block'>
+                <a style=\"font-size:.54em;color:#222;padding:.5em;display:block;background:#f9f9f9;border-bottom:1px solid #f0f0f0;\" href=\"/pitew/poetdesc-list.php?name={$n[0][0]}&poet={$n[0][1]}\"><span style='display:block'>
                 &laquo;".num_convert(str_replace("&#34;","\"",$n[0][0]), "en", "ckb")."&raquo;
 نووسیویەتی:
 </span>

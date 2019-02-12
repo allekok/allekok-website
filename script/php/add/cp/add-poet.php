@@ -97,19 +97,8 @@
         </title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../../../../style/css/fonts.css">
+        <link rel="stylesheet" href="/style/css/main.css?v6">
         <style>
-            * {
-                padding:0;
-                margin:0;
-                border:0;
-                outline:0;
-                font-family:'kurd';
-                font-size:inherit;
-                transition:all 0.2s ease;
-                -webkit-transition:all 0.2s ease;
-            }
-            
             input[type=text] {
                 display: block;
                 width:96%;
