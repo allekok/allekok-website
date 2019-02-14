@@ -79,7 +79,7 @@ header a{display:inline-block;}
 header a h1{font-size:1.2em;}
 header h2{font-size:.65em;margin-top:-.5em;}
 #poets{padding:0;text-align:center;margin:0 auto;max-width:1200px;}
-.psec{width:24%;display:inline-block;vertical-align:top;max-width:calc(115px + 3%);color:#444;padding:.5em 1.5% .1em;}
+.psec{width:24.5%;display:inline-block;vertical-align:top;max-width:calc(120px + 3%);color:#444;padding:.5em 1.25% .1em;}
 .psec:hover{opacity:.8;}
 .psec h3,.psec a{color:inherit;}
 .psec h3{font-size:.6em;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
