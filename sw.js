@@ -70,7 +70,7 @@ self.addEventListener('install', function(event) {
 		'/style/img/poets/profile/profile_59.jpg',
 		'/style/img/poets/profile/profile_36.jpg',
 		'/script/js/main.js?v3',
-		'/style/css/main.css?v5',
+		'/style/css/main.css?v7',
 		'/favicon.ico',
 		'/style/font/DroidNaskh-Regular.woff2',
 		'/style/font/Material-Icons.woff2',
