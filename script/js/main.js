@@ -1,22 +1,22 @@
-// source: KurdiNus 4.0
+// source: Pellk KurdiNus 4.0
 // Arabic to Latin Array
-var sConvertArabic2Latin = new Array(
+var sConvertArabic2Latin = [
     //managing 'و' and 'ی'
-    'و([اێۆە])', 'w$1', //و + vowel => w (e.g. wan)
-    'ی([اێۆە])', 'y$1', //ی + vowel => y (e.g. yas)
-    '([اێۆە])و', '$1w', //vowel + و => w (e.g. kew)
-    '([اێۆە])ی', '$1y', //vowel + ی => y (e.g. bey)
-    '(^|[^ء-يٱ-ەwy])و([^ء-يٱ-ەwy])', '$1û$2', //non-letter + 'و' + non-letter => û (=and)
-    '(^|[^ء-يٱ-ەwy])و', '$1w', //non-letter + 'و' => w (e.g. wtar)
-    'یو', 'îw', //'ی' + 'و' => îw (e.g. nîw)
-    'یی', 'îy', //'ی' + 'ی' => îy (e.g. kanîy)
-    'وی', 'uy', //'و' + 'ی' => uy (e.g. buyn)
-    'وو', 'û', //'و' + 'و' => û (e.g. bû)
+    'و([اێۆە])', 'w$1', 
+    'ی([اێۆە])', 'y$1',
+    '([اێۆە])و', '$1w',
+    '([اێۆە])ی', '$1y',
+    '(^|[^ء-يٱ-ەwy])و([^ء-يٱ-ەwy])', '$1û$2',
+    '(^|[^ء-يٱ-ەwy])و', '$1w',
+    'یو', 'îw',
+    'یی', 'îy',
+    'وی', 'uy',
+    'وو', 'û', 
     'ی', 'î',
     'و', 'u',
-    'uu', 'û', //'و' + 'و' => û (e.g. bû)
+    'uu', 'û',
 
-    '([ء-يٱ-ەîuûwy])ڕ', '$1rr', //when 'ڕ' not at the beginning of a word => rr
+    '([ء-يٱ-ەîuûwy])ڕ', '$1rr', 
     'ر|ڕ', 'r',
     'ش', 'ş',
     'ئ', '',
@@ -64,28 +64,28 @@ var sConvertArabic2Latin = new Array(
 
     //insert i where applicable
 
-    'll', 'Ľ', //temporary conversion to avoid seeing ll as 2 letters
-    'rr', 'Ŕ', //temporary conversion to avoid seeing rr as 2 letters
-    '([bcçdfghjklĽmnpqrŔsştvwxz])([fjlĽmnrŔsşvwxyz])([fjlĽmnrŔsşvwxyz])([^aeêiîouûy])', '$1$2i$3$4', //e.g. grft -> grift
-    '([aeêiîouû])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])\\b', '$1$2$3i$4', //e.g. cejnt -> cejnit
-    '([fjlĽrŔsşwyz])([fjlĽmnrŔsşvwxyz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2$3', //e.g. wrd -> wird
-    '([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1i$2$3', //e.g. prd -> pird
-    '([^aeêiîouû])([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1$2i$3$4', //repeat the latter expression, in case skipped
-    '(^|[^aeêiîouy])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])($|[^aeêiîouû])', '$1$2i$3$4', //e.g. ktk -> kitk
-    '(^|[^a-zçşêîûĽŔ])([bcçdfghjklĽmnpqrŔsştvwxz])(\\s)', '$1$2i$3', //e.g. j -> ji
-    'Ľ', 'll', //revert the temporary conversion
-    'Ŕ', 'rr' //revert the temporary conversion
-);
+    'll', 'Ľ', 
+    'rr', 'Ŕ', 
+    '([bcçdfghjklĽmnpqrŔsştvwxz])([fjlĽmnrŔsşvwxyz])([fjlĽmnrŔsşvwxyz])([^aeêiîouûy])', '$1$2i$3$4', 
+    '([aeêiîouû])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])\\b', '$1$2$3i$4', 
+    '([fjlĽrŔsşwyz])([fjlĽmnrŔsşvwxyz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2$3', 
+    '([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1i$2$3', 
+    '([^aeêiîouû])([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1$2i$3$4', 
+    '(^|[^aeêiîouy])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])($|[^aeêiîouû])', '$1$2i$3$4', 
+    '(^|[^a-zçşêîûĽŔ])([bcçdfghjklĽmnpqrŔsştvwxz])(\\s)', '$1$2i$3', 
+    'Ľ', 'll', 
+    'Ŕ', 'rr' 
+];
 
-var sOnsetI = new Array(
-    '([bcçdfghjklmnpqrsştvwxz])([wy][aeêiîouû])', '$1i$2', //e.g. dyar -> diyar
-    '(^|[^a-zêîûçş0-9\'’])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1$2i$3', //e.g. bra -> bira
-    '([bcçdfghjklmnpqrsştvwxz][bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2' //e.g. aşkra -> aşkira
-);
+var sOnsetI = [
+    '([bcçdfghjklmnpqrsştvwxz])([wy][aeêiîouû])', '$1i$2', 
+    '(^|[^a-zêîûçş0-9\'’])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1$2i$3', 
+    '([bcçdfghjklmnpqrsştvwxz][bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2' 
+];
 
 // Standardize Arabic scripts Array
-var sConvertStandardise = new Array(
-    '‌{1,}', '‌', //omit multiple successive zero-width non-joiners
+var sConvertStandardise = [
+    '‌{1,}', '‌', 
     'لاَ|لأ|لآ', 'لا',
     'لً|لَ', 'ل',
     'ص','س',
@@ -99,15 +99,13 @@ var sConvertStandardise = new Array(
     'ي|ى', 'ی',
     'ذ', 'ز',
     'ك', 'ک',
-    // using unicode: 06D5 (Arabic letter Ae) for E
-    // using unicode: 06BE (Arabic letter He Doachashmee) for H
     'ه‍', 'ھ',
     'ه($|[^ء-يٱ-ە])', 'ە$1',
     'ە‌', 'ە',
     'ة', 'ە',
-    'ه', 'ھ', // rest of هs are H
+    'ه', 'ھ', 
     '([ء-يٱ-ە])‌([^ء-يٱ-ە])', '$1$2'
-);
+];
 
 function arami_to_latin(s) {
     
