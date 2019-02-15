@@ -3,7 +3,7 @@
 /* generating sitemap for search engines 
  *  the sitemap only contain poets , books, poems
  *  and no other pages. (for now).
-*/
+ */
 
 header("Content-type: text/html; charset=UTF-8");
 

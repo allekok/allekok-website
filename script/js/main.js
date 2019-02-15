@@ -193,35 +193,35 @@ function search(e) {
     
     if(noActionKeys.indexOf(C) === -1) {
 
-    // 27 keyCode = Esc Key
-    if(C === 27) {
-        s.style.display="none";
-        return;
-        
-    } else {
-        var sbtn = document.querySelector("#live-search-form #search-btn");
-        
-        if(str.length<3) {
-            sres.style.display="none";
-            sres.innerHTML = loading;
-            sbtn.innerHTML = "<i class='material-icons' style='font-size:2em;'>search</i>";
+	// 27 keyCode = Esc Key
+	if(C === 27) {
+            s.style.display="none";
             return;
-        }
-        
-        sres.innerHTML=loading;
-        sres.style.display="block";
-        
-        var request = "/script/php/live-search2.php?q="+str;
-        xmlhttp.open("GET",request);
-        xmlhttp.onload=function() {
-            sres.innerHTML = this.responseText;
-            sbtn.innerHTML = "گەڕانی زۆرتر";
-        };
-    }
+            
+	} else {
+            var sbtn = document.querySelector("#live-search-form #search-btn");
+            
+            if(str.length<3) {
+		sres.style.display="none";
+		sres.innerHTML = loading;
+		sbtn.innerHTML = "<i class='material-icons' style='font-size:2em;'>search</i>";
+		return;
+            }
+            
+            sres.innerHTML=loading;
+            sres.style.display="block";
+            
+            var request = "/script/php/live-search2.php?q="+str;
+            xmlhttp.open("GET",request);
+            xmlhttp.onload=function() {
+		sres.innerHTML = this.responseText;
+		sbtn.innerHTML = "گەڕانی زۆرتر";
+            };
+	}
 
-    xmlhttp.send();
+	xmlhttp.send();
 
-    // the End of noActionKeys, IF....
+	// the End of noActionKeys, IF....
     } else {
         if(str === "") {
             sres.style.display="none";
@@ -328,15 +328,15 @@ function copyPoem() {
     
     copySec.innerHTML = "<i class='material-icons' style='vertical-align:middle;'>check</i> کۆپی کرا.";
     copySec.style.backgroundColor = "#cfc";
-        
+    
     setTimeout(function(){
         copySec.innerHTML = "<i class='material-icons' style='vertical-align:middle;'>content_copy</i> کۆپی کردن ";
         copySec.style.backgroundColor = "";
-    
+	
     },3000);
 }
 
-    
+
 function Liked () {
     var tL = document.getElementById('tL');
     var ico = document.getElementById("like-icon");
@@ -410,10 +410,10 @@ function save_fs(how) {
         if(fs >= 120){
             return;
         }
-    
-    newfs = fs + scale;
+	
+	newfs = fs + scale;
 
-    /// make font size smaller
+	/// make font size smaller
     } else if(hows.indexOf(how) === 0){
         if(fs<=6){
             return;
@@ -471,22 +471,22 @@ if(favs !== null && typeof poemV2 !== 'undefined') {
         likeico.style.animation = "ll 0.4s ease-out forwards";
     }
 }
-    
-    
+
+
 var favs = localStorage.getItem('favorites');
 var tL = document.getElementById('tL');
-    
-    if(favs != null && favs.length>0) {
-        favs = favs.split("[fav]");
-        if(isJson(favs[0])) {
-            if(tL !== null) {
-                tL.style.display = "block";
-            }
-        } else {
-            localStorage.removeItem('favorites');
-        }
 
+if(favs != null && favs.length>0) {
+    favs = favs.split("[fav]");
+    if(isJson(favs[0])) {
+        if(tL !== null) {
+            tL.style.display = "block";
+        }
+    } else {
+        localStorage.removeItem('favorites');
     }
+
+}
 
 
 /// *************** ///
@@ -505,12 +505,12 @@ live_search_form.addEventListener("submit", function(e) {
 
 var draft = document.getElementById("tL");
 if( draft !== null ) {
-	draft.addEventListener("click", toggle_Like);
+    draft.addEventListener("click", toggle_Like);
 }
 
 draft = document.getElementById("tS");
 if( draft !== null) {
-	draft.addEventListener("click", toggle_search);
+    draft.addEventListener("click", toggle_search);
 }
 
 draft = document.getElementById("fav-sec");

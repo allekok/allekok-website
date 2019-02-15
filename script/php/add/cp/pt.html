@@ -1,4 +1,3 @@
-
 <meta charset="utf-8">
 <script src="/script/js/main.js" async></script>
 
@@ -8,20 +7,20 @@
 
 <script>
 
-document.querySelector("#btn").onclick = function() {
-    
-    var these = [/style='font-size: inherit;background: #06d; color: white; padding: 0 10px;'/g,/ڕۆژی لەدایکبوون/g,/ڕۆژی مردن/g,/ساڵی لەدایکبوون/g,/ساڵی مردن/g];
-    var those = ["target='_blank' rel='noopener noreferrer nofollow' class='button' style='font-size: inherit;'","ڕێکەوتی لەدایکبوون","ڕێکەوتی مردن","ڕێکەوتی لەدایکبوون","ڕێکەوتی مردن"];
-    
-    var input = document.querySelector('#in');
-    var output = input.value;
-    
-    for(var the in these) {
-        output = output.replace(these[the], those[the]);
+ document.querySelector("#btn").onclick = function() {
+     
+     var these = [/style='font-size: inherit;background: #06d; color: white; padding: 0 10px;'/g,/ڕۆژی لەدایکبوون/g,/ڕۆژی مردن/g,/ساڵی لەدایکبوون/g,/ساڵی مردن/g];
+     var those = ["target='_blank' rel='noopener noreferrer nofollow' class='button' style='font-size: inherit;'","ڕێکەوتی لەدایکبوون","ڕێکەوتی مردن","ڕێکەوتی لەدایکبوون","ڕێکەوتی مردن"];
+     
+     var input = document.querySelector('#in');
+     var output = input.value;
+     
+     for(var the in these) {
+         output = output.replace(these[the], those[the]);
 
-    }
-    
-    input.value = output;
-    Clipboard.copy(output);
-}
+     }
+     
+     input.value = output;
+     Clipboard.copy(output);
+ }
 </script>

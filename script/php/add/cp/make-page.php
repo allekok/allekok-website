@@ -5,7 +5,7 @@ require_once("../../constants.php");
 function make_page($path,$properties=[]) {
     if(empty($path)) return false;
     if(is_dir($path)) return false;
-	
+    
     $header = "<?php
 
 include_once(\"../script/php/constants.php\");

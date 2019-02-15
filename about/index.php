@@ -1,5 +1,5 @@
 <?php
-    
+
 include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
@@ -59,7 +59,7 @@ include(ABSPATH . "script/php/header.php");
 
         <?php
         $uri = ABSPATH . "about/res/about.comments";
-if(file_exists($uri) and filesize($uri)>0) { $nzuri = 1; } ?>
+	if(file_exists($uri) and filesize($uri)>0) { $nzuri = 1; } ?>
         
         <div id="Acomms-title" style="margin:1em 0 .5em;font-size: .8em;<?php if(!isset($nzuri)){echo 'display:none';} ?>">
             بیر و ڕاکان سەبارەت بە ئاڵەکۆک
@@ -67,24 +67,24 @@ if(file_exists($uri) and filesize($uri)>0) { $nzuri = 1; } ?>
 
         <div id="Acomms" style="font-size:0.8em;<?php if(!isset($nzuri)){echo('display:none;');} ?>">
             <?php
-                $rnds = array(
-                    mt_rand(1,22),
-                    mt_rand(1,22),
-                    mt_rand(1,22),
-                    mt_rand(1,22),
-                );
+            $rnds = array(
+                mt_rand(1,22),
+                mt_rand(1,22),
+                mt_rand(1,22),
+                mt_rand(1,22),
+            );
             ?>
             <div class='loader' style="border-top: 2px dashed <?php echo $colors[$rnds[0]][0]; ?>;border-bottom: 2px dashed <?php echo $colors[$rnds[1]][0]; ?>;border-right: 2px dashed <?php echo $colors[$rnds[2]][0]; ?>;border-left: 2px dashed <?php echo $colors[$rnds[3]][0]; ?>;border-radius:100%;padding:0;animation-duration:0.7s;"></div>
             
             <script>
-                var http = new XMLHttpRequest();
-                http.onload = function () {
-                    var Acomms = document.getElementById("Acomms");
-                    Acomms.innerHTML=this.responseText;
-                    Acomms.style.animation="tL-top 0.8s cubic-bezier(.18,.89,.32,1.28)";
-                }
-                http.open("get","/about/about-comments.php");
-                http.send();
+             var http = new XMLHttpRequest();
+             http.onload = function () {
+                 var Acomms = document.getElementById("Acomms");
+                 Acomms.innerHTML=this.responseText;
+                 Acomms.style.animation="tL-top 0.8s cubic-bezier(.18,.89,.32,1.28)";
+             }
+             http.open("get","/about/about-comments.php");
+             http.send();
             </script>
         </div>
     </div>
@@ -92,94 +92,94 @@ if(file_exists($uri) and filesize($uri)>0) { $nzuri = 1; } ?>
 
 <script>
 
-function append() {
+ function append() {
 
-    var httpd = new XMLHttpRequest();
+     var httpd = new XMLHttpRequest();
 
-    var res = document.getElementById('message');
-    var comm = document.getElementById('commTxt');
-    var loader = document.getElementById('commloader');
+     var res = document.getElementById('message');
+     var comm = document.getElementById('commTxt');
+     var loader = document.getElementById('commloader');
 
-    var nullError = "<i style='display:block;background-color:rgba(204,51,0,0.1);color:#444;font-size:0.5em;'>هیچ تان نەنووسیوە.</i>";
+     var nullError = "<i style='display:block;background-color:rgba(204,51,0,0.1);color:#444;font-size:0.5em;'>هیچ تان نەنووسیوە.</i>";
 
-    var succMess = "<i style='display:block;background-color:rgba(102,255,204,0.1);color:#444;font-size:0.5em;'>زۆر سپاس بۆ دەربڕینی بیر و ڕاتان سەبارەت بە ئاڵەکۆک.</i>";
+     var succMess = "<i style='display:block;background-color:rgba(102,255,204,0.1);color:#444;font-size:0.5em;'>زۆر سپاس بۆ دەربڕینی بیر و ڕاتان سەبارەت بە ئاڵەکۆک.</i>";
 
-    var failMess = "<i style='display:block;background-color:rgba(204,51,0,0.1);color:#444;font-size:0.5em;'>کێشەیەک هەیە. تکایە دووبارە هەوڵ دەنەوە.</i>";
+     var failMess = "<i style='display:block;background-color:rgba(204,51,0,0.1);color:#444;font-size:0.5em;'>کێشەیەک هەیە. تکایە دووبارە هەوڵ دەنەوە.</i>";
 
-    //out of range error
-    var OoRError = "<i style='display:block;background-color:rgba(204,51,0,0.1);color:#444;font-size:0.5em;'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پیت زیاتر بێ.</i>";
+     //out of range error
+     var OoRError = "<i style='display:block;background-color:rgba(204,51,0,0.1);color:#444;font-size:0.5em;'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پیت زیاتر بێ.</i>";
 
-    var request = "comm="+encodeURIComponent(comm.value);
+     var request = "comm="+encodeURIComponent(comm.value);
 
-    if(comm.value === "") {
-        comm.focus();
-        return 0;
-    }
+     if(comm.value === "") {
+         comm.focus();
+         return 0;
+     }
 
-    if(comm.value.length > 2685) {
-        res.innerHTML = OoRError;
-        comm.style.borderTop = "3px solid rgb(204,51,0)";
-        comm.focus();
-        setTimeout(function() {
-            comm.style.borderTop = "3px solid #ddd";
-        }, 3000);
-        return 0;
-    }
+     if(comm.value.length > 2685) {
+         res.innerHTML = OoRError;
+         comm.style.borderTop = "3px solid rgb(204,51,0)";
+         comm.focus();
+         setTimeout(function() {
+             comm.style.borderTop = "3px solid #ddd";
+         }, 3000);
+         return 0;
+     }
 
-    loader.style.display = "block";
-    comm.style.backgroundColor = "#eee";
-    comm.style.color = "#999";
+     loader.style.display = "block";
+     comm.style.backgroundColor = "#eee";
+     comm.style.color = "#999";
 
-    httpd.onload = function() {
+     httpd.onload = function() {
 
-        var respond = JSON.parse(this.responseText);
+         var respond = JSON.parse(this.responseText);
 
-        if(respond.message == "ok") {
+         if(respond.message == "ok") {
 
-            res.innerHTML = succMess;
-            comm.style.borderTop = "2px solid #06d";
+             res.innerHTML = succMess;
+             comm.style.borderTop = "2px solid #06d";
 
-            var Acomms = document.getElementById('Acomms');
-            var AcommsTitle = document.getElementById('Acomms-title');
+             var Acomms = document.getElementById('Acomms');
+             var AcommsTitle = document.getElementById('Acomms-title');
 
-            Acomms.style.display = "block";
-            AcommsTitle.style.display = "block";
-            Acomms.innerHTML = respond.comm + Acomms.innerHTML;
-            window.location = "#Acomms-title";
-            comm.value="";
+             Acomms.style.display = "block";
+             AcommsTitle.style.display = "block";
+             Acomms.innerHTML = respond.comm + Acomms.innerHTML;
+             window.location = "#Acomms-title";
+             comm.value="";
 
-        } else {
-            res.innerHTML = failMess;
-            comm.style.borderTop = "2px solid rgb(204,51,0)";
-            setTimeout(function() {
-                comm.style.borderTop = "3px solid #ddd";
-            }, 3000);
-        }
+         } else {
+             res.innerHTML = failMess;
+             comm.style.borderTop = "2px solid rgb(204,51,0)";
+             setTimeout(function() {
+                 comm.style.borderTop = "3px solid #ddd";
+             }, 3000);
+         }
 
-        loader.style.display = "none";
-        comm.style.backgroundColor = "";
-        comm.style.color = "";
+         loader.style.display = "none";
+         comm.style.backgroundColor = "";
+         comm.style.color = "";
          
-    }
+     }
 
-    httpd.open("POST","/about/append.php");
-    httpd.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    httpd.send(request);
+     httpd.open("POST","/about/append.php");
+     httpd.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+     httpd.send(request);
 
-}
+ }
 
 
-    document.getElementById("frmComm").addEventListener("submit", function(e) {
-        if(XMLHttpRequest) {
-            e.preventDefault();
-            append();
-        }
+ document.getElementById("frmComm").addEventListener("submit", function(e) {
+     if(XMLHttpRequest) {
+         e.preventDefault();
+         append();
+     }
 
-    });
+ });
 
 </script>
 
 
 <?php
-	include_once(ABSPATH . "script/php/footer.php");
+include_once(ABSPATH . "script/php/footer.php");
 ?>

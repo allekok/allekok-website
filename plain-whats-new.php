@@ -19,88 +19,88 @@ $q = "select * from pitew where status LIKE '{\"status\":0%' order by id DESC";
 require("script/php/condb.php");
 
 if(mysqli_num_rows($query)>0) {
-while($res = mysqli_fetch_assoc($query)) {
-if($res['poem-name'] === "")    $res['poem-name'] = "شێعر";
-echo "• {$res['contributor']} › {$res['poet']} › {$res['book']} › {$res['poem-name']}\n";
-}
+    while($res = mysqli_fetch_assoc($query)) {
+	if($res['poem-name'] === "")    $res['poem-name'] = "شێعر";
+	echo "• {$res['contributor']} › {$res['poet']} › {$res['book']} › {$res['poem-name']}\n";
+    }
 } else {
-echo "•\n";
+    echo "•\n";
 }
 echo "\n*ناردنی وێنەی شاعیران*\n";
 $_list = make_list(ABSPATH."style/img/poets/new/");
 $a = 0;
 if(! empty($_list)) {
-foreach($_list as $_l) {
-if($a === 2)    break 1;
-echo "• " . $_l['name'] . " › " . $_l['poet'] . "\n";
-$a++;
-}
+    foreach($_list as $_l) {
+	if($a === 2)    break 1;
+	echo "• " . $_l['name'] . " › " . $_l['poet'] . "\n";
+	$a++;
+    }
 } else {
-echo "•\n";
+    echo "•\n";
 }
 
 function make_list($_dir) {
-if(! is_dir($_dir) )
-return 0;
+    if(! is_dir($_dir) )
+	return 0;
 
-$d = opendir($_dir);
-$_list = array();
+    $d = opendir($_dir);
+    $_list = array();
 
-while( false !== ($entry = readdir($d))) {
-if(_unlist($entry)) {
-$uri = "/style/img/poets/new/".$entry;
-$entry = str_replace([".jpeg",".jpg",".png"], "", $entry);
-$entry = explode("_", $entry);
-$entry["poet"] = $entry[0];
-$entry["name"] = $entry[1];
-$entry["uri"] = $uri;
-array_unshift($entry, filemtime("/home/allekokc/public_html" . $uri));
-$_list[] = $entry;
-}
-}
+    while( false !== ($entry = readdir($d))) {
+	if(_unlist($entry)) {
+	    $uri = "/style/img/poets/new/".$entry;
+	    $entry = str_replace([".jpeg",".jpg",".png"], "", $entry);
+	    $entry = explode("_", $entry);
+	    $entry["poet"] = $entry[0];
+	    $entry["name"] = $entry[1];
+	    $entry["uri"] = $uri;
+	    array_unshift($entry, filemtime("/home/allekokc/public_html" . $uri));
+	    $_list[] = $entry;
+	}
+    }
 
-if(rsort($_list))  return $_list;
+    if(rsort($_list))  return $_list;
 }
 
 function _unlist($v) {
-$_Vs = array(".", "..");
-if(! in_array($v, $_Vs) ) return $v;
+    $_Vs = array(".", "..");
+    if(! in_array($v, $_Vs) ) return $v;
 }
 echo "\n*نووسینی زانیاری سەبارەت بە شاعیران*\n";
 
 $_list = make_list2(ABSPATH."pitew/res/");
 $a = 0;
 if(!empty($_list)) {
-foreach($_list as $_l) {
-if($a === 2)    break 1;
-echo "• " . $_l['poet'] . " › " .  $_l['name'] . "\n";
-$a++;
-}
+    foreach($_list as $_l) {
+	if($a === 2)    break 1;
+	echo "• " . $_l['poet'] . " › " .  $_l['name'] . "\n";
+	$a++;
+    }
 } else {
-echo "•\n";
+    echo "•\n";
 }
 
 function make_list2($_dir) {
-if(! is_dir($_dir) )
-return 0;
+    if(! is_dir($_dir) )
+	return 0;
 
-$d = opendir($_dir);
-$_list = array();
+    $d = opendir($_dir);
+    $_list = array();
 
-while( false !== ($entry = readdir($d))) {
-if(_unlist($entry)) {
-$uri = "/pitew/res/".$entry;
-$entry = str_replace([".txt"], "", $entry);
-$entry = explode("_", $entry);
-$entry["poet"] = $entry[0];
-$entry["name"] = $entry[1];
-$entry["uri"] = $uri;
-array_unshift($entry, filemtime("/home/allekokc/public_html" . $uri));
-$_list[] = $entry;
-}
-}
+    while( false !== ($entry = readdir($d))) {
+	if(_unlist($entry)) {
+	    $uri = "/pitew/res/".$entry;
+	    $entry = str_replace([".txt"], "", $entry);
+	    $entry = explode("_", $entry);
+	    $entry["poet"] = $entry[0];
+	    $entry["name"] = $entry[1];
+	    $entry["uri"] = $uri;
+	    array_unshift($entry, filemtime("/home/allekokc/public_html" . $uri));
+	    $_list[] = $entry;
+	}
+    }
 
-if(rsort($_list))  return $_list;
+    if(rsort($_list))  return $_list;
 }
 echo "\n*بیر و ڕای شێعرەکان*\n";
 
@@ -109,12 +109,12 @@ $q = "select * from `comments` where `read`=0 order by `id` DESC";
 $query = mysqli_query($conn, $q);
 
 if(mysqli_num_rows($query)>0) {
-while($res = mysqli_fetch_assoc($query)) {
-if($res['name'] === "")    $res['name'] = "ناشناس";
-echo "• {$res['name']}\n";
-}
+    while($res = mysqli_fetch_assoc($query)) {
+	if($res['name'] === "")    $res['name'] = "ناشناس";
+	echo "• {$res['name']}\n";
+    }
 } else {
-echo "•\n";
+    echo "•\n";
 }
 
 mysqli_close($conn);

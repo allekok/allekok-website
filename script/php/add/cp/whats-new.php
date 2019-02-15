@@ -1,10 +1,10 @@
 <?php
-    
-    if(! defined('ABSPATH'))    define('ABSPATH', '/home/allekokc/public_html/');
 
-	require_once("../../colors.php");
-	require_once("../../constants.php");
-	require_once("../../functions.php");
+if(! defined('ABSPATH'))    define('ABSPATH', '/home/allekokc/public_html/');
+
+require_once("../../colors.php");
+require_once("../../constants.php");
+require_once("../../functions.php");
 
 $title = _TITLE . " - تازەکان";
 $desc = "تازەکانی ئاڵەکۆک";
@@ -13,7 +13,7 @@ $t_desc = "";
 $t_class = "ltitle";
 $color_num = 0;
 
-	require('../../header.php');
+require('../../header.php');
 ?>
 
 <div id="poets">
@@ -37,7 +37,7 @@ $color_num = 0;
     </div>
     
     <h1 style="background: rgba(255, 140, 0, 0.05);color: darkorange;display: inline-block;padding: 0.3em 0.8em 0;border-radius: 5px;margin: 1em 0 0.5em;font-size:0.9em;">
-            تازەکانی ئاڵەکۆک
+        تازەکانی ئاڵەکۆک
     </h1>
     <div style="border-bottom:1px solid #eee"></div>
     
@@ -47,23 +47,23 @@ $color_num = 0;
             نووسینی شێعر
         </h3><br>
         <?php
-            $db = "index";
-            $q = "select * from pitew where status LIKE '{\"status\":0%' order by id DESC";
-            
-            require("../../condb.php");
-            
-            $a = 0;
-            if(mysqli_num_rows($query)>0) {
-                while($res = mysqli_fetch_assoc($query)) {
-                    if($a === 3)    break 1;
+        $db = "index";
+        $q = "select * from pitew where status LIKE '{\"status\":0%' order by id DESC";
+        
+        require("../../condb.php");
+        
+        $a = 0;
+        if(mysqli_num_rows($query)>0) {
+            while($res = mysqli_fetch_assoc($query)) {
+                if($a === 3)    break 1;
                 if($res['poem-name'] === "")    $res['poem-name'] = "شێعر";
-                    echo "<section class='pmlist'><span style='color:#09f'>&bull; </span>{$res['contributor']}</section><section class='pmlist'>{$res['poet']} &rsaquo; {$res['poem-name']}</section>";
-                    $a++;
-                }
-            } else {
-                echo "<span style='color:#999;font-size:1em'>&bull;</span>";
+                echo "<section class='pmlist'><span style='color:#09f'>&bull; </span>{$res['contributor']}</section><section class='pmlist'>{$res['poet']} &rsaquo; {$res['poem-name']}</section>";
+                $a++;
             }
-            
+        } else {
+            echo "<span style='color:#999;font-size:1em'>&bull;</span>";
+        }
+        
         ?>
     </section>
     
@@ -73,26 +73,26 @@ $color_num = 0;
             ناردنی وێنەی شاعیران
         </h3><br>
         <?php
-            $_list = make_list(ABSPATH."style/img/poets/new/");
-            $a = 0;
-            if(! empty($_list)) {
-                foreach($_list as $_l) {
-                    if($a === 3)    break 1;
-                    echo "<section class='pmlist'><span style='color:rgb(128, 0, 128)'>&bull; </span>" . $_l['name'] . "، " . $_l['poet'] . "</section><section class='pmlist'>" . "<a href='{$_l['uri']}'>وێنە</a></section>";
-                    $a++;
-                }
-            } else {
-                echo "<span style='color:#999;font-size:1em'>&bull;</span>";
+        $_list = make_list(ABSPATH."style/img/poets/new/");
+        $a = 0;
+        if(! empty($_list)) {
+            foreach($_list as $_l) {
+                if($a === 3)    break 1;
+                echo "<section class='pmlist'><span style='color:rgb(128, 0, 128)'>&bull; </span>" . $_l['name'] . "، " . $_l['poet'] . "</section><section class='pmlist'>" . "<a href='{$_l['uri']}'>وێنە</a></section>";
+                $a++;
             }
+        } else {
+            echo "<span style='color:#999;font-size:1em'>&bull;</span>";
+        }
 
-            function make_list($_dir) {
-              if(! is_dir($_dir) )
+        function make_list($_dir) {
+            if(! is_dir($_dir) )
                 return 0;
             
-              $d = opendir($_dir);
-              $_list = array();
+            $d = opendir($_dir);
+            $_list = array();
             
-              while( false !== ($entry = readdir($d))) {
+            while( false !== ($entry = readdir($d))) {
                 if(_unlist($entry)) {
                     $uri = "/style/img/poets/new/".$entry;
                     $entry = str_replace([".jpeg",".jpg",".png"], "", $entry);
@@ -103,44 +103,44 @@ $color_num = 0;
                     array_unshift($entry, filemtime("/home/allekokc/public_html" . $uri));
                     $_list[] = $entry;
                 }
-              }
-            
-              if(rsort($_list))  return $_list;
             }
             
-            function _unlist($v) {
-              $_Vs = array(".", "..");
-              if(! in_array($v, $_Vs) ) return $v;
-            }
+            if(rsort($_list))  return $_list;
+        }
+        
+        function _unlist($v) {
+            $_Vs = array(".", "..");
+            if(! in_array($v, $_Vs) ) return $v;
+        }
         ?>
     </section>
     
     <section class='pitewsec'>
         <!--<i class='material-icons' style='color:yellowgreen;'>person</i>-->
         <h3 style="background: rgba(154, 205, 50, 0.08);color: rgb(154, 205, 50);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0;">
-           نووسینی زانیاری سەبارەت بە شاعیران
+            نووسینی زانیاری سەبارەت بە شاعیران
         </h3><br>
         <?php
-            $_list = make_list2(ABSPATH."pitew/res/");
-            $a = 0;
-            if(!empty($_list)) {
-                foreach($_list as $_l) {
-                    if($a === 3)    break 1;
-                        echo "<section class='pmlist'><span style='color:rgb(154, 205, 50)'>&bull; </span>" . $_l['poet'] . "، " .  $_l['name'] . "</section><section class='pmlist'>" . "<a href='{$_l['uri']}'>نووسراو</a></section>";
-                    $a++;
-                }
-            } else {
-                echo "<span style='color:#999;font-size:1em'>&bull;</span>";
+        $_list = make_list2(ABSPATH."pitew/res/");
+        $a = 0;
+        if(!empty($_list)) {
+            foreach($_list as $_l) {
+                if($a === 3)    break 1;
+                echo "<section class='pmlist'><span style='color:rgb(154, 205, 50)'>&bull; </span>" . $_l['poet'] . "، " .  $_l['name'] . "</section><section class='pmlist'>" . "<a href='{$_l['uri']}'>نووسراو</a></section>";
+                $a++;
             }
+        } else {
+            echo "<span style='color:#999;font-size:1em'>&bull;</span>";
+        }
 
-            function make_list2($_dir) {
-              if(! is_dir($_dir) )
+        function make_list2($_dir) {
+            if(! is_dir($_dir) )
                 return 0;
             
-              $d = opendir($_dir);
-              $_list = array();
+            $d = opendir($_dir);
+            $_list = array();
             
-              while( false !== ($entry = readdir($d))) {
+            while( false !== ($entry = readdir($d))) {
                 if(_unlist($entry)) {
                     $uri = "/pitew/res/".$entry;
                     $entry = str_replace([".txt"], "", $entry);
@@ -151,10 +151,10 @@ $color_num = 0;
                     array_unshift($entry, filemtime("/home/allekokc/public_html" . $uri));
                     $_list[] = $entry;
                 }
-              }
-            
-              if(rsort($_list))  return $_list;
             }
+            
+            if(rsort($_list))  return $_list;
+        }
         ?>
     </section>
     
@@ -164,58 +164,58 @@ $color_num = 0;
             بیر و ڕای شێعرەکان
         </h3><br>
         <?php
-            $q = "select * from `comments` where `read`=0 order by `id` DESC";
-            
-            $query = mysqli_query($conn, $q);
-            
-            $a = 0;
-            if(mysqli_num_rows($query)>0) {
-                while($res = mysqli_fetch_assoc($query)) {
-                    if($a === 3)    break 1;
+        $q = "select * from `comments` where `read`=0 order by `id` DESC";
+        
+        $query = mysqli_query($conn, $q);
+        
+        $a = 0;
+        if(mysqli_num_rows($query)>0) {
+            while($res = mysqli_fetch_assoc($query)) {
+                if($a === 3)    break 1;
                 if($res['name'] === "")    $res['name'] = "ناشناس";
-                    echo "<section class='pmlist'><span style='color:red'>&bull; </span>{$res['name']}</section><section class='pmlist'><a href='/{$res['address']}'>بیروڕا</a>  <a href='read-comment.php?id={$res['id']}' class='read-comm' style='color:#09f'>خوێندمەوە</a>  <a href='block-comment.php?id={$res['id']}' class='block-comm' style='color:rgb(204,51,0);'>بلاک</a></section>";
-                    $a++;
-                }
-                ?>
-                
-                <script>
-                
-                    var comm_links = document.querySelectorAll(".block-comm, .read-comm");
-                    
-                    comm_links.forEach(function(i) {
-                        
-                        var request = i.href;
-                        
-                        i.addEventListener("click", function(e) {
-                            e.preventDefault();
-                            i.innerHTML = "<div class='loader'></div>";
-                            var xmlhttp = new XMLHttpRequest();
-                            xmlhttp.onload = function() {
-                                if(this.responseText == 1) {
-                                    i.innerHTML = "<i style='font-size:inherit' class='material-icons'>check</i>";
-                                }
-                            }
-                            xmlhttp.open("get", request, true);
-                            xmlhttp.send(); 
-                        });
-                        
-                    });
-                </script>
-                
-                
-                <?php
-            } else {
-                echo "<span style='color:#999;font-size:1em'>&bull;</span>";
+                echo "<section class='pmlist'><span style='color:red'>&bull; </span>{$res['name']}</section><section class='pmlist'><a href='/{$res['address']}'>بیروڕا</a>  <a href='read-comment.php?id={$res['id']}' class='read-comm' style='color:#09f'>خوێندمەوە</a>  <a href='block-comment.php?id={$res['id']}' class='block-comm' style='color:rgb(204,51,0);'>بلاک</a></section>";
+                $a++;
             }
-            
         ?>
+        
+        <script>
+         
+         var comm_links = document.querySelectorAll(".block-comm, .read-comm");
+         
+         comm_links.forEach(function(i) {
+             
+             var request = i.href;
+             
+             i.addEventListener("click", function(e) {
+                 e.preventDefault();
+                 i.innerHTML = "<div class='loader'></div>";
+                 var xmlhttp = new XMLHttpRequest();
+                 xmlhttp.onload = function() {
+                     if(this.responseText == 1) {
+                         i.innerHTML = "<i style='font-size:inherit' class='material-icons'>check</i>";
+                     }
+                 }
+                 xmlhttp.open("get", request, true);
+                 xmlhttp.send(); 
+             });
+             
+         });
+        </script>
+        
+        
+                <?php
+		} else {
+                    echo "<span style='color:#999;font-size:1em'>&bull;</span>";
+		}
+		
+		?>
     </section>
     
     <section class='pitewsec'>
         <i class='material-icons' style='color:blue;'><img src='/style/img/poets/profile/profile_0.jpg' style='opacity: 0.75;border: 2px dashed;border-radius: 100%;width: 0.9em;margin-bottom: 0.1em;'></i>
         <!--<h3 style="background: rgba(0, 0, 0,0.05);color: #444;display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0;">
-            ئاڵەکۆک؟
-        </h3><br>-->
+             ئاڵەکۆک؟
+             </h3><br>-->
         <div class='fnav'>
             <div class='fnav-stats'>
                 <div class='fnav-stats-caption'>
@@ -229,46 +229,46 @@ $color_num = 0;
         </div>
         <div id="Acomms" style="font-size:0.8em;">
             <script>
-                var nums = document.querySelector(".fnav-stats-caption");
-                var poets_num = document.getElementById("poets-num");
-                var poems_num = document.getElementById("poems-num");
-        
-                xmlhttp = new XMLHttpRequest();
-        
-                xmlhttp.onreadystatechange=function() {
-                    if (this.readyState==4 && this.status==200) {
-                        var respond = JSON.parse(this.responseText);
-                        poets_num.innerHTML = respond["poets-num"];
-                        poems_num.innerHTML = respond["poems-num"];
-        
-                        nums.style.animation="tL 2s ease-in forwards";
-        
-                    }
-                }
-                xmlhttp.open("GET","/script/php/stats.php",true);
-                xmlhttp.send();
-                
-                ///////////////////////
-                var http = new XMLHttpRequest();
+             var nums = document.querySelector(".fnav-stats-caption");
+             var poets_num = document.getElementById("poets-num");
+             var poems_num = document.getElementById("poems-num");
+             
+             xmlhttp = new XMLHttpRequest();
+             
+             xmlhttp.onreadystatechange=function() {
+                 if (this.readyState==4 && this.status==200) {
+                     var respond = JSON.parse(this.responseText);
+                     poets_num.innerHTML = respond["poets-num"];
+                     poems_num.innerHTML = respond["poems-num"];
+		     
+                     nums.style.animation="tL 2s ease-in forwards";
+		     
+                 }
+             }
+             xmlhttp.open("GET","/script/php/stats.php",true);
+             xmlhttp.send();
+             
+             ///////////////////////
+             var http = new XMLHttpRequest();
 
-                http.onreadystatechange = function() {
-                    if(this.status == 200 && this.readyState == 4) {
-                        document.getElementById("Acomms").innerHTML=this.responseText;
-                            document.getElementById("Acomms").style.animation="tL-top 0.8s cubic-bezier(.18,.89,.32,1.28)";
-                    }
-                }
+             http.onreadystatechange = function() {
+                 if(this.status == 200 && this.readyState == 4) {
+                     document.getElementById("Acomms").innerHTML=this.responseText;
+                     document.getElementById("Acomms").style.animation="tL-top 0.8s cubic-bezier(.18,.89,.32,1.28)";
+                 }
+             }
 
-                http.open("POST","/script/php/about-comments.php?num=3",true);
-                http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                http.send();
+             http.open("POST","/script/php/about-comments.php?num=3",true);
+             http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+             http.send();
             </script>
             
         </small>
     </section>
     
-</div>
+	</div>
 
-<?php
-mysqli_close($conn);
+	<?php
+	mysqli_close($conn);
 	require_once("../../footer.php");
-?>
+	?>

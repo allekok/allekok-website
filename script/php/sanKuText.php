@@ -129,7 +129,7 @@ function san_data($in, $last=false) {
 }
 
 /* TESTING
-echo san_data("چاوەکەم چاوی ڕەشیی تۆۆ عەبدووووڕڕلل سسصص");
-(start-process-shell-command "php" "sanKuText.php" "php sanKuText.php")
-*/
+   echo san_data("چاوەکەم چاوی ڕەشیی تۆۆ عەبدووووڕڕلل سسصص");
+   (start-process-shell-command "php" "sanKuText.php" "php sanKuText.php")
+ */
 ?>

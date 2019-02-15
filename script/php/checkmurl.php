@@ -86,7 +86,7 @@ if ($ath!=null and $bk==null) {
             if(mysqli_num_rows($query)>0 and ($_ids[1] != 0 and $_ids[1] <= $_msqnr)) {
                 $_e=0;
                 while($rw = mysqli_fetch_assoc($query)) {
-        
+		    
                     $row[$_e] = $rw;
                     $_e++;
                 }
@@ -130,13 +130,13 @@ if ($ath!=null and $bk==null) {
     // search2.php
     
     $is_it_search = 1;
-	$title = _TITLE . " &raquo; گەڕان: " . $q;
-	$desc = "گەڕان بۆ " . $q . " لە ئاڵەکۆک دا";
-	$keys = "{$q}," . "ئاڵەکۆک,شێعر,شعر";
+    $title = _TITLE . " &raquo; گەڕان: " . $q;
+    $desc = "گەڕان بۆ " . $q . " لە ئاڵەکۆک دا";
+    $keys = "{$q}," . "ئاڵەکۆک,شێعر,شعر";
     $color_num = 0;
-	
-	include("header.php");
-	include("search2.php");
+    
+    include("header.php");
+    include("search2.php");
     
 } else {
     $t_desc = "<h2>"._DESC."</h2>";

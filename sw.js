@@ -4,7 +4,7 @@
 const cache_ver = "v110";
 const profile_path = "/style/img/poets/profile/profile_";
 
-      self.addEventListener('install', function(event) {
+self.addEventListener('install', function(event) {
     event.waitUntil(
 	caches.open(cache_ver).then(function(cache) {
 	    return cache.addAll([
