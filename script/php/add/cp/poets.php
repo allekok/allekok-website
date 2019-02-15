@@ -23,7 +23,7 @@ include(ABSPATH . 'script/php/header.php');
  table {
      margin: auto;
      width: 100%;
-     max-width: 700px;
+     max-width: 800px;
      font-size:.6em;
  }
  

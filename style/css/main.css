@@ -147,7 +147,7 @@ header div{opacity:.8;}
 header div:hover{opacity:.6;}
 #sp a:hover{background:#f3f3f3;}
 #Acomms div{font-size:.8em;text-align:justify;padding:.75em 1em .4em;margin-bottom: .4em;}
-.h{direction:rtl;display:block;color:#777;font-size:.63em;text-align:left;font-family:monospace;line-height:normal;margin-top:1em;}
+.h{direction:rtl;display:block;color:#777;font-size:.63em;text-align:left;font-family:mono;line-height:normal;margin-top:1em;}
 .link{border-bottom:1px solid #ccc;padding:.5em;}
 .link:hover{background-color:#eee;border-bottom-color:#eee;}
 .seartog {position:absolute;left:.4em;cursor:pointer;top:1em;}
