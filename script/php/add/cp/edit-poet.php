@@ -1,4 +1,18 @@
 <?php
+
+include_once("../../constants.php");
+include_once(ABSPATH . "script/php/colors.php");
+include_once(ABSPATH . "script/php/functions.php");
+
+$title = _TITLE . " &raquo; گۆڕینی شاعیر";
+$desc = "گۆڕینی شاعیر";
+$keys = _KEYS;
+$t_desc = "";
+$color_num = 0;
+
+include(ABSPATH . 'script/php/header.php');
+?>
+<?php
 // a big if
 
 if(! empty($_REQUEST['id'])) {
@@ -30,7 +44,6 @@ if(! empty($_REQUEST['id'])) {
         $_hdesc = stripslashes($_poet['hdesc']);
         $_bks = $_poet['bks'];
         $_bksdesc = stripslashes($_poet['bksdesc']);
-        $_ord = $_poet['ord'];
         
         $submitted = "<i class='g'>";
         $submitted .= "دۆزیمە!";
@@ -38,7 +51,7 @@ if(! empty($_REQUEST['id'])) {
         
         // if form has been submitted already
         
-        if( isset($_REQUEST["name"]) && isset($_REQUEST["takh"]) && isset($_REQUEST["profname"]) && isset($_REQUEST["bks"]) && isset($_REQUEST["ord"]) ) {
+        if( isset($_REQUEST["name"]) && isset($_REQUEST["takh"]) && isset($_REQUEST["profname"]) && isset($_REQUEST["bks"]) ) {
             
             $_name = $_REQUEST['name'];
             $_takh = $_REQUEST['takh'];
@@ -46,12 +59,11 @@ if(! empty($_REQUEST['id'])) {
             $_hdesc = addslashes($_REQUEST['hdesc']);
             $_bks = $_REQUEST['bks'];
             $_bksdesc = addslashes($_REQUEST['bksdesc']);
-            $_ord = $_REQUEST['ord'];
             
             // update poet info. in the index db.
             
             
-            $q = "UPDATE auth SET name='$_name', takh='$_takh', profname='$_profname', hdesc='$_hdesc', bks='$_bks', bksdesc='$_bksdesc', ord=$_ord WHERE id=$_id";
+            $q = "UPDATE auth SET name='$_name', takh='$_takh', profname='$_profname', hdesc='$_hdesc', bks='$_bks', bksdesc='$_bksdesc' WHERE id=$_id";
             $query = mysqli_query($conn, $q);
             
             if( $query ) {
@@ -133,142 +145,139 @@ if(! empty($_REQUEST['id'])) {
     
 }
 ?>
-<!DOCTYPE HTML>
-<html dir="rtl">
-    <head>
-        <title>
-            گۆڕینی شاعیر
-        </title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../../../../style/css/fonts.css">
-        <style>
-         * {
-             padding:0;
-             margin:0;
-             border:0;
-             outline:0;
-             font-family:'kurd';
-             font-size:inherit;
-             transition:all 0.2s ease;
-             -webkit-transition:all 0.2s ease;
-         }
-         
-         input[type=text], textarea {
-             display: block;
-             width:96%;
-             padding:0.2em 2%;
-             border-bottom:2px solid #ccc;
-             margin:0 0 1em;
-         }
-         
-         input[type=text]:focus, textarea:focus {
-             border-bottom:2px solid #06d;
-             box-shadow:0 2px 1px #ddd;
-         }
-         
-         button[type=submit] {
-             display:block;
-             width:100%;
-             max-width:100px;
-             padding:0.3em 0;
-             margin:auto;
-         }
-         
-         #frmInfo {
-             width:99%;
-             max-width:600px;
-             margin:auto auto 1em;
-             border-bottom:3px solid #ddd;
-         }
-         
-         #frmUpload {
-             text-align:center;
-         }
-         
-         #frmInfoMess, #frmUploadMess {
-             width:99%;
-             max-width:600px;
-             margin:auto;
-             text-align:center;
-         }
-         
-         .g {
-             background-color:rgba(0,255,0,0.2);
-             color:green;
-             display:block;
-         }
-         .r {
-             background-color:rgba(255,0,0,0.2);
-             color:red;
-             display:block;
-         }
-         a {
-             color: #fff;
-             background: #06f;
-             text-decoration: none;
-             display: block;
-             padding: 0.5em 0;
-             text-align: center;
-             box-shadow: 0 2px 1px #bbb;
-         }
-         a:hover {
-             opacity:0.7;
-         }
-        </style>
-    </head>
+<style>
+ input[type=text], textarea {
+     font-size:.6em;
+     display: block;
+     width:100%;
+     max-width:100%;
+     font-family:'kurd',mono;
+ }
+
+ textarea {
+     height:10em;
+ }
+ 
+ button[type=submit] {
+     display:block;
+     width:100%;
+     max-width:100px;
+     padding:0.3em 0;
+     margin:auto;
+ }
+ 
+ #frmInfo {
+     width:100%;
+     max-width:800px;
+     margin:auto auto 1em;
+     padding:1em;
+     border-bottom:3px solid #ddd;
+ }
+ 
+ #frmUpload {
+     text-align:center;
+ }
+
+ #frmUpload p {
+     direction:ltr;
+     font-family:'kurd',mono;
+     font-size:.5em;
+ }
+ #frmUpload input[type=file] {
+     display:none;
+ }
+ 
+ #frmUpload button .material-icons {
+     font-size:2em;
+ }
+ 
+ #frmInfoMess, #frmUploadMess {
+     width:99%;
+     max-width:800px;
+     margin:auto;
+     text-align:center;
+ }
+ 
+ .g {
+     background-color:rgba(0,255,0,0.2);
+     color:green;
+     display:block;
+ }
+ .r {
+     background-color:rgba(255,0,0,0.2);
+     color:red;
+     display:block;
+ }
+ #toolbox a {
+     color: #fff;
+     background: #444;
+     text-decoration: none;
+     display: block;
+     padding: 0.5em 0;
+     text-align: center;
+     font-size:.7em;
+ }
+ a:hover {
+     opacity:0.7;
+ }
+</style>
+
+<div id="poets">
+    <div id="toolbox">
+        <a href="poets.php">
+            شاعیران
+        </a>
+        <a onclick="event.preventDefault();window.open('http://allekok.com/script/php/add/cp/make_search.php', '_blank','width=300,height=200','')" style="background:rgb(102, 0, 51);" href="make_search.php" target='_blank'>
+            make_search.php
+        </a>
+    </div>
     
-    <body>
-        
-        <div id="toolbox">
-            <a href="poets.php">
-                شاعیران
-            </a>
-            <a onclick="event.preventDefault();window.open('http://allekok.com/script/php/add/cp/make_search.php', '_blank','width=300,height=200','')" style="background:rgb(102, 0, 51);" href="make_search.php" target='_blank'>
-                make_search.php
-            </a>
-        </div>
-        
-        <!-- info sec -->
-        
-        <div id="frmInfoMess">
-            <?php echo $submitted; ?>
-        </div>
-        
-        <form id="frmInfo" method="POST" action="">
-            <input type="text" name="id" placeholder="ژمارەی شاعیر" value="<?php echo $_id; ?>" disabled>
-            
-            <input type="text" name="name" placeholder="ناوی شاعیر" value="<?php echo $_name; ?>">
-            
-            <input type="text" name="takh" placeholder="تەخەللوس" value="<?php echo $_takh; ?>">
-            
-            <input type="text" name="profname" placeholder="ناوی پرۆفایل" value="<?php echo $_profname; ?>">
-            
-            <textarea name="hdesc" placeholder="لەبارەی ئەم شاعیرەدا"><?php echo $_hdesc; ?></textarea>
-            
-            <input type="text" name="bks" placeholder="بەرهەمەکان" value="<?php echo $_bks; ?>">
-            
-            <input type="text" name="bksdesc" placeholder="لەبارەی بەرهەمەکان" value="<?php echo $_bksdesc; ?>">
-            
-            <input type="text" name="ord" placeholder="شوێن" value="<?php echo $_ord; ?>">
-            
-            <button type="submit">بەڕۆژ کردن</button>
-        </form>
-        
-        <!-- file upload sec -->
-        <form id="frmUpload" method="POST" enctype="multipart/form-data" style="direction:ltr">
-            
-            profile: <input type="file" name="profile">
-            
-            pro-460: <input type="file" name="pro-460">
-            
-            <button type="submit">ناردن</button>
-        </form>
-        
-        <div id="frmUploadMess">
-            <?php echo $uploaded; ?>
-        </div>    
-        
-    </body>
+    <!-- info sec -->
     
-</html>
+    <div id="frmInfoMess">
+        <?php echo $submitted; ?>
+    </div>
+    
+    <form id="frmInfo" method="POST" action="">
+        <input type="text" name="id" placeholder="ژمارەی شاعیر" value="<?php echo $_id; ?>" disabled>
+        
+        <input type="text" name="name" placeholder="ناوی شاعیر" value="<?php echo $_name; ?>">
+        
+        <input type="text" name="takh" placeholder="تەخەللوس" value="<?php echo $_takh; ?>">
+        
+        <input type="text" name="profname" placeholder="ناوی پرۆفایل" value="<?php echo $_profname; ?>">
+        
+        <textarea name="hdesc" placeholder="لەبارەی ئەم شاعیرەدا"><?php echo $_hdesc; ?></textarea>
+        
+        <textarea name="bks" placeholder="بەرهەمەکان"><?php echo $_bks; ?></textarea>
+        
+        <textarea name="bksdesc" placeholder="لەبارەی بەرهەمەکان"><?php echo $_bksdesc; ?></textarea>
+        
+        <button type="submit">بەڕۆژ کردن</button>
+    </form>
+    
+    <!-- file upload sec -->
+    <form id="frmUpload" method="POST" enctype="multipart/form-data">
+        <p>
+	    120 x 120: <button class="button" onclick="document.getElementById('profile').click();">
+	    <i class="material-icons">add_a_photo</i>
+	    </button>
+	    <input type="file" name="profile" id="profile">
+        </p><p>
+	    460 x 460: <button class="button" onclick="document.getElementById('pro-460').click();">
+	    <i class="material-icons">add_a_photo</i>
+	    </button>
+	    <input type="file" name="pro-460" id="pro-460">
+	</p>
+	
+        <button type="submit">ناردن</button>
+    </form>
+    
+    <div id="frmUploadMess">
+        <?php echo $uploaded; ?>
+    </div>    
+</div>
+
+<?php
+include_once(ABSPATH . "script/php/footer.php");
+?>

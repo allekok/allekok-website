@@ -111,9 +111,9 @@ include(ABSPATH . 'script/php/header.php');
         $_imgsrc = "../../../../style/img/poets/profile/profile_{$res['id']}.jpg";
         if(file_exists($_imgsrc)) {
             
-            echo "<img src={$_imgsrc}>";
+            echo "<img style='border-bottom:10px solid {$colors[color_num($res['id'])][0]}' src={$_imgsrc}>";
         } else {
-            echo "<img src='../../../../style/img/poets/profile/profile_0.jpg'>";
+            echo "<img style='border-bottom:10px solid {$colors[color_num($res['id'])][0]}' src='../../../../style/img/poets/profile/profile_0.jpg'>";
         }
         echo "</td>";
         
@@ -125,7 +125,7 @@ include(ABSPATH . 'script/php/header.php');
         
         //operations
         echo "<td>";
-        echo "<a style='font-family:mono;background:".$colors[color_num($res['id'])][0].";color:".$colors[color_num($res['id'])][1].";float: right;width:100%' href='edit-poet.php?id={$res['id']}'>Edit</a>";
+        echo "<a class='link' style='font-family:mono;' href='edit-poet.php?id={$res['id']}'>Edit</a>";
         echo "</td>";
         
         echo "</tr>";

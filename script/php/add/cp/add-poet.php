@@ -111,6 +111,10 @@ if( isset($_REQUEST["name"]) && isset($_REQUEST["takh"]) && isset($_REQUEST["pro
      max-width:100%;
      font-family:'kurd',mono;
  }
+
+ textarea {
+     height:10em;
+ }
  
  button[type=submit] {
      display:block;
@@ -203,9 +207,9 @@ if( isset($_REQUEST["name"]) && isset($_REQUEST["takh"]) && isset($_REQUEST["pro
         
         <textarea name="hdesc" placeholder="لەبارەی ئەم شاعیرەدا"></textarea>
         
-        <input type="text" name="bks" placeholder="بەرهەمەکان">
+        <textarea name="bks" placeholder="بەرهەمەکان"></textarea>
         
-        <input type="text" name="bksdesc" placeholder="لەبارەی بەرهەمەکان">
+        <textarea name="bksdesc" placeholder="لەبارەی بەرهەمەکان"></textarea>
         
         <input type="text" name="kind" placeholder="نەوع: dead,alive,pending">
         
