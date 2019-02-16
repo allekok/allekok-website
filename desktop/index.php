@@ -88,10 +88,10 @@ include(ABSPATH . "script/php/header.php");
             لینوکس
             <br>
             <small style='font-size:.6em; margin-top:-.6em;display:block;'>
-                وەشانی ۱.۲.۰
+                وەشانی ۱.۲.۱
             </small>
             <small>
-                <a href="https://github.com/allekok/allekok-desktop/releases/download/v1.2.0/allekok-1.2.0-x86_64.AppImage">
+                <a href="https://github.com/allekok/allekok-desktop/releases/download/v1.2.1/allekok-1.2.1-x86_64.AppImage">
                     دابەزاندن بۆ لینوکسی ۶۴بیتی
                 </a>
                 <br>
