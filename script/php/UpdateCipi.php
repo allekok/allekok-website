@@ -10,6 +10,8 @@ function redirect($url, $statusCode = 303)
 $uri = filter_var(@$_GET['uri'],FILTER_SANITIZE_STRING);
 $address = explode("/", $uri);
 
+if(count($address) != 3) die();
+
 $db = 'search';
 $q = "SELECT C,Cipi,imp FROM poems WHERE poet_address='$address[0]' and book_address='$address[1]' and poem_address='$address[2]'";
 include("condb.php");
@@ -22,10 +24,8 @@ if(mysqli_num_rows($query)===1) {
     
     $query = mysqli_query($conn,"UPDATE `poems` SET `C`=$C, `Cipi`=$Cipi WHERE poet_address='$address[0]' and book_address='$address[1]' and poem_address='$address[2]'");
     
-    if($query) {
-        
+    if($query)
         redirect(_SITE.$uri);
-    }
 }
 
 mysqli_close($conn);
