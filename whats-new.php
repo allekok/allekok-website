@@ -155,26 +155,24 @@ include(ABSPATH . "script/php/header.php");
     
     <section class='pitewsec'>
         <i class='material-icons' style='color:blue;'><img src='/style/img/poets/profile/profile_0.jpg' style='opacity: 0.75;border: 2px dashed;border-radius: 100%;width: 0.9em;margin-bottom: 0.1em;'></i>
-        <div class='fnav'>
-            <div class='fnav-stats'>
-                <div class='fnav-stats-caption'>
-                    <?php include(ABSPATH . "script/php/stats.php"); ?>
-                    <div id='poets-num'>
-                        شاعیر:
-                        <?php echo $aths_num; ?>
-                    </div>
-                    <div id='poets-num'>
-                        کتێب:
-                        <?php echo $bks_num; ?>
-                    </div>
-                    <div id='poems-num'>
-                        شێعر:
-                        <?php echo $hons_num; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="Acomms" style="font-size:0.8em;">
+        <div class='stats-min'>
+            <?php include(ABSPATH . "script/php/stats.php"); ?>
+            <i id='sub-num'>
+                شاعیر:
+                <?php echo $aths_num; ?>
+            </i>
+	    &rsaquo;
+            <i id='sub-num'>
+                کتێب:
+                <?php echo $bks_num; ?>
+            </i>
+	    &rsaquo;
+            <i id='sub-num'>
+                شێعر:
+                <?php echo $hons_num; ?>
+            </i>
+	</div>
+	<div id="Acomms" style="font-size:0.8em;">
             <script>
              var http = new XMLHttpRequest();
 
