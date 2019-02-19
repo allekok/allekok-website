@@ -15,7 +15,7 @@
 </script>
 
 <div id="poets">
-    <img src="<?php echo get_poet_image($info['id'], 'profile', true); ?>" style="display: block;margin: auto;border-radius: 100%;max-width:120px;box-shadow: 0 3px 4px -3px #aaa;" alt="<?php echo $info['profname']; ?>">
+    <img src="<?php echo get_poet_image($info['id'], 'profile', true); ?>" class="poet-pic-small" alt="<?php echo $info['profname']; ?>">
 
     <div id='adrs'>
 	<a href="/poet:<?php echo $ath; ?>">
@@ -47,8 +47,8 @@
     }
     ?>
     <div class="nav" style="font-size: .65em;color:#555;width:100%;<?php if(!($row[0]||$row[2])){echo('display:none;');} ?><?php if($row[0] === 0) { echo "text-align:left;"; } ?><?php if($row[2] === 0) { echo "text-align:right;"; } ?>">
-	<?php if($row[0] != 0) { ?><div class="prev"><a style="color:inherit;font-size:inherit;display:inline-block;padding:.85em 0;display:block;" href="/poet:<?php echo $info['id']."/book:{$bk}/poem:{$row[0]['id']}"; ?>"><i style="color:inherit;font-size: inherit;font-style:normal;display:inline-block;width:10%;max-width:.8em;vertical-align:top">&lsaquo;</i><div style="display:inline-block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:90%;"> <?php 
-																																																										  echo $row[0]['ckbid'] . ". " . trim($row[0]['name']); ?></div></a></div><?php } ?><?php if($row[2] != 0) { ?><div class="next"><a style="color:inherit;font-size:inherit;display:inline-block;padding:.85em 0;display:block;" href="/poet:<?php echo $info['id']."/book:{$bk}/poem:{$row[2]['id']}"; ?>"><div style='display:inline-block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:90%;'>
+	<?php if($row[0] != 0) { ?><div class="prev"><a style="color:inherit;font-size:inherit;display:inline-block;padding:.85em 0;display:block;" href="/poet:<?php echo $info['id']."/book:{$bk}/poem:{$row[0]['id']}"; ?>"><i style="color:inherit;font-size: inherit;font-style:normal;display:inline-block;width:10%;max-width:.8em;vertical-align:top">&lsaquo;</i><div style="display:inline-block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:90%;vertical-align:middle;"> <?php 
+																																																													echo $row[0]['ckbid'] . ". " . trim($row[0]['name']); ?></div></a></div><?php } ?><?php if($row[2] != 0) { ?><div class="next"><a style="color:inherit;font-size:inherit;display:inline-block;padding:.85em 0;display:block;" href="/poet:<?php echo $info['id']."/book:{$bk}/poem:{$row[2]['id']}"; ?>"><div style='display:inline-block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:90%;vertical-align:middle;'>
             <?php 
             echo $row[2]['ckbid'] . ". " . trim($row[2]['name']); ?> </div><i style="color:inherit;font-size: inherit;font-style:normal;display:inline-block;width:10%;max-width:.8em;vertical-align:top">&rsaquo;</i></a></div><?php } ?>
 
