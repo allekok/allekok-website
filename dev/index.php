@@ -15,7 +15,7 @@ include(ABSPATH . 'script/php/header.php');
 
 <div id="poets">
     
-    <h1 style="font-size:1.2em;"><a style="background: #222;color: #19e31b;display: inline-block;padding: 0.3em 0.8em 0;border-radius: 5px;margin: 1em 0 0.5em;text-decoration:none;" href='/dev/tools/'>
+    <h1 style="font-size:1.2em;"><a style="background: #222;color: #19e31b;display: inline-block;padding: 0.3em 0.8em 0;border-radius: 5px;margin: .5em 0;text-decoration:none" href='/dev/tools/'>
         ئاڵەکۆک 
 	<sup style="font-size:0.55em; vertical-align:top;">
             єv∂
