@@ -70,6 +70,7 @@ self.addEventListener('install', function(event) {
 		profile_path+"88.jpg",
 		profile_path+"59.jpg",
 		profile_path+"36.jpg",
+		profile_path+"92.jpg",
 		'/script/js/main.js?v3',
 		'/style/css/main.css?v8',
 		'/favicon.ico',
