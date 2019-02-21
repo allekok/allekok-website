@@ -52,6 +52,20 @@ include(ABSPATH . "script/php/header.php");
      .hr {
          border-top:3px dashed #ccc;
      }
+     code {
+         direction:ltr;
+         background:#f3f3f3;
+         color:#333;
+         text-align:left;
+         display:block;
+         border-left:10px solid #ddd;
+         word-wrap:break-word;
+         text-indent:0;
+         padding:1em;
+         font-family:'kurd', monospace;
+         letter-spacing:1px;
+         margin:.5em 0;
+     }
     </style>
     <section class='pitewsec'>
         <svg style="fill:#0078d7;width:50%;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"/></svg>
@@ -137,7 +151,10 @@ include(ABSPATH . "script/php/header.php");
                 
                 foreach($cc as $c) {
                     if(!empty($c)) {
-                        $c = str_replace(['[code]', '[/code]'], ['<code>', '</code>'], $c);
+			$c = preg_replace(
+			    ["/\[code\]\n*/","/\n*\[\/code\]/"],
+			    ["<code>","</code>"], $c);
+                        $c = str_replace(["\n"], ["<br>"], $c);
                         echo "<div class='comment'><div class='comm-body'>".$c."</div></div>";
                     }
                 }

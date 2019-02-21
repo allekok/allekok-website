@@ -107,6 +107,20 @@ include(ABSPATH . 'script/php/header.php');
      .hr {
          border-top:3px dashed #ccc;
      }
+     code {
+         direction:ltr;
+         background:#f3f3f3;
+         color:#333;
+         text-align:left;
+         display:block;
+         border-left:10px solid #ddd;
+         word-wrap:break-word;
+         text-indent:0;
+         padding:1em;
+         font-family:'kurd', monospace;
+         letter-spacing:1px;
+         margin:.5em 0;
+     }
     </style>
     
     <div style="border-top:1px solid #ddd;margin:1em 0 0.8em;"></div>
@@ -137,7 +151,10 @@ include(ABSPATH . 'script/php/header.php');
                 $i = 1;
                 foreach($cc as $c) {
                     if(!empty($c)) {
-                        $c = str_replace(['[code]', '[/code]', "\n"], ['<code>', '</code>', '<br>'], $c);
+			$c = preg_replace(
+			    ["/\[code\]\n*/","/\n*\[\/code\]/"],
+			    ["<code>","</code>"], $c);
+                        $c = str_replace(["\n"], ["<br>"], $c);
                         echo "<div class='comment'";
                         if($i%2) echo " style='background:#f3f3f3'";
                         echo "><div class='comm-body'>".$c."</div></div>";

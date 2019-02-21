@@ -59,8 +59,19 @@ include(ABSPATH . "script/php/header.php");
          word-wrap: break-word;       /* Internet Explorer 5.5+ */
          font-family: inherit;
      }
-     main code {
-         font-family:inherit;
+     code {
+         direction:ltr;
+         background:#f3f3f3;
+         color:#333;
+         text-align:left;
+         display:block;
+         border-left:10px solid #ddd;
+         word-wrap:break-word;
+         text-indent:0;
+         padding:1em;
+         font-family:'kurd', monospace;
+         letter-spacing:1px;
+         margin:.5em 0;
      }
      main h1 {
          font-size:1.5em;
@@ -144,7 +155,10 @@ include(ABSPATH . "script/php/header.php");
                 
                 foreach($cc as $c) {
                     if(!empty($c)) {
-                        $c = str_replace(['[code]', '[/code]'], ['<code>', '</code>'], $c);
+			$c = preg_replace(
+			    ["/\[code\]\n*/","/\n*\[\/code\]/"],
+			    ["<code>","</code>"], $c);
+                        $c = str_replace(["\n"], ["<br>"], $c);
                         echo "<div class='comment'><div class='comm-body'>".$c."</div></div>";
                     }
                 }
