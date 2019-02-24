@@ -364,14 +364,14 @@
 	     return "classic";
 	 }
 	 
-	 function convert_to_latin(toarami="") {
+	 function convert_to_latin(toarabi="") {
              var tar = document.querySelector("#hon");
              var client = new XMLHttpRequest();
              tar.style.animation = "";
              void tar.offsetWidth;
              
-             if(toarami == "") {
-		 var ltn = arami_to_latin(tar.innerText).replace(/\n/g, "<br>");
+             if(toarabi == "") {
+		 var ltn = arabi_to_latin(tar.innerText).replace(/\n/g, "<br>");
 		 tar.innerHTML = poem_kind()=="new" ? "<div class=\"n\"><div class=\"m dltr\">" + ltn + "</div></div>" : "<div class=\"b\">" + ltn + "</div>";
 		 tar.style.animation = "tL .5s";
 		 convertToLatBtn.innerHTML = newLabel;

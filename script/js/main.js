@@ -1,5 +1,10 @@
-// source: Pellk KurdiNus 4.0
-// Arabic to Latin Array
+/*** Allekok.com's javascript file. ***/
+"use strict"
+/** Arabi to Latin Conversion **/
+/* *
+ * Captured from source code of "Pellk KurdiNus 4.0".
+ * https://allekok.com/Kurdi-Nus/Kurdi Nus 4.0 Kurdish.html
+ * */
 var sConvertArabic2Latin = [
     //managing 'و' and 'ی'
     'و([اێۆە])', 'w$1', 
@@ -107,8 +112,7 @@ var sConvertStandardise = [
     '([ء-يٱ-ە])‌([^ء-يٱ-ە])', '$1$2'
 ];
 
-function arami_to_latin(s) {
-    
+function arabi_to_latin(s) {    
     // standardize Arabic before converting Arabic to Latin
     for (i = 0; i < sConvertStandardise.length; i += 2)
         s = s.replace(new RegExp(sConvertStandardise[i], 'g'), sConvertStandardise[i + 1]);
@@ -117,25 +121,27 @@ function arami_to_latin(s) {
     for (i = 0; i < sConvertArabic2Latin.length; i += 2)
         s = s.replace(new RegExp(sConvertArabic2Latin[i], 'gim'), sConvertArabic2Latin[i + 1]);
 
-    s = s.replace(new RegExp('ll', 'gim'), 'Ľ').replace(new RegExp('rr', 'gim'), 'Ŕ'); //temporary conversion
-
+    // temporary conversion
+    s = s.replace(new RegExp('ll', 'gim'), 'Ľ').replace(new RegExp('rr', 'gim'), 'Ŕ');
     //add extra i's for Kurmanci texts
     for (i = 0; i < sOnsetI.length; i += 2)
         s = s.replace(new RegExp(sOnsetI[i], 'gim'), sOnsetI[i + 1]); //e.g. bra -> bira
-
     s = s.replace(new RegExp('Ľ', 'gim'), 'll').replace(new RegExp('Ŕ', 'gim'), 'rr'); //temporary conversion
 
     return s;
 }
 
-// allekok.com
-function toggle_search() {
-    var s = document.getElementById('search');
-    var sk = document.getElementById("search-key");
-    var h = document.querySelector('header');
-    var tS = document.getElementById('tS');
+function color_num (pID) {
+    return (pID%22) ? (pID - (22 * Math.floor(pID/22))) : 22;
+}
 
-    if(s.style.display !== "block") {
+function toggle_search() {
+    var s = document.getElementById('search'),
+	sk = document.getElementById("search-key"),
+	h = document.querySelector('header'),
+	tS = document.getElementById('tS');
+    
+    if(s.style.display != "block") {
         s.style.display = "block";
         sk.focus();
         tS.style.opacity="1";
@@ -147,13 +153,24 @@ function toggle_search() {
     }
 }
 
-function color_num (pID) {
-    return (pID%22) ? (pID - (22 * Math.floor(pID/22))) : 22;
+function get_bookmarks() {
+    var bookmarks = localStorage.getItem("favorites");
+    if(! bookmarks) return false;
+    
+    bookmarks = bookmarks.split("[fav]").
+			  reverse().
+			  map(
+			      function (bookmark) {
+				  if(! bookmark) return;
+				  return JSON.parse(bookmark);
+			      });
+    bookmarks.shift();
+    return bookmarks;
 }
 
 function toggle_Like() {
-    var tL_res = document.getElementById('tL-res');
-    var tL = document.getElementById('tL');
+    var tL_res = document.getElementById('tL-res'),
+	tL = document.getElementById('tL');
     
     if(tL_res.style.display == "block") {
         tL_res.style.display = "none";
@@ -161,16 +178,14 @@ function toggle_Like() {
         return;
     }
     
-    var favs=localStorage.getItem("favorites").split('[fav]'), favsS="", clrNum=0;
-    favs = favs.reverse();
+    var favs=get_bookmarks(),
+	favsS="",
+	clrNum=0;
     
-    for( var a in favs ) {
-        if( favs[a] !== "" ) {
-            favs[a] = JSON.parse(favs[a]);
-            clrNum = color_num(favs[a].poetID);
-            
-            favsS += `<a class='link' style='border-bottom:1px solid #eee' href='/${favs[a].url}'><i style='vertical-align:middle;font-size:2em;height:.85em;color:${colors[clrNum][0]};' class='material-icons'>bookmark</i> <span style='font-size:.85em; color:#555;'>${favs[a].poetName} &rsaquo; ${favs[a].book} &rsaquo;</span> ${favs[a].poem} </a>`;
-        }
+    for(var a in favs) {
+        clrNum = color_num(favs[a].poetID);
+        
+        favsS += `<a class='link' style='border-bottom:1px solid #eee' href='/${favs[a].url}'><i style='vertical-align:middle;font-size:2em;height:.85em;color:${colors[clrNum][0]};' class='material-icons'>bookmark</i> <span style='font-size:.85em; color:#555;'>${favs[a].poetName} &rsaquo; ${favs[a].book} &rsaquo;</span> ${favs[a].poem} </a>`;
     }
     
     document.getElementById('tL-res-res').innerHTML = favsS;
@@ -180,62 +195,54 @@ function toggle_Like() {
     tL.style.opacity = "1";
 }
 
-
 function search(e) {
-    var str=document.getElementById("search-key").value;
-    var sres=document.getElementById("search-res");
-    var s=document.getElementById('search');
-    var loading = "<div class='loader'></div>";
-    var xmlhttp=new XMLHttpRequest();
-
-    var C = (typeof e.which === "number") ? e.which : e.keyCode;
-    var noActionKeys = [16, 17, 18, 91, 20, 9, 93, 37, 38, 39, 40, 32, 224, 13];
+    var str=document.getElementById("search-key").value,
+	sres=document.getElementById("search-res"),
+	s=document.getElementById('search'),
+	loading = "<div class='loader'></div>",
+	xmlhttp=new XMLHttpRequest(),
+	C = e.keyCode,
+	noActionKeys = [16, 17, 18, 91, 20, 9, 93, 37, 38, 39, 40, 32, 224, 13];
     
     if(noActionKeys.indexOf(C) === -1) {
-
-	// 27 keyCode = Esc Key
-	if(C === 27) {
+	
+	// 27 keyCode = ESC Key
+	if(C == 27) {
             s.style.display="none";
             return;
-            
-	} else {
-            var sbtn = document.querySelector("#live-search-form #search-btn");
-            
-            if(str.length<3) {
-		sres.style.display="none";
-		sres.innerHTML = loading;
-		sbtn.innerHTML = "<i class='material-icons' style='font-size:2em;'>search</i>";
-		return;
-            }
-            
-            sres.innerHTML=loading;
-            sres.style.display="block";
-            
-            var request = "/script/php/live-search2.php?q="+str;
-            xmlhttp.open("GET",request);
-            xmlhttp.onload=function() {
-		sres.innerHTML = this.responseText;
-		sbtn.innerHTML = "گەڕانی زۆرتر";
-            };
 	}
-
+	
+        var sbtn = document.querySelector("#live-search-form #search-btn");
+        
+        if(str.length<3) {
+	    sbtn.innerHTML = "<i class='material-icons' style='font-size:2em;'>search</i>";
+	    return;
+        }
+        
+        sres.innerHTML=loading;
+        sres.style.display="block";
+        
+        var request = `/script/php/live-search2.php?q=${str}`;
+        xmlhttp.open("get",request);
+        xmlhttp.onload=function() {
+	    sres.innerHTML = this.responseText;
+	    sbtn.innerHTML = "گەڕانی زۆرتر";
+        };
 	xmlhttp.send();
 
 	// the End of noActionKeys, IF....
-    } else {
-        if(str === "") {
-            sres.style.display="none";
-            sres.innerHTML=loading;
-            return;
-        } 
+    } else if(str == "") {
+        sres.style.display="none";
+        sres.innerHTML=loading;
+        return;
     }
 }
 
-
 window.Clipboard = (function(window, document, navigator) {
+    /* Copied from some github gist */
     var textArea,
         copy;
-
+    
     function isOS() {
         return navigator.userAgent.match(/ipad|iphone/i);
     }
@@ -278,51 +285,48 @@ window.Clipboard = (function(window, document, navigator) {
     };
 })(window, document, navigator);
 
-
 function copyPoem() {
-    var text = document.getElementById("hon").innerHTML;
-    var copySec = document.getElementById("copy-sec");
-
-    var htmlchars = [
-        /<div class="ptr">/gi,
-        /<div class="ptr ptrh">/gi,
-        /<div class="m d cf">/gi,
-        /<div class="b cf">/gi,
-        /<div class="n cf">/gi,
-        /<div class="b">/gi,
-        /<div class="n">/gi,
-        /<div class="m1">/gi,
-        /<div class="m2">/gi,
-        /<div class="m3">/gi,
-        /<div class="m">/gi,
-        /<div class="m" style="direction:ltr">/gi,
-        /<p>/gi,
-        /<br>/gi,
-        /<b>/gi,
-        /<br\/>/gi,
-        /<br \/>/gi,
-        /<i>/gi,
-        /<\/br>/gi,
-        /<\/ br>/gi,
-        /<\/b>/gi,
-        /<\/p>/gi,
-        /<\/div>/gi,
-        /<\/span>/gi,
-        /<\/i>/gi,
-        /<center>/gi,
-        /<\/center>/gi,
-        /&nbsp;/gi,
-        /<div class="m dltr">/gi,
-    ];
+    var text = document.getElementById("hon").innerHTML,
+	copySec = document.getElementById("copy-sec"),
+	htmlchars = [
+            /<div class="ptr">/gi,
+            /<div class="ptr ptrh">/gi,
+            /<div class="m d cf">/gi,
+            /<div class="b cf">/gi,
+            /<div class="n cf">/gi,
+            /<div class="b">/gi,
+            /<div class="n">/gi,
+            /<div class="m1">/gi,
+            /<div class="m2">/gi,
+            /<div class="m3">/gi,
+            /<div class="m">/gi,
+            /<div class="m" style="direction:ltr">/gi,
+            /<p>/gi,
+            /<br>/gi,
+            /<b>/gi,
+            /<br\/>/gi,
+            /<br \/>/gi,
+            /<i>/gi,
+            /<\/br>/gi,
+            /<\/ br>/gi,
+            /<\/b>/gi,
+            /<\/p>/gi,
+            /<\/div>/gi,
+            /<\/span>/gi,
+            /<\/i>/gi,
+            /<center>/gi,
+            /<\/center>/gi,
+            /&nbsp;/gi,
+            /<div class="m dltr">/gi,
+	];
 
     for(var hc in htmlchars) {
         text = text.replace(htmlchars[hc], "");
     }
     
-    text = text.replace(/<sup>/gi, "[");
-    text = text.replace(/<\/sup>/gi, "]");
-    
-    text = text.trim();
+    text = text.replace(/<sup>/gi, "[").
+		replace(/<\/sup>/gi, "]").
+		trim();
     
     Clipboard.copy(text);
     
@@ -336,24 +340,32 @@ function copyPoem() {
     },3000);
 }
 
-
 function Liked () {
-    var tL = document.getElementById('tL');
-    var ico = document.getElementById("like-icon");
-    var favs = localStorage.getItem('favorites');
+    var tL = document.getElementById('tL'),
+	ico = document.getElementById("like-icon"),
+	favs = localStorage.getItem('favorites'),
+	bookmarks = get_bookmarks();
     
     if(favs !== null) {
-        favs = favs.split("[fav]");
         
-        var where = favs.indexOf(poemV2);
-        
+        var where = -1;
+	var JSON_poem = JSON.parse(poemV2);
+	for(var i in bookmarks) {
+	    if(bookmarks[i].url == JSON_poem.url) {
+		where = i;
+		break;
+	    }
+	}
+	
         if(where > -1) {
-            favs = favs.join('[fav]');
-            var sd = poemV2 + "[fav]";
-            favs = favs.replace(sd,"");
+	    bookmarks.splice(where, 1);
+	    for(var i in bookmarks) {
+		bookmarks[i] = JSON.stringify(bookmarks[i]);
+	    }
+            bookmarks = bookmarks.join('[fav]') + "[fav]";
             
-            if(favs.length>6) {
-                localStorage.setItem('favorites',favs);
+            if(bookmarks.length>6) {
+                localStorage.setItem('favorites',bookmarks);
             } else {
                 localStorage.removeItem('favorites');
                 tL.style.display = "none";
@@ -365,7 +377,6 @@ function Liked () {
             
         } else {
             
-            favs = favs.join('[fav]');
             favs += poemV2 + "[fav]";
             
             localStorage.setItem('favorites',favs);
@@ -388,14 +399,12 @@ function Liked () {
 
 
 function save_fs(how) {
-    // save_fs Function, saves changes of poem's font size into localStorage.
-
-    var hon=document.getElementById("hon");
-    var fs=parseInt(hon.style.fontSize);
-    var wW = window.innerWidth;
-    var newfs = 0;
-    var hows = ["smaller", "bigger"];
-    var scale = 3;
+    var hon=document.getElementById("hon"),
+	fs=parseInt(hon.style.fontSize),
+	wW = window.innerWidth,
+	newfs = 0,
+	hows = ["smaller", "bigger"],
+	scale = 3;
 
     if(isNaN(fs)){
         if(wW > 600){
@@ -440,12 +449,12 @@ function ss(button) {
     href = href.substr(href.indexOf("=")+1);
     href = href.split("/");
     button.innerHTML = "<i class='loader' style='width:2.2em;height:2.2em;display:block;'></i>";
-    var pt = href[0].split(":")[1];
-    var bk = href[1].split(":")[1];
-    var pm = href[2].split(":")[1];
+    var pt = href[0].split(":")[1],
+	bk = href[1].split(":")[1],
+	pm = href[2].split(":")[1],
+	xmlhttp = new XMLHttpRequest();
     
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", `/script/php/poem-summary.php?pt=${pt}&bk=${bk}&pm=${pm}`);
+    xmlhttp.open("get", `/script/php/poem-summary.php?pt=${pt}&bk=${bk}&pm=${pm}`);
     xmlhttp.onload = function() {
         button.innerHTML = "<i class=\"material-icons\" style=\"vertical-align: middle;\">keyboard_arrow_down</i>";
         var san_txt = this.responseText.replace(/\n/g, "<br>");
@@ -455,9 +464,8 @@ function ss(button) {
 }
 
 /// check if liked
-var likeico = document.getElementById('like-icon');
-
-var favs = localStorage.getItem('favorites');
+var likeico = document.getElementById('like-icon'),
+    favs = localStorage.getItem('favorites');
 
 if(favs !== null && typeof poemV2 !== 'undefined') {
     favs = favs.split("[fav]");
@@ -472,8 +480,8 @@ if(favs !== null && typeof poemV2 !== 'undefined') {
     }
 }
 
+favs = localStorage.getItem('favorites');
 
-var favs = localStorage.getItem('favorites');
 var tL = document.getElementById('tL');
 
 if(favs != null && favs.length>0) {
@@ -488,14 +496,10 @@ if(favs != null && favs.length>0) {
 
 }
 
-
-/// *************** ///
-
-var live_search_form = document.getElementById('live-search-form');
-var sk = document.getElementById("search-key");
+var live_search_form = document.getElementById('live-search-form'),
+    sk = document.getElementById("search-key");
 
 live_search_form.addEventListener("submit", function(e) {
-    
     if(sk.value === "") {
         e.preventDefault();
         sk.focus();
