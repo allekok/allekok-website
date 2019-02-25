@@ -112,7 +112,8 @@ var sConvertStandardise = [
     '([ء-يٱ-ە])‌([^ء-يٱ-ە])', '$1$2'
 ];
 
-function arabi_to_latin(s) {    
+function arabi_to_latin(s) {
+    var i;
     // standardize Arabic before converting Arabic to Latin
     for (i = 0; i < sConvertStandardise.length; i += 2)
         s = s.replace(new RegExp(sConvertStandardise[i], 'g'), sConvertStandardise[i + 1]);
