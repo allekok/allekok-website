@@ -5,7 +5,7 @@ $color_num = 0;
 <html dir="rtl">
     <head>
 
-        <link rel="stylesheet" href="/style/css/main.css?v8">
+        <link rel="stylesheet" href="/style/css/main.css?v9">
         <script type="text/javascript">
 	 var uritg = "<?php echo _SITE; ?>";
 	</script>
