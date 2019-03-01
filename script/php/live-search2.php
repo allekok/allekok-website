@@ -1,4 +1,5 @@
 <?php
+$timer = microtime(true);
 
 include_once('constants.php');
 include_once('functions.php');
@@ -70,7 +71,7 @@ if(!empty($q1)) {
     		    if($r<$r_max) {
     			$res = $s_poet[$i];
 			
-        		if((stristr($res['name'],$q1) || stristr($res['profname'],$q1) || stristr($res['hdesc'],$q1)) && !$res['f']) {
+        		if((stristr($res['name'],$q1) || stristr($res['profname'],$q1) || stristr($res['hdesc'],$q1)) && !@$res['f']) {
         		    $s_poet[$i]['f'] = 1;
         		    
         		    $res_poet1 .= "<section>";
@@ -137,7 +138,7 @@ if(!empty($q1)) {
 		if($e<$e_max) {
 	            $res = $s_book[$i];
 	            
-		    if( !$res['f'] && stristr($res['book_desc'],$q1) ) {
+		    if( !@$res['f'] && stristr($res['book_desc'],$q1) ) {
 			
 			$s_book[$i]['f'] = 1;
 			
@@ -204,7 +205,7 @@ if(!empty($q1)) {
 	            
 	            if($h<$h_max) {
 
-	                if((stristr($res['poem'],$q1) or stristr($res['hdesc'],$q1)) && !$res['f']) {
+	                if((stristr($res['poem'],$q1) or stristr($res['hdesc'],$q1)) && !@$res['f']) {
 	                    
 	                    $s_poem[$i]['f'] = 1;
 	                    
@@ -244,5 +245,8 @@ if(!empty($q1)) {
 } else {
     echo " ... ";
 }
+
+$timer = microtime(true) - $timer;
+//echo "<div style='position:fixed;top:0;left:0;'>" . number_format($timer, 3) . "s</div>";
 
 ?>
