@@ -141,12 +141,10 @@
 	?>
     </div>
     <script>
-     var lsfs = localStorage.getItem('fontsize');
-     var hhon = document.getElementById('hon');
-     if (lsfs != null && !isNaN(lsfs)) {      
-         
-         hhon.style.fontSize=lsfs+"px";
-     }
+     document.getElementById("hon").style.fontSize = function(s) {
+	 if(s !== null && !isNaN(s))
+	     return `${s}px`;
+     } (localStorage.getItem('fontsize'));
     </script>
 
     <?php if($row[1]['hdesc']=='') {
@@ -177,23 +175,24 @@
 	</form>
         
 	<script>
-	 
+	 function getUrl(url, callback) {
+	     var client = new XMLHttpRequest();
+	     client.open("get", url);
+	     client.onload = function (e) {
+		 callback(client.responseText, e);
+	     }
+	     client.send();
+	 }
 	 
 	 function send_comment() {
              
-             var name = document.querySelector("#commNameTxt");
-             var comment = document.querySelector("#commTxt");
-             var loader = document.querySelector("#commloader");
-             var message = document.querySelector("#message");
+             var name = document.getElementById("commNameTxt"),
+		 comment = document.getElementById("commTxt"),
+		 loader = document.getElementById("commloader"),
+		 message = document.getElementById("message");
              
              if(comment.value == "") {
-		 comment.style.background = "rgba(204,51,0,0.1)";
-		 comment.style.borderTopColor = "rgb(204,51,0)";
 		 comment.focus();
-		 setTimeout(function() {
-                     comment.style.background = "";
-                     comment.style.borderTopColor = "#ddd";
-		 }, 2000);
 		 return;
              }
              
@@ -201,58 +200,46 @@
              comment.background = "#ddd";
              comment.color = "#888";
              
-             var xmlhttp = new XMLHttpRequest();
-             
-             xmlhttp.onreadystatechange = function() {
+             var xmlhttp = new XMLHttpRequest();             
+             xmlhttp.onload = function() {
 		 
-		 if(this.status == 200 && this.readyState == 4) {
-                     
-                     var res = JSON.parse(this.responseText);
-                     
-                     if(res.status) {
-			 loader.style.display = "none";
-			 comment.background = "";
-			 comment.color = "";
-			 name.value = res.name;
-			 comment.value = "";
-			 message.style.background = "rgba(0,255,0,0.1)";
-			 message.innerHTML = res.message;
-			 
-			 var comments = document.querySelector("#hon-comments-body");
-			 var newComm = "<div class='comment'><div class='comm-name'>"+res.name+":</div><div class='comm-body'>"+res.comment+"</div><div class='comm-footer'>"+res.date+"</div></div>";
-			 
-			 document.querySelector("#Acomms-title").style.display = "block";
-			 comments.innerHTML = newComm + comments.innerHTML;
-			 
-			 //localStorage
-			 if(res.name != "ناشناس") {
-                             var email = "";
-                             if(localStorage.getItem("contributor") !== null) {
-				 var email = JSON.parse(localStorage.getItem("contributor")).ID || "";
-                             }
-                             localStorage.setItem("contributor", JSON.stringify({name: res.name, ID: email}));
-			 }
-			 ///
-			 
-			 window.location = "#hon-comments-body";
-                     }
-		 }
+                 var res = JSON.parse(this.responseText);
+                 
+                 if(res.status) {
+		     loader.style.display = "none";
+		     comment.background = "";
+		     comment.color = "";
+		     name.value = res.name;
+		     comment.value = "";
+		     message.style.background = "rgba(0,255,0,0.1)";
+		     message.innerHTML = res.message;
+		     
+		     var comments = document.getElementById("hon-comments-body"),
+			 newComm = "<div class='comment'><div class='comm-name'>"+res.name+":</div><div class='comm-body'>"+res.comment+"</div><div class='comm-footer'>"+res.date+"</div></div>";
+		     
+		     document.getElementById("Acomms-title").style.display = "block";
+		     comments.innerHTML = newComm + comments.innerHTML;
+		     
+		     // localStorage
+		     if(res.name != "ناشناس") {
+                         localStorage.setItem("contributor", JSON.stringify({name: res.name}));
+		     }
+		     
+		     window.location = "#hon-comments-body";
+                 }
              }
              
              var request = "address=" + poem_adrs +"&name=" + name.value + "&comment=" + encodeURIComponent(comment.value);
              
-             xmlhttp.open("POST","/script/php/comments-add.php",true);
+             xmlhttp.open("POST","/script/php/comments-add.php");
              xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
              xmlhttp.send(request);
              
 	 }
 	 
 	 document.getElementById("frmComm").addEventListener("submit", function(e) {
-             if(XMLHttpRequest) {
-		 e.preventDefault();
-		 send_comment();
-             }
-
+	     e.preventDefault();
+	     send_comment();
 	 });
 	</script>
 
@@ -270,92 +257,80 @@
          $db = 'index';
          $address = "poet:{$info['id']}/book:{$bk}/poem:{$row[1]['id']}";
          $q = "select * from comments where address='$address' and blocked=0";
-         
          require("condb.php");
          
          if($query) {
-             
-             if(mysqli_num_rows($query)>0) {
-                 
+             if(mysqli_num_rows($query)>0) {                 
          ?>
          
-         var comments = document.querySelector("#hon-comments-body");
-         var loader = document.querySelector("#commmloader");
-         var commTitle = document.querySelector("#Acomms-title");
+         var comments = document.getElementById("hon-comments-body"),
+	     loader = document.getElementById("commmloader"),
+	     commTitle = document.getElementById("Acomms-title");
          
          loader.style.display = "block";
 
          xmlhttp = new XMLHttpRequest();
-
-         xmlhttp.onreadystatechange=function() {
-             if (this.readyState==4 && this.status==200) {
-		 var res = JSON.parse(this.responseText);
-		 loader.style.display = "none";
-		 
-		 if(res.err != 1) {
-		     
-		     var newComm = "";
-		     
-		     
-		     for(a in res) {
-			 
-			 newComm += "<div class='comment'><div class='comm-name'><i style='font-style:normal;font-size:1.4em;padding-left:.3em;color:<?php echo $colors[$color_num][0]; ?>'>&bull;</i>"+res[a].name+":</div><div class='comm-body'>"+res[a].comment+"</div><div class='comm-footer'>"+res[a].date+"</div></div>";
-		     }
-		     
-		     comments.innerHTML = newComm;
-		     
-		     commTitle.style.display="block";
-		 }
-		 
-
-             }
-         }
-         xmlhttp.open("GET","/script/php/comments-get.php?address="+poem_adrs ,true);
-         xmlhttp.send();
+	 getUrl(`/script/php/comments-get.php?address=${poem_adrs}`,
+		function(responseText, e) {
+		    
+		    var res = JSON.parse(responseText);
+		    loader.style.display = "none";
+		    
+		    if(res.err != 1) {
+			
+			var newComm = "";
+			
+			for(a in res) {
+			    
+			    newComm += "<div class='comment'><div class='comm-name'><i style='font-style:normal;font-size:1.4em;padding-left:.3em;color:<?php echo $colors[$color_num][0]; ?>'>&bull;</i>"+res[a].name+":</div><div class='comm-body'>"+res[a].comment+"</div><div class='comm-footer'>"+res[a].date+"</div></div>";
+			}
+			
+			comments.innerHTML = newComm;
+			
+			commTitle.style.display="block";
+			
+		    }
+		});
          
          <?php
          }
          }
          ?>
          
-         // localStorage
+	 /* load visitor's name into `commNameTxt` */
+	 document.getElementById("commNameTxt").value = (function (nameObj) {
+	     if(nameObj === null) return "";
+	     return JSON.parse(nameObj).name || "";
+	 } (localStorage.getItem("contributor")));
+	 
          
-         if(localStorage.getItem("contributor") !== null) {
-             document.querySelector("#commNameTxt").value = JSON.parse(localStorage.getItem("contributor")).name || "";
-         }
-         
-         ///
-         
 	 
-	 var sups = document.querySelectorAll("sup");
-	 var fs = document.querySelector(".fontsize");
-	 var nav = document.querySelector(".nav");
+	 var sups = document.querySelectorAll("sup"),
+	     fs = document.querySelector(".fontsize"),
+	     nav = document.querySelector(".nav");
 	 
-	 if(sups.length > 0) {
-             sups.forEach(function(e) {
-		 e.addEventListener("click",function() {
-		     window.scrollTo(0, document.querySelector(".m.d.cf:last-child").offsetTop - 10);
-		 });
-             });
-	 }
+	 sups.forEach(function(e) {
+	     e.addEventListener("click",function() {
+		 window.scrollTo(0, document.querySelector(".m.d.cf:last-child").offsetTop - 10);
+	     });
+	 });	     
 	 
-	 
-	 document.querySelector("#extlnkico").addEventListener("click" , function() {
-             
-             var extlnk = document.querySelector("#extlnk");
-             
-             if(extlnk.style.display != "block") {
+	 document.getElementById("extlnkico").addEventListener("click" , function() {
+	     
+	     var extlnk = document.getElementById("extlnk");
+	     
+	     if(extlnk.style.display != "block") {
 		 extlnk.style.display = "block";
 		 extlnk.style.animation = ".8s cubic-bezier(0.18, 0.89, 0.32, 1.28) tL";
-             } else {
+	     } else {
 		 extlnk.style.display = "none";
-             }
+	     }
 	 });
 	 
-	 var convertToLatBtn = document.querySelector("#convertToLatBtn");
-	 var defLabel = convertToLatBtn.innerHTML;
-	 var newLabel = "ئەلفوبێی عەرەبی";
-	 var origin_poem = document.querySelector("#hon").innerHTML;
+	 var convertToLatBtn = document.getElementById("convertToLatBtn"),
+	     defLabel = convertToLatBtn.innerHTML,
+	     newLabel = "ئەلفوبێی عەرەبی",
+	     origin_poem = document.getElementById("hon").innerHTML;
 
 	 function poem_kind() {
 	     if(origin_poem.indexOf("<div class=\"n\">") !=-1) {
@@ -365,66 +340,65 @@
 	 }
 	 
 	 function convert_to_latin(toarabi="") {
-             var tar = document.querySelector("#hon");
-             var client = new XMLHttpRequest();
-             tar.style.animation = "";
-             void tar.offsetWidth;
-             
-             if(toarabi == "") {
+	     var tar = document.getElementById("hon"),
+		 client = new XMLHttpRequest();
+	     tar.style.animation = "";
+	     void tar.offsetWidth;
+	     
+	     if(toarabi == "") {
 		 var ltn = arabi_to_latin(tar.innerText).replace(/\n/g, "<br>");
 		 tar.innerHTML = poem_kind()=="new" ? "<div class=\"n\"><div class=\"m dltr\">" + ltn + "</div></div>" : "<div class=\"b\">" + ltn + "</div>";
 		 tar.style.animation = "tL .5s";
 		 convertToLatBtn.innerHTML = newLabel;
 		 tar.style.direction = "ltr";
-             } else {
+	     } else {
 		 tar.innerHTML = origin_poem;
 		 tar.style.animation = "tL .5s";
 		 convertToLatBtn.innerHTML = defLabel;
 		 tar.style.direction = "rtl";
-             }
-             
+	     }
+	     
 	 }
 	 
 	 convertToLatBtn.addEventListener("click", function() {
-             if(convertToLatBtn.innerHTML == defLabel) {
+	     if(convertToLatBtn.innerHTML == defLabel) {
 		 convert_to_latin();
-             }
-             else {
+	     }
+	     else {
 		 convert_to_latin("origin");
-             }
+	     }
 	 });
 	 
 	 
 	 const loaderMin = "<div class='loader' style='width:1.8em; height:1.8em; vertical-align:middle; margin:1em auto;'></div>";
 	 
-	 
-	 document.querySelector("#wordFrm").addEventListener("submit", function(e) {
-             e.preventDefault();
-             var q = document.querySelector("#wordTxt");
-             if(q.value == "") {
+	 document.getElementById("wordFrm").addEventListener("submit", function(e) {
+	     e.preventDefault();
+	     var q = document.getElementById("wordTxt");
+	     if(q.value == "") {
 		 q.focus();
 		 return;
-             }
-             document.getElementById("wordMore").innerHTML = "";
-             search_ferheng(q.value, "#wordResFerheng");
-             search_farhangumejuikawa(q.value, "#wordResKawa");
+	     }
+	     document.getElementById("wordMore").innerHTML = "";
+	     search_ferheng(q.value, "#wordResFerheng");
+	     search_farhangumejuikawa(q.value, "#wordResKawa");
 	 });
 	 
 	 function search_ferheng (q, t) {
-             t = document.querySelector(t);
-             t.innerHTML = loaderMin;
-             var res, fin = "";
-             var xmlhttp = new XMLHttpRequest();
-             xmlhttp.onload = function() {
+	     t = document.querySelector(t);
+	     t.innerHTML = loaderMin;
+	     var res, fin = "";
+	     
+	     getUrl(`/tewar/ferheng.info.php?q=${q}&n=1` , function(responseText, e) {
 		 
 		 document.getElementById("wordMore").innerHTML = `<a target='_blank' href='https://allekok.com/tewar/?q=${q}'>گەڕانی زیاتر لە "تەوار"دا</a>`;
 		 
-		 if (this.responseText == "null") {
+		 if (responseText == "null") {
 		     t.innerHTML = "";
 		     return;
 		 }
 		 
-		 var res = JSON.parse(this.responseText);
+		 var res = JSON.parse(responseText);
 		 
 		 fin += "<span class='tp' style='background: #f3f3f3;display: block;font-size: .9em;padding: .3em .5em;'>فەرهەنگی ئەناهیتا: </span>";
 		 
@@ -437,24 +411,22 @@
 		 t.style.animation="loaded 1s ease forwards";
 		 t.innerHTML = fin;
 		 
-             }
-             xmlhttp.open("get", `/tewar/ferheng.info.php?q=${q}&n=1`, true);
-             xmlhttp.send();
+	     });
+	     
 	 }
-	 
+     	 
 	 function search_farhangumejuikawa (q, t) {
-             t = document.querySelector(t);
-             t.innerHTML = loaderMin;
-             var res, fin = "";
-             var xmlhttp = new XMLHttpRequest();
-             xmlhttp.onload = function() {
+	     t = document.querySelector(t);
+	     t.innerHTML = loaderMin;
+	     var res, fin = "";
+	     getUrl(`/tewar/farhangumejuikawa.com.php?q=${q}&n=1` , function(responseText, e) {
 		 
-		 if (this.responseText == "null") {
+		 if (responseText == "null") {
 		     t.innerHTML = "";
 		     return;
 		 }
 		 
-		 var res = JSON.parse(this.responseText);
+		 var res = JSON.parse(responseText);
 		 
 		 fin += "<span class='tp' style='background: #f3f3f3;display: block;font-size: .9em;padding: .3em .5em;'>فەرهەنگی کاوە: </span>";
 		 
@@ -468,9 +440,7 @@
 		 t.innerHTML = fin;
 		 var frms = t.getElementsByTagName("form");
 		 frms[0].setAttribute("target", "_blank");
-             }
-             xmlhttp.open("get", `/tewar/farhangumejuikawa.com.php?q=${q}&n=1`, true);
-	     xmlhttp.send();
+	     });
 	 }
 	 
      });
