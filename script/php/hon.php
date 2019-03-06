@@ -408,7 +408,6 @@
 		     fin += "<section style='font-size: .87em;text-indent: 1em;'>"+res[a].desc+"</section></div>";
 		 }
 		 
-		 t.style.animation="tL 1s ease forwards";
 		 t.innerHTML = fin;
 		 
 	     });
@@ -436,7 +435,6 @@
 		     fin += "<section style='font-size: .87em;text-indent: 1em;'>"+res[a].desc+"</section></div>";
 		 }
 		 
-		 t.style.animation="tL 1s ease forwards";
 		 t.innerHTML = fin;
 		 var frms = t.getElementsByTagName("form");
 		 frms[0].setAttribute("target", "_blank");
