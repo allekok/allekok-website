@@ -36,7 +36,7 @@ include(ABSPATH . "script/php/header.php");
 	<?php
 	// get new added poems.
 	
-	$n = filter_var(@$_GET["n"],FILTER_VALIDATE_INT) ? $_GET["n"] : 20; // number of poems
+	$n = filter_var(@$_GET["n"],FILTER_VALIDATE_INT) ? $_GET["n"] : 30; // number of poems
 	$i = 0; // counter
 
 	$now = date_create(date("Y-m-d H:i:s"));
