@@ -31,7 +31,7 @@ if ($ath!=null and $bk==null) {
 
     // sort poems of the book by name or id(default).
     $_ordasc = @($_POST["order"]=="asc") ? "`name`" : "`id`";
-    $q = "SELECT id,takh,profname,name,bks,bksdesc,kind FROM auth WHERE id={$ath}";
+    $q = "SELECT id,takh,profname,name,bks,bksdesc,bks_completion,kind FROM auth WHERE id={$ath}";
     
     include("condb.php");
     if($info = mysqli_fetch_assoc($query)) {
