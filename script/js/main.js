@@ -136,6 +136,22 @@ function color_num (pID) {
     return (pID%22) ? (pID - (22 * Math.floor(pID/22))) : 22;
 }
 
+function poetImage (pID, callback) {
+    var client = new XMLHttpRequest(),
+	url = `/style/img/poets/profile/profile_${pID}.jpg`;
+    
+    client.open("get", url);
+    client.onload = function() {
+	if(this.status == 404) {
+	    poetImage(0);
+	}
+	else {
+	    callback(url);
+	}
+    }
+    client.send();
+}
+
 function toggle_search() {
     var s = document.getElementById('search'),
 	sk = document.getElementById("search-key"),
@@ -181,12 +197,13 @@ function toggle_Like() {
     
     var favs=get_bookmarks(),
 	favsS="",
-	clrNum=0;
+	clrNum=0,
+	imgs=[];
     
     for(var a in favs) {
-        clrNum = color_num(favs[a].poetID);
-        
-        favsS += `<a class='link' style='border-bottom:1px solid #eee' href='/${favs[a].url}'><i style='vertical-align:middle;font-size:2em;height:.85em;color:${colors[clrNum][0]};' class='material-icons'>bookmark</i> <span style='font-size:.85em; color:#555;'>${favs[a].poetName} &rsaquo; ${favs[a].book} &rsaquo;</span> ${favs[a].poem} </a>`;
+        clrNum = color_num(favs[a].poetID);        
+        favsS += `<a class='link' style='border-bottom:1px solid #eee' href='/${favs[a].url}'><img class='PI${favs[a].poetID}' src='/style/img/poets/profile/profile_0.jpg' style='display:inline-block;vertical-align:middle;width:2.5em;border-radius:100%;'> <span style='font-size:.85em; color:#555;'>${favs[a].poetName} &rsaquo; ${favs[a].book} &rsaquo;</span> ${favs[a].poem} </a>`;
+	imgs.push(favs[a].poetID);
     }
     
     document.getElementById('tL-res-res').innerHTML = favsS;
@@ -194,6 +211,14 @@ function toggle_Like() {
     tL_res.style.animation = "tL 0.6s";
     tL_res.style.display = "block";
     tL.style.opacity = "1";
+
+    imgs.map(function(pID) {
+	poetImage(pID, function(url) {
+	    document.getElementById("tL-res-res").
+		     querySelector(`.PI${pID}`).
+		     src = url;
+	});
+    });
 }
 
 function search(e) {
@@ -462,6 +487,137 @@ function ss(button) {
         button.parentNode.outerHTML += `<div style='background: #f8f8f8;padding: 1em;font-size: .55em;border:0;'>${san_txt}</div>`;
     }
     xmlhttp.send();
+}
+
+function filterp(needle="", context, lastChance=false) {
+    var res = false;
+    
+    needle = san_data(needle, lastChance);
+    
+    context.forEach(function(item) {
+	var cx = san_data(item.innerHTML, lastChance);
+	var _filterp = (needle == "") ? true : (cx.indexOf(needle) !== -1);
+	if (_filterp) {
+	    item.style.display = "";
+	    res = true;
+	}
+	else {
+	    item.style.display = "none";
+	    res = false;
+	}
+    });
+
+    if(!res && !lastChance)
+	filterp(needle, context, true);
+}
+
+function KurdishNumbers(inp="") {
+    
+    var en = [/0/g, /1/g, /2/g, /3/g, /4/g, /5/g, /6/g, /7/g, /8/g, /9/g],
+	ku = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],
+	ar = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g];
+
+    for (var i in en) {
+        inp = inp.replace(en[i], ku[i]);
+        inp = inp.replace(ar[i], ku[i]);
+    }
+    
+    return inp;
+}
+
+function san_data(inp="", lastChance=false) {
+    if (inp == "") return "";
+
+    var extras = [/&laquo;/g, /&raquo;/g, /&rsaquo;/g, /&lsaquo;/g, /&bull;/g, /&nbsp;/g, /\?/g, /!/g, /#/g, /&/g, /\*/g, /\(/g, /\)/g, /-/g, /\+/g, /=/g, /_/g, /\[/g, /\]/g, /{/g, /}/g, /</g, />/g, /\//g, /\|/, /\'/g, /\"/g, /;/g, /:/g, /,/g, /\./g, /~/g, /`/g, /؟/g, /،/g, /»/g, /«/g, /ـ/g, /›/g, /‹/g, /•/g, /‌/g, /\s+/g,
+                  /؛/g,
+    ];
+    var ar_signs = ['ِ', 'ُ', 'ٓ', 'ٰ', 'ْ', 'ٌ', 'ٍ', 'ً', 'ّ', 'َ'];
+    
+    var kurdish_letters = [
+        "ه",
+        "ه",
+        "ک",
+        "ی",
+        "ه",
+        "ز",
+        "س",
+        "ت",
+        "ز",
+        "ر",
+        "ه",
+        "خ",
+        "و",
+        "و",
+        "و",
+        "ی",
+        "ر",
+        "ل",
+        "ز",
+        "س",
+        "ه",
+        "ر",
+        "م",
+        "ا",
+        "ا",
+        "ل",
+        "س",
+        "ی",
+        "و",
+        "ئ",
+        "ی",
+    ];
+
+    var other_letters = [
+        /ه‌/g,
+        /ە/g,
+        /ك/g,
+        /ي/g,
+        /ھ/g,
+        /ض/g,
+        /ص/g,
+        /ط/g,
+        /ظ/g,
+        /ڕ/g,
+        /ح/g,
+        /غ/g,
+        /وو/g,
+        /ۆ/g,
+        /ؤ/g,
+        /ێ/g,
+        /ڕ/g,
+        /ڵ/g,
+        /ذ/g,
+        /ث/g,
+        /ة/g,
+        /رر/g,
+        /مم/g,
+        /أ/g,
+        /آ/g,
+        /لل/g,
+        /سس/g,
+        /یی/g,
+        /ڤ/g,
+        /ع/g,
+        /ى/g,
+    ];
+    
+    for (var i in extras) {
+        inp = inp.replace(extras[i], "");
+    }
+    
+    for (i in ar_signs) {
+        inp = inp.replace(ar_signs[i], "");
+    }
+
+    for (i in kurdish_letters) {
+        inp = inp.replace(other_letters[i], kurdish_letters[i]);
+    }
+
+    inp = KurdishNumbers(inp);
+
+    if (lastChance) inp = inp.replace(/ه/g, "");
+
+    return inp;
 }
 
 /// check if liked

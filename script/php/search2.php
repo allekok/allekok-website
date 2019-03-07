@@ -59,29 +59,18 @@
     </style>
 
     <script>
-     /* When the user clicks on the button,
-	toggle between hiding and showing the dropdown content */
      function myFunction() {
 	 document.getElementById("myDropdown").classList.toggle("show");
 	 filterFunction();
      }
 
      function filterFunction() {
-	 var input, filter, ul, li, a, i;
-	 input = document.getElementById("myInput");
-	 filter = input.value.toUpperCase();
-	 div = document.getElementById("myDropdown");
-	 a = div.getElementsByTagName("a");
-	 for (i = 0; i < a.length; i++) {
-             if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-		 a[i].style.display = "";
-             } else {
-		 a[i].style.display = "none";
-             }
-	 }
+	 var needle = document.getElementById("myInput").value;
+	 var context = document.getElementById("myDropdown").querySelectorAll("a");
+	 filterp(needle, context);
      }
-
-     function isOS() {
+     
+     function isiOS() {
 	 return navigator.userAgent.match(/ipad|iphone/i);
      }
 
@@ -89,7 +78,7 @@
 	 var range,
              selection;
 
-	 if (isOS()) {
+	 if (isiOS()) {
              range = document.createRange();
              range.selectNodeContents(e);
              selection = window.getSelection();
@@ -121,7 +110,7 @@
                     while($o = mysqli_fetch_assoc($query)) {
 			
 			$os[] = $o;
-			if($_GET['selPT'] == $o['takh']) {
+			if(@$_GET['selPT'] == $o['takh']) {
                             $_selPT = $o['takh'];
 			}
                     }
@@ -129,7 +118,7 @@
 		    ?>
 		    <button onclick="myFunction()" class="dropbtn button">
 			<?php
-			if($_selPT) {
+			if(@$_selPT) {
                             echo $_selPT;
 			} else {
 			?>
@@ -145,7 +134,7 @@
 			<?php
 			
 			foreach($os as $o) {
-			    if($_selPT == $o['takh']) {
+			    if(@$_selPT == $o['takh']) {
 				echo "<a href='{$o['takh']}' selected='1000'>{$o['takh']}</a>";
 			    } else {
 				echo "<a href='{$o['takh']}'>{$o['takh']}</a>";
