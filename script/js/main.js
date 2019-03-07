@@ -203,7 +203,8 @@ function toggle_Like() {
     for(var a in favs) {
         clrNum = color_num(favs[a].poetID);        
         favsS += `<a class='link' style='border-bottom:1px solid #eee' href='/${favs[a].url}'><img class='PI${favs[a].poetID}' src='/style/img/poets/profile/profile_0.jpg' style='display:inline-block;vertical-align:middle;width:2.5em;border-radius:100%;'> <span style='font-size:.85em; color:#555;'>${favs[a].poetName} &rsaquo; ${favs[a].book} &rsaquo;</span> ${favs[a].poem} </a>`;
-	imgs.push(favs[a].poetID);
+	if(imgs.indexOf(favs[a].poetID) === -1)
+	    imgs.push(favs[a].poetID);
     }
     
     document.getElementById('tL-res-res').innerHTML = favsS;
@@ -215,8 +216,10 @@ function toggle_Like() {
     imgs.map(function(pID) {
 	poetImage(pID, function(url) {
 	    document.getElementById("tL-res-res").
-		     querySelector(`.PI${pID}`).
-		     src = url;
+		     querySelectorAll(`.PI${pID}`).
+		     forEach(function(item) {
+			 item.src = url;
+		     });
 	});
     });
 }

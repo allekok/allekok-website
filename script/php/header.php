@@ -21,7 +21,7 @@ if($color_num!=0) {
 	<script>
          if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', {scope: '/'});
 	</script>
-	<link rel='stylesheet' href='/style/css/main.css?v10' />
+	<link rel='stylesheet' href='/style/css/main.css?v11' />
 	<title>
 	    <?php echo($title); ?>
 	</title>
