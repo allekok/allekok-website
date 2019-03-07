@@ -34,8 +34,8 @@ include(ABSPATH . 'script/php/header.php');
 
     <?php
     
-    $_name = filter_var($_GET['name'], FILTER_SANITIZE_STRING);
-    $_poet = filter_var($_GET['poet'], FILTER_SANITIZE_STRING);
+    $_name = filter_var(@$_GET['name'], FILTER_SANITIZE_STRING);
+    $_poet = filter_var(@$_GET['poet'], FILTER_SANITIZE_STRING);
     ?>
     
     <style>

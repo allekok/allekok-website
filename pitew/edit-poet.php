@@ -12,8 +12,8 @@ $color_num = 0;
 
 include(ABSPATH . "script/php/header.php");
 
-if(! empty($_GET['name']) ) $_name1 = filter_var($_GET['name'], FILTER_SANITIZE_STRING);
-if(! empty($_GET['poet']) ) $_poet1 = filter_var($_GET['poet'], FILTER_SANITIZE_STRING);
+$_name1 = filter_var(@$_GET['name'], FILTER_SANITIZE_STRING);
+$_poet1 = filter_var(@$_GET['poet'], FILTER_SANITIZE_STRING);
 ?>
 
 <div id="poets">

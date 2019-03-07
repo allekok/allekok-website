@@ -54,7 +54,7 @@ include(ABSPATH . "script/php/header.php");
 	    $pt = $ln["poetID"];
 	    $bk = $ln["bookID"];
 	    $pm = $ln["poemID"];
-	    $date = date_create($ln["date"]);
+	    $date = @date_create(@$ln["date"]);
 	    $diff = format_DD(date_diff($now,$date,true));
 
 	    $db = "index";

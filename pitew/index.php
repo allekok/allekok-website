@@ -12,9 +12,9 @@ $color_num = 0;
 
 include(ABSPATH . 'script/php/header.php');
 
-if(! empty(@$_GET['name']) ) $_name1 = filter_var($_GET['name'], FILTER_SANITIZE_STRING);
-if(! empty(@$_GET['poet']) ) $_poet1 = filter_var($_GET['poet'], FILTER_SANITIZE_STRING);
-if(! empty(@$_GET['book']) ) $_book1 = filter_var($_GET['book'], FILTER_SANITIZE_STRING);
+$_name1 = filter_var(@$_GET['name'], FILTER_SANITIZE_STRING);
+$_poet1 = filter_var(@$_GET['poet'], FILTER_SANITIZE_STRING);
+$_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
 ?>
 
 <div id="poets">
@@ -58,10 +58,10 @@ if(! empty(@$_GET['book']) ) $_book1 = filter_var($_GET['book'], FILTER_SANITIZE
          xmlhttp.send();
      }
      function check() {
-         var cntr = document.querySelector("#contributorTxt");
-         var poet = document.querySelector("#poetTxt");
-         var txts = document.querySelectorAll("input, textarea");
-         var btns = document.querySelectorAll("button[type=submit]");
+         var cntr = document.querySelector("#contributorTxt"),
+	     poet = document.querySelector("#poetTxt"),
+	     txts = document.querySelectorAll("input, textarea"),
+	     btns = document.querySelectorAll("button[type=submit]");
          
          if(poet.value == "") {
              txts.forEach(function(e) {
@@ -83,7 +83,6 @@ if(! empty(@$_GET['book']) ) $_book1 = filter_var($_GET['book'], FILTER_SANITIZE
                  
                  document.querySelector('#frmUpload').style.animation = "tL .5s forwards";
                  document.querySelector('#frmUpload').style.display = "block";
-                 document.querySelector('#poetDescTxt').focus();
                  
                  document.querySelector("#dsds").outerHTML = `<a id='dsds' href='poet-image.php?name=${document.querySelector('#contributorTxt').value}&poet=${document.querySelector('#poetTxt').value}' target='_blank' class='button' style='display:inline-block;cursor:pointer;font-size: 0.7em;padding:1em;'>
                      هەڵبژاردنی وێنە
@@ -91,7 +90,6 @@ if(! empty(@$_GET['book']) ) $_book1 = filter_var($_GET['book'], FILTER_SANITIZE
              } else {
                  if(document.querySelector('#frmUpload').style.display == "block") {
                      document.querySelector('#frmUpload').style.display = "none";
-                     document.querySelector('#bookTxt').focus();
                  }
              }
              
