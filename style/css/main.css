@@ -7,7 +7,7 @@ input[type=text], textarea, button{-webkit-appearance:none;appearance:none;outli
 input[type=text], textarea{padding:1em;text-align:right;border-top:3px solid #ddd;display:block;margin:auto;box-shadow:0 5px 10px -5px #eee;}
 input[type=text]:focus, textarea:focus{background:#f5f5f5;}
 i{font-style:normal;}
-.poet-pic-small{display:block;margin:auto;border-radius:100%;max-width:120px;box-shadow: 0 2px 5px -3px #444;}
+.poet-pic-small{display:block;margin:auto;border-radius:50%;max-width:120px;box-shadow: 0 2px 5px -3px #444;}
 .poetnm a{display:inline-block;}
 .bth:hover{opacity:.8;}
 .gallery img{width:60px;opacity:0.8;cursor:pointer;}
@@ -82,10 +82,10 @@ header h2{font-size:.65em;margin-top:-.5em;}
 .psec{width: 22.5%;display:inline-block;vertical-align:top;max-width: 115px;color:#444;margin: .5em 1.25% .1em;}
 .psec h3,.psec a{color:inherit;}
 .psec h3{font-size:.63em;white-space:nowrap;overflow:hidden;}
-.psec img{border-radius:100%;width:100%;height:100%;display:block;box-shadow: 0 2px 5px -3px #444;}
+.psec img{border-radius:50%;width:100%;height:100%;display:block;box-shadow: 0 2px 5px -3px #444;}
 .poet{margin-bottom:2em;}
 .poetimg{max-width:460px;margin:0 auto;width:65%;}
-.poetimg .pro-460{width:100%;border-radius:100%;display:block;box-shadow:0 -1px 5px -2px #666;}
+.poetimg .pro-460{width:100%;border-radius:50%;display:block;box-shadow:0 -1px 5px -2px #666;}
 .poetnm{font-size:.7em;padding:1em;border-bottom:1px solid #eee;}
 .poetdesc{width:100%;max-width:500px;margin:0 auto 45px;text-align:right;}
 .poetdesc p{text-align:right;font-size:.55em;}
@@ -113,20 +113,20 @@ header h2{font-size:.65em;margin-top:-.5em;}
 #search-key:focus{background-color:#fff;}
 #search-btn{width:35%;font-size:.65em;padding:1em 0;border-bottom:1px solid #f6f6f6;border-top:1px solid #f6f6f6;background:#f6f6f6;display:inline-block;text-align:center;}
 #search-res{display:none;padding:1em .3em;box-shadow: 0 12px 25px -8px #ddd;position:relative;max-width:850px;margin:auto;}
-#search-res #bhon{font-size:.55em;padding:.5em 0;margin:0 0 7px;line-height:2;background-color:#f0f0f0;}
+#search-res #bhon{font-size:.55em;padding:.5em 0;margin:0 0 7px;line-height:2;background-color:#f3f3f3;}
 .bhoh-newdaq{text-align:right;padding:10px 10px 0;font-size:0.7em;margin:0;background:none;border-bottom:0;color:#000;}
 #search-res a{font-size:.57em;}
 #search-res a h3{font-size:.95em;margin-top:.2em;}
-#search-res section a h3{text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
-.search-notfound{font-size:0.6em;background:#efefef;border-radius:60% 60% 0 0;box-shadow:0 2px 5px -3px #aaa;border-top:1px solid #e0e0e0;text-align:center;}
+#search-res section a h3{white-space:nowrap;overflow:hidden;}
+.search-notfound{font-size:.6em;border-radius:50% 50% 0 0;border-top: 2px solid #eee;}
 #search-res section{margin:0 4px;display:inline-block;max-width:68px;width:18%;}
-#search-res section img{border-radius:100%;width:100%;box-shadow:0 3px 4px -3px #aaa;display:block;}
+#search-res section img{border-radius:50%;width:100%;box-shadow:0 3px 4px -3px #aaa;display:block;}
 #search-res #poets{padding:0;margin-bottom:3px;}
-.search-hon div{margin:.3em .1em;padding:0 10px;background:#f2f2f2;border-radius:2px;border:1px solid #ccc;text-align:right;}
+.search-hon div{margin:.3em .1em;padding:0 10px;background:#f6f6f6;border-radius:2px;border:1px solid #eee;text-align:right;}
 .search-hon div:hover{background:#fff;border:1px solid #bbb;box-shadow:1px 1px 1px #ccc;}
 .search-hon a{width:100%;display:block;text-align:right;padding:12px 0;}
 .search-hon a i, .search-book a i{font-size:.85em;color:#444;}
-.search-book a{margin:.3em;display:inline-block;padding:12px 10px;border-radius:2px;border:1px solid #ddd;background:#eee;color:#000;font-size:1em;}
+.search-book a{margin:.3em;display:inline-block;padding:12px 10px;border-radius:2px;border:1px solid #eee;background:#f6f6f6;color:#000;font-size:1em;}
 .search-book a:hover{background:#fff;border:1px solid #bbb;box-shadow:1px 1px 1px #ccc;}
 .search-book{margin-bottom:10px;line-height:1.7;text-align:right;}
 .b{margin-bottom:1.6em;font-size:.58em;}
@@ -135,7 +135,7 @@ header h2{font-size:.65em;margin-top:-.5em;}
 .m, .b span, .n span, .m span, .m1 span, .m2 span, .m3 span{font-size:inherit;}
 .m{padding:3px 13px 3px 7px;text-align:right;}
 .cf{background:#f3f3f3;}
-.loader{border:2px solid #eee;border-top:2px solid #666;border-radius:100%;width:5rem;height:5rem;animation:spin .4s linear infinite;margin:auto;}
+.loader{border:2px solid #eee;border-top:2px solid #666;border-radius:50%;width:5rem;height:5rem;animation:spin .4s linear infinite;margin:auto;}
 .fontsize{font-size:.65em;padding:.5em 0;text-align:right;border-bottom:1px solid #eee;color:#aaa;}
 .fontsize i{font-size:inherit;}
 .fontsize button{background:#f7f7f7;color:#444;box-shadow:0 2px 3px -2px #ccc;display:inline-block;border-radius:2px;}
