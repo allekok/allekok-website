@@ -6,7 +6,7 @@
 
 require_once("constants.php");
 
-if(!$db) $db=_DEFAULT_DB;
+if(!isset($db)) $db=_DEFAULT_DB;
 
 $conn = mysqli_connect(_HOST, _USER, _PASS) or die("mysql connection error. maybe user/password is wrong.");
 
