@@ -38,6 +38,7 @@ if(!empty($q1)) {
 	    while($res = mysqli_fetch_assoc($query)) {
 		$s_poet[] = $res;
 	    }
+	    $res_poet1 = "";
 	    
 	    for($i=0; $i<count($s_poet); $i++) {
 		if($r<$r_max) {
@@ -115,6 +116,7 @@ if(!empty($q1)) {
 	while($res=mysqli_fetch_assoc($query)) {
 	    $s_book[] = $res;
 	}
+	$res_book1 = "";
 	
 	for($i=0; $i<count($s_book); $i++) {
 	    if($e<$e_max) {
@@ -173,6 +175,7 @@ if(!empty($q1)) {
 	    $s_poem[] = $res;
 	}
 	
+	$res_hon1 = "";
 	$res_Cipi = array();
 	$rCn = 0;
 	
