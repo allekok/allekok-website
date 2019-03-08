@@ -250,6 +250,6 @@ if(!empty($q1)) {
 }
 
 $timer = microtime(true) - $timer;
-//echo "<div style='position:fixed;top:0;left:0;'>" . number_format($timer, 3) . "s</div>";
+// echo "<div style='position:fixed;top:0;left:0;'>" . number_format($timer, 3) . "s</div>";
 
 ?>

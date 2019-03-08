@@ -391,7 +391,7 @@ function Liked () {
 	    for(var i in bookmarks) {
 		bookmarks[i] = JSON.stringify(bookmarks[i]);
 	    }
-            bookmarks = bookmarks.join('[fav]') + "[fav]";
+            bookmarks = bookmarks.reverse().join('[fav]') + "[fav]";
             
             if(bookmarks.length>6) {
                 localStorage.setItem('favorites',bookmarks);
