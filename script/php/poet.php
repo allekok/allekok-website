@@ -148,7 +148,7 @@
 			    while(false !== ($pe = readdir($dir))) {
 				
 				$e = explode("_", str_replace(".txt","",$pe));
-				if($e[1] === $row['takh']) {
+				if(@$e[1] === $row['takh']) {
 				    
 				    $ef = fopen("{$_uri}{$pe}", "r");
 				    while(!feof($ef)) {
