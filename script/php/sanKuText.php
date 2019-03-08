@@ -2,7 +2,7 @@
 /* * * 
  * Sanitize Kurdish text for search.
  * * */
-function san_data($in, $last=false) {
+function san_data($in, $lastChance=false) {
     $extras = array("&#34;","&#39;","&laquo;","&raquo;","&rsaquo;","&lsaquo;","&bull;","&nbsp;","?", "!", "#", "&", "*", "(", ")", "-", "+", "=", "_","[", "]", "{", "}","<",">","\\","/", "|", "'", "\"", ";", ":", ",", ".", "~", "`", "؟", "،", "»", "«","ـ","؛","›","‹","•","‌");
     $ar_signs =array("ِ", "ُ", "ٓ", "ٰ", "ْ", "ٌ", "ٍ", "ً", "ّ", "َ");
     
@@ -114,18 +114,17 @@ function san_data($in, $last=false) {
     	"ھ",
     ];
     
-    $in = stripslashes($in);
     $in = filter_var($in,FILTER_SANITIZE_STRING);
-    $in = preg_replace("/\s+/", "", $in);
     
     $in = str_replace($extras, "", $in);
     $in = str_replace($ar_signs, "", $in);
     $in = str_replace($from_nums, $to_nums, $in);
     $in = str_replace($other_letters,$kurdish_letters,$in);
     
-    if($last === true) {
+    if($lastChance) {
         $in = str_replace("h","",$in);
         $in = str_replace($to_nums, "", $in);
+	$in = preg_replace("/\s+/", "", $in);
     }
 
     return $in;
