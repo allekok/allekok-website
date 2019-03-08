@@ -137,7 +137,7 @@ include(ABSPATH . 'script/php/header.php');
         <button class='button bth' type="submit" style="width: 45%;max-width: 150px;background-color:#777;color:#fff;margin-top:1em;font-size: 1em;">ناردن</button>
     </form>
     <?php if(isset($_poet1)) { ?>
-        <script>check()</script>
+        <script>window.addEventListener("load",check)</script>
     <?php } ?>
     
     <div style="margin-top:2em;">

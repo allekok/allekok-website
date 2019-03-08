@@ -99,7 +99,9 @@ $_poet1 = filter_var(@$_GET['poet'], FILTER_SANITIZE_STRING);
             <button type="button" id="clearBtn" class='button' style="font-size: 0.7em;width: 45%;max-width: 150px;margin-top:0.5em;">پاک کردنەوە</button>
         </form>
         
-        <?php if(isset($_poet1)) { ?> <script>check()</script> <?php } ?>
+        <?php if(isset($_poet1)) { ?>
+            <script>window.addEventListener("load",check)</script>
+	<?php } ?>
         
     </div>
     

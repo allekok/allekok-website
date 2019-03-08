@@ -165,7 +165,7 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
             <button type="button" id="clearBtn" class='button' style="font-size: 0.7em;width: 45%;max-width: 150px;margin-top:0.5em;">پاک کردنەوە</button>
         </form>
         <?php if(isset($_poet1)) { ?>
-            <script>check()</script>
+            <script>window.addEventListener("load",check)</script>
         <?php } ?>
         
     </div>
