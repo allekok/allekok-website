@@ -15,17 +15,7 @@ include(ABSPATH . "script/php/header.php");
 
 <!-- the main element -->
 <div id="poets">
-    <?php
-    // random colors for heading gradient, loading animation.
-    $_rnd = [
-        mt_rand(1,22),
-        mt_rand(1,22),
-        mt_rand(1,22),
-        mt_rand(1,22),
-    ];
-    
-    ?>
-    <h1 id="current-location" style="display:block;background: linear-gradient(to right, <?php echo "{$colors[$_rnd[0]][2]},{$colors[$_rnd[1]][2]},{$colors[$_rnd[2]][2]},{$colors[$_rnd[3]][2]}"; ?>);color:#555;font-size:1.2em">
+    <h1 id="current-location" style="display:block;background: linear-gradient(to right, <?php echo "#fdfdfd,{$colors[0][0]},#fdfdfd"; ?>);color:#fff;font-size:1.2em">
         بیر و ڕاکان
     </h1>
     
@@ -43,7 +33,7 @@ include(ABSPATH . "script/php/header.php");
     </div>
     <div style='max-width:800px;margin:auto;padding:.3em;'>
         <div id="hon-comments-body">
-            <div class='loader' style="border-top:2px dashed <?php echo $colors[$_rnd[0]][0]; ?>;border-bottom:2px dashed <?php echo $colors[$_rnd[1]][0]; ?>;border-right:2px dashed <?php echo $colors[$_rnd[2]][0]; ?>;border-left:2px dashed <?php echo $colors[$_rnd[3]][0]; ?>;animation-duration:.7s;"></div>
+            <div class='loader' style="border-top:3px dashed <?php echo $colors[0][0]; ?>;animation-duration:.7s;"></div>
         </div>
         
     </div>

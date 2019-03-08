@@ -59,31 +59,25 @@ include(ABSPATH . "script/php/header.php");
 
         <?php
         $uri = ABSPATH . "about/res/about.comments";
-	if(file_exists($uri) and filesize($uri)>0) { $nzuri = 1; } ?>
+	$nzuri = file_exists($uri) ?
+		 filesize($uri)>0 :
+		 false; ?>
         
-        <div id="Acomms-title" style="margin:1em 0 .5em;font-size: .8em;<?php if(!isset($nzuri)){echo 'display:none';} ?>">
+        <div id="Acomms-title" style="margin:1em 0 .5em;font-size: .8em;<?php if(!$nzuri){echo 'display:none';} ?>">
             بیر و ڕاکان سەبارەت بە ئاڵەکۆک
         </div>
 
-        <div id="Acomms" style="font-size:0.8em;<?php if(!isset($nzuri)){echo('display:none;');} ?>">
-            <?php
-            $rnds = array(
-                mt_rand(1,22),
-                mt_rand(1,22),
-                mt_rand(1,22),
-                mt_rand(1,22),
-            );
-            ?>
-            <div class='loader' style="border-top: 2px dashed <?php echo $colors[$rnds[0]][0]; ?>;border-bottom: 2px dashed <?php echo $colors[$rnds[1]][0]; ?>;border-right: 2px dashed <?php echo $colors[$rnds[2]][0]; ?>;border-left: 2px dashed <?php echo $colors[$rnds[3]][0]; ?>;border-radius:100%;padding:0;animation-duration:0.7s;"></div>
+        <div id="Acomms" style="font-size:0.8em;<?php if(!$nzuri){echo('display:none;');} ?>">
+            <div class='loader' style="border-top: 3px dashed <?php echo $colors[0][0]; ?>;border-radius:100%;padding:0;animation-duration:0.7s;"></div>
             
             <script>
              var http = new XMLHttpRequest();
+	     http.open("get","/about/about-comments.php");
              http.onload = function () {
                  var Acomms = document.getElementById("Acomms");
                  Acomms.innerHTML=this.responseText;
                  Acomms.style.animation="tL-top 0.8s cubic-bezier(.18,.89,.32,1.28)";
              }
-             http.open("get","/about/about-comments.php");
              http.send();
             </script>
         </div>
@@ -94,22 +88,17 @@ include(ABSPATH . "script/php/header.php");
 
  function append() {
 
-     var httpd = new XMLHttpRequest();
+     var httpd = new XMLHttpRequest(),
+	 res = document.getElementById('message'),
+	 comm = document.getElementById('commTxt'),
+	 loader = document.getElementById('commloader');
 
-     var res = document.getElementById('message');
-     var comm = document.getElementById('commTxt');
-     var loader = document.getElementById('commloader');
-
-     var nullError = "<i style='display:block;background-color:rgba(204,51,0,0.1);color:#444;font-size:0.5em;'>هیچ تان نەنووسیوە.</i>";
-
-     var succMess = "<i style='display:block;background-color:rgba(102,255,204,0.1);color:#444;font-size:0.5em;'>زۆر سپاس بۆ دەربڕینی بیر و ڕاتان سەبارەت بە ئاڵەکۆک.</i>";
-
-     var failMess = "<i style='display:block;background-color:rgba(204,51,0,0.1);color:#444;font-size:0.5em;'>کێشەیەک هەیە. تکایە دووبارە هەوڵ دەنەوە.</i>";
-
-     //out of range error
-     var OoRError = "<i style='display:block;background-color:rgba(204,51,0,0.1);color:#444;font-size:0.5em;'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پیت زیاتر بێ.</i>";
-
-     var request = "comm="+encodeURIComponent(comm.value);
+     var nullError = "<i style='display:block;background-color:rgba(204,51,0,0.1);color:#444;font-size:0.5em;'>هیچ تان نەنووسیوە.</i>",
+	 succMess = "<i style='display:block;background-color:rgba(102,255,204,0.1);color:#444;font-size:0.5em;'>زۆر سپاس بۆ دەربڕینی بیر و ڕاتان سەبارەت بە ئاڵەکۆک.</i>",
+	 failMess = "<i style='display:block;background-color:rgba(204,51,0,0.1);color:#444;font-size:0.5em;'>کێشەیەک هەیە. تکایە دووبارە هەوڵ دەنەوە.</i>",
+	 // out of range error
+	 OoRError = "<i style='display:block;background-color:rgba(204,51,0,0.1);color:#444;font-size:0.5em;'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پیت زیاتر بێ.</i>",
+	 request = "comm="+encodeURIComponent(comm.value);
 
      if(comm.value === "") {
          comm.focus();
@@ -139,8 +128,8 @@ include(ABSPATH . "script/php/header.php");
              res.innerHTML = succMess;
              comm.style.borderTop = "2px solid #06d";
 
-             var Acomms = document.getElementById('Acomms');
-             var AcommsTitle = document.getElementById('Acomms-title');
+             var Acomms = document.getElementById('Acomms'),
+		 AcommsTitle = document.getElementById('Acomms-title');
 
              Acomms.style.display = "block";
              AcommsTitle.style.display = "block";
@@ -170,11 +159,8 @@ include(ABSPATH . "script/php/header.php");
 
 
  document.getElementById("frmComm").addEventListener("submit", function(e) {
-     if(XMLHttpRequest) {
-         e.preventDefault();
-         append();
-     }
-
+     e.preventDefault();
+     append();
  });
 
 </script>

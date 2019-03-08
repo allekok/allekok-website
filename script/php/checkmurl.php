@@ -127,7 +127,7 @@ if ($ath!=null and $bk==null) {
 
 } elseif($q != null) {
     // https://allekok.com/?q={$q}
-    // search2.php
+    // search.php
     
     $is_it_search = 1;
     $title = _TITLE . " &raquo; گەڕان: " . $q;
@@ -136,7 +136,7 @@ if ($ath!=null and $bk==null) {
     $color_num = 0;
     
     include("header.php");
-    include("search2.php");
+    include("search.php");
     
 } else {
     $t_desc = "<h2>"._DESC."</h2>";
