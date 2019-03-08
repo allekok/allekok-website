@@ -42,7 +42,7 @@ if($color_num!=0) {
 	
 	<style>
 	 body {
-             border-top:.4em solid <?php if($color_num) {echo $colors[$color_num][0];}else{echo "transparent";} ?>;
+             border-top:.4em solid <?php echo $colors[$color_num][0]; ?>;
 	 }
 	 .ptr {
              background:<?php echo($colors[$color_num][2]) ?>;
@@ -112,7 +112,7 @@ if($color_num!=0) {
 		<i class="material-icons seartog-i"<?php if(!$color_num)    echo " style='color:red'"; ?>>bookmark</i>
 	    </div>
 
-	    <a href="<?php echo _SITE; ?>"><h1 style="color:<?php if($color_num == 0) {echo "rgb(0,210,50)";} else { echo "#555"; } ?>">ئاڵەکۆک</h1></a>
+	    <a href="<?php echo _SITE; ?>"><h1 style="color:<?php echo "#555"; ?>">ئاڵەکۆک</h1></a>
 	    <span style='color:#555'><?php echo($t_desc) ?></span>
 	    
 	</header>

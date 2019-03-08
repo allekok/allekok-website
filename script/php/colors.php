@@ -6,7 +6,7 @@
 
 // ["main-color","contrast","light","dark"]
 $colors = [
-    ["#fff","#000","#fff","#000"],
+    ["#15d643","#fff","#f6f6f6","#000"],
     ["#95ff21","#000","#ebffd4","#004d00"],
     ["#2da7e9","#fff","#e6f5ff","#002e4d"],
     ["#d75691","#fff","#ffeffb","#4d0039"],

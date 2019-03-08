@@ -51,7 +51,8 @@ function get_poet_image($_pID, $_size, $_slash) {
 
 function color_num ($ath) {
     // return color number for given poet's id.
-    return ($ath%22) ? $ath - (22 * floor($ath/22)) : 22;
+    //return ($ath%22) ? $ath - (22 * floor($ath/22)) : 22;
+    return 0;
 }
 
 function format_DD($date_diff) {

@@ -133,7 +133,8 @@ function arabi_to_latin(s) {
 }
 
 function color_num (pID) {
-    return (pID%22) ? (pID - (22 * Math.floor(pID/22))) : 22;
+    //return (pID%22) ? (pID - (22 * Math.floor(pID/22))) : 22;
+    return 0;
 }
 
 function poetImage (pID, callback) {
