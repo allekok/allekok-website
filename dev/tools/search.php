@@ -1,7 +1,7 @@
 <?php
 
-require_once('../../script/php/constants.php');
-require_once('../../script/php/functions.php');
+require_once('../../constants.php');
+require_once(ABSPATH . 'script/php/functions.php');
 
 header("Content-type:application/json; charset=UTF-8");
 $null = json_encode(null);

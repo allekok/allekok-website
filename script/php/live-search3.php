@@ -1,7 +1,7 @@
 <?php
 $timer = microtime(true);
 
-include_once('constants.php');
+include_once('../../constants.php');
 include_once('functions.php');
 
 

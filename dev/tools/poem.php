@@ -1,7 +1,7 @@
 <?php
 
-require_once("../../script/php/constants.php");
-require("../../script/php/functions.php");
+require_once("../../constants.php");
+require(ABSPATH . "script/php/functions.php");
 
 $null = json_encode(null);
 

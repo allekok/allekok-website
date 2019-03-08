@@ -1,6 +1,6 @@
 <?php
 // add,edit poems
-include_once("../constants.php");
+include_once("../../../constants.php");
 ?>
 <!DOCTYPE HTML>
 <html dir="rtl" lang="ckb">
@@ -343,7 +343,7 @@ if($dbcache=='') {
 			</div>");
     $q='SELECT * FROM ' . $_tbl;
     //include('../condb.php');
-    require_once("../constants.php");
+    require_once("../../../constants.php");
     $conn = mysqli_connect(_HOST, _USER, _PASS);
     mysqli_select_db($conn,'allekokc_index');
     mysqli_set_charset($conn,"utf8");
@@ -355,7 +355,7 @@ if($dbcache=='') {
     $pre_link = tbl_name_to_address($_tbl);
     $q = 'SELECT * FROM ' . $_tbl . ' WHERE id=' . $rowd;
     //include('../condb.php');
-    require_once("../constants.php");
+    require_once("../../../constants.php");
     $conn = mysqli_connect(_HOST, _USER, _PASS);
     mysqli_select_db($conn,'allekokc_index');
     mysqli_set_charset($conn,"utf8");
@@ -375,7 +375,7 @@ if($dbcache=='') {
 	} else {
 	    $q = "UPDATE `" . $_tbl . "` SET `id`=$rowd,`name`='$name',`hon`=" . '"'.$hon . '"' . ",`hdesc`='$hdesc' WHERE id=" . $rowd;
 	    //include('../condb.php');
-	    require_once("../constants.php");
+	    require_once("../../../constants.php");
             $conn = mysqli_connect(_HOST, _USER, _PASS);
             mysqli_select_db($conn,'allekokc_index');
             mysqli_set_charset($conn,"utf8");
@@ -425,7 +425,7 @@ if($dbcache=='') {
     } else {
 	$q = "INSERT INTO `" . $_tbl . "`(`id`, `name`, `hon`, `hdesc`) VALUES ($rowd,'$name',".'"'.$hon.'"'.",'$hdesc')";
 	//include('../condb.php');
-	require_once("../constants.php");
+	require_once("../../../constants.php");
         $conn = mysqli_connect(_HOST, _USER, _PASS);
         mysqli_select_db($conn,'allekokc_index');
         mysqli_set_charset($conn,"utf8");
