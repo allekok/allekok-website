@@ -1,4 +1,4 @@
-<?php 
+<?php 
 if(! defined('ABSPATH'))    define('ABSPATH', '/home/allekokc/public_html/');
 require_once("script/php/functions.php");
 header("Content-type: text/plain; charset=UTF-8");
