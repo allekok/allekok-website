@@ -16,7 +16,7 @@ include(ABSPATH . "script/php/header.php");
 <div id="poets" style="max-width:950px">
 
     <h1 style="display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0 0;font-size:1.2em;color: #555;">
-        <i class='material-icons' style='font-size:inherit; vertical-align:middle;color:rgb(0,210,50);'>help</i>
+        <i class='material-icons' style='font-size:inherit; vertical-align:middle;color:<?php echo $colors[0][0]; ?>;'>help</i>
         چۆنیەتی بەکارهێنانی ئاڵەکۆک
     </h1>
     <style>
@@ -75,16 +75,16 @@ include(ABSPATH . "script/php/header.php");
      }
      main h1 {
          font-size:1.5em;
-         color:rgb(0,210,50);
+         color:<?php echo $colors[0][0]; ?>;
      }
      main h2 {
          font-size:1.3em;
-         color:rgb(0,210,50);
+         color:<?php echo $colors[0][0]; ?>;
          margin-top:1em;
      }
      main h3 {
          font-size:1.1em;
-         color:rgb(0,210,50);
+         color:<?php echo $colors[0][0]; ?>;
          margin-top:1em;
      }
      main h1, main h2, main h3 {
@@ -111,7 +111,7 @@ include(ABSPATH . "script/php/header.php");
     </style>
     
     <main style="font-size:.65em;text-align:justify;padding:1em;">
-	<div class='loader' style="border-top-color:rgb(0,210,50);"></div>
+	<div class='loader' style="border-top-color:<?php echo $colors[0][0]; ?>;"></div>
     </main>
     
     <script src="https://cdn.rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js"></script>
@@ -140,7 +140,7 @@ include(ABSPATH . "script/php/header.php");
         <form id="frmQA" action="save.php" method="POST">
             <textarea id="QAtxt" placeholder="پرسیارەکەو لێرە بنووسن..."></textarea>
             <div id="QAres"></div>
-            <button type="submit" class='button btn' style="background:rgb(0,210,50); color:#fff;">ناردن</button>
+            <button type="submit" class='button btn'>ناردن</button>
         </form>
         
         <div>

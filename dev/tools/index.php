@@ -15,11 +15,14 @@ include(ABSPATH . 'script/php/header.php');
 
 <div id="poets">
     
-    <h1 style="font-size:1.2em;"><a style="background: #222;color: #19e31b;display: inline-block;padding: 0.3em 0.8em 0;border-radius: 5px;margin: .5em 0;text-decoration:none" href='/dev/tools/'>
-        ئاڵەکۆک 
-	<sup style="font-size:0.55em; vertical-align:top;">
-            єv∂
-	</sup></a>
+    <h1 style="font-size:1.2em;">
+        <span style="color:<?php echo $colors[0][0]; ?>;">
+	    <
+	</span>
+	کۆدەکانی ئاڵەکۆک
+	<span style="color:<?php echo $colors[0][0]; ?>;">
+	    >
+	</span>
     </h1>
     <style>
      code {
@@ -68,25 +71,38 @@ include(ABSPATH . 'script/php/header.php');
          margin-top: 0.5em;
      }
      .hr {
-         border-top:3px dashed #ccc;
+         border-top:2px dashed #ddd;
+     }
+     #poets a {
+	 border-bottom:1px solid <?php echo $colors[0][0]; ?>;
+	 color:#444;
+     }
+     #poets a:hover {
+	 background:#eee;
+     }
+     .back-eee {
+	 background:#eee;
+	 padding:0 .5em;
      }
     </style>
     <div style="max-width: 800px; margin:auto; padding:1em;line-height:2.3; text-align:justify;">
-        <p style="border-bottom:1px solid #ddd;padding-top:0;"><a href="/dev/" style="color: #00e;display:block;"> - 
-            بۆ داگرتنی کۆدەکانی ئاڵەکۆک لێرە کرتە بکەن.
-        </a>
-	<a href="https://github.com/allekok/allekok-plain/" style="color: #00e;display:block;"> - 
-            بۆ داگرتنی شێعرەکانی ئاڵەکۆک لێرە کرتە بکەن.
-        </a></p>
+        <p style="border-bottom:1px solid #ddd;padding-top:0;text-indent:0;">
+	    -  <a href="https://github.com/allekok/www.allekok.com/" style="display:inline-block;padding:.5em 0 .2em;">
+	    بۆ داگرتنی کۆدەکانی ئاڵەکۆک لێرە کرتە بکەن.
+            </a><br>
+	    -  <a href="https://github.com/allekok/allekok-plain/" style="display:inline-block;padding:.5em 0 .2em;">
+		بۆ داگرتنی شێعرەکانی ئاڵەکۆک لێرە کرتە بکەن.
+            </a>
+	</p>
         <p>
-            بەخێربێن! لەو بەشە کۆمەڵێک ئامێرمان دابین کردووە کە ئێوەی پڕۆگرامێر(بەرنامەنووس) بتوانن لە دەیتابەیسەکانی ئاڵەکۆک بۆ بەرنامەکەتان کەڵک وەرگرن.
-            <br>
-            ئاڵەکۆک بە چوار جۆر ئەو زانیاریەنەتان لە ئیختیار دادەنێت:
-            <br></p><h2>
-		<span style='font-size:1.3em; color:green'>&bull;</span>
+	    بەخێربێن! ئەم بەشە تایبەت بەو کەسانەیە کە لەبواری بەرنامەنووسی کامپیوتێردا شارەزایی‌یان هەیە.
+	    <br>
+	    لێرە کۆمەڵێک ئامێرمان ئامادە کردووە کە ئێوە بتوانن لە دەیتابەیسەکانی ئاڵەکۆک بۆ بەرنامەکان‌تان کەڵک وەرگرن.
+            </p><h2>
+		<span style='font-size:1.3em; color:<?php echo $colors[0][0]; ?>'>&bull;</span>
 		یەکەم، وەرگرتنی زانیاری سەبارەت بە شاعیران
             </h2><p>
-		<code style="background:rgba(0,255,0,.05);border-left-color:green">
+		<code style="background:#efffdb;border-left-color:<?php echo $colors[0][0]; ?>">
                 https://allekok.com/dev/tools/poet.php?poet=ناوی شاعیر یان ژمارەی شاعیر
 		</code>
 		ئێوە ئەگەر بچنە ئادرسی سەرەوە و بە جێی "ناوی شاعیر یان ژمارەی شاعیر"، بنووسن هەژار یان تەنیا ژمارەی 1، دەبینن کە تەواوی زانیاریەکانی ئاڵەکۆک سەبارەت بەم شاعیرەتان بۆ دەهێنێت.
@@ -94,7 +110,7 @@ include(ABSPATH . 'script/php/header.php');
 		تکایە سەرنج بدەن:
 		<br>
 		&bull;
-		ئەگەر دەتانهەوێ ناوی شاعیر بنووسن، تکایە ئەو ناوەی کە لە لاپەڕەی یەکەمی ئاڵەکۆک بە ئادرسی "<a style="direction:ltr;text-align:left;color:#00e;" href='https://allekok.com/'>https://allekok.com</a>" بۆ هەر یەک لە شاعیران دابین کراوە، بنووسن.
+		ئەگەر دەتانهەوێ ناوی شاعیر بنووسن، تکایە ئەو ناوەی کە لە لاپەڕەی یەکەمی ئاڵەکۆک بە ئادرسی "<a style="direction:ltr;text-align:left;" href='https://allekok.com/'>https://allekok.com</a>" بۆ هەر یەک لە شاعیران دابین کراوە، بنووسن.
 		<br><br>
 		&bull;
 		ژمارەی شاعیر ئەم ژمارەیە کە لە ئادرسی لاپەڕەی شاعیردا بەم جۆرە نووسراوە: 
@@ -115,10 +131,10 @@ include(ABSPATH . 'script/php/header.php');
             </p>
             <div class='hr'></div>
             <h2>
-		<span style='font-size:1.3em; color:green'>&bull;</span>
+		<span style='font-size:1.3em; color:<?php echo $colors[0][0]; ?>'>&bull;</span>
 		دووهەم، وەرگرتنی زانیاری سەبارەت بە کتێبەکان
             </h2><p>
-		<code style="background:rgba(0,255,0,.05);border-left-color:green">
+		<code style="background:#efffdb;border-left-color:<?php echo $colors[0][0]; ?>">
                 https://allekok.com/dev/tools/book.php?poet=ناوی شاعیر یان ژمارەی شاعیر&book=ناوی کتێب یان ژمارەی کتێب
 		</code>
 		ئەگەر بچنە ئادرسی سەرەوە و بە جێی "ناوی شاعیر یان ژمارەی شاعیر" بنووسن هەژار یان تەنیا ڕەقەمی 1 و بە جێی "ناوی کتێب یان ژمارەی کتێب" بنووسن ئاڵەکۆک یان تەنیا ڕەقەمی 3، دەبینن کە تەواوی زانیاریەکانی ئاڵەکۆک سەبارەت بەو کتێبە‌و بۆ دەهێنێت.
@@ -138,10 +154,10 @@ include(ABSPATH . 'script/php/header.php');
 		<br></p>
 		<div class='hr'></div>
 		<h2>
-		    <span style='font-size:1.3em; color:green'>&bull;</span>
+		    <span style='font-size:1.3em; color:<?php echo $colors[0][0]; ?>'>&bull;</span>
 		    سێهەم، وەرگرتنی زانیاری سەبارەت بە شێعرەکان
 		</h2><p>
-		    <code style="background:rgba(0,255,0,.05);border-left-color:green">
+		    <code style="background:#efffdb;border-left-color:<?php echo $colors[0][0]; ?>">
                 https://allekok.com/dev/tools/poem.php?poet=ناو یان ژمارەی شاعیر&book=ناو یان ژمارەی کتێب&poem=ناو یان ژمارەی شێعر
 		    </code>
 		    ئەگەر سەردانی نیشانی سەرەوە بکەن و بە جێی "ناو یان ژمارەی شاعیر" بنووسن هەژار یان 1 و بە جێی "ناو یان ژمارەی کتێب" بنووسن ئاڵەکۆک یان 3 و بە جێی "ناو یان ژمارەی شێعر" بنووسن لای لایە یان 1، شێعری لای لایەی هەژارموکریانی‌تان بۆ دەهێنێت.
@@ -175,34 +191,34 @@ include(ABSPATH . 'script/php/header.php');
 		</p>
 		<div class='hr'></div>
 		<h2>
-		    <span style='font-size:1.3em; color:green'>&bull;</span>
+		    <span style='font-size:1.3em; color:<?php echo $colors[0][0]; ?>'>&bull;</span>
 		    چوارەم، گەڕان لە ئاڵەکۆک‌دا
 		</h2><p>
-		    <code style="background:rgba(0,255,0,.05);border-left-color:green">
+		    <code style="background:#efffdb;border-left-color:<?php echo $colors[0][0]; ?>">
             https://allekok.com/dev/tools/search.php?q=وشە&poet=ناوی شاعیر&pt=ئەژماری شاعیران&bk=ئەژماری کتێبەکان&pm=ئەژماری شێعرەکان&k=چۆنیەتی گەڕان
 		    </code>
 		    &bull; 
-		    q: 
+		    <i class="back-eee">q</i> : 
 		    ئەو وشەیەی کە دەتانهەوێ بەدووی دا بگەڕێن
 		    <br>
 		    &bull; 
-		    poet: 
+		    <i class="back-eee">poet</i> : 
 		    گەڕان لە شێعرەکانی ئەم شاعیرەدا. سەرنج بدەن کە دەبێ نێوی شاعیر کە لە لاپەڕەی یەکەمی ئاڵەکۆک‌دا هاتووە بنووسن.
 		    <br>
 		    &bull; 
-		    pt: 
+		    <i class="back-eee">pt</i> : 
 		    ئەژماری ئاکامەکان لە گەڕان بەنێو شاعیران‌دا
 		    <br>
 		    &bull; 
-		    bk: 
+		    <i class="back-eee">bk</i> : 
 		    ئەژماری ئاکامەکان لە گەڕان بەنێو کتێبەکان‌دا
 		    <br>
 		    &bull; 
-		    pm: 
+		    <i class="back-eee">pm</i> : 
 		    ئەژماری ئاکامەکان لە گەڕان بەنێوە شێعرەکان‌دا
 		    <br>
 		    &bull; 
-		    k: <br>
+		    <i class="back-eee">k</i> : <br>
 		    <span style="padding-right:1em;text-indent:0;display:block;">
 			- 
 			ئەگەر بنووسن 1، گەڕانەکان تەنیا لە سەرناوی شێعرەکان‌دا دەبێ.
@@ -263,11 +279,11 @@ include(ABSPATH . 'script/php/header.php');
             بۆ وەرگرتنی وەڵامی پرسیارەکەتان سەردانی ئەم لاپەڕە بکەنەوە.
         </small>
         <form id="frmQA" action="save.php" method="POST">
-            <button type="button" class='button' style="display: inline-block;padding: .7em;font-size: .45em;cursor: pointer;margin: 0 auto 5px 10px;background:#19e31b;color:#222;font-weight:bold;font-family:monospace;" onclick="make_code()">Code</button><span style="font-size:.45em">ئەگەر کۆدی تێدایە لە پرسیارەکەتان تکایە "Code" بەکار بێنن.
+            <button type="button" class='button' style="display: inline-block;padding: .7em;font-size: .45em;cursor: pointer;margin: 0 auto 5px 10px;background:<?php echo $colors[0][0]; ?>;color:#fff;font-weight:bold;font-family:monospace;" onclick="make_code()">Code</button><span style="font-size:.45em">ئەگەر کۆدی تێدایە لە پرسیارەکەتان تکایە "Code" بەکار بێنن.
             </span>
             <textarea id="QAtxt"></textarea>
             <div id="QAres"></div>
-            <button type="submit" class='button btn' style="background:#222; color:#19e31b;">ناردن</button>
+            <button type="submit" class='button btn'>ناردن</button>
         </form>
         
         <div>
@@ -315,7 +331,7 @@ include(ABSPATH . 'script/php/header.php');
              var x = new XMLHttpRequest();
              x.onload = function() {
                  if(this.responseText == "1") {
-                     t.innerHTML = "<span style='background:rgba(0,255,0,.08); color:green;display:block;padding:1em; font-size:.6em;'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
+                     t.innerHTML = "<span style='background:rgba(0,255,0,.08); color:<?php echo $colors[0][0]; ?>;display:block;padding:1em; font-size:.6em;'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
                  }
              }
              x.open("POST", "save.php");

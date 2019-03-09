@@ -44,17 +44,17 @@ include(ABSPATH . "script/php/header.php");
     </p>
     <p>
         <a href="http://www.bokan.de/laperekan/Edebiat/awat/Awat.htm" target='_blank' rel='noopener noreferrer nofollow' style="color:#820e0e;background-color:#fcc601;">رۆژهەڵات / بۆکان</a> &rsaquo; بۆ 
-        <a href="<?php echo _SITE; ?>poet:62/book:1" style="color:<?php echo $colors[18][3]; ?>;background-color:<?php echo $colors[18][2]; ?>;">دیوانی شاری دڵی، ئاوات</a>
+        <a href="<?php echo _SITE; ?>poet:62/book:1" style="color:<?php echo $colors[0][3]; ?>;background-color:<?php echo $colors[0][2]; ?>;">دیوانی شاری دڵی، ئاوات</a>
     </p>
     <p>
-        <a href="https://t.me/chapkagolibevena" target='_blank' rel='noopener noreferrer nofollow' style="color:#fff;background-color:#0088cc;">کەناڵی تێلێگرامی چەپکەگوڵ</a> و <a href="<?php echo _SITE; ?>poet:80" style="color:<?php echo $colors[14][1]; ?>;background-color:<?php echo $colors[14][0]; ?>;">کەماڵ ڕەحمانی</a> &rsaquo; بۆ
-        <a href="<?php echo _SITE; ?>poet:65/book:1" style="color:<?php echo $colors[21][3]; ?>;background-color:<?php echo $colors[21][2]; ?>;">دیوانی شەونمی، حەقیقی</a>
+        <a href="https://t.me/chapkagolibevena" target='_blank' rel='noopener noreferrer nofollow' style="color:#fff;background-color:#0088cc;">کەناڵی تێلێگرامی چەپکەگوڵ</a> و <a href="<?php echo _SITE; ?>poet:80" style="color:<?php echo $colors[0][1]; ?>;background-color:<?php echo $colors[0][0]; ?>;">کەماڵ ڕەحمانی</a> &rsaquo; بۆ
+        <a href="<?php echo _SITE; ?>poet:65/book:1" style="color:<?php echo $colors[0][3]; ?>;background-color:<?php echo $colors[0][2]; ?>;">دیوانی شەونمی، حەقیقی</a>
     </p>
     <p>
-        <a href="<?php echo _SITE; ?>poet:80" style="color:<?php echo $colors[14][1]; ?>;background-color:<?php echo $colors[14][0]; ?>;">کەماڵ ڕەحمانی</a>
+        <a href="<?php echo _SITE; ?>poet:80" style="color:<?php echo $colors[0][1]; ?>;background-color:<?php echo $colors[0][0]; ?>;">کەماڵ ڕەحمانی</a>
         &rsaquo;
         بۆ
-        <a href="https://allekok.com/pitew/poem-list.php?name=%DA%A9%DB%95%D9%85%D8%A7%DA%B5%20%DA%95%DB%95%D8%AD%D9%85%D8%A7%D9%86%DB%8C" style="color:#333;background-color:#eee;">
+        <a href="https://allekok.com/pitew/poem-list.php?name=%DA%A9%DB%95%D9%85%D8%A7%DA%B5%20%DA%95%DB%95%D8%AD%D9%85%D8%A7%D9%86%DB%8C" style="color:<?php echo $colors[0][3]; ?>;background-color:<?php echo $colors[0][2]; ?>;">
             نووسینی 
             <span style="color:#666; opacity:0;" id="pitew-stats">.....</span>
             شێعر لەسەر ئاڵەکۆک
@@ -82,7 +82,7 @@ include(ABSPATH . "script/php/header.php");
         <a href="http://telegram.me/Kurdish_Poetry" target='_blank' rel='noopener noreferrer nofollow' style="color:#fff;background-color:#0088cc;">کەناڵی تێلێگرامی شیعر و هۆنراوە</a>
         &rsaquo; 
         بۆ بەشێکی چووک لە 
-        <a href="/poet:82/book:1" style="color:<?php echo $colors[16][3]; ?>;background-color:<?php echo $colors[16][2]; ?>;">
+        <a href="/poet:82/book:1" style="color:<?php echo $colors[0][3]; ?>;background-color:<?php echo $colors[0][2]; ?>;">
             شێعرەکانی سافیی هیرانی
         </a>
     </p>
@@ -94,7 +94,7 @@ include(ABSPATH . "script/php/header.php");
         <a href="https://www.kurditgroup.org/fontconvertor" style="color:#26678c">ئامێری وەرگێڕی فۆنت 
         </a>
         کە بۆ نووسینەوەی بەشێک لە 
-        <a href="<?php echo _SITE; ?>poet:85/book:1" style="background:<?php echo $colors[19][2]; ?>; color:<?php echo $colors[19][3]; ?>">
+        <a href="<?php echo _SITE; ?>poet:85/book:1" style="background:<?php echo $colors[0][2]; ?>; color:<?php echo $colors[0][3]; ?>">
             دیوانی یانەی‌دڵانی، مدهۆش</a>  بەکار هاتووە.
     </p>
     <p>
@@ -107,7 +107,7 @@ include(ABSPATH . "script/php/header.php");
             ئامێری پەڵک کوردی‌نووس ۴.۰
         </a>
         کە بۆ نووسینەوەی بەشێک لە 
-        <a href="<?php echo _SITE; ?>poet:85/book:1" style="background:<?php echo $colors[19][2]; ?>; color:<?php echo $colors[19][3]; ?>">
+        <a href="<?php echo _SITE; ?>poet:85/book:1" style="background:<?php echo $colors[0][2]; ?>; color:<?php echo $colors[0][3]; ?>">
             دیوانی یانەی‌دڵانی، مدهۆش</a>  بەکار هاتووە.
     </p>
     <p style="text-align:center;">
