@@ -1,7 +1,7 @@
 <?php
 
 require_once("../../script/php/constants.php");
-require("../../script/php/functions.php");
+require(ABSPATH . "script/php/functions.php");
 
 $null = json_encode(null);
 
@@ -14,7 +14,7 @@ $db = "index";
 $w = filter_var($_pt, FILTER_VALIDATE_INT) ? "id={$_pt}" : "takh='{$_pt}' or profname='{$_pt}' or name='{$_pt}'";
 $q = "SELECT * FROM auth WHERE {$w}";
 
-require("../../script/php/condb.php");
+require(ABSPATH . "script/php/condb.php");
 
 if(mysqli_num_rows($query) !== 1)    die($null);
 

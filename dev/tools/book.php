@@ -48,13 +48,13 @@ if(filter_var($_bk, FILTER_VALIDATE_INT)) {
     }
     
     $res = [
-        "poetID" => $poet['id'],
-        "poet" => $poet['takh'],
-        "book" => $poet['bks'][$_bk-1],
-        "bookID" => $_bk,
-        "desc" => $poet['bksdesc'][$_bk-1],
-        "poems-num" => $pms_num,
-        "poems" => $poems,
+	"poetID" => $poet['id'],
+	"poet" => $poet['takh'],
+	"book" => $poet['bks'][$_bk-1],
+	"bookID" => $_bk,
+	"desc" => $poet['bksdesc'][$_bk-1],
+	"poems-num" => $pms_num,
+	"poems" => $poems,
     ];
     
     echo json_encode($res);
@@ -81,13 +81,13 @@ if(filter_var($_bk, FILTER_VALIDATE_INT)) {
     }
     
     $res = [
-        "poetID" => $poet['id'],
-        "poet" => $poet['takh'],
-        "book" => $poet['bks'][$_bk-1],
-        "bookID" => $_bk,
-        "desc" => $poet['bksdesc'][$_bk-1],
-        "poems-num" => $pms_num,
-        "poems" => $poems,
+	"poetID" => $poet['id'],
+	"poet" => $poet['takh'],
+	"book" => $poet['bks'][$_bk-1],
+	"bookID" => $_bk,
+	"desc" => $poet['bksdesc'][$_bk-1],
+	"poems-num" => $pms_num,
+	"poems" => $poems,
     ];
     
     echo json_encode($res);

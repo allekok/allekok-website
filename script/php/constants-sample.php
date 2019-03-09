@@ -1,8 +1,8 @@
 <?php
 
 /** Absolute path **/
-require_once("../../abspath.php");
-    
+define("ABSPATH", "/");
+
 /** Mysql configuration **/
 define("_HOST", "localhost");
 define("_USER","");

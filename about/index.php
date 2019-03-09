@@ -1,8 +1,8 @@
 <?php
 
 include_once("../script/php/constants.php");
-include_once(ABSPATH . "script/php/colors.php");
-include_once(ABSPATH . "script/php/functions.php");
+include_once("../script/php/colors.php");
+include_once("../script/php/functions.php");
 
 $title = _TITLE . "؟";
 $desc = $title;
