@@ -16,8 +16,7 @@ if( !empty($_POST['comm']) && strlen($_POST['comm']) < 2685 ) {
 
     $uri = "res/about.comments";
 
-    $rnd = mt_rand(1,(count($colors)-2));
-    $div = "<div style='background:{$colors[$rnd][2]};color:#000;'>";
+    $div = "<div style='background:{$colors[0][2]};color:#000;'>";
 
     if(filesize($uri)>0) {
 	$comment = $sign . $div . $comm . $header . "</div>";
