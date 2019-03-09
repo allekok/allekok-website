@@ -10,7 +10,8 @@ i{font-style:normal}
 .poet-pic-small{display:block;margin:auto;border-radius:50%;max-width:120px;box-shadow: 0 2px 5px -3px #444}
 .poetnm a{display:inline-block}
 .bth:hover{opacity:.8}
-.gallery img{width:60px;opacity:0.8;cursor:pointer}
+.gallery{margin:.5em 0 -1.3em}
+.gallery img{width:60px;height:60px;opacity:.8;cursor:pointer}
 .gallery img:hover{opacity:1}
 @keyframes tL{0%{opacity:0}
     100%{opacity:1}

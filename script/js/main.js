@@ -143,10 +143,7 @@ function poetImage (pID, callback) {
     
     client.open("get", url);
     client.onload = function() {
-	if(this.status == 404) {
-	    poetImage(0);
-	}
-	else {
+	if(this.status != 404) {
 	    callback(url);
 	}
     }
