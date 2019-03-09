@@ -1,6 +1,6 @@
 <?php
 
-include_once("../../constants.php");
+include_once("constants.php");
 function redirect($url, $statusCode = 303)
 {
     header('Location: ' . $url, true, $statusCode);

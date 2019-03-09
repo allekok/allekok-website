@@ -1,6 +1,6 @@
 <?php
 
-require_once("../../../../constants.php");
+require_once("../../constants.php");
 
 function make_page($path,$properties=[]) {
     if(empty($path)) return false;
@@ -8,7 +8,7 @@ function make_page($path,$properties=[]) {
     
     $header = "<?php
 
-include_once(\"../constants.php\");
+include_once(\"../script/php/constants.php\");
     include_once(ABSPATH . \"script/php/colors.php\");
 include_once(ABSPATH . \"script/php/functions.php\");
 

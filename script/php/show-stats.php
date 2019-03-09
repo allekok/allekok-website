@@ -1,7 +1,7 @@
 <?php
 header("Content-type:text/plain; charset=UTF-8");
 
-require("../../constants.php");
+require("constants.php");
 $f = fopen(ABSPATH . "stats.txt", "r");
 $cnt = $cnt_rl = 0;
 $today = $average = $google = [0, 0];

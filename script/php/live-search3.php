@@ -1,27 +1,27 @@
 <?php
 $timer = microtime(true);
 
-include_once('../../constants.php');
+include_once('constants.php');
 include_once('functions.php');
 
 
 $res_poet = "<div class='search-poet' id='poets'><h3 id='bhon'>شاعیر</h3>";
 $res_book = "<div class='search-book'><h3 id='bhon'>کتێب و بەرهەم</h3>";
 $res_hon = "<div class='search-hon'><h3 id='bhon'>شێعر</h3>";
-$q_sp = $_REQUEST['q'];
+$q_sp = @$_REQUEST['q'];
 $q1 = san_data($q_sp);
 
 if(!empty($q1)) {
     
     $qlen = strlen($q1);
     $q2 = san_data($q_sp,true);
-    $_selPT = filter_var($_GET['selPT'], FILTER_SANITIZE_STRING);
+    $_selPT = filter_var(@$_GET['selPT'], FILTER_SANITIZE_STRING);
     
-    $r_max = $_GET['pt'];
-    $e_max = $_GET['bk'];
-    $h_max = $_GET['pm'];
+    $r_max = @$_GET['pt'];
+    $e_max = @$_GET['bk'];
+    $h_max = @$_GET['pm'];
     
-    $_k = $_GET['k'];  // 1 => poem-name, 2 => poem, 3 => poem-name + poem 
+    $_k = @$_GET['k'];  // 1 => poem-name, 2 => poem, 3 => poem-name + poem 
     
     $db = 'search';
     $q = "SELECT id,name,takh,profname,hdesc,uri,rtakh FROM poets where len>={$qlen} order by rtakh ASC";
@@ -30,7 +30,7 @@ if(!empty($q1)) {
 
     if($r_max !== 0) {
 	$r = 0;
-	$r_max = !(filter_var($_GET['pt'], FILTER_VALIDATE_INT)===false) ? $_GET['pt'] : 5;
+	$r_max = !(filter_var($r_max, FILTER_VALIDATE_INT)===false) ? $r_max : 5;
 	
 	if($_selPT == "") {
 	    $s_poet = array();
@@ -150,7 +150,7 @@ if(!empty($q1)) {
     
     if($e_max !== 0) {
 	$e = 0;
-	$e_max = !(filter_var($_GET['bk'], FILTER_VALIDATE_INT)===false) ? $_GET['bk'] : 10;
+	$e_max = !(filter_var($e_max, FILTER_VALIDATE_INT)===false) ? $e_max : 10;
 
 	$q = ($_selPT == "") ? "select book,book_desc,poet_address,book_address,rbook,rtakh from books where len>={$qlen} order by rtakh ASC" : "select book,book_desc,poet_address,book_address,rbook,rtakh from books where len>={$qlen} and rtakh='{$_selPT}' order by rtakh ASC";
 	$query = mysqli_query($conn,$q);
@@ -236,7 +236,7 @@ if(!empty($q1)) {
     
     if($h_max !== 0) {
 	$h = 0;
-	$h_max = !(filter_var($_GET['pm'], FILTER_VALIDATE_INT)===false) ? $_GET['pm'] : 15;
+	$h_max = !(filter_var($h_max, FILTER_VALIDATE_INT)===false) ? $h_max : 15;
 
 	$q = ($_selPT == "") ? "SELECT name,hdesc,poet_address,book_address,poem_address,poem,poem_true,rbook,rname,rtakh FROM poems where len>={$qlen} ORDER BY Cipi DESC" : "SELECT name,hdesc,poet_address,book_address,poem_address,poem,poem_true,rbook,rname,rtakh FROM poems where len>={$qlen} and rtakh='{$_selPT}' ORDER BY Cipi DESC";
 	$query = mysqli_query($conn,$q);
@@ -276,6 +276,7 @@ if(!empty($q1)) {
 	    }
 	}
 
+	$res_hon2 = "";
 	if($h<$h_max) {
 	    if($_k !== "1") {
 		for($i=0; $i<count($s_poem); $i++) {

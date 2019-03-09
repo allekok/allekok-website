@@ -120,6 +120,7 @@ function san_data($in, $lastChance=false) {
     $in = str_replace($ar_signs, "", $in);
     $in = str_replace($from_nums, $to_nums, $in);
     $in = str_replace($other_letters,$kurdish_letters,$in);
+    $in = trim($in);
     
     if($lastChance) {
         $in = str_replace("h","",$in);

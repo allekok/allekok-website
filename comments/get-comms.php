@@ -3,7 +3,7 @@
 // output: json
 header("Content-Type: application/json; charset=UTF-8");
 
-include_once("../constants.php");
+include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/functions.php");
 
 // number of comments
