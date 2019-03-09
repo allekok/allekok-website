@@ -4,7 +4,7 @@ header("Content-Type: application/json; charset=UTF-8");
 
 if( !empty($_POST['comm']) && strlen($_POST['comm']) < 2685 ) {
     
-    require_once("colors.php");
+    require_once("../script/php/colors.php");
 
     $comm = filter_var($_POST['comm'],FILTER_SANITIZE_STRING);
 
