@@ -110,7 +110,7 @@ include(ABSPATH . 'script/php/header.php');
 		تکایە سەرنج بدەن:
 		<br>
 		&bull;
-		ئەگەر دەتانهەوێ ناوی شاعیر بنووسن، تکایە ئەو ناوەی کە لە لاپەڕەی یەکەمی ئاڵەکۆک بە ئادرسی "<a style="direction:ltr;text-align:left;" href='https://allekok.com/'>https://allekok.com</a>" بۆ هەر یەک لە شاعیران دابین کراوە، بنووسن.
+		ئەگەر دەتانهەوێ ناوی شاعیر بنووسن، تکایە ئەو ناوەی کە لە لاپەڕەی یەکەمی ئاڵەکۆک بە ئادرسی "<a style="direction:ltr;text-align:left;" href='https://allekok.com/'>allekok.com</a>" بۆ هەر یەک لە شاعیران دابین کراوە، بنووسن.
 		<br><br>
 		&bull;
 		ژمارەی شاعیر ئەم ژمارەیە کە لە ئادرسی لاپەڕەی شاعیردا بەم جۆرە نووسراوە: 
