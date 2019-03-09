@@ -1,6 +1,6 @@
 <?php
 
-include_once('../constants.php');
+include_once('../../../constants.php');
 include_once(ABSPATH . 'script/php/functions.php');
 
 $res_poet = "<div class='search-poet' id='poets'><h3 id='bhon'>شاعیر</h3>";

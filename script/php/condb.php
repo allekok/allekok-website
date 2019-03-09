@@ -4,7 +4,7 @@
 // $db = "database name without prefix(=_DB_PREFIX)"
 // $q = "sql query string"
 
-require_once("constants.php");
+require_once("../../constants.php");
 
 if(!isset($db)) $db=_DEFAULT_DB;
 

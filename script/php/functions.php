@@ -1,6 +1,6 @@
 <?php
 
-require_once("constants.php");
+require_once("../../constants.php");
 
 function num_convert($_num, $_from, $_to) {
     // convert numbers from (en,ar,ckb) > (en,ar,ckb)

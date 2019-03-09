@@ -1,6 +1,6 @@
 <?php
 
-require_once("../../script/php/constants.php");
+require_once("../../constants.php");
 require("../../script/php/functions.php");
 
 header("Content-type:application/json; charset=UTF-8");
