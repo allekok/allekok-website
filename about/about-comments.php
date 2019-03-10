@@ -11,12 +11,12 @@ if(file_exists($uri) and $fs = filesize($uri)) {
     $content = fread($f,$fs);
     $conts = explode("[comment]",$content);
     $conts = array_reverse($conts);
-    if( false == filter_var($_GET['num'], FILTER_VALIDATE_INT) )    $_GET['num'] = -1;    
+    if( false == filter_var(@$_GET['num'], FILTER_VALIDATE_INT) )    $_GET['num'] = -1;    
     $_n = 0;
     foreach($conts as $c) {
         if($_n == $_GET['num']) break 1;
         
-        if(!$_GET["plain"]) $c = str_replace("\n", "<br>", $c);
+        if(!@$_GET["plain"]) $c = str_replace("\n", "<br>", $c);
         
         echo $c;
         $_n++;

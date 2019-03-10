@@ -85,7 +85,7 @@ include(ABSPATH . 'script/php/header.php');
 	 padding:0 .5em;
      }
     </style>
-    <div style="max-width: 800px; margin:auto; padding:1em;line-height:2.3; text-align:justify;">
+    <div style="max-width: 850px; margin:auto; padding:1em;line-height:2.3; text-align:justify;">
         <p style="border-bottom:1px solid #ddd;padding-top:0;text-indent:0;">
 	    -  <a href="https://github.com/allekok/www.allekok.com/" style="display:inline-block;padding:.5em 0 .2em;">
 	    بۆ داگرتنی کۆدەکانی ئاڵەکۆک لێرە کرتە بکەن.
