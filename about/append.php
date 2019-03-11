@@ -1,11 +1,10 @@
 <?php
 
 header("Content-Type: application/json; charset=UTF-8");
-include_once("colors.php");
 
 if( !empty($_POST['comm']) && strlen($_POST['comm']) < 2685 ) {
     
-    require_once("../script/php/colors.php");
+    include_once("colors.php");
 
     $comm = filter_var($_POST['comm'],FILTER_SANITIZE_STRING);
 
