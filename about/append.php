@@ -1,6 +1,7 @@
 <?php
 
 header("Content-Type: application/json; charset=UTF-8");
+include_once("colors.php");
 
 if( !empty($_POST['comm']) && strlen($_POST['comm']) < 2685 ) {
     
@@ -15,8 +16,8 @@ if( !empty($_POST['comm']) && strlen($_POST['comm']) < 2685 ) {
     $header = "<i class='h'>{$date} +++++ {$ip}</i>";
 
     $uri = "res/about.comments";
-
-    $div = "<div style='background:{$colors[0][2]};color:#000;'>";
+    
+    $div = "<div style='background:{$colors[rand(0,21)][2]};color:#000;'>";
 
     if(filesize($uri)>0) {
 	$comment = $sign . $div . $comm . $header . "</div>";
