@@ -29,13 +29,14 @@ include(ABSPATH . 'script/php/header.php');
                 <small>
                     ئەگەر دەتوانهەوێ لە نووسینەوەی شێعری شاعیران‌دا یارمیتی‌مان بدەن، لێرە کرتە بکەن. ئەگەر دەقی شێعرێک‌و لەلایە کە لەسەر ئاڵەکۆک نییە، زۆر بەنرخ دەبێ ئەگەر لێرە کرتە بکەن و بۆمان بنێرن، تا دوای پێداچوونەوە بە نێوی خۆتان لەسەر ئاڵەکۆک دابندرێ.
                     <br>
-                    دەتوانن بۆ نووسینەوەی شێعر لەم دیوانانە کەڵک وەرگرن: 
-                    <a style='color:#00e;display:inline-block;' href="/pitew/pdfs.php">
-			داگرتنی دیوانی شاعیران
-                    </a>
+                    دەتوانن بۆ نووسینەوەی شێعر لەم دیوانانە کەڵک وەرگرن:
+	</a>
+
+        <a style='border-bottom:1px solid <?php echo $colors[0][0]; ?>;display:inline-block;color:#222;' href="/pitew/pdfs.php">
+	    داگرتنی دیوانی شاعیران
+        </a>
                 </small>
             </h3>
-        </a>
     </section><section class='pitewsec'>
         <a href="poet-image.php">
             <i class='material-icons'>image</i>

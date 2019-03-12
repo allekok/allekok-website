@@ -37,7 +37,11 @@ include(ABSPATH . 'script/php/header.php');
          padding:.2em 1em;
      }
      .eee a {
-         color:#00e;
+         color:#333;
+	 border-bottom:1px solid #ddd;
+     }
+     .eee a:hover {
+	 background:#eee;
      }
      .eee-nfo {
          font-size:.65em;

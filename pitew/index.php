@@ -28,35 +28,16 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
 	    نووسینی شێعر
 	</div>
 
-	<div style='font-size:.65em;'>
+	<div style='font-size:.65em;text-align:right;padding:0 1em 1em;'>
 	    دەتوانن بۆ نووسینەوەی شێعر ئەم دیوانانە بەکار بهێنن: 
-	    <a style='color:#00e;display:inline-block;' href="/pitew/pdfs.php">
+	    <a style='border-bottom:1px solid <?php echo $colors[0][0]; ?>;display:inline-block;padding:0;' href="/pitew/pdfs.php">
 		داگرتنی دیوانی شاعیران
 	    </a>
 	</div>
 
     </div>
 
-    <div style="color:#444; font-size:0.6em;opacity:0;" id="pitew-stats">stats</div>
-
     <script>
-     if(localStorage.getItem("contributor") !== null) {
-         var contri = JSON.parse(localStorage.getItem("contributor"));
-         var res = document.getElementById("pitew-stats");
-         xmlhttp = new XMLHttpRequest();
-         xmlhttp.onload = function() {
-             if(this.responseText !== "") {
-                 res.innerHTML = "جەنابتان تا ئێستا " +
-				 this.responseText + 
-				 "شێعرتان لەسەر ئاڵەکۆک نووسیوە.";
-                 
-                 res.style.animation = "tL 1.2s ease forwards";
-             }
-         }
-         
-         xmlhttp.open("get", `stats.php?contributor=${contri.name}`);
-         xmlhttp.send();
-     }
      function check() {
          var cntr = document.querySelector("#contributorTxt"),
 	     poet = document.querySelector("#poetTxt"),
@@ -128,10 +109,9 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
         <form id="frmComm" action="append.php" method="POST">
             
             <input type="text" onblur="check()" id="contributorTxt" name="contributor" style="font-size:0.7em;max-width:94%;min-width:94%;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
-            <p style="text-align: right;text-indent: 1em;padding: .5em 1em 0;font-size: .5em;color: #444;">
-                ئەو شێعرە بە نێوی خۆتان لەسەر ئاڵەکۆک دادەندرێ.
-            </p>
-            
+	    <div style="text-align: right;text-indent: 1em;padding: .5em 1em 0;font-size: .53em;color: #444;" id="pitew-stats">
+		ئەو شێعرە بە نێوی خۆتان لەسەر ئاڵەکۆک دادەندرێ.
+	    </div>            
             <div style="border-top:1px solid #ddd;margin:.8em 0;"></div>
             
             <input type="text" onblur="check()" id="poetTxt" name="poet" style="font-size:0.7em;max-width:94%;min-width:94%;" value="<?php echo $_poet1; ?>" placeholder="ناوی شاعیر *">
@@ -178,7 +158,24 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
 </div>
 
 <script>
- 
+ if(localStorage.getItem("contributor") !== null) {
+     var contri = JSON.parse(localStorage.getItem("contributor")),
+         res = document.getElementById("pitew-stats"),
+         xmlhttp = new XMLHttpRequest();
+     xmlhttp.onload = function() {
+         if(this.responseText !== "") {
+             res.innerHTML = "جەنابتان تا ئێستا " +
+			     this.responseText + 
+			     " شێعرتان لەسەر ئاڵەکۆک نووسیوەتەوە.";
+             
+             res.style.animation = "tL 1.2s ease forwards";
+         }
+     }
+     
+     xmlhttp.open("get", `stats.php?contributor=${contri.name}`);
+     xmlhttp.send();
+ }
+
  window.onload = function() {
      var contributor = localStorage.getItem("contributor");
      
@@ -193,16 +190,14 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
  
  function pitew() {
      
-     var contributor = document.querySelector("#contributorTxt");
-     var poet = document.querySelector("#poetTxt");
-     var poetDesc = document.querySelector("#poetDescTxt");
-     var book = document.querySelector("#bookTxt");
-     var poemName = document.querySelector("#poemNameTxt");
-     var poem = document.querySelector("#poemConTxt");
-     
-     var loader = document.querySelector("#commloader");
-     
-     var mess = document.querySelector("#message");
+     var contributor = document.querySelector("#contributorTxt"),
+	 poet = document.querySelector("#poetTxt"),
+	 poetDesc = document.querySelector("#poetDescTxt"),
+	 book = document.querySelector("#bookTxt"),
+	 poemName = document.querySelector("#poemNameTxt"),
+	 poem = document.querySelector("#poemConTxt"),
+	 loader = document.querySelector("#commloader"),
+	 mess = document.querySelector("#message");
      
      if(poet.value == "") {
          poet.focus();
@@ -262,17 +257,16 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
  
  clearBtn.addEventListener("click", function() {
      
-     var poet = document.querySelector("#poetTxt");
-     var book = document.querySelector("#bookTxt");
-     var poemName = document.querySelector("#poemNameTxt");
-     var poem = document.querySelector("#poemConTxt");
-     var poetDesc = document.querySelector("#poetDescTxt");
-     
-     var mess = document.querySelector("#message");
+     var poet = document.querySelector("#poetTxt"),
+	 book = document.querySelector("#bookTxt"),
+	 poemName = document.querySelector("#poemNameTxt"),
+	 poem = document.querySelector("#poemConTxt"),
+	 poetDesc = document.querySelector("#poetDescTxt"),
+	 mess = document.querySelector("#message");
      
      mess.innerHTML = poet.value = book.value = poemName.value = poem.value = poetDesc.value = "";
-     var txts = document.querySelectorAll("input, textarea");
-     var btns = document.querySelectorAll("button[type=submit]");
+     var txts = document.querySelectorAll("input, textarea"),
+	 btns = document.querySelectorAll("button[type=submit]");
      txts.forEach(function(e) {
          e.style.borderTopColor = "";
          e.style.background = "";
