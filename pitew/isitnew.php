@@ -5,7 +5,7 @@ header("Content-Type: application/json; charset=UTF-8");
 $new = 1;
 $_id = $img = 0;
 
-if(!empty(@$_GET['poet'])) {
+if(@$_GET['poet']) {
     
     $_poet = filter_var($_GET['poet'], FILTER_SANITIZE_STRING);
     

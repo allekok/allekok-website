@@ -27,19 +27,11 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
 	    <i style='vertical-align:middle;' class='material-icons'>note_add</i>
 	    نووسینی شێعر
 	</div>
-
-	<div style='font-size:.65em;text-align:right;padding:0 1em 1em;'>
-	    دەتوانن بۆ نووسینەوەی شێعر ئەم دیوانانە بەکار بهێنن: 
-	    <a style='border-bottom:1px solid <?php echo $colors[0][0]; ?>;display:inline-block;padding:0;' href="/pitew/pdfs.php">
-		داگرتنی دیوانی شاعیران
-	    </a>
-	</div>
-
     </div>
 
     <script>
      function check() {
-         var cntr = document.querySelector("#contributorTxt"),
+	 var cntri = document.querySelector("#contributorTxt"),
 	     poet = document.querySelector("#poetTxt"),
 	     txts = document.querySelectorAll("input, textarea"),
 	     btns = document.querySelectorAll("button[type=submit]");
@@ -58,6 +50,7 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
          }
 
          var xmlhttp = new XMLHttpRequest();
+	 xmlhttp.open("get", "isitnew.php?poet="+poet.value);
          xmlhttp.onload = function() {
              var res = JSON.parse(this.responseText);
              if(res.new === 1) {
@@ -65,7 +58,7 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
                  document.querySelector('#frmUpload').style.animation = "tL .5s forwards";
                  document.querySelector('#frmUpload').style.display = "block";
                  
-                 document.querySelector("#dsds").outerHTML = `<a id='dsds' href='poet-image.php?name=${document.querySelector('#contributorTxt').value}&poet=${document.querySelector('#poetTxt').value}' target='_blank' class='button' style='display:inline-block;cursor:pointer;font-size: 0.7em;padding:1em;'>
+                 document.querySelector("#dsds").outerHTML = `<a id='dsds' href='poet-image.php?name=${cntri.value}&poet=${poet.value}' target='_blank' class='button' style='display:inline-block;cursor:pointer;font-size: 0.7em;padding:1em;'>
                      هەڵبژاردنی وێنە
                  </a>`;
              } else {
@@ -99,13 +92,17 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
                  });
              }
          }
-         xmlhttp.open("get", "isitnew.php?name="+cntr.value+"&poet="+poet.value);
          xmlhttp.send();
      }
     </script>
     
     <div style="max-width: 800px;margin: auto;">
-
+	<div style='font-size:.53em;text-align:right;padding:0 1em 1em;'>
+	    دەتوانن بۆ نووسینەوەی شێعر ئەم دیوانانە بەکار بهێنن: 
+	    <a class='link' style='border-bottom:1px solid <?php echo $colors[0][0]; ?>;display:inline-block;padding:0;' href="/pitew/pdfs.php">
+		داگرتنی دیوانی شاعیران
+	    </a>
+	</div>
         <form id="frmComm" action="append.php" method="POST">
             
             <input type="text" onblur="check()" id="contributorTxt" name="contributor" style="font-size:0.7em;max-width:94%;min-width:94%;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
