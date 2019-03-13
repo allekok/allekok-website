@@ -1,8 +1,8 @@
 <?php
 
 include_once("../script/php/constants.php");
-include_once(ABSPATH . "script/php/colors.php");
-include_once(ABSPATH . "script/php/functions.php");
+include_once("../script/php/colors.php");
+include_once("../script/php/functions.php");
 
 $title = _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; نووسینی شێعر";
 $desc = "نووسینی شێعر لەسەر ئاڵەکۆک";
@@ -10,7 +10,7 @@ $keys = _KEYS;
 $t_desc = "";
 $color_num = 0;
 
-include(ABSPATH . 'script/php/header.php');
+include("../script/php/header.php");
 
 $_name1 = filter_var(@$_GET['name'], FILTER_SANITIZE_STRING);
 $_poet1 = filter_var(@$_GET['poet'], FILTER_SANITIZE_STRING);
@@ -28,7 +28,7 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
 	    نووسینی شێعر
 	</div>
     </div>
-
+    
     <script>
      function check() {
 	 var cntri = document.querySelector("#contributorTxt"),
@@ -49,9 +49,9 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
              return;
          }
 
-         var xmlhttp = new XMLHttpRequest();
-	 xmlhttp.open("get", "isitnew.php?poet="+poet.value);
-         xmlhttp.onload = function() {
+         var http = new XMLHttpRequest();
+	 http.open("get", "isitnew.php?poet="+poet.value);
+         http.onload = function() {
              var res = JSON.parse(this.responseText);
              if(res.new === 1) {
                  
@@ -92,7 +92,7 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
                  });
              }
          }
-         xmlhttp.send();
+         http.send();
      }
     </script>
     
@@ -158,8 +158,8 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
  if(localStorage.getItem("contributor") !== null) {
      var contri = JSON.parse(localStorage.getItem("contributor")),
          res = document.getElementById("pitew-stats"),
-         xmlhttp = new XMLHttpRequest();
-     xmlhttp.onload = function() {
+         http = new XMLHttpRequest();
+     http.onload = function() {
          if(this.responseText !== "") {
              res.innerHTML = "جەنابتان تا ئێستا " +
 			     this.responseText + 
@@ -169,8 +169,8 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
          }
      }
      
-     xmlhttp.open("get", `stats.php?contributor=${contri.name}`);
-     xmlhttp.send();
+     http.open("get", `stats.php?contributor=${contri.name}`);
+     http.send();
  }
 
  window.onload = function() {
@@ -209,12 +209,12 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
      
      var quest = `contributor=${contributor.value}&poet=${poet.value}&book=${book.value}&poemName=${poemName.value}&poem=${encodeURIComponent(poem.value)}&poetDesc=${encodeURIComponent(poetDesc.value)}`;
      
-     var xmlhttp = new XMLHttpRequest();
+     var http = new XMLHttpRequest();
      
-     xmlhttp.onreadystatechange = function() {
+     http.onreadystatechange = function() {
          if(this.readyState == 4 && this.status == 200) {
              
-             var res = JSON.parse(xmlhttp.responseText);
+             var res = JSON.parse(http.responseText);
              
              loader.style.display="none";
              
@@ -234,9 +234,9 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
          }
      }
      
-     xmlhttp.open("post", "append.php");
-     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-     xmlhttp.send(quest);
+     http.open("post", "append.php");
+     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+     http.send(quest);
      
      
  }

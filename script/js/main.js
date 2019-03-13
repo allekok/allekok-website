@@ -227,7 +227,7 @@ function search(e) {
 	sres=document.getElementById("search-res"),
 	s=document.getElementById('search'),
 	loading = "<div class='loader'></div>",
-	xmlhttp=new XMLHttpRequest(),
+	http=new XMLHttpRequest(),
 	C = e.keyCode,
 	noActionKeys = [16, 17, 18, 91, 20, 9, 93, 37, 38, 39, 40, 32, 224, 13];
     
@@ -250,12 +250,12 @@ function search(e) {
         sres.style.display="block";
         
         var request = `/script/php/live-search2.php?q=${str}`;
-        xmlhttp.open("get",request);
-        xmlhttp.onload=function() {
+        http.open("get",request);
+        http.onload=function() {
 	    sres.innerHTML = this.responseText;
 	    sbtn.innerHTML = "گەڕانی زۆرتر";
         };
-	xmlhttp.send();
+	http.send();
 
 	// the End of noActionKeys, IF....
     } else if(str == "") {
@@ -479,15 +479,15 @@ function ss(button) {
     var pt = href[0].split(":")[1],
 	bk = href[1].split(":")[1],
 	pm = href[2].split(":")[1],
-	xmlhttp = new XMLHttpRequest();
+	http = new XMLHttpRequest();
     
-    xmlhttp.open("get", `/script/php/poem-summary.php?pt=${pt}&bk=${bk}&pm=${pm}`);
-    xmlhttp.onload = function() {
+    http.open("get", `/script/php/poem-summary.php?pt=${pt}&bk=${bk}&pm=${pm}`);
+    http.onload = function() {
         button.innerHTML = "<i class=\"material-icons\" style=\"vertical-align: middle;\">keyboard_arrow_down</i>";
         var san_txt = this.responseText.replace(/\n/g, "<br>");
         button.parentNode.outerHTML += `<div style='background: #f8f8f8;padding: 1em;font-size: .55em;border:0;'>${san_txt}</div>`;
     }
-    xmlhttp.send();
+    http.send();
 }
 
 function filterp(needle="", context, lastChance=false) {
