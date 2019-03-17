@@ -1,5 +1,5 @@
 <?php
-// add poem's comments to database.
+// Catch comments from clients and save them into 'comments' table. 
 
 include_once("functions.php");
 

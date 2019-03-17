@@ -85,9 +85,9 @@
 	 var href = button.parentNode.querySelector("a").getAttribute("href");
 	 href = href.split("/");
 	 button.innerHTML = "<div class='loader' style='width:2.2em;height:2.2em'></div>";
-	 var pt = href[1].split(":")[1];
-	 var bk = href[2].split(":")[1];
-	 var pm = href[3].split(":")[1];
+	 var pt = href[1].split(":")[1],
+	     bk = href[2].split(":")[1],
+	     pm = href[3].split(":")[1];
 	 
 	 var xmlhttp = new XMLHttpRequest();
 	 xmlhttp.open("GET", `/script/php/poem-summary.php?pt=${pt}&bk=${bk}&pm=${pm}`);

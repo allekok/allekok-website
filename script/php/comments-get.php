@@ -1,5 +1,5 @@
 <?php
-// print comments as JSON
+// Get specified comments for each poem from 'comments' table. 
 include_once("functions.php");
 
 header("Content-Type: application/json; charset=UTF-8");
