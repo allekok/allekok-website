@@ -76,19 +76,8 @@ include(ABSPATH . "script/php/header.php");
                 وەشانی ۱.۰.۰
             </small>
             <small>
-                <a href="https://github.com/allekok/allekok-desktop/releases/download/v1.0.0/allekok.Setup.1.0.0.windows.amd64.exe">
-                    دابەزاندن بۆ ویندۆزی ۶۴بیتی
-                </a>
-                <br>
-                <a href="https://github.com/allekok/allekok-desktop/releases/download/v1.0.0/allekok.Setup.1.0.0.windows.i386.exe">
-                    دابەزاندن بۆ ویندۆزی ۳۲بیتی
-                </a>
-                <br>
-                <p style="text-align:right; font-size:.85em;text-indent:1em;padding-top:1em;">
-                    ئەگەر دڵنیا نین کە ویندۆزەکەتان ۶۴ یان ۳۲ بیتیە، ئەو وەشانەی خوارەوە بەکار بهێنن.
-                </p>
-                <a href="https://github.com/allekok/allekok-desktop/releases/download/v1.0.0/allekok.Setup.1.0.0.windows.amd64-i386.exe">
-                    دابەزاندن بۆ ویندۆزی ۶۴و۳۲بیتی
+                <a href="https://allekok.github.io/allekok-desktop/dist/allekok-latest.exe">
+                    دابەزاندن بۆ ویندۆز
                 </a>
                 <br>
                 <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/allekok/allekok-desktop/releases/tag/v1.0.0" style="color:inherit;font-size:inherit;margin-top:1.5em;display:inline-block">
@@ -105,12 +94,8 @@ include(ABSPATH . "script/php/header.php");
                 وەشانی ۱.۲.۱
             </small>
             <small>
-                <a href="https://github.com/allekok/allekok-desktop/releases/download/v1.2.1/allekok-1.2.1-x86_64.AppImage">
-                    دابەزاندن بۆ لینوکسی ۶۴بیتی
-                </a>
-                <br>
-                <a href="https://github.com/allekok/allekok-desktop/releases/download/v1.0.0/allekok-1.0.0-linux-i386.AppImage">
-                    دابەزاندن بۆ لینوکسی ۳۲بیتی
+                <a href="https://allekok.github.io/allekok-desktop/dist/allekok-latest.AppImage">
+                    دابەزاندن بۆ لینوکس
                 </a>
                 <p style="text-align:right; font-size:.85em;text-indent:1em;padding-top:2em;">
                     بۆ وەشانەکانی تر سەردانی لینکی خوارەوە بکەن.
