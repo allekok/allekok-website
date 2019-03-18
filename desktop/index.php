@@ -80,7 +80,7 @@ include(ABSPATH . "script/php/header.php");
                     دابەزاندن بۆ ویندۆز
                 </a>
                 <br>
-                <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/allekok/allekok-desktop/releases/tag/v1.0.0" style="color:inherit;font-size:inherit;margin-top:1.5em;display:inline-block">
+                <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/allekok/allekok-desktop/releases/tag/v1.0.0" style="color:inherit;font-size:.9em;margin-top:1em;display:inline-block">
                     وەشانەکانی تر...
                 </a>
             </small>
@@ -97,10 +97,8 @@ include(ABSPATH . "script/php/header.php");
                 <a href="https://allekok.github.io/allekok-desktop/dist/allekok-latest.AppImage">
                     دابەزاندن بۆ لینوکس
                 </a>
-                <p style="text-align:right; font-size:.85em;text-indent:1em;padding-top:2em;">
-                    بۆ وەشانەکانی تر سەردانی لینکی خوارەوە بکەن.
-                </p>
-                <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/allekok/allekok-desktop/releases/" style="color:inherit;font-size:inherit;display:inline-block">
+		<br>
+                <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/allekok/allekok-desktop/releases/" style="color:inherit;font-size:.9em;display:inline-block;margin-top:1em;">
                     وەشانەکانی تر...
                 </a>
             </small>
