@@ -111,21 +111,20 @@ include(ABSPATH . "script/php/header.php");
     </style>
     
     <main style="font-size:.65em;text-align:justify;padding:1em;">
-	<div class='loader' style="border-top-color:<?php echo $colors[0][0]; ?>;"></div>
+	<?php
+	echo file_get_contents("manual.html");
+	?>
     </main>
     
-    <script src="https://cdn.rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js"></script>
     <script>
-     var converter = new showdown.Converter(),
-         text = `<?php echo file_get_contents("howto.md"); ?>`,
-         html = converter.makeHtml(text);
-     document.querySelector("main").innerHTML = html;
-     var imgs = document.querySelectorAll("img");
-     imgs.forEach( function (e) {
-         e.onclick = function() {
-             window.location = e.src;
-         } 
-     });
+     window.onload = function() {
+	 var imgs = document.querySelector("main").querySelectorAll("img");
+	 imgs.forEach( function (e) {
+             e.onclick = function() {
+		 window.location = e.src;
+             } 
+	 });
+     }
     </script>
     
     <div style="border-top:1px solid #ddd;margin:1em 0 0.8em;"></div>
