@@ -112,8 +112,8 @@ if($color_num!=0) {
 		<i class="material-icons seartog-i"<?php if(!$color_num)    echo " style='color:red'"; ?>>bookmark</i>
 	    </div>
 
-	    <a href="<?php echo _SITE; ?>"><h1 style="color:<?php echo "#555"; ?>">ئاڵەکۆک</h1></a>
-	    <span style='color:#555'><?php echo($t_desc) ?></span>
+	    <a href="<?php echo _SITE; ?>"><h1 style="color:#222"><?php echo _TITLE; ?></h1></a>
+	    <span style='color:#222'><?php echo($t_desc) ?></span>
 	    
 	</header>
 
