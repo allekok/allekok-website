@@ -11,9 +11,9 @@ include("condb.php");
 ?>
 
 <div id='poets'>
-    <div style="animation:tL .5s;padding:0 0 1em;">
+    <div style="padding:0 0 .5em;">
         <?php if(isset($_GET['new'])) { ?>
-            <span style="display: block;font-size: .55em;color: #444;padding: 1em;background-color: #f3f3f3;margin-top: 1em;">
+            <span style="display: block;font-size: .55em;color: #444;padding: 1em;background-color: #f9f9f9;">
 		مەبەست لە شاعیرانی نوێ، ئەو شاعیرانەن کە لە ژیان دا ماون.
             </span>
         <?php } ?>
@@ -28,9 +28,9 @@ include("condb.php");
 	mysqli_close($conn);
 	?>
 	
-    </div><div style="padding: 1em 0 0;border-top: 2px dashed #eee;">
+    </div><div style="padding: .5em 0 0;">
         <?php if(isset($_GET['new'])) { ?>
-            <a class='button' style='display: inline-block;margin: 0 0 0 1em;' href="/">شاعیرانی کۆچ‌کردوو</a><?php } else { ?><a class='button' style='display: inline-block;margin: 0 0 0 1em;' href="/?new">شاعیرانی نوێ</a><?php } ?><a class='button' style='display: inline-block;margin: 0 1em 0 0;' href="/poet:73">بەیتی کوردی</a>
+            <a class='button' style='display: inline-block;margin: 0 0 0 1em;padding:.5em .8em' href="/">شاعیرانی کۆچ‌کردوو</a><?php } else { ?><a class='button' style='display: inline-block;margin: 0 0 0 1em;padding:.5em .8em' href="/?new">شاعیرانی نوێ</a><?php } ?><a class='button' style='display: inline-block;margin: 0 1em 0 0;padding:.5em .8em' href="/poet:73">بەیتی کوردی</a>
     </div>
 
 </div>

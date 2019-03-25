@@ -200,7 +200,7 @@ function toggle_Like() {
     
     for(var a in favs) {
         clrNum = color_num(favs[a].poetID);        
-        favsS += `<a class='link' style='border-bottom:1px solid #eee' href='/${favs[a].url}'><img class='PI${favs[a].poetID}' src='/style/img/poets/profile/profile_0.jpg' style='display:inline-block;vertical-align:middle;width:2.5em;border-radius:100%;'> <span style='font-size:.85em; color:#555;'>${favs[a].poetName} &rsaquo; ${favs[a].book} &rsaquo;</span> ${favs[a].poem} </a>`;
+        favsS += `<a class='link' style='border-bottom:1px solid #eee' href='/${favs[a].url}'><img class='PI${favs[a].poetID}' src='/style/img/poets/profile/profile_0.jpg' style='display:inline-block;vertical-align:middle;width:3em;border-radius:50%;margin-left:.25em'> <span style='font-size:.85em; color:#555;'>${favs[a].poetName} &rsaquo; ${favs[a].book} &rsaquo;</span> ${favs[a].poem} </a>`;
 	if(imgs.indexOf(favs[a].poetID) === -1)
 	    imgs.push(favs[a].poetID);
     }

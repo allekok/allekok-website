@@ -66,7 +66,7 @@
 		 echo "|<i id='extlnkico' style='cursor:pointer;color: #444;vertical-align: middle;padding:0 .2em;font-size: 1.8em;height: .8em;' class='material-icons' title='سەبارەت بە شێعر'>more_horiz</i>";
 
 		 if(! ($ath==10 && $bk==1 && $row[1]['id']==1) ) { ?><button id='fav-sec' class='fav' style="background:none; font-size:1.8em; box-shadow:none; border:0;float:left;padding-left:5px;padding-top:.25em;">
-            <i class='material-icons' id='like-icon' style='color: <?php echo $colors[$color_num][0]; ?>;vertical-align: top;font-size: 1.3em;'>bookmark_border</i>
+            <i class='material-icons' id='like-icon' style='color: <?php echo $colors[$color_num][0]; ?>;vertical-align: top;font-size: 1.25em'>bookmark_border</i>
 		 </button>
         <?php } ?>
     </div>
@@ -88,7 +88,7 @@
 	    <i class='material-icons' style="vertical-align: middle;">translate</i>
 	    <button class='button' type="button" id="convertToLatBtn" style="font-size: .9em;margin-right: .5em;">Elfubêy Latîn</button>
 	</div>
-	<div style='text-align: center;border-top: 2px dashed #e1e1e1;padding: .5em 0;'>
+	<div style='text-align: center;border-top:1px solid #eee;padding: .5em 0;'>
 	    <form id="wordFrm">
 		<section style="display: inline-block;width: 35%;font-size: .9em;text-align: right;">
 		    گەڕان بۆ واتای وشە : 

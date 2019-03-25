@@ -7,7 +7,7 @@ input[type=text], textarea, button{-webkit-appearance:none;appearance:none;outli
 input[type=text], textarea{padding:1em;text-align:right;border-top:3px solid #ddd;display:block;margin:auto;box-shadow:0 5px 10px -5px #eee}
 input[type=text]:focus, textarea:focus{background:#f5f5f5}
 i{font-style:normal}
-.poet-pic-small{display:block;margin:auto;border-radius:50%;max-width:120px;box-shadow: 0 2px 5px -3px #444}
+.poet-pic-small{display:block;margin:auto;border-radius:50%;max-width:120px;border:1px solid #eee}
 .poetnm a{display:inline-block}
 .bth:hover{opacity:.8}
 .gallery{margin:.5em 0 -1.3em}
@@ -31,7 +31,7 @@ i{font-style:normal}
 }
 #tL-res{padding:15px 0 0;box-shadow:0 20px 24px -15px #ccc;position:relative;font-size:0.58em;max-width:800px;margin:auto}
 #tL-res-res{font-size:inherit}
-#tL-res a{text-align:right;padding:1em;display:block;font-size:inherit}
+#tL-res a{text-align:right;padding:.5em 1em;display:block;font-size:inherit}
 #tL-res a:hover{opacity:0.75}
 .sli{display:inline-block;vertical-align:top;color:#444;border:0;margin:.5em auto 0;width:96%}
 .prev,.next{font-size:inherit;color:inherit;display:inline-block;width:50%}
@@ -65,28 +65,28 @@ a:hover{text-decoration:none}
 .ng,.nr{font-size:.5em;padding:1em .5em;display:block}
 .ng{background:#cfc}
 .nr{background:rgba(255,0,0,.1)}
-.tt{margin:-1.5em 0 1em;opacity:0;background:#f0f0f0;color:#666;font-size:.65em;padding:5px 0;display:none;animation:tooltip .2s forwards}
+.tt{margin:-2em 0 1em;opacity:0;background:#f6f6f6;color:#666;font-size:.65em;padding:5px 0;display:none;animation:tooltip .1s forwards}
 .bk-comp:hover{opacity:.4}
-.button{background:#f3f3f3;color:#444;box-shadow:0 2px 3px -2px #ddd;border-radius:2px;padding:1em;font-size:.58em}
+.button{background:#f6f6f6;color:#444;box-shadow:0 2px 3px -2px #ddd;border-radius:2px;padding:1em;font-size:.58em}
 .button:hover{background:#fff;color:#000}
 .button i{font-size:1.3em;height:.8em;vertical-align:middle}
 .material-icons{font-family:'Material Icons';direction:ltr;line-height:1;display:inline-block;-moz-font-feature-settings:'liga';-moz-osx-font-smoothing:grayscale}
 .stats-min{font-size:.65em;color:#666}
 .sub-num{vertical-align:bottom}
 header a:hover,section a:hover,.psec:hover{opacity:.85}
-header{padding:.5em 0;text-align:center;max-width:1200px; margin:auto; position:relative}
+header{padding:.3em 0;text-align:center;max-width:1200px; margin:auto; position:relative}
 header a,header h1,header h2{color:inherit}
 header a{display:inline-block}
-header a h1{font-size:1.2em}
-header h2{font-size:.65em;margin-top:-.5em}
+header a h1{font-size:1.25em}
+header h2{font-size:.58em;margin-top:-1em;color:#444;}
 #poets{padding:0;text-align:center;margin:0 auto;max-width:1200px}
-.psec{width: 22.5%;display:inline-block;vertical-align:top;max-width: 115px;color:#444;margin: .5em 1.25% .1em}
+.psec{width: 22.5%;display:inline-block;vertical-align:top;max-width: 115px;color:#333;margin: .5em 1.25% .1em}
 .psec h3,.psec a{color:inherit}
 .psec h3{font-size:.63em;white-space:nowrap;overflow:hidden}
-.psec img{border-radius:50%;width:100%;height:100%;display:block;box-shadow: 0 2px 5px -3px #444}
+.psec img{border-radius:50%;width:100%;height:100%;display:block;border:1px solid #eee}
 .poet{margin-bottom:2em}
-.poetimg{max-width:460px;margin:0 auto;width:65%}
-.poetimg .pro-460{width:100%;border-radius:50%;display:block;box-shadow:0 -1px 5px -2px #666}
+.poetimg{max-width:450px;margin:0 auto;width:90%}
+.poetimg .pro-460{width:100%;border-radius:50%;display:block;border:1px solid #eee}
 .poetnm{font-size:.7em;padding:1em;border-bottom:1px solid #eee}
 .poetdesc{width:100%;max-width:500px;margin:0 auto 45px;text-align:right}
 .poetdesc p{text-align:right;font-size:.55em}
@@ -136,7 +136,7 @@ header h2{font-size:.65em;margin-top:-.5em}
 .m, .b span, .n span, .m span, .m1 span, .m2 span, .m3 span{font-size:inherit}
 .m{padding:3px 13px 3px 7px;text-align:right}
 .cf{background:#f3f3f3}
-.loader{border:2px solid #eee;border-top:2px solid #666;border-radius:50%;width:5rem;height:5rem;animation:spin .4s linear infinite;margin:auto}
+.loader{border:2px solid #eee;border-top:2px solid;border-radius:50%;width:5rem;height:5rem;animation:spin .4s linear infinite;margin:auto}
 .fontsize{font-size:.65em;padding:.5em 0;text-align:right;border-bottom:1px solid #eee;color:#aaa}
 .fontsize i{font-size:inherit}
 .fontsize button{background:#f7f7f7;color:#444;box-shadow:0 2px 3px -2px #ccc;display:inline-block;border-radius:2px}
@@ -148,9 +148,9 @@ header div:hover{opacity:.6}
 #sp a:hover{background:#f3f3f3}
 #Acomms div{font-size:.8em;text-align:justify;padding:.75em 1em .4em;margin-bottom: .4em}
 .h{direction:rtl;display:block;color:#777;font-size:.63em;text-align:left;font-family:mono;line-height:normal;margin-top:1em}
-.link{border-bottom:1px solid #ccc;padding:.5em}
-.link:hover{background-color:#eee;border-bottom-color:#eee}
-.seartog {position:absolute;left:.4em;cursor:pointer;top:1em}
+.link{border-bottom:1px solid #eee;padding:.5em}
+.link:hover{background-color:#eee}
+.seartog {position:absolute;left:.4em;cursor:pointer;top:1.2em}
 .seartog-i {font-size:1.6em}
 @keyframes concentrate{
     0% { border-radius:0 0 15% 15%;box-shadow: 0 8px 2px -8px #ccc; }
@@ -163,7 +163,7 @@ header div:hover{opacity:.6}
     100% { border-radius:0 0 15% 15%;box-shadow: none}
 }
 .ptr{margin-top:1em;padding: 0.75em 0 0.1em;font-size:1em}
-.bk-comp{vertical-align:middle;text-shadow:0 0 3px #fff;font-size:.8em;font-weight:bold;height:.4em;padding-right:.2em;cursor:pointer}
+.bk-comp{vertical-align:middle;height:.7em;padding-right:.1em;cursor:pointer}
 .ptrh{font-size:.58em;padding-bottom:.9em}
 .d{font-size:.8em;color:#333;padding:1em}
 .dltr{direction:ltr;text-align:left}
@@ -178,7 +178,7 @@ header div:hover{opacity:.6}
     #search-key{width:80%}
     #poets{padding:.5em .2em}
 }
-footer{padding:1.5em 0;width:100%;font-size:.56em;text-align:center}
+footer{padding:1em 0;width:100%;font-size:.56em;text-align:center}
 footer a{display:inline-block;color:#555;padding:.5em 0;margin:0 .3em;border-bottom:1px solid #ddd}
 footer a:hover{border-bottom:none;background:#eee}
 footer i{font-size:1.4em}

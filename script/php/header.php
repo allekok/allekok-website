@@ -21,7 +21,7 @@ if($color_num!=0) {
 	<script>
          if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', {scope: '/'});
 	</script>
-	<link rel='stylesheet' href='/style/css/main.css?v12' />
+	<link rel='stylesheet' href='/style/css/main.css?v13' />
 	<title>
 	    <?php echo($title); ?>
 	</title>
@@ -82,6 +82,9 @@ if($color_num!=0) {
 	 .bk-comp {
              color:<?php echo($colors[$color_num][0]) ?>;
 	 }
+	 .loader {
+             border-top-color:<?php echo($colors[$color_num][0]) ?>;
+	 }
 	</style>
 	<script>
          var uritg = "<?php echo _SITE; ?>";
@@ -113,7 +116,7 @@ if($color_num!=0) {
 	    </div>
 
 	    <a href="<?php echo _SITE; ?>"><h1 style="color:#222"><?php echo _TITLE; ?></h1></a>
-	    <span style='color:#222'><?php echo($t_desc) ?></span>
+	    <?php echo($t_desc) ?>
 	    
 	</header>
 
