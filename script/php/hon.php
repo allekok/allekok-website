@@ -63,7 +63,7 @@
         </button>|<button id='copy-sec' class='copy' style="margin:0 0.4em;font-size:.83em;padding:.85em .3em;">
             <i style='vertical-align:middle;' class='material-icons'>content_copy</i> کۆپی کردن 
         </button><?php 
-		 echo "|<i id='extlnkico' style='cursor:pointer;color: #444;vertical-align: middle;padding:0 .2em;font-size: 1.8em;height: .8em;' class='material-icons' title='سەبارەت بە شێعر'>more_horiz</i>";
+		 echo "|<i id='extlnkico' style='cursor:pointer;color: #444;vertical-align: middle;padding:0 .2em;font-size: 1.8em;height: .8em;' class='material-icons' title='ئامێرەکانی‌تر'>more_horiz</i>";
 
 		 if(! ($ath==10 && $bk==1 && $row[1]['id']==1) ) { ?><button id='fav-sec' class='fav' style="background:none; font-size:1.8em; box-shadow:none; border:0;float:left;padding-left:5px;padding-top:.25em;">
             <i class='material-icons' id='like-icon' style='color: <?php echo $colors[$color_num][0]; ?>;vertical-align: top;font-size: 1.25em'>bookmark_border</i>
@@ -84,7 +84,19 @@
             echo "</div>";
 	}
 	?>
-	<div style="padding: 1.1em 0;">
+	<div>
+	    <i class='material-icons' style='vertical-align:middle'>code</i>
+	    <?php
+            echo "<a class='link' href='/dev/tools/poem.php?poet=$ath&book=$bk&poem=$id&html' title='{$row[1]['name']}' target='_blank' rel='noopener noreferrer nofollow' style='display:inline-block;'>وەشانی <i style='font-family:mono'>json</i></a>";
+	    ?>
+	</div>
+	<div>
+	    <i class='material-icons' style='vertical-align:middle'>insert_drive_file</i>
+	    <?php
+            echo "<a class='link' href='/dev/tools/poem-plain.php?poet=$ath&book=$bk&poem=$id' title='{$row[1]['name']}' target='_blank' rel='noopener noreferrer nofollow' style='display:inline-block;'>وەشانی <i style='font-family:mono'>plain/text</i></a>";
+	    ?>
+	</div>
+	<div style="margin: .55em 0 1.1em;padding-top:.55em;border-top:1px solid #eee">
 	    <i class='material-icons' style="vertical-align: middle;">translate</i>
 	    <button class='button' type="button" id="convertToLatBtn" style="font-size: .9em;margin-right: .5em;">Elfubêy Latîn</button>
 	</div>
