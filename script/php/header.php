@@ -1,17 +1,19 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <?php
 // statistics
-$f = fopen("stats.txt", "a");
 $dttd = date("Y m d h:i:sa");
-$reff = empty($_SERVER['HTTP_REFERER']) ? "" : $_SERVER['HTTP_REFERER'];
-fwrite($f, "{$_SERVER['REMOTE_ADDR']}\t{$dttd}\t{$_SERVER['REQUEST_URI']}\t{$reff}\n");
+$reff = filter_var(@$_SERVER['HTTP_REFERER'],FILTER_SANITIZE_STRING);
+$requri = filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_STRING);
+$remIP = filter_var($_SERVER['REMOTE_ADDR'], FILTER_SANITIZE_STRING);
+$f = fopen("stats.txt", "a");
+fwrite($f, "{$remIP}\t{$dttd}\t{$requri}\t{$reff}\n");
 fclose($f);
 
 if(!isset($color_num)) {
     $color_num = 0;
 }
-if($color_num!=0) {
-    $ogimg = _SITE . get_poet_image($ath, "profile",0);
+if(isset($ath)) {
+    $ogimg = _SITE.get_poet_image($ath, "profile",0);
 } else {
     $ogimg = _SITE.get_poet_image(0, "pro-460",0);
 }
@@ -37,7 +39,7 @@ if($color_num!=0) {
 	<meta property="og:title" content="<?php echo($desc); ?>" />
 	<meta property="og:description" content="" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="<?php echo("https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"); ?>" />
+	<meta property="og:url" content="<?php echo "https://".$_SERVER["HTTP_HOST"].$requri; ?>" />
 	<meta property="og:image" content="<?php echo($ogimg); ?>" />
 	
 	<style>
@@ -47,13 +49,7 @@ if($color_num!=0) {
 	 .ptr {
              background:<?php echo($colors[$color_num][2]) ?>;
 	 }
-	 <?php if($color_num) { ?>
-	 @keyframes ll {
-             0% {text-shadow:none;}
-             20% {text-shadow:0 0 10px <?php echo $colors[$color_num][0]; ?>;}
-             50% {text-shadow:0 0 20px <?php echo $colors[$color_num][0]; ?>;}
-             100% {text-shadow:none;}
-	 }
+	 <?php if(isset($ath)) { ?>
 	 sup {
              color:<?php echo($colors[$color_num][3]) ?>;
              padding:0 2px;
@@ -111,8 +107,8 @@ if($color_num!=0) {
 		    <i class="material-icons seartog-i">search</i>
 		</div>
 	    <?php } ?>
-	    <div class='seartog' role='button' id="tL" style="right:.3em;left:auto;display:none;">
-		<i class="material-icons seartog-i"<?php if(!$color_num)    echo " style='color:red'"; ?>>bookmark</i>
+	    <div class='seartog' role='button' id="tL" style="right:.3em;left:auto;display:none">
+		<i class="material-icons seartog-i" style="color:red">bookmark</i>
 	    </div>
 
 	    <a href="<?php echo _SITE; ?>"><h1 style="color:#222"><?php echo _TITLE; ?></h1></a>
