@@ -137,6 +137,19 @@ function color_num (pID) {
     return 0;
 }
 
+function poetImage (pID, callback) {
+    var client = new XMLHttpRequest(),
+	url = `/style/img/poets/profile/profile_${pID}.jpg`;
+    
+    client.open("get", url);
+    client.onload = function() {
+	if(this.status != 404) {
+	    callback(url);
+	}
+    }
+    client.send();
+}
+
 function toggle_search() {
     var s = document.getElementById('search'),
 	sk = document.getElementById("search-key"),
@@ -184,11 +197,9 @@ function toggle_Like() {
     
     var favs=get_bookmarks(),
 	favsS="",
-	clrNum=0,
 	imgs=[];
     
     for(var a in favs) {
-        clrNum = color_num(favs[a].poetID);        
         favsS += `<a class='link' style='border-bottom:1px solid #eee' href='/${favs[a].url}'><img class='PI${favs[a].poetID}' src='/style/img/poets/profile/profile_0.jpg' style='display:inline-block;vertical-align:middle;width:3em;border-radius:50%;margin-left:.25em'> <span style='font-size:.85em; color:#555;'>${favs[a].poetName} &rsaquo; ${favs[a].book} &rsaquo;</span> ${favs[a].poem} </a>`;
 	if(imgs.indexOf(favs[a].poetID) === -1)
 	    imgs.push(favs[a].poetID);
@@ -201,15 +212,13 @@ function toggle_Like() {
     tL.style.opacity = "1";
 
     imgs.map(function(pID) {
-	document.getElementById("tL-res-res").
-		 querySelectorAll(`.PI${pID}`).
-		 forEach(function(item) {
-		     item.src = `/style/img/poets/profile/profile_${pID}.jpg`;
-		     item.onerror = function() {
-			 item.src = `/style/img/poets/profile/profile_0.jpg`;
-		     }
-
-		 });
+	poetImage(pID, function(url) {
+	    document.getElementById("tL-res-res").
+		     querySelectorAll(`.PI${pID}`).
+		     forEach(function(item) {
+			 item.src = url;
+		     });
+	});
     });
 }
 
