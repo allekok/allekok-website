@@ -87,18 +87,19 @@
 	<div>
 	    <i class='material-icons' style='vertical-align:middle'>code</i>
 	    <?php
-            echo "<a class='link' href='/dev/tools/poem.php?poet=$ath&book=$bk&poem=$id&html' title='{$row[1]['name']}' target='_blank' rel='noopener noreferrer nofollow' style='display:inline-block;'>وەشانی <i style='font-family:mono'>json</i></a>";
+            echo "<a class='link' href='/dev/tools/poem.php?poet=$ath&book=$bk&poem=$id&html' title='{$row[1]['name']}' target='_blank' rel='noopener noreferrer nofollow' style='display:inline-block;'>وەشانی <i style='font-family:monospace;font-size:.75em;color:#666;font-weight:bold;'> JSON </i></a>";
 	    ?>
 	</div>
 	<div>
 	    <i class='material-icons' style='vertical-align:middle'>insert_drive_file</i>
 	    <?php
-            echo "<a class='link' href='/dev/tools/poem-plain.php?poet=$ath&book=$bk&poem=$id' title='{$row[1]['name']}' target='_blank' rel='noopener noreferrer nofollow' style='display:inline-block;'>وەشانی <i style='font-family:mono'>plain/text</i></a>";
+            echo "<a class='link' href='/dev/tools/poem-plain.php?poet=$ath&book=$bk&poem=$id' title='{$row[1]['name']}' target='_blank' rel='noopener noreferrer nofollow' style='display:inline-block;'>وەشانی <i style='font-family:monospace;font-size:.75em;color:#666;font-weight:bold'> TEXT </i></a>";
 	    ?>
 	</div>
-	<div style="margin: .55em 0 1.1em;padding-top:.55em;border-top:1px solid #eee">
-	    <i class='material-icons' style="vertical-align: middle;">translate</i>
-	    <button class='button' type="button" id="convertToLatBtn" style="font-size: .9em;margin-right: .5em;">Elfubêy Latîn</button>
+	<div style="margin:1.1em 0;padding-top:1.1em;border-top:1px solid #eee">
+	    <i class='material-icons' style="vertical-align: middle;">translate</i> 
+	     گۆڕینی ئەلفوبێ: 
+	    <button class='button' type="button" id="convertToLatBtn" style="font-size:.85em;margin-right:.5em;letter-spacing:.5px">Elfubêy Latîn</button>
 	</div>
 	<div style='text-align: center;border-top:1px solid #eee;padding: .5em 0;'>
 	    <form id="wordFrm">
@@ -126,8 +127,6 @@
 		 }
 		 #wordMore a {
                      text-align: center;
-                     background: <?php echo $colors[$color_num][0]; ?>;
-                     color: <?php echo $colors[$color_num][1]; ?>;
                      padding: .3em .8em;
 		 }
 		 #wordMore a:hover {
@@ -403,7 +402,7 @@
 	     
 	     getUrl(`/tewar/ferheng.info.php?q=${q}&n=1` , function(responseText, e) {
 		 
-		 document.getElementById("wordMore").innerHTML = `<a target='_blank' href='https://allekok.com/tewar/?q=${q}'>گەڕانی زیاتر لە "تەوار"دا</a>`;
+		 document.getElementById("wordMore").innerHTML = `<a class='link' target='_blank' href='https://allekok.com/tewar/?q=${q}'>گەڕانی زیاتر لە "تەوار"دا</a>`;
 		 
 		 if (responseText == "null") {
 		     t.innerHTML = "";

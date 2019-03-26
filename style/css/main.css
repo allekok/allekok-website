@@ -103,8 +103,8 @@ header h2{font-size:.58em;margin-top:-1em;color:#444;}
 #sp a{padding:1em .3em;width:100%}
 #bkon{font-size:.9em;padding:5px 4px;color:#000;margin-bottom:.8em}
 #bhon{font-size:.9em;padding:10px 4px 5px;color:#000;text-align:center}
-#bkondesc{padding:.5em .2em;font-size:.6em;color:#444;display:block;background-color:#f3f3f3}
-#bhondesc{padding:1em .5em;font-size:.6em;color:#555;background:#f3f3f3;margin-bottom:1.5em}
+#bkondesc{padding:.5em .2em;font-size:.6em;color:#444;display:block;background-color:#f6f6f6}
+#bhondesc{padding:1em .5em;font-size:.6em;color:#444;background:#f6f6f6;margin-bottom:1.5em}
 #hon p{font-size:.58em;padding:0 0 7px;transition:none;-webkit-transition:none}
 #hon{margin:0 auto 1;padding:1em 7px}
 #hon,.b,.m1,.m2,.n,.m,.m3, .b span, .ptr,#hon sup{transition:none;-webkit-transition:none}
