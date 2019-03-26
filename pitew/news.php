@@ -36,7 +36,7 @@ include(ABSPATH . "script/php/header.php");
 	<?php
 	// get new added poems.
 	
-	$n = filter_var(@$_GET["n"],FILTER_VALIDATE_INT) ? $_GET["n"] : 20; // number of poems
+	$n = filter_var(@$_GET["n"],FILTER_VALIDATE_INT) ? $_GET["n"] : 15; // number of poems
 	$i = 0; // counter
 
 	$now = date_create(date("Y-m-d H:i:s"));
@@ -71,7 +71,8 @@ include(ABSPATH . "script/php/header.php");
 	    $poem = mysqli_fetch_assoc($query)["name"];
 
 	    mysqli_close($conn);
-	    echo "<div class='item'><a class='link' href='/poet:$pt/book:$bk/poem:$pm'><span style='color:" . $colors[color_num($pt)][0] . ";font-weight:bold;'>&rsaquo;</span> <i>$poet &rsaquo; $book &rsaquo;</i> $poem</a><i style='border-right:5px solid #eee;padding:0 1em;font-size:.75em;color:#555;margin:0 1em .2em;display:block;'>$diff</i></div>";
+	    $image_uri = get_poet_image($pt,"profile",true);
+	    echo "<div class='item'><a class='link' href='/poet:$pt/book:$bk/poem:$pm'><img style='display:inline-block;vertical-align:middle;width:3em;border-radius:50%;margin-left:.25em' src='{$image_uri}'> <i>$poet &rsaquo; $book &rsaquo;</i> $poem</a><i style='border-right:5px solid #eee;padding:0 1em;font-size:.75em;color:#555;margin:0 1em .2em;display:block;'>$diff</i></div>";
 	    $i++;
 	}
 	

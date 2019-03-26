@@ -137,19 +137,6 @@ function color_num (pID) {
     return 0;
 }
 
-function poetImage (pID, callback) {
-    var client = new XMLHttpRequest(),
-	url = `/style/img/poets/profile/profile_${pID}.jpg`;
-    
-    client.open("get", url);
-    client.onload = function() {
-	if(this.status != 404) {
-	    callback(url);
-	}
-    }
-    client.send();
-}
-
 function toggle_search() {
     var s = document.getElementById('search'),
 	sk = document.getElementById("search-key"),
@@ -214,13 +201,15 @@ function toggle_Like() {
     tL.style.opacity = "1";
 
     imgs.map(function(pID) {
-	poetImage(pID, function(url) {
-	    document.getElementById("tL-res-res").
-		     querySelectorAll(`.PI${pID}`).
-		     forEach(function(item) {
-			 item.src = url;
-		     });
-	});
+	document.getElementById("tL-res-res").
+		 querySelectorAll(`.PI${pID}`).
+		 forEach(function(item) {
+		     item.src = `/style/img/poets/profile/profile_${pID}.jpg`;
+		     item.onerror = function() {
+			 item.src = `/style/img/poets/profile/profile_0.jpg`;
+		     }
+
+		 });
     });
 }
 
