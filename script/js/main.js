@@ -160,11 +160,11 @@ function toggle_search() {
         s.style.display = "block";
         sk.focus();
         tS.style.opacity="1";
-        h.style.animation="concentrate 1s forwards";
+        h.style.animation="concentrate .5s forwards";
     } else {
         s.style.display="none";
         tS.style.opacity="";
-        h.style.animation="smile 1s forwards";
+        h.style.animation="smile .5s forwards";
     }
 }
 
@@ -185,9 +185,11 @@ function get_bookmarks() {
 
 function toggle_Like() {
     var tL_res = document.getElementById('tL-res'),
+	h = document.querySelector('header'),
 	tL = document.getElementById('tL');
     
     if(tL_res.style.display == "block") {
+	h.style.animation="smile .5s forwards";
         tL_res.style.display = "none";
         tL.style.opacity = "";
         return;
@@ -207,7 +209,7 @@ function toggle_Like() {
     
     document.getElementById('tL-res-res').innerHTML = favsS;
     
-    tL_res.style.animation = "tL 0.6s";
+    h.style.animation="concentrate .5s forwards";
     tL_res.style.display = "block";
     tL.style.opacity = "1";
 

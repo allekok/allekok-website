@@ -333,7 +333,7 @@
 	     
 	     if(extlnk.style.display != "block") {
 		 extlnk.style.display = "block";
-		 extlnk.style.animation = ".8s cubic-bezier(0.18, 0.89, 0.32, 1.28) tL";
+		 extlnk.style.animation = ".4s cubic-bezier(0.18, 0.89, 0.32, 1.28) tL";
 	     } else {
 		 extlnk.style.display = "none";
 	     }

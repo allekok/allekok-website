@@ -3,7 +3,7 @@
 require_once("../../script/php/constants.php");
 require(ABSPATH . "script/php/functions.php");
 
-$null = json_encode(null);
+$null = null;
 
 $_pt = filter_var($_REQUEST['poet'], FILTER_SANITIZE_STRING);
 
@@ -90,7 +90,7 @@ foreach($poems as $k => $p) {
     $reses_str .= "سەرناو: {$p["name"]}";
     if(trim($p["hdesc"]))
 	$reses_str .= "\nلەبارەی شێعر: \n{$p["hdesc"]}";
-    $reses_str .= "\n\n{$p["hon"]}\n++++++++++++++++++++++\n";
+    $reses_str .= "\n\n{$p["hon"]}\n\n++++++++++++++++++++++\n";
 }
 
 $ll = mb_strlen($reses_str);
@@ -98,8 +98,8 @@ $ll = mb_strlen($reses_str);
 header("Content-type:plain/text; charset=UTF-8");
 header("x-con-len:{$ll}");
 
-    echo $reses_str;
+echo $reses_str;
 
-    mysqli_close($conn);
+mysqli_close($conn);
 
 ?>
