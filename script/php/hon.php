@@ -357,7 +357,7 @@
 	     void tar.offsetWidth;
 	     
 	     if(toarabi == "") {
-		 var ltn = arabi_to_latin(tar.innerText).replace(/\n/g, "<br>");
+		 var ltn = arabi_to_latin(tar.innerText).replace(/\n/g, "<br>\n");
 		 tar.innerHTML = poem_kind()=="new" ? "<div class=\"n\"><div class=\"m dltr\">" + ltn + "</div></div>" : "<div class=\"b\">" + ltn + "</div>";
 		 tar.style.animation = "tL .5s";
 		 convertToLatBtn.innerHTML = newLabel;
