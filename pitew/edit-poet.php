@@ -80,23 +80,41 @@ $_poet1 = filter_var(@$_GET['poet'], FILTER_SANITIZE_STRING);
              xmlhttp.send();
 	 }
 	</script>
+	<style>
+	 .input-label-box {
+	     display:flex;
+	     margin:0 .5em;
+	 }
+	 .input-label-box label {
+	     color:#444;
+	     font-size:.8em;
+	     margin:auto .5em;
+	 }
+	</style>
+
 
         <form id="frmComm" action="save.php" method="POST">
-            
-            <input type="text" id="contributorTxt" name="contributor" style="font-size:0.7em;max-width:94%;min-width:94%;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
-            
 
-            <input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:0.7em;max-width:94%;min-width:94%;margin-top:1em" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
-            
-            <textarea id="poetDescTxt" name="poetDesc" style="font-size:0.7em;max-width:94%;min-width:94%;min-height:15em;margin-top:1em" placeholder="زانیاریەکان سەبارەت بە شاعیر *"></textarea>
+	    <div class="input-label-box">
+		<input type="text" id="contributorTxt" name="contributor" style="font-size:.7em;width:100%;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
+	    </div>
+
+	    <div class="input-label-box" style="margin-top:1em">
+		<label for="poetTxt">شاعیر: </label>
+		<input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:.7em;width:94%;padding:1em 3%" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
+	    </div>
+	    
+            <div class="input-label-box" style="margin-top:1em">
+		<textarea id="poetDescTxt" name="poetDesc" style="font-size:.7em;width:100%;min-height:15em" placeholder="زانیاریەکان سەبارەت بە شاعیر *"></textarea>
+	    </div>
 
             <div class='loader' id="commloader" style="display:none;"></div>
             
             <div id="message"></div>
 
-            <button type="submit" class="button bth" style="font-size: 0.7em;width: 45%;max-width: 150px;background-color: #777;color: #fff;margin-top:0.5em;">ناردن</button>
+            <button type="submit" class="button bth" style="font-size: .7em;width: 45%;max-width: 150px;background-color: #777;color: #fff;margin-top:0.5em;">ناردن</button>
             
-            <button type="button" id="clearBtn" class='button' style="font-size: 0.7em;width: 45%;max-width: 150px;margin-top:0.5em;">پاک کردنەوە</button>
+            <button type="button" id="clearBtn" class='button' style="font-size:.7em;width: 45%;max-width: 150px;margin-top:0.5em;">پاک کردنەوە</button>
         </form>
         
         <?php if(isset($_poet1)) { ?>

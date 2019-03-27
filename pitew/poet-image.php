@@ -111,14 +111,30 @@ include(ABSPATH . 'script/php/header.php');
          xmlhttp.send();
      }
     </script>
+    <style>
+     .input-label-box {
+	 display:flex;
+	 margin:0 .5em;
+     }
+     .input-label-box label {
+	 color:#444;
+	 font-size:1em;
+	 margin:auto .5em;
+     }
+    </style>
     
     <div style='font-size:.75em'>
         <?php echo @$uploaded; ?>
     </div>
     <!-- file upload sec -->
     <form id="frmUpload" method="POST" enctype="multipart/form-data" style="max-width:800px;margin:auto;padding-top:1em;font-size:0.7em">
-        <input type="text" id="cntriTxt" name="cntri" style="font-size:1em;max-width:94%;min-width:94%;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
-        <input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:1em;max-width:94%;min-width:94%;margin-top:1em;margin-bottom:1em" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
+	<div class="input-label-box">
+            <input type="text" id="cntriTxt" name="cntri" style="font-size:1em;width:100%" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
+	</div>
+	<div class="input-label-box" style="margin:1em .5em">
+	    <label for="poetTxt">شاعیر: </label>
+            <input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:1em;width:94%;padding:1em 3%" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
+	</div>
         
         <div class='file-btn button' role='button' onclick="document.querySelector('input[name=profile]').click()" style="display:inline-block;font-size: 1.7em;" id='upldlikebtn'>
             هەڵبژاردنی وێنە

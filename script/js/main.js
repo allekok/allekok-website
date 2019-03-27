@@ -1,4 +1,3 @@
-/*** Allekok.com's javascript file. ***/
 "use strict"
 /** Arabi to Latin Conversion **/
 /* *
@@ -113,27 +112,21 @@ var sConvertStandardise = [
 ];
 
 function arabi_to_latin(s) {
-    var i;
-    // standardize Arabic before converting Arabic to Latin
-    for (i = 0; i < sConvertStandardise.length; i += 2)
+    for (var i = 0; i < sConvertStandardise.length; i += 2)
         s = s.replace(new RegExp(sConvertStandardise[i], 'g'), sConvertStandardise[i + 1]);
 
-    //main conversion
     for (i = 0; i < sConvertArabic2Latin.length; i += 2)
         s = s.replace(new RegExp(sConvertArabic2Latin[i], 'gim'), sConvertArabic2Latin[i + 1]);
 
-    // temporary conversion
     s = s.replace(new RegExp('ll', 'gim'), 'Ľ').replace(new RegExp('rr', 'gim'), 'Ŕ');
-    //add extra i's for Kurmanci texts
     for (i = 0; i < sOnsetI.length; i += 2)
-        s = s.replace(new RegExp(sOnsetI[i], 'gim'), sOnsetI[i + 1]); //e.g. bra -> bira
-    s = s.replace(new RegExp('Ľ', 'gim'), 'll').replace(new RegExp('Ŕ', 'gim'), 'rr'); //temporary conversion
+        s = s.replace(new RegExp(sOnsetI[i], 'gim'), sOnsetI[i + 1]);
+    s = s.replace(new RegExp('Ľ', 'gim'), 'll').replace(new RegExp('Ŕ', 'gim'), 'rr');
 
     return s;
 }
 
 function color_num (pID) {
-    //return (pID%22) ? (pID - (22 * Math.floor(pID/22))) : 22;
     return 0;
 }
 
