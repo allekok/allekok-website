@@ -23,7 +23,7 @@ if(isset($ath)) {
 	<script>
          if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', {scope: '/'});
 	</script>
-	<link rel='stylesheet' href='/style/css/main.css?v13' />
+	<link rel='stylesheet' href='/style/css/main.css?v14' />
 	<title>
 	    <?php echo($title); ?>
 	</title>
@@ -33,7 +33,7 @@ if(isset($ath)) {
 
 	<meta name="description" content="<?php echo($desc); ?>">
 	<meta name="keywords" content="<?php echo($keys); ?>">
-	<link href="/favicon.ico" rel="shortcut icon"/>
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 	<link rel="apple-touch-icon" href="/style/img/poets/profile/profile_0.jpg">
 	
 	<meta property="og:title" content="<?php echo($desc); ?>" />
