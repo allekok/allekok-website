@@ -1,17 +1,15 @@
 <script>
- var pID = <?php echo $info['id']; ?>;
- var bID = <?php echo $bk; ?>;
- var mID = <?php echo $row[1]['id']; ?>;
- 
- var poem_adrs = `poet:${pID}/book:${bID}/poem:${mID}`;
- 
- var poemV2 = JSON.stringify({
-     url: poem_adrs,
-     poetID: pID,
-     poetName: "<?php echo $info['takh']; ?>",
-     book: "<?php echo $bknow[$bk-1]; ?>",
-     poem: "<?php echo $row[1]['name']; ?>",
- });
+ var pID = <?php echo $info['id']; ?>,
+     bID = <?php echo $bk; ?>,
+     mID = <?php echo $row[1]['id']; ?>,
+     poem_adrs = `poet:${pID}/book:${bID}/poem:${mID}`,
+     poemV2 = JSON.stringify({
+	 url: poem_adrs,
+	 poetID: pID,
+	 poetName: "<?php echo $info['takh']; ?>",
+	 book: "<?php echo $bknow[$bk-1]; ?>",
+	 poem: "<?php echo $row[1]['name']; ?>",
+     });
 </script>
 
 <div id="poets">
@@ -98,7 +96,7 @@
 	</div>
 	<div style="margin:1.1em 0;padding-top:1.1em;border-top:1px solid #eee">
 	    <i class='material-icons' style="vertical-align: middle;">translate</i> 
-	     گۆڕینی ئەلفوبێ: 
+	    گۆڕینی ئەلفوبێ: 
 	    <button class='button' type="button" id="convertToLatBtn" style="font-size:.85em;margin-right:.5em;letter-spacing:.5px">Elfubêy Latîn</button>
 	</div>
 	<div style='text-align: center;border-top:1px solid #eee;padding: .5em 0;'>
@@ -178,46 +176,44 @@
 	    
             <textarea placeholder="بیر و ڕای خۆتان سەبارەت بەو شێعرە لێرە بنووسن... *" id="commTxt" name='comment'></textarea>
 	    
-            <div class='loader' id="commloader" style="display:none;border-top:1px solid <?php echo $colors[$color_num][0]; ?>"></div>
-            
             <div id="message"></div>
 	    
             <button class='button bth' type="submit" style="font-size: .7em;width: 50%;padding: 1em 0;max-width: 150px;background-color: <?php echo $colors[$color_num][0]; ?>;color: <?php echo $colors[$color_num][1]; ?>;cursor:pointer;margin:0.5em 0;">ناردن</button>
 	</form>
-        
-	<script>
-	 function getUrl(url, callback) {
-	     var client = new XMLHttpRequest();
-	     client.open("get", url);
-	     client.onload = function (e) {
-		 callback(client.responseText, e);
-	     }
-	     client.send();
-	 }
+	
+	<div id="Acomms-title" style="margin:1em 0;display:none;border-top: 1px solid #ccc;padding: 1em .3em;font-size: 0.75em;">
+	    بیر و ڕاکان سەبارەت بەو شێعرە
+	</div>
+	<div id='hon-comments-body' style='padding:0 .2em'></div>
+    </div>
+
+    <script>
+     window.addEventListener("load", function() {
+	 const loader = "<div class='loader'></div>",
+	       message = document.getElementById("message"),
+	       name = document.getElementById("commNameTxt"),
+	       comments = document.getElementById("hon-comments-body"),
+	       commTitle = document.getElementById("Acomms-title");
 	 
-	 function send_comment() {
-             
-             var name = document.getElementById("commNameTxt"),
-		 comment = document.getElementById("commTxt"),
-		 loader = document.getElementById("commloader"),
-		 message = document.getElementById("message");
-             
-             if(comment.value == "") {
+	 
+	 function send_comment() {	     		     
+	     const comment = document.getElementById("commTxt");
+	     
+	     if(comment.value == "") {
 		 comment.focus();
 		 return;
-             }
-             
-             loader.style.display = "block";
-             comment.background = "#ddd";
-             comment.color = "#888";
-             
-             var xmlhttp = new XMLHttpRequest();             
-             xmlhttp.onload = function() {
+	     }
+	     
+	     message.innerHTML = loader;
+	     comment.background = "#ddd";
+	     comment.color = "#888";
+	     
+	     var xmlhttp = new XMLHttpRequest();
+	     xmlhttp.onload = function() {
 		 
-                 var res = JSON.parse(this.responseText);
-                 
-                 if(res.status) {
-		     loader.style.display = "none";
+		 var res = JSON.parse(this.responseText);
+		 
+		 if(res.status) {
 		     comment.background = "";
 		     comment.color = "";
 		     name.value = res.name;
@@ -225,45 +221,34 @@
 		     message.style.background = "rgba(0,255,0,0.1)";
 		     message.innerHTML = res.message;
 		     
-		     var comments = document.getElementById("hon-comments-body"),
-			 newComm = "<div class='comment'><div class='comm-name'>"+res.name+":</div><div class='comm-body'>"+res.comment+"</div><div class='comm-footer'>"+res.date+"</div></div>";
+		     newComm = "<div class='comment'><div class='comm-name'>"+res.name+":</div><div class='comm-body'>"+res.comment+"</div><div class='comm-footer'>"+res.date+"</div></div>";
 		     
-		     document.getElementById("Acomms-title").style.display = "block";
+		     commTitle.style.display = "block";
 		     comments.innerHTML = newComm + comments.innerHTML;
 		     
 		     // localStorage
 		     if(res.name != "ناشناس") {
-                         localStorage.setItem("contributor", JSON.stringify({name: res.name}));
+			 localStorage.setItem("contributor", JSON.stringify({name: res.name}));
 		     }
 		     
 		     window.location = "#hon-comments-body";
-                 }
-             }
-             
-             var request = "address=" + poem_adrs +"&name=" + name.value + "&comment=" + encodeURIComponent(comment.value);
-             
-             xmlhttp.open("POST","/script/php/comments-add.php");
-             xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-             xmlhttp.send(request);
-             
+		 }
+	     }
+	     
+	     var request = "address=" + poem_adrs +"&name=" + name.value + "&comment=" + encodeURIComponent(comment.value);
+	     
+	     xmlhttp.open("POST","/script/php/comments-add.php");
+	     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	     xmlhttp.send(request);
+	     
 	 }
 	 
 	 document.getElementById("frmComm").addEventListener("submit", function(e) {
 	     e.preventDefault();
 	     send_comment();
 	 });
-	</script>
 
-	<div id="Acomms-title" style="margin:1em 0;display:none;border-top: 1px solid #ccc;padding: 1em .3em;font-size: 0.75em;">
-	    بیر و ڕاکان سەبارەت بەو شێعرە
-	</div>
-	<div id='hon-comments-body' style='padding:0 .2em'></div>
-	<div class='loader' id="commmloader" style="display:none;border-top:1px solid <?php echo $colors[$color_num][0]; ?>"></div>
-    </div>
-
-    <script>
-     window.addEventListener("load", function() {
-         
+	 
          <?php
          $db = 'index';
          $address = "poet:{$info['id']}/book:{$bk}/poem:{$row[1]['id']}";
@@ -274,18 +259,12 @@
              if(mysqli_num_rows($query)>0) {                 
          ?>
          
-         var comments = document.getElementById("hon-comments-body"),
-	     loader = document.getElementById("commmloader"),
-	     commTitle = document.getElementById("Acomms-title");
-         
-         loader.style.display = "block";
+         comments.innerHTML = loader;
 
-         xmlhttp = new XMLHttpRequest();
 	 getUrl(`/script/php/comments-get.php?address=${poem_adrs}`,
-		function(responseText, e) {
+		function(responseText) {
 		    
 		    var res = JSON.parse(responseText);
-		    loader.style.display = "none";
 		    
 		    if(res.err != 1) {
 			
@@ -315,10 +294,7 @@
 	 } (localStorage.getItem("contributor")));
 	 
          
-	 
-	 var sups = document.querySelectorAll("sup"),
-	     fs = document.querySelector(".fontsize"),
-	     nav = document.querySelector(".nav");
+	 var sups = document.querySelectorAll("sup");
 	 
 	 sups.forEach(function(e) {
 	     e.addEventListener("click",function() {
@@ -351,8 +327,8 @@
 	 }
 	 
 	 function convert_to_latin(toarabi="") {
-	     var tar = document.getElementById("hon"),
-		 client = new XMLHttpRequest();
+	     var tar = document.getElementById("hon");
+	     
 	     tar.style.animation = "";
 	     void tar.offsetWidth;
 	     
@@ -381,7 +357,7 @@
 	 });
 	 
 	 
-	 const loaderMin = "<div class='loader' style='width:1.8em; height:1.8em; vertical-align:middle; margin:1em auto;'></div>";
+	 const loaderMin = "<div class='loader' style='width:1.8em;height:1.8em;vertical-align:middle;margin:1em auto;'></div>";
 	 
 	 document.getElementById("wordFrm").addEventListener("submit", function(e) {
 	     e.preventDefault();
@@ -400,7 +376,7 @@
 	     t.innerHTML = loaderMin;
 	     var res, fin = "";
 	     
-	     getUrl(`/tewar/ferheng.info.php?q=${q}&n=1` , function(responseText, e) {
+	     getUrl(`/tewar/ferheng.info.php?q=${q}&n=1` , function(responseText) {
 		 
 		 document.getElementById("wordMore").innerHTML = `<a class='link' target='_blank' href='https://allekok.com/tewar/?q=${q}'>گەڕانی زیاتر لە "تەوار"دا</a>`;
 		 
@@ -429,7 +405,7 @@
 	     t = document.querySelector(t);
 	     t.innerHTML = loaderMin;
 	     var res, fin = "";
-	     getUrl(`/tewar/farhangumejuikawa.com.php?q=${q}&n=1` , function(responseText, e) {
+	     getUrl(`/tewar/farhangumejuikawa.com.php?q=${q}&n=1` , function(responseText) {
 		 
 		 if (responseText == "null") {
 		     t.innerHTML = "";

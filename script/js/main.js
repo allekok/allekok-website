@@ -614,6 +614,15 @@ function san_data(inp="", lastChance=false) {
     return inp;
 }
 
+function getUrl(url, callback) {
+    var client = new XMLHttpRequest();
+    client.open("get", url);
+    client.onload = function (e) {
+	callback(client.responseText);
+    }
+    client.send();
+}
+
 /// check if liked
 var likeico = document.getElementById('like-icon'),
     favs = localStorage.getItem('favorites');
