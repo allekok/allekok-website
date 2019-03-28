@@ -56,7 +56,7 @@
 	    
 	?>
 	    <div style="display:flex;">
-		<button style="background:none;padding:0 .5em;" type="button" title="نیشان‌دانی بەشی سەرەتای ئەم شێعرە"><i class="material-icons" style="vertical-align:middle;font-size:1.5em;">keyboard_arrow_down</i></button><a href="/poet:<?php echo $ath; ?>/book:<?php echo $bk; ?>/poem:<?php echo $row['id']; ?>">
+		<button class="material-icons" style="vertical-align:middle;font-size:1em;background:none;padding:0 .5em" type="button" title="نیشان‌دانی بەشی سەرەتای ئەم شێعرە">keyboard_arrow_down</button><a href="/poet:<?php echo $ath; ?>/book:<?php echo $bk; ?>/poem:<?php echo $row['id']; ?>">
 		    <?php
 		    echo($rid_k . ". " . $row['name']);
 		    ?>
@@ -92,7 +92,7 @@
 	 var xmlhttp = new XMLHttpRequest();
 	 xmlhttp.open("GET", `/script/php/poem-summary.php?pt=${pt}&bk=${bk}&pm=${pm}`);
 	 xmlhttp.onload = function() {
-             button.innerHTML = "<i class=\"material-icons\" style=\"vertical-align: middle;\">keyboard_arrow_down</i>";
+             button.innerHTML = "keyboard_arrow_down";
              var san_txt = this.responseText.replace(/\n/g, "<br>");
              button.parentNode.outerHTML += `<div style='background: #f6f6f6;padding: 1em;font-size: .55em;'>${san_txt}</div>`;
 	 }
