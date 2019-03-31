@@ -4,114 +4,114 @@
  * Captured from source code of "Pellk KurdiNus 4.0".
  * https://allekok.com/Kurdi-Nus/Kurdi Nus 4.0 Kurdish.html
  * */
-var sConvertArabic2Latin = [
-    //managing 'و' and 'ی'
-    'و([اێۆە])', 'w$1', 
-    'ی([اێۆە])', 'y$1',
-    '([اێۆە])و', '$1w',
-    '([اێۆە])ی', '$1y',
-    '(^|[^ء-يٱ-ەwy])و([^ء-يٱ-ەwy])', '$1û$2',
-    '(^|[^ء-يٱ-ەwy])و', '$1w',
-    'یو', 'îw',
-    'یی', 'îy',
-    'وی', 'uy',
-    'وو', 'û', 
-    'ی', 'î',
-    'و', 'u',
-    'uu', 'û',
-
-    '([ء-يٱ-ەîuûwy])ڕ', '$1rr', 
-    'ر|ڕ', 'r',
-    'ش', 'ş',
-    'ئ', '',
-    'ا', 'a',
-    'ب', 'b',
-    'چ', 'ç',
-    'ج', 'c',
-    'د', 'd',
-    'ێ', 'ê',
-    'ە|ه‌', 'e',
-    'ف', 'f',
-    'خ|غ', 'x',
-    'گ', 'g',
-    'ح|ھ', 'h',
-    'ژ', 'j',
-    'ک', 'k',
-    'ڵ', 'll',
-    'ل', 'l',
-    'م', 'm',
-    'ن', 'n',
-    'ۆ', 'o',
-    'پ', 'p',
-    'ق', 'q',
-    'س', 's',
-    'ت', 't',
-    'ڤ', 'v',
-    'ز', 'z',
-    'ع', '\'',
-    '‌', '',
-    '؟', '?',
-    '،', '\,',
-    '؛', '\;',
-    '٠|۰', '0',
-    '١|۱', '1',
-    '٢|۲', '2',
-    '٣|۳', '3',
-    '٤|۴', '4',
-    '٥|۵', '5',
-    '٦|۶', '6',
-    '٧|۷', '7',
-    '٨|۸', '8',
-    '٩|۹', '9',
-    '»|«', '"',
-    'ـ', '',
-
-    //insert i where applicable
-
-    'll', 'Ľ', 
-    'rr', 'Ŕ', 
-    '([bcçdfghjklĽmnpqrŔsştvwxz])([fjlĽmnrŔsşvwxyz])([fjlĽmnrŔsşvwxyz])([^aeêiîouûy])', '$1$2i$3$4', 
-    '([aeêiîouû])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])\\b', '$1$2$3i$4', 
-    '([fjlĽrŔsşwyz])([fjlĽmnrŔsşvwxyz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2$3', 
-    '([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1i$2$3', 
-    '([^aeêiîouû])([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1$2i$3$4', 
-    '(^|[^aeêiîouy])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])($|[^aeêiîouû])', '$1$2i$3$4', 
-    '(^|[^a-zçşêîûĽŔ])([bcçdfghjklĽmnpqrŔsştvwxz])(\\s)', '$1$2i$3', 
-    'Ľ', 'll', 
-    'Ŕ', 'rr' 
-];
-
-var sOnsetI = [
-    '([bcçdfghjklmnpqrsştvwxz])([wy][aeêiîouû])', '$1i$2', 
-    '(^|[^a-zêîûçş0-9\'’])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1$2i$3', 
-    '([bcçdfghjklmnpqrsştvwxz][bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2' 
-];
-
-// Standardize Arabic scripts Array
-var sConvertStandardise = [
-    '‌{1,}', '‌', 
-    'لاَ|لأ|لآ', 'لا',
-    'لً|لَ', 'ل',
-    'ص','س',
-    'ض', 'ز',
-    'ث', 'س',
-    'ظ', 'ز',
-    'ط', 'ت',
-    'ىَ|يَ|یَ', 'ی',
-    'رِ', 'ر',
-    'ؤ|وَ', 'و',
-    'ي|ى', 'ی',
-    'ذ', 'ز',
-    'ك', 'ک',
-    'ه‍', 'ھ',
-    'ه($|[^ء-يٱ-ە])', 'ە$1',
-    'ە‌', 'ە',
-    'ة', 'ە',
-    'ه', 'ھ', 
-    '([ء-يٱ-ە])‌([^ء-يٱ-ە])', '$1$2'
-];
-
 function arabi_to_latin(s) {
+    var sConvertArabic2Latin = [
+	//managing 'و' and 'ی'
+	'و([اێۆە])', 'w$1', 
+	'ی([اێۆە])', 'y$1',
+	'([اێۆە])و', '$1w',
+	'([اێۆە])ی', '$1y',
+	'(^|[^ء-يٱ-ەwy])و([^ء-يٱ-ەwy])', '$1û$2',
+	'(^|[^ء-يٱ-ەwy])و', '$1w',
+	'یو', 'îw',
+	'یی', 'îy',
+	'وی', 'uy',
+	'وو', 'û', 
+	'ی', 'î',
+	'و', 'u',
+	'uu', 'û',
+
+	'([ء-يٱ-ەîuûwy])ڕ', '$1rr', 
+	'ر|ڕ', 'r',
+	'ش', 'ş',
+	'ئ', '',
+	'ا', 'a',
+	'ب', 'b',
+	'چ', 'ç',
+	'ج', 'c',
+	'د', 'd',
+	'ێ', 'ê',
+	'ە|ه‌', 'e',
+	'ف', 'f',
+	'خ|غ', 'x',
+	'گ', 'g',
+	'ح|ھ', 'h',
+	'ژ', 'j',
+	'ک', 'k',
+	'ڵ', 'll',
+	'ل', 'l',
+	'م', 'm',
+	'ن', 'n',
+	'ۆ', 'o',
+	'پ', 'p',
+	'ق', 'q',
+	'س', 's',
+	'ت', 't',
+	'ڤ', 'v',
+	'ز', 'z',
+	'ع', '\'',
+	'‌', '',
+	'؟', '?',
+	'،', '\,',
+	'؛', '\;',
+	'٠|۰', '0',
+	'١|۱', '1',
+	'٢|۲', '2',
+	'٣|۳', '3',
+	'٤|۴', '4',
+	'٥|۵', '5',
+	'٦|۶', '6',
+	'٧|۷', '7',
+	'٨|۸', '8',
+	'٩|۹', '9',
+	'»|«', '"',
+	'ـ', '',
+
+	//insert i where applicable
+
+	'll', 'Ľ', 
+	'rr', 'Ŕ', 
+	'([bcçdfghjklĽmnpqrŔsştvwxz])([fjlĽmnrŔsşvwxyz])([fjlĽmnrŔsşvwxyz])([^aeêiîouûy])', '$1$2i$3$4', 
+	'([aeêiîouû])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])\\b', '$1$2$3i$4', 
+	'([fjlĽrŔsşwyz])([fjlĽmnrŔsşvwxyz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2$3', 
+	'([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1i$2$3', 
+	'([^aeêiîouû])([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1$2i$3$4', 
+	'(^|[^aeêiîouy])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])($|[^aeêiîouû])', '$1$2i$3$4', 
+	'(^|[^a-zçşêîûĽŔ])([bcçdfghjklĽmnpqrŔsştvwxz])(\\s)', '$1$2i$3', 
+	'Ľ', 'll', 
+	'Ŕ', 'rr' 
+    ];
+
+    var sOnsetI = [
+	'([bcçdfghjklmnpqrsştvwxz])([wy][aeêiîouû])', '$1i$2', 
+	'(^|[^a-zêîûçş0-9\'’])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1$2i$3', 
+	'([bcçdfghjklmnpqrsştvwxz][bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2' 
+    ];
+
+    // Standardize Arabic scripts Array
+    var sConvertStandardise = [
+	'‌{1,}', '‌', 
+	'لاَ|لأ|لآ', 'لا',
+	'لً|لَ', 'ل',
+	'ص','س',
+	'ض', 'ز',
+	'ث', 'س',
+	'ظ', 'ز',
+	'ط', 'ت',
+	'ىَ|يَ|یَ', 'ی',
+	'رِ', 'ر',
+	'ؤ|وَ', 'و',
+	'ي|ى', 'ی',
+	'ذ', 'ز',
+	'ك', 'ک',
+	'ه‍', 'ھ',
+	'ه($|[^ء-يٱ-ە])', 'ە$1',
+	'ە‌', 'ە',
+	'ة', 'ە',
+	'ه', 'ھ', 
+	'([ء-يٱ-ە])‌([^ء-يٱ-ە])', '$1$2'
+    ];
+
     for (var i = 0; i < sConvertStandardise.length; i += 2)
         s = s.replace(new RegExp(sConvertStandardise[i], 'g'), sConvertStandardise[i + 1]);
 
