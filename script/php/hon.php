@@ -178,10 +178,10 @@
 	    
             <div id="message"></div>
 	    
-            <button class='button bth' type="submit" style="font-size: .7em;width: 50%;padding: 1em 0;max-width: 150px;background-color: <?php echo $colors[$color_num][0]; ?>;color: <?php echo $colors[$color_num][1]; ?>;cursor:pointer;margin:0.5em 0;">ناردن</button>
+            <button class='button bth' type="submit" style="font-size:.7em;width:50%;padding:1em 0;max-width:150px;background-color:<?php echo $colors[$color_num][0]; ?>;color:<?php echo $colors[$color_num][1]; ?>;cursor:pointer;margin:.5em 0;">ناردن</button>
 	</form>
 	
-	<div id="Acomms-title" style="margin:1em 0;display:none;border-top: 1px solid #ccc;padding: 1em .3em;font-size: 0.75em;">
+	<div id="Acomms-title" style="margin:1em 0 0;display:none;border-top:1px solid #eee;padding:1em .3em;font-size:.75em;">
 	    بیر و ڕاکان سەبارەت بەو شێعرە
 	</div>
 	<div id='hon-comments-body' style='padding:0 .2em'></div>
@@ -189,15 +189,15 @@
 
     <script>
      window.addEventListener("load", function() {
-	 const loader = "<div class='loader'></div>",
-	       message = document.getElementById("message"),
-	       name = document.getElementById("commNameTxt"),
-	       comments = document.getElementById("hon-comments-body"),
-	       commTitle = document.getElementById("Acomms-title");
+	 var loader = "<div class='loader'></div>",
+	     message = document.getElementById("message"),
+	     name = document.getElementById("commNameTxt"),
+	     comments = document.getElementById("hon-comments-body"),
+	     commTitle = document.getElementById("Acomms-title");
 	 
 	 
 	 function send_comment() {	     		     
-	     const comment = document.getElementById("commTxt");
+	     var comment = document.getElementById("commTxt");
 	     
 	     if(comment.value == "") {
 		 comment.focus();
@@ -357,7 +357,7 @@
 	 });
 	 
 	 
-	 const loaderMin = "<div class='loader' style='width:1.8em;height:1.8em;vertical-align:middle;margin:1em auto;'></div>";
+	 var loaderMin = "<div class='loader' style='width:1.8em;height:1.8em;vertical-align:middle;margin:1em auto;'></div>";
 	 
 	 document.getElementById("wordFrm").addEventListener("submit", function(e) {
 	     e.preventDefault();
