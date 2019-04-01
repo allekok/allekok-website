@@ -76,7 +76,7 @@ include(ABSPATH . "script/php/header.php");
                 وەشانی ۱.۰.۰
             </small>
             <small>
-                <a href="https://allekok.github.io/allekok-downloads/allekok-desktop/allekok-latest.exe">
+                <a href="https://allekok.github.io/allekok-downloads/downloads/allekok-desktop/allekok-latest.exe">
                     دابەزاندن بۆ ویندۆز
                 </a>
                 <br>
@@ -94,7 +94,7 @@ include(ABSPATH . "script/php/header.php");
                 وەشانی ۱.۲.۱
             </small>
             <small>
-                <a href="https://allekok.github.io/allekok-downloads/allekok-desktop/allekok-latest.AppImage">
+                <a href="https://allekok.github.io/allekok-downloads/downloads/allekok-desktop/allekok-latest.AppImage">
                     دابەزاندن بۆ لینوکس
                 </a>
 		<br>
