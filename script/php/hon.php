@@ -392,7 +392,7 @@
 		 for( var a in res ) {
 		     
 		     fin += "<div><section><a target='_blank' rel='noopener noreferrer nofollow' href='"+res[a].link+"' style='color:#00e'>"+res[a].title+"</a></section>";
-		     fin += "<section style='font-size: .87em;text-indent: 1em;'>"+res[a].desc+"</section></div>";
+		     fin += "<section style='word-wrap:break-word;font-size:.87em;text-indent:1em;'>"+res[a].desc+"</section></div>";
 		 }
 		 
 		 t.innerHTML = fin;
@@ -419,7 +419,7 @@
 		 for( var a in res ) {
 		     
 		     fin += "<div><section>"+res[a].link+"</section>";
-		     fin += "<section style='font-size: .87em;text-indent: 1em;'>"+res[a].desc+"</section></div>";
+		     fin += "<section style='word-wrap:break-word;font-size:.87em;text-indent:1em;'>"+res[a].desc+"</section></div>";
 		 }
 		 
 		 t.innerHTML = fin;
