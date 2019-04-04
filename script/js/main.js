@@ -152,12 +152,11 @@ function toggle_search() {
     if(s.style.display != "block") {
         s.style.display = "block";
         sk.focus();
+	s.style.animation = "tL .15s";
         tS.style.opacity="1";
-        h.style.animation="concentrate .5s forwards";
-    } else {
+     } else {
         s.style.display="none";
         tS.style.opacity="";
-        h.style.animation="smile .5s forwards";
     }
 }
 
@@ -182,7 +181,6 @@ function toggle_Like() {
 	tL = document.getElementById('tL');
     
     if(tL_res.style.display == "block") {
-	h.style.animation="smile .5s forwards";
         tL_res.style.display = "none";
         tL.style.opacity = "";
         return;
@@ -200,8 +198,8 @@ function toggle_Like() {
     
     document.getElementById('tL-res-res').innerHTML = favsS;
     
-    h.style.animation="concentrate .5s forwards";
     tL_res.style.display = "block";
+    tL_res.style.animation = "tL .15s";
     tL.style.opacity = "1";
 
     imgs.map(function(pID) {
