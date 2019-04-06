@@ -15,9 +15,9 @@ include(ABSPATH . "script/php/header.php");
 
 <style>
  p {
-     font-size:.6em;border-bottom: 2px dashed #f2f2f2;text-align: right;padding:.6em .2em;
+     font-size:.6em;border-bottom:1px solid #eee;text-align: right;padding:.6em .2em;
  }
- #poets a {
+ #poets a, #poets i {
      font-size: inherit;padding:0 .6em;border-radius:2px;display:inline-block;margin:.1em 0;
  }
  #poets a:hover {
@@ -37,7 +37,7 @@ include(ABSPATH . "script/php/header.php");
         <a href="https://plus.google.com/+RebwarTahir" target='_blank' rel='noopener noreferrer nofollow' style="color:#fff;background-color:#dd5144;font-weight:bold;">Rebwar Tahir</a> &rsaquo; بۆ بەشێکی زۆر لە وێنەی شاعیران
     </p>
     <p>
-        <a href="http://www.vejinbooks.com/" target='_blank' rel='noopener noreferrer nofollow' style="color:#900000;">ڤەژین بوکس</a> &rsaquo; بۆ بەشێکی زۆر لە شێعرەکان
+        <a href="http://www.vejinbooks.com/" target='_blank' rel='noopener noreferrer nofollow' style="background:#900000;color:#fff">ڤەژین بوکس</a> &rsaquo; بۆ بەشێکی زۆر لە شێعرەکان
     </p>
     <p>
         <a href="http://diyako.yageyziman.com/هۆنراوە/" target='_blank' rel='noopener noreferrer nofollow' style="color:#fff;background-color:#1e73be;">فێرگەی زمانی کوردی</a> &rsaquo; بۆ دیوانی شێعری بەشێک لە شاعیران
@@ -87,7 +87,7 @@ include(ABSPATH . "script/php/header.php");
         </a>
     </p>
     <p>
-        <a href="https://www.kurditgroup.org/" style="color:#26678c">
+        <a href="https://www.kurditgroup.org/" style="background:#26678c;color:#fff">
             کوردئایتیگرووپ
         </a>
         &rsaquo; بۆ  
@@ -98,7 +98,7 @@ include(ABSPATH . "script/php/header.php");
             دیوانی یانەی‌دڵانی، مدهۆش</a>  بەکار هاتووە.
     </p>
     <p>
-        <i style="color:#4699EC;">
+        <i style="background:#4699EC;color:#fff">
             ئاکۆ مەحموودی، ئاسۆ مەحموودی 
         </i>
         &rsaquo;
@@ -111,15 +111,23 @@ include(ABSPATH . "script/php/header.php");
             دیوانی یانەی‌دڵانی، مدهۆش</a>  بەکار هاتووە.
     </p>
     <p>
-	<a href="https://www.kurdipedia.org/" style="color:#0207ff;" target='_blank' rel='noopener noreferrer nofollow'>کوردیپێدیا</a>
+	<a href="https://www.kurdipedia.org/" style="background:#0207ff;color:#fff" target='_blank' rel='noopener noreferrer nofollow'>کوردیپێدیا</a>
 	&rsaquo;
 	بۆ وێنەی
 	<a href="/poet:50" style="color:<?php echo $colors[0][3]; ?>;background-color:<?php echo $colors[0][2]; ?>;">بەختیار زێوەر</a>
 	و
 	<a href="/poet:71" style="color:<?php echo $colors[0][3]; ?>;background-color:<?php echo $colors[0][2]; ?>;">شوکری فەزڵی</a>
     </p>
-    <p style="text-align:center;">
-        سپاس بۆ هەموو ئەو کەسانەی کە لە پتەوکردنی ئاڵەکۆک‌دا یارمەتی‌مان دەدەن.
+    <p>
+	<i style="background:<?php echo $colors[0][0]; ?>;color:<?php echo $colors[0][1]; ?>">
+	    سپاسی تایبەت
+	</i>
+	&rsaquo;
+        بۆ هەموو ئەو کەسانەی کە لە
+	<a href="/pitew/first.php" style="color:<?php echo $colors[0][3]; ?>;background-color:<?php echo $colors[0][2]; ?>;">
+	    پتەوکردنی ئاڵەکۆک
+	</a>
+	‌دا یارمەتی‌مان دەدەن.
     </p>
     
 </div>
