@@ -110,6 +110,14 @@ include(ABSPATH . "script/php/header.php");
         <a href="<?php echo _SITE; ?>poet:85/book:1" style="background:<?php echo $colors[0][2]; ?>; color:<?php echo $colors[0][3]; ?>">
             دیوانی یانەی‌دڵانی، مدهۆش</a>  بەکار هاتووە.
     </p>
+    <p>
+	<a href="https://www.kurdipedia.org/" style="color:#0207ff;" target='_blank' rel='noopener noreferrer nofollow'>کوردیپێدیا</a>
+	&rsaquo;
+	بۆ وێنەی
+	<a href="/poet:50" style="color:<?php echo $colors[0][3]; ?>;background-color:<?php echo $colors[0][2]; ?>;">بەختیار زێوەر</a>
+	و
+	<a href="/poet:71" style="color:<?php echo $colors[0][3]; ?>;background-color:<?php echo $colors[0][2]; ?>;">شوکری فەزڵی</a>
+    </p>
     <p style="text-align:center;">
         سپاس بۆ هەموو ئەو کەسانەی کە لە پتەوکردنی ئاڵەکۆک‌دا یارمەتی‌مان دەدەن.
     </p>
