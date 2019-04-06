@@ -31,7 +31,7 @@ include(ABSPATH . "script/php/header.php");
     </h1>
     
     <p>
-        <a href="http://ganjoor.net/" target='_blank' rel='noopener noreferrer nofollow' style="background-color:#f9cea4;">گنجور</a> &rsaquo; بۆ بوون بە هۆی دروست بوونی ئاڵەکۆک
+        <a href="https://ganjoor.net/" target='_blank' rel='noopener noreferrer nofollow' style="background-color:#f9cea4;">گنجور</a> &rsaquo; بۆ بوون بە هۆی دروست بوونی ئاڵەکۆک
     </p>
     <p>
         <a href="https://plus.google.com/+RebwarTahir" target='_blank' rel='noopener noreferrer nofollow' style="color:#fff;background-color:#dd5144;font-weight:bold;">Rebwar Tahir</a> &rsaquo; بۆ بەشێکی زۆر لە وێنەی شاعیران
