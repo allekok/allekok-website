@@ -14,7 +14,7 @@ define("_DB_PREFIX","");
 
 /** Site constants **/
 define("_SITE",
-       "http://".$_SERVER["HTTP_HOST"]."/");
+       "http://".@$_SERVER["HTTP_HOST"]."/");
 // could be "https://..."
 define("_TITLE","ئاڵەکۆک");
 define("_DESC",

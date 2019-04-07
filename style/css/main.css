@@ -121,7 +121,7 @@ header h2{font-size:.58em;margin-top:-1em;color:#444;}
 #search-res section a h3{white-space:nowrap;overflow:hidden}
 .search-notfound{font-size:.6em;border-radius:50% 50% 0 0;border-top:2px solid #eee;text-align:center}
 #search-res section{margin:0 4px;display:inline-block;max-width:68px;width:18%}
-#search-res section img{border-radius:50%;width:100%;box-shadow:0 3px 4px -3px #aaa;display:block}
+#search-res section img{border-radius:50%;width:100%;border:1px solid #eee;display:block}
 #search-res #poets{padding:0;margin-bottom:3px}
 .search-hon div{margin:.3em .1em;padding:0 10px;background:#f6f6f6;border-radius:2px;border:1px solid #eee;text-align:right}
 .search-hon div:hover{background:#fff;border:1px solid #bbb;box-shadow:1px 1px 1px #ccc}
