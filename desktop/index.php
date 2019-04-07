@@ -91,7 +91,7 @@ include(ABSPATH . "script/php/header.php");
             لینوکس
             <br>
             <small style='font-size:.6em; margin-top:-.6em;display:block;'>
-                وەشانی ۱.۲.۱
+                وەشانی ۱.۲.۲
             </small>
             <small>
                 <a href="https://allekok.github.io/allekok-downloads/downloads/allekok-desktop/allekok-latest.AppImage">
