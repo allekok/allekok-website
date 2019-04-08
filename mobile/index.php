@@ -19,7 +19,7 @@ include(ABSPATH . "script/php/header.php");
         بەرنامەی مۆبایلی ئاڵەکۆک
     </h1>
     <small style='font-size:.6em; margin-top:-.6em;display:block;'>
-        وەشانی ۱.۰.۰
+        وەشانی ۱.۲.۲
     </small>
     <style>
      .pitewsec a {
