@@ -43,3 +43,6 @@ pitew/news.txt
 
 # test directory
 test/
+
+# contributors text files
+pitew/contributors/*.txt
