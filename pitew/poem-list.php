@@ -20,7 +20,7 @@ include(ABSPATH . 'script/php/header.php');
 ?>
 
 <div id="poets">
-    
+
     <div id='adrs'>
 	<a href="first.php">
 	    <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
@@ -37,7 +37,12 @@ include(ABSPATH . 'script/php/header.php');
 	</div>
 
     </div>
-
+    <style>
+     .pmlist{display:inline-block;vertical-align:top;color:#444;padding:1em .5em;font-size:.55em}
+     .pmlist:nth-child(odd){width:30%}
+     .pmlist:nth-child(even){text-align:right;width:70%;border-right:1px solid #eee}
+    </style>
+    
     <?php
     $db = 'index';
     $q = $_name1 ? "SELECT `contributor`,`status`,`poem-name`,`poet` FROM `pitew` WHERE `status` LIKE '{\"status\":1%' and `contributor`='{$_name1}' ORDER BY `id` DESC" : "SELECT `contributor`,`status`,`poem-name`,`poet` FROM `pitew` WHERE `status` LIKE '{\"status\":1%' ORDER BY `id` DESC";

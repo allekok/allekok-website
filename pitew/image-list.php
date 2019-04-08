@@ -31,6 +31,12 @@ include(ABSPATH . 'script/php/header.php');
 	</div>
 
     </div>
+    <style>
+     .imglist{width:35%;display:inline-block;vertical-align:top;color:#444;padding:1em .5em;font-size:.55em}
+     .imglist a{border-bottom:1px solid #ccc}
+     .imglist:nth-child(3n-1){border-left:1px solid #eee;border-right:1px solid #eee;width:45%}
+     .imglist:nth-child(3n){width:20%}
+    </style>
     <div>
 	<section class='imglist' style='background:#eee'>یارمەتیدەر</section><section style='background:#eee' class='imglist'>نێوی شاعیر</section><section style='background:#eee' class='imglist'>وێنە</section>
 	

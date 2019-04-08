@@ -23,7 +23,7 @@ if(isset($ath)) {
 	<script>
          if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', {scope: '/'});
 	</script>
-	<link rel='stylesheet' href='/style/css/main.css?v15' />
+	<link rel='stylesheet' href='/style/css/main.css?v16' />
 	<title>
 	    <?php echo($title); ?>
 	</title>
@@ -83,7 +83,6 @@ if(isset($ath)) {
 	 }
 	</style>
 	<script>
-         var uritg = "<?php echo _SITE; ?>";
          var colors = [<?php
 		       
 		       require_once("colors.php");
@@ -96,6 +95,7 @@ if(isset($ath)) {
 		       
 		       ?>];
 	</script>
+	
     </head>
 
     <body>
@@ -107,11 +107,12 @@ if(isset($ath)) {
 		    <i class="material-icons seartog-i">search</i>
 		</div>
 	    <?php } ?>
+	    
 	    <div class='seartog' role='button' id="tL" style="right:.3em;left:auto;display:none">
 		<i class="material-icons seartog-i" style="color:red">bookmark</i>
 	    </div>
 
-	    <a href="<?php echo _SITE; ?>"><h1 style="color:#222"><?php echo _TITLE; ?></h1></a>
+	    <a href="<?php echo _SITE; ?>"><h1><?php echo _TITLE; ?></h1></a>
 	    <?php echo($t_desc) ?>
 	    
 	</header>

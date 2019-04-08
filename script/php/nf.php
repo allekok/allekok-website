@@ -5,10 +5,7 @@ $color_num = 0;
 <html dir="rtl">
     <head>
 	
-        <link rel="stylesheet" href="/style/css/main.css?v14">
-        <script type="text/javascript">
-	 var uritg = "<?php echo _SITE; ?>";
-	</script>
+        <link rel="stylesheet" href="/style/css/main.css?v16">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -59,6 +56,6 @@ $color_num = 0;
         <script type="text/javascript">
          document.getElementById("search-key").focus();
         </script>
-	<script async src="/script/js/main.js?v16"></script>
+	<script async src="/script/js/main.js?v17"></script>
     </body>
 </html>

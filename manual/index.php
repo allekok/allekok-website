@@ -20,12 +20,6 @@ include(ABSPATH . "script/php/header.php");
         چۆنیەتی بەکارهێنانی ئاڵەکۆک
     </h1>
     <style>
-     .pitewsec a {
-         color:#000;
-         font-size:1.2em;
-         line-height:2.8;
-         border-bottom:1px solid #ccc;
-     }
      #QAtxt {
          font-size: 0.65em;
          padding: 0.6em 3% 0.6em 2%;
@@ -47,9 +41,6 @@ include(ABSPATH . "script/php/header.php");
          max-width: 150px;
          cursor: pointer;
          margin-top: 0.5em;
-     }
-     .hr {
-         border-top:3px dashed #ccc;
      }
      main pre {
          white-space: pre-wrap;       /* Since CSS 2.1 */
