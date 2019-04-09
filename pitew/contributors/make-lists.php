@@ -4,9 +4,7 @@ function poem_writers () {
     require('../../script/php/condb.php');
     $writers = [];
     while($res = mysqli_fetch_assoc($query)) {
-	if(! $res['contributor'])
-	    continue;
-	$name = $res['contributor'];
+	$name = $res['contributor'] ? $res['contributor'] : 'ناشناس';
 	if(isset($writers[$name]))
 	    $writers[$name][0] += 1;
 	else
@@ -60,9 +58,7 @@ function comment_contributors () {
     require('../../script/php/condb.php');
     $contributors = [];
     while($res = mysqli_fetch_assoc($query)) {
-	if(! $res['name'])
-	    continue;
-	$name = $res['name'];
+	$name = $res['name'] ? $res['name'] : 'ناشناس';
 	if(isset($contributors[$name]))
 	    $contributors[$name][0] += 1;
 	else
