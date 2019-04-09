@@ -4,7 +4,7 @@ include_once("../../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = _TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &raquo; بەشداربووان";
+$title = _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; بەشداربووان";
 $desc = "بەشداربووان و یارمەتیدەرانی ئاڵەکۆک";
 $keys = _KEYS;
 $t_desc = "";
@@ -13,7 +13,7 @@ $color_num = 0;
 include(ABSPATH . "script/php/header.php");
 ?>
 
-<div id="poets" style="margin-bottom:4em;max-width:800px">
+<div id="poets" style="margin-bottom:1em;max-width:800px">
     <div id='adrs'>
 	<a href="../first.php">
 	    <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
@@ -85,18 +85,20 @@ include(ABSPATH . "script/php/header.php");
 	?>
 	<?php
 	$array = [
-	    ['poems', 'نووسینی شێعر', 'poems.txt', 'note_add'],
-	    ['images', 'ناردنی وێنەی شاعیران', 'images.txt', 'image'],
-	    ['poet-descs', 'نووسینی زانیاری سەبارەت بە شاعیران', 'poet-descs.txt', 'person'],
-	    ['comments', 'ڕاست‌کردنەوەی هەڵەکانی ناو شێعر', 'comments.txt', 'question_answer'],
-	    ['pdfs', 'ناردنی دیوانی شاعیران', 'pdfs.txt', 'cloud_download'],
+	    ['poems', 'نووسینی شێعر', 'poems.txt', 'note_add', '/pitew/poem-list.php'],
+	    ['images', 'ناردنی وێنەی شاعیران', 'images.txt', 'image', '/pitew/image-list.php'],
+	    ['poet-descs', 'نووسینی زانیاری سەبارەت بە شاعیران', 'poet-descs.txt', 'person', '/pitew/poetdesc-list.php'],
+	    ['comments', 'ڕاست‌کردنەوەی هەڵەکانی ناو شێعر', 'comments.txt', 'question_answer', '/comments/'],
+	    ['pdfs', 'ناردنی دیوانی شاعیران', 'pdfs.txt', 'cloud_download', '/pitew/pdfs.php'],
 	];
 
 	foreach($array as $E) {
 	    echo "<div id='contributions-{$E[0]}' class='pitewsec'>";
 	    echo "<div style='overflow:hidden;max-height:400px'><i class='material-icons'>{$E[3]}</i>";
 	    echo '<h3>';
+	    echo "<a href='{$E[4]}'>";
 	    echo $E[1];
+	    echo "</a>";
 	    $contributions_poems = open($E[2]);
 	    echo '<small><i class=\'stats-min\'>';
 	    echo "<a href='{$E[2]}' title='وەشانی plain/text'><i class='material-icons'>insert_drive_file</i></a>";

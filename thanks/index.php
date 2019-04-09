@@ -123,7 +123,11 @@ include(ABSPATH . "script/php/header.php");
 	    سپاسی تایبەت
 	</i>
 	&rsaquo;
-        بۆ هەموو ئەو کەسانەی کە لە
+        بۆ
+	<a href="/pitew/contributors/" style="color:<?php echo $colors[0][3]; ?>;background-color:<?php echo $colors[0][2]; ?>;">
+	    هەموو ئەو کەسانەی
+	</a>
+	کە لە
 	<a href="/pitew/first.php" style="color:<?php echo $colors[0][3]; ?>;background-color:<?php echo $colors[0][2]; ?>;">
 	    پتەوکردنی ئاڵەکۆک
 	</a>
