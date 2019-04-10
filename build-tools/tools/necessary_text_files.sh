@@ -14,4 +14,4 @@ php make-lists.php
 
 #last-update.txt
 cd $Allekok_path
-cp build-tools/res/last-update.txt-sample pitew/last-update.txt
+cp build-tools/res/last-update.txt-sample last-update.txt
