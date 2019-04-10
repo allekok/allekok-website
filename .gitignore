@@ -27,13 +27,13 @@ last-update.txt
 pdfs.txt
 
 # uploaded images
-style/img/poets/new/
+style/img/poets/new/*
 
 # poet's descriptions
-pitew/res/
+pitew/res/*
 
 # about.comments
-about/res/
+about/res/*
 
 # QAs
 QA.txt
