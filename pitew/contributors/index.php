@@ -70,6 +70,8 @@ include(ABSPATH . "script/php/header.php");
     <div id="contributions">
 	<?php
 	function open($uri, $limit=-2) {
+	    if(! file_exists($uri))
+		return [];
 	    $f = fopen($uri, 'r');
 	    $array = [];
 	    $n = -1;
