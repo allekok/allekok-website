@@ -154,7 +154,7 @@ function toggle_search() {
         sk.focus();
 	s.style.animation = "tL .15s";
         tS.style.opacity="1";
-     } else {
+    } else {
         s.style.display="none";
         tS.style.opacity="";
     }
@@ -217,7 +217,6 @@ function search(e) {
     var str=document.getElementById("search-key").value,
 	sres=document.getElementById("search-res"),
 	s=document.getElementById('search'),
-	loading = "<div class='loader'></div>",
 	http=new XMLHttpRequest(),
 	C = e.keyCode,
 	noActionKeys = [16, 17, 18, 91, 20, 9, 93, 37, 38, 39, 40, 32, 224, 13];
@@ -237,7 +236,6 @@ function search(e) {
 	    return;
         }
         
-        sres.innerHTML=loading;
         sres.style.display="block";
         
         var request = `/script/php/live-search2.php?q=${str}`;
