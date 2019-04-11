@@ -2,6 +2,7 @@
 function poem_writers () {
     $q = 'SELECT contributor FROM pitew WHERE status LIKE \'{\"status\":1%\'';
     require('../../script/php/condb.php');
+    if(!$query) return [];
     $writers = [];
     while($res = mysqli_fetch_assoc($query)) {
 	$name = $res['contributor'] ? $res['contributor'] : 'ناشناس';
@@ -56,6 +57,7 @@ function poet_description_writers () {
 function comment_contributors () {
     $q = 'SELECT name FROM comments WHERE blocked=0 AND `read`=1';
     require('../../script/php/condb.php');
+    if(!$query) return [];
     $contributors = [];
     while($res = mysqli_fetch_assoc($query)) {
 	$name = $res['name'] ? $res['name'] : 'ناشناس';
