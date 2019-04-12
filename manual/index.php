@@ -22,15 +22,11 @@ include(ABSPATH . "script/php/header.php");
     <style>
      #QAtxt {
          font-size: 0.65em;
-         padding: 0.6em 3% 0.6em 2%;
          text-align: right;
          max-width: 90%;
          width: 90%;
          min-height: 8em;
          display: block;
-         border-top: 3px solid rgb(221, 221, 221);
-         box-shadow: rgb(221, 221, 221) 0px 5px 10px -5px;
-         box-sizing: border-box;            
          margin: 1em auto 0;
          height: 155px;
      }
