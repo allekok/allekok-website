@@ -31,12 +31,12 @@ include(ABSPATH . "script/php/header.php");
          height: 155px;
      }
      .btn {
-         font-size: 0.65em;
+         font-size: .65em;
          width: 50%;
-         padding: 0.8em 0;
+         padding: .8em 0;
          max-width: 150px;
          cursor: pointer;
-         margin-top: 0.5em;
+         margin-top: 1em;
      }
      main pre {
          white-space: pre-wrap;       /* Since CSS 2.1 */
@@ -45,20 +45,6 @@ include(ABSPATH . "script/php/header.php");
          white-space: -o-pre-wrap;    /* Opera 7 */
          word-wrap: break-word;       /* Internet Explorer 5.5+ */
          font-family: inherit;
-     }
-     code {
-         direction:ltr;
-         background:#f3f3f3;
-         color:#333;
-         text-align:left;
-         display:block;
-         border-left:10px solid #ddd;
-         word-wrap:break-word;
-         text-indent:0;
-         padding:1em;
-         font-family:'kurd', monospace;
-         letter-spacing:1px;
-         margin:.5em 0;
      }
      main h1 {
          font-size:1.5em;

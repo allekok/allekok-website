@@ -99,24 +99,7 @@ include(ABSPATH . 'script/php/header.php');
          padding: 0.8em 0;
          max-width: 150px;
          cursor: pointer;
-         margin-top: 0.5em;
-     }
-     .hr {
-         border-top:3px dashed #ccc;
-     }
-     code {
-         direction:ltr;
-         background:#f3f3f3;
-         color:#333;
-         text-align:left;
-         display:block;
-         border-left:10px solid #ddd;
-         word-wrap:break-word;
-         text-indent:0;
-         padding:1em;
-         font-family:'kurd', monospace;
-         letter-spacing:1px;
-         margin:.5em 0;
+         margin-top: 1em;
      }
     </style>
     

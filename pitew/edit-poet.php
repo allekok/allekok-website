@@ -112,9 +112,9 @@ $_poet1 = filter_var(@$_GET['poet'], FILTER_SANITIZE_STRING);
             
             <div id="message"></div>
 
-            <button type="submit" class="button bth" style="font-size: .7em;width: 45%;max-width: 150px;background-color: #777;color: #fff;margin-top:0.5em;">ناردن</button>
+            <button type="submit" class="button bth" style="font-size: .7em;width: 45%;max-width: 150px;background-color: #777;color: #fff;margin-top:1em;">ناردن</button>
             
-            <button type="button" id="clearBtn" class='button' style="font-size:.7em;width: 45%;max-width: 150px;margin-top:0.5em;">پاک کردنەوە</button>
+            <button type="button" id="clearBtn" class='button' style="font-size:.7em;width: 45%;max-width: 150px;margin-top:1em;">پاک کردنەوە</button>
         </form>
         
         <?php if(isset($_poet1)) { ?>

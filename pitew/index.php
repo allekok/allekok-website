@@ -158,9 +158,9 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
             
             <div id="message"></div>
 
-            <button type="submit" class="button bth" style="font-size: 0.7em;width: 45%;max-width: 150px;margin-top:0.5em;background:#777;color:#fff;">ناردن</button>
+            <button type="submit" class="button bth" style="font-size: .7em;width: 45%;max-width: 150px;margin-top:1em;background:#777;color:#fff;">ناردن</button>
             
-            <button type="button" id="clearBtn" class='button' style="font-size: 0.7em;width: 45%;max-width: 150px;margin-top:0.5em;">پاک کردنەوە</button>
+            <button type="button" id="clearBtn" class='button' style="font-size: 0.7em;width: 45%;max-width: 150px;margin-top:1em">پاک کردنەوە</button>
         </form>
         <?php if(isset($_poet1)) { ?>
             <script>window.addEventListener("load",check)</script>

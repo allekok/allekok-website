@@ -59,15 +59,14 @@ include(ABSPATH . 'script/php/header.php');
          height: 155px;
      }
      .btn {
-         font-size: 0.65em;
+         font-size: .65em;
          width: 50%;
-         padding: 0.8em 0;
+         padding: .8em 0;
          max-width: 150px;
-         cursor: pointer;
-         margin-top: 0.5em;
+         margin-top: 1em;
      }
      .hr {
-         border-top:2px dashed #ddd;
+         border-top:1px solid #eee;
      }
      #poets a {
 	 border-bottom:1px solid <?php echo $colors[0][0]; ?>;

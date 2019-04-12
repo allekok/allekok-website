@@ -54,7 +54,7 @@ include(ABSPATH . "script/php/header.php");
 
             <div class='loader' id="commloader" style="display:none;margin:.5em auto .2em;width:1.5em;height:1.5em;"></div>
 
-            <button type="submit" style="font-size: .65em;width: 50%;max-width: 150px;margin-top:0.5em;" class='button'>ناردن</button>
+            <button type="submit" style="font-size: .65em;width: 50%;max-width: 150px;margin-top:1em;" class='button'>ناردن</button>
         </form>
 
         <?php
