@@ -3,6 +3,7 @@ Allekok_path=~/Projects/allekok.com
 #pdfs.txt
 cd $Allekok_path/pitew
 php save-pdfs-list.php
+echo 
 
 #news.txt
 cd $Allekok_path
