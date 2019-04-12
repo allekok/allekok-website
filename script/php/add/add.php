@@ -200,7 +200,7 @@ include_once("../constants.php");
 	    <?php echo _TITLE; ?> &raquo; 
 	    نووسینی شێعر
 	</title>
-	<link rel="stylesheet" href="/style/css/main.css?v16">
+	<link rel="stylesheet" href="/style/css/main.css?v17">
 
 	<style>
 	 * {

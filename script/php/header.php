@@ -23,7 +23,7 @@ if(isset($ath)) {
 	<script>
          if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', {scope: '/'});
 	</script>
-	<link rel='stylesheet' href='/style/css/main.css?v16' />
+	<link rel='stylesheet' href='/style/css/main.css?v17' />
 	<title>
 	    <?php echo($title); ?>
 	</title>

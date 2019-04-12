@@ -5,7 +5,7 @@ $color_num = 0;
 <html dir="rtl">
     <head>
 	
-        <link rel="stylesheet" href="/style/css/main.css?v16">
+        <link rel="stylesheet" href="/style/css/main.css?v17">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
