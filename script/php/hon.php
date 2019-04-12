@@ -56,12 +56,12 @@
         <i style='vertical-align:middle;font-size:1.4em;height:0.6em;color:#555;' class='material-icons'>format_size</i>
         <button class='bigger' style="padding:.85em 1.1em">
             <i style='vertical-align:middle;' class='material-icons'>arrow_upward</i>
-        </button><button class='smaller' style="margin-left:0.4em;padding:.85em 1.1em">
+        </button><button class='smaller' style="margin-left:.4em;padding:.85em 1.1em">
             <i style='vertical-align:middle;' class='material-icons'>arrow_downward</i>
-        </button>|<button id='copy-sec' class='copy' style="margin:0 0.4em;font-size:.83em;padding:.85em .3em;">
+        </button><button id='copy-sec' class='copy' style="margin:0 .4em;font-size:.83em;padding:.85em .3em;">
             <i style='vertical-align:middle;' class='material-icons'>content_copy</i> کۆپی کردن 
         </button><?php 
-		 echo "|<i id='extlnkico' style='cursor:pointer;color: #444;vertical-align: middle;padding:0 .2em;font-size: 1.8em;height: .8em;' class='material-icons' title='ئامێرەکانی‌تر'>more_horiz</i>";
+		 echo "<i id='extlnkico' style='cursor:pointer;color: #444;vertical-align: middle;padding:0 .2em;font-size: 1.8em;height: .8em;' class='material-icons' title='ئامێرەکانی‌تر'>more_horiz</i>";
 
 		 if(! ($ath==10 && $bk==1 && $row[1]['id']==1) ) { ?><button id='fav-sec' class='fav' style="background:none; font-size:1.8em; box-shadow:none; border:0;float:left;padding-left:5px;padding-top:.25em;">
             <i class='material-icons' id='like-icon' style='color: <?php echo $colors[$color_num][0]; ?>;vertical-align: top;font-size: 1.25em'>bookmark_border</i>
