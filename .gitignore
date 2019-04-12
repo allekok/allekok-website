@@ -46,3 +46,6 @@ test/
 
 # contributors text files
 pitew/contributors/*.txt
+
+# build-tools/tools/md-to-html/node_modules
+node_modules
