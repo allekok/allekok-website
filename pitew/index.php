@@ -117,7 +117,7 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
 	</div>
         <form id="frmComm" action="append.php" method="POST">
             <div class="input-label-box">
-		<input type="text" onblur="check()" id="contributorTxt" name="contributor" style="font-size:.7em;padding:1em 3%;width:100%;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
+		<input type="text" onblur="check()" id="contributorTxt" name="contributor" style="font-size:.7em;width:100%;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
 	    </div>
 	    <div style="text-align: right;text-indent: 1em;padding: .5em 1em 0;font-size: .53em;color: #444;" id="pitew-stats">
 		ئەو شێعرە بە نێوی خۆتان لەسەر ئاڵەکۆک دادەندرێ.
@@ -125,12 +125,12 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
             <div style="border-top:1px solid #ddd;margin:.8em 0;"></div>
 	    <div class="input-label-box">
 		<label for="poetTxt">شاعیر: </label>
-		<input type="text" onblur="check()" id="poetTxt" name="poet" style="font-size:.7em;padding:1em 3%;width:94%;" value="<?php echo $_poet1; ?>" placeholder="ناوی شاعیر *">
+		<input type="text" onblur="check()" id="poetTxt" name="poet" style="font-size:.7em;width:94%;" value="<?php echo $_poet1; ?>" placeholder="ناوی شاعیر *">
 	    </div>
             
             <!-- file upload sec -->
             <div id="frmUpload" style="max-width:800px;margin:auto;display:none;">
-                <textarea id="poetDescTxt" name="poetDesc" style="font-size:.6em;max-width:94%;min-width:94%;margin-top:1em;min-height:9em;padding:1em 3%" placeholder="سەبارەت بە شاعیر (وەکوو: ناسناوی ئەدەبی، شوێن و ڕێکەوتی لەدایکبوون یان هەر زانیاریەکی تر کە بەلاتانەوە چاکە لەسەر ئاڵەکۆک دابندرێ.)"></textarea>
+                <textarea id="poetDescTxt" name="poetDesc" style="font-size:.6em;max-width:94%;min-width:94%;margin-top:1em;min-height:9em;" placeholder="سەبارەت بە شاعیر (وەکوو: ناسناوی ئەدەبی، شوێن و ڕێکەوتی لەدایکبوون یان هەر زانیاریەکی تر کە بەلاتانەوە چاکە لەسەر ئاڵەکۆک دابندرێ.)"></textarea>
                 
                 <div style="padding:1.2em 0.3em 0.1em; text-align:right; text-indent:1em;font-size:0.5em;color:#222;">
                     ئەگەر دەتانهەوێ وێنەی شاعیر لەسەر ئاڵەکۆک دابندرێ، لەسەر "هەڵبژاردنی وێنە" کرتە بکەن.
@@ -143,11 +143,11 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
             
 	    <div class="input-label-box" style="margin-top:1em;">
 		<label for="bookTxt">کتێب: </label>
-		<input type="text" id="bookTxt" name="book" style="font-size:.7em;width:94%;padding:1em 3%" value="<?php echo $_book1; ?>" placeholder="ناوی کتێب">
+		<input type="text" id="bookTxt" name="book" style="font-size:.7em;width:94%;" value="<?php echo $_book1; ?>" placeholder="ناوی کتێب">
 	    </div>
 	    
 	    <div class="input-label-box" style="margin-top:1em;">
-		<input type="text" id="poemNameTxt" name="poemName" style="font-size:.7em;width:100%;padding:1em 3%" placeholder="سەرناوی شێعر">
+		<input type="text" id="poemNameTxt" name="poemName" style="font-size:.7em;width:100%;" placeholder="سەرناوی شێعر">
 	    </div>
 	    
 	    <div class="input-label-box" style="margin-top:1em;">
