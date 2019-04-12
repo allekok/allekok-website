@@ -1,8 +1,8 @@
 <?php
 
 include_once("../script/php/constants.php");
-include_once("../script/php/colors.php");
-include_once("../script/php/functions.php");
+include_once(ABSPATH."script/php/colors.php");
+include_once(ABSPATH."script/php/functions.php");
 
 $title = _TITLE . "؟";
 $desc = $title;
@@ -16,7 +16,7 @@ include(ABSPATH . "script/php/header.php");
 <div id="poets">
     <div>
         <p style="font-size:0.75em;">
-            ئاڵەکۆک، هەلێکە بۆ خوێندنەوەی شێعری کوردی.
+	    ئاڵەکۆک هەلێکە بۆ خوێندنەوەی شێعری کوردی.
         </p>
     </div>
     <div class='stats-min'>
@@ -68,7 +68,6 @@ include(ABSPATH . "script/php/header.php");
         </div>
 
         <div id="Acomms" style="font-size:0.8em;<?php if(!$nzuri){echo('display:none;');} ?>">
-            <div class='loader' style="border-top: 3px dashed <?php echo $colors[0][0]; ?>;border-radius:100%;padding:0;animation-duration:0.7s;"></div>
             
             <script>
              var http = new XMLHttpRequest();
