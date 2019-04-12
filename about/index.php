@@ -29,7 +29,7 @@ include(ABSPATH . "script/php/header.php");
     </div>
     <div style="font-size:.65em;">
         <span style="color:#666;">
-            ئاخیرین نوێ کردنەوەی شێعرەکان: 
+            ئاخیرین نوێ‌کردنەوەی شێعرەکان: 
         </span>
         <span style="display:inline-block;color:#222;">
             <?php

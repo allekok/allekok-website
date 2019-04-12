@@ -291,7 +291,7 @@ include(ABSPATH . 'script/php/header.php');
         
         <div>
             <?php
-            if(filesize("QA.txt") > 0) {
+            if(@filesize("QA.txt") > 0) {
                 
                 $f = fopen("QA.txt", "r");
                 $cc = fread($f, filesize("QA.txt"));

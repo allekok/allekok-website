@@ -85,11 +85,10 @@ include(ABSPATH . 'script/php/header.php');
     <main id="main">
 <?php
 $base = "https://allekok.github.io/diwan/";
-// $list_uri = $base . "list.txt";
 $list_uri = "pdfs.txt";
-$list = @file_get_contents($list_uri);
-
-$list = explode("\n\n", $list);
+$list = file_exists($list_uri) ?
+	explode("\n\n",
+		file_get_contents($list_uri)) : [];
 $list[] = "فەقێ تەیران - دیوان\t\t277.9MB";
 $list[] = "سافی هیرانی - دیوان ۲\t\t234.1MB\t\tلەلایان \"کەماڵ ڕەحمانی\".";
 sort($list);

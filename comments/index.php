@@ -25,9 +25,10 @@ include(ABSPATH . "script/php/header.php");
         $db = "index";
         $q = "select * from comments where blocked=0";
         include(ABSPATH . "script/php/condb.php");
-        $nm = num_convert(mysqli_num_rows($query),"en","ckb");
+        $nm = $query ?
+	      mysqli_num_rows($query) : 0;
+	$nm = num_convert($nm,"en","ckb");
         mysqli_close($conn);
-        
         echo $nm;
         ?>
     </div>
