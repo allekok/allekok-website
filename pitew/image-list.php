@@ -49,7 +49,8 @@ include(ABSPATH . 'script/php/header.php');
 	
 	function make_list($path) {
 	    $not = [".",".."];
-	    $d = opendir($path);
+	    $d = file_exists($path) ?
+		 opendir($path) : die();
 	    $list = [];
 
 	    while( false !== ($e_name = readdir($d)) ) {
