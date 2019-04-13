@@ -178,7 +178,7 @@
 	    
             <div id="message"></div>
 	    
-            <button class='button bth' type="submit" style="font-size:.7em;width:50%;padding:1em 0;max-width:150px;background-color:<?php echo $colors[$color_num][0]; ?>;color:<?php echo $colors[$color_num][1]; ?>;cursor:pointer;margin:.5em 0;">ناردن</button>
+            <button class='button bth' type="submit" style="font-size:.7em;width:50%;padding:1em 0;max-width:150px;background-color:<?php echo $colors[$color_num][0]; ?>;color:<?php echo $colors[$color_num][1]; ?>;margin:1em 0 .5em">ناردن</button>
 	</form>
 	
 	<div id="Acomms-title" style="margin:1em 0 0;display:none;border-top:1px solid #eee;padding:1em .3em;font-size:.75em;">
