@@ -27,11 +27,11 @@ include(ABSPATH . 'script/php/header.php');
     <style>
      code {
          direction:ltr;
-         background:#f3f3f3;
-         color:#333;
+         background:#f6f6f6;
+         color:#444;
          text-align:left;
          display:block;
-         border-left:10px solid #ddd;
+         border-left:10px solid #eee;
          word-wrap:break-word;
          text-indent:0;
          padding:1em;
@@ -81,7 +81,7 @@ include(ABSPATH . 'script/php/header.php');
      }
     </style>
     <div style="max-width: 850px; margin:auto; padding:1em;line-height:2.3; text-align:justify;">
-        <p style="border-bottom:1px solid #ddd;padding-top:0;text-indent:0;">
+        <p style="border-bottom:1px solid #eee;padding-top:0;text-indent:0;">
 	    -  <a href="https://github.com/allekok/www.allekok.com/" style="display:inline-block;padding:.5em 0 .2em;">
 	    بۆ داگرتنی کۆدەکانی ئاڵەکۆک لێرە کرتە بکەن.
             </a><br>
@@ -241,7 +241,7 @@ include(ABSPATH . 'script/php/header.php');
 	    </p>
     </div>
     
-    <div style="border-top:1px solid #ddd;margin:0.4em 0 0.8em;"></div>
+    <div style="border-top:1px solid #eee;margin:0.4em 0 0.8em;"></div>
     
     <script>
      function make_code() {
@@ -292,7 +292,7 @@ include(ABSPATH . 'script/php/header.php');
                 $cc = fread($f, filesize("QA.txt"));
                 $cc = explode("\nend\n", $cc);
                 
-                echo "<h3 style='border-top: 1px solid #ddd;margin-top: 2em;font-size: .7em;padding: 1em;'>پرسیار و وەڵامەکان</h3>";
+                echo "<h3 style='border-top: 1px solid #eee;margin-top: 2em;font-size: .7em;padding: 1em;'>پرسیار و وەڵامەکان</h3>";
                 
                 foreach($cc as $c) {
                     if(!empty($c)) {
