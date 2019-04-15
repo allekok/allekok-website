@@ -77,7 +77,7 @@ if(!empty($q1)) {
     			
     			$s_poet_hdesc=$res['hdesc'];
 			
-        		if((stristr($s_poet_name,$q1) || stristr($s_poet_prof,$q1) || stristr($s_poet_hdesc,$q1)) && !$res['f']) {
+        		if((stristr($s_poet_name,$q1) || stristr($s_poet_prof,$q1) || stristr($s_poet_hdesc,$q1)) && !@$res['f']) {
         		    $s_poet[$i]['f'] = 1;
         		    
         		    $res['id'] = intval($res['id']);
@@ -108,7 +108,7 @@ if(!empty($q1)) {
     			$s_poet_hdesc=san_data($res['hdesc'],true);
     			
 			
-        		if((stristr($s_poet_takh,$q2) || stristr($s_poet_name,$q2) || stristr($s_poet_prof,$q2) || stristr($s_poet_hdesc,$q2)) && !$res['f']) {
+        		if((stristr($s_poet_takh,$q2) || stristr($s_poet_name,$q2) || stristr($s_poet_prof,$q2) || stristr($s_poet_hdesc,$q2)) && !@$res['f']) {
         		    
         		    $res['id'] = intval($res['id']);
         		    $res['takh'] = $res['rtakh'];
@@ -182,7 +182,7 @@ if(!empty($q1)) {
 	            
 		    $s_bk_desc = $res['book_desc'];
 
-		    if( !$res['f'] && stristr($s_bk_desc,$q1) ) {
+		    if( !@$res['f'] && stristr($s_bk_desc,$q1) ) {
 			
 			$s_book[$i]['f'] = 1;
 			
@@ -211,7 +211,7 @@ if(!empty($q1)) {
 	            $s_bk = san_data($res['book'], true);
 		    $s_bk_desc = san_data($res['book_desc'],true);
 
-		    if( !$res['f'] && (stristr($s_bk,$q2) || stristr($s_bk_desc,$q2)) ) {
+		    if( !@$res['f'] && (stristr($s_bk,$q2) || stristr($s_bk_desc,$q2)) ) {
 			
 			
 			$res['poet'] = $res['rtakh'];
@@ -304,7 +304,7 @@ if(!empty($q1)) {
                 	$s_hon_desc = $res['hdesc'];
                 	
                 	
-	                if((stristr($s_hon,$q1) or stristr($s_hon_desc,$q1)) && !$res['f']) {
+	                if((stristr($s_hon,$q1) or stristr($s_hon_desc,$q1)) && !@$res['f']) {
 	                    
 	                    $s_poem[$i]['f'] = 1;
 	                    
@@ -341,7 +341,7 @@ if(!empty($q1)) {
                 	$s_name = san_data($res['name'],true);
                 	
                 	
-	                if(stristr($s_name,$q2) && !$res['f']) {
+	                if(stristr($s_name,$q2) && !@$res['f']) {
 	                    $s_poem[$i]['f'] = 1;
 	                    
 	                    $res['summary'] = $res['rpoem'];
@@ -379,7 +379,7 @@ if(!empty($q1)) {
                 	$s_hon_desc = san_data($res['hdesc'], true);
                 	
                 	
-	                if((stristr($s_hon,$q2) or stristr($s_hon_desc,$q2)) && !$res['f']) {
+	                if((stristr($s_hon,$q2) or stristr($s_hon_desc,$q2)) && !@$res['f']) {
 	                    
 	                    $res['summary'] = $res['rpoem'];
 	                    $pbp_uri = $res['poet_address'] ."/" . $res['book_address'] . "/" . $res['poem_address'];
