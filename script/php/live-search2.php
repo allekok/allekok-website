@@ -55,7 +55,7 @@ if($poets_max !== 0) {
     		    $s_poet[$i]['f'] = 1;
     		    
     		    $res_poet1 .= "<section>";
-    		    $res_poet1 .= "<a href='/".$res['uri'] ."'>";
+    		    $res_poet1 .= "<a href='/poet:".$res['id'] ."'>";
     		    
     		    $imgsrc = "/style/img/poets/profile/profile_".$res['id'].".jpg";
 		    if(! file_exists("../..".$imgsrc)) {
@@ -83,7 +83,7 @@ if($poets_max !== 0) {
         		$s_poet[$i]['f'] = 1;
         		
         		$res_poet1 .= "<section>";
-        		$res_poet1 .= "<a href='/".$res['uri'] ."'>";
+        		$res_poet1 .= "<a href='/poet:".$res['id'] ."'>";
         		
         		$imgsrc = "/style/img/poets/profile/profile_".$res['id'].".jpg";
 			if(! file_exists("../..".$imgsrc)) {
