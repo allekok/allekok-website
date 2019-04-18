@@ -52,9 +52,6 @@ i{font-style:normal}
 .nav a:hover{background:#eee}
 a{text-decoration:none;color:#000}
 a:hover{text-decoration:none}
-.ng,.nr{font-size:.5em;padding:1em .5em;display:block}
-.ng{background:#cfc}
-.nr{background:rgba(255,0,0,.1)}
 .tt{margin:-2em 0 1em;opacity:0;background:#f6f6f6;color:#666;font-size:.65em;padding:5px 0;display:none;animation:tooltip .1s forwards}
 .bk-comp:hover{opacity:.4}
 .button{background:#f6f6f6;color:#444;box-shadow:0 2px 3px -2px #ddd;border-radius:2px;padding:1em;font-size:.58em}
@@ -64,7 +61,7 @@ a:hover{text-decoration:none}
 .stats-min{font-size:.65em;color:#666}
 .sub-num{vertical-align:bottom}
 header a:hover,section a:hover,.psec:hover{opacity:.85}
-header{padding:.3em 0;text-align:center;max-width:1200px; margin:auto; position:relative}
+header{padding:.5em 0 .3em;text-align:center;max-width:1200px; margin:auto; position:relative}
 header a,header h1,header h2{color:inherit}
 header a{display:inline-block}
 header a h1{font-size:1.25em;color:#222}

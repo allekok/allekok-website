@@ -27,7 +27,7 @@ $poemName = filter_var($_POST['poemName'], FILTER_SANITIZE_STRING); // poem's na
 if(empty($poet) or empty($poem)) {    
     $res = [
         "state"=>0,
-        "message"=>"<i class='nr'>تکایە ناوی شاعیر و شێعرەکەی بنووسن.</i>"];
+        "message"=>"<i style='font-size:.5em;padding:1em .5em;display:block;background:rgba(255,0,0,.1)'>تکایە ناوی شاعیر و شێعرەکەی بنووسن.</i>"];
     die( json_encode($res) );    
 }
 
@@ -47,7 +47,7 @@ if($query) {
     
     $res = [
         "state"=>1,
-        "message"=>"<i class='ng'>زۆر سپاس بۆ ئێوە. ئەو شێعرە دوای پێداچوونەوە لەسەر ئاڵەکۆک دادەندرێ.</i>",
+        "message"=>"<i style='font-size:.5em;padding:1em .5em;display:block;background:#cfc'>زۆر سپاس بۆ ئێوە. ئەو شێعرە دوای پێداچوونەوە لەسەر ئاڵەکۆک دادەندرێ.</i>",
         "contributor"=> [
             "name"=>$contributor,
             "ID"=>""
