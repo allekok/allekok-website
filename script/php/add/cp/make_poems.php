@@ -1,6 +1,6 @@
 <?php
 require_once("../../constants.php");
-require_once("../../sanKuText.php");
+require_once("../../functions.php");
 
 header("Content-type: text/html; charset=UTF-8");
 

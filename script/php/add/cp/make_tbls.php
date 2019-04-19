@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <?php
 require_once("../../constants.php");
-require_once("../../sanKuText.php");
+require_once("../../functions.php");
 
 $con = mysqli_connect(_HOST,_USER,_PASS);
 

@@ -1,5 +1,5 @@
 <?php
-// print a summary of length $_GET["len"] of poems.
+/* print a summary of length $_GET["len"] of any poem. */
 
 header("Content-type: text/plain; charset=UTF-8");
 
@@ -14,7 +14,7 @@ if(!$pt or !$bk or !$pm)    die("");
 
 $tbl = "tbl{$pt}_{$bk}";
 
-// Connecting to database
+/* Connecting to database */
 $q = "select hon from $tbl where id=$pm";
 include("condb.php");
 
