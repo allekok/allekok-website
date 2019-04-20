@@ -1,6 +1,6 @@
 <?php
 /** Default values **/
-$title = _TITLE;
+$title = _TITLE . ' - ' . _DESC;
 /* Page title <title> */
 
 $desc = _DESC;

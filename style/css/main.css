@@ -1,5 +1,5 @@
 html, body{height:100%;margin:0}
-body{font-family:'kurd', arial;font-size:24px;background:#fdfdfd;line-height:2.5}
+body{font-family:'kurd', arial;font-size:24px;line-height:2.5}
 h1, h2, h3, h4, h5, h6, p, input, a, form, button, select,
 ul, li, ol, header, div, footer, article, section, nav, img, table, tr,
 td, th, textarea, span, i, sup, sub{padding:0;margin:0;border:0;font-family:inherit;font-weight:normal;transition:all .15s ease-out;-webkit-transition:all .15s ease-out;text-align:inherit;box-sizing:border-box}
@@ -61,13 +61,12 @@ a:hover{text-decoration:none}
 .stats-min{font-size:.65em;color:#666}
 .sub-num{vertical-align:bottom}
 header a:hover,section a:hover,.psec:hover{opacity:.85}
-header{padding:.5em 0 .3em;text-align:center;max-width:1200px; margin:auto; position:relative}
+header{padding:.1em 0 0;text-align:center;margin:auto;position:relative;color:#fff}
 header a,header h1,header h2{color:inherit}
 header a{display:inline-block}
-header a h1{font-size:1.25em;color:#222}
-header h2{font-size:.58em;margin-top:-1em;color:#444;}
-#poets{padding:0;text-align:center;margin:0 auto;max-width:1200px}
-.psec{width: 22.5%;display:inline-block;vertical-align:top;max-width: 115px;color:#333;margin: .5em 1.25% .1em}
+header a h1{font-size:1em}
+#poets{text-align:center;margin:0 auto;max-width:1200px}
+.psec{width:22.5%;display:inline-block;vertical-align:top;max-width:115px;margin:.5em 1.25% .1em;border-bottom:1px solid #eee}
 .psec h3,.psec a{color:inherit}
 .psec h3{font-size:.63em;white-space:nowrap;overflow:hidden}
 .psec img{border-radius:50%;width:100%;height:100%;display:block;border:1px solid #eee}
@@ -137,8 +136,8 @@ header div:hover{opacity:.6}
 .h{direction:rtl;display:block;color:#777;font-size:.63em;text-align:left;font-family:mono;line-height:normal;margin-top:1em}
 .link{border-bottom:1px solid #eee;padding:.5em}
 .link:hover{background-color:#eee}
-.seartog {position:absolute;left:.4em;cursor:pointer;top:1.2em}
-.seartog-i {font-size:1.6em}
+.seartog{position:absolute;left:.5em;cursor:pointer;top:.85em;font-size:.8em}
+.seartog-i{font-size:1.5em}
 .ptr{margin-top:1em;padding: 0.75em 0 0.1em;font-size:1em}
 .bk-comp{vertical-align:middle;height:.7em;padding-right:.1em;cursor:pointer}
 .ptrh{font-size:.58em;padding-bottom:.9em}

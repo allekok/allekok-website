@@ -23,7 +23,7 @@ if(isset($ath)) {
 	<script>
          if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', {scope: '/'});
 	</script>
-	<link rel='stylesheet' href='/style/css/main.css?v17' />
+	<link rel='stylesheet' href='/style/css/main.css?v18' />
 	<title>
 	    <?php echo($title); ?>
 	</title>
@@ -43,8 +43,8 @@ if(isset($ath)) {
 	<meta property="og:image" content="<?php echo($ogimg); ?>" />
 	
 	<style>
-	 body {
-             border-top:.4em solid <?php echo $colors[$color_num][0]; ?>;
+	 header {
+             background:<?php echo $colors[$color_num][0]; ?>;
 	 }
 	 .ptr {
              background:<?php echo($colors[$color_num][2]) ?>;
@@ -104,21 +104,19 @@ if(isset($ath)) {
 	    
 	    <?php if(!isset($is_it_search)) { ?>
 		<div id='tS' role='button' class='seartog'>
-		    <i class="material-icons seartog-i">search</i>
+		    <i class="material-icons seartog-i" style="font-weight:bold">search</i>
 		</div>
 	    <?php } ?>
 	    
-	    <div class='seartog' role='button' id="tL" style="right:.3em;left:auto;display:none">
-		<i class="material-icons seartog-i" style="color:red">bookmark</i>
+	    <div class='seartog' role='button' id="tL" style="right:.5em;left:auto;display:none">
+		<i class="material-icons seartog-i">bookmark</i>
 	    </div>
 
 	    <a href="<?php echo _SITE; ?>"><h1><?php echo _TITLE; ?></h1></a>
-	    <?php echo($t_desc) ?>
-	    
 	</header>
 
 
-	<div id='search' style='max-width:1200px;margin-right:auto;margin-left:auto;'>
+	<div id='search' style='max-width:1200px;margin-right:auto;margin-left:auto'>
 	    <form id="live-search-form" action="/" method="GET"><input type='text' id='search-key' onkeyup="search(event)" placeholder='گەڕان بۆ ...' name='q'><button type="submit" id="search-btn" class='button'><i class='material-icons' style='font-size:2em;'>search</i></button></form>
 	    
 	    <div id='search-res'></div>

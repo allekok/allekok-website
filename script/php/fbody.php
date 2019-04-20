@@ -12,7 +12,10 @@ include("condb.php");
 ?>
 
 <div id='poets'>
-    <div style="padding:0 0 .5em;">
+    <div>
+	<h2 style="padding:.5em 0;font-size:.65em">
+	    <?php echo _DESC; ?>
+	</h2>
         <?php if(isset($_GET['new'])) { ?>
             <span style="display: block;font-size: .55em;color: #444;padding: 1em;background-color: #f9f9f9;">
 		مەبەست لە شاعیرانی نوێ، ئەو شاعیرانەن کە لە ژیان دا ماون.
