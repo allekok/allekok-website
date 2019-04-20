@@ -14,7 +14,7 @@ include(ABSPATH . "script/php/header.php");
 
 <div id="poets" style="max-width:850px">
 
-    <h1 style="display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0 0;font-size:1.2em;">
+    <h1 style="padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0 0;font-size:1.2em;">
         بەرنامەی دێسکتاپی ئاڵەکۆک
     </h1>
     <style>
