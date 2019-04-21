@@ -18,7 +18,7 @@ function poem_writers () {
 
 function image_contributors () {
     $dir = opendir('../../style/img/poets/new/');
-    $ignore = ['.','..'];
+    $ignore = ['.','..','README.md'];
     $contributors = [];
     while(false !== ($e=readdir($dir))) {
 	if(in_array($e, $ignore))
@@ -37,7 +37,7 @@ function image_contributors () {
 
 function poet_description_writers () {
     $dir = opendir('../res/');
-    $ignore = ['.','..'];
+    $ignore = ['.','..','README.md'];
     $writers = [];
     while(false !== ($e=readdir($dir))) {
 	if(in_array($e, $ignore))
