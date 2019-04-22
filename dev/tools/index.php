@@ -245,10 +245,10 @@ include(ABSPATH . 'script/php/header.php');
     
     <script>
      function make_code() {
-	 var inp = document.querySelector("#QAtxt");
-	 var start = inp.selectionStart;
-	 var end = inp.selectionEnd;
-	 var sel = inp.value.substring(start,end)
+	 var inp = document.querySelector("#QAtxt"),
+	     start = inp.selectionStart,
+	     end = inp.selectionEnd,
+	     sel = inp.value.substring(start,end);
 	 if(sel != "" || inp.value == "") {
 	     
 	     var out = "[code]" + sel + "[/code]";
@@ -315,9 +315,9 @@ include(ABSPATH . 'script/php/header.php');
          document.querySelector("#frmQA").addEventListener("submit", function(e) {
              e.preventDefault();
              
-             var txt = document.querySelector("#QAtxt");
-             var t = document.querySelector("#QAres");
-             var loader = "<div class='loader' style='border-top:2px solid #19e31b'></div>";
+             var txt = document.querySelector("#QAtxt"),
+		 t = document.querySelector("#QAres"),
+		 loader = "<div class='loader'></div>";
              
              if(txt.value == "") {
                  txt.focus();

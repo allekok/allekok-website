@@ -199,7 +199,7 @@ include(ABSPATH . 'script/php/header.php');
              
              var txt = document.querySelector("#QAtxt");
              var t = document.querySelector("#QAres");
-             var loader = "<div class='loader' style='border-top:2px solid #19e31b'></div>";
+             var loader = "<div class='loader'></div>";
              
              if(txt.value == "") {
                  txt.focus();
