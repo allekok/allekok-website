@@ -1,18 +1,38 @@
-# ~~~Download necessary files for build locally~~~ #
+# ~~~MAKE~~~ #
 Allekok_path=~/Projects/allekok.com
+Download_repo=~/Projects/allekok-downloads/downloads
+cd $Allekok_path
 
-# From allekok download repo:
-## 1. Copy images sent by users
-## 2. Copy text infos written by users
-sh $Allekok_path/build-tools/tools/necessary_images_poetdescs.sh
+#images
+cp $Download_repo/allekok.com/image/Sent-by-users/* \
+   style/img/poets/new/
+rm style/img/poets/new/index.md
 
-# Create a sample last-update.txt, news.txt
-# Download pdfs.txt from allekok's diwan repo
-# Make Contributors text lists
-sh $Allekok_path/build-tools/tools/necessary_text_files.sh
+#poet-descs
+cp $Download_repo/allekok.com/text/infos-written-by-users/* \
+   pitew/res/
+rm pitew/res/index.md
 
-# Convert manual.md -> manual.html
-sh $Allekok_path/build-tools/tools/md-to-html-manual.sh
+#news.txt
+cp build-tools/res/news.txt-sample \
+   pitew/news.txt
+
+#last-update.txt
+cp build-tools/res/last-update.txt-sample \
+   last-update.txt
+
+#.md -> .html
+cd manual
+node $Allekok_path/build-tools/tools/md-to-html/md-to-html.js
+
+#pdfs.txt
+cd ../pitew
+php save-pdfs-list.php
+
+#contributors/*.txt
+cd contributors
+php make-lists.php
 
 # Print some rubbish
-figlet make.
+echo 
+echo - Make: Ok.

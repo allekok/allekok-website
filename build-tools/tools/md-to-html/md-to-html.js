@@ -8,5 +8,4 @@ for(var i in files) {
     text = fs.readFileSync(files[i]+'.md').toString(),
     html = converter.makeHtml(text);
     fs.writeFileSync(files[i]+'.html', html);
-    console.log('ok');
 }
