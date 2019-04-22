@@ -2,6 +2,7 @@
 ```bash
 # First, fork 'www.allekok.com' repository
 $ git clone https://github.com/your_username/www.allekok.com
+$ cd www.allekok.com
 $ git branch 'your_branch_name'
 $ git checkout 'your_branch_name'
 $ git add -p
