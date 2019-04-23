@@ -3,9 +3,9 @@ body{font-family:'kurd', arial;font-size:24px;line-height:2.5}
 h1, h2, h3, h4, h5, h6, p, input, a, form, button, select,
 ul, li, ol, header, div, footer, article, section, nav, img, table, tr,
 td, th, textarea, span, i, sup, sub{padding:0;margin:0;border:0;font-family:inherit;font-weight:normal;transition:all .15s ease-out;-webkit-transition:all .15s ease-out;text-align:inherit;box-sizing:border-box}
-input[type=text], textarea, button{-webkit-appearance:none;appearance:none;outline:none;border-radius:0}
-input[type=text], textarea{padding:1em;text-align:right;border-top:5px solid #eee;display:block;margin:auto;box-shadow:0 6px 10px -6px #dfdfdf}
-input[type=text]:focus, textarea:focus{background:#f8f8f8}
+input, textarea, button{-webkit-appearance:none;appearance:none;outline:none;border-radius:0}
+input, textarea{padding:1em;text-align:right;border-top:5px solid #eee;display:block;margin:auto;box-shadow:0 6px 10px -6px #dfdfdf}
+input:focus, textarea:focus{background:#f8f8f8}
 i{font-style:normal}
 .poet-pic-small{display:block;margin:auto;border-radius:50%;max-width:120px;border:1px solid #eee}
 .poetnm a{display:inline-block}
