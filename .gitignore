@@ -13,6 +13,10 @@ stats.txt
 # config file
 script/php/constants.php
 
+# admin files
+script/php/admin/IP-blacklist.php
+script/php/admin/password.php
+
 # .htaccess
 .htaccess
 
