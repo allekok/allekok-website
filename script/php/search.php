@@ -366,7 +366,7 @@
              xmlhttp.onload = function() {
 		 res.innerHTML = this.responseText;
              }
-             xmlhttp.open("get",`/script/php/live-search3.php?${request}`);
+             xmlhttp.open("get",`/script/php/search-complete.php?${request}`);
              xmlhttp.send();
              
 	 }

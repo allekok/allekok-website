@@ -238,7 +238,7 @@ function search(e) {
         
         sres.style.display="block";
         
-        var request = `/script/php/live-search2.php?q=${str}`;
+        var request = `/script/php/search-quick.php?q=${str}`;
         http.open("get",request);
         http.onload=function() {
 	    sres.innerHTML = this.responseText;

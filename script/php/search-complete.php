@@ -266,7 +266,7 @@ if(!empty($q1)) {
 	                
 	                $pbp_uri = $res['poet_address'] ."/" . $res['book_address'] . "/" . $res['poem_address'];
 	                
-	                $res_hon1 .= "<div style='display:flex;'><button style='background:none;padding:0 .5em;'' onclick='ss(this)' type='button'><i class='material-icons' style='vertical-align:middle;font-size:1.5em;'>keyboard_arrow_down</i></button><a href='/script/php/UpdateCipi.php?uri={$pbp_uri}'><i>" . $res['rtakh'] . "</i> &rsaquo; "."<i>" . $res['rbook'] . "</i> &rsaquo; " . $res['rname'] . "</a></div>";
+	                $res_hon1 .= "<div style='display:flex;'><button style='background:none;padding:0 .5em;'' onclick='ss(this)' type='button'><i class='material-icons' style='vertical-align:middle;font-size:1.5em;'>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri={$pbp_uri}'><i>" . $res['rtakh'] . "</i> &rsaquo; "."<i>" . $res['rbook'] . "</i> &rsaquo; " . $res['rname'] . "</a></div>";
 	                $h++;
 	            }
 
@@ -295,7 +295,7 @@ if(!empty($q1)) {
 	                    
 	                    $pbp_uri = $res['poet_address'] ."/" . $res['book_address'] . "/" . $res['poem_address'];
 	                    
-	                    $res_hon2 .= "<div style='display:flex;'><button style='background:none;padding:0 .5em;'' onclick='ss(this)' type='button'><i class='material-icons' style='vertical-align:middle;font-size:1.5em;'>keyboard_arrow_down</i></button><a href='/script/php/UpdateCipi.php?uri={$pbp_uri}'><i>" . $res['rtakh'] . "</i> &rsaquo; "."<i>" . $res['rbook'] . "</i> &rsaquo; " . $res['rname'] . "</a></div>";
+	                    $res_hon2 .= "<div style='display:flex;'><button style='background:none;padding:0 .5em;'' onclick='ss(this)' type='button'><i class='material-icons' style='vertical-align:middle;font-size:1.5em;'>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri={$pbp_uri}'><i>" . $res['rtakh'] . "</i> &rsaquo; "."<i>" . $res['rbook'] . "</i> &rsaquo; " . $res['rname'] . "</a></div>";
 	                    $h++;
 	                }
 
@@ -321,7 +321,7 @@ if(!empty($q1)) {
 	                    
 	                    $pbp_uri = $res['poet_address'] ."/" . $res['book_address'] . "/" . $res['poem_address'];
 	                    
-	                    $res_hon1 .= "<div style='display:flex;'><button style='background:none;padding:0 .5em;'' onclick='ss(this)' type='button'><i class='material-icons' style='vertical-align:middle;font-size:1.5em;'>keyboard_arrow_down</i></button><a href='/script/php/UpdateCipi.php?uri={$pbp_uri}'><i>" . $res['rtakh'] . "</i> &rsaquo; "."<i>" . $res['rbook'] . "</i> &rsaquo; " . $res['rname'] . "</a></div>";
+	                    $res_hon1 .= "<div style='display:flex;'><button style='background:none;padding:0 .5em;'' onclick='ss(this)' type='button'><i class='material-icons' style='vertical-align:middle;font-size:1.5em;'>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri={$pbp_uri}'><i>" . $res['rtakh'] . "</i> &rsaquo; "."<i>" . $res['rbook'] . "</i> &rsaquo; " . $res['rname'] . "</a></div>";
 	                    $h++;
 	                }
 
@@ -348,7 +348,7 @@ if(!empty($q1)) {
 	                    
 	                    $pbp_uri = $res['poet_address'] ."/" . $res['book_address'] . "/" . $res['poem_address'];
 	                    
-	                    $res_hon2 .= "<div style='display:flex;'><button style='background:none;padding:0 .5em;'' onclick='ss(this)' type='button'><i class='material-icons' style='vertical-align:middle;font-size:1.5em;'>keyboard_arrow_down</i></button><a href='/script/php/UpdateCipi.php?uri={$pbp_uri}'><i>" . $res['rtakh'] . "</i> &rsaquo; "."<i>" . $res['rbook'] . "</i> &rsaquo; " . $res['rname'] . "</a></div>";
+	                    $res_hon2 .= "<div style='display:flex;'><button style='background:none;padding:0 .5em;'' onclick='ss(this)' type='button'><i class='material-icons' style='vertical-align:middle;font-size:1.5em;'>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri={$pbp_uri}'><i>" . $res['rtakh'] . "</i> &rsaquo; "."<i>" . $res['rbook'] . "</i> &rsaquo; " . $res['rname'] . "</a></div>";
 	                    $h++;
 	                }
 

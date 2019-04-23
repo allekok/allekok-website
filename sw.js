@@ -72,12 +72,12 @@ self.addEventListener('install', function(event) {
 		profile_path+"50.jpg",
 		profile_path+"89.jpg",
 		profile_path+"71.jpg",
-		'/script/js/main.js?v18',
+		'/script/js/main.js?v19',
 		'/style/css/main.css?v18',
 		'/favicon.ico',
 		'/style/font/DroidNaskh-Regular.woff2',
 		'/style/font/Material-Icons.woff2',
-		'/nf.html?v2',
+		'/not-found.html',
 	    ]);
 	})
     );
@@ -104,7 +104,7 @@ self.addEventListener('fetch', function(event) {
 		return response;
 	    });
 	}).catch(function() {
-	    return caches.match('/nf.html?v2');
+	    return caches.match('/not-found.html');
 	})
     );
 });
