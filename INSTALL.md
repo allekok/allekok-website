@@ -4,7 +4,7 @@
 بەکاربێنن کە پێویستی بە هیچ دامەزراندنێک نییە.
 
 ## هەنگاوەکانی دامەزراندن
-۱. بچنە نیشانی `script/php` و نێوی فایلی `constants-sample.php` بگۆڕن بۆ
+۱. بچنە نیشانی `script/php` و نێوی فایلی `constants.php-sample` بگۆڕن بۆ
 `constants.php`.
 
 ۲. بەشەکانی `ABSPATH` و `_HOST` و `_USER` و `_PASS` و `_DEFAULT_DB` و
