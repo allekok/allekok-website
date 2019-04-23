@@ -1,7 +1,7 @@
-<meta charset="utf-8">
 <?php
-require_once("../../constants.php");
-require_once("../../functions.php");
+require('session.php');
+require_once("../constants.php");
+require_once("../functions.php");
 
 $con = mysqli_connect(_HOST,_USER,_PASS);
 
@@ -68,5 +68,6 @@ foreach($aths as $ath) {
 
 mysqli_close($con);
 ?>
+<meta charset="utf-8">
 <br><br>
 <button onclick="window.open('http://allekok.com/script/php/add/cp/make_poems.php', '_blank','width=300,height=200','')" type="button">make_poems.php</button>

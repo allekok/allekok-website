@@ -1,12 +1,13 @@
 <?php
-require_once("../../constants.php");
-require_once("../../functions.php");
+require('session.php');
+require_once("../constants.php");
+require_once("../functions.php");
 
 header("Content-type: text/html; charset=UTF-8");
 
 $db = "index";
 $q = "select * from auth";
-require("../../condb.php");
+require("../condb.php");
 
 $aths_num = mysqli_num_rows($query);
 echo "poets: " . $aths_num;

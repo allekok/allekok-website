@@ -1,4 +1,5 @@
 <?php
+require('session.php');
 // add,edit poems
 include_once("../constants.php");
 ?>
@@ -305,9 +306,9 @@ include_once("../constants.php");
     <body>
 	
 	<div id="toolbox">
-            <a onclick="event.preventDefault();window.open('http://allekok.com/script/php/add/cp/smgen.php', '_blank','width=300,height=320','')" href="smgen.php">
+            <a onclick="event.preventDefault();window.open('http://allekok.com/script/php/admin/sitemap.php', '_blank','width=300,height=320','')" href="sitemap.php">
                 زیاد کردن
-            </a><a onclick="event.preventDefault();window.open('http://allekok.com/script/php/add/cp/make_poems.php', '_blank','width=300,height=320','')" href="cp/make_poems.php">
+            </a><a onclick="event.preventDefault();window.open('http://allekok.com/script/php/admin/search-poems.php', '_blank','width=300,height=320','')" href="search-poems.php">
                 دروست کردن
             </a>
         </div>
@@ -342,8 +343,6 @@ if($dbcache=='') {
 			  ژمارەی شیعرێک بنوسە.
 			</div>");
     $q='SELECT * FROM ' . $_tbl;
-    //include('../condb.php');
-    require_once("../constants.php");
     $conn = mysqli_connect(_HOST, _USER, _PASS);
     mysqli_select_db($conn,'allekokc_index');
     mysqli_set_charset($conn,"utf8");
@@ -354,8 +353,6 @@ if($dbcache=='') {
 } elseif($dbcache!='' && $tblcache!='' && $rowd!='') {
     $pre_link = tbl_name_to_address($_tbl);
     $q = 'SELECT * FROM ' . $_tbl . ' WHERE id=' . $rowd;
-    //include('../condb.php');
-    require_once("../constants.php");
     $conn = mysqli_connect(_HOST, _USER, _PASS);
     mysqli_select_db($conn,'allekokc_index');
     mysqli_set_charset($conn,"utf8");
@@ -374,8 +371,6 @@ if($dbcache=='') {
 					</div>");
 	} else {
 	    $q = "UPDATE `" . $_tbl . "` SET `id`=$rowd,`name`='$name',`hon`=" . '"'.$hon . '"' . ",`hdesc`='$hdesc' WHERE id=" . $rowd;
-	    //include('../condb.php');
-	    require_once("../constants.php");
             $conn = mysqli_connect(_HOST, _USER, _PASS);
             mysqli_select_db($conn,'allekokc_index');
             mysqli_set_charset($conn,"utf8");
@@ -424,8 +419,6 @@ if($dbcache=='') {
 	}
     } else {
 	$q = "INSERT INTO `" . $_tbl . "`(`id`, `name`, `hon`, `hdesc`) VALUES ($rowd,'$name',".'"'.$hon.'"'.",'$hdesc')";
-	//include('../condb.php');
-	require_once("../constants.php");
         $conn = mysqli_connect(_HOST, _USER, _PASS);
         mysqli_select_db($conn,'allekokc_index');
         mysqli_set_charset($conn,"utf8");
@@ -481,7 +474,7 @@ if($dbcache=='') {
 		<?php
 		$db='index';
 		$q='SELECT * FROM auth';
-		include('../condb.php');
+		include(ABSPATH.'script/php/condb.php');
 		if(mysqli_num_rows($query)) {
 
 		    while($row=mysqli_fetch_assoc($query)) {
@@ -503,7 +496,7 @@ if($dbcache=='') {
 		<?php
 		$db = 'index';
 		$q = 'SELECT * FROM auth WHERE id='. substr($dbcache,3);
-		include('../condb.php');
+		include(ABSPATH.'script/php/condb.php');
 		if($query) {
 		    $row = mysqli_fetch_assoc($query);
 		    $rbks = explode(',',$row['bks']);

@@ -1,6 +1,6 @@
 <?php
-
-include_once("../../constants.php");
+require('session.php');
+include_once("../constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
@@ -17,7 +17,7 @@ include(ABSPATH . 'script/php/header.php');
 
 $db = "index";
 $q = "select id from auth order by id DESC";
-require("../../condb.php");
+require(ABSPATH."script/php/condb.php");
 
 if( $query ) {
     $_id = ++mysqli_fetch_assoc($query)['id'];
@@ -26,9 +26,9 @@ if( $query ) {
 // check for uploads
 
 if(isset($_FILES)) {
-    $_profile = array( $_FILES["profile"], "../../../../style/img/poets/profile/profile_{$_id}.jpg" );
+    $_profile = array( $_FILES["profile"], "../../../style/img/poets/profile/profile_{$_id}.jpg" );
     
-    $_pro460 = array( $_FILES["pro-460"], "../../../../style/img/poets/pro-460/pro-460_{$_id}.jpg" );
+    $_pro460 = array( $_FILES["pro-460"], "../../../style/img/poets/pro-460/pro-460_{$_id}.jpg" );
     
     if(! ( file_exists($_profile[1]) && file_exists($_pro460[1]) ) ) {
         
@@ -36,14 +36,14 @@ if(isset($_FILES)) {
             
             $uploaded = "<i class='g'>OK!</i> <br> <img src='{$_profile[1]}' id='profilepic'> <img src='{$_pro460[1]}' id='pro-460pic'>";
             
-            $f = fopen("../../../../desktop/update/imgs/update-version.txt","r+");
-    	    $old_ver = fread($f, filesize("../../../../desktop/update/imgs/update-version.txt"));
+            $f = fopen("../../../desktop/update/imgs/update-version.txt","r+");
+    	    $old_ver = fread($f, filesize("../../../desktop/update/imgs/update-version.txt"));
     	    fseek($f, 0);
     	    $new_ver = 1+intval($old_ver);
     	    fwrite($f, $new_ver);
     	    fclose($f);
     	    
-    	    $f = fopen("../../../../desktop/update/imgs/update-log.txt","a");
+    	    $f = fopen("../../../desktop/update/imgs/update-log.txt","a");
     	    $log = [
     		"ver" => $new_ver,
     		"poetID" => intval($_id),
@@ -73,14 +73,14 @@ if( isset($_REQUEST["name"]) && isset($_REQUEST["takh"]) && isset($_REQUEST["pro
     
     if( $query ) {
         
-        $f = fopen("../../../../desktop/update/index/update-version.txt","r+");
-	$old_ver = fread($f, filesize("../../../../desktop/update/index/update-version.txt"));
+        $f = fopen("../../../desktop/update/index/update-version.txt","r+");
+	$old_ver = fread($f, filesize("../../../desktop/update/index/update-version.txt"));
 	fseek($f, 0);
 	$new_ver = 1+intval($old_ver);
 	fwrite($f, $new_ver);
 	fclose($f);
 	
-	$f = fopen("../../../../desktop/update/index/update-log.txt","a");
+	$f = fopen("../../../desktop/update/index/update-log.txt","a");
 	$log = [
 	    "ver" => $new_ver,
 	    "poetID" => intval($_id),

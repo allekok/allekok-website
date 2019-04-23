@@ -1,3 +1,4 @@
+<?php require('session.php'); ?>
 <!DOCTYPE HTML>
 <html dir="rtl">
     <head>

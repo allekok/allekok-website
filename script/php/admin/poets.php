@@ -1,6 +1,6 @@
 <?php
-
-include_once("../../constants.php");
+require('session.php');
+include_once("../constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
@@ -61,7 +61,7 @@ include(ABSPATH . 'script/php/header.php');
 <div id="poets">
     
     <div id="toolbox">
-        <a href="add-poet.php">
+        <a href="poet-new.php">
             شاعیری نوێ
         </a>
     </div>
@@ -125,7 +125,7 @@ include(ABSPATH . 'script/php/header.php');
         
         //operations
         echo "<td>";
-        echo "<a class='link' style='font-family:mono;' href='edit-poet.php?id={$res['id']}'>Edit</a>";
+        echo "<a class='link' style='font-family:mono;' href='poet-edit.php?id={$res['id']}'>Edit</a>";
         echo "</td>";
         
         echo "</tr>";

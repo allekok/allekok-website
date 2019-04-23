@@ -1,5 +1,5 @@
 <?php
-
+require('session.php');
 /* generating sitemap for search engines 
  *  the sitemap only contain poets , books, poems
  *  and no other pages. (for now).
@@ -7,13 +7,13 @@
 
 header("Content-type: text/html; charset=UTF-8");
 
-require_once("../../functions.php");
+require_once("../functions.php");
 
 $_sitemap = "sitemap.xml";
 
 $db = 'index';
 $q = "select * from auth";
-include("../../condb.php");
+include("../condb.php");
 
 $aths_num = mysqli_num_rows($query);    // number of poets
 $tbls[0] = [];

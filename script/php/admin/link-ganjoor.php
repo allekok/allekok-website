@@ -1,4 +1,5 @@
 <?php
+require('session.php');
 header("Content-type:text/plain; charset=utf-8");
 /*
    $hafez_allekok = json_decode(file_get_contents("https://allekok.com/dev/tools/book.php?poet=65&book=1") , true);

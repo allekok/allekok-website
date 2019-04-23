@@ -1,11 +1,11 @@
 <?php
-
-include_once("../../constants.php");
+require('session.php');
+include_once("../constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = _TITLE . " &raquo; مـــــــەدیر";
-$desc = "مەدیر";
+$title = _TITLE . " &raquo; مدیر";
+$desc = "مدیر";
 $keys = _KEYS;
 $t_desc = "";
 $color_num = 0;

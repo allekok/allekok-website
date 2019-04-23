@@ -1,6 +1,6 @@
 <?php
-
-include_once("../../constants.php");
+require('session.php');
+include_once("../constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
@@ -24,7 +24,7 @@ if(! empty($_REQUEST['id'])) {
     $db = "index";
     $q = "select * from auth where id=$_id";
     
-    require("../../condb.php");
+    require(ABSPATH."script/php/condb.php");
     if(mysqli_num_rows($query) === 1) {
         
         $_poet = mysqli_fetch_assoc($query);
@@ -68,14 +68,14 @@ if(! empty($_REQUEST['id'])) {
             
             if( $query ) {
                 
-                $f = fopen("../../../../desktop/update/index/update-version.txt","r+");
-    		$old_ver = fread($f, filesize("../../../../desktop/update/index/update-version.txt"));
+                $f = fopen("../../../desktop/update/index/update-version.txt","r+");
+    		$old_ver = fread($f, filesize("../../../desktop/update/index/update-version.txt"));
     		fseek($f, 0);
     		$new_ver = 1+intval($old_ver);
     		fwrite($f, $new_ver);
     		fclose($f);
     		
-    		$f = fopen("../../../../desktop/update/index/update-log.txt","a");
+    		$f = fopen("../../../desktop/update/index/update-log.txt","a");
     		$log = [
     		    "ver" => $new_ver,
     		    "poetID" => intval($_id),
@@ -101,10 +101,10 @@ if(! empty($_REQUEST['id'])) {
         
         // load poet images
         
-        $_imgsrc = array("../../../../style/img/poets/profile/profile_{$_id}.jpg", "../../../../style/img/poets/pro-460/pro-460_{$_id}.jpg");
+        $_imgsrc = array("../../../style/img/poets/profile/profile_{$_id}.jpg", "../../../style/img/poets/pro-460/pro-460_{$_id}.jpg");
         
         if( !file_exists($_imgsrc[0]) ) {
-            $_imgsrc = array("../../../../style/img/poets/profile/profile_0.jpg", "../../../../style/img/poets/pro-460/pro-460_0.jpg");
+            $_imgsrc = array("../../../style/img/poets/profile/profile_0.jpg", "../../../style/img/poets/pro-460/pro-460_0.jpg");
         }
         
         $uploaded = "<img id='profilepic' src='{$_imgsrc[0]}'> <img id='pro-460pic' src='{$_imgsrc[1]}'>";
@@ -112,22 +112,22 @@ if(! empty($_REQUEST['id'])) {
         // check for uploads
         
         if(isset($_FILES)) {
-            $_profile = array( $_FILES["profile"], "../../../../style/img/poets/profile/profile_{$_id}.jpg" );
+            $_profile = array( $_FILES["profile"], "../../../style/img/poets/profile/profile_{$_id}.jpg" );
             
-            $_pro460 = array( $_FILES["pro-460"], "../../../../style/img/poets/pro-460/pro-460_{$_id}.jpg" );
+            $_pro460 = array( $_FILES["pro-460"], "../../../style/img/poets/pro-460/pro-460_{$_id}.jpg" );
             
             if( move_uploaded_file($_profile[0]['tmp_name'], $_profile[1]) && move_uploaded_file($_pro460[0]['tmp_name'], $_pro460[1]) ) {
                 
                 $uploaded = "<i class='g'>OK!</i> <br> <img src='{$_profile[1]}' id='profilepic'> <img src='{$_pro460[1]}' id='pro-460pic'>";
                 
-                $f = fopen("../../../../desktop/update/imgs/update-version.txt","r+");
-        	$old_ver = fread($f, filesize("../../../../desktop/update/imgs/update-version.txt"));
+                $f = fopen("../../../desktop/update/imgs/update-version.txt","r+");
+        	$old_ver = fread($f, filesize("../../../desktop/update/imgs/update-version.txt"));
         	fseek($f, 0);
         	$new_ver = 1+intval($old_ver);
         	fwrite($f, $new_ver);
         	fclose($f);
         	
-        	$f = fopen("../../../../desktop/update/imgs/update-log.txt","a");
+        	$f = fopen("../../../desktop/update/imgs/update-log.txt","a");
         	$log = [
         	    "ver" => $new_ver,
         	    "poetID" => intval($_id),
