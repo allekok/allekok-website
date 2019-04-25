@@ -6,7 +6,7 @@ if(! isset($_SESSION['admin'])) {
     require('password.php');
     $received_pass = isset($_POST['password']) ?
 		     hash('SHA512',stripslashes($_POST['password'])) :
-		     die();
+		     redirect('login.php');
     if($password == $received_pass) {
 	$_SESSION['admin'] = true;
     }
@@ -33,5 +33,10 @@ function add_IP_to_blacklist($IP) {
     }
     $string .= "\n];\n?>";
     file_put_contents('IP-blacklist.php',$string);
+}
+
+function redirect($url, $statusCode = 303) {
+    header('Location: ' . $url, true, $statusCode);
+    die();
 }
 ?>
