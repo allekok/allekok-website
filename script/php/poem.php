@@ -13,7 +13,10 @@
 </script>
 
 <div id="poets">
-    <img src="<?php echo get_poet_image($info['id'], 'profile', true); ?>" class="poet-pic-small" alt="<?php echo $info['profname']; ?>">
+    <img src="<?php 
+	      echo get_poet_image($info['id'], 'profile', true); 
+	      ?>" class="poet-pic-small"
+	 alt="<?php echo $info['profname']; ?>">
 
     <div id='adrs'>
 	<a href="/poet:<?php echo $ath; ?>">
@@ -24,8 +27,7 @@
 	<i style='font-style:normal'> &rsaquo; </i>
 	<a href="/poet:<?php echo $ath; ?>/book:<?php echo $bk; ?>">
 	    <?php
-	    $bknow = explode(',',$info['bks']);
-	    
+	    $bknow = explode(',',$info['bks']);   
 	    echo $bknow[$bk-1];
 	    ?>
 	</a>

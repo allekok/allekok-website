@@ -1,196 +1,145 @@
-<?php
+<?php 
+if(! defined('ABSPATH'))    define('ABSPATH', '/home/allekokc/public_html/');
+require_once("script/php/functions.php");
+header("Content-type: text/plain; charset=UTF-8");
 
-include_once("script/php/constants.php");
-include_once(ABSPATH . "script/php/colors.php");
-include_once(ABSPATH . "script/php/functions.php");
+include(ABSPATH . "script/php/stats.php");
+echo "شاعیر:";
+echo $aths_num;
+echo "\tکتێب:";
+echo $bks_num;
+echo "\tشێعر:";
+echo $hons_num;
 
-$title = _TITLE . " - تازەکان";
-$desc = "تازەکانی ئاڵەکۆک";
-$keys = _KEYS;
-$t_desc = "";
-$color_num = 0;
+echo "\n\n*نووسینی شێعر*\n";
 
-include(ABSPATH . "script/php/header.php");
-?>
+$db = "index";
+$q = "select * from pitew where status LIKE '{\"status\":0%' order by id DESC";
 
-<div id="poets">
-    
-    <h1 style="display: inline-block;padding: 0.3em 0.8em 0;border-radius: 5px;margin: 1em 0 0.5em;font-size:0.9em;">
-        تازەکانی ئاڵەکۆک
-    </h1>
-    <div style="border-bottom:1px solid #eee"></div>
-    
-    <section class='pitewsec'>
-        <h3 style="background: rgba(0, 153, 255,0.05);color: rgb(0, 138, 230);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0;">
-            نووسینی شێعر
-        </h3><br>
-        <?php
-        $db = "index";
-        $q = "select * from pitew where status LIKE '{\"status\":0%' order by id DESC";
-        
-        require("script/php/condb.php");
-        
-        if(mysqli_num_rows($query)>0) {
-            while($res = mysqli_fetch_assoc($query)) {
-                if($res['poem-name'] === "")    $res['poem-name'] = "شێعر";
-                echo "<section class='pmlist'><span style='color:#09f'>&bull; </span>{$res['contributor']}</section><section class='pmlist'>{$res['poet']} &rsaquo; {$res['book']} &rsaquo; {$res['poem-name']}</section>";
-            }
-        } else {
-            echo "<span style='color:#999;font-size:1em'>&bull;</span>";
-        }
-        
-        ?>
-    </section>
-    
-    <section class='pitewsec'>
-        <h3 style="background: rgba(128, 0, 128, 0.05);color: rgb(128, 0, 128);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0;">
-            ناردنی وێنەی شاعیران
-        </h3><br>
-        <?php
-        $_list = make_list(ABSPATH."style/img/poets/new/");
-        $a = 0;
-        if(! empty($_list)) {
-            foreach($_list as $_l) {
-                if($a === 5)    break 1;
-                echo "<section class='pmlist'><span style='color:rgb(128, 0, 128)'>&bull; </span>" . $_l['name'] . "، " . $_l['poet'] . "</section><section class='pmlist'>" . "<a href='{$_l['uri']}'>وێنە</a></section>";
-                $a++;
-            }
-        } else {
-            echo "<span style='color:#999;font-size:1em'>&bull;</span>";
-        }
+require("script/php/condb.php");
 
-        function make_list($_dir) {
-            if(! is_dir($_dir) )
-                return 0;
-            
-            $d = opendir($_dir);
-            $_list = array();
-            
-            while( false !== ($entry = readdir($d))) {
-                if(_unlist($entry)) {
-                    $uri = "/style/img/poets/new/".$entry;
-                    $entry = str_replace([".jpeg",".jpg",".png"], "", $entry);
-                    $entry = explode("_", $entry);
-                    $entry["poet"] = $entry[0];
-                    $entry["name"] = $entry[1];
-                    $entry["uri"] = $uri;
-                    array_unshift($entry, filemtime("/home/allekokc/public_html" . $uri));
-                    $_list[] = $entry;
-                }
-            }
-            
-            if(rsort($_list))  return $_list;
-        }
-        
-        function _unlist($v) {
-            $_Vs = array(".", "..");
-            if(! in_array($v, $_Vs) ) return $v;
-        }
-        ?>
-    </section>
-    
-    <section class='pitewsec'>
-        <h3 style="background: rgba(154, 205, 50, 0.08);color: rgb(154, 205, 50);display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0;">
-            نووسینی زانیاری سەبارەت بە شاعیران
-        </h3><br>
-        <?php
-        $_list = make_list2(ABSPATH."pitew/res/");
-        $a = 0;
-        if(!empty($_list)) {
-            foreach($_list as $_l) {
-                if($a === 5)    break 1;
-                echo "<section class='pmlist'><span style='color:rgb(154, 205, 50)'>&bull; </span>" . $_l['poet'] . "، " .  $_l['name'] . "</section><section class='pmlist'>" . "<a href='/pitew/poetdesc-list.php?name={$_l['poet']}&poet={$_l['name']}'>نووسراو</a></section>";
-                $a++;
-            }
-        } else {
-            echo "<span style='color:#999;font-size:1em'>&bull;</span>";
-        }
+if(mysqli_num_rows($query)>0) {
+    while($res = mysqli_fetch_assoc($query)) {
+	if($res['poem-name'] === "")    $res['poem-name'] = "شێعر";
+	echo "• {$res['contributor']} › {$res['poet']} › {$res['book']} › {$res['poem-name']}\n";
+    }
+} else {
+    echo "•\n";
+}
+echo "\n*ناردنی وێنەی شاعیران*\n";
+$_list = make_list(ABSPATH."style/img/poets/new/");
+$a = 0;
+if(! empty($_list)) {
+    foreach($_list as $_l) {
+	if($a === 2)    break 1;
+	echo "• " . $_l['name'] . " › " . $_l['poet'] . "\n";
+	$a++;
+    }
+} else {
+    echo "•\n";
+}
 
-        function make_list2($_dir) {
-            if(! is_dir($_dir) )
-                return 0;
-            
-            $d = opendir($_dir);
-            $_list = array();
-            
-            while( false !== ($entry = readdir($d))) {
-                if(_unlist($entry)) {
-                    $uri = "/pitew/res/".$entry;
-                    $entry = str_replace([".txt"], "", $entry);
-                    $entry = explode("_", $entry);
-                    $entry["poet"] = $entry[0];
-                    $entry["name"] = $entry[1];
-                    $entry["uri"] = $uri;
-                    array_unshift($entry, filemtime("/home/allekokc/public_html" . $uri));
-                    $_list[] = $entry;
-                }
-            }
-            
-            if(rsort($_list))  return $_list;
-        }
-        ?>
-    </section>
-    
-    <section class='pitewsec'>
-        <h3 style="background: rgba(255, 0, 0,0.05);color: red;display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0;">
-            بیر و ڕای شێعرەکان
-        </h3><br>
-        <?php
-        $q = "select * from `comments` where `read`=0 order by `id` DESC";
-        
-        $query = mysqli_query($conn, $q);
-        
-        if(mysqli_num_rows($query)>0) {
-            while($res = mysqli_fetch_assoc($query)) {
-                if($res['name'] === "")    $res['name'] = "ناشناس";
-                echo "<section class='pmlist'><span style='color:red'>&bull; </span>{$res['name']}</section><section class='pmlist'><a href='/{$res['address']}'>بیروڕا</a></section>";
-            }
-        } else {
-            echo "<span style='color:#999;font-size:1em'>&bull;</span>";
-        }
-        
-        mysqli_close($conn);
-        ?>
-    </section>
-    
-    <section class='pitewsec'>
-        <i class='material-icons' style='color:blue;'><img src='/style/img/poets/profile/profile_0.jpg' style='opacity: 0.75;border: 2px dashed;border-radius: 100%;width: 0.9em;margin-bottom: 0.1em;'></i>
-        <div class='stats-min'>
-            <?php include(ABSPATH . "script/php/stats.php"); ?>
-            <i id='sub-num'>
-                شاعیر:
-                <?php echo $aths_num; ?>
-            </i>
-	    &rsaquo;
-            <i id='sub-num'>
-                کتێب:
-                <?php echo $bks_num; ?>
-            </i>
-	    &rsaquo;
-            <i id='sub-num'>
-                شێعر:
-                <?php echo $hons_num; ?>
-            </i>
-	</div>
-	<div id="Acomms" style="font-size:0.8em;">
-            <script>
-             var http = new XMLHttpRequest();
+function make_list($_dir) {
+    if(! is_dir($_dir) )
+	return 0;
 
-             http.onload = function() {
-                 document.getElementById("Acomms").innerHTML=this.responseText;
-                 document.getElementById("Acomms").style.animation="tL-top 0.8s cubic-bezier(.18,.89,.32,1.28)";
-             }
+    $d = opendir($_dir);
+    $_list = array();
 
-             http.open("get","/about/about-comments.php?num=3&ch="+Date.now());
-             http.send();
-            </script>
-            
-        </small>
-    </section>
-    
-	</div>
-</div>
+    while( false !== ($entry = readdir($d))) {
+	if(_unlist($entry)) {
+	    $uri = "/style/img/poets/new/".$entry;
+	    $entry = str_replace([".jpeg",".jpg",".png"], "", $entry);
+	    $entry = explode("_", $entry);
+	    $entry["poet"] = $entry[0];
+	    $entry["name"] = $entry[1];
+	    $entry["uri"] = $uri;
+	    array_unshift($entry, filemtime("/home/allekokc/public_html" . $uri));
+	    $_list[] = $entry;
+	}
+    }
 
-<?php
-include_once(ABSPATH . "script/php/footer.php");
+    if(rsort($_list))  return $_list;
+}
+
+function _unlist($v) {
+    $_Vs = array(".", "..");
+    if(! in_array($v, $_Vs) ) return $v;
+}
+echo "\n*نووسینی زانیاری سەبارەت بە شاعیران*\n";
+
+$_list = make_list2(ABSPATH."pitew/res/");
+$a = 0;
+if(!empty($_list)) {
+    foreach($_list as $_l) {
+	if($a === 2)    break 1;
+	echo "• " . $_l['poet'] . " › " .  $_l['name'] . "\n";
+	$a++;
+    }
+} else {
+    echo "•\n";
+}
+
+function make_list2($_dir) {
+    if(! is_dir($_dir) )
+	return 0;
+
+    $d = opendir($_dir);
+    $_list = array();
+
+    while( false !== ($entry = readdir($d))) {
+	if(_unlist($entry)) {
+	    $uri = "/pitew/res/".$entry;
+	    $entry = str_replace([".txt"], "", $entry);
+	    $entry = explode("_", $entry);
+	    $entry["poet"] = $entry[0];
+	    $entry["name"] = $entry[1];
+	    $entry["uri"] = $uri;
+	    array_unshift($entry, filemtime("/home/allekokc/public_html" . $uri));
+	    $_list[] = $entry;
+	}
+    }
+
+    if(rsort($_list))  return $_list;
+}
+echo "\n*بیر و ڕای شێعرەکان*\n";
+
+$q = "select * from `comments` where `read`=0 order by `id` DESC";
+
+$query = mysqli_query($conn, $q);
+
+if(mysqli_num_rows($query)>0) {
+    while($res = mysqli_fetch_assoc($query)) {
+	if($res['name'] === "")    $res['name'] = "ناشناس";
+	echo "• {$res['name']}\n";
+    }
+} else {
+    echo "•\n";
+}
+
+mysqli_close($conn);
+
+// about.php
+echo "\n*about.php*\n";
+echo filter_var(file_get_contents("https://allekok.com/about/about-comments.php?num=1"), FILTER_SANITIZE_STRING) . "\n";
+
+// allekok-desktop
+echo "\n*allekok-desktop*\n";
+echo file_get_contents(ABSPATH . "desktop/QA.txt") . "\n";
+
+// allekok-mobile
+echo "\n*allekok-mobile*\n";
+echo file_get_contents(ABSPATH . "mobile/QA.txt") . "\n";
+
+// pitew
+echo "\n*پتەوکردنی ئاڵەکۆک*\n";
+echo file_get_contents(ABSPATH . "pitew/QA.txt") . "\n";
+
+// dev/tools
+echo "\n*dev*\n";
+echo file_get_contents(ABSPATH . "dev/tools/QA.txt") . "\n";
+
+// manual
+echo "\n*manual*\n";
+echo file_get_contents(ABSPATH . "manual/QA.txt") . "\n";
 ?>
