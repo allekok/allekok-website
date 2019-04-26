@@ -65,7 +65,7 @@ header{padding:.1em 0 0;text-align:center;margin:auto;position:relative;color:#f
 header a,header h1,header h2{color:inherit}
 header a{display:inline-block}
 header a h1{font-size:1em}
-#poets{text-align:center;margin:0 auto;max-width:1200px}
+#poets{padding:.5em .2em;text-align:center;margin:0 auto;max-width:1200px}
 .psec{width:22.5%;display:inline-block;vertical-align:top;max-width:115px;margin:.5em 1.25% .1em;border-bottom:1px solid #eee}
 .psec h3,.psec a{color:inherit}
 .psec h3{font-size:.63em;white-space:nowrap;overflow:hidden}
@@ -152,7 +152,6 @@ header div:hover{opacity:.6}
     .pitewsec{width:45%;display:inline-block;vertical-align:top;color:#444;padding:2em 2%;border:0}
     #search-btn{width:20%}
     #search-key{width:80%}
-    #poets{padding:.5em .2em}
 }
 footer{padding:1em 0;width:100%;font-size:.56em;text-align:center}
 footer a{display:inline-block;color:#555;padding:.5em 0;margin:0 .3em;border-bottom:1px solid #ddd}
