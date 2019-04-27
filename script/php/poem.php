@@ -261,8 +261,6 @@
              if(mysqli_num_rows($query)>0) {                 
          ?>
          
-         comments.innerHTML = loader;
-
 	 getUrl(`/script/php/comments-get.php?address=${poem_adrs}`,
 		function(responseText) {
 		    
