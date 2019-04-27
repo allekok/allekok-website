@@ -59,7 +59,7 @@ include(ABSPATH . "script/php/header.php");
         </h3>
     </section>
     
-    <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/allekok/allekok-android" style="display:inline-block" title="کۆدەکانی بەرنامەی ئەندرۆیدی ئاڵەکۆک"><img src="/desktop/github.svg" style="width:2em" alt="گیت‌هاب"></a>
+    <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/allekok/allekok-android" style="display:inline-block" title="کۆدەکانی بەرنامەی ئەندرۆیدی ئاڵەکۆک"><img src="/style/img/github.svg" style="width:2em" alt="گیت‌هاب"></a>
     
     <div style="border-top:1px solid #eee;margin:1em 0 0.8em;"></div>
     

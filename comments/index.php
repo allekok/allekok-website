@@ -43,7 +43,7 @@ include(ABSPATH . "script/php/header.php");
      var comments = document.querySelector("#hon-comments-body");
 
      var xmlhttp = new XMLHttpRequest();
-     xmlhttp.open("GET", "get-comms.php?n=30");
+     xmlhttp.open("GET", "get-comments.php?n=30");
      xmlhttp.onload=function() {
          var res = JSON.parse(this.responseText);
 

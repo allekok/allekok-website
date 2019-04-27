@@ -74,7 +74,7 @@ include(ABSPATH . "script/php/header.php");
         </h3>
     </section>
     
-    <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/allekok/allekok-desktop" style="display:inline-block"><img src="github.svg" style="width:2em"></a>
+    <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/allekok/allekok-desktop" style="display:inline-block"><img src="/style/img/github.svg" style="width:2em"></a>
     
     <div style="border-top:1px solid #eee;margin:1em 0 0.8em;"></div>
     
