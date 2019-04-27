@@ -16,19 +16,19 @@ include(ABSPATH . "script/php/header.php");
 <div id="poets">
     
     <div id="toolbox">
-        <a class='button' href='add-poet.php'>
+        <a class='button' href='poet-new.php'>
             شاعیری نوێ
         </a> 
         <a class='button' href='poets.php'>
             شاعیران
         </a> 
-        <a class='button' href='../add.php'>
+        <a class='button' href='poem-editor.php'>
             نووسینی شێعر
         </a> 
-        <a class='button' href='smgen.php'>
+        <a class='button' href='sitemap.php'>
             سازکردنی سایت‌مەپ
         </a> 
-        <a class='button' href='make_poems.php'>
+        <a class='button' href='search-poems.php'>
             ئامادەکردنی شێعرەکان بۆ گەڕان
         </a>
     </div>
@@ -47,7 +47,7 @@ include(ABSPATH . "script/php/header.php");
         $db = "index";
         $q = "select * from pitew where status LIKE '{\"status\":0%' order by id DESC";
         
-        require("../../condb.php");
+        require(ABSPATH."script/php/condb.php");
         
         if(mysqli_num_rows($query)>0) {
             while($res = mysqli_fetch_assoc($query)) {
