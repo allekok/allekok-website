@@ -162,7 +162,7 @@ include(ABSPATH . "script/php/header.php");
         if(mysqli_num_rows($query)>0) {
             while($res = mysqli_fetch_assoc($query)) {
                 if($res['name'] === "")    $res['name'] = "ناشناس";
-                echo "<section class='pmlist'><span style='color:red'>&bull; </span>{$res['name']}</section><section class='pmlist'><a href='/{$res['address']}'>بیروڕا</a>  <a href='read-comment.php?id={$res['id']}' class='read-comm' style='color:#09f'>خوێندمەوە</a>  <a href='block-comment.php?id={$res['id']}' class='block-comm' style='color:rgb(204,51,0);'>بلاک</a></section>";
+                echo "<section class='pmlist'><span style='color:red'>&bull; </span>{$res['name']}</section><section class='pmlist'><a href='/{$res['address']}'>بیروڕا</a>  <a href='comment-read.php?id={$res['id']}' class='read-comm' style='color:#09f'>خوێندمەوە</a>  <a href='comment-block.php?id={$res['id']}' class='block-comm' style='color:rgb(204,51,0);'>بلاک</a></section>";
                 $a++;
             }
         ?>
