@@ -83,24 +83,24 @@ header a h1{font-size:1em}
 #adrs{font-size:.8em;color:#444}
 #adrs i{font-size:inherit}
 #adrs a{color:#000;padding:.5em .3em;display:inline-block}
-#adrs a:hover{background-color:#eee}
+#adrs a:hover{background:#eee}
 #current-location{padding:.5em .3em;display:inline-block;color:inherit;font-size:inherit}
 #sp div{text-align:right;border-bottom:1px solid #eee;font-size:.7em}
 #sp a{padding:1em .3em;width:100%}
 #bkon{font-size:.9em;padding:5px 4px;color:#000;margin-bottom:.8em}
 #bhon{font-size:.9em;padding:10px 4px 5px;color:#000;text-align:center}
-#bkondesc{padding:.5em .2em;font-size:.6em;color:#444;display:block;background-color:#f6f6f6}
+#bkondesc{padding:.5em .2em;font-size:.6em;color:#444;display:block;background:#f6f6f6}
 #bhondesc{padding:1em .5em;font-size:.6em;color:#444;background:#f6f6f6;margin-bottom:1.5em}
 #hon p{font-size:.58em;padding:0 0 7px;transition:none;-webkit-transition:none}
 #hon{margin:0 auto 1;padding:1em 7px}
 #hon,.b,.m1,.m2,.n,.m,.m3, .b span, .ptr,#hon sup{transition:none;-webkit-transition:none}
 #sp{padding:0 .5em 1.5em;margin:auto}
 #search{width:100%;display:none;margin-bottom:.5em}
-#search-key{font-size:.65em;border:1px solid #eee;border-left-color:#f6f6f6;width:65%;display:inline-block;text-align:right;background-color:#f6f6f6}
-#search-key:focus{background-color:#fff}
+#search-key{font-size:.65em;border:1px solid #eee;border-left-color:#f6f6f6;width:65%;display:inline-block;text-align:right;background:#f6f6f6}
+#search-key:focus{background:#fff}
 #search-btn{width:35%;font-size:.65em;padding:1em 0;border-bottom:1px solid #f6f6f6;border-top:1px solid #f6f6f6;background:#f6f6f6;display:inline-block;text-align:center}
 #search-res{display:none;padding:1em .3em;box-shadow: 0 12px 25px -8px #ddd;position:relative;max-width:850px;margin:auto}
-#search-res #bhon{font-size:.55em;padding:.5em 0;margin:0 0 7px;line-height:2;background-color:#f3f3f3}
+#search-res #bhon{font-size:.55em;padding:.5em 0;margin:0 0 7px;line-height:2;background:#f3f3f3}
 .bhoh-newdaq{text-align:right;padding:10px 10px 0;font-size:0.7em;margin:0;background:none;border-bottom:0;color:#000}
 #search-res a{font-size:.57em}
 #search-res a h3{font-size:.95em;margin-top:.2em}
@@ -135,7 +135,7 @@ header div:hover{opacity:.6}
 #Acomms div{font-size:.8em;text-align:justify;padding:.75em 1em .4em;margin-bottom: .4em}
 .h{direction:rtl;display:block;color:#777;font-size:.63em;text-align:left;font-family:mono;line-height:normal;margin-top:1em}
 .link{border-bottom:1px solid #eee;padding:.5em}
-.link:hover{background-color:#eee}
+.link:hover{background:#eee}
 .seartog{position:absolute;left:.5em;cursor:pointer;top:.85em;font-size:.8em}
 .seartog-i{font-size:1.5em}
 .ptr{margin-top:1em;padding: 0.75em 0 0.1em;font-size:1em}
