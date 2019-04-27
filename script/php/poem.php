@@ -376,7 +376,7 @@
 	     t.innerHTML = loaderMin;
 	     var res, fin = "";
 	     
-	     getUrl(`/tewar/ferheng.info.php?q=${q}&n=1` , function(responseText) {
+	     getUrl(`/tewar/search/ferheng.info.php?q=${q}&n=1` , function(responseText) {
 		 
 		 document.getElementById("wordMore").innerHTML = `<a class='link' target='_blank' href='https://allekok.com/tewar/?q=${q}'>گەڕانی زیاتر لە "تەوار"دا</a>`;
 		 
@@ -405,7 +405,7 @@
 	     t = document.querySelector(t);
 	     t.innerHTML = loaderMin;
 	     var res, fin = "";
-	     getUrl(`/tewar/farhangumejuikawa.com.php?q=${q}&n=1` , function(responseText) {
+	     getUrl(`/tewar/search/farhangumejuikawa.com.php?q=${q}&n=1` , function(responseText) {
 		 
 		 if (responseText == "null") {
 		     t.innerHTML = "";
