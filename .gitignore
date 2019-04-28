@@ -2,6 +2,7 @@
 script/php/constants.php
 script/php/admin/IP-blacklist.php
 script/php/admin/password.php
+script/php/admin/capture/image.tar
 style/img/poets/new/*.jpeg
 style/img/poets/new/*.png
 pitew/contributors/*.txt
