@@ -1,56 +1,21 @@
-# temp
 *~
-
-# sitemap
-sitemap.xml
-
-# error_log
-error_log
-
-# stats
-stats.txt
-
-# config file
 script/php/constants.php
-
-# admin files
 script/php/admin/IP-blacklist.php
 script/php/admin/password.php
-
-# .htaccess
-.htaccess
-
-# update files
-update-log.txt
-update-version.txt
-
-# last update time
-last-update.txt
-
-# list of pdfs
-pdfs.txt
-
-# uploaded images
 style/img/poets/new/*.jpeg
 style/img/poets/new/*.png
-
-# poet's descriptions
-pitew/res/*.txt
-
-# about.comments
-about/res/*.comments
-
-# QAs
-QA.txt
-
-# news.txt
-pitew/news.txt
-
-# test directory
-test/
-
-# contributors text files
 pitew/contributors/*.txt
-
-# build-tools/tools/md-to-html/node_modules
+pitew/news.txt
+pitew/res/*.txt
+update-version.txt
+update-log.txt
+last-update.txt
+stats.txt
+pdfs.txt
+QA.txt
+about/res/*.comments
+sitemap.xml
+error_log
+.htaccess
 node_modules
+test/

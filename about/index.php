@@ -1,5 +1,4 @@
 <?php
-
 include_once("../script/php/constants.php");
 include_once(ABSPATH."script/php/colors.php");
 include_once(ABSPATH."script/php/functions.php");
@@ -10,9 +9,8 @@ $keys = _KEYS;
 $t_desc = "";
 $color_num = 0;
 
-include(ABSPATH . "script/php/header.php");
+include(ABSPATH."script/php/header.php");
 ?>
-
 <div id="poets">
     <div>
         <p style="font-size:0.75em;">
@@ -164,7 +162,6 @@ include(ABSPATH . "script/php/header.php");
 
 </script>
 
-
 <?php
-include_once(ABSPATH . "script/php/footer.php");
+include_once(ABSPATH."script/php/footer.php");
 ?>

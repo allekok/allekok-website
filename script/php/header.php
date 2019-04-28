@@ -21,11 +21,12 @@ if(isset($ath)) {
 <html dir="rtl" lang="ckb">
     <head>
 	<script>
-         if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', {scope: '/'});
+         if ('serviceWorker' in navigator)
+	     navigator.serviceWorker.register('/sw.js', {scope: '/'});
 	</script>
 	<link rel='stylesheet' href='/style/css/main.css?v20'/>
 	<title>
-	    <?php echo($title); ?>
+	    <?php echo $title; ?>
 	</title>
 
 	<meta charset="utf-8">
