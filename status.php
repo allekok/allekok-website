@@ -1,6 +1,6 @@
 <?php 
-if(! defined('ABSPATH'))    define('ABSPATH', '/home/allekokc/public_html/');
-require_once("script/php/functions.php");
+require_once("script/php/constants.php");
+require_once(ABSPATH."script/php/functions.php");
 header("Content-type: text/plain; charset=UTF-8");
 
 include(ABSPATH . "script/php/stats.php");
@@ -16,7 +16,7 @@ echo "\n\n*نووسینی شێعر*\n";
 $db = "index";
 $q = "select * from pitew where status LIKE '{\"status\":0%' order by id DESC";
 
-require("script/php/condb.php");
+require(ABSPATH."script/php/condb.php");
 
 if(mysqli_num_rows($query)>0) {
     while($res = mysqli_fetch_assoc($query)) {
@@ -63,7 +63,7 @@ function make_list($_dir) {
 }
 
 function _unlist($v) {
-    $_Vs = array(".", "..");
+    $_Vs = array(".", "..", "README.md");
     if(! in_array($v, $_Vs) ) return $v;
 }
 echo "\n*نووسینی زانیاری سەبارەت بە شاعیران*\n";
@@ -142,4 +142,8 @@ echo file_get_contents(ABSPATH . "dev/tools/QA.txt") . "\n";
 // manual
 echo "\n*manual*\n";
 echo file_get_contents(ABSPATH . "manual/QA.txt") . "\n";
+
+// CONTRIBUTING
+echo "\n*CONTRIBUTING*\n";
+echo file_get_contents(ABSPATH . "dev/tools/CONTRIBUTING/QA.txt") . "\n";
 ?>
