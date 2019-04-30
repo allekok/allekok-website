@@ -2,7 +2,7 @@
 /** Arabi to Latin Conversion **/
 /* *
  * Captured from source code of "Pellk KurdiNus 4.0".
- * https://allekok.com/Kurdi-Nus/Kurdi Nus 4.0 Kurdish.html
+ * https://allekok.com/kurdi-nus/kurdi-nus-kurdish.html
  * */
 function arabi_to_latin(s) {
     var sConvertArabic2Latin = [

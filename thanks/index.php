@@ -1,5 +1,4 @@
 <?php
-
 include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
@@ -103,7 +102,7 @@ include(ABSPATH . "script/php/header.php");
         </i>
         &rsaquo;
         بۆ 
-        <a href="https://www.allekok.com/Kurdi-Nus/Kurdi%20Nus%204.0%20Kurdish.html" style="color:#4699EC;">
+        <a href="https://www.allekok.com/kurdi-nus/kurdi-nus-kurdish.html" style="color:#4699EC;">
             ئامێری پەڵک کوردی‌نووس ۴.۰
         </a>
         کە بۆ نووسینەوەی بەشێک لە 
