@@ -1,5 +1,4 @@
 <?php
-
 include_once("../../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");

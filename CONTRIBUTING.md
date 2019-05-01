@@ -1,4 +1,4 @@
-## بەشداربوون
+# بەشداربوون
 ```bash
 # First, fork 'www.allekok.com' repository
 $ git clone https://github.com/your_username/www.allekok.com

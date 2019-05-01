@@ -40,5 +40,4 @@ $_res = [
 ];
 
 echo json_encode($_res);
-
 ?>

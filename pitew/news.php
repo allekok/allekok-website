@@ -1,5 +1,4 @@
 <?php
-
 include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
@@ -12,7 +11,6 @@ $color_num = 0;
 
 include(ABSPATH . "script/php/header.php");
 ?>
-
 <div id="poets">
     <style>
      .item {

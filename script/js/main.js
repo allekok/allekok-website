@@ -249,7 +249,6 @@ function search(e) {
 	// the End of noActionKeys, IF....
     } else if(str == "") {
         sres.style.display="none";
-        sres.innerHTML=loading;
         return;
     }
 }

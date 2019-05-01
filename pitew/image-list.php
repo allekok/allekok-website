@@ -67,15 +67,12 @@ include(ABSPATH . 'script/php/header.php');
 		];
 		$list[] = $e;
 	    }
-	    
 	    rsort($list);
 	    return $list;
 	}
 	?>
     </div>
-    
 </div>
-
 <?php
 include_once(ABSPATH . "script/php/footer.php");
 ?>
