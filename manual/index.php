@@ -11,11 +11,13 @@ $color_num = 0;
 
 include(ABSPATH . "script/php/header.php");
 ?>
-
 <div id="poets" style="max-width:850px">
-
-    <h1 style="display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0 0;font-size:1.2em;color: #555;">
-        <i class='material-icons' style='font-size:inherit; vertical-align:middle;color:<?php echo $colors[0][0]; ?>;'>help</i>
+    <h1 style="display:inline-block;
+	       padding:.1em .8em 0;
+	       font-size:1.2em">
+        <i class='material-icons'
+	   style='font-size:inherit;
+		  color:<?php echo $colors[0][0]; ?>;'>help</i>
         چۆنیەتی بەکارهێنانی ئاڵەکۆک
     </h1>
     <style>

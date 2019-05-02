@@ -11,10 +11,8 @@ $color_num = 0;
 
 include(ABSPATH . 'script/php/header.php');
 ?>
-
-<div id="poets">
-    
-    <h1 style="font-size:1.2em;">
+<div id="poets">  
+    <h1 style="font-size:1.2em;padding:.1em .8em 0">
         <span style="color:<?php echo $colors[0][0]; ?>;">
 	    <
 	</span>

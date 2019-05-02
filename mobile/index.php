@@ -11,13 +11,13 @@ $color_num = 0;
 
 include(ABSPATH . "script/php/header.php");
 ?>
-
 <div id="poets" style="max-width:850px">
-
-    <h1 style="display: inline-block;padding: 0.1em 0.8em 0;border-radius: 5px;margin: 1em 0 0;font-size:1.2em;">
+    <h1 style="display:inline-block;padding:.1em .8em 0;
+	       border-radius: 5px;font-size:1.2em">
         بەرنامەی مۆبایلی ئاڵەکۆک
     </h1>
-    <small style='font-size:.6em;margin-top:-.6em;display:block;color:#555'>
+    <small style='font-size:.6em;margin-top:-.6em;
+		  display:block;color:#555'>
         وەشانی ۱.۲.۲
     </small>
     <style>
