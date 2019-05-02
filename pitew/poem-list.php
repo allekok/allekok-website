@@ -16,26 +16,22 @@ $t_desc = "";
 $color_num = 0;
 
 include(ABSPATH . 'script/php/header.php');
-
 ?>
-
 <div id="poets">
-
     <div id='adrs'>
 	<a href="first.php">
-	    <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
+	    پتەوکردنی ئاڵەکۆک
 	</a>
-	<i style='font-style:normal;'> &rsaquo; </i>
+	<i> &rsaquo; </i>
 	<a href="index.php">
-	    <i style='vertical-align:middle;' class='material-icons'>note_add</i>
+	    <i class='material-icons'>note_add</i>
 	    نووسینی شێعر
 	</a>
-	<i style='font-style:normal;'> &rsaquo; </i>
+	<i> &rsaquo; </i>
 	<div id="current-location">
-	    <i style='vertical-align:middle;' class='material-icons'></i>
+	    <i class='material-icons'></i>
 	    شێعرەکان
 	</div>
-
     </div>
     <style>
      .pmlist{display:inline-block;vertical-align:top;color:#444;padding:1em .5em;font-size:.55em}

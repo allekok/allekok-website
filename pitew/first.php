@@ -11,11 +11,9 @@ $color_num = 0;
 
 include(ABSPATH . 'script/php/header.php');
 ?>
-
-<div id="poets" style="max-width:1000px">
-    
-    <h1 style="color: #222;display: inline-block;margin: 1em 0;font-size: 1.2em;">
-        <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> 
+<div id="poets">  
+    <h1 style="display:inline-block;
+	       padding:.1em .8em 0;font-size:1.2em">
         پتەوکردنی ئاڵەکۆک
     </h1>
     <br>

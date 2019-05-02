@@ -11,11 +11,10 @@ $color_num = 0;
 
 include(ABSPATH . "script/php/header.php");
 ?>
-
 <div id="poets" style="margin-bottom:1em;max-width:800px">
     <div id='adrs'>
 	<a href="../first.php">
-	    <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
+	    پتەوکردنی ئاڵەکۆک
 	</a>
 	<i style='font-style:normal;'> &rsaquo; </i>
 	<div id='current-location'>

@@ -18,18 +18,17 @@ include(ABSPATH . 'script/php/header.php');
     
     <div id='adrs'>
 	<a href="first.php">
-	    <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
+	    پتەوکردنی ئاڵەکۆک
 	</a>
-	<i style='font-style:normal;'> &rsaquo; </i>
+	<i> &rsaquo; </i>
 	<a href="edit-poet.php">
-	    <i style='vertical-align:middle;' class='material-icons'>person</i>
+	    <i class='material-icons'>person</i>
 	    نووسینی زانیاری سەبارەت بە شاعیران
 	</a>
-	<i style='font-style:normal;'> &rsaquo; </i>
+	<i> &rsaquo; </i>
 	<div id="current-location">
 	    زانیاریەکان
 	</div>
-
     </div>
 
     <?php

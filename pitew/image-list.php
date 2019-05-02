@@ -13,23 +13,21 @@ $color_num = 0;
 include(ABSPATH . 'script/php/header.php');
 
 ?>
-
-<div id="poets">
-    
+<div id="poets">  
     <div id='adrs'>
 	<a href="first.php">
-	    <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
+	    پتەوکردنی ئاڵەکۆک
 	</a>
-	<i style='font-style:normal;'> &rsaquo; </i>
+	<i> &rsaquo; </i>
 	<a href="poet-image.php">
-	    <i style='vertical-align:middle;' class='material-icons'>image</i>
+	    <i style='vertical-align:middle;'
+	       class='material-icons'>image</i>
 	    ناردنی وێنەی شاعیران
 	</a>
-	<i style='font-style:normal;'> &rsaquo; </i>
+	<i> &rsaquo; </i>
 	<div id="current-location">
 	    وێنەکان
 	</div>
-
     </div>
     <style>
      .imglist{width:35%;display:inline-block;vertical-align:top;color:#444;padding:1em .5em;font-size:.55em}
