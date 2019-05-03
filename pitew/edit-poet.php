@@ -110,7 +110,7 @@ $_poet1 = filter_var(@$_GET['poet'], FILTER_SANITIZE_STRING);
             
             <div id="message"></div>
 
-            <button type="submit" class="button bth" style="font-size: .7em;width: 45%;max-width: 150px;background-color: #777;color: #fff;margin-top:1em;">ناردن</button>
+            <button type="submit" class="button bth" style="font-size:.7em;width:45%;max-width:150px;background-color:#777;color:#fff;margin-top:1em;padding:1em 0">ناردن</button>
             
             <button type="button" id="clearBtn" class='button' style="font-size:.7em;width: 45%;max-width: 150px;margin-top:1em;">پاک کردنەوە</button>
         </form>
@@ -121,8 +121,8 @@ $_poet1 = filter_var(@$_GET['poet'], FILTER_SANITIZE_STRING);
         
     </div>
     
-    <div style="margin-top:2em;">
-        <a id='desc-list' class='button' href="poetdesc-list.php">
+    <div style="margin-top:2em;font-size:.65em">
+        <a id='desc-list' class='link' href="poetdesc-list.php">
             ئەو زانیاریانەی کە نووسیوتانە
         </a>
     </div>

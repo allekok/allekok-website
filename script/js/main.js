@@ -346,11 +346,11 @@ function copyPoem() {
     Clipboard.copy(text);
     
     copySec.innerHTML = "<i class='material-icons' style='vertical-align:middle;'>check</i> کۆپی کرا.";
-    copySec.style.backgroundColor = "#cfc";
+    copySec.style.color = colors[0][0];
     
     setTimeout(function(){
         copySec.innerHTML = "<i class='material-icons' style='vertical-align:middle;'>content_copy</i> کۆپی کردن ";
-        copySec.style.backgroundColor = "";
+        copySec.style.color = "";
 	
     },3000);
 }

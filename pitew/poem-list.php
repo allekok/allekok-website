@@ -1,13 +1,11 @@
 <?php
-
 include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-
-if(! empty($_GET['name']) ) $_name1 = filter_var($_GET['name'], FILTER_SANITIZE_STRING);
-
-// //////////
+if(! empty($_GET['name']) )
+    $_name1 = filter_var($_GET['name'],
+			 FILTER_SANITIZE_STRING);
 
 $title = $_name1 ? _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; نووسینی شێعر &raquo; شێعرەکانی \"$_name1\"" :  _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; نووسینی شێعر &raquo; شێعرەکان";
 $desc = "ئەو شێعرانەی کە نووسیوتانە";
@@ -54,9 +52,12 @@ include(ABSPATH . 'script/php/header.php');
 		       echo " &rsaquo; <span style='letter-spacing:1.5px;'>". $_pmnum . "</span>";
 		       ?>
     </div>
-    <div style='text-align:right;margin:.3em 0'>
+    <div style='text-align:right;
+		margin:.3em 0;
+		font-size:.65em;
+		padding:.5em'>
         <?php if($_name1) { ?>
-            <a class='button' href="/pitew/poem-list.php">
+            <a class='link' href="/pitew/poem-list.php">
 		تەواوی ئەو شێعرانەی نووسراون
             </a>
         <?php } ?>

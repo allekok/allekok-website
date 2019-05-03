@@ -16,7 +16,9 @@ require("condb.php");
 	    <?php echo _DESC; ?>
 	</h2>
         <?php if(isset($_GET['new'])) { ?>
-            <span style="display: block;font-size: .55em;color: #444;padding: 1em;background-color: #f9f9f9;">
+            <span style="display:block;font-size:.55em;
+			 color:#444;padding:1em;
+			 background-color:#f9f9f9;">
 		مەبەست لە شاعیرانی نوێ، ئەو شاعیرانەن کە لە ژیان دا ماون.
             </span>
         <?php } ?>
@@ -33,9 +35,27 @@ alt="'.$row['profname'].'" src="'.$imgsrc.'"
 	}
 	mysqli_close($conn);
 	?>
-    </div><div style="padding: .5em 0 0;">
+    </div><div style="padding:1.5em 0 0;
+		      font-size:.65em">
         <?php if(isset($_GET['new'])) { ?>
-            <a class='button' style='display: inline-block;margin: 0 0 0 1em;padding:.5em .8em' href="/">شاعیرانی کۆچ‌کردوو</a><?php } else { ?><a class='button' style='display: inline-block;margin: 0 0 0 1em;padding:.5em .8em' href="/?new">شاعیرانی نوێ</a><?php } ?><a class='button' style='display: inline-block;margin: 0 1em 0 0;padding:.5em .8em' href="/poet:73">بەیتی کوردی</a>
+            <a href="/" class='link'
+	       style='display:inline-block;
+		     margin:0 0 0 .7em;
+		     padding:.5em'
+	    >شاعیرانی کۆچ‌کردوو</a>
+	<?php
+	} else {
+	?><a href="/?new" class='link'
+	     style='display:inline-block;
+		   margin:0 0 0 .7em;
+		   padding:.5em'
+	  >شاعیرانی نوێ</a>
+	<?php
+	}
+	?><a href="/poet:73" class='link'
+	     style='display:inline-block;
+		   margin:0 .7em 0 0;
+		   padding:.5em'
+	  >بەیتی کوردی</a>
     </div>
-
 </div>

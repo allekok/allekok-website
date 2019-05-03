@@ -45,28 +45,13 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
                  e.style.background = "#777";
                  e.style.color = "#fff";
              });
-             document.querySelector('#frmUpload').style.display = "none";
              return;
          }
 
          var http = new XMLHttpRequest();
 	 http.open("get", "isitnew.php?poet="+poet.value);
          http.onload = function() {
-             var res = JSON.parse(this.responseText);
-             if(res.new === 1) {
-                 
-                 document.querySelector('#frmUpload').style.animation = "tL .5s forwards";
-                 document.querySelector('#frmUpload').style.display = "block";
-                 
-                 document.querySelector("#dsds").outerHTML = `<a id='dsds' href='poet-image.php?name=${cntri.value}&poet=${poet.value}' target='_blank' class='button' style='display:inline-block;cursor:pointer;font-size: 0.7em;padding:1em;'>
-                     هەڵبژاردنی وێنە
-                 </a>`;
-             } else {
-                 if(document.querySelector('#frmUpload').style.display == "block") {
-                     document.querySelector('#frmUpload').style.display = "none";
-                 }
-             }
-             
+             var res = JSON.parse(this.responseText);             
              if(res.id != "0") {
                  txts.forEach(function(e) {
                      e.style.borderTopColor = colors[color_num(res.id)][0];
@@ -116,7 +101,7 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
 	</div>
         <form id="frmComm" action="append.php" method="POST">
             <div class="input-label-box">
-		<input type="text" onblur="check()" id="contributorTxt" name="contributor" style="font-size:.7em;width:100%;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
+		<input type="text" id="contributorTxt" name="contributor" style="font-size:.7em;width:100%;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
 	    </div>
 	    <div style="text-align: right;text-indent: 1em;padding: .5em 1em 0;font-size: .53em;color: #444;" id="pitew-stats">
 		ئەو شێعرە بە نێوی خۆتان لەسەر ئاڵەکۆک دادەندرێ.
@@ -126,25 +111,10 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
 		<label for="poetTxt">شاعیر: </label>
 		<input type="text" onblur="check()" id="poetTxt" name="poet" style="font-size:.7em;width:94%;" value="<?php echo $_poet1; ?>" placeholder="ناوی شاعیر *">
 	    </div>
-            
-            <!-- file upload sec -->
-            <div id="frmUpload" style="max-width:800px;margin:auto;display:none;">
-                <textarea id="poetDescTxt" name="poetDesc" style="font-size:.6em;max-width:94%;min-width:94%;margin-top:1em;min-height:9em;" placeholder="سەبارەت بە شاعیر (وەکوو: ناسناوی ئەدەبی، شوێن و ڕێکەوتی لەدایکبوون یان هەر زانیاریەکی تر کە بەلاتانەوە چاکە لەسەر ئاڵەکۆک دابندرێ.)"></textarea>
-                
-                <div style="padding:1.2em 0.3em 0.1em; text-align:right; text-indent:1em;font-size:0.5em;color:#222;">
-                    ئەگەر دەتانهەوێ وێنەی شاعیر لەسەر ئاڵەکۆک دابندرێ، لەسەر "هەڵبژاردنی وێنە" کرتە بکەن.
-                </div>
-                
-                <a href='poet-image.php?name=' target="_blank" id="dsds" class='button' style="display:inline-block;cursor:pointer;font-size: 0.7em;padding:1em;">
-                    هەڵبژاردنی وێنە
-                </a>
-            </div>
-            
 	    <div class="input-label-box" style="margin-top:1em;">
 		<label for="bookTxt">کتێب: </label>
 		<input type="text" id="bookTxt" name="book" style="font-size:.7em;width:94%;" value="<?php echo $_book1; ?>" placeholder="ناوی کتێب">
 	    </div>
-	    
 	    <div class="input-label-box" style="margin-top:1em;">
 		<input type="text" id="poemNameTxt" name="poemName" style="font-size:.7em;width:100%;" placeholder="سەرناوی شێعر">
 	    </div>
@@ -157,7 +127,7 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
             
             <div id="message"></div>
 
-            <button type="submit" class="button bth" style="font-size: .7em;width: 45%;max-width: 150px;margin-top:1em;background:#777;color:#fff;">ناردن</button>
+            <button type="submit" class="button bth" style="font-size:.7em;width:45%;max-width:150px;margin-top:1em;background:#777;color:#fff;padding:1em 0">ناردن</button>
             
             <button type="button" id="clearBtn" class='button' style="font-size: 0.7em;width: 45%;max-width: 150px;margin-top:1em">پاک کردنەوە</button>
         </form>
@@ -166,8 +136,8 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
         <?php } ?>
         
     </div>
-    <div style="margin-top:2em;">
-        <a id='poems-list' class='button' href="poem-list.php">
+    <div style="margin-top:2em;font-size:.65em">
+        <a id='poems-list' class='link' href="poem-list.php">
             ئەو شێعرانەی کە نووسیوتانە
         </a>
     </div>
@@ -209,7 +179,6 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
      
      var contributor = document.querySelector("#contributorTxt"),
 	 poet = document.querySelector("#poetTxt"),
-	 poetDesc = document.querySelector("#poetDescTxt"),
 	 book = document.querySelector("#bookTxt"),
 	 poemName = document.querySelector("#poemNameTxt"),
 	 poem = document.querySelector("#poemConTxt"),
@@ -227,7 +196,7 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
      
      loader.style.display="block";
      
-     var quest = `contributor=${contributor.value}&poet=${poet.value}&book=${book.value}&poemName=${poemName.value}&poem=${encodeURIComponent(poem.value)}&poetDesc=${encodeURIComponent(poetDesc.value)}`;
+     var quest = `contributor=${contributor.value}&poet=${poet.value}&book=${book.value}&poemName=${poemName.value}&poem=${encodeURIComponent(poem.value)}`;
      
      var http = new XMLHttpRequest();
      
@@ -241,8 +210,7 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
              mess.innerHTML = res.message;
              
              if(res.state == 1) {
-                 poemName.value = poem.value = poetDesc = "";
-                 document.querySelector("#frmUpload").style.display = "none";
+                 poemName.value = poem.value = "";
 
                  var contrib = {
                      name : res.contributor.name,
@@ -278,10 +246,9 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
 	 book = document.querySelector("#bookTxt"),
 	 poemName = document.querySelector("#poemNameTxt"),
 	 poem = document.querySelector("#poemConTxt"),
-	 poetDesc = document.querySelector("#poetDescTxt"),
 	 mess = document.querySelector("#message");
      
-     mess.innerHTML = poet.value = book.value = poemName.value = poem.value = poetDesc.value = "";
+     mess.innerHTML = poet.value = book.value = poemName.value = poem.value = "";
      var txts = document.querySelectorAll("input, textarea"),
 	 btns = document.querySelectorAll("button[type=submit]");
      txts.forEach(function(e) {
@@ -292,8 +259,6 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
          e.style.background = "#777";
          e.style.color = "#fff";
      });
-     
-     document.querySelector("#frmUpload").style.display = "none";
  });
 </script>
 

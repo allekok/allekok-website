@@ -10,6 +10,7 @@
      $bbk = !isset($bbk[1]) ? $bbk[0] :
 	    "{$bbk[0]}<i style='color:{$colors[$color_num][3]};font-size: .9em;padding: 0 .1em;'> / </i>{$bbk[1]}";
      ?>
+    <!-- Address bar -->
     <div id='adrs'>
 	<a href="/poet:<?php echo $ath; ?>">
 	    <?php
@@ -34,29 +35,77 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 	?>
     </div>
     <?php
-    if(! empty($bknowdesc[$bk-1])) {
+    if(!empty($bknowdesc[$bk-1])) {
     ?>
-	<span id="bkondesc" style="display:block"><?php echo $bknowdesc[$bk-1]; ?></span>
+	<span id="bkondesc"
+	      style="display:block"
+	><?php echo $bknowdesc[$bk-1]; ?></span>
     <?php
     }
     ?>
-
-    <form style='text-align:right;margin: .2em;display:flex;' action="" method="post">
-	<input type="hidden" style="display:none;" name="order" value="asc">
-	<div style="width:100%;"><button type='submit' style="cursor:pointer;padding: 1em .8em;display:block;" class='button'><i class='material-icons'>sort_by_alpha</i> بەڕیز کردنی شێعرەکان لە ئا ڕا</button></div>
-	<a id="new_poem_a" style="color:<?php echo $colors[$color_num][0]; ?>;display: inline-block;font-size: 1.15em;padding: .5em .3em;" class="material-icons button" title="نووسینی شێعرێکی تازە" href="/pitew/index.php?poet=<?php echo $info['takh'] ; ?>&book=<?php echo $bknow[$bk-1]; ?>"><i class="material-icons" style="font-size: inherit;height: 0;vertical-align: top;">note_add</i></a>
+    <!-- Toolbar -->
+    <form style='text-align:right;
+		 margin:.2em;
+		 display:flex;
+		 border-bottom:1px solid #eee'
+	  action="" method="post">
+	<input type="hidden"
+	       style="display:none"
+	       name="order" value="asc">
+	<div style="width:100%"
+	><button type='submit'
+		 style="cursor:pointer;
+		       padding:1em 0;
+		       display:block;
+		       font-size:.65em"
+		 class='button'
+	 ><i style="background:#666;
+		    color:#fff;
+		    border-radius:50%;
+		    padding:.1em .7em 0"
+	  >ئا</i> بەڕیز کردنی شێعرەکان لە ئا ڕا</button></div>
+	<a id="new_poem_a"
+	   style="color:
+	       <?php 
+	       echo $colors[$color_num][0].';';
+	       ?>
+	       display:inline-block;
+	       font-size:1.15em;
+	       padding:.5em .3em"
+	   class="material-icons button"
+	   title="نووسینی شێعرێکی تازە"
+	   href="/pitew/index.php?poet=<?php 
+				       echo $info['takh'].
+					    "&book=".
+					    $bknow[$bk-1];
+				       ?>"
+	>note_add</a>
     </form>
-
+    <!-- List of poems -->
     <div id="sp">
 	<?php
-	while($row = mysqli_fetch_assoc($query)) {
-	    $rid_k = num_convert($row['id'],"en","ckb");
-	    
+	while($row = mysqli_fetch_assoc($query))
+	{
+	    $rid_k = num_convert($row['id'],
+				 "en","ckb");
 	?>
 	    <div style="display:flex;">
-		<button class="material-icons" style="vertical-align:middle;font-size:1em;background:none;padding:0 .5em" type="button" title="نیشان‌دانی بەشی سەرەتای ئەم شێعرە">keyboard_arrow_down</button><a href="/poet:<?php echo $ath; ?>/book:<?php echo $bk; ?>/poem:<?php echo $row['id']; ?>">
+		<button class="material-icons button"
+			style="font-size:1em;
+			       padding:0 .5em"
+			type="button"
+			title="نیشان‌دانی بەشی سەرەتای ئەم شێعرە"
+		>keyboard_arrow_down</button
+				    ><a href="<?php 
+					      echo "/poet:".
+						   $ath.
+						   "/book:".
+						   $bk.
+						   "/poem:".
+						   $row['id']; 
+					      ?>">
 		    <?php
-		    echo($rid_k . ". " . $row['name']);
+		    echo($rid_k.". ".$row['name']);
 		    ?>
 		</a>
 	    </div>
@@ -65,6 +114,7 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 	?>
     </div>
     <script>
+     /* Book completion icon click event */
      var bk_comp = document.querySelector(".bk-comp");
      if(bk_comp !== null) {
 	 bk_comp.addEventListener("click", function() {
@@ -80,29 +130,37 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
      }
 
      function show_summary(button) {
-	 var href = button.parentNode.querySelector("a").getAttribute("href");
+	 var href = button.parentNode.
+			   querySelector("a").
+			   getAttribute("href");
 	 href = href.split("/");
-	 button.innerHTML = "<div class='loader' style='width:2.2em;height:2.2em'></div>";
+	 button.innerHTML = "<div class='loader' \
+style='width:2.2em;height:2.2em'></div>";
 	 var pt = href[1].split(":")[1],
 	     bk = href[2].split(":")[1],
 	     pm = href[3].split(":")[1];
 	 
 	 var xmlhttp = new XMLHttpRequest();
-	 xmlhttp.open("GET", `/script/php/poem-summary.php?pt=${pt}&bk=${bk}&pm=${pm}`);
+	 xmlhttp.open("GET",
+		      "/script/php/poem-summary.php?pt="+
+		      pt+"&bk="+bk+"&pm="+pm);
 	 xmlhttp.onload = function() {
              button.innerHTML = "keyboard_arrow_down";
-             var san_txt = this.responseText.replace(/\n/g, "<br>");
-             button.parentNode.outerHTML += `<div style='background: #f6f6f6;padding: 1em;font-size: .55em;'>${san_txt}</div>`;
+             var san_txt = this.responseText.
+				replace(/\n/g, "<br>");
+             button.parentNode.outerHTML += "<div \
+style='background:#f6f6f6;padding:1em;font-size:.55em;'\
+>"+san_txt+"</div>";
 	 }
 	 xmlhttp.send();
      }
-
-     document.querySelectorAll("#sp button").forEach(function(e) {
-	 e.addEventListener("click", function () {
-             show_summary(e);
-	 });
-     });
-
+     
+     document.querySelectorAll("#sp button").
+	      forEach(function(e) {
+		  e.addEventListener(
+		      "click", function () {
+			  show_summary(e);
+		      });
+	      });
     </script>
-
 </div>

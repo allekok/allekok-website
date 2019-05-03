@@ -1,13 +1,12 @@
 <?php
-
 include_once("../script/php/functions.php");
 header("Content-Type: application/json; charset=UTF-8");
 $new = 1;
 $_id = $img = 0;
 
-if(@$_GET['poet']) {
+if(isset($_GET['poet'])) {
     
-    $_poet = filter_var($_GET['poet'], FILTER_SANITIZE_STRING);
+    $_poet = trim(filter_var($_GET['poet'], FILTER_SANITIZE_STRING));
     
     $db = "index";
     $q = "select id, name, takh, profname from auth";
@@ -15,12 +14,13 @@ if(@$_GET['poet']) {
     
     while($res = mysqli_fetch_assoc($query)) {
 
-        if( $res['takh'] == $_poet ) {
+        if( $res['takh'] == $_poet or
+	    $res['profname'] == $_poet) {
             
             $_id = $res['id'];
             $new=0;
 
-            break 1;
+            break;
         }
     }
     

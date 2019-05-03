@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <?php
-// statistics
-$dttd = date("Y m d h:i:sa");
-$reff = filter_var(@$_SERVER['HTTP_REFERER'],FILTER_SANITIZE_STRING);
-$requri = filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_STRING);
-$remIP = filter_var($_SERVER['REMOTE_ADDR'], FILTER_SANITIZE_STRING);
-$f = fopen("stats.txt", "a");
-fwrite($f, "{$remIP}\t{$dttd}\t{$requri}\t{$reff}\n");
-fclose($f);
-
+$requri = filter_var($_SERVER['REQUEST_URI'],
+		     FILTER_SANITIZE_STRING);
 if(!isset($color_num))
     $color_num = 0;
 if(isset($ath))
@@ -22,7 +15,7 @@ else
          if ('serviceWorker' in navigator)
 	     navigator.serviceWorker.register('/sw.js', {scope: '/'});
 	</script>
-	<link rel='stylesheet' href='/style/css/main.css?v20'/>
+	<link rel='stylesheet' href='/style/css/main.css?v22'/>
 	<title>
 	    <?php echo $title; ?>
 	</title>

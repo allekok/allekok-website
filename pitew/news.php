@@ -26,7 +26,8 @@ include(ABSPATH . "script/php/header.php");
 	 color:#444;
      }
     </style>
-    <h1 style="color: #222;display: inline-block;margin: 1em 0;font-size: 1.2em;">
+    <h1 style="display:inline-block;
+	       padding:.1em .8em 0;font-size:1.2em">
 	<i class="material-icons">new_releases</i>
         تازەکانی ئاڵەکۆک
     </h1>

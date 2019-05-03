@@ -77,16 +77,22 @@ include(ABSPATH . 'script/php/header.php');
 	 padding:0 .5em;
      }
     </style>
-    <div style="max-width: 850px; margin:auto; padding:1em;line-height:2.3; text-align:justify;">
-        <p style="border-bottom:1px solid #eee;padding-top:0;text-indent:0;">
-	    -  <a href="https://github.com/allekok/www.allekok.com/" style="display:inline-block;padding:.5em 0 .2em;">
-	    بۆ داگرتنی کۆدەکانی ئاڵەکۆک لێرە کرتە بکەن.
+    <div style="max-width:850px;margin:auto;
+		padding:0 1em 1em;line-height:2.3;
+		text-align:justify;">
+        <p style="border-bottom:1px solid #eee;
+		  padding-top:0;text-indent:0;">
+	    <a href="https://github.com/allekok/www.allekok.com/"
+		  style="display:inline-block;padding:.5em 0 .2em;">
+		- بۆ داگرتنی کۆدەکانی ئاڵەکۆک لێرە کرتە بکەن.
             </a><br>
-	    -  <a href="https://github.com/allekok/allekok-plain/" style="display:inline-block;padding:.5em 0 .2em;">
-		بۆ داگرتنی شێعرەکانی ئاڵەکۆک لێرە کرتە بکەن.
+	    <a href="https://github.com/allekok/allekok-plain/"
+		  style="display:inline-block;padding:.5em 0 .2em;">
+		- بۆ داگرتنی شێعرەکانی ئاڵەکۆک لێرە کرتە بکەن.
             </a><br>
-	    -  <a href="https://allekok.github.io/allekok-downloads/downloads/" style="display:inline-block;padding:.5em 0 .2em;">
-		بۆ داگرتنی کەرەستەکانی‌تری ئاڵەکۆک لێرە کرتە بکەن.
+	    <a href="https://allekok.github.io/allekok-downloads/downloads/"
+		  style="display:inline-block;padding:.5em 0 .2em;">
+		- بۆ داگرتنی کەرەستەکانی‌تری ئاڵەکۆک لێرە کرتە بکەن.
             </a>
 	</p>
         <p>

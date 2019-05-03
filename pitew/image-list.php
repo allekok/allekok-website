@@ -1,10 +1,11 @@
 <?php
-
 include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; ناردنی وێنەی شاعیران &raquo; وێنەکان";
+$title =
+    _TITLE .
+    " &raquo; پتەوکردنی ئاڵەکۆک &raquo; ناردنی وێنەی شاعیران &raquo; وێنەکان";
 $desc = "ئەو وێنانەی کە بۆتان ناردوویین";
 $keys = _KEYS;
 $t_desc = "";
@@ -12,6 +13,12 @@ $color_num = 0;
 
 include(ABSPATH . 'script/php/header.php');
 
+$name = isset($_GET['name']) ?
+	filter_var($_GET['name'],FILTER_SANITIZE_STRING) :
+	"";
+$poet = isset($_GET['poet']) ?
+	filter_var($_GET['poet'],FILTER_SANITIZE_STRING) :
+	"";
 ?>
 <div id="poets">  
     <div id='adrs'>
@@ -30,22 +37,37 @@ include(ABSPATH . 'script/php/header.php');
 	</div>
     </div>
     <style>
-     .imglist{width:35%;display:inline-block;vertical-align:top;color:#444;padding:1em .5em;font-size:.55em}
+     .imglist{width:35%;display:inline-block;
+	 vertical-align:top;color:#444;
+	 padding:1em .5em;font-size:.55em}
      .imglist a{border-bottom:1px solid #ccc}
-     .imglist:nth-child(3n-1){border-left:1px solid #eee;border-right:1px solid #eee;width:45%}
+     .imglist:nth-child(3n-1){border-left:1px solid #eee;
+	 border-right:1px solid #eee;width:45%}
      .imglist:nth-child(3n){width:20%}
     </style>
     <div>
-	<section class='imglist' style='background:#eee'>یارمەتیدەر</section><section style='background:#eee' class='imglist'>نێوی شاعیر</section><section style='background:#eee' class='imglist'>وێنە</section>
-	
+	<section class='imglist'
+		 style='background:#eee'
+	>یارمەتیدەر</section><section
+				 style='background:#eee'
+				 class='imglist'
+			     >نێوی شاعیر</section
+					><section
+					     style='background:#eee'
+					     class='imglist'
+					 >وێنە</section>
 	<?php
-	
 	$_list = make_list(ABSPATH."style/img/poets/new/");
 	foreach($_list as $_l) {
-            echo "<section class='imglist'>" . $_l['name'] . "</section><section class='imglist'>" . $_l['poet'] . "</section><section class='imglist'>" . "<a class='link' href='/style/img/poets/new/{$_l['filename']}'>وێنە</a></section>";
+            echo "<section class='imglist'
+>" . $_l['name'] . "</section><section class='imglist'
+>" . $_l['poet'] . "</section><section class='imglist'
+>" . "<a class='link' href='/style/img/poets/new/{$_l['filename']}'
+>وێنە</a></section>";
 	}
 	
 	function make_list($path) {
+	    global $name,$poet;
 	    $not = [".","..","README.md"];
 	    $d = file_exists($path) ?
 		 opendir($path) : die();
@@ -53,10 +75,16 @@ include(ABSPATH . 'script/php/header.php');
 
 	    while( false !== ($e_name = readdir($d)) ) {
 		if(in_array($e_name , $not)) continue;
-
-		$exp_e_name = explode("_",
-				      str_replace([".jpeg",".jpg",".png"],
-						  "",$e_name));
+		$exp_e_name = explode(
+		    "_",str_replace(
+			[".jpeg",".jpg",".png"],"",
+			$e_name));
+		if($poet and
+		    $exp_e_name[0] != $poet)
+		continue;
+		if($name and
+		    $exp_e_name[1] != $name)
+		continue;
 		$e = [
 		    "filemtime"=>filemtime($path.$e_name),
 		    "filename"=>$e_name,

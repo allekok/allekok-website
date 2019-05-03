@@ -28,42 +28,41 @@ include(ABSPATH . "script/php/header.php");
         echo $nm;
         ?>
     </div>
-    <div style='max-width:800px;margin:auto;padding:.3em;'>
+    <div style='max-width:800px;margin:auto;padding:.3em'>
         <div id="hon-comments-body">
-            <div class='loader' style="border-top:3px dashed <?php echo $colors[0][0]; ?>;animation-duration:.7s;"></div>
+            <div class='loader'></div>
         </div>
-        
     </div>
-    
     <script>
-     
-     var comments = document.querySelector("#hon-comments-body");
-
-     var xmlhttp = new XMLHttpRequest();
-     xmlhttp.open("GET", "get-comments.php?n=30");
-     xmlhttp.onload=function() {
-         var res = JSON.parse(this.responseText);
-
-         if(res.err != 1) {
-             
-             var newComm = "";
-             
-             for(a in res) {
-                 
-                 newComm += "<div class='comment' style='margin-bottom:16px;background:"+colors[color_num(res[a].pt)][2]+"'><div class='comm-name'><i style='font-style:normal;padding-left:.2em;font-size:1.4em;color:"+ colors[color_num(res[a].pt)][0] +"'>&bull;</i>"+res[a].name+"<span style='color:#444;font-size:.7em'> سەبارەت بە شێعری </span><a style='font-size:.75em;border-radius:3px;padding:.1em .3em;border-bottom:1px solid #ccc;' href='/"+res[a].address+"'>"+res[a].ptn+" &rsaquo; "+res[a].pmn+"</a><span style='color:#444;font-size:.7em'> نووسیویەتی:</span></div><div class='comm-body'>"+res[a].comment+"</div><div class='comm-footer'>"+res[a].date+"</div></div>";
+     window.onload=function() {
+	 var comments = document.querySelector("#hon-comments-body"),
+	     xmlhttp = new XMLHttpRequest();
+	 getUrl("get-comments.php?n=20",function(responseText) {
+	     var res = JSON.parse(responseText);
+             if(res.err != 1) {
+		 var newComm = "";
+		 for(a in res)
+		 {
+                     newComm += "<div class='comment' \
+style='margin-bottom:16px;\
+background:"+colors[color_num(res[a].pt)][2]+"'><div \
+class='comm-name'><i style='font-style:normal;padding-left:.2em;\
+font-size:1.4em;color:"+ colors[color_num(res[a].pt)][0] +"'\
+>&bull;</i>"+res[a].name+"<span style='color:#444;font-size:.7em'\
+> سەبارەت بە شێعری </span><a style='font-size:.75em;border-radius:3px;\
+padding:.1em .3em;border-bottom:1px solid #ccc;' \
+href='/"+res[a].address+"'>"+res[a].ptn+" &rsaquo; "+res[a].pmn+"</a\
+><span style='color:#444;font-size:.7em'> نووسیویەتی:</span></div\
+><div class='comm-body'>"+res[a].comment+"</div><div class='comm-footer'\
+>"+res[a].date+"</div></div>";
+		 }
+		 comments.innerHTML = newComm;
+		 comments.style.animation = ".8s tL ease";
              }
-             
-             comments.innerHTML = newComm;
-             comments.style.animation = ".8s tL ease";
-             
-         }
-
+	 });
      }
-     xmlhttp.send();
     </script>
-    
 </div>
-
 <?php
 include_once(ABSPATH . "script/php/footer.php");
 ?>

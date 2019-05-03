@@ -17,6 +17,9 @@ include(ABSPATH . 'script/php/header.php');
         پتەوکردنی ئاڵەکۆک
     </h1>
     <br>
+    <style>
+     .pitewsec small {display:block;text-align:justify}
+    </style>
     <section class='pitewsec'>
         <a href="index.php">
             <i class='material-icons'>note_add</i>
@@ -26,12 +29,10 @@ include(ABSPATH . 'script/php/header.php');
                 <small>
                     ئەگەر دەتوانهەوێ لە نووسینەوەی شێعری شاعیران‌دا یارمیتی‌مان بدەن، لێرە کرتە بکەن. ئەگەر دەقی شێعرێک‌و لەلایە کە لەسەر ئاڵەکۆک نییە، زۆر بەنرخ دەبێ ئەگەر لێرە کرتە بکەن و بۆمان بنێرن، تا دوای پێداچوونەوە بە نێوی خۆتان لەسەر ئاڵەکۆک دابندرێ.
                     <br>
-                    دەتوانن بۆ نووسینەوەی شێعر لەم دیوانانە کەڵک وەرگرن:
 	</a>
-
-        <a style='border-bottom:1px solid <?php echo $colors[0][0]; ?>;display:inline-block;color:#222;' href="/pitew/pdfs.php">
+        دەتوانن بۆ نووسینەوەی شێعر لەم دیوانانە کەڵک وەرگرن:<a style='border-bottom:1px solid <?php echo $colors[0][0]; ?>;display:inline-block;color:#222;' href="/pitew/pdfs.php">
 	    داگرتنی دیوانی شاعیران
-        </a>
+	</a>
                 </small>
             </h3>
     </section><section class='pitewsec'>

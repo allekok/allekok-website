@@ -88,7 +88,6 @@ include(ABSPATH . 'script/php/header.php');
                      e.style.background = colors[color_num(res.id)][0];
                      e.style.color = colors[color_num(res.id)][1];
                  });
-                 upldlikebtn.style.background = colors[color_num(res.id)][2];
                  poet.style.backgroundColor = colors[color_num(res.id)][2];
                  poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
                  poet.style.backgroundRepeat = "no-repeat";
@@ -135,9 +134,9 @@ include(ABSPATH . 'script/php/header.php');
             <input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:1em;width:94%;padding:1em 3%" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
 	</div>
         
-        <div class='file-btn button' role='button' onclick="document.querySelector('input[name=profile]').click()" style="display:inline-block;font-size: 1.7em;" id='upldlikebtn'>
+        <button class='file-btn button' onclick="document.querySelector('input[name=profile]').click()" style="display:inline-block;font-size:1.5em;padding:1em;border:5px dashed #ddd;border-radius:10px;margin:.5em 0" id='upldlikebtn'>
             هەڵبژاردنی وێنە
-        </div><br>
+        </button><br>
         <div style="padding-top:.2em;font-size:.7em; color:#555;font-family:'kurd',monospace">
             &bull; فۆرمەتی وێنەکەتان دەبێ 
             <span style='background:#eee;padding:0 .2em'>JPG, JPEG, PNG</span>
@@ -147,21 +146,29 @@ include(ABSPATH . 'script/php/header.php');
             <span style='background:#eee;padding:0 .2em'>5MB</span>
             زیاتر بێت.
         </div>
-        <input type="file" style='display:none;' name="profile">
+        <input type="file" style='display:none;' name="profile" accept="image/png, image/jpeg">
         <div id="frmUploadMess"></div>
-        <button class='button bth' type="submit" style="width: 45%;max-width: 150px;background-color:#777;color:#fff;margin-top:1em;font-size: 1em;">ناردن</button>
+        <button class='button bth' type="submit" style="width:45%;max-width:150px;background-color:#777;color:#fff;margin-top:1em;font-size:1em;padding:1em 0">ناردن</button>
     </form>
     <?php if(isset($_poet1)) { ?>
         <script>window.addEventListener("load",check)</script>
     <?php } ?>
     
-    <div style="margin-top:2em;">
-        <a class='button' href="image-list.php">
+    <div style="margin-top:2em;font-size:.65em">
+        <a class='link' href="image-list.php">
             ئەو وێنانەی کە ناردووتانە
         </a>
     </div>
     
     <script>
+     document.querySelector("input[type=file]").
+	      addEventListener("change", function () {
+		  var filebtn =
+		      document.querySelector(".file-btn");
+		  filebtn.innerHTML = "هەڵبژێردرا.";
+		  filebtn.style.color = colors[0][0];
+		  filebtn.style.border = "";
+	      });
      // localStorage
      
      if(localStorage.getItem("contributor") !== null) {
@@ -182,11 +189,10 @@ include(ABSPATH . 'script/php/header.php');
              return;
          }
          if(fl.value == "") {
-             var old_bkg = flbtn.style.background;
-             flbtn.style.background = "rgba(204,51,0,0.2)";
+	     flbtn.style.borderColor = "rgba(204,51,0,.4)";
              
              setTimeout(function() {
-                 flbtn.style.background = old_bkg;
+		 flbtn.style.borderColor = "#ddd";
              }, 2000);
              return;
          }
