@@ -11,14 +11,11 @@ $color_num = 0;
 
 include(ABSPATH . "script/php/header.php");
 ?>
-
-<!-- the main element -->
 <div id="poets">
-    <h1 id="current-location" style="display:block;background: linear-gradient(to right, <?php echo "#fdfdfd,{$colors[0][0]},#fdfdfd"; ?>);color:#fff;font-size:1.2em">
+    <h1 style="font-size:1.2em">
         بیر و ڕاکان
     </h1>
-    
-    <div style='font-size:.55em; color:#444;margin:.5em 0;'>
+    <div style='font-size:.55em;color:#444;margin:.5em 0'>
         ژمارەی بیروڕاکان: 
         <?php
         $db = "index";
