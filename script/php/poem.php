@@ -441,12 +441,12 @@ address='$address' and blocked=0";
 			var newComm = "";
 			for(a in res)
 			{
-			    newComm += "<div class='comment'
-><div class='comm-name'><i style='font-style:normal;
-font-size:1.4em;padding-left:.3em;
-color:<?php echo $colors[$color_num][0]; ?>'
->&bull;</i>"+res[a].name+":</div><div 
-class='comm-body'>"+res[a].comment+"</div><div 
+			    newComm += "<div class='comment'\
+><div class='comm-name'><i style='font-style:normal;\
+font-size:1.4em;padding-left:.3em;\
+color:<?php echo $colors[$color_num][0]; ?>'\
+>&bull;</i>"+res[a].name+":</div><div \
+class='comm-body'>"+res[a].comment+"</div><div \
 class='comm-footer'>"+res[a].date+"</div></div>";
 			}
 			

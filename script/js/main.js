@@ -388,15 +388,16 @@ function Liked () {
             
             //change like-ico
             ico.innerHTML = "bookmark_border";
+	    ico.style.color = "#666";
             ico.style.animation = "";
             
         } else {
             
             favs += poemV2 + "[fav]";
-            
             localStorage.setItem('favorites',favs);
             // change like-ico
             ico.innerHTML = "bookmark";
+	    ico.style.color = colors[0][0];
             ico.style.animation = "ll 0.4s ease-out forwards";
             
         }
@@ -406,6 +407,7 @@ function Liked () {
         localStorage.setItem('favorites',favs);
         // change like-ico
         ico.innerHTML = "bookmark";
+	ico.style.color = colors[0][0];
         ico.style.animation = "ll 0.4s ease-out forwards";
         tL.style.display = "block";
     }
@@ -629,9 +631,8 @@ if(favs !== null && typeof poemV2 !== 'undefined') {
     
     if(where > -1) {
         likeico.innerHTML = "bookmark";
-        likeico.style.color = colors[color_num(JSON.parse(poemV2).poetID)][0];
-        likeico.style.backgroundColor = "";
-        likeico.style.animation = "ll 0.4s ease-out forwards";
+        likeico.style.color = colors[0][0];
+        likeico.style.animation = "ll .4s ease-out forwards";
     }
 }
 
