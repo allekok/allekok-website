@@ -145,10 +145,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 		      padding-top:.6em">
             <i class='material-icons'
 	       id='like-icon'
-	       style='color:
-		      <?php
-		      echo $colors[$color_num][0].';';
-		      ?>
+	       style='color:#666;
 		      font-size:3em'
 	    >bookmark_border</i>
 	</button>
