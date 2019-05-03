@@ -14,7 +14,7 @@
 
 <div id="poets">
     <img src="<?php 
-	      echo get_poet_image($info['id'], 'profile', true); 
+	      echo get_poet_image($info['id'], true); 
 	      ?>" class="poet-pic-small"
 	 alt="<?php echo $info['profname']; ?>">
 

@@ -62,8 +62,8 @@ function get_poet($pt, $colors) {
             $res['bksdesc'] = explode(",", $res['bksdesc']);
             $res['bks_completion'] = explode(",", $res['bks_completion']);
             
-            $res['img']['_130x130'] = _SITE . get_poet_image($res['id'], "profile", false);
-            $res['img']['_460x460'] = _SITE . get_poet_image($res['id'], "pro460", false);
+            $res['img']['_130x130'] = _SITE . get_poet_image($res['id'], false);
+            $res['img']['_460x460'] = _SITE . get_poet_image($res['id'], false);
             
             $res['id'] = intval($res['id']);
             $res['colors'] = $colors[color_num($res['id'])];

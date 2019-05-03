@@ -9,14 +9,12 @@ $f = fopen("stats.txt", "a");
 fwrite($f, "{$remIP}\t{$dttd}\t{$requri}\t{$reff}\n");
 fclose($f);
 
-if(!isset($color_num)) {
+if(!isset($color_num))
     $color_num = 0;
-}
-if(isset($ath)) {
-    $ogimg = _SITE.get_poet_image($ath, "profile",0);
-} else {
-    $ogimg = _SITE.get_poet_image(0, "pro-460",0);
-}
+if(isset($ath))
+    $ogimg = _SITE.get_poet_image($ath,false);
+else 
+    $ogimg = _SITE.get_poet_image(0,false);
 ?>
 <html dir="rtl" lang="ckb">
     <head>

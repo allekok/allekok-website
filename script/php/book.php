@@ -1,38 +1,36 @@
 <div id="poets">
-
-    <img src="<?php echo get_poet_image($info['id'], 'profile', true); ?>" class="poet-pic-small" alt="<?php echo $info['profname']; ?>"><?php 
-																	 $bbk = explode("/", $bknow[$bk-1]);
-
-																	 $bbk = !isset($bbk[1]) ? $bbk[0] : "{$bbk[0]}<i style='color: {$colors[$color_num][3]};font-size: .9em;padding: 0 .1em;'> / </i>{$bbk[1]}";
-
-																	 ?>
-
+    <!-- Poet picture -->
+    <img src="<?php 
+	      echo get_poet_image($info['id'],true); 
+	      ?>"
+	 class="poet-pic-small"
+	 alt="<?php echo $info['profname']; ?>"
+    ><?php 
+     $bbk = explode("/", $bknow[$bk-1]);
+     $bbk = !isset($bbk[1]) ? $bbk[0] :
+	    "{$bbk[0]}<i style='color:{$colors[$color_num][3]};font-size: .9em;padding: 0 .1em;'> / </i>{$bbk[1]}";
+     ?>
     <div id='adrs'>
 	<a href="/poet:<?php echo $ath; ?>">
 	    <?php
 	    echo $info['takh'];
 	    ?>
 	</a>
-	<i style='font-style:normal'> &rsaquo; </i>
+	<i> &rsaquo; </i>
 	<div id="current-location">
 	    <?php
-	    $bknowdesc = explode(',',$info['bksdesc']);
-	    // echo $bknow[$bk-1].$bpgtit;
 	    echo $bbk;
-	    
+	    $bknowdesc = explode(',',$info['bksdesc']);	    
 	    $bknowcomp = explode(',',$info['bks_completion']);
-	    if($bknowcomp[$bk-1] == 100) {
-		
-		echo("<i class='material-icons bk-comp' title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسراوەتەوە'>check</i>");
-
-	    }
+	    if($bknowcomp[$bk-1] == 100)
+		echo "<i class='material-icons bk-comp' 
+title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسراوەتەوە'>check</i>";
 	    ?>
 	</div>
 	<?php
-	if($bknowcomp[$bk-1] == 100) {
-
-	    echo("<span class='tt' id='bk-comp-tt'>تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسراوەتەوە</span>");
-	}
+	if($bknowcomp[$bk-1] == 100)
+	    echo("<span class='tt' id='bk-comp-tt'
+>تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسراوەتەوە</span>");
 	?>
     </div>
     <?php

@@ -24,36 +24,17 @@ function num_convert($_string, $_from, $_to) {
 		       $_string);
 }
 
-function get_poet_image($_pID, $_size, $_slash) {
+function get_poet_image($_pID, $_slash) {
     /* Return poet's image url */
     
-    $_sizes = [
-	['pro-120', 'profile', '120x120'],
-	['pro-460', 'pro460', '460x460']
-    ];
-
     $_pID = filter_var($_pID, FILTER_SANITIZE_NUMBER_INT);
 
-    if(in_array($_size, $_sizes[0])) {
-	/* 120x120 */
-
-	if(file_exists(
-	    ABSPATH .
-	    "style/img/poets/profile/profile_{$_pID}.jpg"))
-	$_img = "style/img/poets/profile/profile_{$_pID}.jpg";
-	else
-	    $_img = "style/img/poets/profile/profile_0.jpg";
-	
-    } elseif(in_array($_size, $_sizes[1])) {
-	/* 460x460 */
-
-	if(file_exists(
-	    ABSPATH .
-	    "style/img/poets/pro-460/pro-460_{$_pID}.jpg"))
-	$_img = "style/img/poets/pro-460/pro-460_{$_pID}.jpg";
-	else
-	    $_img = "style/img/poets/pro-460/pro-460_0.jpg";
-    }
+    if(file_exists(
+	ABSPATH .
+	"style/img/poets/profile/profile_{$_pID}.jpg"))
+    $_img = "style/img/poets/profile/profile_{$_pID}.jpg";
+    else
+	$_img = "style/img/poets/profile/profile_0.jpg";
 
     if($_slash)
 	$_img = "/$_img";

@@ -72,7 +72,7 @@ include(ABSPATH . "script/php/header.php");
 		if(! $query) continue;
 		
 		$poem = mysqli_fetch_assoc($query)["name"];
-		$image_uri = get_poet_image($pt,"profile",true);
+		$image_uri = get_poet_image($pt,true);
 		
 		echo "<div class='item'><a class='link' href='/poet:$pt/book:$bk/poem:$pm'><img style='display:inline-block;vertical-align:middle;width:3em;border-radius:50%;margin-left:.25em' src='{$image_uri}'> <i>$poet &rsaquo; $book &rsaquo;</i> $poem</a><i style='border-right:5px solid #eee;padding:0 1em;font-size:.75em;color:#555;margin:0 1em .2em;display:block;'>$diff</i></div>";
 		$i++;
