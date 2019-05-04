@@ -116,7 +116,8 @@
                     }
                     mysqli_close($conn);
 		    ?>
-		    <button onclick="myFunction()" class="dropbtn button">
+		    <button onclick="myFunction()" class="dropbtn button"
+			    style="font-size:.65em">
 			<?php
 			if(@$_selPT) {
                             echo $_selPT;
