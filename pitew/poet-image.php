@@ -28,6 +28,7 @@ if(isset($_FILES['profile']) && isset($_COOKIE['poet'])) {
         if( move_uploaded_file($_profile['tmp_name'], $_profile_dist) ) {
             
             $uploaded = "<i style='font-size:0.7em;color:#444;background:rgba(0,250,0,0.1);padding:.3em;display: block;margin-top: .8em;'>زۆر سپاس بۆ ئێوە. ئەو وێنە دوای پێداچوونەوە لەسەر ئاڵەکۆک دادەندرێ.</i><img src='{$_profile_dist}' onclick=\"window.location='{$_profile_dist}';\" id='profilepic' style='width:100%;margin:auto;display:block;min-width:70px;max-width:200px;cursor:pointer;'>";
+	    list_dir(ABSPATH.'style/img/poets/new');
         }
     }
 }

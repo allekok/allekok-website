@@ -92,7 +92,7 @@ href='/pitew/image-list.php?poet={$row['takh']}'
 		<?php
 		$_uri = ABSPATH . "pitew/res/";
 		if(file_exists($_uri)) {
-		    $ignore = [".","..","README.md"];
+		    $ignore = [".","..","README.md","list.txt"];
 		    $dir = opendir($_uri);
 		    $result = [];
 		    while(false !== ($pe = readdir($dir))) {

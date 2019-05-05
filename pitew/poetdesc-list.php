@@ -170,7 +170,7 @@ font-size:1em;display:block'>&bull;</span>";
 	}
 
 	function make_list($path) {
-	    $not = [".","..","README.md"];
+	    $not = [".","..","README.md","list.txt"];
 	    $chunk = 4 * 100;
 	    $d = file_exists($path) ?
 		 opendir($path) : die();

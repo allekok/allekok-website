@@ -19,6 +19,8 @@ if(!empty($_POST['poet']) and !empty($_POST['poetDesc'])) {
     fclose($f);
     
     echo "ok";
+
+    list_dir(ABSPATH.'pitew/res');
 }
 
 ?>

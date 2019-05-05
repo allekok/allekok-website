@@ -118,4 +118,19 @@ function san_data($in, $lastChance=false) {
 
     return $in;
 }
+
+function list_dir($path,
+		  $ignore = ['.','..','README.md','list.txt'],
+		  $output = 'list.txt') {
+    $output = "$path/$output";
+    $f = fopen($output,'w');
+    $dir = opendir($path);
+    while(false !== ($e=readdir($dir))) {
+	if(in_array($e,$ignore))
+	    continue;
+	fwrite($f,"$e\n");
+    }
+    closedir($dir);
+    fclose($f);
+}
 ?>

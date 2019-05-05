@@ -5,6 +5,7 @@ script/php/admin/password.php
 script/php/admin/capture/image.tar
 style/img/poets/new/*.jpeg
 style/img/poets/new/*.png
+style/img/poets/new/*.txt
 pitew/contributors/*.txt
 pitew/news.txt
 pitew/res/*.txt

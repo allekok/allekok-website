@@ -68,7 +68,7 @@ $poet = isset($_GET['poet']) ?
 	
 	function make_list($path) {
 	    global $name,$poet;
-	    $not = [".","..","README.md"];
+	    $not = [".","..","README.md","list.txt"];
 	    $d = file_exists($path) ?
 		 opendir($path) : die();
 	    $list = [];
