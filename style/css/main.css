@@ -144,7 +144,7 @@ header div:hover{opacity:.6}
     #search-key{width:80%}
 }
 footer{padding:1em 0;width:100%;font-size:.56em;text-align:center}
-footer a{display:inline-block;color:#444;padding:.5em .2em;margin:0;border-bottom:1px solid #eee}
+footer a{display:inline-block;color:#444;padding:.5em .35em;margin:0;border-bottom:1px solid #eee}
 footer a:hover{background:#eee}
 footer i{font-size:1.4em}
 @font-face{font-family:'kurd';font-display:swap;font-style:normal;font-weight:400;src:url('/style/font/DroidNaskh-Regular.woff2') format('woff2')}
