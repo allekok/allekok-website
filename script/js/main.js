@@ -229,7 +229,7 @@ function search(e) {
             return;
 	}
 	
-        var sbtn = document.querySelector("#live-search-form #search-btn");
+        var sbtn = document.querySelector("#search-form #search-btn");
         
         if(str.length<3) {
 	    sbtn.innerHTML = "<i class='material-icons' style='font-size:2em;'>search</i>";
@@ -652,7 +652,7 @@ if(favs != null && favs.length>0) {
 
 }
 
-var live_search_form = document.getElementById('live-search-form'),
+var live_search_form = document.getElementById('search-form'),
     sk = document.getElementById("search-key");
 
 live_search_form.addEventListener("submit", function(e) {
@@ -661,34 +661,39 @@ live_search_form.addEventListener("submit", function(e) {
         sk.focus();
     }
 });
-
+sk.addEventListener("focus",function() {
+    live_search_form.style.background = "#f8f8f8";
+});
+sk.addEventListener("blur",function() {
+    live_search_form.style.background = "#fff";
+});
 
 var draft = document.getElementById("tL");
-if( draft !== null ) {
+if(draft !== null) {
     draft.addEventListener("click", toggle_Like);
 }
 
 draft = document.getElementById("tS");
-if( draft !== null) {
+if(draft !== null) {
     draft.addEventListener("click", toggle_search);
 }
 
 draft = document.getElementById("fav-sec");
-if( draft !== null) {
+if(draft !== null) {
     draft.addEventListener("click", Liked);
 }
 
 draft = document.getElementById("copy-sec");
-if( draft !== null) {
+if(draft !== null) {
     draft.addEventListener("click", copyPoem);
 }
 
 draft = document.querySelector(".smaller");
-if( draft !== null) {
+if(draft !== null) {
     draft.addEventListener("click", function(){save_fs('smaller')});
 }
 
 draft = document.querySelector(".bigger");
-if( draft !== null) {
+if(draft !== null) {
     draft.addEventListener("click", function(){save_fs('bigger')});
 }

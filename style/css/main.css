@@ -87,10 +87,11 @@ header a h1{font-size:1em}
 #hon{margin:0 auto 1;padding:1em 7px}
 #hon,.b,.m1,.m2,.n,.m,.m3, .b span, .ptr,#hon sup{transition:none;-webkit-transition:none}
 #sp{padding:0 .5em 1.5em;margin:auto}
+#search-form{display:flex;border-top:5px solid #eee;box-shadow:0 6px 10px -6px #dfdfdf}
 #search{width:100%;display:none;margin-bottom:.5em}
-#search-key{font-size:.65em;border:1px solid #eee;border-left-color:#f6f6f6;width:65%;display:inline-block;text-align:right;background:#f6f6f6}
-#search-key:focus{background:#fff}
-#search-btn{width:35%;font-size:.65em;padding:1em 0;border-bottom:1px solid #f6f6f6;border-top:1px solid #f6f6f6;background:#f6f6f6;display:inline-block;text-align:center}
+#search-key{font-size:.65em;width:65%;text-align:right;box-shadow:none;border:0}
+#search-key:focus{background:none}
+#search-btn{width:35%;font-size:.65em;padding:1em 0;text-align:center}
 #search-res{display:none;padding:1em .3em;box-shadow: 0 12px 25px -8px #ddd;position:relative;max-width:850px;margin:auto}
 #search-res #bhon{font-size:.55em;padding:.5em 0;margin:0 0 7px;line-height:2;background:#f3f3f3}
 .bhoh-newdaq{text-align:right;padding:10px 10px 0;font-size:0.7em;margin:0;background:none;border-bottom:0;color:#000}

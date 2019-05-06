@@ -15,7 +15,7 @@ else
          if ('serviceWorker' in navigator)
 	     navigator.serviceWorker.register('/sw.js', {scope: '/'});
 	</script>
-	<link rel='stylesheet' href='/style/css/main.css?v22'/>
+	<link rel='stylesheet' href='/style/css/main.css?v23'/>
 	<title>
 	    <?php echo $title; ?>
 	</title>
@@ -107,12 +107,13 @@ else
 	    <a href="<?php echo _SITE; ?>"><h1><?php echo _TITLE; ?></h1></a>
 	</header>
 
-
-	<div id='search' style='max-width:1200px;margin-right:auto;margin-left:auto'>
-	    <form id="live-search-form" action="/" method="GET"><input type='text' id='search-key' onkeyup="search(event)" placeholder='گەڕان بۆ ...' name='q'><button type="submit" id="search-btn" class='button'><i class='material-icons' style='font-size:2em;'>search</i></button></form>
-	    
-	    <div id='search-res'></div>
-	</div>
+	<?php if(!isset($is_it_search)) { ?>
+	    <div id='search' style='max-width:1200px;margin-right:auto;margin-left:auto'>
+		<form id="search-form" action="/" method="GET"><input type='text' id='search-key' onkeyup="search(event)" placeholder='گەڕان بۆ ...' name='q'><button type="submit" id="search-btn" class='button'><i class='material-icons' style='font-size:2em;'>search</i></button></form>
+		
+		<div id='search-res'></div>
+	    </div>
+	<?php } ?>
 
 	<div id="tL-res" style="display:none;">
 	    <div id="tL-res-res"></div>
