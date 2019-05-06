@@ -133,4 +133,14 @@ function list_dir($path,
     closedir($dir);
     fclose($f);
 }
+
+function save_QA($input) {
+    $input = trim(stripslashes(
+	htmlspecialchars($input)));
+    if(empty($input)) die();
+    $f = fopen("QA.txt", "a");
+    fwrite($f, $input."\nend\n");
+    fclose($f);
+    echo "1";
+}
 ?>
