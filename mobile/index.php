@@ -126,9 +126,9 @@ margin-top:2em;font-size:.7em;padding:1em'>بیر و بۆچوونەکان</h3>";
 		      var x = new XMLHttpRequest();
 		      x.onload = function() {
 			  if(this.responseText == "1") {
-			      t.innerHTML = "<span 
-style='background:rgba(0,255,0,.08);color:green;
-display:block;padding:1em;font-size:.6em;'
+			      t.innerHTML = "<span \
+style='background:rgba(0,255,0,.08);color:green;\
+display:block;padding:1em;font-size:.6em;'\
 >زۆرسپاس بۆ دەربڕینی بیروڕاتان.</span>";
 			      txt.value = "";
 			  }
