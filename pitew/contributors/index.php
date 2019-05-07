@@ -16,9 +16,9 @@ include(ABSPATH . "script/php/header.php");
 	<a href="../first.php">
 	    پتەوکردنی ئاڵەکۆک
 	</a>
-	<i style='font-style:normal;'> &rsaquo; </i>
+	<i> &rsaquo; </i>
 	<div id='current-location'>
-	    <i style='vertical-align:middle;' class='material-icons'>favorite</i>
+	    <i class='material-icons'>favorite</i>
 	    بەشداربووان
 	</div>
     </div>
@@ -56,15 +56,18 @@ include(ABSPATH . "script/php/header.php");
 	 if(parent.style.overflow != "hidden") {
 	     parent.style.overflow = "hidden";
 	     parent.style.maxHeight = "400px";
-	     item.innerHTML = "<i class='material-icons' style='font-size:inherit;display:inline-block'>keyboard_arrow_down</i>";
+	     item.innerHTML = "<i class='material-icons' \
+style='font-size:inherit;display:inline-block'\
+>keyboard_arrow_down</i>";
 	 } else {
 	     parent.style.overflow = "";
 	     parent.style.maxHeight = "";
-	     item.innerHTML = "<i class='material-icons' style='font-size:inherit;display:inline-block'>keyboard_arrow_up</i>";	     
+	     item.innerHTML = "<i class='material-icons' \
+style='font-size:inherit;display:inline-block'\
+>keyboard_arrow_up</i>";	     
 	 }
      }
     </script>
-    
     <div id="contributions">
 	<?php
 	function open($uri, $limit=-2) {
@@ -85,23 +88,30 @@ include(ABSPATH . "script/php/header.php");
 	?>
 	<?php
 	$array = [
-	    ['poems', 'نووسینی شێعر', 'poems.txt', 'note_add', '/pitew/poem-list.php'],
-	    ['images', 'ناردنی وێنەی شاعیران', 'images.txt', 'image', '/pitew/image-list.php'],
-	    ['poet-descs', 'نووسینی زانیاری سەبارەت بە شاعیران', 'poet-descs.txt', 'person', '/pitew/poetdesc-list.php'],
-	    ['comments', 'ڕاست‌کردنەوەی هەڵەکانی ناو شێعر', 'comments.txt', 'question_answer', '/comments/'],
-	    ['pdfs', 'ناردنی دیوانی شاعیران', 'pdfs.txt', 'cloud_download', '/pitew/pdfs.php'],
+	    ['poems', 'نووسینی شێعر', 'poems.txt',
+	     'note_add', '/pitew/poem-list.php'],
+	    ['images', 'ناردنی وێنەی شاعیران', 'images.txt',
+	     'image', '/pitew/image-list.php'],
+	    ['poet-descs', 'نووسینی زانیاری سەبارەت بە شاعیران',
+	     'poet-descs.txt', 'person', '/pitew/poetdesc-list.php'],
+	    ['comments', 'ڕاست‌کردنەوەی هەڵەکانی ناو شێعر',
+	     'comments.txt', 'question_answer', '/comments/'],
+	    ['pdfs', 'ناردنی دیوانی شاعیران', 'pdfs.txt',
+	     'cloud_download', '/pitew/pdfs.php'],
 	];
 
 	foreach($array as $E) {
 	    echo "<div id='contributions-{$E[0]}' class='pitewsec'>";
-	    echo "<div style='overflow:hidden;max-height:400px'><i class='material-icons'>{$E[3]}</i>";
+	    echo "<div style='overflow:hidden;max-height:400px'
+><i class='material-icons'>{$E[3]}</i>";
 	    echo '<h3>';
 	    echo "<a href='{$E[4]}'>";
 	    echo $E[1];
 	    echo "</a>";
 	    $contributions_poems = open($E[2]);
 	    echo '<small><i class=\'stats-min\'>';
-	    echo "<a href='{$E[2]}' title='وەشانی plain/text'><i class='material-icons'>insert_drive_file</i></a>";
+	    echo "<a href='{$E[2]}' title='وەشانی plain/text'
+><i class='material-icons'>insert_drive_file</i></a>";
 	    echo 'ئەژمار: ';
 	    echo num_convert(
 		number_format(
@@ -117,16 +127,15 @@ include(ABSPATH . "script/php/header.php");
 		$n++;
 	    }
 	    echo '</small></h3>';
-	    echo "</div><div><button class='epld-expand button' onclick='expand(this)'><i class='material-icons' style='font-size:inherit;display:inline-block'>keyboard_arrow_down</i></button></div>";
+	    echo "</div><div><button class='epld-expand button' 
+onclick='expand(this)'><i class='material-icons' 
+style='font-size:inherit;display:inline-block'
+>keyboard_arrow_down</i></button></div>";
 	    echo '</div>';
 	}
-
 	?>
     </div>
-
 </div>
-
-
 <?php
 include_once(ABSPATH."script/php/footer.php");
 ?>
