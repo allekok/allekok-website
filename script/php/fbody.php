@@ -26,11 +26,10 @@ require("condb.php");
 	if($query) {
 	    while($row=mysqli_fetch_assoc($query)) {
 		$imgsrc = get_poet_image($row['id'],true);
-		echo '<section class="psec"
-><a href="/poet:'.$row['id'].'"><img
+		echo '<a class="psec" href="/poet:'.$row['id'].'"><img
 alt="'.$row['profname'].'" src="'.$imgsrc.'"
 ><h3 title="'.$row['profname'].'"
->'.$row['takh'].'</h3></a></section>';
+>'.$row['takh'].'</h3></a>';
 	    }
 	}
 	mysqli_close($conn);
