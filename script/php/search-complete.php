@@ -1,388 +1,279 @@
 <?php
-$timer = microtime(true);
+/*
+ * Input: $_GET['q'] -> $s
+ * Output: HTML
+ */
+/* Header */
+//$timer_start = microtime(true);
+require("functions.php");
+$s = isset($_GET['q']) ? $_GET['q'] : die();
+$s_sanitized = san_data($s);
+if($s_sanitized=="") die();
 
-include_once('constants.php');
-include_once('functions.php');
+$s_len = strlen($s_sanitized);
+$s_sanitized_more = san_data_more($s_sanitized);
+$selected_poet = isset($_GET['selPT']) ?
+		 filter_var($_GET['selPT'], FILTER_SANITIZE_STRING) : false;
+$selected_poet_query = $selected_poet ? "and rtakh='$selected_poet'" : "";
+$poets_max = isset($_GET['pt']) ? intval($_GET['pt']) : 10;
+$books_max = isset($_GET['bk']) ? intval($_GET['bk']) : 10;
+$poems_max = isset($_GET['pm']) ? intval($_GET['pm']) : 10;
+$poem_search_kind = isset($_GET['k']) ? intval($_GET['k']) : 3;
+/* k : [ 1 => poem-name, 2 => poem-context, 3 => both 1,2 ] */
 
-
-$res_poet = "<div class='search-poet' id='poets'><h3 id='bhon'>شاعیر</h3>";
-$res_book = "<div class='search-book'><h3 id='bhon'>کتێب و بەرهەم</h3>";
-$res_hon = "<div class='search-hon'><h3 id='bhon'>شێعر</h3>";
-$q_sp = @$_REQUEST['q'];
-$q1 = san_data($q_sp);
-
-if(!empty($q1)) {
-    
-    $qlen = strlen($q1);
-    $q2 = san_data($q_sp,true);
-    $_selPT = filter_var(@$_GET['selPT'], FILTER_SANITIZE_STRING);
-    
-    $r_max = @$_GET['pt'];
-    $e_max = @$_GET['bk'];
-    $h_max = @$_GET['pm'];
-    
-    $_k = @$_GET['k'];  // 1 => poem-name, 2 => poem, 3 => poem-name + poem 
-    
-    $db = 'search';
-    $q = "SELECT id,name,takh,profname,hdesc,uri,rtakh FROM poets where len>={$qlen} order by rtakh ASC";
-    require("condb.php");
-
-
-    if($r_max !== 0) {
-	$r = 0;
-	$r_max = !(filter_var($r_max, FILTER_VALIDATE_INT)===false) ? $r_max : 5;
+/* Load Data From Search Database */
+$sql_connection = mysqli_connect(_HOST,_USER,_PASS) or die();
+mysqli_select_db($sql_connection, _DB_PREFIX."search");
+mysqli_set_charset($sql_connection,"utf8");
+if($poets_max !== 0 and !$selected_poet)
+{
+    $q = "SELECT id,rtakh,takh,profname,name,hdesc FROM 
+poets WHERE len>=$s_len";
+    $query = mysqli_query($sql_connection,$q);
+    $poets = [];
+    $res_poets_html = "";
+    while($poet = mysqli_fetch_assoc($query))
+    {
+	if($poets_max === 0) break;
 	
-	if($_selPT == "") {
-	    $s_poet = array();
-
-	    while($res = mysqli_fetch_assoc($query)) {
-		$s_poet[] = $res;
-	    }
-	    $res_poet1 = "";
+	if(false !== strpos($poet['takh'],$s_sanitized) or
+	    false !== strpos($poet['profname'],$s_sanitized))
+	{
+	    $poet_image = get_poet_image($poet['id'], true);
+	    $res_poets_html .= "<section><a href='/poet:{$poet['id']}'
+><img src='$poet_image'><h3>{$poet['rtakh']}</h3></a></section>";
+	    $poets_max--;
+	}
+	else
+	{
+	    $poets[] = $poet;
+	}
+    }
+    if($poets_max !== 0)
+    {
+	foreach($poets as $i=>$poet)
+	{
+	    if($poets_max === 0) break;
 	    
-	    for($i=0; $i<count($s_poet); $i++) {
-		if($r<$r_max) {
-	            $res = $s_poet[$i];
-	            
-		    $s_poet_takh=$res['takh'];
-        	    
-    		    if(stristr($s_poet_takh,$q1)) {
-    			
-    			$s_poet[$i]['f'] = 1;
-    			
-    			$res_poet1 .= "<section>";
-    			$res_poet1 .= "<a href='/".$res['uri'] ."'>";
-    			
-    			$imgsrc = "/style/img/poets/profile/profile_".$res['id'].".jpg";
-			if(! file_exists("../..".$imgsrc)) {
-			    $imgsrc = "/style/img/poets/profile/profile_0.jpg";
-			}
-			
-    			$res_poet1 .= "<img src='$imgsrc'>";
-    			$res_poet1 .= "<h3>" . $res['rtakh'] . "</h3>";
-    			$res_poet1 .= "</a></section>";
-    			$r++;
-    		    } 
-		    
-		} else {
-		    break;
-		}
+	    if(false !== strpos($poet['name'],$s_sanitized) or
+		false !== strpos($poet['hdesc'],$s_sanitized))
+	    {
+		$poet_image = get_poet_image($poet['id'], true);
+		$res_poets_html .= "<section><a href='/poet:{$poet['id']}'
+><img src='$poet_image'><h3>{$poet['rtakh']}</h3></a></section>";
+		$poets[$i]=[];
+		$poets_max--;
 	    }
+	}
+    }
+    if($poets_max !== 0)
+    {
+	foreach($poets as $poet)
+	{
+	    if($poets_max === 0) break;
 	    
-	    if($r<$r_max) {
-    		for($i=0; $i<count($s_poet); $i++) {
-    		    if($r<$r_max) {
-    			$res = $s_poet[$i];
-    			
-    			$s_poet_name=$res['name'];
-    			
-    			$s_poet_prof=$res['profname'];
-    			
-    			$s_poet_hdesc=$res['hdesc'];
-			
-        		if((stristr($s_poet_name,$q1) || stristr($s_poet_prof,$q1) || stristr($s_poet_hdesc,$q1)) && !@$res['f']) {
-        		    $s_poet[$i]['f'] = 1;
-        		    
-        		    $res_poet1 .= "<section>";
-        		    $res_poet1 .= "<a href='/".$res['uri'] ."'>";
-        		    
-        		    $imgsrc = "/style/img/poets/profile/profile_".$res['id'].".jpg";
-			    if(! file_exists("../..".$imgsrc)) {
-				$imgsrc = "/style/img/poets/profile/profile_0.jpg";
-			    }
-			    
-        		    $res_poet1 .= "<img src='$imgsrc'>";
-        		    $res_poet1 .= "<h3>" . $res['rtakh'] . "</h3>";
-        		    $res_poet1 .= "</a></section>";
-        		    $r++;
-        		} 
-    			
-    		    } else {
-    			break;
-    		    }
-    		}
-	    }
-	    if($r<$r_max) {
-		for($i=0; $i<count($s_poet); $i++) {
-    		    if($r<$r_max) {
-    			
-    			if(!$q2) break;
-    			
-    			$res = $s_poet[$i];
-    			
-    			$s_poet_takh=san_data($res['takh'],true);
-    			
-    			$s_poet_name=san_data($res['name'],true);
-    			
-    			$s_poet_prof=san_data($res['profname'],true);
-    			
-    			$s_poet_hdesc=san_data($res['hdesc'],true);
-    			
-			
-        		if((@stristr($s_poet_takh,$q2) || @stristr($s_poet_name,$q2) || @stristr($s_poet_prof,$q2) || @stristr($s_poet_hdesc,$q2)) && !@$res['f']) {
-        		    $res_poet1 .= "<section>";
-        		    $res_poet1 .= "<a href='/".$res['uri'] ."'>";
-        		    
-        		    $imgsrc = "/style/img/poets/profile/profile_".$res['id'].".jpg";
-			    if(! file_exists("../..".$imgsrc)) {
-				$imgsrc = "/style/img/poets/profile/profile_0.jpg";
-			    }
-                            
-        		    $res_poet1 .= "<img src='$imgsrc'>";
-        		    $res_poet1 .= "<h3>" . $res['rtakh'] . "</h3>";
-        		    $res_poet1 .= "</a></section>";
-        		    $r++;
-        		} 
-    			
-    		    } else {
-    			break;
-    		    }
-    		}
-	    }
-	}
-
-    }
-    if(!empty($res_poet1)) {
-	$res_poet .= $res_poet1 . "</div>";
-    } else {
-	$res_poet = "";
-    }
-    
-    if($e_max !== 0) {
-	$e = 0;
-	$e_max = !(filter_var($e_max, FILTER_VALIDATE_INT)===false) ? $e_max : 10;
-
-	$q = ($_selPT == "") ? "select book,book_desc,poet_address,book_address,rbook,rtakh from books where len>={$qlen} order by rtakh ASC" : "select book,book_desc,poet_address,book_address,rbook,rtakh from books where len>={$qlen} and rtakh='{$_selPT}' order by rtakh ASC";
-	$query = mysqli_query($conn,$q);
-	
-	$s_book = array();
-
-	while($res=mysqli_fetch_assoc($query)) {
-	    $s_book[] = $res;
-	}
-	$res_book1="";
-	
-	for($i=0; $i<count($s_book); $i++) {
-	    if($e<$e_max) {
-	        $res = $s_book[$i];
-	        
-		$s_bk = $res['book'];
-
-		if(stristr($s_bk,$q1)) {
-		    
-		    $s_book[$i]['f'] = 1;
-		    
-		    $res_book1 .= "<a href='/" . $res['poet_address'] ."/" . $res['book_address'] . "'><i>" . $res['rtakh'] . "</i> &rsaquo; " . $res['rbook'] . "</a>";
-		    $e++;
-		}
-		
-	    } else {
-		break;
-	    }
-	}
-	
-	if($e<$e_max) {
-	    for($i=0; $i<count($s_book); $i++) {
-		if($e<$e_max) {
-	            $res = $s_book[$i];
-	            
-		    $s_bk_desc = $res['book_desc'];
-
-		    if( !@$res['f'] && stristr($s_bk_desc,$q1) ) {
-			
-			$s_book[$i]['f'] = 1;
-			
-			$res_book1 .= "<a href='/". $res['poet_address'] ."/" . $res['book_address'] . "'><i>" . $res['rtakh'] . "</i> &rsaquo; " . $res['rbook'] . "</a>";
-			$e++;
-		    }
-		    
-		} else {
-		    break;
-		}
-	    }
-	}
-	if($e<$e_max) {
-
-	    for($i=0; $i<count($s_book); $i++) {
-		
-		if($e<$e_max) {
-	            
-	            if(!$q2) break;
-	            
-	            $res = $s_book[$i];
-	            
-	            $s_bk = san_data($res['book'], true);
-		    $s_bk_desc = san_data($res['book_desc'],true);
-
-		    if( !@$res['f'] and (@stristr($s_bk,$q2) or @stristr($s_bk_desc,$q2)) ) {
-			
-			$res_book1 .= "<a href='/". $res['poet_address'] ."/" . $res['book_address'] . "'><i>" . $res['rtakh'] . "</i> &rsaquo; " . $res['rbook'] . "</a>";
-			$e++;
-		    }
-		    
-		} else {
-		    break;
-		}
-	    }
-	}
-
-    }
-    
-    if(!empty($res_book1)) {
-	$res_book .= $res_book1 . "</div>";
-    } else {
-	$res_book = "";
-    }
-    
-    if($h_max !== 0) {
-	$h = 0;
-	$h_max = !(filter_var($h_max, FILTER_VALIDATE_INT)===false) ? $h_max : 15;
-
-	$q = ($_selPT == "") ? "SELECT name,hdesc,poet_address,book_address,poem_address,poem,poem_true,rbook,rname,rtakh FROM poems where len>={$qlen} ORDER BY Cipi DESC" : "SELECT name,hdesc,poet_address,book_address,poem_address,poem,poem_true,rbook,rname,rtakh FROM poems where len>={$qlen} and rtakh='{$_selPT}' ORDER BY Cipi DESC";
-	$query = mysqli_query($conn,$q);
-
-	$s_poem = array();
-	
-	while($res=mysqli_fetch_assoc($query)) {
-	    $s_poem[] = $res;
-	}
-
-	$res_hon1 = "";
-	$res_Cipi = array();
-	$rCn = 0;
-	
-	if($_k !== "2") {
-	    for($i=0; $i<count($s_poem); $i++) {
-	        $res = $s_poem[$i];
-	        
-	        if($h<$h_max) {
-
-                    $s_name = $res['name'];
-
-                    
-	            if(stristr($s_name,$q1)) {
-	                
-	                $s_poem[$i]['f'] = 1;
-	                
-	                $pbp_uri = $res['poet_address'] ."/" . $res['book_address'] . "/" . $res['poem_address'];
-	                
-	                $res_hon1 .= "<div style='display:flex;'><button style='background:none;padding:0 .5em;'' onclick='ss(this)' type='button'><i class='material-icons' style='vertical-align:middle;font-size:1.5em;'>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri={$pbp_uri}'><i>" . $res['rtakh'] . "</i> &rsaquo; "."<i>" . $res['rbook'] . "</i> &rsaquo; " . $res['rname'] . "</a></div>";
-	                $h++;
-	            }
-
-	        } else {
-	            break;
-	        }
-	    }
-	}
-
-	$res_hon2 = "";
-	if($h<$h_max) {
-	    if($_k !== "1") {
-		for($i=0; $i<count($s_poem); $i++) {
-	            $res = $s_poem[$i];
-	            
-	            if($h<$h_max) {
-
-                	$s_hon = $res['poem'];
-                	
-                	$s_hon_desc = $res['hdesc'];
-                	
-                	
-	                if((stristr($s_hon,$q1) or stristr($s_hon_desc,$q1)) && !@$res['f']) {
-	                    
-	                    $s_poem[$i]['f'] = 1;
-	                    
-	                    $pbp_uri = $res['poet_address'] ."/" . $res['book_address'] . "/" . $res['poem_address'];
-	                    
-	                    $res_hon2 .= "<div style='display:flex;'><button style='background:none;padding:0 .5em;'' onclick='ss(this)' type='button'><i class='material-icons' style='vertical-align:middle;font-size:1.5em;'>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri={$pbp_uri}'><i>" . $res['rtakh'] . "</i> &rsaquo; "."<i>" . $res['rbook'] . "</i> &rsaquo; " . $res['rname'] . "</a></div>";
-	                    $h++;
-	                }
-
-	            } else {
-	                break;
-	            }
-	        }
-	    }
-	}
-	
-	if($h<$h_max) {
-	    if($_k !== "2") {
-		for($i=0; $i<count($s_poem); $i++) {
-	            $res = $s_poem[$i];
-	            
-	            if($h<$h_max) {
-
-                	$s_name = san_data($res['name'],true);
-                	
-                	if(!$q2) break;
-	                if(stristr($s_name,$q2) && !@$res['f']) {
-	                    $s_poem[$i]['f'] = 1;
-	                    
-	                    $pbp_uri = $res['poet_address'] ."/" . $res['book_address'] . "/" . $res['poem_address'];
-	                    
-	                    $res_hon1 .= "<div style='display:flex;'><button style='background:none;padding:0 .5em;'' onclick='ss(this)' type='button'><i class='material-icons' style='vertical-align:middle;font-size:1.5em;'>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri={$pbp_uri}'><i>" . $res['rtakh'] . "</i> &rsaquo; "."<i>" . $res['rbook'] . "</i> &rsaquo; " . $res['rname'] . "</a></div>";
-	                    $h++;
-	                }
-
-	            } else {
-	                break;
-	            }
-	        }
-	    }
-	}
-	
-	if($h<$h_max) {
-	    if($_k !== "1") {
-		for($i=0; $i<count($s_poem); $i++) {
-	            $res = $s_poem[$i];
-	            
-	            if($h<$h_max) {
-
-                	$s_hon = $res['poem_true'];
-                	
-                	$s_hon_desc = san_data($res['hdesc'], true);
-                	
-                	if(!$q2) break;
-	                if((stristr($s_hon,$q2) or stristr($s_hon_desc,$q2)) && !@$res['f']) {
-	                    
-	                    $pbp_uri = $res['poet_address'] ."/" . $res['book_address'] . "/" . $res['poem_address'];
-	                    
-	                    $res_hon2 .= "<div style='display:flex;'><button style='background:none;padding:0 .5em;'' onclick='ss(this)' type='button'><i class='material-icons' style='vertical-align:middle;font-size:1.5em;'>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri={$pbp_uri}'><i>" . $res['rtakh'] . "</i> &rsaquo; "."<i>" . $res['rbook'] . "</i> &rsaquo; " . $res['rname'] . "</a></div>";
-	                    $h++;
-	                }
-
-	            } else {
-	                break;
-	            }
-	        }
+	    if($poet != [] and (
+		false !== strpos(san_data_more($poet['takh']),
+				 $s_sanitized_more) or
+		false !== strpos(san_data_more($poet['profname']),
+				 $s_sanitized_more) or
+		false !== strpos(san_data_more($poet['name']),
+				 $s_sanitized_more) or
+		false !== strpos(san_data_more($poet['hdesc']),
+				 $s_sanitized_more)))
+	    {
+		$poet_image = get_poet_image($poet['id'], true);
+		$res_poets_html .= "<section><a href='/poet:{$poet['id']}'
+><img src='$poet_image'><h3>{$poet['rtakh']}</h3></a></section>";
+		$poets_max--;
 	    }
 	}
     }
-    
-    mysqli_close($conn);
-    
-    if(!empty($res_hon2)) {
-	$res_hon1 .= "<h3 class='bhoh-newdaq'>گەڕانی نێو دەق: </h3>" . $res_hon2;
-    }
-    
-    if(!empty($res_hon1)) {
-	$res_hon .= $res_hon1;
-    } else {
-	$res_hon .= "<h3 class='search-notfound'>هیچ شێعرێکم بۆ نەدۆزرایەوە</h3>";
-    }
-    
-    $res_hon .= "</div>";
-    
-    $result = $res_poet . $res_book . $res_hon;
-    
-    echo $result;
-
-} else {
-    echo " ... ";
 }
+if($books_max !== 0)
+{
+    $q = "SELECT book,book_desc,poet_address,book_address,rbook,rtakh FROM
+ books WHERE len>=$s_len $selected_poet_query";
+    $query = mysqli_query($sql_connection, $q);
+    $books = [];
+    $res_books_html = "";
+    while($book = mysqli_fetch_assoc($query))
+    {
+	if($books_max === 0) break;
 
-$timer = microtime(true) - $timer;
-// echo "<div style='position:fixed;top:0;left:0;'>" . number_format($timer, 3) . "s</div>";
+	if(false !== strpos($book['book'],$s_sanitized))
+	{
+	    $res_books_html .= "<a 
+href='/{$book['poet_address']}/{$book['book_address']}'
+><i>{$book['rtakh']}</i> › {$book['rbook']}</a>";
+	    $books_max--;
+	}
+	else
+	{
+	    $books[] = $book;
+	}
+    }
+    if($books_max !== 0)
+    {
+	foreach($books as $i=>$book)
+	{
+	    if($books_max === 0) break;
 
+	    if(false !== strpos($book['book_desc'],$s_sanitized))
+	    {
+		$res_books_html .= "<a 
+href='/{$book['poet_address']}/{$book['book_address']}'
+><i>{$book['rtakh']}</i> › {$book['rbook']}</a>";
+		$books[$i] = [];
+		$books_max--;
+	    }
+	}
+    }
+    if($books_max !== 0)
+    {
+	foreach($books as $book)
+	{
+	    if($books_max === 0) break;
+
+	    if($book != [] and (
+		false !== strpos(san_data_more($book['book_desc']),
+				 $s_sanitized_more) or 
+		false !== strpos(san_data_more($book['book_desc']),
+				 $s_sanitized_more)))
+	    {
+		$res_books_html .= "<a 
+href='/{$book['poet_address']}/{$book['book_address']}'
+><i>{$book['rtakh']}</i> › {$book['rbook']}</a>";
+		$books_max--;
+	    }
+	}
+    }
+}
+if($poems_max !== 0 and
+    $poem_search_kind>0 and
+    $poem_search_kind<4)
+{
+    $q =  "SELECT name,hdesc,poet_address,book_address,poem_address,
+poem,poem_true,rbook,rname,rtakh FROM poems WHERE len>=$s_len $selected_poet_query";
+    $query = mysqli_query($sql_connection,$q);
+    $poems = [];
+    $res_poems_html = "";
+    while($poem = mysqli_fetch_assoc($query))
+    {
+	$poems[] = $poem;
+    }
+    if($poem_search_kind != 2)
+    {
+	foreach($poems as $i=>$poem)
+	{
+	    if($poems_max === 0) break;
+
+	    if(false !== strpos($poem['name'],$s_sanitized))
+	    {
+		$res_poems_html .= "<div style='display:flex'><button 
+style='background:none;padding:0 .5em' onclick='ss(this)' type='button' 
+><i class='material-icons' style='font-size:1.5em'
+>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=
+{$poem['poet_address']}/{$poem['book_address']}/{$poem['poem_address']}'
+><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
+> › {$poem['rname']}</a></div>";
+		$poems[$i] = [];
+		$poems_max--;
+	    }
+	}
+    }
+    if($poem_search_kind != 1 and
+	$poems_max !==0)
+    {
+	$res_poems_context_html = "";
+	foreach($poems as $i=>$poem)
+	{
+	    if($poems_max === 0) break;
+
+	    if($poem!=[] and (
+		false !== strpos($poem['hdesc'],$s_sanitized) or
+		false !== strpos($poem['poem'],$s_sanitized)))
+	    {
+		$res_poems_context_html .= "<div style='display:flex'><button 
+style='background:none;padding:0 .5em' onclick='ss(this)' type='button' 
+><i class='material-icons' style='font-size:1.5em'
+>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=
+{$poem['poet_address']}/{$poem['book_address']}/{$poem['poem_address']}'
+><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
+> › {$poem['rname']}</a></div>";
+		$poems[$i] = [];
+		$poems_max--;
+	    }
+	}
+    }
+    if($poem_search_kind != 2 and
+	$poems_max !== 0)
+    {
+	foreach($poems as $i=>$poem)
+	{
+	    if($poems_max === 0) break;
+
+	    if($poem!=[] and
+		false !== strpos(san_data_more($poem['name']),
+				 $s_sanitized_more))
+	    {
+		$res_poems_html .= "<div style='display:flex'><button 
+style='background:none;padding:0 .5em' onclick='ss(this)' type='button' 
+><i class='material-icons' style='font-size:1.5em'
+>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=
+{$poem['poet_address']}/{$poem['book_address']}/{$poem['poem_address']}'
+><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
+> › {$poem['rname']}</a></div>";
+		$poems[$i] = [];
+		$poems_max--;
+	    }
+	}
+    }
+    if($poem_search_kind != 1 and
+	$poems_max !==0)
+    {
+	$res_poems_context_html = "";
+	foreach($poems as $poem)
+	{
+	    if($poems_max === 0) break;
+
+	    if($poem!=[] and (
+		false !== strpos(san_data_more($poem['hdesc']),
+				 $s_sanitized_more) or
+		false !== strpos($poem['poem_true'],
+				 $s_sanitized_more)))
+	    {
+		$res_poems_context_html .= "<div style='display:flex'><button 
+style='background:none;padding:0 .5em' onclick='ss(this)' type='button' 
+><i class='material-icons' style='font-size:1.5em'
+>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=
+{$poem['poet_address']}/{$poem['book_address']}/{$poem['poem_address']}'
+><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
+> › {$poem['rname']}</a></div>";
+		$poems_max--;
+	    }
+	}
+    }
+    if(@$res_poems_context_html != "")
+    {
+	$res_poems_html .= "<h3 class='bhoh-newdaq'>گەڕانی نێو دەق: </h3>" .
+			   $res_poems_context_html;
+    }
+}
+mysqli_close($sql_connection);
+
+/* Print the result */
+if(@$res_poets_html != "")
+    echo "<div class='search-poet' id='poets'><h3 id='bhon'>شاعیر</h3>$res_poets_html</div>";
+if(@$res_books_html != "")
+    echo "<div class='search-book'><h3 id='bhon'>کتێب و بەرهەم</h3>$res_books_html</div>";
+if(@$res_poems_html != "")
+    echo "<div class='search-hon'><h3 id='bhon'>شێعر</h3>$res_poems_html</div>";
+else
+    echo "<h3 class='search-notfound'>هیچ شێعرێکم بۆ نەدۆزرایەوە</h3>";
+
+/* Timer */
+//$timer_end = microtime(true);
+//echo "<div style='position:fixed;top:0;left:0'>".
+//     number_format($timer_end-$timer_start,5)."</div>";
 ?>
