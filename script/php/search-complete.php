@@ -183,7 +183,7 @@ style='background:none;padding:0 .5em' onclick='ss(this)' type='button'
 	    }
 	}
     }
-    if($poem_search_kind != 1 and
+    if($poem_search_kind !== 1 and
 	$poems_max !==0)
     {
 	$res_poems_context_html = "";
@@ -230,7 +230,7 @@ style='background:none;padding:0 .5em' onclick='ss(this)' type='button'
 	    }
 	}
     }
-    if($poem_search_kind != 1 and
+    if($poem_search_kind !== 1 and
 	$poems_max !==0)
     {
 	$res_poems_context_html = "";
