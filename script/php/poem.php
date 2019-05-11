@@ -145,8 +145,8 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 		      padding-top:.6em">
             <i class='material-icons'
 	       id='like-icon'
-	       style='color:#666;
-		      font-size:3em'
+	       style='font-size:2.8em;
+		      color:#666'
 	    >bookmark_border</i>
 	</button>
         <?php } ?>
@@ -162,7 +162,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 		border-bottom:1px solid #eee'
 	 id='extlnk'>
 	<style>
-	 #extlnk .icon-round {
+	 .icon-round {
 	     font-size:1.2em;
 	     background:#555;
 	     color:#fff;

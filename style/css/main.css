@@ -1,3 +1,5 @@
+@font-face{font-family:'kurd';font-style:normal;font-weight:400;src:url('/style/font/DroidNaskh-Regular.woff2') format('woff2')}
+@font-face{font-family:'Material Icons';font-style:normal;font-weight:400;src:url('/style/font/Material-Icons.woff2') format('woff2')}
 html, body{height:100%;margin:0}
 body{font-family:'kurd', arial;font-size:24px;line-height:2.5}
 h1, h2, h3, h4, h5, h6, p, input, a, form, button, select,
@@ -147,5 +149,3 @@ footer{padding:1em 0;width:100%;font-size:.56em;text-align:center}
 footer a{display:inline-block;color:#444;padding:.5em .35em;margin:0;border-bottom:1px solid #eee}
 footer a:hover{background:#eee}
 footer i{font-size:1.4em}
-@font-face{font-family:'kurd';font-display:swap;font-style:normal;font-weight:400;src:url('/style/font/DroidNaskh-Regular.woff2') format('woff2')}
-@font-face{font-family:'Material Icons';font-style:normal;font-weight:400;src:url('/style/font/Material-Icons.woff2') format('woff2')}

@@ -386,8 +386,8 @@ function Liked () {
                 tL.style.display = "none";
             }
             
-            //change like-ico
-            ico.innerHTML = "bookmark_border";
+            // change like-ico
+	    ico.innerHTML = "bookmark_border";
 	    ico.style.color = "#666";
             ico.style.animation = "";
             
@@ -396,7 +396,7 @@ function Liked () {
             favs += poemV2 + "[fav]";
             localStorage.setItem('favorites',favs);
             // change like-ico
-            ico.innerHTML = "bookmark";
+	    ico.innerHTML = "bookmark";
 	    ico.style.color = colors[0][0];
             ico.style.animation = "ll 0.4s ease-out forwards";
             
@@ -406,7 +406,7 @@ function Liked () {
         favs = poemV2 + "[fav]";
         localStorage.setItem('favorites',favs);
         // change like-ico
-        ico.innerHTML = "bookmark";
+	ico.innerHTML = "bookmark";
 	ico.style.color = colors[0][0];
         ico.style.animation = "ll 0.4s ease-out forwards";
         tL.style.display = "block";
@@ -630,8 +630,8 @@ if(favs !== null && typeof poemV2 !== 'undefined') {
     var where = favs.indexOf(poemV2);
     
     if(where > -1) {
-        likeico.innerHTML = "bookmark";
-        likeico.style.color = colors[0][0];
+	likeico.innerHTML = "bookmark";
+	likeico.style.color = colors[0][0];
         likeico.style.animation = "ll .4s ease-out forwards";
     }
 }
