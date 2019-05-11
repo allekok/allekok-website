@@ -25,10 +25,7 @@ function num_convert($_string, $_from, $_to) {
 }
 
 function get_poet_image($_pID, $_slash) {
-    /* Return poet's image url */
-    
-    $_pID = filter_var($_pID, FILTER_SANITIZE_NUMBER_INT);
-
+    /* Return poet's image url */    
     if(file_exists(
 	ABSPATH .
 	"style/img/poets/profile/profile_{$_pID}.jpg"))
@@ -116,6 +113,17 @@ function san_data($in, $lastChance=false) {
         $in = str_replace($to_nums, "", $in);
     }
 
+    return $in;
+}
+
+function san_data_more($in) {
+    /* Remove 'h' and Numbers */
+    $to_nums = [
+        "0","1","2","3","4","5","6","7","8","9",
+        "0","1","2","3","4","5","6","7","8","9",
+    ];
+    $in = str_replace("h","",$in);
+    $in = str_replace($to_nums, "", $in);
     return $in;
 }
 
