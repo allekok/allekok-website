@@ -9,9 +9,9 @@ function redirect($url, $statusCode = 303)
 $uri = filter_var(@$_GET['uri'],FILTER_SANITIZE_STRING);
 $address = explode("/", $uri);
 if(count($address) != 3) die();
-foreach($address as $ad)
+foreach($address as $i=>$ad)
 {
-    $ad = intval(explode(":",$ad)[1]);
+    $address[$i] = intval(explode(":",$ad)[1]);
 }
 
 $db = 'search';
@@ -31,5 +31,4 @@ if(mysqli_num_rows($query)===1) {
     if($query)
         redirect(_SITE.$uri);
 }
-
 ?>
