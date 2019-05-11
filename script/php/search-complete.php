@@ -92,7 +92,7 @@ poets WHERE len>=$s_len";
 }
 if($books_max !== 0)
 {
-    $q = "SELECT book,book_desc,poet_address,book_address,rbook,rtakh FROM
+    $q = "SELECT book,book_desc,poet_id,book_id,rbook,rtakh FROM
  books WHERE len>=$s_len $selected_poet_query";
     $query = mysqli_query($sql_connection, $q);
     $books = [];
@@ -104,7 +104,7 @@ if($books_max !== 0)
 	if(false !== strpos($book['book'],$s_sanitized))
 	{
 	    $res_books_html .= "<a 
-href='/{$book['poet_address']}/{$book['book_address']}'
+href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
 ><i>{$book['rtakh']}</i> › {$book['rbook']}</a>";
 	    $books_max--;
 	}
@@ -122,7 +122,7 @@ href='/{$book['poet_address']}/{$book['book_address']}'
 	    if(false !== strpos($book['book_desc'],$s_sanitized))
 	    {
 		$res_books_html .= "<a 
-href='/{$book['poet_address']}/{$book['book_address']}'
+href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
 ><i>{$book['rtakh']}</i> › {$book['rbook']}</a>";
 		$books[$i] = [];
 		$books_max--;
@@ -142,7 +142,7 @@ href='/{$book['poet_address']}/{$book['book_address']}'
 				 $s_sanitized_more)))
 	    {
 		$res_books_html .= "<a 
-href='/{$book['poet_address']}/{$book['book_address']}'
+href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
 ><i>{$book['rtakh']}</i> › {$book['rbook']}</a>";
 		$books_max--;
 	    }
@@ -153,8 +153,9 @@ if($poems_max !== 0 and
     $poem_search_kind>0 and
     $poem_search_kind<4)
 {
-    $q =  "SELECT name,hdesc,poet_address,book_address,poem_address,
-poem,poem_true,rbook,rname,rtakh FROM poems WHERE len>=$s_len $selected_poet_query";
+    $q =  "SELECT name,hdesc,poet_id,book_id,poem_id,
+poem,poem_true,rbook,rname,rtakh FROM poems WHERE len>=$s_len $selected_poet_query 
+ORDER BY Cipi DESC";
     $query = mysqli_query($sql_connection,$q);
     $poems = [];
     $res_poems_html = "";
@@ -173,8 +174,8 @@ poem,poem_true,rbook,rname,rtakh FROM poems WHERE len>=$s_len $selected_poet_que
 		$res_poems_html .= "<div style='display:flex'><button 
 style='background:none;padding:0 .5em' onclick='ss(this)' type='button' 
 ><i class='material-icons' style='font-size:1.5em'
->keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=
-{$poem['poet_address']}/{$poem['book_address']}/{$poem['poem_address']}'
+>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=poet:
+{$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 ><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
 > › {$poem['rname']}</a></div>";
 		$poems[$i] = [];
@@ -197,8 +198,8 @@ style='background:none;padding:0 .5em' onclick='ss(this)' type='button'
 		$res_poems_context_html .= "<div style='display:flex'><button 
 style='background:none;padding:0 .5em' onclick='ss(this)' type='button' 
 ><i class='material-icons' style='font-size:1.5em'
->keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=
-{$poem['poet_address']}/{$poem['book_address']}/{$poem['poem_address']}'
+>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=poet:
+{$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 ><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
 > › {$poem['rname']}</a></div>";
 		$poems[$i] = [];
@@ -220,8 +221,8 @@ style='background:none;padding:0 .5em' onclick='ss(this)' type='button'
 		$res_poems_html .= "<div style='display:flex'><button 
 style='background:none;padding:0 .5em' onclick='ss(this)' type='button' 
 ><i class='material-icons' style='font-size:1.5em'
->keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=
-{$poem['poet_address']}/{$poem['book_address']}/{$poem['poem_address']}'
+>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=poet:
+{$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 ><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
 > › {$poem['rname']}</a></div>";
 		$poems[$i] = [];
@@ -246,8 +247,8 @@ style='background:none;padding:0 .5em' onclick='ss(this)' type='button'
 		$res_poems_context_html .= "<div style='display:flex'><button 
 style='background:none;padding:0 .5em' onclick='ss(this)' type='button' 
 ><i class='material-icons' style='font-size:1.5em'
->keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=
-{$poem['poet_address']}/{$poem['book_address']}/{$poem['poem_address']}'
+>keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=poet:
+{$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 ><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
 > › {$poem['rname']}</a></div>";
 		$poems_max--;

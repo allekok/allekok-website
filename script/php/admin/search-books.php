@@ -1,73 +1,85 @@
 <?php
 require('session.php');
-require_once("../constants.php");
-require_once("../functions.php");
+include_once("../constants.php");
+include_once(ABSPATH . "script/php/colors.php");
+include_once(ABSPATH . "script/php/functions.php");
 
-$con = mysqli_connect(_HOST,_USER,_PASS);
+$title = _TITLE . " &raquo; کتێبەکان";
+$desc = "کتێبەکان";
+$keys = _KEYS;
+$t_desc = "";
+$color_num = 0;
 
-mysqli_set_charset($con,"utf8");
-mysqli_select_db($con,"allekokc_index");
-
-$q = mysqli_query($con, "SELECT * from auth");
-
-$aths_num = mysqli_num_rows($q);
-echo "aths: " . $aths_num;
-
-while($res=mysqli_fetch_assoc($q)) {
-    $res['bks'] = explode(",",$res['bks']);
-    $res['rbooks'] = $res['bks'];
-    for($b=0;$b<count($res['bks']);$b++) {
-        $res['bks'][$b] = san_data($res['bks'][$b]);
-    }
-    $res['bksdesc'] = explode(",",$res['bksdesc']);
-    for($b=0;$b<count($res['bksdesc']);$b++) {
-        $res['bksdesc'][$b] = san_data($res['bksdesc'][$b]);
-    }
-    $res['rtakh'] = $res['takh'];
-    $res['takh'] = san_data($res['takh']);
-    
-
-    //replaces-trims
-    $res['address'] = "poet:".$res['id'];
-    
-    $aths[$res['id']] = $res;
-}
-//truncate table poems
-mysqli_select_db($con,"allekokc_search");
-mysqli_query($con,"TRUNCATE TABLE books");
-echo "<pre>";
-
-$j=0;
-foreach($aths as $ath) {
-    //mysqli_select_db($con,"allekokc_search");
-    
-    $poet_takh = $ath['takh'];
-    $poet_address = $ath['address'];
-    $rtakh = $ath['rtakh'];
-    
-    for($i=0;$i<count($ath['bks']);$i++) {
-        $j++;
-        $id = $j;
-        $book = $ath['bks'][$i];
-        $rbook = $ath['rbooks'][$i];
-        $book_desc = $ath['bksdesc'][$i];
-        
-        $len = ( strlen($book) > strlen($book_desc) ) ? strlen($book) : strlen($book_desc);
-
-        $book_address = "book:" . ($i+1);
-        $q = mysqli_query($con, "INSERT INTO `books`(`id`,`book`,`book_desc`,`poet_address`,`book_address`,`rtakh`,`rbook`,`len`) VALUES ($id,'$book','$book_desc','$poet_address','$book_address','$rtakh','$rbook','$len')");
-        if($q) {
-            echo "true";
-        } else {
-            echo "bam";
-        }
-    }
-    
-    
-}
-
-mysqli_close($con);
+include(ABSPATH . 'script/php/header.php');
 ?>
-<meta charset="utf-8">
-<br><br>
-<button onclick="window.open('http://allekok.com/script/php/add/cp/make_poems.php', '_blank','width=300,height=200','')" type="button">make_poems.php</button>
+<style>
+ .line {
+     text-align:right;
+     font-size:.65em;
+     padding:0 1em;
+ }
+</style>
+<div id="poets">
+    <a style="font-size:.65em;display:block"
+       class="link" href="search-poems.php">شێعرەکان</a>
+    <?php
+    /* READ */
+    $db = "index";
+    $q = "SELECT * FROM auth ORDER BY takh ASC";
+    require(ABSPATH."script/php/condb.php");
+    $aths_num = mysqli_num_rows($query);
+    $bks_num = 0;
+    $aths = [];
+    
+    while($res=mysqli_fetch_assoc($query)) {
+	$res['bks'] = explode(",",$res['bks']);
+	$res['bksdesc'] = explode(",",$res['bksdesc']);
+	$aths[] = $res;
+	$bks_num += count($res['bks']);
+    }	$res['rtakh'] = $res['takh'];
+    
+    /* WRITE */
+    $string = "<p class='line'>ئەژماری شاعیران: ".
+	      num_convert($aths_num,'en','ckb').
+	      "</p><p class='line'>ئەژماری کتێبەکان: ".
+	      num_convert($bks_num,'en','ckb')."</p>";
+    $error = false;
+    mysqli_select_db($conn,_DB_PREFIX."search");
+    mysqli_query($conn,"TRUNCATE TABLE books");
+    
+    foreach($aths as $ath)
+    {
+	$poet_id = $ath['id'];
+	$rtakh = $ath['takh'];
+	for($i=0; $i<count($ath['bks']); $i++)
+	{
+	    $book_id = ($i+1);
+	    $rbook = $ath['bks'][$i];
+            $book = san_data($ath['bks'][$i]);
+            $book_desc = san_data(@$ath['bksdesc'][$i]);
+            $len = (strlen($book) > strlen($book_desc)) ?
+		   strlen($book) : strlen($book_desc);
+	    
+	    $query = mysqli_query($conn, "INSERT INTO `books`(`book`,
+`book_desc`,`poet_id`,`book_id`,`rtakh`,`rbook`,`len`) VALUES ('$book',
+'$book_desc','$poet_id','$book_id','$rtakh','$rbook','$len')");
+            if(!$query)
+	    {
+		$error = true;
+		$string .= "<p class='line'><a class='link' 
+href='/poet:$poet_id'>$rtakh</a> &rsaquo; <a class='link' 
+href='/poet:$poet_id/book:$book_id'>$rbook</a>: <b 
+style='color:red'>نەء!</b></p>";
+            }
+	}
+    }
+    mysqli_close($conn);
+    echo $string;
+    if(!$error)
+	echo "<p class='line' style='text-align:center'
+><b style='color:green'>جێ‌بە‌جێیە.</b></p>";
+    ?>
+</div>
+<?php
+include_once(ABSPATH . "script/php/footer.php");
+?>
