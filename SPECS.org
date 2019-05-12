@@ -1,11 +1,91 @@
 * Allekok.com system specifications
 ** Resources
 *** Databases
-    MySQL databases:
+    MySQL databases
 **** Database: index
-***** Tables: aths, tbl{Poet-ID}_{Book-ID}, comments, pitew
+***** Tables
+****** auth
+******* Columns
+******** id
+******** name
+******** takh
+******** profname
+******** hdesc
+******** bks
+******** bksdesc
+******** bks_completion
+******** ord
+******** kind
+****** tbl{Poet-ID}_{Book-ID}
+******* Columns
+******** id
+******** name
+******** hon
+******** hdesc
+******** likes
+******** link
+******** resource
+******** lang
+****** comments
+******* Columns
+******** id
+******** address
+******** date
+******** name
+******** comment
+******** read
+******** blocked
+****** pitew
+******* Columns
+******** id
+******** contributor
+******** email
+******** poet
+******** book
+******** poem-name
+******** poem-desc
+******** poem
+******** date
+******** status
+******** poetDesc
 **** Database: search
-***** Tables: poets, books, poems
+***** Tables
+****** poets
+******* Columns
+******** id
+******** name
+******** takh
+******** profname
+******** hdesc
+******** rtakh
+******** len
+****** books
+******* Columns
+******** id
+******** book
+******** book_desc
+******** poet_id
+******** book_id
+******** rbook
+******** rtakh
+******** len
+****** poems
+******* Columns
+******** id
+******** name
+******** hdesc
+******** poet_id
+******** book_id
+******** poem_id
+******** poem
+******** poem_true
+******** rname
+******** rbook
+******** rtakh
+******** imp
+******** C
+******** Cipi
+******** len
 *** Code base
     Languages:
     PHP, HTML, CSS, JAVASCRIPT, Shell
