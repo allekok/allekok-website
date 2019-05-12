@@ -163,7 +163,7 @@ ORDER BY Cipi DESC";
     {
 	$poems[] = $poem;
     }
-    if($poem_search_kind != 2)
+    if($poem_search_kind != '2')
     {
 	foreach($poems as $i=>$poem)
 	{
@@ -183,7 +183,7 @@ style='background:none;padding:0 .5em' onclick='ss(this)' type='button'
 	    }
 	}
     }
-    if($poem_search_kind !== 1 and
+    if($poem_search_kind != '1' and
 	$poems_max !==0)
     {
 	$res_poems_context_html = "";
@@ -207,7 +207,7 @@ style='background:none;padding:0 .5em' onclick='ss(this)' type='button'
 	    }
 	}
     }
-    if($poem_search_kind != 2 and
+    if($poem_search_kind != '2' and
 	$poems_max !== 0)
     {
 	foreach($poems as $i=>$poem)
@@ -230,10 +230,9 @@ style='background:none;padding:0 .5em' onclick='ss(this)' type='button'
 	    }
 	}
     }
-    if($poem_search_kind !== 1 and
+    if($poem_search_kind != '1' and
 	$poems_max !==0)
     {
-	$res_poems_context_html = "";
 	foreach($poems as $poem)
 	{
 	    if($poems_max === 0) break;
