@@ -9,7 +9,6 @@ require("functions.php");
 $s = isset($_GET['q']) ? $_GET['q'] : die();
 $s_sanitized = san_data($s);
 if($s_sanitized=="") die();
-
 $s_len = strlen($s_sanitized);
 $selected_poet = isset($_GET['selPT']) ?
 		 filter_var($_GET['selPT'], FILTER_SANITIZE_STRING) : false;
@@ -17,6 +16,13 @@ $selected_poet_query = $selected_poet ? "and rtakh='$selected_poet'" : "";
 $poets_max = 4;
 $books_max = 4;
 $poems_max = 7;
+$poets = [];
+$books = [];
+$poems = [];
+$res_poets_html = "";
+$res_books_html = "";
+$res_poems_html = "";
+$res_poems_context_html = "";
 
 /* Load Data From Search Database */
 $sql_connection = mysqli_connect(_HOST,_USER,_PASS) or die();
@@ -26,20 +32,16 @@ if($poets_max !== 0 and !$selected_poet)
 {
     $q = "SELECT id,rtakh,takh,profname,name,hdesc FROM 
 poets WHERE len>=$s_len";
-    $query = mysqli_query($sql_connection,$q);
-    $poets = [];
-    $res_poets_html = "";
+    $query = mysqli_query($sql_connection,$q);    
     while($poet = mysqli_fetch_assoc($query))
     {
-	if($poets_max === 0) break;
-	
 	if(false !== strpos($poet['takh'],$s_sanitized) or
 	    false !== strpos($poet['profname'],$s_sanitized))
 	{
 	    $poet_image = get_poet_image($poet['id'], true);
 	    $res_poets_html .= "<section><a href='/poet:{$poet['id']}'
 ><img src='$poet_image'><h3>{$poet['rtakh']}</h3></a></section>";
-	    $poets_max--;
+	    if(--$poets_max === 0) break;
 	}
 	else
 	{
@@ -50,15 +52,13 @@ poets WHERE len>=$s_len";
     {
 	foreach($poets as $poet)
 	{
-	    if($poets_max === 0) break;
-	    
 	    if(false !== strpos($poet['name'],$s_sanitized) or
 		false !== strpos($poet['hdesc'],$s_sanitized))
 	    {
 		$poet_image = get_poet_image($poet['id'], true);
 		$res_poets_html .= "<section><a href='/poet:{$poet['id']}'
 ><img src='$poet_image'><h3>{$poet['rtakh']}</h3></a></section>";
-		$poets_max--;
+		if(--$poets_max === 0) break;
 	    }
 	}
     }
@@ -68,18 +68,14 @@ if($books_max !== 0)
     $q = "SELECT book,book_desc,poet_id,book_id,rbook,rtakh FROM
  books WHERE len>=$s_len $selected_poet_query";
     $query = mysqli_query($sql_connection, $q);
-    $books = [];
-    $res_books_html = "";
     while($book = mysqli_fetch_assoc($query))
     {
-	if($books_max === 0) break;
-
 	if(false !== strpos($book['book'],$s_sanitized))
 	{
 	    $res_books_html .= "<a 
 href='/poet{$book['poet_id']}/book:{$book['book_id']}'
 ><i>{$book['rtakh']}</i> › {$book['rbook']}</a>";
-	    $books_max--;
+	    if(--$books_max === 0) break;
 	}
 	else
 	{
@@ -90,14 +86,12 @@ href='/poet{$book['poet_id']}/book:{$book['book_id']}'
     {
 	foreach($books as $book)
 	{
-	    if($books_max === 0) break;
-
 	    if(false !== strpos($book['book_desc'],$s_sanitized))
 	    {
 		$res_books_html .= "<a 
 href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
 ><i>{$book['rtakh']}</i> › {$book['rbook']}</a>";
-		$books_max--;
+		if(--$books_max === 0) break;
 	    }
 	}
     }
@@ -108,12 +102,8 @@ if($poems_max !== 0)
 poem,rbook,rname,rtakh FROM poems WHERE len>=$s_len $selected_poet_query 
 ORDER BY Cipi DESC";
     $query = mysqli_query($sql_connection,$q);
-    $poems = [];
-    $res_poems_html = "";
     while($poem = mysqli_fetch_assoc($query))
     {
-	if($poems_max === 0) break;
-
 	if(false !== strpos($poem['name'],$s_sanitized))
 	{
 	    $res_poems_html .= "<div style='display:flex'><button 
@@ -123,7 +113,7 @@ style='background:none;padding:0 .5em' onclick='ss(this)' type='button'
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 ><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
 > › {$poem['rname']}</a></div>";
-	    $poems_max--;
+	    if(--$poems_max === 0) break;
 	}
 	else
 	{
@@ -132,11 +122,8 @@ style='background:none;padding:0 .5em' onclick='ss(this)' type='button'
     }
     if($poems_max !== 0)
     {
-	$res_poems_context_html = "";
 	foreach($poems as $poem)
 	{
-	    if($poems_max === 0) break;
-
 	    if(false !== strpos($poem['hdesc'],$s_sanitized) or
 		false !== strpos($poem['poem'],$s_sanitized))
 	    {
@@ -147,7 +134,7 @@ style='background:none;padding:0 .5em' onclick='ss(this)' type='button'
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 ><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
 > › {$poem['rname']}</a></div>";
-		$poems_max--;
+		if(--$poems_max === 0) break;
 	    }
 	}
 	if($res_poems_context_html != "")
