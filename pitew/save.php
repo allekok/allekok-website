@@ -1,6 +1,7 @@
 <?php
 
 if(!empty($_POST['poet']) and !empty($_POST['poetDesc'])) {
+    require("../script/php/functions.php");
     
     $_cntri = filter_var($_POST['contributor'], FILTER_SANITIZE_STRING);
     $_poet = filter_var($_POST['poet'], FILTER_SANITIZE_STRING);
