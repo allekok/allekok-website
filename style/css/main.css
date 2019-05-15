@@ -25,10 +25,10 @@ i{font-style:normal}
 @keyframes spin{0%{transform:rotate(0deg)}
     100%{transform:rotate(360deg)}
 }
-#tL-res{padding:15px 0 0;box-shadow:0 20px 24px -15px #ccc;position:relative;font-size:0.58em;max-width:800px;margin:auto}
+#tL-res{padding:15px 0 0;box-shadow:0 20px 24px -15px #ccc;position:relative;font-size:.58em;max-width:800px;margin:auto}
 #tL-res-res{font-size:inherit}
-#tL-res a{text-align:right;padding:.5em 1em;display:block;font-size:inherit}
-#tL-res a:hover{opacity:0.75}
+#tL-res a{text-align:right;padding:.75em 1em;display:block;font-size:inherit;margin:0}
+#tL-res a:hover{opacity:.75}
 .sli{display:inline-block;vertical-align:top;color:#444;border:0;margin:.5em auto 0;width:96%}
 .prev,.next{font-size:inherit;color:inherit;display:inline-block;width:50%}
 .prev{padding:0 1em .15em 8%;text-align:right}
@@ -90,13 +90,13 @@ header a h1{font-size:1em}
 #hon,.b,.m1,.m2,.n,.m,.m3, .b span, .ptr,#hon sup{transition:none;-webkit-transition:none}
 #sp{padding:0 .5em 1.5em;margin:auto}
 #search-form{display:flex;border-top:5px solid #eee;box-shadow:0 6px 10px -6px #dfdfdf}
-#search{width:100%;display:none;margin-bottom:.5em}
+#search{width:100%;max-width:1200px;display:none;margin:0 auto .5em}
 #search-key{font-size:.65em;width:65%;text-align:right;box-shadow:none;border:0}
 #search-key:focus{background:none}
 #search-btn{width:35%;font-size:.65em;padding:1em 0;text-align:center}
 #search-res{display:none;padding:1em .3em;box-shadow: 0 12px 25px -8px #ddd;position:relative;max-width:850px;margin:auto}
 #search-res #bhon{font-size:.55em;padding:.5em 0;margin:0 0 7px;line-height:2;background:#f3f3f3}
-.bhoh-newdaq{text-align:right;padding:10px 10px 0;font-size:0.7em;margin:0;background:none;border-bottom:0;color:#000}
+.bhoh-newdaq{text-align:right;padding:10px 10px 0;font-size:.7em;margin:0;background:none;border-bottom:0;color:#000}
 #search-res a{font-size:.57em}
 #search-res a h3{font-size:.95em;margin-top:.2em}
 #search-res section a h3{white-space:nowrap;overflow:hidden}
@@ -122,16 +122,16 @@ header a h1{font-size:1em}
 .fontsize button{display:inline-block}
 .bigger{font-size:.83em;padding:.7em .3em}
 .smaller{font-size:.83em;padding:.7em .3em;margin-right:7px}
-header div{opacity:.8}
-header div:hover{opacity:.6}
+header button{opacity:.8}
+header button:hover{opacity:.6}
 #sp a:hover{background:#f3f3f3}
 #Acomms div{font-size:.8em;text-align:justify;padding:.75em 1em .4em;margin-bottom: .4em}
 .h{direction:rtl;display:block;color:#777;font-size:.63em;text-align:left;font-family:mono;line-height:normal;margin-top:1em}
 .link{border-bottom:1px solid #eee;margin:.5em 0;padding:0 .3em}
 .link:hover{background:#eee}
-.seartog{position:absolute;left:.5em;cursor:pointer;top:.5em;font-size:.8em}
+.seartog{background:none;position:absolute;left:.5em;color:inherit;top:.7em;font-size:.8em}
 .seartog-i{font-size:1.5em}
-.ptr{margin-top:1em;padding: 0.75em 0 0.1em;font-size:1em}
+.ptr{margin-top:1em;padding: .75em 0 .1em;font-size:1em}
 .bk-comp{vertical-align:middle;height:.7em;padding-right:.1em;cursor:pointer}
 .ptrh{font-size:.58em;padding-bottom:.9em}
 .d{font-size:.8em;color:#333;padding:1em}
