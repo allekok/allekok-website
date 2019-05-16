@@ -1,4 +1,4 @@
-# ~~~MAKE~~~ #
+#!/bin/bash
 Allekok_path=~/Projects/allekok.com
 Download_repo=~/Projects/allekok-downloads/downloads
 cd $Allekok_path
@@ -33,6 +33,6 @@ php save-pdfs-list.php
 cd contributors
 php make-lists.php
 
-# Print some rubbish
+#Print some rubbish
 echo 
 echo - Make: Ok.
