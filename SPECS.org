@@ -34,7 +34,7 @@
 - comment
 - read
 - blocked
-***** pitew
+***** Table: pitew
       Columns:
 - id
 - contributor
@@ -91,15 +91,15 @@
 ***** JSON,MBString,MySQLi
 **** No 3rd party Javascript/CSS libraries.
 *** Images
-**** Icons: [[./favicon.ico][favicon.ico]]
-**** Small images: [[./style/img/][(github,quot-left,quot-right).svg]]
-**** Poets: [[./style/img/poets/profile/][profile_(Poet-ID).jpg]]
-**** Sent by users: [[./style/img/poets/new][new/*.(jpeg,png)]]
+- Icons: [[./favicon.ico][favicon.ico]]
+- Small images: [[./style/img/][(github,quot-left,quot-right).svg]]
+- Poets: [[./style/img/poets/profile/][profile_(Poet-ID).jpg]]
+- Sent by users: [[./style/img/poets/new][new/*.(jpeg,png)]]
 *** Texts
-**** Lists: [[./pitew/res/list.txt][./pitew/res/list.txt]] , [[./style/img/poets/new/list.txt][./style/img/poets/new/list.txt]]
-**** Infos written by users: [[./pitew/res/][./pitew/res/*.txt]]
-**** Date and time of last poem updates: [[./last-update.txt][last-update.txt]]
-**** A detailed list of pdfs: [[./pitew/pdfs.txt][pdfs.txt]]
-**** A list of recently added/edited poems: [[./pitew/news.txt][news.txt]]
-**** Update-version(s), Update-log(s): [[./desktop/update/][update-*.txt]]
-***** Desc: Version updates for allekok-desktop and allekok-android clients.
+- Lists: [[./pitew/res/list.txt][./pitew/res/list.txt]] , [[./style/img/poets/new/list.txt][./style/img/poets/new/list.txt]]
+- Infos written by users: [[./pitew/res/][./pitew/res/*.txt]]
+- Date and time of last poem updates: [[./last-update.txt][last-update.txt]]
+- A detailed list of pdfs: [[./pitew/pdfs.txt][pdfs.txt]]
+- A list of recently added/edited poems: [[./pitew/news.txt][news.txt]]
+- Update-version(s), Update-log(s): [[./desktop/update/][update-*.txt]]
+- Desc: Version updates for allekok-desktop and allekok-android clients.
