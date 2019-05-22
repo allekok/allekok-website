@@ -86,9 +86,15 @@
 - len
 *** Code base
     Languages:
-    PHP, HTML, CSS, JAVASCRIPT, Shell
+- PHP
+- HTML
+- CSS
+- JAVASCRIPT
+- Shell
 **** Required PHP Libraries:
-***** JSON,MBString,MySQLi
+- JSON
+- MBString
+- MySQLi
 **** No 3rd party Javascript/CSS libraries.
 *** Images
 - Icons: [[./favicon.ico][favicon.ico]]
