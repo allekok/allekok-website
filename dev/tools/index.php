@@ -86,7 +86,7 @@ include(ABSPATH . 'script/php/header.php');
 		  style="display:inline-block;padding:.5em 0 .2em;">
 		- بۆ داگرتنی کۆدەکانی ئاڵەکۆک لێرە کرتە بکەن.
             </a><br>
-	    <a href="https://github.com/allekok/allekok-plain/"
+	    <a href="https://github.com/allekok/allekok-poems/"
 		  style="display:inline-block;padding:.5em 0 .2em;">
 		- بۆ داگرتنی شێعرەکانی ئاڵەکۆک لێرە کرتە بکەن.
             </a><br>
