@@ -108,4 +108,4 @@
 - A detailed list of pdfs: [[./pitew/pdfs.txt][pdfs.txt]]
 - A list of recently added/edited poems: [[./pitew/news.txt][news.txt]]
 - Update-version(s), Update-log(s): [[./desktop/update/][update-*.txt]]
-- Desc: Version updates for allekok-desktop and allekok-android clients.
+ - Desc: Version updates for allekok-desktop and allekok-android clients.
