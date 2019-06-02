@@ -119,6 +119,10 @@ include(ABSPATH . "script/php/header.php");
 	 }
      }
  }
+ else
+ {
+     button_select("light");
+ }
 </script>
 <?php
 include_once(ABSPATH . "script/php/footer.php");
