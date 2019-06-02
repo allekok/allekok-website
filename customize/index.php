@@ -110,7 +110,7 @@ include(ABSPATH . "script/php/header.php");
      for(let i in cookies)
      {
 	 c = cookies[i].split('=');
-	 if(c[0] == "theme")
+	 if(c[0].trim() == "theme")
 	 {
 	     if(themes.indexOf(c[1]) !== -1)
 	     {
