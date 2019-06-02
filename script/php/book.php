@@ -59,10 +59,7 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 		       display:block;
 		       font-size:.65em"
 		 class='button'
-	 ><i style="background:#666;
-		    color:#fff;
-		    border-radius:50%;
-		    padding:.1em .7em 0"
+	 ><i class="icon-round" style="padding:.1em .7em 0"
 	  >ئا</i> بەڕیز کردنی شێعرەکان لە ئا ڕا</button></div>
 	<a id="new_poem_a"
 	   style="color:

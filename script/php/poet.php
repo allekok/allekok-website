@@ -53,7 +53,7 @@
 		foreach($_hd as $__hd) {
 		    $__hd = explode("[t]",$__hd);
 		    echo "<h3 class='poetnm'>";
-		    echo "<span style='color:#555'>";
+		    echo "<span class='color-555'>";
 		    echo $__hd[0];
 		    echo "</span>";
 		    echo " : ";

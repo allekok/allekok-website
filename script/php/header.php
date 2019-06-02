@@ -15,7 +15,13 @@ else
          if ('serviceWorker' in navigator)
 	     navigator.serviceWorker.register('/sw.js', {scope: '/'});
 	</script>
-	<link rel='stylesheet' href='/style/css/main.css?v24'/>
+	<link rel='stylesheet'
+	      href='/style/css/<?php
+			       echo (isset($_COOKIE['theme']) and
+				   $_COOKIE['theme'] == 'dark') ? 
+				    "main-dark.css" : 
+				    "main.css";
+			       ?>?v25'/>
 	<title>
 	    <?php echo $title; ?>
 	</title>
@@ -97,9 +103,9 @@ else
 	    <div id='search'>
 		<form id="search-form" action="/" method="GET"
 		><input type='text'
-			id='search-key'
-			onkeyup="search(event)"
-			placeholder='گەڕان بۆ ...' name='q'
+			      id='search-key'
+			      onkeyup="search(event)"
+			      placeholder='گەڕان بۆ ...' name='q'
 		 ><button type="submit"
 			  id="search-btn"
 			  class='button'

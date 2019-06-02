@@ -164,10 +164,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	<style>
 	 .icon-round {
 	     font-size:1.2em;
-	     background:#555;
-	     color:#fff;
 	     padding:.3em;
-	     border-radius:50%;
 	     margin-left:.5em
 	 }
 	</style>
