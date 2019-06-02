@@ -1,6 +1,6 @@
 # Start a server and open the browser
 Allekok_path=~/Projects/allekok.com
-Browser=chromium-browser
+Browser=chromium
 Port=8080
 
 cd $Allekok_path
