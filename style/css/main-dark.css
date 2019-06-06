@@ -48,6 +48,7 @@ i{font-style:normal}
 .comm-name{font-size:.7em;line-height: 2;margin-bottom:.8em}
 .comm-body{background:url(/style/img/quote-right.svg) no-repeat right top, url(/style/img/quote-left.svg) no-repeat left bottom;background-size:.7em;font-size:.55em;text-indent:1em;padding:.5em 1em;text-align:justify}
 .comm-footer{text-align:left;font-size:.45em;color:#999}
+.nav{color:#aaa;font-size:.65em;width:100%}
 .nav a:hover{background:#111}
 a{text-decoration:none;color:#fff}
 a:hover{text-decoration:none}
@@ -150,4 +151,9 @@ footer a{display:inline-block;color:#bbb;padding:.5em .35em;margin:0;border-bott
 footer a:hover{background:#111}
 footer i{font-size:1.4em}
 .color-555{color:#aaa}
+.color-444{color:#bbb}
+.eee a{color:#ccc;border-bottom:1px solid #222}
+.eee a:hover{background:#111}
+.eee-desc{border-right:5px solid #111}
+.eee .material-icons{color: #777}
 .icon-round{background:#aaa;color:#000;border-radius:50%}

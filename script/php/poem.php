@@ -48,7 +48,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 		elseif(!$row[0]) echo "text-align:left;";
 		elseif(!$row[2]) echo "text-align:right;";
 		else echo "display:flex;";
-		?>font-size:.65em;color:#555;width:100%">
+		?>">
 	<?php if($row[0]) { ?>
 	    <!-- Previous -->
 	    <div class="prev">

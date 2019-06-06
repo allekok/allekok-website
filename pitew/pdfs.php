@@ -1,5 +1,4 @@
 <?php
-
 include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
@@ -12,21 +11,20 @@ $color_num = 0;
 
 include(ABSPATH . 'script/php/header.php');
 ?>
-
 <div id="poets" style="max-width:1000px">
     
     <div id='adrs'>
         <a href="first.php">
-            <i style='vertical-align:middle;color:transparent;border-radius:100%;border:2px dashed #aaa;' class='material-icons'>person</i> پتەوکردنی ئاڵەکۆک
+            پتەوکردنی ئاڵەکۆک
         </a>
-        <i style='font-style:normal;'> &rsaquo; </i>
+        <i> &rsaquo; </i>
 	<a href="index.php">
-            <i style='vertical-align:middle;' class='material-icons'>note_add</i>
+            <i class='material-icons'>note_add</i>
             نووسینی شێعر
         </a>
-        <i style='font-style:normal;'> &rsaquo; </i>
-	<div id="current-location" style="color: #555;">
-            <i style='vertical-align:middle;' class='material-icons'>cloud_download</i>
+        <i> &rsaquo; </i>
+	<div id="current-location" class="color-555">
+            <i class='material-icons'>cloud_download</i>
             داگرتنی دیوانی شاعیران
         </div>
     </div>
@@ -36,33 +34,21 @@ include(ABSPATH . 'script/php/header.php');
          font-size:.6em;
          padding:.2em 1em;
      }
-     .eee a {
-         color:#333;
-	 border-bottom:1px solid #ddd;
-     }
-     .eee a:hover {
-         background:#eee;
-     }
      .eee-nfo {
 	 font-size:.65em;
-         color:#555;
          font-family:monospace;
      }
      .eee span {
-         color:#555;
 	 font-size:.85;
      }
      .eee-desc {
-         color:#555;
 	 font-size:.85em;
          padding:0 1em 1em;
          margin-right:1em;
-         border-right:5px solid #eee;
          display:none;
      }
      .eee .material-icons {
 	 vertical-align: middle;
-         color: #888;
          font-size: 1.5em;
          margin-right: .1em;
          cursor:pointer;
@@ -98,19 +84,19 @@ for($i = 0; $i<count($list); $i++) {
     $list[$i] = explode("\t\t", $list[$i]);
     $name = str_replace(".pdf", "", strtolower($list[$i][0]));
     if($name === "فەقێ تەیران - دیوان") {
-        echo "<div class='eee'><span>$num.</span> <a href='https://archive.org/download/sarabia_20160323/%D8%AF%DB%8C%D9%88%D8%A7%D9%86%DB%8C%20%D9%81%DB%95%D9%82%DB%8E%20%D8%AA%DB%95%DB%8C%D8%B1%D8%A7%D9%86.pdf'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i></div>";
+        echo "<div class='eee'><span class='color-555'>$num.</span> <a href='https://archive.org/download/sarabia_20160323/%D8%AF%DB%8C%D9%88%D8%A7%D9%86%DB%8C%20%D9%81%DB%95%D9%82%DB%8E%20%D8%AA%DB%95%DB%8C%D8%B1%D8%A7%D9%86.pdf'>$name</a> <i class='eee-nfo color-555'>({$list[$i][1]} ,PDF)</i></div>";
     } elseif($name == "سافی هیرانی - دیوان ۲") {
         echo "<div class='eee'><span>$num.</span> <a href='https://archive.org/download/safi_hirani_diwan/%D8%B3%D8%A7%D9%81%DB%8C%20%D9%87%DB%8C%D8%B1%D8%A7%D9%86%DB%8C%20-%20%D8%AF%DB%8C%D9%88%D8%A7%D9%86.pdf'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i>";
         echo "<i class='material-icons' onclick='roll(this)'>info_outline</i>";
         $list[$i][2] = str_replace("\n", "<br>", $list[$i][2]);
-        echo "<div class='eee-desc'>{$list[$i][2]}</div></div>";
+        echo "<div class='eee-desc color-555'>{$list[$i][2]}</div></div>";
     }
     else {
-        echo "<div class='eee'><span>$num.</span> <a href='$base{$list[$i][0]}'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i>";
+        echo "<div class='eee'><span class='color-555'>$num.</span> <a href='$base{$list[$i][0]}'>$name</a> <i class='eee-nfo color-555'>({$list[$i][1]} ,PDF)</i>";
         if($list[$i][2]) {
             echo "<i class='material-icons' onclick='roll(this)'>info_outline</i>";
             $list[$i][2] = str_replace("\n", "<br>", $list[$i][2]);
-            echo "<div class='eee-desc'>{$list[$i][2]}</div>";
+            echo "<div class='eee-desc color-555'>{$list[$i][2]}</div>";
         }
         echo "</div>";
     }
@@ -132,14 +118,12 @@ for($i = 0; $i<count($list); $i++) {
      }
 
      function _filter() {
-	 var needle = document.getElementById("filter-txt").value;
-	 var context = document.getElementById("main").querySelectorAll(".eee");
+	 var needle = document.getElementById("filter-txt").value,
+	     context = document.getElementById("main").querySelectorAll(".eee");
 	 filterp(needle, context);
      }     
     </script>
-    
 </div>
-
 <?php
 include_once(ABSPATH . "script/php/footer.php");
 ?>

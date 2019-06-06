@@ -78,7 +78,8 @@ href='/pitew/image-list.php?poet={$row['takh']}'
 	    $edit_uri = "/pitew/edit-poet.php?poet={$row['takh']}";
 	?>
 	<div style="text-align:right;">
-	    <a style="font-size:.8em;color:#444;
+	    <a class="color-444"
+	       style="font-size:.8em;
 		      padding:1em;display:block"
 	       href="<?php echo $edit_uri; ?>">
 		زانیاری زیاترتان سەبارەت بە 
