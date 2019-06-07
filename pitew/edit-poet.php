@@ -58,7 +58,6 @@ $_poet1 = filter_var(@$_GET['poet'], FILTER_SANITIZE_STRING);
                          e.style.background = colors[color_num(res.id)][0];
                          e.style.color = colors[color_num(res.id)][1];
                      });
-                     poet.style.backgroundColor = colors[color_num(res.id)][2];
                      poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
                      poet.style.backgroundRepeat = "no-repeat";
                      poet.style.backgroundSize = "auto 100%";

@@ -35,7 +35,7 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
 	     book = document.querySelector("#bookTxt"),
 	     txts = document.querySelectorAll("input, textarea"),
 	     btns = document.querySelectorAll("button[type=submit]");
-         
+	 
          if(poet.value == "") {
              txts.forEach(function(e) {
                  e.style.borderTopColor = "";
@@ -61,7 +61,6 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
                      e.style.color = colors[color_num(res.id)][1];
                  });
                  
-                 poet.style.backgroundColor = colors[color_num(res.id)][2];
                  poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
                  poet.style.backgroundRepeat = "no-repeat";
                  poet.style.backgroundSize = "auto 100%";
@@ -92,10 +91,10 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
      }
     </style>
     
-    <div style="max-width: 800px;margin: auto;">
-	<div style='font-size:.53em;text-align:right;padding:0 1em 1em;'>
+    <div style="max-width:800px;margin:auto">
+	<div style='font-size:.53em;text-align:right;padding:0 1em 1em'>
 	    دەتوانن بۆ نووسینەوەی شێعر ئەم دیوانانە بەکار بهێنن: 
-	    <a class='link' style='border-bottom:1px solid <?php echo $colors[0][0]; ?>;display:inline-block;padding:0;' href="/pitew/pdfs.php">
+	    <a class='link' style='border-bottom:1px solid <?php echo $colors[0][0]; ?>;display:inline-block;padding:0' href="/pitew/pdfs.php">
 		داگرتنی دیوانی شاعیران
 	    </a>
 	</div>
@@ -103,10 +102,11 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
             <div class="input-label-box">
 		<input type="text" id="contributorTxt" name="contributor" style="font-size:.7em;width:100%;" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
 	    </div>
-	    <div style="text-align: right;text-indent: 1em;padding: .5em 1em 0;font-size: .53em;color: #444;" id="pitew-stats">
+	    <div class="color-444" id="pitew-stats"
+		 style="text-align:right;text-indent:1em;padding:.5em 1em 0;font-size:.53em;">
 		ئەو شێعرە بە نێوی خۆتان لەسەر ئاڵەکۆک دادەندرێ.
-	    </div>            
-            <div style="border-top:1px solid #ddd;margin:.8em 0;"></div>
+	    </div>
+            <div class="border-eee" style="margin:.8em 0"></div>
 	    <div class="input-label-box">
 		<label for="poetTxt">شاعیر: </label>
 		<input type="text" onblur="check()" id="poetTxt" name="poet" style="font-size:.7em;width:94%;" value="<?php echo $_poet1; ?>" placeholder="ناوی شاعیر *">

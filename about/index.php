@@ -26,7 +26,7 @@ include(ABSPATH."script/php/header.php");
         شێعر
     </div>
     <div style="font-size:.65em">
-        <span style="color:#666">
+        <span class="color-666">
             ئاخیرین نوێ‌کردنەوەی شێعرەکان: 
         </span>
         <span style="display:inline-block;color:#222">
@@ -39,8 +39,8 @@ include(ABSPATH."script/php/header.php");
             ?>
         </span>
     </div>
-    <div style="width:95%;max-width:550px;
-		border-top:1px solid #eee;
+    <div class="border-eee"
+	 style="width:95%;max-width:550px;
 		padding:.5em 0 0;margin:.5em auto">
         <p style="font-size:.75em;padding-bottom:.5em">
             ئاڵەکۆک‌تان بەلاوە چۆنە؟

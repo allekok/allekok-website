@@ -62,36 +62,31 @@ include(ABSPATH . 'script/php/header.php');
          max-width: 150px;
          margin-top: 1em;
      }
-     .hr {
-         border-top:1px solid #eee;
-     }
      #poets a {
 	 border-bottom:1px solid <?php echo $colors[0][0]; ?>;
-	 color:#444;
      }
      #poets a:hover {
 	 background:#eee;
      }
      .back-eee {
-	 background:#eee;
 	 padding:0 .5em;
      }
     </style>
     <div style="max-width:850px;margin:auto;
 		padding:0 1em 1em;line-height:2.3;
-		text-align:justify;">
+		text-align:justify">
         <p style="border-bottom:1px solid #eee;
 		  padding-top:0;text-indent:0;">
 	    <a href="https://github.com/allekok/www.allekok.com/"
-		  style="display:inline-block;padding:.5em 0 .2em;">
+		  style="display:inline-block;padding:.5em 0 .2em">
 		- بۆ داگرتنی کۆدەکانی ئاڵەکۆک لێرە کرتە بکەن.
             </a><br>
 	    <a href="https://github.com/allekok/allekok-poems/"
-		  style="display:inline-block;padding:.5em 0 .2em;">
+		  style="display:inline-block;padding:.5em 0 .2em">
 		- بۆ داگرتنی شێعرەکانی ئاڵەکۆک لێرە کرتە بکەن.
             </a><br>
 	    <a href="https://allekok.github.io/allekok-downloads/downloads/"
-		  style="display:inline-block;padding:.5em 0 .2em;">
+		  style="display:inline-block;padding:.5em 0 .2em">
 		- بۆ داگرتنی کەرەستەکانی‌تری ئاڵەکۆک لێرە کرتە بکەن.
             </a>
 	</p>
@@ -100,7 +95,7 @@ include(ABSPATH . 'script/php/header.php');
 	    <br>
 	    لێرە کۆمەڵێک ئامێرمان ئامادە کردووە کە ئێوە بتوانن لە دەیتابەیسەکانی ئاڵەکۆک بۆ بەرنامەکان‌تان کەڵک وەرگرن.
         </p><h2>
-	    <span style='font-size:1.3em; color:<?php echo $colors[0][0]; ?>'>&bull;</span>
+	    <span style='font-size:1.3em;color:<?php echo $colors[0][0]; ?>'>&bull;</span>
 	    یەکەم، وەرگرتنی زانیاری سەبارەت بە شاعیران
         </h2><p>
 	    <code style="background:#efffdb;border-left-color:<?php echo $colors[0][0]; ?>">
@@ -130,7 +125,7 @@ include(ABSPATH . 'script/php/header.php');
 	    &bull; 
 	    بۆ وەرگرتنی زانیاریەکانی تەواوی شاعیران، بە جێی ناوی شاعیر بنووسن all .
         </p>
-        <div class='hr'></div>
+        <div class='border-eee'></div>
         <h2>
 	    <span style='font-size:1.3em; color:<?php echo $colors[0][0]; ?>'>&bull;</span>
 	    دووهەم، وەرگرتنی زانیاری سەبارەت بە کتێبەکان
@@ -153,7 +148,7 @@ include(ABSPATH . 'script/php/header.php');
 	    <br>
 	    لە ڕوی ئەم نیشانیە دیارە کە ژمارەی کتێبی ئاڵەکۆک، 3یە.
 	    <br></p>
-	    <div class='hr'></div>
+	    <div class='border-eee'></div>
 	    <h2>
 		<span style='font-size:1.3em; color:<?php echo $colors[0][0]; ?>'>&bull;</span>
 		سێهەم، وەرگرتنی زانیاری سەبارەت بە شێعرەکان
@@ -190,7 +185,7 @@ include(ABSPATH . 'script/php/header.php');
 		&bull; 
 		بۆ وەرگرتنی تەواوی شێعرەکانی یەک کتێب بە جێی ژمارەی شێعر بنووسن all .
 	    </p>
-	    <div class='hr'></div>
+	    <div class='border-eee'></div>
 	    <h2>
 		<span style='font-size:1.3em; color:<?php echo $colors[0][0]; ?>'>&bull;</span>
 		چوارەم، گەڕان لە ئاڵەکۆک‌دا

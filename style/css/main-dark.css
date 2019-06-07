@@ -150,6 +150,7 @@ footer{padding:1em 0;width:100%;font-size:.56em;text-align:center}
 footer a{display:inline-block;color:#bbb;padding:.5em .35em;margin:0;border-bottom:1px solid #111}
 footer a:hover{background:#111}
 footer i{font-size:1.4em}
+.color-666{color:#999}
 .color-555{color:#aaa}
 .color-444{color:#bbb}
 .eee a{color:#ccc;border-bottom:1px solid #222}
@@ -157,3 +158,7 @@ footer i{font-size:1.4em}
 .eee-desc{border-right:5px solid #111}
 .eee .material-icons{color: #777}
 .icon-round{background:#aaa;color:#000;border-radius:50%}
+.back-f3f3f3{background:#0c0c0c}
+.back-eee{background:#111;color:#aaa}
+.border-eee{border-top:1px solid #111}
+.border-right-eee{border-right:5px solid #111}

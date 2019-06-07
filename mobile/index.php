@@ -69,8 +69,8 @@ include(ABSPATH . "script/php/header.php");
 	   title="کۆدەکانی بەرنامەی ئەندرۆیدی ئاڵەکۆک"
 	><img src="/style/img/github.svg"
 	      style="width:2em" alt="گیت‌هاب"></a>
-    <div style="border-top:1px solid #eee;
-		max-width:800px;
+    <div class="border-eee"
+	 style="max-width:800px;
 		margin:1em auto 0;
 		padding:.8em .2em 0">
         <h3 style="font-size:.7em">

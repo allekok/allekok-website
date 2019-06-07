@@ -75,7 +75,7 @@ include(ABSPATH . "script/php/header.php");
 		$poem = mysqli_fetch_assoc($query)["name"];
 		$image_uri = get_poet_image($pt,true);
 		
-		echo "<div class='item'><a class='link' href='/poet:$pt/book:$bk/poem:$pm'><img style='display:inline-block;vertical-align:middle;width:3em;border-radius:50%;margin-left:.25em' src='{$image_uri}'> <i>$poet &rsaquo; $book &rsaquo;</i> $poem</a><i style='border-right:5px solid #eee;padding:0 1em;font-size:.75em;color:#555;margin:0 1em .2em;display:block;'>$diff</i></div>";
+		echo "<div class='item'><a class='link' href='/poet:$pt/book:$bk/poem:$pm'><img style='display:inline-block;vertical-align:middle;width:3em;border-radius:50%;margin-left:.25em' src='{$image_uri}'> <i class='color-444'>$poet &rsaquo; $book &rsaquo;</i> $poem</a><i class='color-555 border-right-eee' style='padding:0 1em;font-size:.75em;margin:0 1em .2em;display:block'>$diff</i></div>";
 		$i++;
 	    }
 
@@ -83,8 +83,9 @@ include(ABSPATH . "script/php/header.php");
 		mysqli_close($conn);
 	    fclose($f);
 	}
-	
 	?>
     </main>
 </div>
-<?php include_once(ABSPATH . "script/php/footer.php"); ?>
+<?php
+include_once(ABSPATH . "script/php/footer.php");
+?>

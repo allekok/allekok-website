@@ -30,7 +30,7 @@ include(ABSPATH . 'script/php/header.php');
                     ئەگەر دەتوانهەوێ لە نووسینەوەی شێعری شاعیران‌دا یارمیتی‌مان بدەن، لێرە کرتە بکەن. ئەگەر دەقی شێعرێک‌و لەلایە کە لەسەر ئاڵەکۆک نییە، زۆر بەنرخ دەبێ ئەگەر لێرە کرتە بکەن و بۆمان بنێرن، تا دوای پێداچوونەوە بە نێوی خۆتان لەسەر ئاڵەکۆک دابندرێ.
                     <br>
 	</a>
-        دەتوانن بۆ نووسینەوەی شێعر لەم دیوانانە کەڵک وەرگرن:<a style='border-bottom:1px solid <?php echo $colors[0][0]; ?>;display:inline-block;color:#222;' href="/pitew/pdfs.php">
+        دەتوانن بۆ نووسینەوەی شێعر لەم دیوانانە کەڵک وەرگرن:<a style='border-bottom:1px solid <?php echo $colors[0][0]; ?>;display:inline-block' href="/pitew/pdfs.php">
 	    داگرتنی دیوانی شاعیران
 	</a>
                 </small>
@@ -101,13 +101,14 @@ include(ABSPATH . 'script/php/header.php');
      }
     </style>
     
-    <div style="border-top:1px solid #ddd;margin:1em 0 0.8em;"></div>
+    <div class="border-eee" style="margin:1em 0 .8em"></div>
     
-    <div style="max-width:800px; margin:auto; padding:0 .2em;">
-        <h3 style="font-size: .7em;">
+    <div style="max-width:800px;margin:auto;padding:0 .2em">
+        <h3 style="font-size:.7em">
             ئەگەر پرسیارێک‌و سەبارەت بە "پتەوکردنی ئاڵەکۆک" هەیە دەتوانن لێرە بیپرسن.
         </h3>
-        <small style="color:#555; font-size:.5em; display:block;">
+        <small class="color-555"
+	       style="font-size:.5em;display:block">
             بۆ وەرگرتنی وەڵامی پرسیارەکەتان، سەردانی ئەم لاپەڕە بکەنەوە.
         </small>
         <form id="frmQA" action="save.php" method="POST">
@@ -124,7 +125,7 @@ include(ABSPATH . 'script/php/header.php');
                 $cc = fread($f, filesize("QA.txt"));
                 $cc = explode("\nend\n", $cc);
                 
-                echo "<h3 style='border-top: 1px solid #ddd;margin-top: 2em;font-size: .7em;padding: 1em;'>پرسیار و وەڵامەکان</h3>";
+                echo "<h3 class='border-eee' style='margin-top:2em;font-size:.7em;padding:1em;'>پرسیار و وەڵامەکان</h3>";
                 $cc = array_reverse($cc);
                 $i = 1;
                 foreach($cc as $c) {
@@ -133,9 +134,9 @@ include(ABSPATH . 'script/php/header.php');
 			    ["/\[code\]\n*/","/\n*\[\/code\]/"],
 			    ["<code>","</code>"], $c);
                         $c = str_replace(["\n"], ["<br>"], $c);
-                        echo "<div class='comment'";
-                        if($i%2) echo " style='background:#f3f3f3'";
-                        echo "><div class='comm-body'>".$c."</div></div>";
+                        echo "<div class='";
+                        if($i%2) echo "back-f3f3f3 ";
+                        echo "comment'><div class='comm-body'>".$c."</div></div>";
                         $i++;
                     }
                 }
