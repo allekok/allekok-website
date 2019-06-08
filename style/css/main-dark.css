@@ -159,6 +159,7 @@ footer i{font-size:1.4em}
 .eee .material-icons{color: #777}
 .icon-round{background:#aaa;color:#000;border-radius:50%}
 .back-f3f3f3{background:#0c0c0c}
-.back-eee{background:#111;color:#aaa}
+.back-eee{background:#111}
 .border-eee{border-top:1px solid #111}
 .border-right-eee{border-right:5px solid #111}
+.border-bottom-eee{border-bottom:1px solid #111}

@@ -13,9 +13,6 @@ include(ABSPATH . "script/php/header.php");
 ?>
 <div id="poets">
     <style>
-     .item {
-	 border-bottom:1px solid #f0f0f0;
-     }
      .link {
 	 display:block;
 	 border-bottom:0;
@@ -23,7 +20,6 @@ include(ABSPATH . "script/php/header.php");
      }
      .link i {
 	 font-size:.85em;
-	 color:#444;
      }
     </style>
     <h1 style="display:inline-block;
@@ -75,7 +71,7 @@ include(ABSPATH . "script/php/header.php");
 		$poem = mysqli_fetch_assoc($query)["name"];
 		$image_uri = get_poet_image($pt,true);
 		
-		echo "<div class='item'><a class='link' href='/poet:$pt/book:$bk/poem:$pm'><img style='display:inline-block;vertical-align:middle;width:3em;border-radius:50%;margin-left:.25em' src='{$image_uri}'> <i class='color-444'>$poet &rsaquo; $book &rsaquo;</i> $poem</a><i class='color-555 border-right-eee' style='padding:0 1em;font-size:.75em;margin:0 1em .2em;display:block'>$diff</i></div>";
+		echo "<div class='border-bottom-eee'><a class='link' href='/poet:$pt/book:$bk/poem:$pm'><img style='display:inline-block;vertical-align:middle;width:3em;border-radius:50%;margin-left:.25em' src='{$image_uri}'> <i class='color-444'>$poet &rsaquo; $book &rsaquo;</i> $poem</a><i class='color-555 border-right-eee' style='padding:0 1em;font-size:.75em;margin:0 1em .2em;display:block'>$diff</i></div>";
 		$i++;
 	    }
 

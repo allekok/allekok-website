@@ -44,10 +44,10 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
     }
     ?>
     <!-- Toolbar -->
-    <form style='text-align:right;
+    <form class="border-bottom-eee"
+	  style='text-align:right;
 		 margin:.2em;
-		 display:flex;
-		 border-bottom:1px solid #eee'
+		 display:flex;'
 	  action="" method="post">
 	<input type="hidden"
 	       style="display:none"

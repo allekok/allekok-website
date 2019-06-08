@@ -661,12 +661,6 @@ live_search_form.addEventListener("submit", function(e) {
         sk.focus();
     }
 });
-sk.addEventListener("focus",function() {
-    live_search_form.style.background = "#f8f8f8";
-});
-sk.addEventListener("blur",function() {
-    live_search_form.style.background = "#fff";
-});
 
 var draft = document.getElementById("tL");
 if(draft !== null) {
