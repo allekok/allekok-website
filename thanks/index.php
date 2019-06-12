@@ -13,7 +13,7 @@ include(ABSPATH . "script/php/header.php");
 ?>
 <style>
  p {
-     font-size:.6em;border-bottom:1px solid #eee;
+     font-size:.6em;
      text-align:right;padding:.6em .2em
  }
  #poets a, #poets i {
@@ -32,32 +32,32 @@ include(ABSPATH . "script/php/header.php");
 	       padding:.1em .8em 0">
         سپاس و پێ‌زانین بۆ:
     </h1>
-    <p>
+    <p class='border-bottom-eee'>
         <a href="https://ganjoor.net/" target='_blank'
 	   rel='noopener noreferrer nofollow'
-	   style="background:#f9cea4;"
+	   style="background:#f9cea4;color:#000"
 	>گنجور</a> &rsaquo; بۆ بوون بە هۆی دروست بوونی ئاڵەکۆک
     </p>
-    <p>
+    <p class='border-bottom-eee'>
         <a href="https://www.pinterest.com/rebwarkalid/"
 	   target='_blank' rel='noopener noreferrer nofollow'
 	   style="color:#fff;background:#dd5144;
 		 font-weight:bold"
 	>Rebwar Tahir</a> &rsaquo; بۆ بەشێکی زۆر لە وێنەی شاعیران
     </p>
-    <p>
+    <p class='border-bottom-eee'>
         <a href="http://www.vejinbooks.com/"
 	   target='_blank' rel='noopener noreferrer nofollow'
 	   style="background:#900000;color:#fff"
 	>ڤەژین بوکس</a> &rsaquo; بۆ بەشێکی زۆر لە شێعرەکان
     </p>
-    <p>
+    <p class='border-bottom-eee'>
         <a href="http://diyako.yageyziman.com/هۆنراوە/"
 	   target='_blank' rel='noopener noreferrer nofollow'
 	   style="color:#fff;background:#1e73be"
 	>فێرگەی زمانی کوردی</a> &rsaquo; بۆ دیوانی شێعری بەشێک لە شاعیران
     </p>
-    <p>
+    <p class='border-bottom-eee'>
         <a href="http://www.bokan.de/laperekan/Edebiat/awat/Awat.htm"
 	   target='_blank' rel='noopener noreferrer nofollow'
 	   style="color:#820e0e;background:#fcc601"
@@ -67,7 +67,7 @@ include(ABSPATH . "script/php/header.php");
 		 background:<?php echo $colors[0][2]; ?>"
 	>دیوانی شاری دڵی، ئاوات</a>
     </p>
-    <p>
+    <p class='border-bottom-eee'>
         <a href="https://t.me/chapkagolibevena"
 	   target='_blank' rel='noopener noreferrer nofollow'
 	   style="color:#fff;background:#0088cc"
@@ -81,7 +81,7 @@ include(ABSPATH . "script/php/header.php");
 		 background:<?php echo $colors[0][2]; ?>"
 	>دیوانی شەونمی، حەقیقی</a>
     </p>
-    <p>
+    <p class='border-bottom-eee'>
         <a href="/poet:80"
 	   style="color:<?php echo $colors[0][1]; ?>;
 		 background:<?php echo $colors[0][0]; ?>"
@@ -109,7 +109,7 @@ include(ABSPATH . "script/php/header.php");
 	 }
 	</script>
     </p>
-    <p>
+    <p class='border-bottom-eee'>
         <a href="http://telegram.me/Kurdish_Poetry"
 	   target='_blank' rel='noopener noreferrer nofollow'
 	   style="color:#fff;background:#0088cc"
@@ -120,13 +120,13 @@ include(ABSPATH . "script/php/header.php");
 		 background:<?php echo $colors[0][2]; ?>"
 	>شێعرەکانی سافیی هیرانی</a>
     </p>
-    <p>
+    <p class='border-bottom-eee'>
         <a href="https://www.kurditgroup.org/"
 	   style="background:#26678c;color:#fff"
 	>کوردئایتیگرووپ</a>
         &rsaquo; بۆ  
         <a href="https://www.kurditgroup.org/fontconvertor"
-	   style="color:#26678c"
+	   style="background:#26678c;color:#fff"
 	>ئامێری وەرگێڕی فۆنت</a>
         کە بۆ نووسینەوەی بەشێک لە 
         <a href="/poet:85/book:1"
@@ -134,13 +134,13 @@ include(ABSPATH . "script/php/header.php");
 		 color:<?php echo $colors[0][3]; ?>"
 	>دیوانی یانەی‌دڵانی، مدهۆش</a> بەکار هاتووە.
     </p>
-    <p>
+    <p class='border-bottom-eee'>
         <i style="background:#4699EC;color:#fff">
             ئاکۆ مەحموودی، ئاسۆ مەحموودی 
         </i>
         &rsaquo; بۆ 
         <a href="/kurdi-nus/kurdi-nus-kurdish.html"
-	   style="color:#4699EC"
+	   style="background:#4699EC;color:#fff"
 	>ئامێری پەڵک کوردی‌نووس ۴.۰</a>
         کە بۆ نووسینەوەی بەشێک لە 
         <a href="/poet:85/book:1"
@@ -148,7 +148,7 @@ include(ABSPATH . "script/php/header.php");
 		 color:<?php echo $colors[0][3]; ?>"
 	>دیوانی یانەی‌دڵانی، مدهۆش</a> بەکار هاتووە.
     </p>
-    <p>
+    <p class='border-bottom-eee'>
 	<a href="https://www.kurdipedia.org/"
 	   style="background:#0207ff;color:#fff"
 	   target='_blank' rel='noopener noreferrer nofollow'
@@ -163,7 +163,7 @@ include(ABSPATH . "script/php/header.php");
 		 background:<?php echo $colors[0][2]; ?>"
 	>شوکری فەزڵی</a>
     </p>
-    <p>
+    <p class='border-bottom-eee'>
 	<i style="background:<?php echo $colors[0][0]; ?>;
 		  color:<?php echo $colors[0][1]; ?>"
 	>سپاسی تایبەت</i> &rsaquo; بۆ 

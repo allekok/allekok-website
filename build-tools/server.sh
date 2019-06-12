@@ -1,5 +1,5 @@
 # Start a server and open the browser
-Allekok_path=~/Projects/allekok.com
+Allekok_path=~/projects/www.allekok.com
 Browser=chromium
 Port=8080
 

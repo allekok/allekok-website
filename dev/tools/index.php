@@ -64,9 +64,7 @@ include(ABSPATH . 'script/php/header.php');
      }
      #poets a {
 	 border-bottom:1px solid <?php echo $colors[0][0]; ?>;
-     }
-     #poets a:hover {
-	 background:#eee;
+	 margin:0;
      }
      .back-eee {
 	 padding:0 .5em;
@@ -77,16 +75,19 @@ include(ABSPATH . 'script/php/header.php');
 		text-align:justify">
         <p style="border-bottom:1px solid #eee;
 		  padding-top:0;text-indent:0;">
-	    <a href="https://github.com/allekok/www.allekok.com/"
-		  style="display:inline-block;padding:.5em 0 .2em">
+	    <a class="link"
+	       href="https://github.com/allekok/www.allekok.com/"
+	       style="display:inline-block;padding:.5em 0 .2em">
 		- بۆ داگرتنی کۆدەکانی ئاڵەکۆک لێرە کرتە بکەن.
             </a><br>
-	    <a href="https://github.com/allekok/allekok-poems/"
-		  style="display:inline-block;padding:.5em 0 .2em">
+	    <a class="link"
+	       href="https://github.com/allekok/allekok-poems/"
+	       style="display:inline-block;padding:.5em 0 .2em">
 		- بۆ داگرتنی شێعرەکانی ئاڵەکۆک لێرە کرتە بکەن.
             </a><br>
-	    <a href="https://allekok.github.io/allekok-downloads/downloads/"
-		  style="display:inline-block;padding:.5em 0 .2em">
+	    <a class="link"
+	       href="https://allekok.github.io/allekok-downloads/downloads/"
+	       style="display:inline-block;padding:.5em 0 .2em">
 		- بۆ داگرتنی کەرەستەکانی‌تری ئاڵەکۆک لێرە کرتە بکەن.
             </a>
 	</p>
@@ -106,7 +107,7 @@ include(ABSPATH . 'script/php/header.php');
 	    تکایە سەرنج بدەن:
 	    <br>
 	    &bull;
-	    ئەگەر دەتانهەوێ ناوی شاعیر بنووسن، تکایە ئەو ناوەی کە لە لاپەڕەی یەکەمی ئاڵەکۆک بە ئادرسی "<a style="direction:ltr;text-align:left;" href='https://allekok.com/'>allekok.com</a>" بۆ هەر یەک لە شاعیران دابین کراوە، بنووسن.
+	    ئەگەر دەتانهەوێ ناوی شاعیر بنووسن، تکایە ئەو ناوەی کە لە لاپەڕەی یەکەمی ئاڵەکۆک بە ئادرسی "<a class="link" style="direction:ltr;text-align:left" href='https://allekok.com/'>allekok.com</a>" بۆ هەر یەک لە شاعیران دابین کراوە، بنووسن.
 	    <br><br>
 	    &bull;
 	    ژمارەی شاعیر ئەم ژمارەیە کە لە ئادرسی لاپەڕەی شاعیردا بەم جۆرە نووسراوە: 
@@ -234,12 +235,12 @@ include(ABSPATH . 'script/php/header.php');
 		<br>
 		سەرنج بدەن کە چون ptوbkمان سیفر داناون هەربۆیە هیچ گەڕانێک لە شاعیران و کتێبەکان دا ناکرێ و تەنیا لە شێعرەکان دا بەدوای ئەم وشەیە دەگەڕێت. چون pmمان 30 داناوە، ئەژماری ئاکامەکان، 30دانە دەبێ. چون kمان 3 داناوە بۆ وشەی دیاری کراو لە سەرناو و دەقی شێعرەکان‌دا دەگەڕێ.
 	    </p>
-	    <p style="color:#444;font-size:.5em">
+	    <p class="color-444" style="font-size:.5em">
 		سەرنجێکی بچووک: تەواوی ئەو زانیاریانە بە فۆرمەتی JSON لە ئیختیارو دادەندرێ.
 	    </p>
     </div>
     
-    <div style="border-top:1px solid #eee;margin:0.4em 0 0.8em;"></div>
+    <div class="border-eee" style="margin:.4em 0 .8em"></div>
     
     <script>
      function make_code() {
@@ -271,7 +272,7 @@ include(ABSPATH . 'script/php/header.php');
         <h3 style="font-size: .7em;">
             ئەگەر سەبارەت بەم بابەتە پرسیارێک‌و هەیە لێرە بینووسن.
         </h3>
-        <small style="font-size:.5em;padding-bottom: 1em;color:#444;display:block">
+        <small class="color-444" style="font-size:.5em;padding-bottom:1em;display:block">
             بۆ وەرگرتنی وەڵامی پرسیارەکەتان سەردانی ئەم لاپەڕە بکەنەوە.
         </small>
         <form id="frmQA" action="save.php" method="POST">

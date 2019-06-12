@@ -145,8 +145,8 @@ style='width:2.2em;height:2.2em'></div>";
              button.innerHTML = "keyboard_arrow_down";
              var san_txt = this.responseText.
 				replace(/\n/g, "<br>");
-             button.parentNode.outerHTML += "<div \
-style='background:#f6f6f6;padding:1em;font-size:.55em;'\
+             button.parentNode.outerHTML += "<div class='back-f3f3f3' \
+style='padding:1em;font-size:.55em;'\
 >"+san_txt+"</div>";
 	 }
 	 xmlhttp.send();

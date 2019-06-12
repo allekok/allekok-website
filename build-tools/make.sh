@@ -1,5 +1,5 @@
 #!/bin/bash
-Allekok_path=~/Projects/allekok.com
+Allekok_path=~/Projects/www.allekok.com
 Download_repo=~/Projects/allekok-downloads/downloads
 cd $Allekok_path
 

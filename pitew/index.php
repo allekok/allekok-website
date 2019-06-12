@@ -85,7 +85,6 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
 	 margin:0 .5em;
      }
      .input-label-box label {
-	 color:#444;
 	 font-size:.7em;
 	 margin:auto .5em;
      }
@@ -108,11 +107,11 @@ $_book1 = filter_var(@$_GET['book'], FILTER_SANITIZE_STRING);
 	    </div>
             <div class="border-eee" style="margin:.8em 0"></div>
 	    <div class="input-label-box">
-		<label for="poetTxt">شاعیر: </label>
+		<label class="color-444" for="poetTxt">شاعیر: </label>
 		<input type="text" onblur="check()" id="poetTxt" name="poet" style="font-size:.7em;width:94%;" value="<?php echo $_poet1; ?>" placeholder="ناوی شاعیر *">
 	    </div>
 	    <div class="input-label-box" style="margin-top:1em;">
-		<label for="bookTxt">کتێب: </label>
+		<label class="color-444" for="bookTxt">کتێب: </label>
 		<input type="text" id="bookTxt" name="book" style="font-size:.7em;width:94%;" value="<?php echo $_book1; ?>" placeholder="ناوی کتێب">
 	    </div>
 	    <div class="input-label-box" style="margin-top:1em;">

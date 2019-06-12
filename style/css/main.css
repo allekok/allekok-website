@@ -1,4 +1,4 @@
-@font-face{font-family:'kurd';font-style:normal;font-weight:400;src:url('/style/font/DroidNaskh-Regular.woff2') format('woff2')}
+@font-face{font-family:'kurd';font-display:swap;font-style:normal;font-weight:400;src:url('/style/font/DroidNaskh-Regular.woff2') format('woff2')}
 @font-face{font-family:'Material Icons';font-style:normal;font-weight:400;src:url('/style/font/Material-Icons.woff2') format('woff2')}
 html, body{height:100%;margin:0}
 body{font-family:'kurd', arial;font-size:24px;line-height:2.5;background:#fff;color:#000}
@@ -132,7 +132,7 @@ header button:hover{opacity:.6}
 .link:hover{background:#eee}
 .seartog{background:none;position:absolute;left:.5em;color:inherit;top:.7em;font-size:.8em}
 .seartog-i{font-size:1.5em}
-.ptr{margin-top:1em;padding: .75em 0 .1em;font-size:1em}
+.ptr{margin-top:1em;padding: .75em 0 .1em;font-size:1em;background:#f6f6f6}
 .bk-comp{vertical-align:middle;height:.7em;padding-right:.1em;cursor:pointer}
 .ptrh{font-size:.58em;padding-bottom:.9em}
 .d{font-size:.8em;color:#333;padding:1em}
@@ -153,6 +153,7 @@ footer i{font-size:1.4em}
 .color-666{color:#666}
 .color-555{color:#555}
 .color-444{color:#444}
+.color-333{color:#333}
 .eee a{color:#333;border-bottom:1px solid #ddd}
 .eee a:hover{background:#eee}
 .eee-desc{border-right:5px solid #eee}

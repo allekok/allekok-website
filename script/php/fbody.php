@@ -16,9 +16,8 @@ require("condb.php");
 	    <?php echo _DESC; ?>
 	</h2>
         <?php if(isset($_GET['new'])) { ?>
-            <span style="display:block;font-size:.55em;
-			 color:#444;padding:1em;
-			 background-color:#f9f9f9;">
+            <span class="color-444 back-f3f3f3" style="display:block;
+			 font-size:.55em;padding:1em">
 		مەبەست لە شاعیرانی نوێ، ئەو شاعیرانەن کە لە ژیان دا ماون.
             </span>
         <?php } ?>

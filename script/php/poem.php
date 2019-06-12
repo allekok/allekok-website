@@ -12,13 +12,13 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
      bID = <?php echo $bk; ?>,
      mID = <?php echo $row[1]['id']; ?>,
      poem_adrs = `poet:${pID}/book:${bID}/poem:${mID}`,
-     poemV2 = JSON.stringify({
+     poemObject = {
 	 url: poem_adrs,
 	 poetID: pID,
 	 poetName: "<?php echo $info['takh']; ?>",
 	 book: "<?php echo $bknow[$bk-1]; ?>",
 	 poem: "<?php echo $row[1]['name']; ?>",
-     });
+     };
 </script>
 
 <div id="poets">
@@ -111,9 +111,8 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	     Other tools button
 	     Bookmark button
 	-->
-        <i style='font-size:1.4em;
-		  height:.6em;color:#666'
-	   class='material-icons'>format_size</i>
+        <i style='font-size:1.4em;height:.6em'
+	   class='material-icons color-666'>format_size</i>
         <button class='button bigger' style="padding:.85em 1.1em">
             <i style='vertical-align:middle;'
 	       class='material-icons'>arrow_upward</i>
@@ -131,10 +130,9 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	    کۆپی کردن 
         </button>
 	<i id='extlnkico'
-	   style='cursor:pointer;color:#444;
-	       vertical-align:middle;padding:0 .2em;
+	   style='cursor:pointer;padding:0 .2em;
 	       font-size:1.8em;height:.8em'
-	   class='material-icons' 
+	   class='material-icons color-444' 
 	   title='ئامێرەکانی‌تر'>more_horiz</i>
 	<?php
 	if(!($ath==10 and
@@ -143,10 +141,9 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	?><button id='fav-sec' class='button fav'
 		  style="float:left;
 		      padding-top:.6em">
-            <i class='material-icons'
+            <i class='material-icons color-666'
 	       id='like-icon'
-	       style='font-size:2.8em;
-		      color:#666'
+	       style='font-size:2.8em'
 	    >bookmark_border</i>
 	</button>
         <?php } ?>
@@ -158,9 +155,8 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
     -->
     <div style='display:none;font-size:.55em;
 		max-width:500px;margin:auto auto .5em;
-		padding:.5em 1em;text-align:right;
-		border-bottom:1px solid #eee'
-	 id='extlnk'>
+		padding:.5em 1em;text-align:right'
+	 id='extlnk' class="border-bottom-eee">
 	<style>
 	 .icon-round {
 	     font-size:1.2em;
@@ -177,12 +173,12 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
             echo "<a class='link' href='{$ext_link[1]}' 
 title='{$row[1]['name']}' target='_blank' 
 rel='noopener noreferrer nofollow' 
-style='display:inline-block;'
+style='display:inline-block'
 >ئەم شێعرە لەسەر &laquo;{$ext_link[0]}&raquo;</a>";
             $probability = intval($ext_link[2]) / 4 * 100;
             $probability = num_convert($probability ,
 				       "en" , "ckb") . "%";
-            echo "<span style='color:#666;font-size:.75em'
+            echo "<span class='color-666' style='font-size:.75em'
 >($probability)</span>";
             echo "</div>";
 	}
@@ -213,11 +209,10 @@ style='display:inline-block;'
 		    id="convertToLatBtn"
 		    style="font-size:1em;margin-right:.5em;
 			   letter-spacing:.5px"
-	    ><i style='font-family:monospace;
+	    ><i class="color-555" style='font-family:monospace;
 		       font-weight:bold;
 		       text-transform:uppercase;
-		       font-size:.9em;
-		       color:#555'
+		       font-size:.9em'
 	     >Elfubêy Latîn</i></button>
 	</div>
 	<div style='text-align:center;
@@ -300,8 +295,8 @@ style='display:inline-block;'
     <?php } ?>
     <!-- Comments -->
     <div id="hon-comments">
-	<div style="padding:1em .3em;
-		    font-size:.65em;color:#444;">
+	<div class="color-444"
+	     style="padding:1em .3em;font-size:.65em">
             بیر و ڕای خۆتان سەبارەت بەو شێعرە بنووسن.
 	</div>
 	<form id="frmComm"

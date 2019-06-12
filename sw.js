@@ -1,4 +1,4 @@
-// Service Worker. Caching static resources. 
+/* Caching static resources */
 const cache_ver = "v111";
 const profile = "/style/img/poets/profile/profile_";
 
@@ -72,30 +72,29 @@ self.addEventListener('install', function(event) {
 		profile+"50.jpg",
 		profile+"89.jpg",
 		profile+"71.jpg",
-		'/script/js/main.js?v22',
-		'/style/css/main.css?v28',
-		'/style/css/main-dark.css?v28',
+		'/script/js/main.js?v23',
+		'/style/css/main.css?v29',
+		'/style/css/main-dark.css?v29',
 		'/favicon.ico',
 		'/style/font/DroidNaskh-Regular.woff2',
 		'/style/font/Material-Icons.woff2',
 		'/not-found.html',
 	    ]);
-	})
-    );
+	}));
 });
 
 self.addEventListener('activate', function(event) {
-    var cacheWhitelist = [cache_ver];
-
+    let cacheWhitelist = [cache_ver];
+    
     event.waitUntil(
 	caches.keys().then(function(keyList) {
 	    return Promise.all(keyList.map(function(key) {
-		if (cacheWhitelist.indexOf(key) === -1) {
+		if(cacheWhitelist.indexOf(key) === -1)
+		{
 		    return caches.delete(key);
 		}
 	    }));
-	})
-    );
+	}));
 });
 
 self.addEventListener('fetch', function(event) {
@@ -106,6 +105,5 @@ self.addEventListener('fetch', function(event) {
 	    });
 	}).catch(function() {
 	    return caches.match('/not-found.html');
-	})
-    );
+	}));
 });

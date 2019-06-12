@@ -115,7 +115,6 @@ include(ABSPATH . 'script/php/header.php');
 	 margin:0 .5em;
      }
      .input-label-box label {
-	 color:#444;
 	 font-size:1em;
 	 margin:auto .5em;
      }
@@ -130,20 +129,20 @@ include(ABSPATH . 'script/php/header.php');
             <input type="text" id="cntriTxt" name="cntri" style="font-size:1em;width:100%" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
 	</div>
 	<div class="input-label-box" style="margin:1em .5em">
-	    <label for="poetTxt">شاعیر: </label>
+	    <label class="color-444" for="poetTxt">شاعیر: </label>
             <input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:1em;width:94%;padding:1em 3%" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
 	</div>
         
         <button class='file-btn button' onclick="document.querySelector('input[name=profile]').click()" style="display:inline-block;font-size:1.5em;padding:1em;border:5px dashed #ddd;border-radius:10px;margin:.5em 0" id='upldlikebtn'>
             هەڵبژاردنی وێنە
         </button><br>
-        <div style="padding-top:.2em;font-size:.7em; color:#555;font-family:'kurd',monospace">
+        <div class="color-555" style="padding-top:.2em;font-size:.7em;font-family:'kurd',monospace">
             &bull; فۆرمەتی وێنەکەتان دەبێ 
-            <span style='background:#eee;padding:0 .2em'>JPG, JPEG, PNG</span>
+            <span class="back-eee" style='padding:0 .2em'>JPG, JPEG, PNG</span>
             بێت.
             <br>
             &bull; گەورەیی وێنەکە نابێ لە 
-            <span style='background:#eee;padding:0 .2em'>5MB</span>
+            <span class="back-eee" style='padding:0 .2em'>5MB</span>
             زیاتر بێت.
         </div>
         <input type="file" style='display:none;' name="profile" accept="image/png, image/jpeg">

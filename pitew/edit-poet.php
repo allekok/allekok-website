@@ -83,7 +83,6 @@ $_poet1 = filter_var(@$_GET['poet'], FILTER_SANITIZE_STRING);
 	     margin:0 .5em;
 	 }
 	 .input-label-box label {
-	     color:#444;
 	     font-size:.8em;
 	     margin:auto .5em;
 	 }
@@ -97,7 +96,7 @@ $_poet1 = filter_var(@$_GET['poet'], FILTER_SANITIZE_STRING);
 	    </div>
 
 	    <div class="input-label-box" style="margin-top:1em">
-		<label for="poetTxt">شاعیر: </label>
+		<label class="color-444" for="poetTxt">شاعیر: </label>
 		<input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:.7em;width:94%;padding:1em 3%" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
 	    </div>
 	    

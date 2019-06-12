@@ -64,18 +64,21 @@ include(ABSPATH . "script/php/header.php");
      main h1, main h2, main h3 {
          text-align:right;
      }
-     main ul, ol {
+     main ul, main ol {
          padding-right:2em;
-         color:#333;
      }
      main p {
          text-indent: 1em;
      }
      main img {
          display:block;
-         margin: 1em auto;
+         margin:1em auto;
          max-width:100%;
          cursor:pointer;
+	 background:#fff;
+	 padding:1em 1em 0;
+	 border-radius:5px;
+	 opacity:.9;
      }
      main .material-icons {
          display: inline;
@@ -101,13 +104,13 @@ include(ABSPATH . "script/php/header.php");
      }
     </script>
     
-    <div style="border-top:1px solid #ddd;margin:1em 0 0.8em;"></div>
+    <div class="border-eee" style="margin:1em 0 .8em"></div>
     
     <div style="max-width:800px; margin:auto; padding:0 .2em;">
         <h3 style="font-size: .7em;">
             ئەگەر پرسیارێک‌و سەبارەت بە "چۆنیەتی بەکارهێنانی ئاڵەکۆک" هەیە دەتوانن لێرە بیپرسن.
         </h3>
-        <small style="color:#555; font-size:.5em; display:block;">
+        <small class="color-555" style="font-size:.5em;display:block">
             بۆ وەرگرتنی وەڵامی پرسیارەکەتان، سەردانی ئەم لاپەڕە بکەنەوە.
         </small>
         <form id="frmQA" action="save.php" method="POST">
@@ -169,11 +172,14 @@ include(ABSPATH . "script/php/header.php");
              x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
              x.send(`txt=${encodeURIComponent(txt.value)}`);
          });
+	 document.querySelectorAll("main ul, main ol").forEach(
+	     function(item)
+	     {
+		 item.classList.add("color-333");
+	     });
         </script>
     </div>
-    
 </div>
-
 <?php
 include_once(ABSPATH . "script/php/footer.php");
 ?>

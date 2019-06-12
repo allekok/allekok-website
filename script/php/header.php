@@ -21,7 +21,7 @@ else
 				   $_COOKIE['theme'] == 'dark') ? 
 				    "main-dark.css" : 
 				    "main.css";
-			       ?>?v28'/>
+			       ?>?v29'/>
 	<title>
 	    <?php echo $title; ?>
 	</title>
@@ -46,17 +46,10 @@ else
 	 header {
              background:<?php echo $colors[$color_num][0]; ?>;
 	 }
-	 .ptr {
-             background:<?php echo($colors[$color_num][2]) ?>;
-	 }
-	 <?php if(isset($ath)) { ?>
+	 <?php if(@$ath) { ?>
 	 sup {
-             color:<?php echo($colors[$color_num][3]) ?>;
-             padding:0 2px;
-	 }
-	 .gallery {
-             margin-top:0.5em;
-             margin-bottom:-1em;
+             color:<?php echo($colors[$color_num][0]) ?>;
+             padding:0 3px;
 	 }
 	 @media only screen and (max-width:450px){
 	     #poets{padding-bottom:0}
@@ -76,12 +69,12 @@ else
 	 }
 	</style>
 	<script>
-         var colors = [<?php
-		       require_once("colors.php");
-		       foreach ($colors as $c) {
-			   echo "['{$c[0]}', '{$c[1]}', '{$c[2]}', '{$c[3]}'],";
-		       }
-		       ?>];
+         const colors = [<?php
+			 require_once("colors.php");
+			 foreach ($colors as $c) {
+			     echo "['{$c[0]}', '{$c[1]}', '{$c[2]}', '{$c[3]}'],";
+			 }
+			 ?>];
 	</script>
     </head>
     <body>
@@ -103,9 +96,9 @@ else
 	    <div id='search'>
 		<form id="search-form" action="/" method="GET"
 		><input type='text'
-			      id='search-key'
-			      onkeyup="search(event)"
-			      placeholder='گەڕان بۆ ...' name='q'
+			id='search-key'
+			onkeyup="search(event)"
+			placeholder='گەڕان بۆ ...' name='q'
 		 ><button type="submit"
 			  id="search-btn"
 			  class='button'

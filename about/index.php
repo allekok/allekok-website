@@ -29,7 +29,7 @@ include(ABSPATH."script/php/header.php");
         <span class="color-666">
             ئاخیرین نوێ‌کردنەوەی شێعرەکان: 
         </span>
-        <span style="display:inline-block;color:#222">
+        <span style="display:inline-block">
             <?php
             $last_update_date = date_create(
 		@file_get_contents(ABSPATH."last-update.txt"));
