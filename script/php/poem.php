@@ -248,7 +248,6 @@ style='display:inline-block;'
 		-->
 		<style>
 		 #wordResKawa button {
-                     color:#00e;
                      cursor:pointer;
                      font-size:inherit;
                      background:none
@@ -330,9 +329,8 @@ style='display:inline-block;'
 	<!--
 	     Comments contexts
 	-->
-	<div id="Acomms-title"
+	<div id="Acomms-title" class="border-eee"
 	     style="margin:1em 0 0;display:none;
-		 border-top:1px solid #eee;
 		 padding:1em .3em;font-size:.75em">
 	    بیر و ڕاکان سەبارەت بەو شێعرە
 	</div>
@@ -574,15 +572,14 @@ target='_blank' href='https://allekok.com/tewar/?q=${q}'
 			 return;
 		     }
 		     res = JSON.parse(responseText);
-		     fin += "<span class='tp' \
-style='background:#f3f3f3;display:block;\
-font-size:.9em;padding:.3em .5em;'\
+		     fin += "<span class='tp back-f3f3f3' \
+style='display:block;font-size:.9em;padding:.3em .5em'\
 >فەرهەنگی ئەناهیتا: </span>";
 		     for( var a in res )
 		     {
 			 fin += "<div><section><a \
 target='_blank' rel='noopener noreferrer nofollow' \
-href='"+res[a].link+"' style='color:#00e'\
+href='"+res[a].link+"' class='link-color'\
 >"+res[a].title+"</a></section><section \
 style='word-wrap:break-word;font-size:.87em;\
 text-indent:1em;'>"+res[a].desc+"</section></div>";
@@ -598,17 +595,17 @@ text-indent:1em;'>"+res[a].desc+"</section></div>";
 	     
 	     getUrl(
 		 `/tewar/search/farhangumejuikawa.com.php?q=${q}&n=1`,
-		 function(responseText) {
-		     if (responseText == "null") {
+		 function(responseText)
+		 {
+		     if (responseText == "null")
+		     {
 			 t.innerHTML = "";
 			 return;
 		     }
 
-		     
 		     res = JSON.parse(responseText);	 
-		     fin += "<span class='tp' \
-style='background:#f3f3f3;display:block;\
-font-size:.9em;padding:.3em .5em;'\
+		     fin += "<span class='tp back-f3f3f3' \
+style='display:block;font-size:.9em;padding:.3em .5em'\
 >فەرهەنگی کاوە: </span>";
 		     for( var a in res )
 		     {
@@ -621,6 +618,11 @@ text-indent:1em;'>"+res[a].desc+"</section></div>";
 		     t.innerHTML = fin;
 		     var frms = t.getElementsByTagName("form");
 		     frms[0].setAttribute("target", "_blank");
+		     document.querySelectorAll("#wordResKawa button").
+			      forEach(function (item)
+			      {
+				  item.classList.add("link-color");
+			      });
 		 });
 	 }
      });
