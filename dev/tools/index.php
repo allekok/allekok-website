@@ -73,8 +73,8 @@ include(ABSPATH . 'script/php/header.php');
     <div style="max-width:850px;margin:auto;
 		padding:0 1em 1em;line-height:2.3;
 		text-align:justify">
-        <p style="border-bottom:1px solid #eee;
-		  padding-top:0;text-indent:0;">
+        <p class="border-bottom-eee"
+	   style="padding-top:0;text-indent:0">
 	    <a class="link"
 	       href="https://github.com/allekok/www.allekok.com/"
 	       style="display:inline-block;padding:.5em 0 .2em">
@@ -291,7 +291,8 @@ include(ABSPATH . 'script/php/header.php');
                 $cc = fread($f, filesize("QA.txt"));
                 $cc = explode("\nend\n", $cc);
                 
-                echo "<h3 style='border-top: 1px solid #eee;margin-top: 2em;font-size: .7em;padding: 1em;'>پرسیار و وەڵامەکان</h3>";
+                echo "<h3 class='border-eee' style='margin-top:2em;
+font-size:.7em;padding:1em'>پرسیار و وەڵامەکان</h3>";
                 
                 foreach($cc as $c) {
                     if(!empty($c)) {

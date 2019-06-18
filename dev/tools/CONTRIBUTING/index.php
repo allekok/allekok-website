@@ -56,19 +56,12 @@ include(ABSPATH . 'script/php/header.php');
          max-width: 150px;
          margin-top: 1em;
      }
-     .hr {
-         border-top:1px solid #eee;
-     }
      #poets a {
 	 border-bottom:1px solid <?php echo $colors[0][0]; ?>;
 	 color:#444;
      }
      #poets a:hover {
 	 background:#eee;
-     }
-     .back-eee {
-	 background:#eee;
-	 padding:0 .5em;
      }
      pre {
 	 overflow:auto;
@@ -121,7 +114,7 @@ include(ABSPATH . 'script/php/header.php');
 	echo @file_get_contents('CONTRIBUTING.html');
 	?>
     </div>
-    <div style="border-top:1px solid #eee;margin:0.4em 0 0.8em;"></div>
+    <div class="border-eee" style="margin:.4em 0 .8em"></div>
     
     <script>
      function make_code() {
@@ -172,7 +165,8 @@ include(ABSPATH . 'script/php/header.php');
                 $cc = fread($f, filesize("QA.txt"));
                 $cc = explode("\nend\n", $cc);
                 
-                echo "<h3 style='border-top: 1px solid #eee;margin-top: 2em;font-size: .7em;padding: 1em;'>پرسیار و وەڵامەکان</h3>";
+                echo "<h3 class='border-eee' style='margin-top:2em;
+font-size:.7em;padding:1em'>پرسیار و وەڵامەکان</h3>";
                 
                 foreach($cc as $c) {
                     if(!empty($c)) {

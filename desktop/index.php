@@ -94,7 +94,8 @@ include(ABSPATH . "script/php/header.php");
                 $cc = fread($f, filesize("QA.txt"));
                 $cc = explode("\nend\n", $cc);
                 
-                echo "<h3 style='border-top: 1px solid #eee;margin-top: 2em;font-size: .7em;padding: 1em;'>بیر و بۆچوونەکان</h3>";
+                echo "<h3 class='border-eee' style='margin-top:2em;
+font-size:.7em;padding:1em'>بیر و بۆچوونەکان</h3>";
                 
                 foreach($cc as $c) {
                     if(!empty($c)) {
