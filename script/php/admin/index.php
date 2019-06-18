@@ -12,12 +12,11 @@ $color_num = 0;
 
 include(ABSPATH . 'script/php/header.php');
 ?>
-
 <style>
  .line {
      direction:ltr;
      text-align:left;
-     font-family:'kurd',mono;
+     font-family:'kurd',monospace;
      font-size:.8em;
  }
  .line a {
@@ -25,22 +24,22 @@ include(ABSPATH . 'script/php/header.php');
      display:block;
  }
 </style>
-
 <div id="poets">
-
-    <?php
-
+    <?php    
     $files = scandir("./");
-    $NOT = [".",".."];
-    foreach($files as $f) {
+    rsort($files);
+    $NOT = [".","..","IP-blacklist.php","IP-blacklist.php-sample",
+	    "SHA512.php","capture","comment-block.php","comment-read.php",
+	    "index.php","link-ganjoor.php","login.php","password.php",
+	    "password.php-sample","session.php"];
+    foreach($files as $f)
+    {
 	if(!in_array($f, $NOT))
-	    echo "<p class='line'><a class='link' href='{$f}'>{$f}</a></p>";
+	    echo "<p class='line'><a class='link' href='$f'>&rsaquo; ".
+		 substr($f,0,-4)."</a></p>";
     }
-
     ?>
-
 </div>
-
 <?php
 include_once(ABSPATH . "script/php/footer.php");
 ?>

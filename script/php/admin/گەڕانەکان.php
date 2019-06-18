@@ -95,7 +95,7 @@
         $db = "search";
         $q = "select Cipi, rtakh, rbook, rname, id from poems where Cipi!=0 order by Cipi DESC";
         
-        require("../../condb.php");
+        require("../condb.php");
         
         $_ths = array(
             array("Cipi",

@@ -14,48 +14,43 @@ include(ABSPATH . 'script/php/header.php');
 ?>
 
 <style>
- * {
-     font-family:'kurd',mono;
- }
  input {
      font-size:.6em;
  }
  table {
-     margin: auto;
-     width: 100%;
-     max-width: 800px;
+     margin:auto;
+     width:100%;
+     max-width:800px;
      font-size:.6em;
- }
- 
- th {
-     background:#eee;
+     text-align:right
  }
  
  img {
      width:100%;
+     max-width:100px
  }
  #toolbox a {
-     color: #fff;
-     background: #444;
-     text-decoration: none;
-     display: block;
-     padding: .5em 0;
-     text-align: center;
-     font-size:.8em;
+     color:#fff;
+     background:#444;
+     text-decoration:none;
+     display:block;
+     padding:.5em 0;
+     text-align:center;
+     font-size:.7em;
  }
  a:hover {
      opacity:.7;
  }
  td {
-     border: 0;
-     border-bottom:1px solid #eee;
+     border:0;
      padding:.5em;
  }
  .profile {
-     padding:0;
+     padding:.1em;
  }
  .profile img {
      vertical-align:middle;
+     border-radius:50%
  }
 </style>
 <div id="poets">
@@ -65,29 +60,29 @@ include(ABSPATH . 'script/php/header.php');
             شاعیری نوێ
         </a>
     </div>
-    <input style="width:100%" type="text" id="filter-txt" onkeyup="_filter()" placeholder="گەڕان لە کتێبەکان‌دا...">
+    <input style="width:100%" type="text" id="filter-txt" onkeyup="_filter()" placeholder="گەڕان لە شاعیران‌دا...">
     
     <?php
     
     // include colors
     
-    include("../../colors.php");
+    include(ABSPATH."script/php/colors.php");
     
     
     $db = "index";
-    $q = "select id, profname from auth";
+    $q = "select id, profname from auth order by takh";
     
-    require("../../condb.php");
+    require(ABSPATH."script/php/condb.php");
     
     $_ths = array(
         array("وێنە",
-	      "10%"),
+	      "7%"),
         array("ژمارە",
 	      "5%"),
         array("ناسناو",
 	      "55%"),
         array("کاروبار",
-	      "30%")
+	      "10%")
     );
     
     echo "<table>";
@@ -95,7 +90,7 @@ include(ABSPATH . 'script/php/header.php');
     
     foreach($_ths as $_th) {
         
-        echo "<th style='width:{$_th[1]};'>";
+        echo "<th class='back-eee' style='width:{$_th[1]}'>";
         echo $_th[0];
         echo "</th>";
     }
@@ -107,25 +102,20 @@ include(ABSPATH . 'script/php/header.php');
         echo "<tr>";
         
         //poet img
-        echo "<td class='profile'>";
-        $_imgsrc = "../../../../style/img/poets/profile/profile_{$res['id']}.jpg";
-        if(file_exists($_imgsrc)) {
-            
-            echo "<img style='border-bottom:10px solid {$colors[color_num($res['id'])][0]}' src={$_imgsrc}>";
-        } else {
-            echo "<img style='border-bottom:10px solid {$colors[color_num($res['id'])][0]}' src='../../../../style/img/poets/profile/profile_0.jpg'>";
-        }
+        echo "<td class='profile border-bottom-eee'>";
+        $_imgsrc = get_poet_image($res['id'],true);
+        echo "<img src='$_imgsrc'>";
         echo "</td>";
         
         foreach($res as $_r) {
-            echo "<td>";
-            echo $_r;
+            echo "<td class='border-bottom-eee'>";
+            echo num_convert($_r,"en","ckb");
             echo "</td>";
         }
         
         //operations
-        echo "<td>";
-        echo "<a class='link' style='font-family:mono;' href='poet-edit.php?id={$res['id']}'>Edit</a>";
+        echo "<td class='border-bottom-eee'>";
+        echo "<a class='link material-icons' href='poet-edit.php?id={$res['id']}'>edit</a>";
         echo "</td>";
         
         echo "</tr>";
