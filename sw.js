@@ -1,6 +1,6 @@
 /* Caching static resources */
-const cache_ver = "v111";
-const profile = "/style/img/poets/profile/profile_";
+const cache_ver = "v111",
+      profile = "/style/img/poets/profile/profile_";
 
 self.addEventListener('install', function(event) {
     event.waitUntil(

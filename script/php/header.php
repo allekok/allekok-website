@@ -70,7 +70,7 @@ else
 	</style>
 	<script>
          const colors = [<?php
-			 require_once("colors.php");
+			 require_once(ABSPATH."script/php/colors.php");
 			 foreach ($colors as $c) {
 			     echo "['{$c[0]}', '{$c[1]}', '{$c[2]}', '{$c[3]}'],";
 			 }
