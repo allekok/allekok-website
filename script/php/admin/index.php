@@ -31,7 +31,7 @@ include(ABSPATH . 'script/php/header.php');
     $NOT = [".","..","IP-blacklist.php","IP-blacklist.php-sample",
 	    "SHA512.php","capture","comment-block.php","comment-read.php",
 	    "index.php","link-ganjoor.php","login.php","password.php",
-	    "password.php-sample","session.php"];
+	    "password.php-sample","session.php","error_log",".htaccess"];
     foreach($files as $f)
     {
 	if(!in_array($f, $NOT))
