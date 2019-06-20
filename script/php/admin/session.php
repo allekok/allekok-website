@@ -6,7 +6,7 @@ if(! isset($_SESSION['admin'])) {
     require('password.php');
     $received_pass = isset($_POST['password']) ?
 		     hash('SHA512',stripslashes($_POST['password'])) :
-		     redirect('login.php');
+		     redirect('/script/php/admin/login.php');
     if($password == $received_pass) {
 	$_SESSION['admin'] = true;
     }

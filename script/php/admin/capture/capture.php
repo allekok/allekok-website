@@ -1,4 +1,5 @@
 <?php
+require("../session.php");
 /* 
  * Capture an image of resources and 
  * archive them in 'image.tar'
@@ -10,7 +11,7 @@ $resources = [
     "pitew/news.txt",
     "pitew/QA.txt",
     "pitew/res/",
-    "about/res/",
+    "about/comments.txt",
     "desktop/QA.txt",
     "desktop/update/index/",
     "desktop/update/imgs/",

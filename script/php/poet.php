@@ -102,12 +102,16 @@ href='/pitew/image-list.php?poet={$row['takh']}'
 			$e = explode("_", str_replace(".txt","",$pe));
 			if(@$e[1] == $row['takh']) {
 			    $ef = fopen($_uri.$pe, "r");
-			    $ef_ln = fgets($ef);
-			    if(trim($ef_ln)) {
-				$ef_ln = num_convert(
-				    str_replace("&#34;","\"",$ef_ln),
-				    "en", "ckb");
-				$ef_ln = mb_substr($ef_ln,0,100);
+			    while(! feof($ef))
+			    {
+				if($ef_ln = trim(fgets($ef)))
+				{
+				    $ef_ln = num_convert(
+					str_replace("&#34;","\"",$ef_ln),
+					"en", "ckb");
+				    $ef_ln = mb_substr($ef_ln,0,100);
+				    break;
+				}
 			    }
 			    fclose($ef);
 			    $result[] = [$e, $ef_ln];
@@ -121,7 +125,7 @@ padding:.5em;display:block;border-radius:3px;margin:0\"
 href=\"/pitew/poetdesc-list.php?name={$n[0][0]}&poet={$n[0][1]}\"
 ><span style='display:block'>
 &laquo;".num_convert(
-		str_replace("&#34;","\"",$n[0][0]),"en","ckb")."&raquo;نووسیویەتی:
+		str_replace("&#34;","\"",$n[0][0]),"en","ckb")."&raquo; نووسیویەتی:
 </span><span style='border-right:5px solid #999;padding-right:.5em;
 font-size:.95em;display:block;white-space:nowrap;overflow:hidden;
 text-overflow:ellipsis;margin-right:.5em;'>{$n[1]}...</span></a>";
