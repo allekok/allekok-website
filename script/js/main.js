@@ -4,7 +4,7 @@ function arabi_to_latin(s)
 {
     /* *
      * Taken from "Pellk KurdiNus 4.0".
-     * https://allekok.com/kurdi-nus/kurdi-nus-kurdish.html
+     * https://allekok.com/kurdi-nus/kurdi-nus-central-kurdish.html
      * */
     const sConvertArabic2Latin = [
 	'و([اێۆە])', 'w$1', 

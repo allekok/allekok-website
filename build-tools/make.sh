@@ -1,10 +1,10 @@
 #!/bin/bash
-Allekok_path=~/Projects/www.allekok.com
-Download_repo=~/Projects/allekok-downloads/downloads
+Allekok_path=~/projects/www.allekok.com
+Download_repo=~/projects/allekok-downloads/downloads
 cd $Allekok_path
 
 #images
-cp $Download_repo/allekok.com/image/Sent-by-users/* \
+cp $Download_repo/allekok.com/image/sent-by-users/* \
    style/img/poets/new/
 rm style/img/poets/new/index.md
 

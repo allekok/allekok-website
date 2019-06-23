@@ -139,7 +139,7 @@ include(ABSPATH . "script/php/header.php");
             ئاکۆ مەحموودی، ئاسۆ مەحموودی 
         </i>
         &rsaquo; بۆ 
-        <a href="/kurdi-nus/kurdi-nus-kurdish.html"
+        <a href="/kurdi-nus/kurdi-nus-central-kurdish.html"
 	   style="background:#4699EC;color:#fff"
 	>ئامێری پەڵک کوردی‌نووس ۴.۰</a>
         کە بۆ نووسینەوەی بەشێک لە 

@@ -20,4 +20,5 @@ sitemap.xml
 error_log
 .htaccess
 node_modules
+package-lock.json
 test/
