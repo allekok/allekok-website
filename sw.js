@@ -75,10 +75,11 @@ self.addEventListener('install', function(event) {
 		'/script/js/main.js?v23',
 		'/style/css/main.css?v31',
 		'/style/css/main-dark.css?v31',
+		'/style/img/logo.jpg',
 		'/favicon.ico',
 		'/style/font/DroidNaskh-Regular.woff2',
 		'/style/font/Material-Icons.woff2',
-		'/not-found.html',
+		'/not-found.html?v2',
 	    ]);
 	}));
 });
@@ -104,6 +105,6 @@ self.addEventListener('fetch', function(event) {
 		return response;
 	    });
 	}).catch(function() {
-	    return caches.match('/not-found.html');
+	    return caches.match('/not-found.html?v2');
 	}));
 });
