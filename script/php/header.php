@@ -7,7 +7,7 @@ if(!isset($color_num))
 if(isset($ath))
     $ogimg = _SITE.get_poet_image($ath,false);
 else 
-    $ogimg = _SITE.get_poet_image(0,false);
+    $ogimg = _SITE."style/img/logo.jpg";
 ?>
 <html dir="rtl" lang="ckb">
     <head>
@@ -21,7 +21,7 @@ else
 				   $_COOKIE['theme'] == 'dark') ? 
 				    "main-dark.css" : 
 				    "main.css";
-			       ?>?v30'/>
+			       ?>?v31'/>
 	<title>
 	    <?php echo $title; ?>
 	</title>
@@ -32,7 +32,7 @@ else
 	<meta name="description" content="<?php echo($desc); ?>">
 	<meta name="keywords" content="<?php echo($keys); ?>">
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-	<link rel="apple-touch-icon" href="/style/img/poets/profile/profile_0.jpg">
+	<link rel="apple-touch-icon" href="/style/img/logo.jpg">
 	
 	<meta property="og:title" content="<?php echo($desc); ?>" />
 	<meta property="og:description" content="" />

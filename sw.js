@@ -1,5 +1,5 @@
 /* Caching static resources */
-const cache_ver = "v111",
+const cache_ver = "v112",
       profile = "/style/img/poets/profile/profile_";
 
 self.addEventListener('install', function(event) {
@@ -73,8 +73,8 @@ self.addEventListener('install', function(event) {
 		profile+"89.jpg",
 		profile+"71.jpg",
 		'/script/js/main.js?v23',
-		'/style/css/main.css?v30',
-		'/style/css/main-dark.css?v30',
+		'/style/css/main.css?v31',
+		'/style/css/main-dark.css?v31',
 		'/favicon.ico',
 		'/style/font/DroidNaskh-Regular.woff2',
 		'/style/font/Material-Icons.woff2',
