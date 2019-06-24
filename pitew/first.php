@@ -70,7 +70,8 @@ include(ABSPATH . 'script/php/header.php');
         </a>
     </section></section><section class='pitewsec'>
         <a href="/about">
-            <i class='material-icons' style='color:blue;'><img src='/style/img/poets/profile/profile_0.jpg' style='opacity: 0.75;border: 2px dashed #666;border-radius: 100%;width: 0.9em;margin-bottom: 0.1em;'></i>
+            <i class='material-icons'><img src='/style/img/logo.jpg'
+					   style='opacity:.75;border:2px dashed #666;border-radius:50%;width:.9em;margin-bottom:.1em'></i>
             <h3>
                 ئاڵەکۆک؟
                 <br>
