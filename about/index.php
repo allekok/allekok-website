@@ -17,16 +17,8 @@ include(ABSPATH."script/php/header.php");
 	    ئاڵەکۆک هەلێکە بۆ خوێندنەوەی شێعری کوردی.
         </p>
     </div>
-    <div class='stats-min'>
-        <?php include(ABSPATH."script/php/stats.php"); ?>
-        <i class='sub-num'><?php echo $aths_num; ?></i>
-        شاعیر
-        &rsaquo;
-        <i class='sub-num'><?php echo $hons_num; ?></i>
-        شێعر
-    </div>
-    <div style="font-size:.65em">
-        <span class="color-666">
+    <div style="font-size:.6em">
+        <span class="color-444">
             ئاخیرین نوێ‌کردنەوەی شێعرەکان: 
         </span>
         <span style="display:inline-block">
@@ -38,6 +30,14 @@ include(ABSPATH."script/php/header.php");
 		date_diff($now,$last_update_date,true));
             ?>
         </span>
+    </div>
+    <div class='stats-min color-444'>
+        <?php include(ABSPATH."script/php/stats.php"); ?>
+        <i class='sub-num'><?php echo $aths_num; ?></i>
+        شاعیر
+        &rsaquo;
+        <i class='sub-num'><?php echo $hons_num; ?></i>
+        شێعر
     </div>
     <div class="border-eee"
 	 style="width:95%;max-width:550px;
@@ -84,52 +84,52 @@ include(ABSPATH."script/php/header.php");
         <div id="Acomms"
 	     style="font-size:.8em;<?php 
 				   if(!$nzuri)
-				       echo('display:none;'); 
+				       echo 'display:none;';
 				   ?>">
         </div>
     </div>
 </div>
 <script>
  window.onload = function () {
-     var http = new XMLHttpRequest();
-     getUrl(
-	 "/about/about-comments.php",
-	 function (responseText) {
-	     var Acomms = document.
-			   getElementById("Acomms");
-	     Acomms.innerHTML=responseText;
-	     Acomms.style.animation="tL-top 0.8s \
+     getUrl("/about/about-comments.php",
+	    function (responseText)
+	    {
+		const Acomms = document.
+			       getElementById("Acomms");
+		Acomms.innerHTML=responseText;
+		Acomms.style.animation="tL-top 0.8s \
 cubic-bezier(.18,.89,.32,1.28)";
-	 });
+	    });
  }
  
  function append() {
-
-     var httpd = new XMLHttpRequest(),
-	 res = document.getElementById('message'),
-	 comm = document.getElementById('commTxt'),
-	 loader = document.getElementById('commloader'),
-	 nullError = "<i style='display:block;background:rgba(204,51,0,.1);\
+     const httpd = new XMLHttpRequest(),
+	   res = document.getElementById('message'),
+	   comm = document.getElementById('commTxt'),
+	   loader = document.getElementById('commloader'),
+	   nullError = "<i style='display:block;background:rgba(204,51,0,.1);\
 color:#444;font-size:.5em'>هیچ تان نەنووسیوە.</i>",
-	 succMess = "<i style='display:block;background:rgba(102,255,204,.1);\
+	   succMess = "<i style='display:block;background:rgba(102,255,204,.1);\
 color:#444;font-size:.5em'>زۆر سپاس بۆ دەربڕینی بیر و ڕاتان سەبارەت بە ئاڵەکۆک.</i>",
-	 failMess = "<i style='display:block;background:rgba(204,51,0,.1);\
+	   failMess = "<i style='display:block;background:rgba(204,51,0,.1);\
 color:#444;font-size:.5em'>کێشەیەک هەیە. تکایە دووبارە هەوڵ دەنەوە.</i>",
 	 /* Out of range error */
-	 OoRError = "<i style='display:block;background:rgba(204,51,0,.1);\
+	   OoRError = "<i style='display:block;background:rgba(204,51,0,.1);\
 color:#444;font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پیت زیاتر بێ.</i>",
-	 request = "comm="+encodeURIComponent(comm.value);
+	   request = "comm="+encodeURIComponent(comm.value);
 
-     if(comm.value === "") {
+     if(comm.value === "")
+     {
          comm.focus();
          return;
      }
-     if(comm.value.length > 2685) {
+     if(comm.value.length > 2685)
+     {
          res.innerHTML = OoRError;
-         comm.style.borderTop = "5px solid rgb(204,51,0)";
+         comm.style.borderTopColor = "rgb(204,51,0)";
          comm.focus();
          setTimeout(function() {
-	     comm.style.borderTop = "";
+	     comm.style.borderTopColor = "";
          }, 3000);
          return;
      }     
@@ -143,7 +143,7 @@ color:#444;font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پ
          if(respond.message == "ok")
 	 {
 	     res.innerHTML = succMess;
-	     comm.style.borderTop = "5px solid #06d";
+	     comm.style.borderTopColor = "#06d";
 	     var Acomms = document.getElementById('Acomms'),
 		 AcommsTitle = document.getElementById('Acomms-title');
 	     Acomms.style.display = "block";
@@ -155,9 +155,9 @@ color:#444;font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پ
 	 else
 	 {
 	     res.innerHTML = failMess;
-	     comm.style.borderTop = "5px solid rgb(204,51,0)";
+	     comm.style.borderTopColor = "rgb(204,51,0)";
 	     setTimeout(function() {
-                 comm.style.borderTop = "";
+                 comm.style.borderTopColor = "";
 	     }, 3000);
          }
          loader.style.display = "none";
@@ -169,10 +169,11 @@ color:#444;font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پ
 	 "application/x-www-form-urlencoded");
      httpd.send(request);
  }
- document.getElementById("frmComm").addEventListener("submit", function(e) {
-     e.preventDefault();
-     append();
- });
+ document.getElementById("frmComm").
+	  addEventListener("submit", function(e) {
+	      e.preventDefault();
+	      append();
+	  });
 </script>
 <?php
 include_once(ABSPATH."script/php/footer.php");

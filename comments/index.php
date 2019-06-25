@@ -19,7 +19,7 @@ include(ABSPATH . "script/php/header.php");
         ژمارەی بیروڕاکان: 
         <?php
         $db = "index";
-        $q = "select * from comments where blocked=0";
+        $q = "select id from comments where blocked=0";
         include(ABSPATH . "script/php/condb.php");
         $nm = $query ?
 	      mysqli_num_rows($query) : 0;
@@ -34,16 +34,17 @@ include(ABSPATH . "script/php/header.php");
         </div>
     </div>
     <script>
-     window.onload=function() {
-	 var comments = document.querySelector("#hon-comments-body"),
-	     xmlhttp = new XMLHttpRequest();
+     window.onload = function ()
+     {
+	 const comments = document.querySelector("#hon-comments-body"),
+	       xmlhttp = new XMLHttpRequest();
 	 getUrl("get-comments.php?n=20",function(responseText) {
-	     var res = JSON.parse(responseText);
+	     const res = JSON.parse(responseText);
              if(res.err != 1) {
-		 var newComm = "";
+		 let newComm = "";
 		 for(a in res)
 		 {
-                     newComm += "<div class='comment'style='margin-bottom:16px'><div \
+                     newComm += "<div class='comment'><div \
 class='comm-name'><i style='font-style:normal;padding-left:.2em;\
 font-size:1.4em;'>&bull;</i>"+res[a].name+"<span class='color-444' \
 style='font-size:.7em'> سەبارەت بە شێعری </span><a class='border-bottom-eee' \

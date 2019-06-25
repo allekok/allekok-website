@@ -56,7 +56,7 @@ a:hover{text-decoration:none}
 .button{background:none;color:#bbb}
 .button:hover{color:#fff}
 .material-icons{font-family:'Material Icons';direction:ltr;line-height:1;display:inline-block;-moz-font-feature-settings:'liga';-moz-osx-font-smoothing:grayscale;vertical-align:middle}
-.stats-min{font-size:.65em;color:#999}
+.stats-min{font-size:.6em}
 .sub-num{vertical-align:bottom}
 header a:hover,section a:hover,.psec:hover{opacity:.85}
 header{padding:.1em 0 0;text-align:center;margin:auto;position:relative;color:#000}
