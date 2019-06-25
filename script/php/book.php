@@ -67,8 +67,8 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 	       echo $colors[$color_num][0].';';
 	       ?>
 	       display:inline-block;
-	       font-size:1.15em;
-	       padding:.5em .3em"
+	       font-size:1.35em;
+	       padding:.4em .3em"
 	   class="material-icons button"
 	   title="نووسینی شێعرێکی تازە"
 	   href="/pitew/index.php?poet=<?php 

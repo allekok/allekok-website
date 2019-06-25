@@ -391,7 +391,6 @@ function Liked ()
         localStorage.setItem(bookmarks_name,
 			     JSON.stringify([poemObject]));
 	ico.innerHTML = "bookmark";
-	ico.style.color = colors[0][0];
         ico.style.animation = "ll .4s ease-out forwards";
         bookmarksIcon.style.display = "block";
 	return;
@@ -412,7 +411,6 @@ function Liked ()
 	bookmarks.push(poemObject);
         localStorage.setItem(bookmarks_name,JSON.stringify(bookmarks));
 	ico.innerHTML = "bookmark";
-	ico.style.color = colors[0][0];
         ico.style.animation = "ll .4s ease-out forwards";        
     }
     else
@@ -429,7 +427,6 @@ function Liked ()
             bookmarksIcon.style.display = "none";
         }        
 	ico.innerHTML = "bookmark_border";
-	ico.style.color = "";
         ico.style.animation = "";        
     }
 }
@@ -615,7 +612,6 @@ if(favs)
 	    if(favs[i].url == poemObject.url)
 	    {
 		likeico.innerHTML = "bookmark";
-		likeico.style.color = colors[0][0];
 		likeico.style.animation = "ll .4s ease-out forwards";
 		break;
 	    }

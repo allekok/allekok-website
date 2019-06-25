@@ -292,7 +292,8 @@ include(ABSPATH . 'script/php/header.php');
                 
                 echo "<h3 class='border-eee' style='margin-top:2em;
 font-size:.7em;padding:1em'>پرسیار و وەڵامەکان</h3>";
-                
+                $cc = array_reverse($cc);
+		
                 foreach($cc as $c) {
                     if(!empty($c)) {
 			$c = preg_replace(

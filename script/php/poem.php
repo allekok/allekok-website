@@ -140,10 +140,10 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	    $row[1]['id']==1)) {
 	?><button id='fav-sec' class='button fav'
 		  style="float:left;
-		      padding-top:.6em">
-            <i class='material-icons color-666'
+		      padding-top:.4em">
+            <i class='material-icons'
 	       id='like-icon'
-	       style='font-size:2.8em'
+	       style='font-size:3em;color:<?php echo $colors[0][0]; ?>'
 	    >bookmark_border</i>
 	</button>
         <?php } ?>

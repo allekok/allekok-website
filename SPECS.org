@@ -21,9 +21,7 @@
 - name
 - hon
 - hdesc
-- likes
 - link
-- resource
 - lang
 ***** Table: comments
       Columns:
