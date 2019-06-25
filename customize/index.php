@@ -25,7 +25,8 @@ include(ABSPATH . "script/php/header.php");
  }
  .button.selected
  {
-     color:#15c314;
+     color:<?php echo $colors[0][0]; ?>;
+     font-weight:bold;
  }
  .icon-round
  {
@@ -35,6 +36,8 @@ include(ABSPATH . "script/php/header.php");
 <div id="poets" style="max-width:850px">
     <h1 style="display:inline-block;padding:.1em .8em 0;
 	       border-radius:5px;font-size:1.2em">
+	<i class="material-icons"
+	   style="color:<?php echo $colors[0][0]; ?>">settings</i>
         گۆڕینی شێوەی ئاڵەکۆک
     </h1>
     <!-- Theme -->

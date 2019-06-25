@@ -93,12 +93,10 @@ include(ABSPATH . 'script/php/header.php');
          height: 155px;
      }
      .btn {
-         font-size: 0.65em;
-         width: 50%;
-         padding: 0.8em 0;
-         max-width: 150px;
-         cursor: pointer;
-         margin-top: 1em;
+         font-size:.75em;
+         width:50%;
+         padding:.8em 0;
+         max-width:150px;
      }
     </style>
     
@@ -136,7 +134,7 @@ include(ABSPATH . 'script/php/header.php');
 			    ["<code>","</code>"], $c);
                         $c = str_replace(["\n"], ["<br>"], $c);
                         echo "<div class='";
-                        if($i%2) echo "back-f3f3f3 ";
+                        if($i%2) echo "border-right-999 ";
                         echo "comment'><div class='comm-body'>".$c."</div></div>";
                         $i++;
                     }

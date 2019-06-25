@@ -6,8 +6,7 @@ h1, h2, h3, h4, h5, h6, p, input, a, form, button, select,
 ul, li, ol, header, div, footer, article, section, nav, img, table, tr,
 td, th, textarea, span, i, sup, sub{padding:0;margin:0;border:0;font-family:inherit;font-weight:normal;transition:all .15s ease-out;-webkit-transition:all .15s ease-out;text-align:inherit;box-sizing:border-box}
 input, textarea, button{-webkit-appearance:none;appearance:none;outline:none;border-radius:0}
-input, textarea{padding:1em;text-align:right;border-top:5px solid #111;display:block;margin:auto;box-shadow:0 6px 10px -6px #202020;background:#000;color:#fff}
-input:focus, textarea:focus{background:#070707}
+input, textarea{padding:1em;text-align:right;border-top:8px solid #111;display:block;margin:auto;box-shadow:0 10px 14px -8px #555;background:#000;color:#fff}
 i{font-style:normal}
 .poet-pic-small{display:block;margin:.5em auto 0;border-radius:50%;max-width:120px}
 .poetnm a{display:inline-block}
@@ -44,7 +43,7 @@ i{font-style:normal}
 #hon-comments{border-top:1px solid #111;padding-top:.5em;max-width:800px;margin:auto}
 #commNameTxt,#commTxt{font-size:.6em;width:100%}
 #commTxt{min-height:10em}
-.comment{text-align:right;padding:.5em;background:#070707;box-shadow:0 20px 20px -20px #444;margin-bottom:1px}
+.comment{text-align:right;padding:.5em;border-right:7px solid #111;border-bottom:1px solid #111}
 .comm-name{font-size:.7em;line-height: 2;margin-bottom:.8em}
 .comm-body{background:url(/style/img/quote-right.svg) no-repeat right top, url(/style/img/quote-left.svg) no-repeat left bottom;background-size:.7em;font-size:.55em;text-indent:1em;padding:.5em 1em;text-align:justify}
 .comm-footer{text-align:left;font-size:.45em;color:#999}
@@ -163,5 +162,6 @@ footer i{font-size:1.4em}
 .back-eee{background:#111}
 .border-eee{border-top:1px solid #111}
 .border-right-eee{border-right:5px solid #111}
+.border-right-999{border-right:5px solid #666}
 .border-bottom-eee{border-bottom:1px solid #111}
 .link-color{color:#ff1}

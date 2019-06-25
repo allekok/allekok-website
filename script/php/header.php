@@ -21,7 +21,7 @@ else
 				   $_COOKIE['theme'] == 'dark') ? 
 				    "main-dark.css" : 
 				    "main.css";
-			       ?>?v31'/>
+			       ?>?v32'/>
 	<title>
 	    <?php echo $title; ?>
 	</title>
@@ -62,10 +62,13 @@ else
 	 }
 	 <?php } ?>
 	 .bk-comp {
-             color:<?php echo($colors[$color_num][0]) ?>;
+             color:<?php echo($colors[$color_num][0]); ?>;
 	 }
 	 .loader {
-             border-top-color:<?php echo($colors[$color_num][0]) ?>;
+             border-top-color:<?php echo($colors[0][0]); ?>;
+	 }
+	 input:focus, textarea:focus{
+	     border-top-color:<?php echo($colors[0][0]); ?>;
 	 }
 	</style>
 	<script>

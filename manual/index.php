@@ -32,12 +32,10 @@ include(ABSPATH . "script/php/header.php");
          height: 155px;
      }
      .btn {
-         font-size: .65em;
+         font-size: .75em;
          width: 50%;
          padding: .8em 0;
          max-width: 150px;
-         cursor: pointer;
-         margin-top: 1em;
      }
      main pre {
          white-space: pre-wrap;       /* Since CSS 2.1 */

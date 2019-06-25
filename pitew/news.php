@@ -24,7 +24,6 @@ include(ABSPATH . "script/php/header.php");
     </style>
     <h1 style="display:inline-block;
 	       padding:.1em .8em 0;font-size:1.2em">
-	<i class="material-icons">new_releases</i>
         تازەکانی ئاڵەکۆک
     </h1>
     <main style="max-width:800px;margin:auto;font-size:.6em;text-align:right;">
