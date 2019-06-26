@@ -38,14 +38,9 @@ include(ABSPATH . "script/php/header.php");
 	 display:inline-block;
      }
      .epld-expand {
-	 font-size:1em;
+	 font-size:1.3em;
 	 padding:0 .5em;
-	 margin:1em 0;
-	 background:#666;
-	 color:#fff;
-     }
-     .epld-expand i {
-	 vertical-align:middle;
+	 margin:.5em 0;
      }
     </style>
     <script>
@@ -127,7 +122,7 @@ style='font-size:inherit;display:inline-block'\
 		$n++;
 	    }
 	    echo '</small></h3>';
-	    echo "</div><div><button class='epld-expand button' 
+	    echo "</div><div><button class='epld-expand color-444 button' 
 onclick='expand(this)'><i class='material-icons' 
 style='font-size:inherit;display:inline-block'
 >keyboard_arrow_down</i></button></div>";
