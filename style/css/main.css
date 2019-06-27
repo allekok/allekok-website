@@ -117,7 +117,7 @@ header a h1{font-size:1em}
 .m, .b span, .n span, .m span, .m1 span, .m2 span, .m3 span{font-size:inherit}
 .m{padding:3px 13px 3px 7px;text-align:right}
 .cf{background:#f3f3f3}
-.loader{border:2px solid #eee;border-top:2px solid;border-radius:50%;width:5rem;height:5rem;animation:spin .4s linear infinite;margin:auto}
+.loader{border:7px solid #fff;border-radius:50%;width:5rem;height:5rem;animation:spin .8s linear infinite;margin:auto}
 .fontsize{font-size:.65em;padding:0 0 .2em;text-align:right;border-bottom:1px solid #eee}
 .fontsize button{display:inline-block}
 .bigger{font-size:.83em;padding:.7em .3em}
