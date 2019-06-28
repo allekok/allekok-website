@@ -141,7 +141,7 @@ include(ABSPATH . "script/php/header.php");
         &rsaquo; بۆ 
         <a href="/kurdi-nus/kurdi-nus-central-kurdish.html"
 	   style="background:#4699EC;color:#fff"
-	>ئامێری پەڵک کوردی‌نووس ۴.۰</a>
+	>ئامێری پەڵک کوردی‌نووس</a>
         کە بۆ نووسینەوەی بەشێک لە 
         <a href="/poet:85/book:1"
 	   style="background:<?php echo $colors[0][2]; ?>;
