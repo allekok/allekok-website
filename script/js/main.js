@@ -525,14 +525,15 @@ function filterp(needle="", context, lastChance=false) {
 	filterp(needle, context, true);
 }
 
-function KurdishNumbers(inp="") {    
-    const en = [/0/g, /1/g, /2/g, /3/g, /4/g, /5/g, /6/g, /7/g, /8/g, /9/g],
-	  ar = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g],
-	  ku = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-    for (let i in en)
-    {
-        inp = inp.replace(en[i], ku[i]).replace(ar[i], ku[i]);
-    }    
+function KurdishNumbers (inp="")
+{
+    const en = [/0/g,/1/g,/2/g,/3/g,/4/g,/5/g,/6/g,/7/g,/8/g,/9/g],
+	  fa = [/۰/g,/۱/g,/۲/g,/۳/g,/۴/g,/۵/g,/۶/g,/۷/g,/۸/g,/۹/g],
+	  ku = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+    
+    for (const i in en)
+        inp = inp.replace(en[i], ku[i]).replace(fa[i], ku[i]);
+    
     return inp;
 }
 

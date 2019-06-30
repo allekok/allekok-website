@@ -134,43 +134,34 @@ include_once("../constants.php");
 	 }
 	 
 	 function num_convert() {
-	     var en_num = [/0/g,/1/g,/2/g,/3/g,/4/g,/5/g,/6/g,/7/g,/8/g,/9/g];
-	     var ku_num = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
-	     var ar_num = [/٠/g,
-			   /١/g,
-			   /٢/g,
-			   /٣/g,
-			   /٤/g,
-			   /٥/g,
-			   /٦/g,
-			   /٧/g,
-			   /٨/g,
-			   /٩/g];
+	     const en_num = [/0/g,/1/g,/2/g,/3/g,/4/g,/5/g,/6/g,/7/g,/8/g,/9/g],
+		   fa_num = [/۰/g,/۱/g,/۲/g,/۳/g,/۴/g,/۵/g,/۶/g,/۷/g,/۸/g,/۹/g],
+		   ku_num = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
 	     
-	     var not_allow = [
+	     const not_allow = [
 		 /\"/g, /&#34;/g,/&#۳۴;/g,
-		     ];
-             var allowed = ["\'", "\'","\'"];
-		     
-		     var input = document.querySelector('#hon');
-		     var output = input.value;
-		     
-		     for(var o in not_allow) {
-			 output = output.replace(not_allow[o], allowed[o]);
-		     }
-		     
-		     for(var en in en_num) {
-			 
-			 output = output.replace(en_num[en], ku_num[en]);
-			 output = output.replace(ar_num[en], ku_num[en]);
-			 
-		     }
-		     
-		     input.value = output;
-		 }
-		 function nbr_convert() {
-		     
-		     var input = document.querySelector('#hon');
+	     ];
+             const allowed = ["\'", "\'","\'"];
+	     
+	     var input = document.querySelector('#hon');
+	     var output = input.value;
+	     
+	     for(var o in not_allow) {
+		 output = output.replace(not_allow[o], allowed[o]);
+	     }
+	     
+	     for(var en in en_num) {
+		 
+		 output = output.replace(en_num[en], ku_num[en]);
+		 output = output.replace(fa_num[en], ku_num[en]);
+		 
+	     }
+	     
+	     input.value = output;
+	 }
+	 function nbr_convert() {
+	     
+	     var input = document.querySelector('#hon');
 		 var output = input.value;
 		 
 		 output = output.replace(/\n/g, "<br>\n");
