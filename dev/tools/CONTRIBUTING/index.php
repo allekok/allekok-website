@@ -57,10 +57,6 @@ include(ABSPATH . 'script/php/header.php');
      }
      #poets a {
 	 border-bottom:1px solid <?php echo $colors[0][0]; ?>;
-	 color:#444;
-     }
-     #poets a:hover {
-	 background:#eee;
      }
      pre {
 	 overflow:auto;
@@ -89,7 +85,6 @@ include(ABSPATH . 'script/php/header.php');
      }
      main ul, ol {
          padding-right:2em;
-         color:#333;
 	 list-style-type:persian;
 	 font-size:.9em
      }
@@ -104,7 +99,6 @@ include(ABSPATH . 'script/php/header.php');
      }
      main .material-icons {
          display: inline;
-         vertical-align: middle;
          font-size: 1.5em;
      }
     </style>
@@ -188,18 +182,19 @@ font-size:.7em;padding:1em'>پرسیار و وەڵامەکان</h3>";
          document.querySelector("#frmQA").addEventListener("submit", function(e) {
              e.preventDefault();
              
-             var txt = document.querySelector("#QAtxt");
-             var t = document.querySelector("#QAres");
-             var loader = "<div class='loader'></div>";
+             const txt = document.querySelector("#QAtxt"),
+		   t = document.querySelector("#QAres"),
+		   loader = "<div class='loader'></div>";
              
-             if(txt.value == "") {
+             if(txt.value == "")
+	     {
                  txt.focus();
                  return;
              }
              
              t.innerHTML = loader;
              
-             var x = new XMLHttpRequest();
+             const x = new XMLHttpRequest();
              x.onload = function() {
                  if(this.responseText == "1") {
                      t.innerHTML = "<span style='background:rgba(0,255,0,.08); color:<?php echo $colors[0][0]; ?>;display:block;padding:1em; font-size:.6em;'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
@@ -209,12 +204,13 @@ font-size:.7em;padding:1em'>پرسیار و وەڵامەکان</h3>";
              x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
              x.send(`txt=${encodeURIComponent(txt.value)}`);
          });
-        </script>
-        
-    </div>
-    
+	 document.querySelectorAll("main ul, main ol").forEach(
+	     function(item) {
+		 item.classList.add("color-333");
+	     });
+        </script>        
+    </div>    
 </div>
-
 <?php
 include_once(ABSPATH . "script/php/footer.php");
 ?>

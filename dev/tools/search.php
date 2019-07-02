@@ -1,23 +1,23 @@
 <?php
 /*
- * Input: $_GET['q'] -> $s
- * Output: HTML
+ * Input: REQUEST:(q, Optional:(selPT,pt,bk,pm,k))
+ * Output: JSON
  */
 /* Header */
 $timer_start = microtime(true);
 require("../../script/php/functions.php");
-$s = isset($_GET['q']) ? $_GET['q'] : die();
+$s = isset($_REQUEST['q']) ? $_REQUEST['q'] : die();
 $s_sanitized = san_data($s);
 if($s_sanitized=="") die();
 $s_len = strlen($s_sanitized);
 $s_sanitized_more = san_data_more($s_sanitized);
-$selected_poet = isset($_GET['selPT']) ?
-		 filter_var($_GET['selPT'], FILTER_SANITIZE_STRING) : false;
+$selected_poet = isset($_REQUEST['selPT']) ?
+		 filter_var($_REQUEST['selPT'], FILTER_SANITIZE_STRING) : false;
 $selected_poet_query = $selected_poet ? "and rtakh='$selected_poet'" : "";
-$poets_max = isset($_GET['pt']) ? intval($_GET['pt']) : 10;
-$books_max = isset($_GET['bk']) ? intval($_GET['bk']) : 10;
-$poems_max = isset($_GET['pm']) ? intval($_GET['pm']) : 10;
-$poem_search_kind = isset($_GET['k']) ? intval($_GET['k']) : 3;
+$poets_max = isset($_REQUEST['pt']) ? intval($_REQUEST['pt']) : 10;
+$books_max = isset($_REQUEST['bk']) ? intval($_REQUEST['bk']) : 10;
+$poems_max = isset($_REQUEST['pm']) ? intval($_REQUEST['pm']) : 10;
+$poem_search_kind = isset($_REQUEST['k']) ? intval($_REQUEST['k']) : 3;
 /* k : [ 1 => poem-name, 2 => poem-context, 3 => both 1,2 ] */
 $poets = [];
 $books = [];
