@@ -1,6 +1,6 @@
 <?php
 /*
- * Input: REQUEST:(q, Optional:(selPT,pt,bk,pm,k))
+ * Input: REQUEST:(q, Optional:(poet,pt,bk,pm,k))
  * Output: JSON
  */
 /* Header */
@@ -11,8 +11,8 @@ $s_sanitized = san_data($s);
 if($s_sanitized=="") die();
 $s_len = strlen($s_sanitized);
 $s_sanitized_more = san_data_more($s_sanitized);
-$selected_poet = isset($_REQUEST['selPT']) ?
-		 filter_var($_REQUEST['selPT'], FILTER_SANITIZE_STRING) : false;
+$selected_poet = isset($_REQUEST['poet']) ?
+		 filter_var($_REQUEST['poet'], FILTER_SANITIZE_STRING) : false;
 $selected_poet_query = $selected_poet ? "and rtakh='$selected_poet'" : "";
 $poets_max = isset($_REQUEST['pt']) ? intval($_REQUEST['pt']) : 10;
 $books_max = isset($_REQUEST['bk']) ? intval($_REQUEST['bk']) : 10;
