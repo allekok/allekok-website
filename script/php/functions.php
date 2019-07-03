@@ -1,13 +1,8 @@
 <?php
-/*
- * Functions:
- * num_convert , get_poet_image
- * color_num , format_DD
- */
-
 require_once('constants.php');
 
-function num_convert($_string, $_from, $_to) {
+function num_convert($_string, $_from, $_to)
+{
     /* Convert a string of numbers from 
        (en,fa,ckb) > (en,fa,ckb) */
 
@@ -22,7 +17,8 @@ function num_convert($_string, $_from, $_to) {
 		       $_string);
 }
 
-function get_poet_image($_pID, $_slash) {
+function get_poet_image($_pID, $_slash)
+{
     /* Return poet's image url */    
     if(file_exists(
 	ABSPATH .
@@ -37,13 +33,15 @@ function get_poet_image($_pID, $_slash) {
     return $_img;
 }
 
-function color_num ($ath) {
+function color_num ($ath)
+{
     /* It is gonna be used for '$colors' 
        index inside 'colors.php' */
     return 0;
 }
 
-function format_DD($date_diff) {
+function format_DD($date_diff)
+{
     if($date_diff->days)
 	$ret = $date_diff->days . ' ڕۆژ';
     elseif($date_diff->h)
@@ -57,10 +55,10 @@ function format_DD($date_diff) {
     return num_convert($ret,'en','ckb') . ' لەوەپێش';
 }
 
-/* * * 
- * Sanitize Kurdish text for search.
- * * */
-function san_data($in, $lastChance=false) {
+function san_data($in, $lastChance=false)
+{
+    /* Sanitize Kurdish text for search. */
+
     /* Extras */
     $extras = ["&#34;","&#39;","&laquo;","&raquo;","&rsaquo;",
 	       "&lsaquo;","&bull;","&nbsp;","?", "!", "#", "&",
@@ -105,7 +103,8 @@ function san_data($in, $lastChance=false) {
     $in = str_replace($from_letters,$to_letters,$in);
     $in = preg_replace("/\s+/", "", $in);
     
-    if($lastChance) {
+    if($lastChance)
+    {
 	/* Remove 'h' and Numbers */
         $in = str_replace("h","",$in);
         $in = str_replace($to_nums, "", $in);
@@ -114,7 +113,8 @@ function san_data($in, $lastChance=false) {
     return $in;
 }
 
-function san_data_more($in) {
+function san_data_more($in)
+{
     /* Remove 'h' and Numbers */
     $to_nums = [
         "0","1","2","3","4","5","6","7","8","9",
@@ -126,11 +126,13 @@ function san_data_more($in) {
 
 function list_dir($path,
 		  $ignore = ['.','..','README.md','list.txt'],
-		  $output = 'list.txt') {
+		  $output = 'list.txt')
+{
     $output = "$path/$output";
     $f = fopen($output,'w');
     $dir = opendir($path);
-    while(false !== ($e=readdir($dir))) {
+    while(false !== ($e=readdir($dir)))
+    {
 	if(in_array($e,$ignore))
 	    continue;
 	fwrite($f,"$e\n");
@@ -139,7 +141,8 @@ function list_dir($path,
     fclose($f);
 }
 
-function save_QA($input) {
+function save_QA($input)
+{
     $input = trim(stripslashes(
 	htmlspecialchars($input)));
     if(empty($input)) die();
