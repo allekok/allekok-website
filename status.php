@@ -127,7 +127,7 @@ function last ($path, $n=1)
 {
     /* Get 'n' items from the tail of a 'QA.txt' */
     if(! file_exists($path))
-	return false;
+	return '+•+\n';
     
     $file = file_get_contents($path);
     $file = explode("\nend\n", $file);
