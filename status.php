@@ -111,7 +111,7 @@ function make_list($_dir)
     {
 	if(in_array($entry,$not)) continue;
 	$uri = "$_dir/$entry";
-	$entry = str_replace([".jpeg",".jpg",".png"], "", $entry);
+	$entry = str_replace([".jpeg",".jpg",".png",".txt"], "", $entry);
 	$entry = explode("_", $entry);
 	$entry["poet"] = $entry[0];
 	$entry["name"] = $entry[1];
@@ -127,7 +127,7 @@ function last ($path, $n=1)
 {
     /* Get 'n' items from the tail of a 'QA.txt' */
     if(! file_exists($path))
-	return '+•+\n';
+	return '+•+';
     
     $file = file_get_contents($path);
     $file = explode("\nend\n", $file);

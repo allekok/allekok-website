@@ -40,7 +40,7 @@ function get_poet ()
     foreach ($poets as $pt)
     {
 	if($pt == "all")
-	    $q = "SELECT * FROM auth WHERE $kind";
+	    $q = "SELECT * FROM auth WHERE $kind ORDER BY takh";
         elseif(filter_var($pt, FILTER_VALIDATE_INT))
 	    $q = "SELECT * FROM auth WHERE id=$pt";
         else
