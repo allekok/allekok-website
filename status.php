@@ -127,12 +127,12 @@ function last ($path, $n=1)
 {
     /* Get 'n' items from the tail of a 'QA.txt' */
     if(! file_exists($path))
-	return "+•+\n";
+	return '+•+\n';
     
     $file = file_get_contents($path);
     $file = explode("\nend\n", $file);
     $file = array_reverse($file);
-    $return = "";
+    $return = '';
     $i = 0;
     
     foreach($file as $item)
@@ -147,6 +147,6 @@ function last ($path, $n=1)
     if($return)
 	return $return;
     else
-	return "+•+\n";
+	return '+•+';
 }
 ?>
