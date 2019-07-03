@@ -32,7 +32,7 @@ else
 }
 
 /* New-Images */
-echo "/ناردنی وێنەی شاعیران/\n";
+echo "\n/ناردنی وێنەی شاعیران/\n";
 $_list = make_list(ABSPATH."style/img/poets/new/");
 foreach($_list as $i=>$_l)
 {
@@ -42,7 +42,7 @@ foreach($_list as $i=>$_l)
 if(!$_list) echo "+•+\n";
 
 /* New-Poet-Descs */
-echo "/نووسینی زانیاری سەبارەت بە شاعیران/\n";
+echo "\n/نووسینی زانیاری سەبارەت بە شاعیران/\n";
 $_list = make_list(ABSPATH."pitew/res/");
 foreach($_list as $i=>$_l)
 {
@@ -52,7 +52,7 @@ foreach($_list as $i=>$_l)
 if(!$_list) echo "+•+\n";
 
 /* New-Comments */
-echo "/بیر و ڕای شێعرەکان/\n";
+echo "\n/بیر و ڕای شێعرەکان/\n";
 $q = "select * from `comments` where `read`=0 order by `id` DESC";
 $query = mysqli_query($conn, $q);
 if($query and (mysqli_num_rows($query) > 0))
@@ -70,34 +70,34 @@ else
 mysqli_close($conn);
 
 /* about */
-echo "/about/\n";
+echo "\n/about/\n";
 echo filter_var(
     file_get_contents(
 	'https://allekok.com/about/about-comments.php?num=1'),
     FILTER_SANITIZE_STRING) . "\n";
 
 /* allekok-desktop */
-echo "/allekok-desktop/\n";
+echo "\n/allekok-desktop/\n";
 echo last(ABSPATH . "desktop/QA.txt") . "\n";
 
 /* allekok-mobile */
-echo "/allekok-mobile/\n";
+echo "\n/allekok-mobile/\n";
 echo last(ABSPATH . "mobile/QA.txt") . "\n";
 
 /* pitew */
-echo "/پتەوکردنی ئاڵەکۆک/\n";
+echo "\n/پتەوکردنی ئاڵەکۆک/\n";
 echo last(ABSPATH . "pitew/QA.txt") . "\n";
 
 /* dev/tools */
-echo "/dev/\n";
+echo "\n/dev/\n";
 echo last(ABSPATH . "dev/tools/QA.txt") . "\n";
 
 /* manual */
-echo "/manual/\n";
+echo "\n/manual/\n";
 echo last(ABSPATH . "manual/QA.txt") . "\n";
 
 /* CONTRIBUTING */
-echo "/CONTRIBUTING/\n";
+echo "\n/CONTRIBUTING/\n";
 echo last(ABSPATH . "dev/tools/CONTRIBUTING/QA.txt") . "\n";
 
 /* Tools */
