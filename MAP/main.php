@@ -1,12 +1,10 @@
 <?php
-const ABSPATH = dirname(__DIR__);
 require("library.php");
 
 $output = fopen("MAP.org","w");
-fwrite($output,"#+TITLE: Functions\n#+AUTHOR: MAP\n:Project: ".
-	       basename(ABSPATH)."\n\n");
+fwrite($output,"#+TITLE: Functions\n#+AUTHOR: MAP\n\n");
 
-$php_files = list_php_files(ABSPATH);
+$php_files = list_php_files("..");
 foreach($php_files as $file)
 {
     $funcs = functions($file);

@@ -27,6 +27,9 @@ include(ABSPATH . "script/php/header.php");
 	<input type="password" name="password"
 	       placeholder="تێپەڕوشە" />
     </form>
+    <script>
+     document.querySelector("input[name=password]").focus();
+    </script>
 </div>
 
 <?php include_once(ABSPATH . "script/php/footer.php"); ?>
