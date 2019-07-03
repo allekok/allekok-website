@@ -70,34 +70,34 @@ else
 mysqli_close($conn);
 
 /* about */
-echo "\n/about/\n";
+echo "\n/ئاڵەکۆک؟/\n";
 echo filter_var(
     file_get_contents(
 	'https://allekok.com/about/about-comments.php?num=1'),
     FILTER_SANITIZE_STRING) . "\n";
 
-/* allekok-desktop */
-echo "\n/allekok-desktop/\n";
-echo last(ABSPATH . "desktop/QA.txt") . "\n";
-
-/* allekok-mobile */
-echo "\n/allekok-mobile/\n";
-echo last(ABSPATH . "mobile/QA.txt") . "\n";
-
 /* pitew */
 echo "\n/پتەوکردنی ئاڵەکۆک/\n";
 echo last(ABSPATH . "pitew/QA.txt") . "\n";
 
+/* allekok-desktop */
+echo "\n/بەرنامەی دێسکتاپی ئاڵەکۆک/\n";
+echo last(ABSPATH . "desktop/QA.txt") . "\n";
+
+/* allekok-mobile */
+echo "\n/بەرنامەی مۆبایلی ئاڵەکۆک/\n";
+echo last(ABSPATH . "mobile/QA.txt") . "\n";
+
 /* dev/tools */
-echo "\n/dev/\n";
+echo "\n/کۆدەکانی ئاڵەکۆک/\n";
 echo last(ABSPATH . "dev/tools/QA.txt") . "\n";
 
 /* manual */
-echo "\n/manual/\n";
+echo "\n/چۆنیەتی بەکارهێنانی ئاڵەکۆک/\n";
 echo last(ABSPATH . "manual/QA.txt") . "\n";
 
 /* CONTRIBUTING */
-echo "\n/CONTRIBUTING/\n";
+echo "\n/بەشداربوون لە نووسینی کۆدەکانی ئاڵەکۆک/\n";
 echo last(ABSPATH . "dev/tools/CONTRIBUTING/QA.txt") . "\n";
 
 /* Tools */
