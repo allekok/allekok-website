@@ -44,8 +44,8 @@ include(ABSPATH . "script/php/header.php");
 		 let newComm = "";
 		 for(a in res)
 		 {
-                     newComm += "<div class='comment'><div \
-class='comm-name'><i style='font-style:normal;padding-left:.2em;\
+                     newComm += "<div class='comment'><div class='comm-name'\
+><i style='font-style:normal;padding-left:.2em;color:<?php echo $colors[0][0]; ?>;\
 font-size:1.4em;'>&bull;</i>"+res[a].name+"<span class='color-444' \
 style='font-size:.7em'> سەبارەت بە شێعری </span><a class='border-bottom-eee' \
 style='font-size:.75em;border-radius:3px;padding:.1em .3em' \

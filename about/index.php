@@ -139,13 +139,13 @@ color:#444;font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پ
 
      httpd.open("POST","/about/append.php");
      httpd.onload = function() {
-         var respond = JSON.parse(this.responseText);
+         const respond = JSON.parse(this.responseText);
          if(respond.message == "ok")
 	 {
 	     res.innerHTML = succMess;
 	     comm.style.borderTopColor = "#06d";
-	     var Acomms = document.getElementById('Acomms'),
-		 AcommsTitle = document.getElementById('Acomms-title');
+	     const Acomms = document.getElementById('Acomms'),
+		   AcommsTitle = document.getElementById('Acomms-title');
 	     Acomms.style.display = "block";
 	     AcommsTitle.style.display = "block";
 	     Acomms.innerHTML = respond.comm + Acomms.innerHTML;

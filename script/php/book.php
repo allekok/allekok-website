@@ -59,7 +59,9 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 		       display:block;
 		       font-size:.65em"
 		 class='button'
-	 ><i class="icon-round" style="padding:.1em .7em 0"
+	 ><i class="icon-round"
+	     style="padding:.1em .75em 0;
+		    margin-left:.2em"
 	  >ئا</i> بەڕیز کردنی شێعرەکان لە ئا ڕا</button></div>
 	<a id="new_poem_a"
 	   style="color:
@@ -112,44 +114,43 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
     </div>
     <script>
      /* Book completion icon click event */
-     var bk_comp = document.querySelector(".bk-comp");
-     if(bk_comp !== null) {
+     const bk_comp = document.querySelector(".bk-comp");
+     if(bk_comp !== null)
+     {
 	 bk_comp.addEventListener("click", function() {
-	     var tt = document.getElementById('bk-comp-tt');
-	     if(tt !== null) {
-		 if(tt.style.display === "block") {
+	     const tt = document.getElementById('bk-comp-tt');
+	     if(tt !== null)
+	     {
+		 if(tt.style.display === "block") 
 		     tt.style.display = "none";
-		 } else {
+		 else 
 		     tt.style.display = "block";
-		 }
 	     }
 	 });
      }
 
-     function show_summary(button) {
-	 var href = button.parentNode.
+     function show_summary(button)
+     {
+	 button.innerHTML = "<div class='loader' \
+style='width:2.2em;height:2.2em'></div>";
+	 
+	 let href = button.parentNode.
 			   querySelector("a").
 			   getAttribute("href");
 	 href = href.split("/");
-	 button.innerHTML = "<div class='loader' \
-style='width:2.2em;height:2.2em'></div>";
-	 var pt = href[1].split(":")[1],
-	     bk = href[2].split(":")[1],
-	     pm = href[3].split(":")[1];
+	 const pt = href[1].split(":")[1],
+	       bk = href[2].split(":")[1],
+	       pm = href[3].split(":")[1];
 	 
-	 var xmlhttp = new XMLHttpRequest();
-	 xmlhttp.open("GET",
-		      "/script/php/poem-summary.php?pt="+
-		      pt+"&bk="+bk+"&pm="+pm);
-	 xmlhttp.onload = function() {
-             button.innerHTML = "keyboard_arrow_down";
-             var san_txt = this.responseText.
-				replace(/\n/g, "<br>");
-             button.parentNode.outerHTML += "<div class='back-f3f3f3' \
-style='padding:1em;font-size:.55em;'\
+	 getUrl("/script/php/poem-summary.php?pt="+
+		pt+"&bk="+bk+"&pm="+pm, function(responseText)
+		{
+		    const san_txt = responseText.replace(/\n/g, "<br>");
+		    button.innerHTML = "keyboard_arrow_down";
+		    button.parentNode.outerHTML += "<div class='back-f3f3f3' \
+style='padding:1em;font-size:.55em'\
 >"+san_txt+"</div>";
-	 }
-	 xmlhttp.send();
+		});
      }
      
      document.querySelectorAll("#sp button").

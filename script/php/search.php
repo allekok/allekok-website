@@ -65,8 +65,8 @@
      }
 
      function filterFunction() {
-	 var needle = document.getElementById("myInput").value,
-	     context = document.getElementById("myDropdown").querySelectorAll("a");
+	 const needle = document.getElementById("myInput").value,
+	       context = document.getElementById("myDropdown").querySelectorAll("a");
 	 filterp(needle, context);
      }
      
@@ -75,7 +75,7 @@
      }
 
      function selectText(e) {
-	 var range,
+	 let range,
              selection;
 
 	 if (isiOS()) {
@@ -211,30 +211,30 @@
                     </form>
 		</div>
 		<script>
-		 var maxRN = document.querySelector("#ResNumTxt"),
-		     maxBN = document.querySelector("#BksNumTxt"),
-		     maxPN = document.querySelector("#PtsNumTxt");
+		 const maxRN = document.querySelector("#ResNumTxt"),
+		       maxBN = document.querySelector("#BksNumTxt"),
+		       maxPN = document.querySelector("#PtsNumTxt");
 		 
 		 function checks () {
-                     var pts = (document.querySelector("#cb-pt i").innerHTML != "check_box_outline_blank") ? maxPN.value : 0,
-			 bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
-			 pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
-			 pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
-			 pm_sum = pms+pm_nms,
-			 pms_num = maxRN.value;
+                     const pts = (document.querySelector("#cb-pt i").innerHTML != "check_box_outline_blank") ? maxPN.value : 0,
+			   bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
+			   pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
+			   pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
+			   pm_sum = pms+pm_nms,
+			   pms_num = maxRN.value;
                      if(pm_sum == 0) {
 			 pms_num = 0;
                      }
                      
-                     var res = `pt=${pts}&bk=${bks}&pm=${pms_num}&k=${pm_sum}`;
+                     const res = `pt=${pts}&bk=${bks}&pm=${pms_num}&k=${pm_sum}`;
                      return res;
 		 }
 
 		 function which_PT_selected() {
-                     var dpas = document.querySelectorAll(".dropdown-content a"),
-			 dpass = [];
+                     const dpas = document.querySelectorAll(".dropdown-content a");
+		     let dpass = [];
 		     
-                     for(var i=0; i<dpas.length; i++) {
+                     for(let i=0; i<dpas.length; i++) {
 			 dpass.push([dpas[i].getAttribute("selected"),i]);
                      }
                      dpass = dpass.sort();
@@ -257,12 +257,12 @@
                      
 		 }
 		 document.querySelector("#cb-pt").onclick = function() {
-                     var pts = (document.querySelector("#cb-pt i").innerHTML != "check_box_outline_blank") ? 0 : maxPN.value,
-			 bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
-			 pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
-			 pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
-			 pm_sum = pms+pm_nms,
-			 pms_num = maxRN.value;
+                     const pts = (document.querySelector("#cb-pt i").innerHTML != "check_box_outline_blank") ? 0 : maxPN.value,
+			   bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
+			   pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
+			   pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
+			   pm_sum = pms+pm_nms,
+			   pms_num = maxRN.value;
                      if(pm_sum == 0) {
 			 pms_num = 0;
                      } 
@@ -270,12 +270,12 @@
                      toggle_checkbox(document.querySelector("#cb-pt i"), `pt=${pts}&bk=${bks}&pm=${pms_num}&k=${pm_sum}`);
 		 }
 		 document.querySelector("#cb-bk").onclick = function() {
-                     var pts = (document.querySelector("#cb-pt i").innerHTML != "check_box_outline_blank") ? maxPN.value : 0,
-			 bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? 0 : maxBN.value,
-			 pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
-			 pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
-			 pm_sum = pms+pm_nms,
-			 pms_num = maxRN.value;
+                     const pts = (document.querySelector("#cb-pt i").innerHTML != "check_box_outline_blank") ? maxPN.value : 0,
+			   bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? 0 : maxBN.value,
+			   pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
+			   pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
+			   pm_sum = pms+pm_nms,
+			   pms_num = maxRN.value;
                      if(pm_sum == 0) {
 			 pms_num = 0;
                      } 
@@ -283,12 +283,12 @@
                      toggle_checkbox(document.querySelector("#cb-bk i"), `pt=${pts}&bk=${bks}&pm=${pms_num}&k=${pm_sum}`);
 		 }
 		 document.querySelector("#cb-pm-nm").onclick = function() {
-                     var pts = (document.querySelector("#cb-pt i").innerHTML != "check_box_outline_blank") ? maxPN.value : 0,
-			 bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
-			 pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 0 : 1,
-			 pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
-			 pm_sum = pms+pm_nms,
-			 pms_num = maxRN.value;
+                     const pts = (document.querySelector("#cb-pt i").innerHTML != "check_box_outline_blank") ? maxPN.value : 0,
+			   bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
+			   pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 0 : 1,
+			   pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
+			   pm_sum = pms+pm_nms,
+			   pms_num = maxRN.value;
                      if(pm_sum == 0) {
 			 pms_num = 0;
                      } 
@@ -296,12 +296,12 @@
                      toggle_checkbox(document.querySelector("#cb-pm-nm i"), `pt=${pts}&bk=${bks}&pm=${pms_num}&k=${pm_sum}`);
 		 }
 		 document.querySelector("#cb-pm").onclick = function() {
-                     var pts = (document.querySelector("#cb-pt i").innerHTML != "check_box_outline_blank") ? maxPN.value : 0,
-			 bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
-			 pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
-			 pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 0 : 2,
-			 pm_sum = pms+pm_nms,
-			 pms_num = maxRN.value;
+                     const pts = (document.querySelector("#cb-pt i").innerHTML != "check_box_outline_blank") ? maxPN.value : 0,
+			   bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
+			   pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
+			   pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 0 : 2,
+			   pm_sum = pms+pm_nms,
+			   pms_num = maxRN.value;
                      if(pm_sum == 0) {
 			 pms_num = 0;
                      } 
@@ -315,61 +315,52 @@
 	
 	<script>
          
-         var dpas = document.querySelectorAll(".dropdown-content a");
+         const dpas = document.querySelectorAll(".dropdown-content a");
          dpas.forEach(function(dpa) {
              dpa.addEventListener("click", function(e) {
                  e.preventDefault();
                  document.querySelector(".dropbtn").innerHTML = dpa.innerHTML;
                  dpa.setAttribute("selected",Date.now());
                  
-                 var pts = (document.querySelector("#cb-pt i").innerHTML != "check_box_outline_blank") ? maxPN.value : 0,
-		     bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
-		     pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
-		     pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
-		     pm_sum = pms+pm_nms,
-		     pms_num = maxRN.value;
+                 const pts = (document.querySelector("#cb-pt i").innerHTML != "check_box_outline_blank") ? maxPN.value : 0,
+		       bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
+		       pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
+		       pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
+		       pm_sum = pms+pm_nms,
+		       pms_num = maxRN.value;
                  if(pm_sum == 0) {
                      pms_num = 0;
                  } 
                  
-                 var qqq = `pt=${pts}&bk=${bks}&pm=${pms_num}&k=${pm_sum}`;
+                 const qqq = `pt=${pts}&bk=${bks}&pm=${pms_num}&k=${pm_sum}`;
                  
                  search_deep(dpa.getAttribute("href"), qqq);
                  document.getElementById("myDropdown").classList.remove("show");
                  
-                 var request = `?selPT=${dpa.getAttribute('href')}&q=${document.querySelector('.search-key-php').value}`;
+                 const request = `?selPT=${dpa.getAttribute('href')}&q=${document.querySelector('.search-key-php').value}`;
                  window.history.pushState({selPT : dpa.getAttribute('href')}, "", request);
                  document.title = `ئاڵەکۆک » گەڕان: ${document.querySelector('.search-key-php').value}`;
                  
-             })
+             });
          });
          
 	 function search_deep(selPT=which_PT_selected(), nums=`pt=${maxPN.value}&bk=${maxBN.value}&pm=${maxRN.value}&k=3`) {
-             var res = document.querySelector(".sli #search-res"),
-		 sk = document.querySelector(".search-key-php");
+             const res = document.querySelector(".sli #search-res"),
+		   sk = document.querySelector(".search-key-php");
              
              if(sk.value == "") {
 		 sk.focus();
 		 return;
              }
-             <?php
-             $rnds = array(
-                 mt_rand(1,22),
-                 mt_rand(1,22),
-                 mt_rand(1,22),
-                 mt_rand(1,22),
-             );
-             ?>
-             var loader = "<div class='loader'></div>",
-		 request = `${nums}&selPT=${selPT}&q=${sk.value}`,
-		 xmlhttp = new XMLHttpRequest();
+             const loader = "<div class='loader'></div>",
+		   request = `${nums}&selPT=${selPT}&q=${sk.value}`,
+		   xmlhttp = new XMLHttpRequest();
              res.innerHTML = loader;
              xmlhttp.onload = function() {
 		 res.innerHTML = this.responseText;
              }
              xmlhttp.open("get",`/script/php/search-complete.php?${request}`);
              xmlhttp.send();
-             
 	 }
 	 
 	 document.querySelector("#search-form").addEventListener("submit", function(e) {
@@ -379,20 +370,21 @@
 		 return;
              }
              
-	     var pts = (document.querySelector("#cb-pt i").innerHTML != "check_box_outline_blank") ? maxPN.value : 0,
-		 bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
-		 pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
-		 pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
-		 pm_sum = pms+pm_nms,
-		 pms_num = maxRN.value;
+	     const pts = (document.querySelector("#cb-pt i").innerHTML != "check_box_outline_blank") ? maxPN.value : 0,
+		   bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
+		   pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
+		   pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
+		   pm_sum = pms+pm_nms,
+		   pms_num = maxRN.value;
              if(pm_sum == 0) {
                  pms_num = 0;
              } 
              
-             var qqq = `pt=${pts}&bk=${bks}&pm=${pms_num}&k=${pm_sum}`;
+             const qqq = `pt=${pts}&bk=${bks}&pm=${pms_num}&k=${pm_sum}`,
+		   which_PT_selected_res = which_PT_selected();
              
-             if(which_PT_selected() !== "") {
-		 search_deep(which_PT_selected(), qqq);
+             if(which_PT_selected_res !== "") {
+		 search_deep(which_PT_selected_res, qqq);
 		 
 		 request = `?selPT=${which_PT_selected()}&q=${document.querySelector('.search-key-php').value}`;
                  window.history.pushState({selPT : which_PT_selected()}, "", request);

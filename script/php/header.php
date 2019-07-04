@@ -21,7 +21,7 @@ else
 				   $_COOKIE['theme'] == 'dark') ? 
 				    "main-dark.css" : 
 				    "main.css";
-			       ?>?v34'/>
+			       ?>?v35'/>
 	<title>
 	    <?php echo $title; ?>
 	</title>
@@ -53,7 +53,6 @@ else
 	 }
 	 @media only screen and (max-width:450px){
 	     #poets{padding-bottom:0}
-             .poetimg {width:85%}
              .bks a {max-width:100%}
 	 }
 	 @media only screen and (max-width:371px){
