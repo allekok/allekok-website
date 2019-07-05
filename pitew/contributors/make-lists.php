@@ -1,7 +1,9 @@
 <?php
+require_once('../../script/php/constants.php');
+
 function poem_writers () {
     $q = 'SELECT contributor FROM pitew WHERE status LIKE \'{\"status\":1%\'';
-    require('../../script/php/condb.php');
+    require(ABSPATH.'script/php/condb.php');
     if(!$query) return [];
     $writers = [];
     while($res = mysqli_fetch_assoc($query)) {
@@ -17,7 +19,7 @@ function poem_writers () {
 }
 
 function image_contributors () {
-    $dir = opendir('../../style/img/poets/new/');
+    $dir = opendir(ABSPATH.'style/img/poets/new/');
     $ignore = ['.','..','README.md','list.txt'];
     $contributors = [];
     while(false !== ($e=readdir($dir))) {
@@ -36,7 +38,7 @@ function image_contributors () {
 }
 
 function poet_description_writers () {
-    $dir = opendir('../res/');
+    $dir = opendir(ABSPATH.'pitew/res/');
     $ignore = ['.','..','README.md','list.txt'];
     $writers = [];
     while(false !== ($e=readdir($dir))) {
@@ -56,7 +58,7 @@ function poet_description_writers () {
 
 function comment_contributors () {
     $q = 'SELECT name FROM comments WHERE blocked=0 AND `read`=1';
-    require('../../script/php/condb.php');
+    require(ABSPATH.'script/php/condb.php');
     if(!$query) return [];
     $contributors = [];
     while($res = mysqli_fetch_assoc($query)) {
@@ -73,7 +75,7 @@ function comment_contributors () {
 
 function pdf_contributors () {
     $pdfs = explode("\n\n",
-		    trim(file_get_contents('../pdfs.txt')));
+		    trim(file_get_contents(ABSPATH.'pitew/pdfs.txt')));
     $needle = 'ناردن: ';
     $contributors = [];
     
@@ -127,5 +129,4 @@ function save_all () {
 }
 
 save_all();
-
 ?>

@@ -28,10 +28,12 @@ include(ABSPATH . 'script/php/header.php');
     <?php    
     $files = scandir("./");
     rsort($files);
-    $NOT = [".","..","IP-blacklist.php","IP-blacklist.php-sample",
-	    "SHA512.php","capture","comment-block.php","comment-read.php",
-	    "index.php","link-ganjoor.php","login.php","password.php",
-	    "password.php-sample","session.php","error_log",".htaccess"];
+    $NOT = [
+	".","..","IP-blacklist.php","IP-blacklist-sample.php",
+	"SHA512.php","capture","comment-block.php","comment-read.php",
+	"index.php","link-ganjoor.php","login.php","password.php",
+	"password-sample.php","session.php","error_log",".htaccess"
+    ];
     foreach($files as $f)
     {
 	if(!in_array($f, $NOT))

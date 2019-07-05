@@ -80,8 +80,7 @@ style='font-size:inherit;display:inline-block'\
 	    }
 	    return $array;
 	}
-	?>
-	<?php
+	
 	$array = [
 	    ['poems', 'نووسینی شێعر', 'poems.txt',
 	     'note_add', '/pitew/poem-list.php'],

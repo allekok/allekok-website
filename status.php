@@ -27,9 +27,7 @@ if($query and (mysqli_num_rows($query) > 0))
     }
 }
 else
-{
     echo "+•+\n";
-}
 
 /* New-Images */
 echo "\n/ناردنی وێنەی شاعیران/\n";
@@ -39,7 +37,8 @@ foreach($_list as $i=>$_l)
     if($i == 2) break;
     echo "- {$_l['name']} › {$_l['poet']}\n";
 }
-if(!$_list) echo "+•+\n";
+if(!$_list)
+    echo "+•+\n";
 
 /* New-Poet-Descs */
 echo "\n/نووسینی زانیاری سەبارەت بە شاعیران/\n";
@@ -49,7 +48,8 @@ foreach($_list as $i=>$_l)
     if($i == 2)	break;
     echo "- {$_l['poet']} › {$_l['name']}\n";
 }
-if(!$_list) echo "+•+\n";
+if(!$_list)
+    echo "+•+\n";
 
 /* New-Comments */
 echo "\n/بیر و ڕای شێعرەکان/\n";
@@ -64,9 +64,8 @@ if($query and (mysqli_num_rows($query) > 0))
     }
 }
 else
-{
     echo "+•+\n";
-}
+
 mysqli_close($conn);
 
 /* about */
