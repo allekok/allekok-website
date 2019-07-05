@@ -71,8 +71,8 @@ include(ABSPATH . "script/php/header.php");
     
     <br><a target="_blank" rel="noopener noreferrer nofollow"
 	   href="https://github.com/allekok/allekok-desktop"
-	   style="display:inline-block;color:#15c314;font-size:1.8em" 
-	   class="material-icons" title="کۆدەکانی بەرنامەی دێسکتاپی ئاڵەکۆک"
+	   style="display:inline-block;font-size:1.5em" 
+	   class="material-icons color-555" title="کۆدەکانی بەرنامەی دێسکتاپی ئاڵەکۆک"
 	>code</a>
     
     <div class="border-eee" style="margin:1em 0 .8em"></div>

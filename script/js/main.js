@@ -223,7 +223,7 @@ margin-left:.25em'> <span class='color-555' style='font-size:.85em'
     document.getElementById('tL-res-res').innerHTML = favsString;
     
     bookmarksSection.style.display = "block";
-    bookmarksSection.style.animation = "tL .1s";
+    bookmarksSection.style.animation = "tL .2s";
     bookmarksIcon.style.opacity = "1";
 
     imgs.map(function(pID) {

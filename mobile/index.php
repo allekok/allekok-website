@@ -61,8 +61,8 @@ include(ABSPATH . "script/php/header.php");
 		<a target="_blank"
 		   rel="noopener noreferrer nofollow"
 		   href="https://github.com/allekok/allekok-android"
-		   style="display:inline-block;color:#15c314;font-size:1.8em" 
-		   class="material-icons" title="کۆدەکانی بەرنامەی ئەندرۆیدی ئاڵەکۆک"
+		   style="display:inline-block;font-size:1.8em" 
+		   class="material-icons color-555" title="کۆدەکانی بەرنامەی ئەندرۆیدی ئاڵەکۆک"
 		>code</a>
             </small>
         </h3>
