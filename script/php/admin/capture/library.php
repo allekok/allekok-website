@@ -29,7 +29,9 @@ function copy_dir($from,$to)
     if(!is_dir($to))
 	mkdir($to, 0755, true);
     foreach($files as $f)
-    copy($from.$f, $to.$f);
+    {
+	copy($from.$f, $to.$f);
+    }
 }
 
 function archive($from_dir,$to_archive)
