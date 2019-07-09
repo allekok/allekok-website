@@ -21,7 +21,7 @@ else
 				   $_COOKIE['theme'] == 'dark') ? 
 				    "main-dark.css" : 
 				    "main.css";
-			       ?>?v35'/>
+			       ?>?v36'/>
 	<title>
 	    <?php echo $title; ?>
 	</title>

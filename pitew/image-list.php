@@ -38,35 +38,34 @@ $poet = isset($_GET['poet']) ?
     </div>
     <style>
      .imglist{width:35%;display:inline-block;
-	 vertical-align:top;color:#444;
-	 padding:1em .5em;font-size:.55em}
-     .imglist a{border-bottom:1px solid #ccc}
+	 vertical-align:top;padding:1em .5em;
+	 font-size:.55em}
      .imglist:nth-child(3n-1){border-left:1px solid #eee;
 	 border-right:1px solid #eee;width:45%}
      .imglist:nth-child(3n){width:20%}
     </style>
     <div>
-	<section class='imglist'
-		 style='background:#eee'
-	>یارمەتیدەر</section><section
-				 style='background:#eee'
-				 class='imglist'
-			     >نێوی شاعیر</section
-					><section
-					     style='background:#eee'
-					     class='imglist'
-					 >وێنە</section>
+	<section class='imglist back-eee'
+	>یارمەتیدەر</section
+		   ><section
+			class='imglist back-eee'
+		    >نێوی شاعیر</section
+			       ><section
+				    class='imglist back-eee'
+				>وێنە</section>
 	<?php
 	$_list = make_list(ABSPATH."style/img/poets/new/");
-	foreach($_list as $_l) {
-            echo "<section class='imglist'
->" . $_l['name'] . "</section><section class='imglist'
->" . $_l['poet'] . "</section><section class='imglist'
+	foreach($_list as $_l)
+	{
+            echo "<section class='imglist color-444'
+>" . $_l['name'] . "</section><section class='imglist color-444'
+>" . $_l['poet'] . "</section><section class='imglist color-444'
 >" . "<a class='link' href='/style/img/poets/new/{$_l['filename']}'
 >وێنە</a></section>";
 	}
 	
-	function make_list($path) {
+	function make_list($path)
+	{
 	    global $name,$poet;
 	    $not = [".","..","README.md","list.txt"];
 	    $d = file_exists($path) ?

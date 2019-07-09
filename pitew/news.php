@@ -26,31 +26,30 @@ include(ABSPATH . "script/php/header.php");
 	       padding:.1em .8em 0;font-size:1.2em">
         تازەکانی ئاڵەکۆک
     </h1>
-    <main style="max-width:800px;margin:auto;font-size:.6em;text-align:right;">
+    <main style="max-width:800px;margin:auto;font-size:.6em;text-align:right">
 	<?php
-	// get new added poems.
-	
 	$n = filter_var(@$_GET["n"],FILTER_VALIDATE_INT) ?
-	     $_GET["n"] : 15; // number of poems
-	$i = 0; // counter
-
+	     $_GET["n"] : 15; /* Number of poems */
+	$i = 0;
 	$now = date_create(date("Y-m-d H:i:s"));
+	$news_txt = "news.txt";
 	
-	$uri = "news.txt";
-	if(file_exists($uri)) {
-	    $f = fopen($uri, "r");
-	    while(! feof($f)) {
-		if($n==$i) break;
+	if(@filesize($news_txt) > 0)
+	{
+	    $f = fopen($news_txt, "r");
+	    while(! feof($f))
+	    {
+		if($n == $i) break;
 		
 		$ln = fgets($f);
 		$ln = json_decode($ln, true);
 		
-		if($ln["op"]!="add") continue;
+		if($ln["op"] != "add") continue;
 
 		$pt = $ln["poetID"];
 		$bk = $ln["bookID"];
 		$pm = $ln["poemID"];
-		$date = @date_create(@$ln["date"]);
+		$date = @date_create($ln["date"]);
 		$diff = format_DD(date_diff($now,$date,true));
 
 		$db = "index";
@@ -60,7 +59,7 @@ include(ABSPATH . "script/php/header.php");
 		
 		$res = mysqli_fetch_assoc($query);
 		$poet = $res["takh"];
-		$book = explode(",",$res["bks"])[$bk-1];
+		$book = explode("," , $res["bks"])[$bk-1];
 
 		$tbl = "tbl{$pt}_{$bk}";
 		$q = "select name from $tbl where id=$pm";
@@ -70,12 +69,15 @@ include(ABSPATH . "script/php/header.php");
 		$poem = mysqli_fetch_assoc($query)["name"];
 		$image_uri = get_poet_image($pt,true);
 		
-		echo "<div class='border-bottom-eee'><a class='link' href='/poet:$pt/book:$bk/poem:$pm'><img style='display:inline-block;vertical-align:middle;width:3em;border-radius:50%;margin-left:.25em' src='{$image_uri}'> <i class='color-444'>$poet &rsaquo; $book &rsaquo;</i> $poem</a><i class='color-555 border-right-eee' style='padding:0 1em;font-size:.75em;margin:0 1em .2em;display:block'>$diff</i></div>";
+		echo "<div class='border-bottom-eee'><a class='link' 
+href='/poet:$pt/book:$bk/poem:$pm'><img style='display:inline-block;
+vertical-align:middle;width:3em;border-radius:50%;margin-left:.25em' 
+src='$image_uri'> <i class='color-444'>$poet &rsaquo; $book &rsaquo;</i
+> $poem</a><i class='color-555 border-right-eee' style='padding:0 1em;
+font-size:.75em;margin:0 1em .2em;display:block'>$diff</i></div>";
 		$i++;
-	    }
-
-	    if(@isset($conn))
 		mysqli_close($conn);
+	    }
 	    fclose($f);
 	}
 	?>

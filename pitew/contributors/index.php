@@ -44,17 +44,19 @@ include(ABSPATH . "script/php/header.php");
      }
     </style>
     <script>
-     function expand(item) {
-	 var parent = item.
-		     parentNode.
-		   parentNode.querySelector("div");
+     function expand (item)
+     {
+	 const parent = item.parentNode.
+			   parentNode.querySelector("div");
 	 if(parent.style.overflow != "hidden") {
 	     parent.style.overflow = "hidden";
 	     parent.style.maxHeight = "400px";
 	     item.innerHTML = "<i class='material-icons' \
 style='font-size:inherit;display:inline-block'\
 >keyboard_arrow_down</i>";
-	 } else {
+	 }
+	 else
+	 {
 	     parent.style.overflow = "";
 	     parent.style.maxHeight = "";
 	     item.innerHTML = "<i class='material-icons' \
@@ -65,7 +67,8 @@ style='font-size:inherit;display:inline-block'\
     </script>
     <div id="contributions">
 	<?php
-	function open($uri, $limit=-2) {
+	function open ($uri, $limit=-2)
+	{
 	    if(! file_exists($uri))
 		return [];
 	    $f = fopen($uri, 'r');
@@ -94,7 +97,8 @@ style='font-size:inherit;display:inline-block'\
 	     'cloud_download', '/pitew/pdfs.php'],
 	];
 
-	foreach($array as $E) {
+	foreach ($array as $E)
+	{
 	    echo "<div id='contributions-{$E[0]}' class='pitewsec'>";
 	    echo "<div style='overflow:hidden;max-height:400px'
 ><i class='material-icons'>{$E[3]}</i>";

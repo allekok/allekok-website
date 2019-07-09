@@ -1,11 +1,12 @@
 "use strict"
 const bookmarks_name = 'favorites';
+
 function arabi_to_latin(s)
 {
-    /* *
-     * Taken from "Pellk KurdiNus 4.0".
+    /* 
+     * Taken from "Pellk KurdiNus".
      * https://allekok.com/kurdi-nus/kurdi-nus-central-kurdish.html
-     * */
+     */
     const sConvertArabic2Latin = [
 	'و([اێۆە])', 'w$1', 
 	'ی([اێۆە])', 'y$1',
@@ -109,7 +110,7 @@ function arabi_to_latin(s)
 	'([ء-يٱ-ە])‌([^ء-يٱ-ە])', '$1$2'
     ];
     
-    let i;
+    let i = 0;
     for (i = 0; i < sConvertStandardise.length; i += 2)
     {
         s = s.replace(new RegExp(sConvertStandardise[i], 'g'),
@@ -173,8 +174,7 @@ function toggle_search()
 
 function get_bookmarks()
 {
-    let bookmarks = localStorage.getItem(bookmarks_name);
-    if(! bookmarks) return false;
+    const bookmarks = localStorage.getItem(bookmarks_name);
     try
     {
 	return JSON.parse(bookmarks);
@@ -189,7 +189,7 @@ function update_bookmarks(bookmarks)
 {
     bookmarks = bookmarks.split("[fav]");
     let newBookmarks = [];
-    for(let i in bookmarks)
+    for(const i in bookmarks)
     {
 	if(bookmarks[i])
 	    newBookmarks.push(JSON.parse(bookmarks[i]));
@@ -239,11 +239,11 @@ margin-left:.25em'> <span class='color-555' style='font-size:.85em'
 
 function search(e)
 {
-    const searchRes=document.getElementById("search-res"),
-	  searchSec=document.getElementById("search"),
+    const searchRes = document.getElementById("search-res"),
+	  searchSec = document.getElementById("search"),
 	  searchBtn = document.getElementById("search-btn"),
-	  searchKey=document.getElementById("search-key"),
-	  q=searchKey.value,
+	  searchKey = document.getElementById("search-key"),
+	  q = searchKey.value,
 	  currentKey = e.keyCode,
 	  noActionKeys = [16, 17, 18, 91, 20, 9, 93,
 			  37, 38, 39, 40, 32, 224, 13];
@@ -274,7 +274,7 @@ style='font-size:2em'>search</i>";
 	   });
 }
 
-window.Clipboard = (function(window, document, navigator) {
+window.Clipboard = ( function(window, document, navigator) {
     let textArea, copy;
     
     function iOS()
@@ -362,7 +362,7 @@ function copyPoem()
 	  ];
     let text = document.getElementById("hon").innerHTML;
     
-    for(let hc in htmlchars)
+    for(const hc in htmlchars)
     {
         text = text.replace(htmlchars[hc], "");
     }    
@@ -434,41 +434,39 @@ function Liked ()
 function save_fs(how)
 {
     const hon = document.getElementById("hon"),
-	  fs = parseInt(hon.style.fontSize),
 	  wW = window.innerWidth,
 	  hows = ["smaller", "bigger"],
 	  scale = 3;
-    let newfs = fs;
+    let fs = parseInt(hon.style.fontSize);
+    
     if(isNaN(fs))
     {
         if(wW > 600)
-	{
-            newfs=30;
-        }
+            fs=30;
 	else
-	{
-            newfs=24;
-        }
+            fs=24;
     }
-    /* bigger */
+    
+    /* Bigger */
     if(hows[1] == how)
     {
-        if(newfs >= 120)
+        if(fs >= 120)
             return;
-	newfs += scale;
+	fs += scale;
     }
-    /* smaller */
+    
+    /* Smaller */
     else if(hows[0] == how)
     {
-        if(newfs <= 6)
+        if(fs <= 6)
             return;
-        newfs -= scale;
+        fs -= scale;
     }
-    localStorage.setItem("fontsize", newfs);
-    hon.style.fontSize = `${newfs}px`;
+    localStorage.setItem('fontsize', fs);
+    hon.style.fontSize = `${fs}px`;
 }
 
-function isJson(str)
+function isJson (str)
 {
     try
     {
@@ -480,7 +478,8 @@ function isJson(str)
     }
 }
 
-function ss(button) {
+function ss(button)
+{
     let href = button.parentNode.querySelector("a").getAttribute("href");
     href = href.substr(href.indexOf("=")+1);
     href = href.split("/");
@@ -500,15 +499,16 @@ style='padding:1em;font-size:.55em;border:0'>${san_txt}</div>`;
 	   });
 }
 
-function filterp(needle="", context, lastChance=false) {
+function filterp(needle="", context, lastChance=false)
+{
     let res = false;
     
     needle = san_data(needle, lastChance);
     
     context.forEach(function(item) {
-	let cx = san_data(item.innerHTML, lastChance),
-	    _filterp = (needle == "") ? true :
-	    (cx.indexOf(needle) !== -1);
+	const cx = san_data(item.innerHTML, lastChance),
+	      _filterp = (needle == "") ? true :
+	      (cx.indexOf(needle) !== -1);
 	if (_filterp)
 	{
 	    item.style.display = "";
@@ -566,28 +566,36 @@ function san_data(inp="", lastChance=false)
         /آ/g, /لل/g, /سس/g, /یی/g, /ڤ/g, /ع/g, /ى/g,
     ];
     
-    let i=0;
-    for (i in extras)
+    for (const i in extras)
     {
         inp = inp.replace(extras[i], "");
     }    
-    for (i in ar_signs)
+    for (const i in ar_signs)
     {
         inp = inp.replace(ar_signs[i], "");
     }
-    for (i in kurdish_letters)
+    for (const i in kurdish_letters)
     {
         inp = inp.replace(other_letters[i], kurdish_letters[i]);
     }
 
     inp = KurdishNumbers(inp);
-    if (lastChance) inp = inp.replace(/ه/g, "");
+    if (lastChance) inp = san_data_more(inp);
     return inp;
 }
 
-function getUrl(url, callback) {
+function san_data_more(inp)
+{
+    /* Remove 'ه' and Numbers */
+    const nums = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+	inp = inp.replace('ه', '', inp).replace(nums, '', inp);
+    return inp;
+}
+
+function getUrl(url, callback)
+{
     const client = new XMLHttpRequest();
-    client.open("get", url);
+    client.open('get', url);
     client.onload = function ()
     {
 	callback(client.responseText);
@@ -595,7 +603,7 @@ function getUrl(url, callback) {
     client.send();
 }
 
-/* check if liked */
+/* Check if bookmarked */
 const bookmarksIcon = document.getElementById('tL'),
       likeico = document.getElementById('like-icon'),
       favs = get_bookmarks();
@@ -608,7 +616,7 @@ if(favs)
     
     if(typeof poemObject !== "undefined")
     {
-	for(let i in favs)
+	for(const i in favs)
 	{
 	    if(favs[i].url == poemObject.url)
 	    {

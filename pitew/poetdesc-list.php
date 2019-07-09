@@ -10,6 +10,11 @@ $keys = _KEYS;
 $t_desc = "";
 $color_num = 0;
 
+$_name = isset($_GET['name']) ?
+	 filter_var($_GET['name'], FILTER_SANITIZE_STRING) : '';
+$_poet = isset($_GET['poet']) ?
+	 filter_var($_GET['poet'], FILTER_SANITIZE_STRING) : '';
+
 include(ABSPATH . 'script/php/header.php');
 ?>
 <div id="poets">    
@@ -27,17 +32,8 @@ include(ABSPATH . 'script/php/header.php');
 	    زانیاریەکان
 	</div>
     </div>
-    <?php
-    $_name = filter_var(@$_GET['name'],
-			FILTER_SANITIZE_STRING);
-    $_poet = filter_var(@$_GET['poet'],
-			FILTER_SANITIZE_STRING);
-    ?>
     
     <style>
-     .epld:nth-child(even) {
-	 background:#f9f9f9;
-     }
      .epld {
          padding: 1em;
          font-size: .6em;
@@ -46,20 +42,16 @@ include(ABSPATH . 'script/php/header.php');
      .epld-title {
          padding: 0 1em;
          border-right: 5px solid #666;
-         color: #222;
          font-size: 1.05em;
      }
      .epld-body {
          padding:1em;
          text-align:justify;
-         color:#000;
 	 word-wrap:break-word;
      }
      #num_pdl {
-         color: #222;
          font-size: .55em;
          display: inline-block;
-         background: #f9f9f9;
          padding: .5em 1em;
      }
      .epld-expand {
@@ -71,28 +63,37 @@ include(ABSPATH . 'script/php/header.php');
      }
     </style>
     <script>
-     function expand(item,path) {
-	 var parent = item.parentNode.
-			   parentNode.
-			   querySelector(".epld-body"),
-	     from = [/\nend\n/g,/\nend/g,/\n/g,],
-	     to = ["<div style='border-top:1px solid #ddd;margin:1em'></div>","<div style='border-top:1px solid #ddd;margin:1em'></div>","<br>"];
+     function expand (item,path)
+     {
+	 const parent = item.parentNode.parentNode.
+			     querySelector(".epld-body"),
+	       from = [/\nend\n/g,
+		       /\nend/g,
+		       /\n/g,],
+	       to = ["<div style='border-top:1px solid #ddd;margin:1em'></div>",
+		     "<div style='border-top:1px solid #ddd;margin:1em'></div>",
+		     "<br>"];
 	 
-	 if(parent.style.overflow != "hidden") {
+	 if(parent.style.overflow != "hidden")
+	 {
 	     parent.style.overflow = "hidden";
 	     parent.style.maxHeight = "150px";
 	     item.innerHTML = "زیاتر <i \
 class='material-icons'>keyboard_arrow_down</i>";
-	 } else {
+	 }
+	 else
+	 {
 	     item.innerHTML = "<div class='loader' \
 style='width:2em;height:2em'></div>";
-	     if(path) {
-		 getUrl(path,function(responseText) {
+	     if(path)
+	     {
+		 getUrl(path,function(responseText)
+		 {
 		     responseText = responseText.trim();
-		     for(var i in from) {
+		     for(const i in from)
+		     {
 			 responseText =
-			     responseText.replace(from[i],
-						  to[i]);
+			     responseText.replace(from[i], to[i]);
 		     }
 		     parent.innerHTML = responseText;
 		     parent.style.overflow = "";
@@ -115,20 +116,21 @@ class='material-icons'>keyboard_arrow_up</i>";
     <div>
 	<?php
 	$_list = make_list(ABSPATH."pitew/res/");
-	$_count = 0; $_html = "";
-	if(!empty($_list))
+	$_count = 0;
+	$_html = "";
+	
+	if($_list)
 	{
             foreach($_list as $_l) {
-		if(!empty($_name)
-		    and $_name !== $_l['name']) continue;
-		if(!empty($_poet)
-		    and $_poet !== $_l['poet']) {
+		if($_name != $_l['name']) continue;
+		if($_poet != $_l['poet'])
+		{
                     $_count++;
                     continue;
 		}
 		$_encoded_name = urlencode($_l['name']);
 		$_html .= "<div class='epld'
-><section class='epld-title'><a 
+><section class='epld-title color-222'><a 
 href='/pitew/res/{$_l["filename"]}' 
 title='وەشانی plain/text'><i 
 class='material-icons' style='font-size:1.5em'
@@ -138,7 +140,7 @@ href='/pitew/poetdesc-list.php?name=$_encoded_name'
 >&raquo; سەبارەت بە &laquo;" .
 			  $_l['poet'] .
 			  "&raquo; نووسیویەتی: </section
-><section class='epld-body'";
+><section class='epld-body color-000'";
 		$_html .= " style='overflow:hidden;
 max-height:150px'";
 		$_html .= ">{$_l['content']}</section>";
@@ -152,15 +154,15 @@ onclick='expand(this,\"/pitew/res/{$_l["filename"]}\")'
 	}
 	else
 	{
-            echo "<span style='color:#999;
-font-size:1em;display:block'>&bull;</span>";
+            echo "<span class='color-666' 
+style='font-size:1em;display:block'>&bull;</span>";
 	}
 	
 	if(!($_name and $_poet))
 	{
             $n_str = empty($_name) ?
 		     "" : "ی &laquo;$_name&raquo;";
-            echo "<div id='num_pdl'
+            echo "<div id='num_pdl' class='back-f3f3f3 color-222'
 >ئەژماری نووسراوەکان" . num_convert(
 	str_replace("&#34;",'"',$n_str),
 	"en", "ckb") . ": " .
@@ -169,16 +171,18 @@ font-size:1em;display:block'>&bull;</span>";
 		 "</div>";
 	}
 
-	function make_list($path) {
+	function make_list($path) 
+	{
 	    $not = [".","..","README.md","list.txt"];
 	    $chunk = 4 * 100;
 	    $d = file_exists($path) ?
 		 opendir($path) : die();
 	    $list = [];
 	    
-	    while(false !== ($e_name = readdir($d))) {
+	    while(false !== ($e_name = readdir($d))) 
+	    {
 		if(in_array($e_name , $not)) continue;
-
+		
 		$exp_e_name = explode("_",
 				      str_replace([".txt"],
 						  "",$e_name));
@@ -221,8 +225,8 @@ border-top:1px solid #ddd;margin:1em'
 	<div>
             <?php
             if(empty($_html))
-                echo "<span style='color:#999;
-font-size:1em;display:block'>&bull;</span>";
+                echo "<span class='color-666'
+style='font-size:1em;display:block'>&bull;</span>";
             else 
                 echo $_html;
             ?>

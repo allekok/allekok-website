@@ -104,12 +104,7 @@ function san_data($in, $lastChance=false)
     $in = preg_replace("/\s+/", "", $in);
     
     if($lastChance)
-    {
-	/* Remove 'h' and Numbers */
-        $in = str_replace("h","",$in);
-        $in = str_replace($to_nums, "", $in);
-    }
-
+        $in = san_data_more($in);
     return $in;
 }
 

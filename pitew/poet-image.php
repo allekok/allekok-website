@@ -3,36 +3,40 @@ include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-// check for uploads
-$_name1 = filter_var(@$_GET['name'], FILTER_SANITIZE_STRING);
-$_poet1 = filter_var(@$_GET['poet'], FILTER_SANITIZE_STRING);
+$_name1 = @filter_var($_GET['name'], FILTER_SANITIZE_STRING);
+$_poet1 = @filter_var($_GET['poet'], FILTER_SANITIZE_STRING);
 
-if(isset($_FILES['profile']) && isset($_COOKIE['poet'])) {
-    
+/* Check for uploads. */
+if( isset($_FILES['profile']) and
+    isset($_COOKIE['poet']) )
+{
     $_profile = $_FILES["profile"];
     $_poet = filter_var($_COOKIE['poet'], FILTER_SANITIZE_STRING);
-    $_name = filter_var($_COOKIE['name'], FILTER_SANITIZE_STRING);
+    $_name = @filter_var($_COOKIE['name'], FILTER_SANITIZE_STRING);
     $_poet = str_replace(["/","\\",":","*","?","|","\"","<",">"],"",$_poet);
     $_name = str_replace(["/","\\",":","*","?","|","\"","<",">"],"",$_name);
-    $t = time();
-    
     $_cnn = $_name ? $_name : $_SERVER['REMOTE_ADDR'];
-    
-    $_profile_dist = "../style/img/poets/new/{$_poet}_{$_cnn}_{$t}.".substr($_profile['type'], 6);
-    
-    $_frmts = array("image/jpeg", "image/png");
-    
+    $t = time();
+    $_profile_dist = "../style/img/poets/new/{$_poet}_{$_cnn}_{$t}.".
+		     substr($_profile['type'], 6);
+    $_frmts = ["image/jpeg", "image/png"];
 
-    if(! ( file_exists($_profile_dist) ) && $_profile['size']<=5242880 && in_array($_profile['type'], $_frmts)) {
-        
-        if( move_uploaded_file($_profile['tmp_name'], $_profile_dist) ) {
-            
-            $uploaded = "<i style='font-size:0.7em;color:#444;background:rgba(0,250,0,0.1);padding:.3em;display: block;margin-top: .8em;'>زۆر سپاس بۆ ئێوە. ئەو وێنە دوای پێداچوونەوە لەسەر ئاڵەکۆک دادەندرێ.</i><img src='{$_profile_dist}' onclick=\"window.location='{$_profile_dist}';\" id='profilepic' style='width:100%;margin:auto;display:block;min-width:70px;max-width:200px;cursor:pointer;'>";
+    if( !file_exists($_profile_dist) and
+	$_profile['size'] <= 5242880 and
+	in_array($_profile['type'], $_frmts) )
+    {
+        if( move_uploaded_file($_profile['tmp_name'], $_profile_dist) )
+	{
+            $uploaded = "<i style='font-size:0.7em;color:#444;
+background:rgba(0,250,0,0.1);padding:.3em;display:block;margin-top:.8em;'
+>زۆر سپاس بۆ ئێوە. ئەو وێنە دوای پێداچوونەوە لەسەر ئاڵەکۆک دادەندرێ.</i><img 
+src='$_profile_dist' onclick=\"window.location='$_profile_dist';\" 
+id='profilepic' style='width:100%;margin:auto;display:block;min-width:70px;
+max-width:200px;cursor:pointer'>";
 	    list_dir(ABSPATH.'style/img/poets/new');
         }
     }
 }
-// //////////
 
 $title = _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; ناردنی وێنەی شاعیران";
 $desc = "ناردنی وێنەی شاعیران بۆ ئاڵەکۆک";
@@ -41,35 +45,37 @@ $t_desc = "";
 $color_num = 0;
 
 include(ABSPATH . 'script/php/header.php');
-
 ?>
 
 <div id="poets">
-    
     <div id='adrs'>
 	<a href="first.php">
 	    پتەوکردنی ئاڵەکۆک
 	</a>
 	<i style='font-style:normal;'> &rsaquo; </i>
 	<div id="current-location">
-	    <i style='vertical-align:middle;' class='material-icons'>image</i>
+	    <i class='material-icons'>image</i>
 	    ناردنی وێنەی شاعیران
 	</div>
     </div>
 
     <script>
-     function check() {
-         var poet = document.querySelector("#poetTxt");
-         var txts = document.querySelectorAll("input, textarea");
-         var btns = document.querySelectorAll("button[type=submit]");
-         var upldlikebtn = document.getElementById("upldlikebtn");
+     function check ()
+     {
+         const poet = document.getElementById("poetTxt"),
+               txts = document.querySelectorAll("input, textarea"),
+               btns = document.querySelectorAll("button[type=submit]"),
+               upldlikebtn = document.getElementById("upldlikebtn");
          
-         if(poet.value == "") {
-             txts.forEach(function(e) {
+         if(poet.value == "")
+	 {
+             txts.forEach( function(e)
+	     {
                  e.style.borderTopColor = "";
                  e.style.background = "";
              });
-             btns.forEach(function(e) {
+             btns.forEach( function(e)
+	     {
                  e.style.background = "#777";
                  e.style.color = "#fff";
              });
@@ -77,38 +83,44 @@ include(ABSPATH . 'script/php/header.php');
              return;
          }
 
-         var xmlhttp = new XMLHttpRequest();
-         xmlhttp.onload = function() {
-             var res = JSON.parse(this.responseText);
-             
-             if(res.id != "0") {
-                 txts.forEach(function(e) {
-                     e.style.borderTopColor = colors[color_num(res.id)][0];
+         getUrl("isitnew.php?poet="+poet.value, function(responseText)
+	 {
+	     const res = JSON.parse(responseText);
+	     
+	     if(res.id != "0")
+	     {
+                 txts.forEach( function(e)
+		 {
+		     e.style.borderTopColor = colors[color_num(res.id)][0];
                  });
-                 btns.forEach(function(e) {
-                     e.style.background = colors[color_num(res.id)][0];
-                     e.style.color = colors[color_num(res.id)][1];
+                 btns.forEach( function(e)
+		 {
+		     e.style.background = colors[color_num(res.id)][0];
+		     e.style.color = colors[color_num(res.id)][1];
                  });
                  poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
                  poet.style.backgroundRepeat = "no-repeat";
                  poet.style.backgroundSize = "auto 100%";
                  poet.style.backgroundPosition = "left center";
-             } else {
-                 txts.forEach(function(e) {
-                     e.style.borderTopColor = "";
-                     e.style.background = "";
+	     }
+	     else
+	     {
+                 txts.forEach( function(e)
+		 {
+		     e.style.borderTopColor = "";
+		     e.style.background = "";
                  });
-                 btns.forEach(function(e) {
-                     e.style.background = "#777";
-                     e.style.color = "#fff";
+                 btns.forEach( function(e)
+		 {
+		     e.style.background = "#777";
+		     e.style.color = "#fff";
                  });
                  upldlikebtn.style.background = "";
-             }
-         }
-         xmlhttp.open("get", "isitnew.php?poet="+poet.value);
-         xmlhttp.send();
+	     }
+         });
      }
     </script>
+    
     <style>
      .input-label-box {
 	 display:flex;
@@ -124,19 +136,33 @@ include(ABSPATH . 'script/php/header.php');
         <?php echo @$uploaded; ?>
     </div>
     <!-- file upload sec -->
-    <form id="frmUpload" method="POST" enctype="multipart/form-data" style="max-width:800px;margin:auto;padding-top:1em;font-size:0.7em">
+    <form id="frmUpload" method="POST"
+	  enctype="multipart/form-data"
+	  style="max-width:800px;margin:auto;
+	      padding-top:1em;font-size:.7em">
 	<div class="input-label-box">
-            <input type="text" id="cntriTxt" name="cntri" style="font-size:1em;width:100%" value="<?php echo $_name1; ?>" placeholder="نێوی خۆتان لێرە بنووسن.">
+            <input type="text" id="cntriTxt" name="cntri"
+		   style="font-size:1em;width:100%"
+		   value="<?php echo $_name1; ?>"
+		   placeholder="نێوی خۆتان لێرە بنووسن.">
 	</div>
 	<div class="input-label-box" style="margin:1em .5em">
 	    <label class="color-444" for="poetTxt">شاعیر: </label>
-            <input onblur="check()" type="text" id="poetTxt" name="poet" style="font-size:1em;width:94%;padding:1em 3%" value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
+            <input onblur="check()" type="text" id="poetTxt" name="poet"
+		   style="font-size:1em;width:94%;padding:1em 3%"
+		   value="<?php echo $_poet1; ?>"
+		   placeholder="نێوی شاعیر *">
 	</div>
         
-        <button class='file-btn button' onclick="document.querySelector('input[name=profile]').click()" style="display:inline-block;font-size:1.5em;padding:1em;border:5px dashed #ddd;border-radius:10px;margin:.5em 0" id='upldlikebtn'>
+        <button class='file-btn button'
+		       onclick="document.querySelector('input[name=profile]').click()"
+		       style="display:inline-block;font-size:1.5em;padding:1em;
+		       border:7px dashed #ddd;border-radius:10px;margin:.5em 0"
+		       id='upldlikebtn'>
             هەڵبژاردنی وێنە
         </button><br>
-        <div class="color-555" style="padding-top:.2em;font-size:.7em;font-family:'kurd',monospace">
+        <div class="color-555" style="padding-top:.2em;
+		    font-size:.7em;font-family:'kurd',monospace">
             &bull; فۆرمەتی وێنەکەتان دەبێ 
             <span class="back-eee" style='padding:0 .2em'>JPG, JPEG, PNG</span>
             بێت.
@@ -145,13 +171,16 @@ include(ABSPATH . 'script/php/header.php');
             <span class="back-eee" style='padding:0 .2em'>5MB</span>
             زیاتر بێت.
         </div>
-        <input type="file" style='display:none;' name="profile" accept="image/png, image/jpeg">
+        <input type="file" style='display:none'
+	       name="profile" accept="image/png, image/jpeg">
         <div id="frmUploadMess"></div>
-        <button class='button bth' type="submit" style="width:45%;max-width:150px;background-color:#777;color:#fff;margin-top:1em;font-size:1em;padding:1em 0">ناردن</button>
+        <button class='button bth' type="submit"
+		style="width:45%;max-width:150px;
+		       background-color:#777;
+		       color:#fff;margin-top:1em;
+		       font-size:1em;padding:1em 0"
+	>ناردن</button>
     </form>
-    <?php if(isset($_poet1)) { ?>
-        <script>window.addEventListener("load",check)</script>
-    <?php } ?>
     
     <div style="margin-top:2em;font-size:.65em">
         <a class='link' href="image-list.php">
@@ -160,71 +189,83 @@ include(ABSPATH . 'script/php/header.php');
     </div>
     
     <script>
-     document.querySelector("input[type=file]").
-	      addEventListener("change", function () {
-		  var filebtn =
-		      document.querySelector(".file-btn");
-		  filebtn.innerHTML = "هەڵبژێردرا.";
-		  filebtn.style.color = colors[0][0];
-		  filebtn.style.border = "";
-	      });
-     // localStorage
-     
-     if(localStorage.getItem("contributor") !== null) {
-         document.querySelector("#cntriTxt").value = JSON.parse(localStorage.getItem("contributor")).name || "";
-     }
-     
-     ///
-     document.querySelector("#frmUpload").addEventListener("submit", function(e) {
-         
-         e.preventDefault();
-         
-         var poetTxt = document.querySelector("#poetTxt");
-         var nameTxt = document.querySelector("#cntriTxt");
-         var fl = document.querySelector("input[name=profile]");
-         var flbtn = document.querySelector(".file-btn");
-         if(poetTxt.value == "") {
-             poetTxt.focus();
-             return;
-         }
-         if(fl.value == "") {
-	     flbtn.style.borderColor = "rgba(204,51,0,.4)";
+     window.addEventListener("load", function()
+     {
+	 <?php if($_poet1) { ?>
+	 check();
+	 <?php } ?>
+	 
+	 document.querySelector("input[type=file]").
+		  addEventListener("change", function ()
+		  {
+		      const filebtn = document.querySelector(".file-btn");
+		      filebtn.innerHTML = "هەڵبژێردرا.";
+		      filebtn.style.color = colors[0][0];
+		      filebtn.style.border = "";
+		  });
+
+	 const contri = isJson(localStorage.getItem("contributor"));
+	 if(contri)
+	 {
+             document.getElementById("cntriTxt").
+		      value = contri.name || "";
+	 }
+	 
+	 document.getElementById("frmUpload").addEventListener("submit", function(e)
+	 {
+             e.preventDefault();
              
-             setTimeout(function() {
-		 flbtn.style.borderColor = "#ddd";
-             }, 2000);
-             return;
-         }
-         
-         var frmts = ["image/jpeg", "image/png"];
-         if(frmts.indexOf(fl.files[0].type) ==-1) {
-             document.querySelector("#frmUploadMess").innerHTML = "<i style='background:rgba(204,51,0,0.1);color:#444;font-size:.7em;display:block;padding:0.3em'>ئەو شتەی هەڵتانبژاردووە وێنە نییە، وێنەیەک هەڵبژێرن.</i>";
-             return;
-         }
-         if(fl.files[0].size > 5242880) {
-             document.querySelector("#frmUploadMess").innerHTML = "<i style='background:rgba(204,51,0,0.1);color:#444;font-size:.7em;display:block;padding:0.3em'>نابێ گەورەیی وێنەکەتان لە 5MB زیاتر بێت.</i>";
-             return;
-         }
-         
-         //localStorage
-         var email = "";
-         if(localStorage.getItem("contributor") !== null) {
-             var email = JSON.parse(localStorage.getItem("contributor")).ID || "";
-         }
-         localStorage.setItem("contributor", JSON.stringify({name: nameTxt.value, ID: email}));
-         ///
-         
-         document.cookie = "poet="+poetTxt.value;
-         document.cookie = "name="+nameTxt.value;
-         
-         document.querySelector("#frmUpload").submit();
-         document.querySelector("#frmUploadMess").innerHTML="<div class='loader'></div>";
-         
+             const poetTxt = document.getElementById("poetTxt"),
+		   nameTxt = document.getElementById("cntriTxt"),
+		   fl = document.querySelector("input[name=profile]"),
+		   flbtn = document.querySelector(".file-btn");
+	     
+             if(poetTxt.value == "")
+	     {
+		 poetTxt.focus();
+		 return;
+             }
+             if(fl.value == "")
+	     {
+		 flbtn.style.borderColor = "rgba(204,51,0,.4)";
+		 
+		 setTimeout(function()
+		 {
+		     flbtn.style.borderColor = "#ddd";
+		 }, 2000);
+		 return;
+             }
+             
+             const frmts = ["image/jpeg", "image/png"],
+		   frmUploadMess = document.getElementById("frmUploadMess");
+	     
+             if(frmts.indexOf(fl.files[0].type) === -1)
+	     {
+		 frmUploadMess.innerHTML = "<i style='background:rgba(204,51,0,0.1);\
+color:#444;font-size:.7em;display:block;padding:0.3em'\
+>ئەو شتەی هەڵتانبژاردووە وێنە نییە، وێنەیەک هەڵبژێرن.</i>";
+		 return;
+             }
+             if(fl.files[0].size > 5242880)
+	     {
+		 frmUploadMess.innerHTML = "<i style='background:rgba(204,51,0,0.1);\
+color:#444;font-size:.7em;display:block;padding:0.3em'\
+>نابێ گەورەیی وێنەکەتان لە 5MB زیاتر بێت.</i>";
+		 return;
+             }
+             
+             localStorage.setItem("contributor",
+				  JSON.stringify({name: nameTxt.value}));
+             
+             document.cookie = "poet="+poetTxt.value;
+             document.cookie = "name="+nameTxt.value;
+             
+             document.getElementById("frmUpload").submit();
+             frmUploadMess.innerHTML="<div class='loader'></div>";
+	 });
      });
     </script>
-    
 </div>
-
 <?php
 include_once(ABSPATH . "script/php/footer.php");
 ?>

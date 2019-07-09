@@ -152,6 +152,8 @@ footer i{font-size:1.4em}
 .color-555{color:#aaa}
 .color-444{color:#bbb}
 .color-333{color:#ccc}
+.color-222{color:#ddd}
+.color-000{color:#fff}
 .eee a{color:#ccc;border-bottom:1px solid #222}
 .eee a:hover{background:#111}
 .eee-desc{border-right:5px solid #111}
@@ -164,3 +166,4 @@ footer i{font-size:1.4em}
 .border-right-999{border-right:7px solid #666}
 .border-bottom-eee{border-bottom:1px solid #111}
 .link-color{color:#ff1}
+.epld:nth-child(even){background:#060606}

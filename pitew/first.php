@@ -118,54 +118,58 @@ include(ABSPATH . 'script/php/header.php');
         
         <div>
             <?php
-            if(@filesize("QA.txt") > 0) {
-                
-                $f = fopen("QA.txt", "r");
-                $cc = fread($f, filesize("QA.txt"));
+            if(@filesize("QA.txt") > 0)
+	    {
+                $cc = file_get_contents("QA.txt");
                 $cc = explode("\nend\n", $cc);
                 
-                echo "<h3 class='border-eee' style='margin-top:2em;font-size:.7em;padding:1em;'>پرسیار و وەڵامەکان</h3>";
+                echo "<h3 class='border-eee' style='margin-top:2em;
+font-size:.7em;padding:1em'>پرسیار و وەڵامەکان</h3>";
                 $cc = array_reverse($cc);
                 $i = 1;
-                foreach($cc as $c) {
-                    if(!empty($c)) {
+                foreach ($cc as $c)
+		{
+		    $c = trim($c);
+                    if($c)
+		    {
 			$c = preg_replace(
 			    ["/\[code\]\n*/","/\n*\[\/code\]/"],
 			    ["<code>","</code>"], $c);
-                        $c = str_replace(["\n"], ["<br>"], $c);
+                        $c = str_replace("\n", "<br>", $c);
                         echo "<div class='";
                         if($i%2) echo "border-right-999 ";
                         echo "comment'><div class='comm-body'>".$c."</div></div>";
                         $i++;
                     }
                 }
-                
-                fclose($f);
             }
-            
             ?>
         </div>
         
-        <script>
-         
-         document.querySelector("#frmQA").addEventListener("submit", function(e) {
+        <script>         
+         document.getElementById("frmQA").addEventListener("submit", function(e)
+	 {
              e.preventDefault();
              
-             var txt = document.querySelector("#QAtxt");
-             var t = document.querySelector("#QAres");
-             var loader = "<div class='loader'></div>";
+             const txt = document.getElementById("QAtxt"),
+		   t = document.getElementById("QAres"),
+		   loader = "<div class='loader'></div>",
+		   x = new XMLHttpRequest();
              
-             if(txt.value == "") {
+             if(txt.value == "")
+	     {
                  txt.focus();
                  return;
              }
              
              t.innerHTML = loader;
              
-             var x = new XMLHttpRequest();
-             x.onload = function() {
-                 if(this.responseText == "1") {
-                     t.innerHTML = "<span style='background:rgba(0,255,0,.08);color:green;display:block;padding:1em;font-size:.6em'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
+             x.onload = function ()
+	     {
+                 if(this.responseText == "1")
+		 {
+                     t.innerHTML = "<span style='background:rgba(0,255,0,.08);color:green;display:block;\
+padding:1em;font-size:.6em'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
                      txt.value = "";
                  }
              }
