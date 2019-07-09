@@ -50,7 +50,7 @@ include(ABSPATH . 'script/php/header.php');
          height: 155px;
      }
      .btn {
-         font-size: .75em;
+         font-size: .7em;
          width: 50%;
          padding: .8em 0;
          max-width: 150px;
