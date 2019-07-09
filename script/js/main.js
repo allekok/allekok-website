@@ -506,7 +506,7 @@ function filterp(needle="", context, lastChance=false)
     needle = san_data(needle, lastChance);
     
     context.forEach(function(item) {
-	const cx = san_data(item.innerHTML, lastChance),
+	const cx = san_data(item.textContent, lastChance),
 	      _filterp = (needle == "") ? true :
 	      (cx.indexOf(needle) !== -1);
 	if (_filterp)
@@ -587,8 +587,8 @@ function san_data(inp="", lastChance=false)
 function san_data_more(inp)
 {
     /* Remove 'ه' and Numbers */
-    const nums = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
-	inp = inp.replace('ه', '', inp).replace(nums, '', inp);
+    const nums = [/٠/g,/١/g,/٢/g,/٣/g,/٤/g,/٥/g,/٦/g,/٧/g,/٨/g,/٩/g];
+	inp = inp.replace(/ه/g, '', inp).replace(nums, '', inp);
     return inp;
 }
 

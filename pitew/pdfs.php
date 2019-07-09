@@ -127,11 +127,11 @@ for($i = 0; $i<count($list); $i++)
 	 }
      }
 
+     const needle = document.getElementById("filter-txt"),
+	   context = document.getElementById("main").querySelectorAll(".eee");
      function _filter()
      {
-	 const needle = document.getElementById("filter-txt").value,
-	       context = document.getElementById("main").querySelectorAll(".eee");
-	 filterp(needle, context);
+	 filterp(needle.value, context);
      }     
     </script>
 </div>
