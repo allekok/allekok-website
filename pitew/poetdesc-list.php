@@ -118,12 +118,12 @@ class='material-icons'>keyboard_arrow_up</i>";
 	$_list = make_list(ABSPATH."pitew/res/");
 	$_count = 0;
 	$_html = "";
-	
+
 	if($_list)
 	{
             foreach($_list as $_l) {
-		if($_name != $_l['name']) continue;
-		if($_poet != $_l['poet'])
+		if($_name and ($_name != $_l['name'])) continue;
+		if($_poet and ($_poet != $_l['poet']))
 		{
                     $_count++;
                     continue;
