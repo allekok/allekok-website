@@ -567,17 +567,13 @@ function san_data(inp="", lastChance=false)
     ];
     
     for (const i in extras)
-    {
         inp = inp.replace(extras[i], "");
-    }    
+
     for (const i in ar_signs)
-    {
         inp = inp.replace(ar_signs[i], "");
-    }
+
     for (const i in kurdish_letters)
-    {
         inp = inp.replace(other_letters[i], kurdish_letters[i]);
-    }
 
     inp = KurdishNumbers(inp);
     if (lastChance) inp = san_data_more(inp);
@@ -588,7 +584,9 @@ function san_data_more(inp)
 {
     /* Remove 'ه' and Numbers */
     const nums = [/٠/g,/١/g,/٢/g,/٣/g,/٤/g,/٥/g,/٦/g,/٧/g,/٨/g,/٩/g];
-	inp = inp.replace(/ه/g, '', inp).replace(nums, '', inp);
+    inp = inp.replace(/ه/g, '');
+    for(const i in nums)
+	inp = inp.replace(nums[i], '');
     return inp;
 }
 
