@@ -111,4 +111,4 @@
 - Update-version(s), Update-log(s): [[./desktop/update/][update-*.txt]]
  - Desc: Version updates for allekok-desktop and allekok-android clients.
 - Q&A Text Files: QA.txt (There are many, all over the repository)
-- Commnets on 'allekok': [[./about/comments.txt][./about/comments.txt]]
+- Comments on 'allekok': [[./about/comments.txt][./about/comments.txt]]
