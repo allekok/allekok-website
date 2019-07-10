@@ -1,4 +1,4 @@
-#+TITLE: Functions
+#+TITLE: PHP Functions
 #+AUTHOR: MAP
 
 /[[../dev/tools/poet.php][poet.php (2)]]/
@@ -71,13 +71,14 @@
 - list_dir
 - save_QA
 
-/[[../script/php/comments-add.php][comments-add.php (1)]]/
-- explde
-
-/[[../MAP/library.php][library.php (4)]]/
+/[[../MAP/library.php][library.php (8)]]/
+- functions_php
+- functions_js
 - functions
 - functions_block
 - list_php_files
+- list_js_files
+- list_files_by_ext
 - php_blocks
 
 /[[../status.php][status.php (2)]]/

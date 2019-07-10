@@ -85,9 +85,11 @@
 *** Code base
     Languages:
 - PHP
+ - Functions: [[./MAP/MAP-PHP.org][./MAP/MAP-PHP.org]]
 - HTML
 - CSS
 - JAVASCRIPT
+ - Functions: [[./MAP/MAP-JS.org][./MAP/MAP-JS.org]]
 - Shell
 **** Required PHP Libraries:
 - JSON
@@ -96,7 +98,8 @@
 **** No 3rd party Javascript/CSS libraries.
 *** Images
 - Icons: [[./favicon.ico][favicon.ico]]
-- Small images: [[./style/img/][(github,quot-left,quot-right).svg]]
+- Logos: [[./style/img/logo.jpg][logo.jpg]], [[./style/img/logo.png][logo.png]], [[./logo][./logo]]
+- Small images: [[./style/img/][(quot-left,quot-right).svg]]
 - Poets: [[./style/img/poets/profile/][profile_(Poet-ID).jpg]]
 - Sent by users: [[./style/img/poets/new][new/*.(jpeg,png)]]
 *** Texts
