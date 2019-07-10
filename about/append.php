@@ -16,7 +16,7 @@ if(isset($_POST['comm']) and
     $date = date("l Y-m-d h:i:sa");
     $header = "<i class='h'>$date +++++ $ip</i>";
     $uri = "comments.txt";
-    $div = "<div style='background:".
+    $div = "<div style='color:#000;background:".
 	   $colors[mt_rand(0,count($colors)-1)][2].
 	   "'>";
     if(filesize($uri)>0)
