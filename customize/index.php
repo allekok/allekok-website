@@ -74,7 +74,7 @@ include(ABSPATH . "script/php/header.php");
 	<button type="button" class="button"
 		style="display:block;margin:auto;
 		      padding:1em"
-		onclick="save_user_codes('user_codes_text')">
+		onclick="save_user_codes('user_codes_text',this)">
 	    پاشەکەوت کردن
 	</button>
     </div>
@@ -134,11 +134,19 @@ include(ABSPATH . "script/php/header.php");
  {
      button_select("light");
  }
- function save_user_codes(text_id)
+ function save_user_codes(text_id, submit_button)
  {
      const user_codes = document.getElementById(text_id);
      localStorage.setItem(user_codes_storage_name,
 			  user_codes.value);
+     
+     submit_button.style.color = colors[0][0];
+     submit_button.innerHTML = 'پاشەکەوت کرا.';
+     setTimeout(function ()
+     {
+	 submit_button.style.color = '';
+	 submit_button.innerHTML = 'پاشەکەوت کردن';
+     }, 3000);
  }
  if(user_codes_storage)
      document.getElementById('user_codes_text').value = user_codes_storage;
