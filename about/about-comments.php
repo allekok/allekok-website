@@ -16,9 +16,10 @@ $limit = (false === filter_var(@$_GET['num'],
 	-1 :
 	 $_GET['num'];
 $_n = 0;
-foreach($comments as $c) {
+foreach($comments as $c)
+{
     if($_n == $limit) break;
-    if(!@$_GET["plain"])
+    if(!isset($_GET["plain"]))
 	$c = str_replace("\n", "<br>", $c);
     echo $c;
     $_n++;
