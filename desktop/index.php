@@ -7,7 +7,6 @@ $title = _TITLE . " &raquo; بەرنامەی دێسکتاپی ئاڵەکۆک";
 $desc = "داگرتنی بەرنامەی دێسکتاپی ئاڵەکۆک بۆ ویندۆز و لینوکس";
 $keys = _KEYS;
 $t_desc = "";
-$color_num = 0;
 
 include(ABSPATH . "script/php/header.php");
 ?>

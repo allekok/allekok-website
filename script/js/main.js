@@ -146,11 +146,6 @@ var arabi_to_latin = arabi_to_latin || function (s)
     return s;
 }
 
-var color_num = color_num || function (pID)
-{
-    return 0;
-}
-
 var poetImage = poetImage || function (pID, callback)
 {
     const client = new XMLHttpRequest(),

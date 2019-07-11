@@ -8,7 +8,6 @@ $title = _TITLE . " &raquo; گۆڕینی شاعیر";
 $desc = "گۆڕینی شاعیر";
 $keys = _KEYS;
 $t_desc = "";
-$color_num = 0;
 
 include(ABSPATH . 'script/php/header.php');
 ?>

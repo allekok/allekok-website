@@ -33,13 +33,6 @@ function get_poet_image($_pID, $_slash)
     return $_img;
 }
 
-function color_num ($ath)
-{
-    /* It is gonna be used for '$colors' 
-       index inside 'colors.php' */
-    return 0;
-}
-
 function format_DD($date_diff)
 {
     if($date_diff->days)

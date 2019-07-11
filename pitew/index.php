@@ -7,7 +7,6 @@ $title = _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; نووسی
 $desc = "نووسینی شێعر لەسەر ئاڵەکۆک";
 $keys = _KEYS;
 $t_desc = "";
-$color_num = 0;
 
 include(ABSPATH."script/php/header.php");
 
@@ -62,13 +61,13 @@ $_book1 = isset($_GET['book']) ?
 	     {
                  txts.forEach( function(e)
 		 {
-                     e.style.borderTopColor = colors[color_num(res.id)][0];
+                     e.style.borderTopColor = colors[0][0];
                  });
 		 
                  btns.forEach( function(e)
 		 {
-                     e.style.background = colors[color_num(res.id)][0];
-                     e.style.color = colors[color_num(res.id)][1];
+                     e.style.background = colors[0][0];
+                     e.style.color = colors[0][1];
                  });
                  
                  poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;

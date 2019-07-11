@@ -46,7 +46,6 @@ bks,kind FROM auth WHERE id={$ath}";
         $desc = "شێعرەکانی " . $row['profname'];
         $keys = "{$row["takh"]},{$row["profname"]},{$row["name"]},"
 	      . "شاعیر,شێعر,شعر";
-        $color_num = color_num($ath);
         
         include("header.php");
         include("poet.php"); 
@@ -79,7 +78,6 @@ elseif ($ath and $bk and !$id) {
             $desc = "کتێبی " . $bknow[$bk-1] . "، " . $info["profname"];
             $keys = "{$bknow[$bk-1]},{$info["takh"]},{$info["profname"]},{$info["name"]},"
 		  . "بەرهەم,شێعر,شعر,شیعر";
-            $color_num = color_num($ath);
             
             include("header.php");
             include("book.php");
@@ -147,7 +145,6 @@ elseif ($ath and $bk and $id) {
                 $desc = "شێعری " . $row[1]["name"] . "، " . $info["profname"];
                 $keys = "{$row[1]["name"]},{$bknow[$bk-1]},{$info["takh"]},{$info["profname"]},{$info["name"]},"
 		      . "شێعر,شعر";
-                $color_num = color_num($ath);
                 
                 include("header.php");
                 include("poem.php");
@@ -176,7 +173,6 @@ elseif ($ath and $bk and $id) {
     $title = _TITLE . " &raquo; گەڕان: " . $q;
     $desc = "گەڕان بۆ " . $q . " لە ئاڵەکۆک دا";
     $keys = "$q," . "ئاڵەکۆک,شێعر,شعر";
-    $color_num = 0;
     
     include("header.php");
     include("search.php");

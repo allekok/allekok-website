@@ -7,7 +7,6 @@ $title = _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; داگرت
 $desc = "داگرتنی دیوانی شاعیران بە فۆڕمەتی PDF";
 $keys = _KEYS;
 $t_desc = "";
-$color_num = 0;
 
 include(ABSPATH . 'script/php/header.php');
 ?>

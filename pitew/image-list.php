@@ -9,7 +9,6 @@ $title =
 $desc = "ئەو وێنانەی کە بۆتان ناردوویین";
 $keys = _KEYS;
 $t_desc = "";
-$color_num = 0;
 
 include(ABSPATH . 'script/php/header.php');
 

@@ -8,7 +8,7 @@
     ><?php 
      $bbk = explode("/", $bknow[$bk-1]);
      $bbk = !isset($bbk[1]) ? $bbk[0] :
-	    "{$bbk[0]}<i style='color:{$colors[$color_num][3]};font-size: .9em;padding: 0 .1em;'> / </i>{$bbk[1]}";
+	    "{$bbk[0]}<i style='color:{$colors[0][3]};font-size: .9em;padding: 0 .1em;'> / </i>{$bbk[1]}";
      ?>
     <!-- Address bar -->
     <div id='adrs'>
@@ -66,7 +66,7 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 	<a id="new_poem_a"
 	   style="color:
 	       <?php 
-	       echo $colors[$color_num][0].';';
+	       echo $colors[0][0].';';
 	       ?>
 	       display:inline-block;
 	       font-size:1.35em;

@@ -2,8 +2,6 @@
 <?php
 $requri = filter_var($_SERVER['REQUEST_URI'],
 		     FILTER_SANITIZE_STRING);
-if(!isset($color_num))
-    $color_num = 0;
 if(isset($ath))
     $ogimg = _SITE.get_poet_image($ath,false);
 else 
@@ -44,11 +42,11 @@ else
 	
 	<style>
 	 header {
-             background:<?php echo $colors[$color_num][0]; ?>;
+             background:<?php echo $colors[0][0]; ?>;
 	 }
 	 <?php if(@$ath) { ?>
 	 sup {
-             color:<?php echo($colors[$color_num][0]) ?>;
+             color:<?php echo($colors[0][0]) ?>;
              padding:0 3px;
 	 }
 	 @media only screen and (max-width:450px){
@@ -61,7 +59,7 @@ else
 	 }
 	 <?php } ?>
 	 .bk-comp {
-             color:<?php echo($colors[$color_num][0]); ?>;
+             color:<?php echo($colors[0][0]); ?>;
 	 }
 	 .loader {
              border-top-color:<?php echo($colors[0][0]); ?>;
@@ -71,12 +69,13 @@ else
 	 }
 	</style>
 	<script>
-         const colors = [<?php
-			 require_once(ABSPATH."script/php/colors.php");
-			 foreach ($colors as $c) {
-			     echo "['{$c[0]}', '{$c[1]}', '{$c[2]}', '{$c[3]}'],";
-			 }
-			 ?>];
+         var colors = [<?php
+		       require_once(ABSPATH."script/php/colors.php");
+		       foreach ($colors as $c)
+		       {
+			   echo "['{$c[0]}', '{$c[1]}', '{$c[2]}', '{$c[3]}'],";
+		       }
+		       ?>];
 	</script>
     </head>
     <body>
@@ -98,9 +97,9 @@ else
 	    <div id='search'>
 		<form id="search-form" action="/" method="GET"
 		><input type='text'
-			id='search-key'
-			onkeyup="search(event)"
-			placeholder='گەڕان بۆ ...' name='q'
+			      id='search-key'
+			      onkeyup="search(event)"
+			      placeholder='گەڕان بۆ ...' name='q'
 		 ><button type="submit"
 			  id="search-btn"
 			  class='button'

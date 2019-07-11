@@ -317,11 +317,11 @@ style='display:inline-block;'
 			   padding:1em 0;max-width:150px;
 			   background-color:
 			   <?php 
-			   echo $colors[$color_num][0].';';
+			   echo $colors[0][0].';';
 			   ?>
 			   color:
 			   <?php 
-			   echo $colors[$color_num][1].';';
+			   echo $colors[0][1].';';
 			   ?>
 			   margin:1em 0 .5em"
 	    >ناردن</button>
@@ -434,7 +434,7 @@ address='$address' and blocked=0";
 			    newComm += "<div class='comment'\
 ><div class='comm-name'><i style='font-style:normal;\
 font-size:1.4em;padding-left:.3em;\
-color:<?php echo $colors[$color_num][0]; ?>'\
+color:<?php echo $colors[0][0]; ?>'\
 >&bull;</i>"+res[a].name+":</div><div \
 class='comm-body'>"+res[a].comment+"</div><div \
 class='comm-footer'>"+res[a].date+"</div></div>";

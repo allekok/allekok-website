@@ -63,7 +63,7 @@ function get_poet ()
 		$res['img']['_460x460'] = _SITE . get_poet_image($res['id'], false);
 		
 		$res['id'] = intval($res['id']);
-		$res['colors'] = $colors[color_num($res['id'])];
+		$res['colors'] = $colors[0];
 		
 		$reses[] = $res;
 	    }

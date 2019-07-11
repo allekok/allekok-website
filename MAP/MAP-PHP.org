@@ -61,10 +61,9 @@
 - archive
 - unarchive
 
-/[[../script/php/functions.php][functions.php (8)]]/
+/[[../script/php/functions.php][functions.php (7)]]/
 - num_convert
 - get_poet_image
-- color_num
 - format_DD
 - san_data
 - san_data_more

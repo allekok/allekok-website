@@ -7,7 +7,6 @@ $title = _TITLE . " &raquo; کۆد &raquo; بەشداربوون";
 $desc = "ئاڵەکۆک - کۆد - بەشداربوون";
 $keys = _KEYS;
 $t_desc = "";
-$color_num = 0;
 
 include(ABSPATH . 'script/php/header.php');
 ?>

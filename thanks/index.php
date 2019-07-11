@@ -7,7 +7,6 @@ $title = _TITLE . " &raquo; سپاس و پێزانین";
 $desc = $title;
 $keys = _KEYS;
 $t_desc = "";
-$color_num = 0;
 
 include(ABSPATH . "script/php/header.php");
 ?>

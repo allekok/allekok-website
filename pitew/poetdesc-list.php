@@ -8,7 +8,6 @@ $title = _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo;
 $desc = "ئەو زانیاریانەی کە لەسەر ئاڵەکۆک‌تان نووسیوە";
 $keys = _KEYS;
 $t_desc = "";
-$color_num = 0;
 
 $_name = isset($_GET['name']) ?
 	 filter_var($_GET['name'], FILTER_SANITIZE_STRING) : '';
