@@ -1,13 +1,15 @@
 <?php
 /* index.php body */
+require_once('constants.php');
+
 $__isnew = isset($_GET["new"]) ?
 	   " WHERE kind='alive'" : " WHERE kind='dead'";
 
 $__order = (isset($_GET["order"]) and $_GET["order"]=="id") ?
 	   " ORDER BY id ASC" : " ORDER BY takh ASC";
 
-$q = "SELECT id,profname,takh FROM auth" . $__isnew . $__order ;
-require("condb.php");
+$q = "SELECT id,profname,takh FROM auth" . $__isnew . $__order;
+require(ABSPATH.'script/php/condb.php');
 ?>
 
 <div id='poets'>

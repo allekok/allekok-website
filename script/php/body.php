@@ -38,7 +38,7 @@ if ($ath and !$bk) {
     $q = "SELECT id,takh,profname,name,hdesc,
 bks,kind FROM auth WHERE id={$ath}";
     include("condb.php");
-
+    
     if($row = mysqli_fetch_assoc($query)) {
         mysqli_close($conn);
         
@@ -186,5 +186,5 @@ elseif ($ath and $bk and $id) {
     include("header.php");
     include("fbody.php");
 }
-/* End of processing URLs. */
+/** End of URL processing **/
 ?>

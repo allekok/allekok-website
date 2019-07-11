@@ -2,5 +2,5 @@
 require("library.php");
 
 output('php', '..');
-output('js', '..');
+output('js' , '..');
 ?>

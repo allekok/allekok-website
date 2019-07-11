@@ -1,7 +1,18 @@
-"use strict"
-const bookmarks_name = 'favorites';
+/* Users can evaluate their own code. */
+const userCodes = localStorage.getItem('user-codes') || false;
+try
+{
+    eval(userCodes);
+}
+catch(e)
+{
+    console.warn('"user-codes" Can not be evaluated.');
+}
 
-function arabi_to_latin(s)
+/* Main */
+var bookmarks_name = bookmarks_name || 'favorites';
+
+var arabi_to_latin = arabi_to_latin || function (s)
 {
     /* 
      * Taken from "Pellk KurdiNus".
@@ -135,12 +146,12 @@ function arabi_to_latin(s)
     return s;
 }
 
-function color_num(pID)
+var color_num = color_num || function (pID)
 {
     return 0;
 }
 
-function poetImage(pID, callback)
+var poetImage = poetImage || function (pID, callback)
 {
     const client = new XMLHttpRequest(),
 	  url = `/style/img/poets/profile/profile_${pID}.jpg`;
@@ -153,7 +164,7 @@ function poetImage(pID, callback)
     client.send();
 }
 
-function toggle_search()
+var toggle_search = toggle_search || function ()
 {
     const searchSec = document.getElementById('search'),
 	  searchKey = document.getElementById("search-key"),
@@ -172,7 +183,7 @@ function toggle_search()
     }
 }
 
-function get_bookmarks()
+var get_bookmarks = get_bookmarks || function ()
 {
     const bookmarks = localStorage.getItem(bookmarks_name);
     try
@@ -185,7 +196,7 @@ function get_bookmarks()
     }
 }
 
-function update_bookmarks(bookmarks)
+var update_bookmarks = update_bookmarks || function (bookmarks)
 {
     bookmarks = bookmarks.split("[fav]");
     let newBookmarks = [];
@@ -198,7 +209,7 @@ function update_bookmarks(bookmarks)
     return newBookmarks;
 }
 
-function toggle_Like()
+var toggle_Like = toggle_Like || function ()
 {
     const bookmarksSection = document.getElementById('tL-res'),
 	  bookmarksIcon = document.getElementById('tL');    
@@ -237,7 +248,7 @@ margin-left:.25em'> <span class='color-555' style='font-size:.85em'
     });
 }
 
-function search(e)
+var search = search || function (e)
 {
     const searchRes = document.getElementById("search-res"),
 	  searchSec = document.getElementById("search"),
@@ -274,7 +285,7 @@ style='font-size:2em'>search</i>";
 	   });
 }
 
-window.Clipboard = ( function(window, document, navigator) {
+window.Clipboard = (function (window, document, navigator) {
     let textArea, copy;
     
     function iOS()
@@ -325,7 +336,7 @@ window.Clipboard = ( function(window, document, navigator) {
     
 })(window, document, navigator);
 
-function copyPoem()
+var copyPoem = copyPoem || function ()
 {
     const copySec = document.getElementById("copy-sec"),
 	  htmlchars = [
@@ -380,7 +391,7 @@ function copyPoem()
     }, 3000);
 }
 
-function Liked ()
+var Liked = Liked || function ()
 {
     const bookmarksIcon = document.getElementById('tL'),
 	  ico = document.getElementById("like-icon");
@@ -431,7 +442,7 @@ function Liked ()
     }
 }
 
-function save_fs(how)
+var save_fs = save_fs || function (how)
 {
     const hon = document.getElementById("hon"),
 	  wW = window.innerWidth,
@@ -466,7 +477,7 @@ function save_fs(how)
     hon.style.fontSize = `${fs}px`;
 }
 
-function isJson (str)
+var isJson = isJson || function (str)
 {
     try
     {
@@ -478,7 +489,7 @@ function isJson (str)
     }
 }
 
-function ss(button)
+var ss = ss || function (button)
 {
     let href = button.parentNode.querySelector("a").getAttribute("href");
     href = href.substr(href.indexOf("=")+1);
@@ -499,7 +510,7 @@ style='padding:1em;font-size:.55em;border:0'>${san_txt}</div>`;
 	   });
 }
 
-function filterp(needle="", context, lastChance=false)
+var filterp = filterp || function (needle="", context, lastChance=false)
 {
     let res = false;
     
@@ -525,7 +536,7 @@ function filterp(needle="", context, lastChance=false)
 	filterp(needle, context, true);
 }
 
-function KurdishNumbers (inp="")
+var KurdishNumbers = KurdishNumbers || function (inp="")
 {
     const en = [/0/g,/1/g,/2/g,/3/g,/4/g,/5/g,/6/g,/7/g,/8/g,/9/g],
 	  fa = [/۰/g,/۱/g,/۲/g,/۳/g,/۴/g,/۵/g,/۶/g,/۷/g,/۸/g,/۹/g],
@@ -537,7 +548,7 @@ function KurdishNumbers (inp="")
     return inp;
 }
 
-function san_data(inp="", lastChance=false)
+var san_data = san_data || function (inp="", lastChance=false)
 {
     if (inp == "") return "";
 
@@ -580,7 +591,7 @@ function san_data(inp="", lastChance=false)
     return inp;
 }
 
-function san_data_more(inp)
+var san_data_more = san_data_more || function (inp)
 {
     /* Remove 'ه' and Numbers */
     const nums = [/٠/g,/١/g,/٢/g,/٣/g,/٤/g,/٥/g,/٦/g,/٧/g,/٨/g,/٩/g];
@@ -590,7 +601,7 @@ function san_data_more(inp)
     return inp;
 }
 
-function getUrl(url, callback)
+var getUrl = getUrl || function (url, callback)
 {
     const client = new XMLHttpRequest();
     client.open('get', url);
@@ -602,9 +613,9 @@ function getUrl(url, callback)
 }
 
 /* Check if bookmarked */
-const bookmarksIcon = document.getElementById('tL'),
-      likeico = document.getElementById('like-icon'),
-      favs = get_bookmarks();
+var bookmarksIcon = document.getElementById('tL'),
+    likeico = document.getElementById('like-icon'),
+    favs = get_bookmarks();
 if(favs)
 {
     if(typeof bookmarksIcon !== "undefined")

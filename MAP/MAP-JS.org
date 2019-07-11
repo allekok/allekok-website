@@ -31,9 +31,10 @@
 - roll
 - _filter
 
-/[[../customize/index.php][index.php (2)]]/
+/[[../customize/index.php][index.php (3)]]/
 - set_theme
 - button_select
+- save_user_codes
 
 /[[../script/php/search.php][search.php (8)]]/
 - myFunction
@@ -75,27 +76,9 @@
 - search_ferheng
 - search_farhangumejuikawa
 
-/[[../script/js/main.js][main.js (22)]]/
-- arabi_to_latin
-- color_num
-- poetImage
-- toggle_search
-- get_bookmarks
-- update_bookmarks
-- toggle_Like
-- search
+/[[../script/js/main.js][main.js (4)]]/
 - iOS
 - createTextArea
 - selectText
 - copyToClipboard
-- copyPoem
-- Liked
-- save_fs
-- isJson
-- ss
-- filterp
-- KurdishNumbers
-- san_data
-- san_data_more
-- getUrl
 
