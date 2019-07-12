@@ -31,6 +31,30 @@ include(ABSPATH . "script/php/header.php");
  {
      font-size:.8em;
  }
+ #user_codes small
+ {
+     font-family:'kurd',monospace;
+     font-size:.65em;
+     text-indent:1em;
+     display:block;
+ }
+ #user_codes_text
+ {
+     direction:ltr;
+     text-align:left;
+     width:95%;
+     max-width:600px;
+     font-family:'kurd',monospace;
+     min-height:20em;
+     font-size:.6em;
+ }
+ #user_codes button
+ {
+     display:block;
+     margin:auto;
+     padding:1em;
+     font-size:.8em;
+ }
 </style>
 <div id="poets" style="max-width:850px">
     <h1 style="display:inline-block;padding:.1em .8em 0;
@@ -60,20 +84,12 @@ include(ABSPATH . "script/php/header.php");
 	<span>
 	    کۆدەکانی بەکارهێنەر:
 	</span>
-	<small style="font-family:'kurd',monospace;
-		      font-size:.65em;text-indent:1em;
-		      display:block" class="color-333">
+	<small class="color-333">
 	    ئەم کۆدانە کە بە زمانی Javascript دەبێ بنووسرێن، لەکاتی هێنانی ئاڵەکۆک‌دا ئیجرا دەکرێن.
 	</small>
 	<textarea id="user_codes_text"
-		  style="direction:ltr;text-align:left;
-		      width:95%;max-width:600px;
-		      font-family:'kurd',monospace;
-		      min-height:20em;font-size:.6em"
 		  placeholder="/* Javascript Code */"></textarea>
 	<button type="button" class="button"
-		style="display:block;margin:auto;
-		      padding:1em"
 		onclick="save_user_codes('user_codes_text',this)">
 	    پاشەکەوت کردن
 	</button>
