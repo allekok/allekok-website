@@ -4,7 +4,7 @@ require(ABSPATH.'script/php/functions.php');
 require(ABSPATH.'about/color.php');
 
 $input = 'comments.txt';
-$output = 'comments.txt.0';
+$output = 'comments.txt';
 
 $comments = file_get_contents($input);
 $comments = explode('[comment]',$comments);
