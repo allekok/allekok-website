@@ -40,7 +40,7 @@ include(ABSPATH . 'script/php/header.php');
      }
      .epld-title {
          padding: 0 1em;
-         border-right: 5px solid #666;
+         border-right: 2px solid;
          font-size: 1.05em;
      }
      .epld-body {
@@ -69,8 +69,8 @@ include(ABSPATH . 'script/php/header.php');
 	       from = [/\nend\n/g,
 		       /\nend/g,
 		       /\n/g,],
-	       to = ["<div style='border-top:1px solid #ddd;margin:1em'></div>",
-		     "<div style='border-top:1px solid #ddd;margin:1em'></div>",
+	       to = ["<div style='border-top:2px solid;margin:1em'></div>",
+		     "<div style='border-top:2px solid;margin:1em'></div>",
 		     "<br>"];
 	 
 	 if(parent.style.overflow != "hidden")
@@ -82,8 +82,7 @@ class='material-icons'>keyboard_arrow_down</i>";
 	 }
 	 else
 	 {
-	     item.innerHTML = "<div class='loader' \
-style='width:2em;height:2em'></div>";
+	     item.innerHTML = "<div class='loader'></div>";
 	     if(path)
 	     {
 		 getUrl(path,function(responseText)
@@ -192,7 +191,7 @@ style='font-size:1em;display:block'>&bull;</span>";
 		$content = str_replace(
 		    ["\nend\n","\n"],
 		    ["<div style='
-border-top:1px solid #ddd;margin:1em'
+border-top:2px solid;margin:1em'
 ></div>","<br>"], $content);
 		
 		$e = [

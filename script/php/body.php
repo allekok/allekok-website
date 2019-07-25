@@ -87,6 +87,7 @@ elseif ($ath and $bk and !$id) {
 	
 	mysqli_close($conn);
     } else {
+	$fbody = true;
         $t_desc = "<h2>"._DESC."</h2>";
         include("header.php");
         include("fbody.php");
@@ -153,11 +154,13 @@ elseif ($ath and $bk and $id) {
                 include("not-found.php");
 
         } else {
+	    $fbody = true;
             $t_desc = "<h2>"._DESC."</h2>";
             include("header.php");
             include("fbody.php");
         }
     } else {
+	$fbody = true;
         $t_desc = "<h2>"._DESC."</h2>";
         include("header.php");
         include("fbody.php");
@@ -178,6 +181,7 @@ elseif ($ath and $bk and $id) {
     include("search.php");
     
 } else {
+    $fbody = true;
     $t_desc = "<h2>"._DESC."</h2>";
     include("header.php");
     include("fbody.php");

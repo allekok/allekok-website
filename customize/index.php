@@ -22,11 +22,6 @@ include(ABSPATH . "script/php/header.php");
      font-size:inherit;
      margin:0 1em 0 0;
  }
- .button.selected
- {
-     color:<?php echo $colors[0][0]; ?>;
-     font-weight:bold;
- }
  .icon-round
  {
      font-size:.8em;
@@ -42,10 +37,9 @@ include(ABSPATH . "script/php/header.php");
  {
      direction:ltr;
      text-align:left;
-     width:95%;
+     width:100%;
      max-width:600px;
      font-family:'kurd',monospace;
-     min-height:20em;
      font-size:.6em;
  }
  #user_codes button
@@ -56,11 +50,8 @@ include(ABSPATH . "script/php/header.php");
      font-size:.8em;
  }
 </style>
-<div id="poets" style="max-width:850px">
-    <h1 style="display:inline-block;padding:.1em .8em 0;
-	       border-radius:5px;font-size:1.2em">
-	<i class="material-icons"
-	   style="color:<?php echo $colors[0][0]; ?>">settings</i>
+<div id="poets" style="text-align:right">
+    <h1 class="color-blue" style="font-size:1em">
         گۆڕینی شێوەی ئاڵەکۆک
     </h1>
     <!-- Theme -->
@@ -68,12 +59,12 @@ include(ABSPATH . "script/php/header.php");
         <span>
             گۆڕینی ڕەنگ: 
 	</span>
-	<button type="button" class="button"
+	<button type="button"
 		      id="set_theme_light" onclick="set_theme('light')">
 	    <i class="material-icons">brightness_5</i>
 	    ڕووناک
 	</button>
-	<button type="button" class="button"
+	<button type="button"
 		      id="set_theme_dark" onclick="set_theme('dark')">
 	    <i class="material-icons">brightness_2</i>
 	    تاریک
@@ -84,7 +75,7 @@ include(ABSPATH . "script/php/header.php");
 	<span>
 	    کۆدەکانی بەکارهێنەر:
 	</span>
-	<small class="color-333">
+	<small>
 	    ئەم کۆدانە کە بە زمانی Javascript دەبێ بنووسرێن، لەکاتی هێنانی ئاڵەکۆک‌دا ئیجرا دەکرێن.
 	</small>
 	<textarea id="user_codes_text"
@@ -156,11 +147,11 @@ include(ABSPATH . "script/php/header.php");
      localStorage.setItem(user_codes_storage_name,
 			  user_codes.value);
      
-     submit_button.style.color = colors[0][0];
+     submit_button.className = 'selected';
      submit_button.innerHTML = 'پاشەکەوت کرا.';
      setTimeout(function ()
      {
-	 submit_button.style.color = '';
+	 submit_button.className = '';
 	 submit_button.innerHTML = 'پاشەکەوت کردن';
      }, 3000);
  }

@@ -10,104 +10,104 @@ $t_desc = "";
 
 include(ABSPATH . 'script/php/header.php');
 ?>
-<div id="poets" style="max-width:850px">    
-    <h1 style="font-size:1.2em;padding:.1em .8em 0">
-        <span style="color:<?php echo $colors[0][0]; ?>;">
-	    <
-	</span>
-	کۆدەکانی ئاڵەکۆک
-	<span style="color:<?php echo $colors[0][0]; ?>;">
-	    >
-	</span>
+<style>
+ code {
+     direction:ltr;
+     text-align:left;
+     font-family:'kurd', monospace;
+     padding:0 .3em;
+     margin:0 .3em;
+ }
+ code.bash {
+     display:block;
+     border-left:2px solid;
+     word-wrap:break-word;
+     text-indent:0;
+     padding:1em;
+     margin:.5em 0;
+ }
+ #QAtxt {
+     font-size: .65em;
+     text-align: right;
+     max-width: 100%;
+     width: 100%;
+     display: block;
+     margin: auto;
+ }
+ .btn {
+     font-size: .7em;
+     width: 50%;
+     padding: .8em 0;
+     max-width: 150px;
+     text-align:center;
+     display:block;
+     margin:auto;
+ }
+ #poets a {
+     border-bottom:2px solid <?php echo $_color; ?>;
+ }
+ pre {
+     overflow:auto;
+ }
+ pre code {
+     overflow:auto;
+     font-size:.85em;
+     word-spacing:5px;
+ }
+ main h1 {
+     font-size:1.5em;
+     color:<?php echo $_color; ?>;
+ }
+ main h2 {
+     font-size:1.3em;
+     color:<?php echo $_color; ?>;
+     margin-top:1em;
+ }
+ main h3 {
+     font-size:1.1em;
+     color:<?php echo $_color; ?>;
+     margin-top:1em;
+ }
+ main h1, main h2, main h3 {
+     text-align:right;
+ }
+ main ul, ol {
+     padding-right:2em;
+     list-style-type:arabic-indic;
+     font-size:.9em
+ }
+ main p {
+     text-indent: 1em;
+ }
+ main img {
+     display:block;
+     margin: 1em auto;
+     max-width:100%;
+     cursor:pointer;
+ }
+ main .material-icons {
+     display: inline;
+     font-size: 1.5em;
+ }
+</style>
+<div id="poets" style="text-align:right">
+    <h1 style="font-size:1em">
+        <i class="color-black">
+	    &lt;
+	</i>
+	<i class="color-blue">
+	    کۆدەکانی ئاڵەکۆک
+	</i>
+	<i class="color-black">
+	    / &gt;
+	</i>
     </h1>
-    <style>
-     code {
-	 direction:ltr;
-         background:#f6f6f6;
-         color:#444;
-         text-align:left;
-	 font-family:'kurd', monospace;
-	 padding:0 .3em;
-	 margin:0 .3em;
-     }
-     code.bash {
-         display:block;
-         border-left:10px solid #eee;
-         word-wrap:break-word;
-         text-indent:0;
-         padding:1em;
-         margin:.5em 0;
-     }
-     #QAtxt {
-         font-size: 0.65em;
-         text-align: right;
-         max-width: 90%;
-         width: 90%;
-         min-height: 8em;
-         display: block;
-         margin: auto;
-         height: 155px;
-     }
-     .btn {
-         font-size: .7em;
-         width: 50%;
-         padding: .8em 0;
-         max-width: 150px;
-     }
-     #poets a {
-	 border-bottom:1px solid <?php echo $colors[0][0]; ?>;
-     }
-     pre {
-	 overflow:auto;
-     }
-     pre code {
-	 overflow:auto;
-	 font-size:.85em;
-	 word-spacing:5px;
-     }
-     main h1 {
-         font-size:1.5em;
-         color:<?php echo $colors[0][0]; ?>;
-     }
-     main h2 {
-         font-size:1.3em;
-         color:<?php echo $colors[0][0]; ?>;
-         margin-top:1em;
-     }
-     main h3 {
-         font-size:1.1em;
-         color:<?php echo $colors[0][0]; ?>;
-         margin-top:1em;
-     }
-     main h1, main h2, main h3 {
-         text-align:right;
-     }
-     main ul, ol {
-         padding-right:2em;
-	 list-style-type:persian;
-	 font-size:.9em
-     }
-     main p {
-         text-indent: 1em;
-     }
-     main img {
-         display:block;
-         margin: 1em auto;
-         max-width:100%;
-         cursor:pointer;
-     }
-     main .material-icons {
-         display: inline;
-         font-size: 1.5em;
-     }
-    </style>
-    <div id="main" style="font-size:.65em;text-align:justify;padding:1em;">
+    <div id="main" style="font-size:.6em;
+	     text-align:justify;padding-right:1em">
 	<?php
 	echo @file_get_contents('CONTRIBUTING.html');
 	?>
     </div>
-    <div class="border-eee" style="margin:.4em 0 .8em"></div>
-    
     <script>
      function make_code() {
 	 var inp = document.querySelector("#QAtxt");
@@ -133,17 +133,21 @@ include(ABSPATH . 'script/php/header.php');
 	 inp.focus();
      }
     </script>
-    
-    <div style="max-width:800px; margin:auto; padding:0 .2em">
-        <h3 style="font-size: .7em;">
+
+    <h1 class='color-blue' style="font-size:1em">
+        پرسیار و وەڵام
+    </h1>
+    <div style="padding-right:1em">
+        <small style="font-size:.6em;display:block">
             ئەگەر سەبارەت بەم بابەتە پرسیارێک‌و هەیە لێرە بینووسن.
-        </h3>
-        <small style="font-size:.5em;padding-bottom: 1em;color:#444;display:block">
+            <br>
             بۆ وەرگرتنی وەڵامی پرسیارەکەتان سەردانی ئەم لاپەڕە بکەنەوە.
         </small>
         <form id="frmQA" action="save.php" method="POST">
-            <button type="button" class='button' style="display: inline-block;padding: .7em;font-size: .45em;cursor: pointer;margin: 0 auto 5px 10px;background:<?php echo $colors[0][0]; ?>;color:#fff;font-weight:bold;font-family:monospace;" onclick="make_code()">Code</button><span style="font-size:.45em">ئەگەر کۆدی تێدایە لە پرسیارەکەتان تکایە "Code" بەکار بێنن.
-            </span>
+            <div style='text-align:center'>
+		<button type="button" class='back-blue color-white' style="display:inline-block;padding:.7em;font-size:.45em;cursor:pointer;margin:0 auto 5px 10px;font-weight:bold;font-family:monospace;" onclick="make_code()">Code</button><span style="font-size:.55em">ئەگەر کۆدی تێدایە لە پرسیارەکەتان تکایە "Code" بەکار بێنن.
+		</span>
+	    </div>
             <textarea id="QAtxt"></textarea>
             <div id="QAres"></div>
             <button type="submit" class='button btn'>ناردن</button>
@@ -156,9 +160,6 @@ include(ABSPATH . 'script/php/header.php');
                 $f = fopen("QA.txt", "r");
                 $cc = fread($f, filesize("QA.txt"));
                 $cc = explode("\nend\n", $cc);
-                
-                echo "<h3 class='border-eee' style='margin-top:2em;
-font-size:.7em;padding:1em'>پرسیار و وەڵامەکان</h3>";
                 
                 foreach($cc as $c) {
                     if(!empty($c)) {
@@ -196,17 +197,13 @@ font-size:.7em;padding:1em'>پرسیار و وەڵامەکان</h3>";
              const x = new XMLHttpRequest();
              x.onload = function() {
                  if(this.responseText == "1") {
-                     t.innerHTML = "<span style='background:rgba(0,255,0,.08); color:<?php echo $colors[0][0]; ?>;display:block;padding:1em; font-size:.6em;'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
+                     t.innerHTML = "<span style='background:rgba(0,255,0,.08); color:green; ?>;display:block;padding:1em; font-size:.6em;'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
                  }
              }
              x.open("POST", "save.php");
              x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
              x.send(`txt=${encodeURIComponent(txt.value)}`);
          });
-	 document.querySelectorAll("main ul, main ol").forEach(
-	     function(item) {
-		 item.classList.add("color-333");
-	     });
         </script>        
     </div>    
 </div>

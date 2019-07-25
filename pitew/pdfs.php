@@ -71,7 +71,7 @@ include(ABSPATH . 'script/php/header.php');
     
     <main id="main">
 <?php
-$base = "https://allekok.github.io/diwan/";
+$base = "https://github.com/allekok/diwan/raw/master/";
 $list_uri = "pdfs.txt";
 $list = file_exists($list_uri) ?
 	explode("\n\n",

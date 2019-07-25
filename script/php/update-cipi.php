@@ -29,6 +29,6 @@ if(mysqli_num_rows($query)===1) {
     mysqli_close($conn);
     
     if($query)
-        redirect(_SITE.$uri);
+        redirect(_SITE.'/'.$uri);
 }
 ?>

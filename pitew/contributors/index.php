@@ -10,9 +10,30 @@ $t_desc = "";
 
 include(ABSPATH . "script/php/header.php");
 ?>
-<div id="poets" style="margin-bottom:1em;max-width:800px">
+<style>
+ #contributions div small {
+     display:block;
+     padding-right:2em;
+ }
+ #contributions div .stats-min {
+     display:block;
+     font-size:.85em;
+ }
+ #contributions div .stats-min .material-icons {
+     font-size:1.1em;
+     padding:0 0 0 .2em;
+     display:inline-block;
+ }
+ .epld-expand {
+     font-size:1em;
+     padding:0 .5em;
+     display:block;
+     margin-right:1em
+ }
+</style>
+<div id="poets" style="text-align:right">
     <div id='adrs'>
-	<a href="../first.php">
+	<a href="/pitew/first.php">
 	    پتەوکردنی ئاڵەکۆک
 	</a>
 	<i> &rsaquo; </i>
@@ -22,48 +43,6 @@ include(ABSPATH . "script/php/header.php");
 	</div>
     </div>
 
-    <style>
-     #contributions div p {
-	 text-align:right;
-     }
-     #contributions div .stats-min {
-	 display:block;
-	 font-size:.9em;
-     }
-     #contributions div .stats-min .material-icons {
-	 font-size:.85em;
-	 vertical-align:middle;
-	 padding:0 .2em;
-	 display:inline-block;
-     }
-     .epld-expand {
-	 font-size:1.3em;
-	 padding:0 .5em;
-	 margin:.5em 0;
-     }
-    </style>
-    <script>
-     function expand (item)
-     {
-	 const parent = item.parentNode.
-			   parentNode.querySelector("div");
-	 if(parent.style.overflow != "hidden") {
-	     parent.style.overflow = "hidden";
-	     parent.style.maxHeight = "400px";
-	     item.innerHTML = "<i class='material-icons' \
-style='font-size:inherit;display:inline-block'\
->keyboard_arrow_down</i>";
-	 }
-	 else
-	 {
-	     parent.style.overflow = "";
-	     parent.style.maxHeight = "";
-	     item.innerHTML = "<i class='material-icons' \
-style='font-size:inherit;display:inline-block'\
->keyboard_arrow_up</i>";	     
-	 }
-     }
-    </script>
     <div id="contributions">
 	<?php
 	function open ($uri, $limit=-2)
@@ -99,12 +78,12 @@ style='font-size:inherit;display:inline-block'\
 	foreach ($array as $E)
 	{
 	    echo "<div id='contributions-{$E[0]}' class='pitewsec'>";
-	    echo "<div style='overflow:hidden;max-height:400px'
-><i class='material-icons'>{$E[3]}</i>";
-	    echo '<h3>';
+	    echo "<div style='overflow:hidden;max-height:200px'>";
 	    echo "<a href='{$E[4]}'>";
+	    echo "<i class='material-icons'>{$E[3]}</i> ";
+	    echo '<h3>';
 	    echo $E[1];
-	    echo "</a>";
+	    echo "</a></h3>";
 	    $contributions_poems = open($E[2]);
 	    echo '<small><i class=\'stats-min\'>';
 	    echo "<a href='{$E[2]}' title='وەشانی plain/text'
@@ -123,8 +102,8 @@ style='font-size:inherit;display:inline-block'\
 		echo '</p>';
 		$n++;
 	    }
-	    echo '</small></h3>';
-	    echo "</div><div><button class='epld-expand color-444 button' 
+	    echo '</small>';
+	    echo "</div><div><button class='epld-expand' 
 onclick='expand(this)'><i class='material-icons' 
 style='font-size:inherit;display:inline-block'
 >keyboard_arrow_down</i></button></div>";
@@ -133,6 +112,28 @@ style='font-size:inherit;display:inline-block'
 	?>
     </div>
 </div>
+<script>
+ function expand (item)
+ {
+     const parent = item.parentNode.
+			 parentNode.querySelector("div");
+     if(parent.style.overflow != "hidden") {
+	 parent.style.overflow = "hidden";
+	 parent.style.maxHeight = "200px";
+	 item.innerHTML = "<i class='material-icons' \
+style='font-size:inherit;display:inline-block'\
+>keyboard_arrow_down</i>";
+     }
+     else
+     {
+	 parent.style.overflow = "";
+	 parent.style.maxHeight = "";
+	 item.innerHTML = "<i class='material-icons' \
+style='font-size:inherit;display:inline-block'\
+>keyboard_arrow_up</i>";	     
+     }
+ }
+</script>
 <?php
 include_once(ABSPATH."script/php/footer.php");
 ?>

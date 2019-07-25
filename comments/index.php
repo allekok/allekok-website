@@ -11,10 +11,11 @@ $t_desc = "";
 include(ABSPATH . "script/php/header.php");
 ?>
 <div id="poets">
-    <h1 style="font-size:1.2em">
+    <h1 class="color-blue"
+	style="font-size:1em;text-align:right">
         بیر و ڕاکان
     </h1>
-    <div class="color-444" style='font-size:.55em;margin:.5em 0'>
+    <div style='font-size:.55em;margin:.5em 0'>
         ژمارەی بیروڕاکان: 
         <?php
         $db = "index";
@@ -27,7 +28,7 @@ include(ABSPATH . "script/php/header.php");
         echo $nm;
         ?>
     </div>
-    <div style='max-width:800px;margin:auto;padding:.3em'>
+    <div style='padding-right:1em'>
         <div id="hon-comments-body">
             <div class='loader'></div>
         </div>
@@ -35,8 +36,7 @@ include(ABSPATH . "script/php/header.php");
     <script>
      window.onload = function ()
      {
-	 const comments = document.querySelector("#hon-comments-body"),
-	       xmlhttp = new XMLHttpRequest();
+	 const comments = document.querySelector("#hon-comments-body");
 	 getUrl("get-comments.php?n=20",function(responseText) {
 	     const res = JSON.parse(responseText);
              if(res.err != 1) {
@@ -44,12 +44,11 @@ include(ABSPATH . "script/php/header.php");
 		 for(a in res)
 		 {
                      newComm += "<div class='comment'><div class='comm-name'\
-><i style='font-style:normal;padding-left:.2em;color:<?php echo $colors[0][0]; ?>;\
-font-size:1.4em;'>&bull;</i>"+res[a].name+"<span class='color-444' \
-style='font-size:.7em'> سەبارەت بە شێعری </span><a class='border-bottom-eee' \
-style='font-size:.75em;border-radius:3px;padding:.1em .3em' \
+>"+res[a].name+"<span \
+style='font-size:.7em'> سەبارەت بە شێعری </span><a class='link-color' \
+style='font-size:.75em;padding:0 .3em' \
 href='/"+res[a].address+"'>"+res[a].ptn+" &rsaquo; "+res[a].pmn+"</a\
-><span class='color-444' style='font-size:.7em'> نووسیویەتی:</span></div\
+><span style='font-size:.7em'> نووسیویەتی:</span></div\
 ><div class='comm-body'>"+res[a].comment+"</div><div class='comm-footer'\
 >"+res[a].date+"</div></div>";
 		 }

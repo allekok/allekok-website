@@ -1,61 +1,48 @@
 <div id="poets">
-
     <style>
      .dropbtn {
-	 cursor: pointer;
-	 padding:0.8em 1em;
-     }
-
-     #myInput {
-	 width:100%;
-     }
-
-     .dropdown {
-	 position: relative;
-	 display: inline-block;
-     }
-
-     .dropdown-content {
-	 display: none;
-	 position: absolute;
-	 background-color: #f6f6f6;
-	 min-width: 200px;
-	 overflow-y: auto;
-	 border: 1px solid #ddd;
-	 z-index: 1;
-	 max-height:20em;
-	 font-size:0.6em;
-	 overflow-x:hidden;
-	 white-space:nowrap;
-	 text-overflow:'..';
-	 box-shadow: 0 10px 11px -6px #aaa;
-     }
-
-     .dropdown-content a {
-	 padding: 0.7em 0.6em;
-	 text-decoration: none;
-	 display: block;
-	 border-bottom:1px solid #eee;
-     }
-
-     .dropdown a:hover {background-color: #ddd;}
-
-     .show {display: block;}
-
-     .cb {
-	 padding: 1em;
-	 font-size: 0.6em;
-	 cursor: pointer;
-	 border-bottom: 1px solid #eee;
-     }
-
-     .cb:hover {
-	 background:#eee;
-     }
-     .cb i {
+	 cursor:pointer;
+	 padding:.5em 1em;
 	 vertical-align:middle;
      }
-
+     #myInput {
+	 width:100%;
+	 margin-bottom:.5em;
+     }
+     .dropdown {
+	 position:relative;
+	 display:inline-block;
+     }
+     .dropdown-content {
+	 text-align:right;
+	 display:none;
+	 position:absolute;
+	 background:#fff;
+	 min-width:200px;
+	 max-width:200px;
+	 overflow-y:auto;
+	 border:2px solid;
+	 z-index:1;
+	 max-height:20em;
+	 font-size:.55em;
+	 border-radius:1em;
+     }
+     .dropdown-content a {
+	 padding:0 1em;
+	 display:block;
+	 overflow:hidden;
+	 white-space:nowrap;
+	 text-overflow:ellipsis;
+     }
+     .show {display:block;}
+     .cb {
+	 padding:.5em 1em;
+	 font-size:.6em;
+	 cursor:pointer;
+     }
+     .cb:hover {
+	 color:<?php echo $_color; ?>;
+     }
     </style>
 
     <script>
@@ -92,12 +79,12 @@
     </script>
 
     <div>
-	<form id="search-form" action="/" method="GET"><input type="text" id="search-key" class='search-key-php' name="q" placeholder="گەڕان بۆ ..." value="<?php echo htmlspecialchars($_GET['q']); ?>"><button type="submit" id="search-btn" class='button'><i class='material-icons' style='font-size:2em;'>search</i></button></form>
+	<form id="search-form" action="/" method="GET"><input type="text" id="search-key" class='search-key-php' name="q" placeholder="گەڕان بۆ ..." value="<?php echo htmlspecialchars($_GET['q']); ?>"><button type="submit" id="search-btn" class='material-icons'>search</button></form>
     </div>
 
-    <section class='sli' style="text-align:right">
+    <section class='sli' style="text-align:right;padding-left:.5em">
 	<div id="search-options">
-            <p style='text-align:right;font-size:0.6em;padding-bottom:.6em'>
+            <p style='text-align:right;font-size:.6em;padding-bottom:.6em'>
 		گەڕان لە شێعرەکانی: 
             </p>
 	    <div style="text-align:center">
@@ -147,8 +134,8 @@
 		</div>
 	    </div>
             
-            <div style="margin:1em auto" class='chkboxs'>
-		<p style='text-align:right;font-size:0.6em;padding-bottom:0.6em'>
+            <div class='chkboxs'>
+		<p style='text-align:right;font-size:.6em'>
                     گەڕان لە: 
 		</p>
 		<div>
@@ -161,10 +148,10 @@
 				شاعیران
                             </span>
 			</div>
-			<form onsubmit="event.preventDefault();search_deep(which_PT_selected(), checks());" style="background: #fff;border-bottom: 1px solid #ddd;padding: 0em .3em;">
-                            <p style='text-align: right;font-size: .45em;display: inline-block;width: 50%;box-sizing: border-box;max-width:10em;padding:1.2em 0;vertical-align:middle'>
-				ئەژماری شاعیران:</p><input type="text" id="PtsNumTxt" value="10" onfocus="selectText(this)" style="direction: ltr;text-align: center;box-sizing: border-box;font-size: .45em;display: inline-block;width: 23%;max-width: 100px;border: 1px solid #ddd;margin-left: 2%;border-radius: 2px;padding:.7em;vertical-align:middle"><button class='button' type="submit" style="width: 25%;font-size: .45em;text-align: center;box-sizing: border-box;max-width:60px;padding:.7em;vertical-align:middle">
-				گەڕان
+			<form onsubmit="event.preventDefault();search_deep(which_PT_selected(), checks());" style="display:flex;width:100%;padding:0 1em .5em 0">
+                            <p style='font-size:.5em;padding:0 0 0 1em'>
+				ئەژمار: </p><input type="text" id="PtsNumTxt" value="10" onfocus="selectText(this)" style="direction:ltr;text-align:center;font-size:.45em;padding:0 .5em;width:4em;"><button class='material-icons' type="submit" style="font-size:.6em;padding:0 .5em 0 0">
+				arrow_back
 				</button>
 			</form>
                     </div>
@@ -179,10 +166,10 @@
                             کتێبەکان
 			</span>
                     </div>
-                    <form onsubmit="event.preventDefault();search_deep(which_PT_selected(), checks());" style="background: #fff;border-bottom: 1px solid #ddd;padding: 0em .3em;">
-			<p style='text-align: right;font-size: .45em;display: inline-block;width: 50%;box-sizing: border-box;max-width:10em;padding:1.2em 0;vertical-align:middle'>
-			    ئەژماری کتێبەکان:</p><input type="text" id="BksNumTxt" value="10" onfocus="selectText(this)" style="direction: ltr;text-align: center;box-sizing: border-box;font-size: .45em;display: inline-block;width: 23%;max-width: 100px;border: 1px solid #ddd;margin-left: 2%;border-radius: 2px;padding:.7em;vertical-align:middle"><button class='button' type="submit" style="width: 25%;font-size: .45em;text-align: center;box-sizing: border-box;max-width:60px;padding:.7em;vertical-align:middle">
-                            گەڕان
+                    <form onsubmit="event.preventDefault();search_deep(which_PT_selected(), checks());" style="display:flex;width:100%;padding:0 1em .5em 0">
+			<p style='font-size:.5em;padding:0 0 0 1em'>
+			    ئەژمار: </p><input type="text" id="BksNumTxt" value="10" onfocus="selectText(this)" style="direction:ltr;text-align:center;font-size:.45em;padding:0 .5em;width:4em;"><button class='material-icons' type="submit" style="font-size:.6em;padding:0 .5em 0 0">
+			    arrow_back
 			    </button>
                     </form>
 		</div>
@@ -203,10 +190,10 @@
                             دەقی شێعرەکان
 			</span>
                     </div>
-                    <form onsubmit="event.preventDefault();search_deep(which_PT_selected(), checks());" style="background: #fff;border-bottom: 1px solid #ddd;box-shadow: 0 5px 10px -5px #ddd;padding: 0em .3em;">
-			<p style='text-align: right;font-size: .45em;display: inline-block;width: 50%;box-sizing: border-box;max-width:10em;padding:1.2em 0;vertical-align:middle'>
-			    ئەژماری شێعرەکان:</p><input type="text" id="ResNumTxt" value="10" onfocus="selectText(this)" style="direction: ltr;text-align: center;box-sizing: border-box;font-size: .45em;display: inline-block;width: 23%;max-width: 100px;border: 1px solid #ddd;margin-left: 2%;border-radius: 2px;padding:.7em;vertical-align:middle"><button class='button' type="submit" style="width: 25%;font-size: .45em;text-align: center;box-sizing: border-box;max-width:60px;padding:.7em;vertical-align:middle">
-                            گەڕان
+                    <form onsubmit="event.preventDefault();search_deep(which_PT_selected(), checks());" style="display:flex;width:100%;padding:0 1em .5em 0">
+			<p style='font-size:.5em;padding:0 0 0 1em'>
+			    ئەژمار: </p><input type="text" id="ResNumTxt" value="10" onfocus="selectText(this)" style="direction:ltr;text-align:center;font-size:.45em;padding:0 .5em;width:4em;"><button class='material-icons' type="submit" style="font-size:.6em;padding:0 .5em 0 0">
+			    arrow_back
 			    </button>
                     </form>
 		</div>
@@ -220,8 +207,8 @@
 			   bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
 			   pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
 			   pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
-			   pm_sum = pms+pm_nms,
-			   pms_num = maxRN.value;
+			   pm_sum = pms+pm_nms;
+		     let pms_num = maxRN.value;
                      if(pm_sum == 0) {
 			 pms_num = 0;
                      }
@@ -261,8 +248,8 @@
 			   bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
 			   pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
 			   pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
-			   pm_sum = pms+pm_nms,
-			   pms_num = maxRN.value;
+			   pm_sum = pms+pm_nms;
+		     let pms_num = maxRN.value;
                      if(pm_sum == 0) {
 			 pms_num = 0;
                      } 
@@ -274,8 +261,8 @@
 			   bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? 0 : maxBN.value,
 			   pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
 			   pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
-			   pm_sum = pms+pm_nms,
-			   pms_num = maxRN.value;
+			   pm_sum = pms+pm_nms;
+		     let pms_num = maxRN.value;
                      if(pm_sum == 0) {
 			 pms_num = 0;
                      } 
@@ -287,8 +274,8 @@
 			   bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
 			   pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 0 : 1,
 			   pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
-			   pm_sum = pms+pm_nms,
-			   pms_num = maxRN.value;
+			   pm_sum = pms+pm_nms;
+		     let pms_num = maxRN.value;
                      if(pm_sum == 0) {
 			 pms_num = 0;
                      } 
@@ -300,8 +287,8 @@
 			   bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
 			   pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
 			   pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 0 : 2,
-			   pm_sum = pms+pm_nms,
-			   pms_num = maxRN.value;
+			   pm_sum = pms+pm_nms;
+		     let pms_num = maxRN.value;
                      if(pm_sum == 0) {
 			 pms_num = 0;
                      } 
@@ -326,8 +313,8 @@
 		       bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
 		       pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
 		       pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
-		       pm_sum = pms+pm_nms,
-		       pms_num = maxRN.value;
+		       pm_sum = pms+pm_nms;
+		 let pms_num = maxRN.value;
                  if(pm_sum == 0) {
                      pms_num = 0;
                  } 
@@ -374,8 +361,8 @@
 		   bks = (document.querySelector("#cb-bk i").innerHTML != "check_box_outline_blank") ? maxBN.value : 0,
 		   pm_nms = (document.querySelector("#cb-pm-nm i").innerHTML != "check_box_outline_blank") ? 1 : 0,
 		   pms = (document.querySelector("#cb-pm i").innerHTML != "check_box_outline_blank") ? 2 : 0,
-		   pm_sum = pms+pm_nms,
-		   pms_num = maxRN.value;
+		   pm_sum = pms+pm_nms;
+	     let pms_num = maxRN.value;
              if(pm_sum == 0) {
                  pms_num = 0;
              } 
@@ -400,7 +387,7 @@
 	 })
 	</script>
 	
-    </section><section class='sli'>
+    </section><section class='sli' style="padding-right:1em">
 	<div id="search-res" style="display:block;max-width:unset">
 	    <script>
              search_deep("<?php echo @$_GET['selPT'];?>");

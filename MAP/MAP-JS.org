@@ -36,6 +36,15 @@
 - button_select
 - save_user_codes
 
+/[[../tewar/index.php][index.php (7)]]/
+- search
+- search_ferheng
+- search_dictiwa
+- search_farhangumejuikawa
+- search_dictio
+- search_wiktionary
+- search_wikipedia
+
 /[[../script/php/search.php][search.php (8)]]/
 - myFunction
 - filterFunction

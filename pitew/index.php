@@ -43,13 +43,12 @@ $_book1 = isset($_GET['book']) ?
 	 {
              txts.forEach( function(e)
 	     {
-                 e.style.borderTopColor = "";
+                 e.style.borderBottomColor = "";
                  e.style.background = "";
              });
              btns.forEach( function(e)
 	     {
-                 e.style.background = "";
-                 e.style.color = "";
+                 e.style.border = "";
              });
              return;
          }
@@ -61,13 +60,12 @@ $_book1 = isset($_GET['book']) ?
 	     {
                  txts.forEach( function(e)
 		 {
-                     e.style.borderTopColor = colors[0][0];
+                     e.style.borderBottomColor = '<?php echo $_color; ?>';
                  });
 		 
                  btns.forEach( function(e)
 		 {
-                     e.style.background = colors[0][0];
-                     e.style.color = colors[0][1];
+                     e.style.border = '2px solid <?php echo $_color; ?>';
                  });
                  
                  poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
@@ -79,14 +77,13 @@ $_book1 = isset($_GET['book']) ?
 	     {
                  txts.forEach( function(e)
 		 {
-                     e.style.borderTopColor = "";
+                     e.style.borderBottomColor = "";
                      e.style.background = "";
                  });
 		 
                  btns.forEach( function(e)
 		 {
-                     e.style.background = "";
-                     e.style.color = "";
+                     e.style.border = "";
                  });
              }
          });
@@ -106,9 +103,8 @@ $_book1 = isset($_GET['book']) ?
     <div style="max-width:800px;margin:auto">
 	<div style='font-size:.53em;text-align:right;padding:0 1em 1em'>
 	    دەتوانن بۆ نووسینەوەی شێعر ئەم دیوانانە بەکار بهێنن: 
-	    <a class='link'
-	       style='border-bottom:1px solid <?php echo $colors[0][0]; ?>;
-		      display:inline-block;padding:0' href="/pitew/pdfs.php">
+	    <a class='link-underline'
+	       style='display:inline-block;padding:0' href="/pitew/pdfs.php">
 		داگرتنی دیوانی شاعیران
 	    </a>
 	</div>
@@ -144,7 +140,7 @@ $_book1 = isset($_GET['book']) ?
 		       placeholder="سەرناوی شێعر">
 	    </div>
 	    <div class="input-label-box" style="margin-top:1em">
-		<textarea id="poemConTxt" name="poem" style="font-size:.7em;max-width:100%;min-width:100%;min-height:20em;" placeholder="دەقی شێعر *"></textarea>
+		<textarea id="poemConTxt" name="poem" style="font-size:.7em;max-width:100%;min-width:100%" placeholder="دەقی شێعر *"></textarea>
 	    </div>
 
             <div class='loader' style="display:none"></div>
@@ -152,13 +148,12 @@ $_book1 = isset($_GET['book']) ?
             <div id="message"></div>
 
             <button type="submit" class="button bth"
-		    style="font-size:.7em;width:45%;
-			  max-width:150px;margin-top:1em;
-			  padding:1em 0"
+		    style="font-size:.7em;border-radius:1em;
+			  margin-top:1em;padding:.8em 2.5em"
 	    >ناردن</button>
             <button type="button" id="clearBtn" class='button'
-		    style="font-size:.7em;width:45%;
-			  max-width:150px;margin-top:1em"
+		    style="font-size:.7em;margin-top:1em;
+			  padding:.8em 2.5em"
 	    >پاک کردنەوە</button>
         </form>	
         <?php
@@ -177,10 +172,10 @@ $_book1 = isset($_GET['book']) ?
  window.onload = function()
  {
      const contri = isJson(localStorage.getItem("contributor"));
-     if(contri)
+     if(contri && contri.name)
      {
-	 document.getElementById('contributorTxt').value = contributor.name;
-	 document.getElementById('poems-list').href += '?name=' + contributor.name;
+	 document.getElementById('contributorTxt').value = contri.name;
+	 document.getElementById('poems-list').href += '?name=' + contri.name;
 	 
 	 getUrl(`stats.php?contributor=${contri.name}`, function(responseText)
 	 {
@@ -266,13 +261,12 @@ $_book1 = isset($_GET['book']) ?
      
      txts.forEach( function(e)
      {
-         e.style.borderTopColor = "";
+         e.style.borderBottomColor = "";
          e.style.background = "";
      });
      btns.forEach( function(e)
      {
-         e.style.background = "";
-         e.style.color = "";
+         e.style.border = "";
      });
  });
 </script>

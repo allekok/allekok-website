@@ -52,8 +52,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	<?php if($row[0]) { ?>
 	    <!-- Previous -->
 	    <div class="prev">
-		<a style="color:inherit;font-size:inherit;
-			  padding:.85em 0;display:block;"
+		<a style="display:block"
 		   href="<?php 
 			 echo "/poet:".$info['id']."/book:".
 			      $bk."/poem:".$row[0]['id'];
@@ -81,8 +80,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	?>
 	    <!-- Next -->
 	    <div class="next">
-		<a style="color:inherit;font-size:inherit;
-			  padding:.85em 0;display:block;"
+		<a style="display:block;"
 		   href="<?php
 			 echo "/poet:".$info['id']."/book:".
 			      $bk."/poem:".$row[2]['id'];
@@ -111,44 +109,35 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	     Other tools button
 	     Bookmark button
 	-->
-        <i style='font-size:1.4em;height:.6em'
-	   class='material-icons color-666'>format_size</i>
-        <button class='button bigger' style="padding:.85em 1.1em">
-            <i style='vertical-align:middle;'
-	       class='material-icons'>arrow_upward</i>
+        <button class='bigger material-icons icon-round'
+		       style="padding:.5em"
+	>arrow_upward
+	</button
+	><button class='smaller material-icons icon-round'
+		 style="padding:.5em"
+	 >arrow_downward
         </button
-	><button class='button smaller'
-		 style="margin-left:.4em;padding:.85em 1.1em">
-            <i style='vertical-align:middle;'
-	       class='material-icons'>arrow_downward</i>
+	><button id='copy-sec' class='copy material-icons icon-round'
+		 style="padding:.5em"
+	 >content_copy
         </button
-	><button id='copy-sec' class='button copy'
-		 style="margin:0 .4em;font-size:.83em;
-		     padding:.85em .3em;">
-            <i style='vertical-align:middle;'
-	       class='material-icons'>content_copy</i>
-	    کۆپی کردن 
-        </button>
-	<i id='extlnkico'
-	   style='cursor:pointer;padding:0 .2em;
-	       font-size:1.8em;height:.8em'
-	   class='material-icons color-444' 
-	   title='ئامێرەکانی‌تر'>more_horiz</i>
-	<?php
-	if(!($ath==10 and
-	    $bk==1 and
-	    $row[1]['id']==1)) {
-	?><button id='fav-sec' class='button fav'
-		  style="float:left;
-		      padding-top:.4em">
-            <i class='material-icons'
-	       id='like-icon'
-	       style='font-size:3em;color:<?php echo $colors[0][0]; ?>'
-	    >bookmark_border</i>
-	</button>
-        <?php } ?>
+	><?php
+	 if( !($ath == 10 and
+	     $bk == 1 and
+	     $row[1]['id'] == 1) )
+	 {
+	 ?><button id='like-icon' class='material-icons icon-round'
+		   style="padding:.5em"
+	   >bookmark_border
+	 </button
+	 ><?php
+	  }
+	  ?><button id='extlnkico'
+		    style='padding:.5em'
+		    class='material-icons icon-round' 
+		    title='ئامێرەکانی‌تر'>more_horiz
+	  </button>
     </div>
-    
     <!--
        - Toolbar
 	 Other tools window
@@ -156,7 +145,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
     <div style='display:none;font-size:.55em;
 		max-width:500px;margin:auto auto .5em;
 		padding:.5em 1em;text-align:right'
-	 id='extlnk' class="border-bottom-eee">
+	 id='extlnk'>
 	<style>
 	 .icon-round {
 	     font-size:1.2em;
@@ -170,15 +159,15 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
             $ext_link = explode("[t]", $row[1]['link']);
             echo "<div>";
             echo "<i class='material-icons icon-round'>link</i>";
-            echo "<a class='link' href='{$ext_link[1]}' 
+            echo "<a href='{$ext_link[1]}' 
 title='{$row[1]['name']}' target='_blank' 
 rel='noopener noreferrer nofollow' 
 style='display:inline-block'
->ئەم شێعرە لەسەر &laquo;{$ext_link[0]}&raquo;</a>";
+>ئەم شێعرە لەسەر &laquo;{$ext_link[0]}&raquo;</a> ";
             $probability = intval($ext_link[2]) / 4 * 100;
-            $probability = num_convert($probability ,
-				       "en" , "ckb") . "%";
-            echo "<span class='color-666' style='font-size:.75em'
+            $probability = "<i style='font-size:.7em;letter-spacing:1px'>%</i>" .
+			   num_convert($probability, "en", "ckb");
+            echo "<span style='font-size:.8em;letter-spacing:.7px'
 >($probability)</span>";
             echo "</div>";
 	}
@@ -190,15 +179,14 @@ style='display:inline-block'
 	    <i class='material-icons icon-round'
 	    >insert_drive_file</i>
 	    <?php
-            echo "<a class='link' 
-href='/dev/tools/poem-plain.php?poet=$ath&book=$bk&poem=$id' 
+            echo "<a href='/dev/tools/poem-plain.php?poet=$ath&book=$bk&poem=$id' 
 title='{$row[1]['name']}' target='_blank' 
 rel='noopener noreferrer nofollow' 
-style='display:inline-block;'
+style='display:inline-block'
 >وەشانی تێکست</a>";
 	    ?>
 	</div>
-	<div style="padding:.5em 0">
+	<div>
 	    <!--
 		 Latin <-> Arabic
 	    -->
@@ -215,8 +203,7 @@ style='display:inline-block;'
 		       font-size:.9em'
 	     >Elfubêy Latîn</i></button>
 	</div>
-	<div style='text-align:center;
-		    padding:.5em 0'>
+	<div style='text-align:center'>
 	    <!--
 		 Dictionary lookup form
 	    -->
@@ -261,7 +248,6 @@ style='display:inline-block;'
 		 }
 		 #wordMore a:hover {
                      text-decoration:none;
-                     box-shadow:0 3px 5px -2px #aaa
 		 }
 		</style>
 		<div id="wordResFerheng"></div>
@@ -271,7 +257,7 @@ style='display:inline-block;'
 	</div>
     </div>
     <!-- Poem context -->
-    <article id='hon' style='max-width:950px;margin:auto'>
+    <article id='hon'>
 	<?php
 	echo $row[1]['hon'];
 	?>
@@ -293,10 +279,15 @@ style='display:inline-block;'
 	</span>
     <?php } ?>
     <!-- Comments -->
+    <h1 class="color-blue"
+	       style="font-size:1em;text-align:right;padding-top:.5em">
+	بیر و ڕاکان
+    </h1>
     <div id="hon-comments">
-	<div class="color-444"
-	     style="padding:1em .3em;font-size:.65em">
-            بیر و ڕای خۆتان سەبارەت بەو شێعرە بنووسن.
+	<div style="padding:.5em 0;font-size:.6em;text-align:right">
+            دەتوانن بیر و ڕای خۆتان سەبارەت بەم شێعرە لێرە بنووسن.
+	    <br>
+	    یان ئەگەر دەقی ئەم شێعرە هەڵەیەکی تێدایە، پێمانی ڕا بگەیێنن.
 	</div>
 	<form id="frmComm"
 	      style="max-width:700px;margin:auto"
@@ -314,36 +305,21 @@ style='display:inline-block;'
             <div id="message"></div>
             <button class='button bth' type="submit"
 		    style="font-size:.7em;width:50%;
-			   padding:1em 0;max-width:150px;
-			   background-color:
-			   <?php 
-			   echo $colors[0][0].';';
-			   ?>
-			   color:
-			   <?php 
-			   echo $colors[0][1].';';
-			   ?>
-			   margin:1em 0 .5em"
+			   padding:1em 0;max-width:150px"
 	    >ناردن</button>
 	</form>
 	<!--
 	     Comments contexts
 	-->
-	<div id="Acomms-title" class="border-eee"
-	     style="margin:1em 0 0;display:none;
-		 padding:1em .3em;font-size:.75em">
-	    بیر و ڕاکان سەبارەت بەو شێعرە
-	</div>
 	<div id='hon-comments-body'
 	     style='padding:0 .2em'></div>
     </div>
     <script>
      window.addEventListener('load', function() {
 	 const loader = "<div class='loader' \
-style='width:1.8em;height:1.8em;margin-top:.5em'></div>",
+style='margin-top:.5em'></div>",
 	       message = document.getElementById("message"),
 	       name = document.getElementById("commNameTxt"),
-	       commTitle = document.getElementById("Acomms-title"),
 	       comments = document.getElementById("hon-comments-body");
 	 
 	 function send_comment() {	     		     
@@ -375,7 +351,6 @@ style='width:1.8em;height:1.8em;margin-top:.5em'></div>",
 div class='comm-name'>"+res.name+":</div><\
 div class='comm-body'>"+res.comment+"</div><\
 div class='comm-footer'>"+res.date+"</div></div>";
-		     commTitle.style.display = "block";
 		     comments.innerHTML = newComm +
 					  comments.innerHTML;
 		     
@@ -432,16 +407,12 @@ address='$address' and blocked=0";
 			for(a in res)
 			{
 			    newComm += "<div class='comment'\
-><div class='comm-name'><i style='font-style:normal;\
-font-size:1.4em;padding-left:.3em;\
-color:<?php echo $colors[0][0]; ?>'\
->&bull;</i>"+res[a].name+":</div><div \
+><div class='comm-name'>"+res[a].name+":</div><div \
 class='comm-body'>"+res[a].comment+"</div><div \
 class='comm-footer'>"+res[a].date+"</div></div>";
 			}
 			
 			comments.innerHTML = newComm;
-			commTitle.style.display = "block";
 		    }
 		});
          <?php
@@ -530,8 +501,7 @@ cubic-bezier(0.18, 0.89, 0.32, 1.28) tL";
 	     });
 	 
 	 const loaderMin = "<div class='loader' \
-style='width:1.8em;height:1.8em;\
-vertical-align:middle;margin:1em auto'></div>";
+style='vertical-align:middle;margin:1em auto'></div>";
 	 
 	 document.getElementById("wordFrm").
 		  addEventListener("submit", function(e) {

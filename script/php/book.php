@@ -44,34 +44,23 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
     }
     ?>
     <!-- Toolbar -->
-    <form class="border-bottom-eee"
-	  style='text-align:right;
-		 margin:.2em;
-		 display:flex;'
-	  action="" method="post">
+    <form action="" class="fontsize toolbar" method="post"
+	  style="padding-bottom:1em;text-align:right">
 	<input type="hidden"
 	       style="display:none"
 	       name="order" value="asc">
-	<div style="width:100%"
-	><button type='submit'
-		 style="cursor:pointer;
-		       padding:1em 0;
-		       display:block;
-		       font-size:.65em"
-		 class='button'
-	 ><i class="icon-round"
-	     style="padding:.1em .75em 0;
-		    margin-left:.2em"
-	  >ئا</i> بەڕیز کردنی شێعرەکان لە ئا ڕا</button></div>
+	<button type='submit'
+		class="icon-round"
+		style="padding:.2em .35em 0;
+		      display:inline-block;
+		      font-size:1.2em;margin-left:.2em"
+	><i style="font-size:.9em">ئا</i><i class="material-icons"
+	    >arrow_downward</i></button>
 	<a id="new_poem_a"
-	   style="color:
-	       <?php 
-	       echo $colors[0][0].';';
-	       ?>
-	       display:inline-block;
-	       font-size:1.35em;
-	       padding:.4em .3em"
-	   class="material-icons button"
+	   style="display:inline-block;
+	       font-size:1.2em;
+	       padding:.58em"
+	   class="material-icons icon-round"
 	   title="نووسینی شێعرێکی تازە"
 	   href="/pitew/index.php?poet=<?php 
 				       echo $info['takh'].
@@ -88,25 +77,26 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 	    $rid_k = num_convert($row['id'],
 				 "en","ckb");
 	?>
-	    <div style="display:flex;">
+	    <div class="poem-item"
+		 style="display:flex">
 		<button class="material-icons button"
 			style="font-size:1em;
-			       padding:0 .5em"
+			       padding:0 0 0 .5em"
 			type="button"
 			title="نیشان‌دانی بەشی سەرەتای ئەم شێعرە"
-		>keyboard_arrow_down</button
-				    ><a href="<?php 
-					      echo "/poet:".
-						   $ath.
-						   "/book:".
-						   $bk.
-						   "/poem:".
-						   $row['id']; 
-					      ?>">
+		>dehaze</button
+		       ><a href="<?php 
+				 echo "/poet:".
+				      $ath.
+				      "/book:".
+				      $bk.
+				      "/poem:".
+				      $row['id']; 
+				 ?>">
 		    <?php
 		    echo($rid_k.". ".$row['name']);
 		    ?>
-		</a>
+		       </a>
 	    </div>
 	<?php
 	}
@@ -131,8 +121,8 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 
      function show_summary(button)
      {
-	 button.innerHTML = "<div class='loader' \
-style='width:2.2em;height:2.2em'></div>";
+	 button.innerHTML = "<div class='loader-round' \
+style='width:1em;height:1em'></div>";
 	 
 	 let href = button.parentNode.
 			   querySelector("a").
@@ -146,8 +136,8 @@ style='width:2.2em;height:2.2em'></div>";
 		pt+"&bk="+bk+"&pm="+pm, function(responseText)
 		{
 		    const san_txt = responseText.replace(/\n/g, "<br>");
-		    button.innerHTML = "keyboard_arrow_down";
-		    button.parentNode.outerHTML += "<div class='back-f3f3f3' \
+		    button.innerHTML = "dehaze";
+		    button.parentNode.outerHTML += "<div \
 style='padding:1em;font-size:.55em'\
 >"+san_txt+"</div>";
 		});

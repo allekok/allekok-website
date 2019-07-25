@@ -11,39 +11,35 @@ $t_desc = "";
 include(ABSPATH."script/php/header.php");
 ?>
 <div id="poets">
-    <div>
-        <p style="font-size:.75em">
+    <h1 class="color-blue"
+	style="font-size:1em;text-align:right">
+	سەبارەت
+    </h1>
+    <div style="text-align:right;font-size:.6em;padding-right:1em">
+	<p>
 	    ئاڵەکۆک هەلێکە بۆ خوێندنەوەی شێعری کوردی.
         </p>
-    </div>
-    <div style="font-size:.6em">
-        <span class="color-444">
-            ئاخیرین نوێ‌کردنەوەی شێعرەکان: 
-        </span>
-        <span style="display:inline-block">
-            <?php
-            $last_update_date = date_create(
+	<p>
+	    ئاخیرین نوێ‌کردنەوەی شێعرەکان: 
+	    <?php
+	    $last_update_date = date_create(
 		@file_get_contents(ABSPATH."last-update.txt"));
 	    $now = date_create(date("Y-m-d H:i:s"));
 	    echo format_DD(
 		date_diff($now,$last_update_date,true));
-            ?>
-        </span>
+	    ?>
+	</p>
+	<p>
+	    ئەژمار: 
+            <?php include(ABSPATH."script/php/stats.php"); ?>
+            <i class='sub-num'><?php echo $aths_num; ?></i>
+            شاعیر
+            &rsaquo;
+            <i class='sub-num'><?php echo $hons_num; ?></i>
+            شێعر
+	</p>
     </div>
-    <div class='stats-min color-444'>
-        <?php include(ABSPATH."script/php/stats.php"); ?>
-        <i class='sub-num'><?php echo $aths_num; ?></i>
-        شاعیر
-        &rsaquo;
-        <i class='sub-num'><?php echo $hons_num; ?></i>
-        شێعر
-    </div>
-    <div class="border-eee"
-	 style="width:95%;max-width:550px;
-		padding:.5em 0 0;margin:.5em auto">
-        <p style="font-size:.75em;padding-bottom:.5em">
-            ئاڵەکۆک‌تان بەلاوە چۆنە؟
-        </p>
+    <div style="margin:0 auto">
         <div id="message"></div>
         <form id="frmComm"
 	      action="/about/append.php"
@@ -51,14 +47,12 @@ include(ABSPATH."script/php/header.php");
             <textarea id="commTxt"
 		      style="font-size:.65em;
 			  max-width:100%;
-			  width:100%;
-			  min-height:10em"
-		      placeholder="بیر و ڕاتان سەبارەت بە ئاڵەکۆک بنووسن..."
+			  width:100%"
+		      placeholder="ئاڵەکۆک‌تان بەلاوە چۆنە؟ بۆمان بنووسن..."
 	    ></textarea>
             <div class='loader' id="commloader"
 		 style="display:none;
-			margin:.5em auto .2em;
-			width:1.5em;height:1.5em"
+			margin:.5em auto .2em"
 	    ></div>
             <button type="submit"
 		    style="font-size:.7em;
@@ -72,19 +66,24 @@ include(ABSPATH."script/php/header.php");
 		 filesize($uri)>0 :
 		 false;
 	?>
-        <div id="Acomms-title"
-	     style="margin:1em 0 .5em;
-		 font-size:.8em;<?php 
-				if(!$nzuri)
-				    echo 'display:none';
-				?>">
-            بیر و ڕاکان سەبارەت بە ئاڵەکۆک
-        </div>
+        <h1 id="Acomms-title" class="color-blue"
+	    style="text-align:right;
+		margin:0 0 .5em;
+		font-size:1em;<?php 
+			      if(!$nzuri)
+				  echo 'display:none';
+			      ?>">
+            بیر و ڕاکان
+        </h1>
         <div id="Acomms"
-	     style="font-size:.8em;<?php 
-				   if(!$nzuri)
-				       echo 'display:none;';
-				   ?>">
+	     style="font-size:.6em;max-width:800px;
+		 background:white;border-radius:1em;
+		 margin:auto;
+		 <?php 
+		 if(!$nzuri)
+		     echo 'display:none;';
+		 ?>">
+	    <section class="loader"></section>
         </div>
     </div>
 </div>
@@ -94,7 +93,7 @@ include(ABSPATH."script/php/header.php");
 	    function (responseText)
 	    {
 		const Acomms = document.
-			       getElementById("Acomms");
+			     getElementById("Acomms");
 		Acomms.innerHTML=responseText;
 		Acomms.style.animation="tL-top 0.8s \
 cubic-bezier(.18,.89,.32,1.28)";
@@ -106,13 +105,10 @@ cubic-bezier(.18,.89,.32,1.28)";
 	   res = document.getElementById('message'),
 	   comm = document.getElementById('commTxt'),
 	   loader = document.getElementById('commloader'),
-	   nullError = "<i style='display:block;background:rgba(204,51,0,.1);\
-color:#444;font-size:.5em'>هیچ تان نەنووسیوە.</i>",
 	   succMess = "<i style='display:block;background:rgba(102,255,204,.1);\
 color:#444;font-size:.5em'>زۆر سپاس بۆ دەربڕینی بیر و ڕاتان سەبارەت بە ئاڵەکۆک.</i>",
 	   failMess = "<i style='display:block;background:rgba(204,51,0,.1);\
 color:#444;font-size:.5em'>کێشەیەک هەیە. تکایە دووبارە هەوڵ دەنەوە.</i>",
-	 /* Out of range error */
 	   OoRError = "<i style='display:block;background:rgba(204,51,0,.1);\
 color:#444;font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پیت زیاتر بێ.</i>",
 	   request = "comm="+encodeURIComponent(comm.value);

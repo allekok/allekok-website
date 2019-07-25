@@ -6,7 +6,7 @@ self.addEventListener('install', function(event) {
     event.waitUntil(
 	caches.open(cache_ver).then(function(cache) {
 	    return cache.addAll([
-		profile+"0.jpg",
+		profile+"0.png",
 		profile+"1.jpg",
 		profile+"2.jpg",
 		profile+"3.jpg",
@@ -73,14 +73,14 @@ self.addEventListener('install', function(event) {
 		profile+"89.jpg",
 		profile+"71.jpg",
 		profile+"73.jpg",
-		'/script/js/main.js?v29',
-		'/style/css/main.css?v36',
-		'/style/css/main-dark.css?v36',
-		'/style/img/logo.jpg',
-		'/favicon.ico',
+		'/script/js/main.js?v30',
+		'/style/css/main.css?v37',
+		'/style/css/main-dark.css?v37',
+		'/favicon/favicon.ico',
 		'/style/font/DroidNaskh-Regular.woff2',
 		'/style/font/Material-Icons.woff2',
-		'/not-found.html?v2',
+		'/logo/logo-256.png',
+		'/not-found.html?v4',
 	    ]);
 	}));
 });
@@ -106,6 +106,6 @@ self.addEventListener('fetch', function(event) {
 		return response;
 	    });
 	}).catch(function() {
-	    return caches.match('/not-found.html?v2');
+	    return caches.match('/not-found.html?v4');
 	}));
 });

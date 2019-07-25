@@ -10,22 +10,23 @@ $t_desc = "";
 
 include(ABSPATH . "script/php/header.php");
 ?>
-<div id="poets">
-    <style>
-     .link {
-	 display:block;
-	 border-bottom:0;
-	 padding:.2em 1em;
-     }
-     .link i {
-	 font-size:.85em;
-     }
-    </style>
-    <h1 style="display:inline-block;
-	       padding:.1em .8em 0;font-size:1.2em">
-        تازەکانی ئاڵەکۆک
+<style>
+ .link {
+     display:block;
+     border-bottom:0;
+     padding:.2em 1em;
+ }
+ .link i {
+     font-size:.85em;
+ }
+</style>
+
+<div id="poets" style="text-align:right">
+    <h1 class="color-blue" style="font-size:1em;
+	       text-align:right">
+        تازەکان
     </h1>
-    <main style="max-width:800px;margin:auto;font-size:.6em;text-align:right">
+    <div style="font-size:.6em;padding-right:2em">
 	<?php
 	$n = filter_var(@$_GET["n"],FILTER_VALIDATE_INT) ?
 	     $_GET["n"] : 15; /* Number of poems */
@@ -68,19 +69,20 @@ include(ABSPATH . "script/php/header.php");
 		$poem = mysqli_fetch_assoc($query)["name"];
 		$image_uri = get_poet_image($pt,true);
 		
-		echo "<div class='border-bottom-eee'><a class='link' 
+		echo "<div style='margin:1.2em 0'><a class='link' 
+style='padding:0;margin:0'
 href='/poet:$pt/book:$bk/poem:$pm'><img style='display:inline-block;
-vertical-align:middle;width:3em;border-radius:50%;margin-left:.25em' 
-src='$image_uri'> <i class='color-444'>$poet &rsaquo; $book &rsaquo;</i
-> $poem</a><i class='color-555 border-right-eee' style='padding:0 1em;
-font-size:.75em;margin:0 1em .2em;display:block'>$diff</i></div>";
+vertical-align:middle;width:2.5em;border-radius:50%;margin-left:.25em' 
+src='$image_uri'> $poet &rsaquo; $book &rsaquo; $poem</a
+><i style='font-size:.8em;display:block'><i class='material-icons'
+>date_range</i> $diff</i></div>";
 		$i++;
 		mysqli_close($conn);
 	    }
 	    fclose($f);
 	}
 	?>
-    </main>
+    </div>
 </div>
 <?php
 include_once(ABSPATH . "script/php/footer.php");

@@ -63,8 +63,7 @@ include(ABSPATH . 'script/php/header.php');
      {
          const poet = document.getElementById("poetTxt"),
                txts = document.querySelectorAll("input, textarea"),
-               btns = document.querySelectorAll("button[type=submit]"),
-               upldlikebtn = document.getElementById("upldlikebtn");
+               btns = document.querySelectorAll("button[type=submit]");
          
          if(poet.value == "")
 	 {
@@ -73,12 +72,10 @@ include(ABSPATH . 'script/php/header.php');
                  e.style.borderTopColor = "";
                  e.style.background = "";
              });
-             btns.forEach( function(e)
+	     btns.forEach( function(e)
 	     {
-                 e.style.background = "#777";
-                 e.style.color = "#fff";
+		 e.style.border = '';
              });
-             upldlikebtn.style.background = "";
              return;
          }
 
@@ -90,12 +87,11 @@ include(ABSPATH . 'script/php/header.php');
 	     {
                  txts.forEach( function(e)
 		 {
-		     e.style.borderTopColor = colors[0][0];
+		     e.style.borderBottomColor = '<?php echo $_color; ?>';
                  });
                  btns.forEach( function(e)
 		 {
-		     e.style.background = colors[0][0];
-		     e.style.color = colors[0][1];
+		     e.style.border = '2px solid <?php echo $_color; ?>';
                  });
                  poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
                  poet.style.backgroundRepeat = "no-repeat";
@@ -106,15 +102,9 @@ include(ABSPATH . 'script/php/header.php');
 	     {
                  txts.forEach( function(e)
 		 {
-		     e.style.borderTopColor = "";
+		     e.style.borderBottomColor = "";
 		     e.style.background = "";
                  });
-                 btns.forEach( function(e)
-		 {
-		     e.style.background = "#777";
-		     e.style.color = "#fff";
-                 });
-                 upldlikebtn.style.background = "";
 	     }
          });
      }
@@ -153,15 +143,16 @@ include(ABSPATH . 'script/php/header.php');
 		   placeholder="نێوی شاعیر *">
 	</div>
         
-        <button class='file-btn button'
+        <button class='file-btn' type="button"
 		       onclick="document.querySelector('input[name=profile]').click()"
-		       style="display:inline-block;font-size:1.5em;padding:1em;
-		       border:7px dashed #ddd;border-radius:10px;margin:.5em 0"
+		       style="display:inline-block;font-size:1.3em;padding:1em;
+		       border:2px solid;border-radius:1em;margin:.5em 0"
 		       id='upldlikebtn'>
             هەڵبژاردنی وێنە
         </button><br>
-        <div class="color-555" style="padding-top:.2em;
-		    font-size:.7em;font-family:'kurd',monospace">
+        <div style="padding-top:.2em;max-width:350px;margin:auto;
+		    font-size:.7em;font-family:'kurd',monospace;
+		    text-align:right">
             &bull; فۆرمەتی وێنەکەتان دەبێ 
             <span class="back-eee" style='padding:0 .2em'>JPG, JPEG, PNG</span>
             بێت.
@@ -174,10 +165,8 @@ include(ABSPATH . 'script/php/header.php');
 	       name="profile" accept="image/png, image/jpeg">
         <div id="frmUploadMess"></div>
         <button class='button bth' type="submit"
-		style="width:45%;max-width:150px;
-		       background-color:#777;
-		       color:#fff;margin-top:1em;
-		       font-size:1em;padding:1em 0"
+		style="margin-top:1em;font-size:1em;
+		       padding:.8em 2.5em;border-radius:1em"
 	>ناردن</button>
     </form>
     
@@ -199,7 +188,7 @@ include(ABSPATH . 'script/php/header.php');
 		  {
 		      const filebtn = document.querySelector(".file-btn");
 		      filebtn.innerHTML = "هەڵبژێردرا.";
-		      filebtn.style.color = colors[0][0];
+		      filebtn.style.color = '<?php echo $_color; ?>';
 		      filebtn.style.border = "";
 		  });
 
@@ -226,11 +215,11 @@ include(ABSPATH . 'script/php/header.php');
              }
              if(fl.value == "")
 	     {
-		 flbtn.style.borderColor = "rgba(204,51,0,.4)";
+		 flbtn.style.borderColor = "red";
 		 
 		 setTimeout(function()
 		 {
-		     flbtn.style.borderColor = "#ddd";
+		     flbtn.style.borderColor = "";
 		 }, 2000);
 		 return;
              }

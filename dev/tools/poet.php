@@ -59,8 +59,8 @@ function get_poet ()
 		$res['bksdesc'] = explode(',', $res['bksdesc']);
 		$res['bks_completion'] = explode(',', $res['bks_completion']);
 		
-		$res['img']['_130x130'] = _SITE . get_poet_image($res['id'], false);
-		$res['img']['_460x460'] = _SITE . get_poet_image($res['id'], false);
+		$res['img']['_130x130'] = _SITE . get_poet_image($res['id'], true);
+		$res['img']['_460x460'] = _SITE . get_poet_image($res['id'], true);
 		
 		$res['id'] = intval($res['id']);
 		$res['colors'] = $colors[0];

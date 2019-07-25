@@ -4,15 +4,14 @@
  * Output: HTML
  */
 /* Header */
-//$timer_start = microtime(true);
+$timer_start = microtime(true);
 require("functions.php");
 $s = isset($_GET['q']) ? $_GET['q'] : die();
 $s_sanitized = san_data($s);
 if($s_sanitized=="") die();
 $s_len = strlen($s_sanitized);
 $s_sanitized_more = san_data_more($s_sanitized);
-$selected_poet = isset($_GET['selPT']) ?
-		 filter_var($_GET['selPT'], FILTER_SANITIZE_STRING) : false;
+$selected_poet = @filter_var($_GET['selPT'], FILTER_SANITIZE_STRING);
 $selected_poet_query = $selected_poet ? "and rtakh='$selected_poet'" : "";
 $poets_max = isset($_GET['pt']) ? intval($_GET['pt']) : 10;
 $books_max = isset($_GET['bk']) ? intval($_GET['bk']) : 10;
@@ -44,7 +43,7 @@ poets WHERE len>=$s_len";
 	    $poet_image = get_poet_image($poet['id'], true);
 	    $res_poets_html .= "<section><a href='/poet:{$poet['id']}'
 ><img src='$poet_image'><h3>{$poet['rtakh']}</h3></a></section>";
-	    if(--$poets_max === 0) break;
+	    if(--$poets_max == 0) break;
 	}
 	else
 	{
@@ -62,7 +61,7 @@ poets WHERE len>=$s_len";
 		$res_poets_html .= "<section><a href='/poet:{$poet['id']}'
 ><img src='$poet_image'><h3>{$poet['rtakh']}</h3></a></section>";
 		$poets[$i]=[];
-		if(--$poets_max === 0) break;
+		if(--$poets_max == 0) break;
 	    }
 	}
     }
@@ -83,7 +82,7 @@ poets WHERE len>=$s_len";
 		$poet_image = get_poet_image($poet['id'], true);
 		$res_poets_html .= "<section><a href='/poet:{$poet['id']}'
 ><img src='$poet_image'><h3>{$poet['rtakh']}</h3></a></section>";
-		if(--$poets_max === 0) break;
+		if(--$poets_max == 0) break;
 	    }
 	}
     }
@@ -100,7 +99,7 @@ if($books_max !== 0)
 	    $res_books_html .= "<a 
 href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
 ><i>{$book['rtakh']}</i> › {$book['rbook']}</a>";
-	    if(--$books_max === 0) break;
+	    if(--$books_max == 0) break;
 	}
 	else
 	{
@@ -117,7 +116,7 @@ href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
 href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
 ><i>{$book['rtakh']}</i> › {$book['rbook']}</a>";
 		$books[$i] = [];
-		if(--$books_max === 0) break;
+		if(--$books_max == 0) break;
 	    }
 	}
     }
@@ -134,7 +133,7 @@ href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
 		$res_books_html .= "<a 
 href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
 ><i>{$book['rtakh']}</i> › {$book['rbook']}</a>";
-		if(--$books_max === 0) break;
+		if(--$books_max == 0) break;
 	    }
 	}
     }
@@ -158,14 +157,14 @@ ORDER BY Cipi DESC";
 	    if(false !== strpos($poem['name'],$s_sanitized))
 	    {
 		$res_poems_html .= "<div style='display:flex'><button 
-style='background:none;padding:0 .5em' onclick='ss(this)' type='button' 
-><i class='material-icons' style='font-size:1.5em'
->keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=poet:
+class='material-icons' style='background:none;padding:0 0 0 .5em;
+font-size:.8em' onclick='ss(this)' type='button' 
+>dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 ><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
 > › {$poem['rname']}</a></div>";
 		$poems[$i] = [];
-		if(--$poems_max === 0) break;
+		if(--$poems_max == 0) break;
 	    }
 	}
     }
@@ -179,14 +178,14 @@ style='background:none;padding:0 .5em' onclick='ss(this)' type='button'
 		false !== strpos($poem['poem'],$s_sanitized)))
 	    {
 		$res_poems_context_html .= "<div style='display:flex'><button 
-style='background:none;padding:0 .5em' onclick='ss(this)' type='button' 
-><i class='material-icons' style='font-size:1.5em'
->keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=poet:
+class='material-icons' style='background:none;padding:0 0 0 .5em;
+font-size:.8em' onclick='ss(this)' type='button' 
+>dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 ><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
 > › {$poem['rname']}</a></div>";
 		$poems[$i] = [];
-		if(--$poems_max === 0) break;
+		if(--$poems_max == 0) break;
 	    }
 	}
     }
@@ -200,14 +199,14 @@ style='background:none;padding:0 .5em' onclick='ss(this)' type='button'
 				 $s_sanitized_more))
 	    {
 		$res_poems_html .= "<div style='display:flex'><button 
-style='background:none;padding:0 .5em' onclick='ss(this)' type='button' 
-><i class='material-icons' style='font-size:1.5em'
->keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=poet:
+class='material-icons' style='background:none;padding:0 0 0 .5em;
+font-size:.8em' onclick='ss(this)' type='button' 
+>dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 ><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
 > › {$poem['rname']}</a></div>";
 		$poems[$i] = [];
-		if(--$poems_max === 0) break;
+		if(--$poems_max == 0) break;
 	    }
 	}
     }
@@ -223,19 +222,19 @@ style='background:none;padding:0 .5em' onclick='ss(this)' type='button'
 				 $s_sanitized_more)))
 	    {
 		$res_poems_context_html .= "<div style='display:flex'><button 
-style='background:none;padding:0 .5em' onclick='ss(this)' type='button' 
-><i class='material-icons' style='font-size:1.5em'
->keyboard_arrow_down</i></button><a href='/script/php/update-cipi.php?uri=poet:
+class='material-icons' style='background:none;padding:0 0 0 .5em;
+font-size:.8em' onclick='ss(this)' type='button' 
+>dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 ><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
 > › {$poem['rname']}</a></div>";
-		if(--$poems_max === 0) break;
+		if(--$poems_max == 0) break;
 	    }
 	}
     }
     if($res_poems_context_html != "")
     {
-	$res_poems_html .= "<h3 class='bhoh-newdaq'>گەڕانی نێو دەق: </h3>" .
+	$res_poems_html .= "<h3 class='bhoh-newdaq'>گەڕانی نێو دەق</h3>" .
 			   $res_poems_context_html;
     }
 }
@@ -252,7 +251,7 @@ else
     echo "<h3 class='search-notfound'>هیچ شێعرێکم بۆ نەدۆزرایەوە</h3>";
 
 /* Timer */
-//$timer_end = microtime(true);
-//echo "<div style='position:fixed;top:0;left:0'>".
-//     number_format($timer_end-$timer_start,5)."</div>";
+$timer_end = microtime(true);
+echo "<div style='position:fixed;top:0;left:0'>".
+     number_format($timer_end-$timer_start,5)."</div>";
 ?>

@@ -2,9 +2,9 @@
  * This file will be executed in the '/manual' dir. 
  * So the paths are relative to '/manual'.
  */
+const files = ['manual', '../dev/tools/CONTRIBUTING/CONTRIBUTING'];
 const fs = require('fs');
 const showdown = require('showdown');
-const files = ['manual', '../dev/tools/CONTRIBUTING/CONTRIBUTING'];
 const converter = new showdown.Converter();
 
 for (const i in files)

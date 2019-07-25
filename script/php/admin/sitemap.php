@@ -23,18 +23,18 @@ while($res=mysqli_fetch_assoc($query)) {
 
 fwrite($sm , "<?xml version='1.0' encoding='UTF-8'?>\n");
 fwrite($sm , "<urlset xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\nxsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd\"\nxmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
-fwrite($sm , "\n<url>\n<loc>" . _SITE . "</loc>\n</url>");
+fwrite($sm , "\n<url>\n<loc>" . _SITE . "/</loc>\n</url>");
 
 for($i=1;$i<=$poets_num;$i++) {    
     fwrite($sm , "\n<url>\n<loc>".
 		 _SITE.
-		 "poet:$i</loc>\n</url>");
+		 "/poet:$i</loc>\n</url>");
     $books_num = count($books[$i]);
     $books_num_all += $books_num;
     for($j = 1; $j <= $books_num; $j++) {
         fwrite($sm , "\n<url>\n<loc>".
 		     _SITE.
-		     "poet:$i/book:$j</loc>\n</url>");
+		     "/poet:$i/book:$j</loc>\n</url>");
 
         $_tbl = "tbl{$i}_{$j}";
         $q = "select * from $_tbl";
@@ -44,7 +44,7 @@ for($i=1;$i<=$poets_num;$i++) {
         for($u=1; $u<=$poems_num; $u++)
             fwrite($sm,"\n<url>\n<loc>".
 		       _SITE.
-		       "poet:$i/book:$j/poem:$u</loc>\n</url>");
+		       "/poet:$i/book:$j/poem:$u</loc>\n</url>");
     }
 }
 
@@ -62,7 +62,7 @@ $q = "UPDATE `stats` SET `aths_num`='$poets_num_all',
 `k`=1 WHERE 1";
 $query = mysqli_query($conn, $q);
 if($query)
-    echo "Ok! Stats updated.<br>Number of Poems: $poems_num_all<br>Number of books: {$books_num_all}<br>Number of poets: $poets_num_all<br>Sitemap: "._SITE."$sitemap<br>";
+    echo "Ok! Stats updated.<br>Number of Poems: $poems_num_all<br>Number of books: {$books_num_all}<br>Number of poets: $poets_num_all<br>Sitemap: "._SITE."/$sitemap<br>";
 mysqli_close($conn);
 
 ?>

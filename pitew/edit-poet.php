@@ -39,13 +39,12 @@ $_poet1 = isset($_GET['poet']) ?
 	     {
 		 txts.forEach( function(e)
 		 {
-                     e.style.borderTopColor = "";
+                     e.style.borderBottomColor = "";
                      e.style.background = "";
 		 });
 		 btns.forEach( function(e)
 		 {
-                     e.style.background = "";
-                     e.style.color = "";
+                     e.style.border = "";
 		 });
 		 return;
              }
@@ -58,12 +57,11 @@ $_poet1 = isset($_GET['poet']) ?
 		 {
                      txts.forEach( function(e)
 		     {
-                         e.style.borderTopColor = colors[0][0];
+                         e.style.borderBottomColor = '<?php echo $_color; ?>';
                      });
                      btns.forEach( function(e)
 		     {
-                         e.style.background = colors[0][0];
-                         e.style.color = colors[0][1];
+			 e.style.border = '2px solid <?php echo $_color; ?>';
                      });
                      poet.style.backgroundImage =
 			 `url(/style/img/poets/profile/profile_${res.img}.jpg`;
@@ -75,13 +73,12 @@ $_poet1 = isset($_GET['poet']) ?
 		 {
                      txts.forEach( function(e)
 		     {
-                         e.style.borderTopColor = "";
+                         e.style.borderBottomColor = "";
                          e.style.background = "";
                      });
                      btns.forEach( function(e)
 		     {
-                         e.style.background = "";
-                         e.style.color = "";
+                         e.style.border = "";
                      });
                  }
              });
@@ -117,7 +114,7 @@ $_poet1 = isset($_GET['poet']) ?
 	    
             <div class="input-label-box" style="margin-top:1em">
 		<textarea id="poetDescTxt" name="poetDesc"
-			  style="font-size:.7em;width:100%;min-height:15em"
+			  style="font-size:.7em;width:100%"
 			  placeholder="زانیاریەکان سەبارەت بە شاعیر *"></textarea>
 	    </div>
 
@@ -126,12 +123,11 @@ $_poet1 = isset($_GET['poet']) ?
             <div id="message"></div>
 
             <button type="submit" class="button bth"
-		    style="font-size:.7em;width:45%;
-			  max-width:150px;margin-top:1em;
-			  padding:1em 0">ناردن</button>
+		    style="font-size:.7em;margin-top:1em;
+			  padding:.8em 2.5em;border-radius:1em">ناردن</button>
             
             <button type="button" id="clearBtn" class='button'
-		    style="font-size:.7em;width:45%;max-width:150px;
+		    style="font-size:.7em;padding:.8em 2.5em;
 			  margin-top:1em">پاک کردنەوە</button>
         </form>
         
@@ -213,26 +209,25 @@ color:#555;font-size:.55em;padding:.3em'>زۆر سپاس. دوای پێداچو�
 
  const clearBtn = document.getElementById("clearBtn");
  clearBtn.addEventListener("click", function ()
-	  {    
-	      const poet = document.getElementById("poetTxt"),
-		    poetDesc = document.getElementById("poetDescTxt"),
-		    mess = document.getElementById("message"),
-		    txts = document.querySelectorAll("input, textarea"),
-		    btns = document.querySelectorAll("button[type=submit]");
-	      
-	      mess.innerHTML = poet.value = poetDesc.value = "";
+ {    
+     const poet = document.getElementById("poetTxt"),
+	   poetDesc = document.getElementById("poetDescTxt"),
+	   mess = document.getElementById("message"),
+	   txts = document.querySelectorAll("input, textarea"),
+	   btns = document.querySelectorAll("button[type=submit]");
+     
+     mess.innerHTML = poet.value = poetDesc.value = "";
 
-	      txts.forEach( function(e)
-	      {
-		  e.style.borderTopColor = "";
-		  e.style.background = "";
-	      });
-	      btns.forEach( function(e)
-	      {
-		  e.style.background = "";
-		  e.style.color = "";
-	      });
-	  });
+     txts.forEach( function(e)
+     {
+	 e.style.borderBottomColor = "";
+	 e.style.background = "";
+     });
+     btns.forEach( function(e)
+     {
+	 e.style.border = '';
+     });
+ });
 </script>
 
 <?php

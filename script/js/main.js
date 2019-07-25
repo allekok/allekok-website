@@ -1,15 +1,3 @@
-/* Users can evaluate their own code. */
-const userCodes = localStorage.getItem('user-codes') || false;
-try
-{
-    eval(userCodes);
-}
-catch(e)
-{
-    console.warn('"user-codes" Can not be evaluated.');
-}
-
-/* Main */
 var bookmarks_name = bookmarks_name || 'favorites';
 
 var arabi_to_latin = arabi_to_latin || function (s)
@@ -218,11 +206,10 @@ var toggle_Like = toggle_Like || function ()
     let favsString="", imgs=[];
     for(let a=(favs.length-1); a>=0; a--)
     {
-        favsString += `<a class='link border-bottom-eee' href='/${favs[a].url}'
-><img class='PI${favs[a].poetID}' src='/style/img/poets/profile/profile_0.jpg'
-style='display:inline-block;vertical-align:middle;width:3em;border-radius:50%;
-margin-left:.25em'> <span class='color-555' style='font-size:.85em'
->${favs[a].poetName} &rsaquo; ${favs[a].book} &rsaquo;</span> ${favs[a].poem} </a>`;
+        favsString += `<a href='/${favs[a].url}'
+><img class='PI${favs[a].poetID}' src='/style/img/poets/profile/profile_0.png'
+style='display:inline-block;vertical-align:middle;width:2.5em;border-radius:50%;
+margin-left:.25em'>${favs[a].poetName} &rsaquo; ${favs[a].book} &rsaquo; ${favs[a].poem} </a>`;
 	if(imgs.indexOf(favs[a].poetID) === -1)
 	    imgs.push(favs[a].poetID);
     }    
@@ -243,11 +230,24 @@ margin-left:.25em'> <span class='color-555' style='font-size:.85em'
     });
 }
 
+var toggle_nav = toggle_nav || function ()
+{
+    const nav = document.getElementById('header-nav');
+    if(nav.style.display == 'none')
+    {
+	nav.style.display = '';
+	nav.style.animation = 'tL-top .1s';
+    }
+    else
+    {
+	nav.style.display = 'none';
+    }
+}
+
 var search = search || function (e)
 {
     const searchRes = document.getElementById("search-res"),
 	  searchSec = document.getElementById("search"),
-	  searchBtn = document.getElementById("search-btn"),
 	  searchKey = document.getElementById("search-key"),
 	  q = searchKey.value,
 	  currentKey = e.keyCode,
@@ -255,15 +255,11 @@ var search = search || function (e)
 			  37, 38, 39, 40, 32, 224, 13];
     if(q.length < 3)
     {
-	searchBtn.innerHTML = "<i class='material-icons' \
-style='font-size:2em'>search</i>";
         searchRes.style.display="none";
         return;
     }
     if(currentKey == 27)
     {
-	searchBtn.innerHTML = "<i class='material-icons' \
-style='font-size:2em'>search</i>";
 	searchRes.style.display="none";
 	searchKey.value="";
         return;
@@ -276,7 +272,6 @@ style='font-size:2em'>search</i>";
 	   function(response)
 	   {
 	       searchRes.innerHTML = response;
-	       searchBtn.innerHTML = "گەڕانی زۆرتر";
 	   });
 }
 
@@ -378,18 +373,19 @@ var copyPoem = copyPoem || function ()
     
     Clipboard.copy(text);
     
-    copySec.innerHTML = "<i class='material-icons'>check</i> کۆپی کرا.";
-    copySec.style.color = colors[0][0];
+    copySec.innerHTML = "check";
+    copySec.classList.add("back-blue");
     setTimeout(function() {
-        copySec.innerHTML = "<i class='material-icons'>content_copy</i> کۆپی کردن";
-        copySec.style.color = "";
+        copySec.innerHTML = "content_copy";
+        copySec.classList.remove("back-blue");
     }, 3000);
 }
 
 var Liked = Liked || function ()
 {
     const bookmarksIcon = document.getElementById('tL'),
-	  ico = document.getElementById("like-icon");
+	  ico = document.getElementById("like-icon"),
+	  tN = document.getElementById('tN');
     let bookmarks = get_bookmarks(), i = 0;
     
     if(!bookmarks)
@@ -397,8 +393,10 @@ var Liked = Liked || function ()
         localStorage.setItem(bookmarks_name,
 			     JSON.stringify([poemObject]));
 	ico.innerHTML = "bookmark";
+	ico.classList.add("back-blue");
         ico.style.animation = "ll .4s ease-out forwards";
         bookmarksIcon.style.display = "block";
+	tN.style.left = "2.6em";
 	return;
     }
     
@@ -417,6 +415,7 @@ var Liked = Liked || function ()
 	bookmarks.push(poemObject);
         localStorage.setItem(bookmarks_name,JSON.stringify(bookmarks));
 	ico.innerHTML = "bookmark";
+	ico.classList.add("back-blue");
         ico.style.animation = "ll .4s ease-out forwards";        
     }
     else
@@ -431,8 +430,10 @@ var Liked = Liked || function ()
 	{
             localStorage.removeItem(bookmarks_name);
             bookmarksIcon.style.display = "none";
-        }        
+	    tN.style.left = "1.3em";
+        }
 	ico.innerHTML = "bookmark_border";
+	ico.classList.remove("back-blue");
         ico.style.animation = "";        
     }
 }
@@ -489,19 +490,19 @@ var ss = ss || function (button)
     let href = button.parentNode.querySelector("a").getAttribute("href");
     href = href.substr(href.indexOf("=")+1);
     href = href.split("/");
-    button.innerHTML = "<i class='loader' style='width:2.2em;height:2.2em;display:block;'></i>";
+    button.innerHTML = "<i class='loader-round' \
+style='width:1em;height:1em'></i>";
     const pt = href[0].split(":")[1],
 	  bk = href[1].split(":")[1],
-	  pm = href[2].split(":")[1],
-	  client = new XMLHttpRequest();
+	  pm = href[2].split(":")[1];
     
     getUrl(`/script/php/poem-summary.php?pt=${pt}&bk=${bk}&pm=${pm}`,
 	   function(response)
 	   {
-               button.innerHTML = "<i class='material-icons'>keyboard_arrow_down</i>";
-               let san_txt = response.replace(/\n/g, "<br>");
-               button.parentNode.outerHTML += `<div class='back-f3f3f3' 
-style='padding:1em;font-size:.55em;border:0'>${san_txt}</div>`;
+               button.innerHTML = "dehaze";
+               const san_txt = response.replace(/\n/g, "<br>");
+               button.parentNode.outerHTML += `<div
+style='padding:1em;font-size:.55em'>${san_txt}</div>`;
 	   });
 }
 
@@ -610,12 +611,23 @@ var getUrl = getUrl || function (url, callback)
 /* Check if bookmarked */
 var bookmarksIcon = document.getElementById('tL'),
     likeico = document.getElementById('like-icon'),
-    favs = get_bookmarks();
+    favs = get_bookmarks(),
+    tN = document.getElementById('tN'),
+    tS = document.getElementById('tS');
 if(favs)
 {
-    if(typeof bookmarksIcon !== "undefined")
+    if(bookmarksIcon)
     {
         bookmarksIcon.style.display = "block";
+	if(tS)
+	{
+	    bookmarksIcon.style.left = "1.3em";
+	}
+	else
+	{
+	    bookmarksIcon.style.left = "0";
+	    tN.style.left = "1.3em";
+	}
     }
     
     if(typeof poemObject !== "undefined")
@@ -625,11 +637,19 @@ if(favs)
 	    if(favs[i].url == poemObject.url)
 	    {
 		likeico.innerHTML = "bookmark";
+		likeico.classList.add("back-blue");
 		likeico.style.animation = "ll .4s ease-out forwards";
 		break;
 	    }
 	}
     }
+}
+else if(tN)
+{
+    if(tS)
+	tN.style.left = "1.3em";
+    else
+	tN.style.left = "0";
 }
 
 document.getElementById("search-form").
@@ -656,7 +676,13 @@ try
 
 try
 {
-    document.getElementById("fav-sec").
+    document.getElementById("tN").
+	addEventListener("click", toggle_nav);
+} catch(e) {}
+
+try
+{
+    document.getElementById("like-icon").
 	addEventListener("click", Liked);
 } catch(e) {}
 

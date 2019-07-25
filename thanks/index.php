@@ -12,94 +12,85 @@ include(ABSPATH . "script/php/header.php");
 ?>
 <style>
  p {
-     font-size:.6em;
-     text-align:right;padding:.6em .2em
+     font-size:.55em;
+     text-align:justify;
+     padding:.4em 1em .4em .5em;
  }
  #poets a, #poets i {
-     font-size:inherit;padding:0 .6em;
-     border-radius:2px;display:inline-block;
-     margin:.1em 0
- }
- #poets a:hover {
-     text-decoration:none;
-     box-shadow:0 3px 5px -2px #aaa
+     padding:0 .6em;
  }
 </style>
-<div id="poets"
-     style="margin-bottom:1em;max-width:800px">
-    <h1 style="font-size:1.2em;
-	       padding:.1em .8em 0">
-        سپاس و پێ‌زانین بۆ:
+<div id="poets">
+    <h1 class="color-blue" style="font-size:1em;
+	       text-align:right">
+        سپاس و پێزانین بۆ...
     </h1>
-    <p class='border-bottom-eee'>
+    <p>
         <a href="https://ganjoor.net/" target='_blank'
 	   rel='noopener noreferrer nofollow'
-	   style="background:#f9cea4;color:#000"
+	   class="link-underline"
 	>گنجور</a> &rsaquo; بۆ بوون بە هۆی دروست بوونی ئاڵەکۆک
     </p>
-    <p class='border-bottom-eee'>
+    <p>
         <a href="https://www.pinterest.com/rebwarkalid/"
 	   target='_blank' rel='noopener noreferrer nofollow'
-	   style="color:#fff;background:#dd5144;
-		 font-weight:bold"
+	   class="link-underline"
 	>Rebwar Tahir</a> &rsaquo; بۆ بەشێکی زۆر لە وێنەی شاعیران
     </p>
-    <p class='border-bottom-eee'>
+    <p>
         <a href="http://www.vejinbooks.com/"
 	   target='_blank' rel='noopener noreferrer nofollow'
-	   style="background:#900000;color:#fff"
+	   class="link-underline"
 	>ڤەژین بوکس</a> &rsaquo; بۆ بەشێکی زۆر لە شێعرەکان
     </p>
-    <p class='border-bottom-eee'>
+    <p>
         <a href="http://diyako.yageyziman.com/هۆنراوە/"
 	   target='_blank' rel='noopener noreferrer nofollow'
-	   style="color:#fff;background:#1e73be"
+	   class="link-underline"
 	>فێرگەی زمانی کوردی</a> &rsaquo; بۆ دیوانی شێعری بەشێک لە شاعیران
     </p>
-    <p class='border-bottom-eee'>
+    <p>
         <a href="http://www.bokan.de/laperekan/Edebiat/awat/Awat.htm"
 	   target='_blank' rel='noopener noreferrer nofollow'
-	   style="color:#820e0e;background:#fcc601"
+	   class="link-underline"
 	>رۆژهەڵات / بۆکان</a> &rsaquo; بۆ 
         <a href="/poet:62/book:1"
-	   style="color:<?php echo $colors[0][3]; ?>;
-		 background:<?php echo $colors[0][2]; ?>"
+	   class="link-underline"
 	>دیوانی شاری دڵی، ئاوات</a>
     </p>
-    <p class='border-bottom-eee'>
+    <p>
         <a href="https://t.me/chapkagolibevena"
 	   target='_blank' rel='noopener noreferrer nofollow'
-	   style="color:#fff;background:#0088cc"
+	   class="link-underline"
 	>کەناڵی تێلێگرامی چەپکەگوڵ</a> و
 	<a href="/poet:80"
-	   style="color:<?php echo $colors[0][1]; ?>;
-		 background:<?php echo $colors[0][0]; ?>"
+	   class="link-underline"
 	>کەماڵ ڕەحمانی</a> &rsaquo; بۆ
         <a href="/poet:65/book:1"
-	   style="color:<?php echo $colors[0][3]; ?>;
-		 background:<?php echo $colors[0][2]; ?>"
+	   class="link-underline"
 	>دیوانی شەونمی، حەقیقی</a>
     </p>
-    <p class='border-bottom-eee'>
+    <p>
         <a href="/poet:80"
-	   style="color:<?php echo $colors[0][1]; ?>;
-		 background:<?php echo $colors[0][0]; ?>"
+	   class="link-underline"
 	>کەماڵ ڕەحمانی</a> &rsaquo; بۆ 
         <a href="/pitew/poem-list.php?name=کەماڵ ڕەحمانی"
-	   style="color:<?php echo $colors[0][3]; ?>;
-		 background:<?php echo $colors[0][2]; ?>"
+	   class="link-underline"
 	>نووسینی 
-            <span style="color:#666;opacity:0"
+            <span style="opacity:0"
 		  id="pitew-stats">.....</span>
             شێعر لەسەر ئاڵەکۆک
         </a>
 	<script>
-	 window.onload = function() {
-             var name = "کەماڵ ڕەحمانی",
-		 res = document.getElementById("pitew-stats");
+	 window.onload = function()
+	 {
+             const name = "کەماڵ ڕەحمانی",
+		   res = document.getElementById("pitew-stats");
              getUrl(`/pitew/stats.php?contributor=${name}`,
-		    function(responseText) {
-			if(responseText !== "") {
+		    function(responseText)
+		    {
+			if(responseText !== "")
+			{
 			    res.innerHTML = responseText; 
 			    res.style.animation =
 				"tL 1.2s ease forwards";
@@ -108,71 +99,62 @@ include(ABSPATH . "script/php/header.php");
 	 }
 	</script>
     </p>
-    <p class='border-bottom-eee'>
+    <p>
         <a href="http://telegram.me/Kurdish_Poetry"
 	   target='_blank' rel='noopener noreferrer nofollow'
-	   style="color:#fff;background:#0088cc"
+	   class="link-underline"
 	>کەناڵی تێلێگرامی شیعر و هۆنراوە</a> &rsaquo; 
         بۆ بەشێکی چووک لە 
         <a href="/poet:82/book:1"
-	   style="color:<?php echo $colors[0][3]; ?>;
-		 background:<?php echo $colors[0][2]; ?>"
+	   class="link-underline"
 	>شێعرەکانی سافیی هیرانی</a>
     </p>
-    <p class='border-bottom-eee'>
+    <p>
         <a href="https://www.kurditgroup.org/"
-	   style="background:#26678c;color:#fff"
+	   class="link-underline"
 	>کوردئایتیگرووپ</a>
-        &rsaquo; بۆ  
+        &rsaquo; بۆ 
         <a href="https://www.kurditgroup.org/fontconvertor"
-	   style="background:#26678c;color:#fff"
+	   class="link-underline"
 	>ئامێری وەرگێڕی فۆنت</a>
         کە بۆ نووسینەوەی بەشێک لە 
         <a href="/poet:85/book:1"
-	   style="background:<?php echo $colors[0][2]; ?>;
-		 color:<?php echo $colors[0][3]; ?>"
+	   class="link-underline"
 	>دیوانی یانەی‌دڵانی، مدهۆش</a> بەکار هاتووە.
     </p>
-    <p class='border-bottom-eee'>
-        <i style="background:#4699EC;color:#fff">
+    <p>
+        <i>
             ئاکۆ مەحموودی، ئاسۆ مەحموودی 
         </i>
         &rsaquo; بۆ 
         <a href="/kurdi-nus/kurdi-nus-central-kurdish.html"
-	   style="background:#4699EC;color:#fff"
+	   class="link-underline"
 	>ئامێری پەڵک کوردی‌نووس</a>
         کە بۆ نووسینەوەی بەشێک لە 
         <a href="/poet:85/book:1"
-	   style="background:<?php echo $colors[0][2]; ?>;
-		 color:<?php echo $colors[0][3]; ?>"
+	   class="link-underline"
 	>دیوانی یانەی‌دڵانی، مدهۆش</a> بەکار هاتووە.
     </p>
-    <p class='border-bottom-eee'>
+    <p>
 	<a href="https://www.kurdipedia.org/"
-	   style="background:#0207ff;color:#fff"
+	   class="link-underline"
 	   target='_blank' rel='noopener noreferrer nofollow'
 	>کوردیپێدیا</a> &rsaquo; بۆ وێنەی 
 	<a href="/poet:50"
-	   style="color:<?php echo $colors[0][3]; ?>;
-		 background:<?php echo $colors[0][2]; ?>"
+	   class="link-underline"
 	>بەختیار زێوەر</a>
 	و
 	<a href="/poet:71"
-	   style="color:<?php echo $colors[0][3]; ?>;
-		 background:<?php echo $colors[0][2]; ?>"
+	   class="link-underline"
 	>شوکری فەزڵی</a>
     </p>
-    <p class='border-bottom-eee'>
-	<i style="background:<?php echo $colors[0][0]; ?>;
-		  color:<?php echo $colors[0][1]; ?>"
-	>سپاسی تایبەت</i> &rsaquo; بۆ 
+    <p>
+	<i>سپاسی تایبەت</i> &rsaquo; بۆ 
 	<a href="/pitew/contributors/"
-	   style="color:<?php echo $colors[0][3]; ?>;
-		 background:<?php echo $colors[0][2]; ?>"
+	   class="link-underline"
 	>هەموو ئەو کەسانەی</a> کە لە 
 	<a href="/pitew/first.php"
-	   style="color:<?php echo $colors[0][3]; ?>;
-		 background:<?php echo $colors[0][2]; ?>"
+	   class="link-underline"
 	>پتەوکردنی ئاڵەکۆک</a>
 	‌دا یارمەتی‌مان دەدەن.
     </p>

@@ -1,7 +1,7 @@
 <?php
 /* Number of all poets,books,poems */
 $db='index';
-$q= 'select * from stats';
+$q='select * from stats';
 include('condb.php');
 
 $stats_res = $query ? mysqli_fetch_assoc($query) :

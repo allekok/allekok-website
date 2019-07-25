@@ -22,3 +22,5 @@ error_log
 node_modules
 package-lock.json
 test/
+tewar/
+kurdi-nus/

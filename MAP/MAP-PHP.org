@@ -10,6 +10,12 @@
 - expand_color
 - color_inverse
 
+/[[../about/update-comments-txt.php][update-comments-txt.php (1)]]/
+- update_comment
+
+/[[../about/color.php][color.php (1)]]/
+- color_random
+
 /[[../pitew/contributors/index.php][index.php (1)]]/
 - open
 
