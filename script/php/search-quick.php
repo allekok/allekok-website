@@ -4,7 +4,7 @@
  * Output: HTML
  */
 /* Header */
-$timer_start = microtime(true);
+/* $timer_start = microtime(true); */
 require("functions.php");
 $s = isset($_GET['q']) ? $_GET['q'] : die();
 $s_sanitized = san_data($s);
@@ -156,7 +156,7 @@ else
     echo "<h3 class='search-notfound'>هیچ شێعرێکم بۆ نەدۆزرایەوە</h3>";
 
 /* Timer */
-$timer_end = microtime(true);
-echo "<div style='position:fixed;top:0;left:0'>".
-     number_format($timer_end-$timer_start,5)."</div>";
+/* $timer_end = microtime(true);
+ * echo "<div style='position:fixed;top:0;left:0'>".
+ *      number_format($timer_end-$timer_start,5)."</div>"; */
 ?>

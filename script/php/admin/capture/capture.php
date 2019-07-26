@@ -21,7 +21,6 @@ $resources = [
     ".htaccess",
     "script/php/admin/.htaccess",
     "manual/QA.txt",
-    "mobile/QA.txt",
     "script/php/constants.php",
     "script/php/admin/IP-blacklist.php",
     "script/php/admin/password.php",
