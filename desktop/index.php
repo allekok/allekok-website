@@ -108,7 +108,7 @@ include(ABSPATH . "script/php/header.php");
                     
                     $f = fopen("QA.txt", "r");
                     $cc = fread($f, filesize("QA.txt"));
-                    $cc = explode("\nend\n", $cc);
+                    $cc = array_reverse(explode("\nend\n", $cc));
                     
                     foreach($cc as $c) {
 			if(!empty($c)) {
