@@ -83,10 +83,6 @@ echo last(ABSPATH . "pitew/QA.txt") . "\n";
 echo "\n/بەرنامەی دێسکتاپی ئاڵەکۆک/\n";
 echo last(ABSPATH . "desktop/QA.txt") . "\n";
 
-/* allekok-mobile */
-echo "\n/بەرنامەی مۆبایلی ئاڵەکۆک/\n";
-echo last(ABSPATH . "mobile/QA.txt") . "\n";
-
 /* dev/tools */
 echo "\n/کۆدەکانی ئاڵەکۆک/\n";
 echo last(ABSPATH . "dev/tools/QA.txt") . "\n";
