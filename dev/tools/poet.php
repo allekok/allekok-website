@@ -5,7 +5,6 @@
  */
 include_once("../../script/php/constants.php");
 include_once(ABSPATH . "script/php/functions.php");
-include_once(ABSPATH . "script/php/colors.php");
 
 header("Content-type: application/json; charset=UTF-8");
 
@@ -33,7 +32,7 @@ else
 
 function get_poet ()
 {
-    global $colors, $kind, $pt;
+    global $kind, $pt;
     $poets = explode(',', $pt);
     $reses = [];
     
@@ -63,7 +62,7 @@ function get_poet ()
 		$res['img']['_460x460'] = _SITE . get_poet_image($res['id'], true);
 		
 		$res['id'] = intval($res['id']);
-		$res['colors'] = $colors[0];
+		$res['colors'] = ['#15c314', '#000', '#eee', '#444'];
 		
 		$reses[] = $res;
 	    }
