@@ -285,9 +285,9 @@ style='display:inline-block'
     </h1>
     <div id="hon-comments">
 	<div style="padding:.5em 0;font-size:.6em;text-align:right">
-            دەتوانن بیر و ڕای خۆتان سەبارەت بەم شێعرە لێرە بنووسن.
+            دەتوانن بیر و ڕای خۆتان سەبارەت بەم شێعرە بنووسن.
 	    <br>
-	    یان ئەگەر دەقی ئەم شێعرە هەڵەیەکی تێدایە، پێمانی ڕا بگەیێنن.
+	    تکایە ئەگەر ئەم دەقە هەڵەی تێدایە پێمانی ڕا بگەیێنن.
 	</div>
 	<form id="frmComm"
 	      style="max-width:700px;margin:auto"
