@@ -44,21 +44,21 @@ $poet = isset($_GET['poet']) ?
      .imglist:nth-child(3n){width:20%}
     </style>
     <div>
-	<section class='imglist back-eee'
+	<section class='imglist'
 	>یارمەتیدەر</section
 		   ><section
-			class='imglist back-eee'
+			class='imglist'
 		    >نێوی شاعیر</section
 			       ><section
-				    class='imglist back-eee'
+				    class='imglist'
 				>وێنە</section>
 	<?php
 	$_list = make_list(ABSPATH."style/img/poets/new/");
 	foreach($_list as $_l)
 	{
-            echo "<section class='imglist color-444'
->" . $_l['name'] . "</section><section class='imglist color-444'
->" . $_l['poet'] . "</section><section class='imglist color-444'
+            echo "<section class='imglist'
+>" . $_l['name'] . "</section><section class='imglist'
+>" . $_l['poet'] . "</section><section class='imglist'
 >" . "<a class='link' href='/style/img/poets/new/{$_l['filename']}'
 >وێنە</a></section>";
 	}

@@ -89,7 +89,7 @@ include(ABSPATH . 'script/php/header.php');
     
     foreach($_ths as $_th) {
         
-        echo "<th class='back-eee' style='width:{$_th[1]}'>";
+        echo "<th style='width:{$_th[1]}'>";
         echo $_th[0];
         echo "</th>";
     }

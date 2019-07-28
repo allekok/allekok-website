@@ -136,7 +136,7 @@ include(ABSPATH . 'script/php/header.php');
 		   placeholder="نێوی خۆتان لێرە بنووسن.">
 	</div>
 	<div class="input-label-box" style="margin:1em .5em">
-	    <label class="color-444" for="poetTxt">شاعیر: </label>
+	    <label for="poetTxt">شاعیر: </label>
             <input onblur="check()" type="text" id="poetTxt" name="poet"
 		   style="font-size:1em;width:94%;padding:1em 3%"
 		   value="<?php echo $_poet1; ?>"
@@ -154,11 +154,11 @@ include(ABSPATH . 'script/php/header.php');
 		    font-size:.7em;font-family:'kurd',monospace;
 		    text-align:right">
             &bull; فۆرمەتی وێنەکەتان دەبێ 
-            <span class="back-eee" style='padding:0 .2em'>JPG, JPEG, PNG</span>
+            <span style='padding:0 .2em'>JPG, JPEG, PNG</span>
             بێت.
             <br>
             &bull; گەورەیی وێنەکە نابێ لە 
-            <span class="back-eee" style='padding:0 .2em'>5MB</span>
+            <span style='padding:0 .2em'>5MB</span>
             زیاتر بێت.
         </div>
         <input type="file" style='display:none'

@@ -115,20 +115,20 @@ $_book1 = isset($_GET['book']) ?
 		       value="<?php echo $_name1; ?>"
 		       placeholder="نێوی خۆتان لێرە بنووسن.">
 	    </div>
-	    <div class="color-444" id="pitew-stats"
+	    <div id="pitew-stats"
 		 style="text-align:right;text-indent:1em;
 			padding:.5em 1em 0;font-size:.53em"
 	    >ئەو شێعرە بە نێوی خۆتان لەسەر ئاڵەکۆک دادەندرێ.</div>
             <div class="border-eee" style="margin:.8em 0"></div>
 	    <div class="input-label-box">
-		<label class="color-444" for="poetTxt">شاعیر: </label>
+		<label for="poetTxt">شاعیر: </label>
 		<input type="text" onblur="check()" id="poetTxt"
 		       name="poet" style="font-size:.7em;width:94%"
 		       value="<?php echo $_poet1; ?>"
 		       placeholder="ناوی شاعیر *">
 	    </div>
 	    <div class="input-label-box" style="margin-top:1em;">
-		<label class="color-444" for="bookTxt">کتێب: </label>
+		<label for="bookTxt">کتێب: </label>
 		<input type="text" id="bookTxt" name="book"
 		       style="font-size:.7em;width:94%"
 		       value="<?php echo $_book1; ?>"

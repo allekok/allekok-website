@@ -128,7 +128,7 @@ class='material-icons'>keyboard_arrow_up</i>";
 		}
 		$_encoded_name = urlencode($_l['name']);
 		$_html .= "<div class='epld'
-><section class='epld-title color-222'><a 
+><section class='epld-title'><a 
 href='/pitew/res/{$_l["filename"]}' 
 title='وەشانی plain/text'><i 
 class='material-icons' style='font-size:1.5em'
@@ -138,7 +138,7 @@ href='/pitew/poetdesc-list.php?name=$_encoded_name'
 >&raquo; سەبارەت بە &laquo;" .
 			  $_l['poet'] .
 			  "&raquo; نووسیویەتی: </section
-><section class='epld-body color-000'";
+><section class='epld-body'";
 		$_html .= " style='overflow:hidden;
 max-height:150px'";
 		$_html .= ">{$_l['content']}</section>";
@@ -152,7 +152,7 @@ onclick='expand(this,\"/pitew/res/{$_l["filename"]}\")'
 	}
 	else
 	{
-            echo "<span class='color-666' 
+            echo "<span 
 style='font-size:1em;display:block'>&bull;</span>";
 	}
 	
@@ -160,7 +160,7 @@ style='font-size:1em;display:block'>&bull;</span>";
 	{
             $n_str = empty($_name) ?
 		     "" : "ی &laquo;$_name&raquo;";
-            echo "<div id='num_pdl' class='back-f3f3f3 color-222'
+            echo "<div id='num_pdl'
 >ئەژماری نووسراوەکان" . num_convert(
 	str_replace("&#34;",'"',$n_str),
 	"en", "ckb") . ": " .
@@ -223,7 +223,7 @@ border-top:2px solid;margin:1em'
 	<div>
             <?php
             if(empty($_html))
-                echo "<span class='color-666'
+                echo "<span 
 style='font-size:1em;display:block'>&bull;</span>";
             else 
                 echo $_html;

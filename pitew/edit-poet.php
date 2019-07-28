@@ -106,7 +106,7 @@ $_poet1 = isset($_GET['poet']) ?
 	    </div>
 
 	    <div class="input-label-box" style="margin-top:1em">
-		<label class="color-444" for="poetTxt">شاعیر: </label>
+		<label for="poetTxt">شاعیر: </label>
 		<input onblur="check()" type="text" id="poetTxt" name="poet"
 		       style="font-size:.7em;width:94%;padding:1em 3%"
 		       value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">

@@ -48,7 +48,7 @@ include(ABSPATH . 'script/php/header.php');
     if(!$query) die();
     $_pmnum = num_convert(mysqli_num_rows($query), "en", "ckb");
     ?>
-    <div class='color-555' style="font-size:.6em;margin:1em 0 0">
+    <div style="font-size:.6em;margin:1em 0 0">
         ژمارەی شێعرەکان<?php
 		       if($_name1)
 			   echo "ی \"$_name1\"";
@@ -65,13 +65,13 @@ include(ABSPATH . 'script/php/header.php');
             </a>
         <?php } ?>
     </div>
-    <section class='pmlist back-eee'
+    <section class='pmlist'
     >یارمەتیدەر</section><section style='text-align:center'
-				  class='pmlist back-eee'>شێعر</section>
+				  class='pmlist'>شێعر</section>
     
     <?php
     if(! $_pmnum)
-	echo "<span class='color-666' style='font-size:1em;display:block'>•</span>";
+	echo "<span style='font-size:1em;display:block'>•</span>";
 
     while($_l = mysqli_fetch_assoc($query))
     {
@@ -81,9 +81,9 @@ include(ABSPATH . 'script/php/header.php');
         if($_l["contributor"] == "")
 	    $_l["contributor"] = "ناشناس";
         
-        echo "<section class='pmlist color-444'>{$_l['contributor']}</section
-><section class='pmlist color-444'><a class='link' href='/{$_l['status']['url']}'
-><span class='color-666'>{$_l['poet']}</span> &rsaquo; {$_l['poem-name']}</a></section>";
+        echo "<section class='pmlist'>{$_l['contributor']}</section
+><section class='pmlist'><a class='link' href='/{$_l['status']['url']}'
+><span>{$_l['poet']}</span> &rsaquo; {$_l['poem-name']}</a></section>";
     }
     
     mysqli_close($conn);

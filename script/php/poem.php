@@ -197,7 +197,7 @@ style='display:inline-block'
 		    id="convertToLatBtn"
 		    style="font-size:1em;margin-right:.5em;
 			   letter-spacing:.5px"
-	    ><i class="color-555" style='font-family:monospace;
+	    ><i style='font-family:monospace;
 		       font-weight:bold;
 		       text-transform:uppercase;
 		       font-size:.9em'
@@ -540,7 +540,7 @@ target='_blank' href='https://allekok.com/tewar/?q=${q}'
 			 return;
 		     }
 		     res = JSON.parse(responseText);
-		     fin += "<span class='tp back-f3f3f3' \
+		     fin += "<span class='tp' \
 style='display:block;font-size:.9em;padding:.3em .5em'\
 >فەرهەنگی ئەناهیتا: </span>";
 		     for( const a in res )
@@ -572,7 +572,7 @@ text-indent:1em;'>"+res[a].desc+"</section></div>";
 		     }
 
 		     res = JSON.parse(responseText);	 
-		     fin += "<span class='tp back-f3f3f3' \
+		     fin += "<span class='tp' \
 style='display:block;font-size:.9em;padding:.3em .5em'\
 >فەرهەنگی کاوە: </span>";
 		     for( const a in res )
