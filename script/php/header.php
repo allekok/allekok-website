@@ -12,6 +12,16 @@ else
 	<script>	 
          if ('serviceWorker' in navigator)
 	     navigator.serviceWorker.register('/sw.js', {scope: '/'});
+	 /* Users can evaluate their own code. */
+	 const userCodes = localStorage.getItem('user-codes') || false;
+	 try
+	 {
+	     eval(userCodes);
+	 }
+	 catch(e)
+	 {
+	     console.warn(`"user-codes" Can not be evaluated.\n${e}`);
+	 }
 	</script>
 	<link rel='stylesheet'
 	      href='/style/css/<?php
