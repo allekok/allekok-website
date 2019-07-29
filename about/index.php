@@ -83,7 +83,6 @@ include(ABSPATH."script/php/header.php");
 		 if(!$nzuri)
 		     echo 'display:none;';
 		 ?>">
-	    <section class="loader"></section>
         </div>
     </div>
 </div>
