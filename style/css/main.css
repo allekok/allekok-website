@@ -1,7 +1,7 @@
 @font-face{font-family:'kurd';font-display:swap;font-style:normal;font-weight:400;src:url('/style/font/DroidNaskh-Regular.woff2') format('woff2')}
 @font-face{font-family:'Material Icons';font-display:swap;font-style:normal;font-weight:400;src:url('/style/font/Material-Icons.woff2') format('woff2')}
 html, body{height:100%;margin:0}
-body{font-family:'kurd', arial;font-size:24px;line-height:2.5;background:#fff;color:#000;padding:1em;max-width:1000px;margin:0 auto;position:relative}
+body{font-family:'kurd', arial;font-size:24px;line-height:2.5;background:#fff;color:#000;padding:1em;max-width:1000px;margin:0 auto;position:relative;animation:tL .5s}
 h1, h2, h3, h4, h5, h6, p, input, a, form, button, select,
 ul, li, ol, header, div, footer, article, section, nav, img, table, tr,
 td, th, textarea, span, i, sup, sub{padding:0;margin:0;border:0;font-family:inherit;font-weight:normal;transition:all .15s ease-out;text-align:inherit;box-sizing:border-box}
