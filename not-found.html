@@ -13,14 +13,49 @@
         </script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="/style/img/favicon.ico" rel="shortcut icon"/>
-	<link rel="apple-touch-icon" href="/style/img/logo.jpg">
+        <link rel="shortcut icon" href="/favicon/favicon.ico">
+	<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
         <title>
             ئاڵەکۆک
         </title>
+	<style>
+	 img
+	 {
+	     border:2px solid #00e;
+	     border-radius:50%;
+	     padding:.1em;
+	     background:white;
+	     position:absolute;
+	     margin:auto;
+	     top:0;
+	     bottom:0;
+	     left:0;
+	     right:0;
+	     max-width:100%;
+	 }
+	</style>
     </head>
     <body>
-        <img style="position:absolute;margin:auto;top:0;bottom:0;left:0;right:0;max-width:100%"
-	     src="/logo/logo-256.png" alt="ئاڵەکۆک">
+        <img src="/logo/logo-64.png" alt="ئاڵەکۆک">
+	<script>
+	 const themes = ['light' , 'dark'];
+	 if(document.cookie)
+	 {
+	     const cookies = document.cookie.split(';');
+	     
+	     for(const i in cookies)
+	     {
+		 const c = cookies[i].split('=');
+		 if(c[0].trim() == "theme")
+		 {
+		     if(c[1] == themes[1])
+		     {
+			 document.body.style.background = '#000';
+			 document.querySelector('img').style.filter = 'invert(1)';
+		     }
+		 }
+	     }
+	 }
+	</script>
     </body>
 </html>

@@ -79,8 +79,8 @@ self.addEventListener('install', function(event) {
 		'/favicon/favicon.ico',
 		'/style/font/DroidNaskh-Regular.woff2',
 		'/style/font/Material-Icons.woff2',
-		'/logo/logo-256.png',
-		'/not-found.html?v4',
+		'/logo/logo-64.png',
+		'/not-found.html?v5',
 	    ]);
 	}));
 });
@@ -106,6 +106,6 @@ self.addEventListener('fetch', function(event) {
 		return response;
 	    });
 	}).catch(function() {
-	    return caches.match('/not-found.html?v4');
+	    return caches.match('/not-found.html?v5');
 	}));
 });
