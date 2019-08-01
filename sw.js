@@ -77,6 +77,7 @@ self.addEventListener('install', function(event) {
 		'/style/css/main.css?v38',
 		'/style/css/main-dark.css?v38',
 		'/favicon/favicon.ico',
+		'/favicon/site.webmanifest',
 		'/style/font/DroidNaskh-Regular.woff2',
 		'/style/font/Material-Icons.woff2',
 		'/logo/logo-64.png',
