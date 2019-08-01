@@ -1,4 +1,4 @@
-<div id="main">
+<div id="poets">
     <!-- Poet picture -->
     <div style="position:relative;max-width:180px;
 		margin:auto">

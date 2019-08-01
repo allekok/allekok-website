@@ -57,16 +57,8 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 			 echo "/poet:".$info['id']."/book:".
 			      $bk."/poem:".$row[0]['id'];
 			 ?>"
-		><i style="color:inherit;font-size:inherit;
-			   font-style:normal;display:inline-block;
-			   width:10%;max-width:.8em;
-			   vertical-align:top"
-		 >&lsaquo;</i><div style="display:inline-block;
-					  overflow:hidden;
-					  white-space:nowrap;
-					  text-overflow:ellipsis;
-					  width:90%;
-					  vertical-align:middle;"
+		><i
+		 >&lsaquo;</i><div
 			      ><?php 
 			       echo $row[0]['ckbid'].". ".
 				    trim($row[0]['name']);
@@ -80,22 +72,17 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	?>
 	    <!-- Next -->
 	    <div class="next">
-		<a style="display:block;"
+		<a style="display:block"
 		   href="<?php
 			 echo "/poet:".$info['id']."/book:".
 			      $bk."/poem:".$row[2]['id'];
 			 ?>"
-		><div style='display:inline-block;overflow:hidden;
-			     white-space:nowrap;text-overflow:ellipsis;
-			     width:90%;vertical-align:middle;'
+		><div
 		 ><?php 
 		  echo $row[2]['ckbid'].". ".
 		       trim($row[2]['name']);
 		  ?>
-		</div><i style="color:inherit;font-size:inherit;
-				font-style:normal;display:inline-block;
-				width:10%;max-width:.8em;vertical-align:top"
-		      >&rsaquo;</i>
+		</div><i>&rsaquo;</i>
 		</a>
 	    </div>
 	<?php } ?>
@@ -142,9 +129,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
        - Toolbar
 	 Other tools window
     -->
-    <div style='display:none;font-size:.55em;
-		max-width:500px;margin:auto auto .5em;
-		padding:.5em 1em;text-align:right'
+    <div style='display:none'
 	 id='extlnk'>
 	<style>
 	 .icon-round {
@@ -304,57 +289,59 @@ style='display:inline-block'
 		id="commTxt" name='comment'></textarea>
             <div id="message"></div>
             <button class='button bth' type="submit"
-		    style="font-size:.7em;width:50%;
-			   padding:1em 0;max-width:150px"
+		    style="font-size:.7em;padding:1em 1.5em"
 	    >ناردن</button>
 	</form>
 	<!--
-	     Comments contexts
+	     Comments
 	-->
 	<div id='hon-comments-body'
 	     style='padding:0 .2em'></div>
     </div>
     <script>
-     window.addEventListener('load', function() {
+     window.addEventListener('load', function()
+     {
 	 const loader = "<div class='loader' \
 style='margin-top:.5em'></div>",
 	       message = document.getElementById("message"),
 	       name = document.getElementById("commNameTxt"),
 	       comments = document.getElementById("hon-comments-body");
 	 
-	 function send_comment() {	     		     
-	     const comment = document.getElementById("commTxt");
+	 function send_comment()
+	 {
+	     const comment = document.getElementById("commTxt"),
+		   client = new XMLHttpRequest(),
+		   request = "address=" + poem_adrs +
+			     "&name=" + encodeURIComponent(name.value) +
+			     "&comment=" + encodeURIComponent(comment.value);
 	     
-	     if(comment.value == "") {
+	     if(comment.value == "")
+	     {
 		 comment.focus();
 		 return;
 	     }
 	     
 	     message.innerHTML = loader;
-	     comment.background = "#eee";
-	     comment.color = "#888";
 	     
-	     const xmlhttp = new XMLHttpRequest();
-	     xmlhttp.onload = function() {
-		 const res = JSON.parse(this.responseText);
+	     client.onload = function()
+	     {
+		 const res = isJson(this.responseText);
 		 
-		 if(res.status) {
-		     var newComm = "";
-		     comment.background = "";
-		     comment.color = "";
+		 if(res && res.status)
+		 {
 		     name.value = res.name;
 		     comment.value = "";
-		     message.style.background =
-			 "rgba(0,255,0,.1)";
+		     message.style.background = "rgba(0,255,0,.1)";
 		     message.innerHTML = res.message;
-		     newComm = "<div class='comment'><\
+		     const newComm = "<div class='comment'><\
 div class='comm-name'>"+res.name+":</div><\
 div class='comm-body'>"+res.comment+"</div><\
 div class='comm-footer'>"+res.date+"</div></div>";
 		     comments.innerHTML = newComm +
 					  comments.innerHTML;
 		     
-		     if(res.name != "ناشناس") {
+		     if(res.name != "ناشناس")
+		     {
 			 localStorage.setItem(
 			     "contributor",
 			     JSON.stringify(
@@ -365,45 +352,40 @@ div class='comm-footer'>"+res.date+"</div></div>";
 		 }
 	     }
 	     
-	     const request = "address=" + poem_adrs +
-			     "&name=" + name.value +
-			     "&comment=" +
-			     encodeURIComponent(comment.value);
-	     
-	     xmlhttp.open("POST",
-			  "/script/php/comments-add.php");
-	     xmlhttp.setRequestHeader(
+	     client.open("POST", "/script/php/comments-add.php");
+	     client.setRequestHeader(
 		 "Content-type",
 		 "application/x-www-form-urlencoded");
-	     xmlhttp.send(request);
+	     client.send(request);
 	 }
 	 
 	 document.getElementById("frmComm").
-		  addEventListener("submit", function(e) {
+		  addEventListener("submit", function(e)
+		  {
 		      e.preventDefault();
 		      send_comment();
 		  });
 	 
-         <?php
+	 <?php
 	 /* Check for comments */
-         $db = 'index';
-         $address = 'poet:'.$info['id'].
+	 $db = 'index';
+	 $address = 'poet:'.$info['id'].
 		    '/book:'.$bk.
 		    '/poem:'.$row[1]['id'];
-         $q = "select * from comments where 
+	 $q = "select * from comments where 
 address='$address' and blocked=0";
-         require("condb.php");
-         
-         if($query and
+	 require("condb.php");
+	 
+	 if($query and
 	     @mysqli_num_rows($query)>0) {                 
-         ?>
-         
+	 ?>
 	 getUrl('/script/php/comments-get.php?address='+
-		poem_adrs, function(responseText) {
-		    
-		    const res = JSON.parse(responseText);
-		    if(res.err != 1) {
-			var newComm = "";
+		poem_adrs, function(responseText)
+		{
+		    const res = isJson(responseText);
+		    if(res && res.err != 1)
+		    {
+			let newComm = "";
 			for(a in res)
 			{
 			    newComm += "<div class='comment'\
@@ -411,26 +393,28 @@ address='$address' and blocked=0";
 class='comm-body'>"+res[a].comment+"</div><div \
 class='comm-footer'>"+res[a].date+"</div></div>";
 			}
-			
 			comments.innerHTML = newComm;
 		    }
 		});
-         <?php
-         }
-         ?>
-         
+	 <?php
+	 }
+	 ?>
+	 
 	 /* Load user name into `commNameTxt' */
-	 document.getElementById("commNameTxt").
-		  value = function (nameObj) {
-		      if(nameObj === null) return "";
-		      return JSON.parse(nameObj).name || "";
-		  } (localStorage.getItem("contributor"));
+	 try
+	 {
+	     document.getElementById("commNameTxt").value =
+		 isJson(localStorage.getItem("contributor")).name;
+	 }
+	 catch (e) {}
 
 	 /* Footnotes */
 	 const sups = document.querySelectorAll("sup");
-	 sups.forEach(function(e) {
-	     e.addEventListener(
-		 "click",function() {
+	 sups.forEach(function(o)
+	 {
+	     o.addEventListener(
+		 "click", function()
+		 {
 		     window.scrollTo(
 			 0, document.querySelector(
 			     ".m.d.cf:last-child").
@@ -440,19 +424,21 @@ class='comm-footer'>"+res[a].date+"</div></div>";
 
 	 /* Other tools window */
 	 document.getElementById("extlnkico").
-		  addEventListener("click" , function() {
-		      
+		  addEventListener("click" , function()
+		  {
 		      const extlnk = document.getElementById("extlnk");
-		      if(extlnk.style.display != "block") {
+		      if(extlnk.style.display != "block")
+		      {
 			  extlnk.style.display = "block";
-			  extlnk.style.animation = ".4s \
-cubic-bezier(0.18, 0.89, 0.32, 1.28) tL";
+			  extlnk.style.animation = ".25s tL";
 		      }
-		      else {
+		      else
+		      {
 			  extlnk.style.display = "none";
 		      }
 		  });
-	 
+
+	 /* Tewar */
 	 const convertToLatBtn = document.getElementById("convertToLatBtn"),
 	       defLabel = convertToLatBtn.innerHTML,
 	       newLabel = "ئەلفوبێی عەرەبی",
@@ -460,19 +446,21 @@ cubic-bezier(0.18, 0.89, 0.32, 1.28) tL";
 	 
 	 function poem_kind()
 	 {
-	     if(origin_poem.indexOf(
-		 "<div class=\"n\">")!=-1) {
+	     if(origin_poem.indexOf("<div class=\"n\">")!=-1)
+	     {
 		 return "new";
 	     }
 	     return "classic";
 	 }
 	 
-	 function convert_to_latin(toarabi=false) {
+	 function convert_to_latin(toarabi=false)
+	 {
 	     const tar = document.getElementById("hon");
 	     tar.style.animation = "";
 	     void tar.offsetWidth;
 	     
-	     if(!toarabi) {
+	     if(!toarabi)
+	     {
 		 const ltn = arabi_to_latin(tar.innerText)
 		     .replace(/\n/g, "<br>\n");
 		 tar.innerHTML =
@@ -480,20 +468,21 @@ cubic-bezier(0.18, 0.89, 0.32, 1.28) tL";
 		     "<div class=\"n\"><div class=\"m dltr\">" +
 		     ltn + "</div></div>" :
 		     "<div class=\"b\">" + ltn + "</div>";
-		 tar.style.animation = "tL .5s";
 		 convertToLatBtn.innerHTML = newLabel;
 		 tar.style.direction = "ltr";
 	     }
-	     else {
+	     else
+	     {
 		 tar.innerHTML = origin_poem;
-		 tar.style.animation = "tL .5s";
 		 convertToLatBtn.innerHTML = defLabel;
 		 tar.style.direction = "rtl";
 	     }
+	     tar.style.animation = "tL .5s";
 	 }
 	 
 	 convertToLatBtn.addEventListener(
-	     "click", function() {
+	     "click", function()
+	     {
 		 if(convertToLatBtn.innerHTML == defLabel)
 		     convert_to_latin();
 		 else
@@ -504,10 +493,12 @@ cubic-bezier(0.18, 0.89, 0.32, 1.28) tL";
 style='vertical-align:middle;margin:1em auto'></div>";
 	 
 	 document.getElementById("wordFrm").
-		  addEventListener("submit", function(e) {
+		  addEventListener("submit", function(e)
+		  {
 		      e.preventDefault();
 		      const q = document.getElementById("wordTxt");
-		      if(q.value == "") {
+		      if(q.value == "")
+		      {
 			  q.focus();
 			  return;
 		      }
@@ -521,26 +512,27 @@ style='vertical-align:middle;margin:1em auto'></div>";
 			  "#wordResKawa");
 		  });
 	 
-	 function search_ferheng (q, t) {
+	 function search_ferheng (q, t)
+	 {
 	     t = document.querySelector(t);
 	     t.innerHTML = loaderMin;
-	     let res, fin = "";
 	     
 	     getUrl(
 		 `/tewar/search/ferheng.info.php?q=${q}&n=1` ,
-		 function(responseText) {
-
+		 function(responseText)
+		 {
 		     document.getElementById("wordMore").
 			      innerHTML =
 				  `<a class='link' 
 target='_blank' href='https://allekok.com/tewar/?q=${q}'
 >گەڕانی زیاتر لە "تەوار"دا</a>`;
-		     if (responseText == "null") {
+		     if (responseText == "null")
+		     {
 			 t.innerHTML = "";
 			 return;
 		     }
-		     res = JSON.parse(responseText);
-		     fin += "<span class='tp' \
+		     const res = isJson(responseText);
+		     let fin = "<span class='tp' \
 style='display:block;font-size:.9em;padding:.3em .5em'\
 >فەرهەنگی ئەناهیتا: </span>";
 		     for( const a in res )
@@ -556,10 +548,10 @@ text-indent:1em;'>"+res[a].desc+"</section></div>";
 		 });
 	 }
      	 
-	 function search_farhangumejuikawa (q, t) {
+	 function search_farhangumejuikawa (q, t)
+	 {
 	     t = document.querySelector(t);
 	     t.innerHTML = loaderMin;
-	     let res, fin = "";
 	     
 	     getUrl(
 		 `/tewar/search/farhangumejuikawa.com.php?q=${q}&n=1`,
@@ -571,8 +563,8 @@ text-indent:1em;'>"+res[a].desc+"</section></div>";
 			 return;
 		     }
 
-		     res = JSON.parse(responseText);	 
-		     fin += "<span class='tp' \
+		     res = isJson(responseText);
+		     let fin = "<span class='tp' \
 style='display:block;font-size:.9em;padding:.3em .5em'\
 >فەرهەنگی کاوە: </span>";
 		     for( const a in res )
@@ -584,8 +576,8 @@ text-indent:1em;'>"+res[a].desc+"</section></div>";
 		     }
 		     
 		     t.innerHTML = fin;
-		     const frms = t.getElementsByTagName("form");
-		     frms[0].setAttribute("target", "_blank");
+		     t.getElementsByTagName("form")[0].
+		       setAttribute("target", "_blank");
 		     document.querySelectorAll("#wordResKawa button").
 			      forEach(function (item)
 			      {

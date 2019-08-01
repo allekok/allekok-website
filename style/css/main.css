@@ -151,6 +151,9 @@ footer i,#header-nav i{font-size:1.4em}
 #header-nav a{display:block}
 .selected{color:#00e}
 .border-blue{border-color:#00e}
+#extlnk{font-size:.55em;max-width:500px;margin:auto auto .5em;padding:.5em 1em;text-align:right}
+.next div,.prev div{display:inline-block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:90%;vertical-align:middle}
+.next i,.prev i{font-size:inherit;display:inline-block;width:10%;max-width:.8em;vertical-align:top}
 @media only screen and (min-width:600px)
 {
     body{font-size:28px}

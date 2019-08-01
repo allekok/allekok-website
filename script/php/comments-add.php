@@ -11,7 +11,7 @@ header('Content-type: application/json; Charset=UTF-8');
 $null = json_encode(NULL);
 
 $comment = isset($_POST['comment']) ?
-	   filter_var($_POST['comment'], FILTER_SANITIZE_STRING) :
+	   trim(filter_var($_POST['comment'], FILTER_SANITIZE_STRING)) :
 	   die($null);
 if(empty($comment)) die($null);
 
@@ -21,8 +21,8 @@ $address = isset($_POST['address']) ?
 if(empty($address)) die($null);
 
 $name = isset($_POST['name']) ?
-	filter_var($_POST['name'], FILTER_SANITIZE_STRING) :
-	die($null);
+	trim(filter_var($_POST['name'], FILTER_SANITIZE_STRING)) :
+	'';
 
 $date = date("Y-m-d h:i:sa");
 
@@ -34,7 +34,7 @@ $poem_id = explode(':', $_[2])[1];
 $db = 'index';
 $tbl = 'tbl' . $poet_id . '_' . $book_id;
 $q = "select id from $tbl where id=$poem_id";
-include(ABSPATH.'script/php/condb.php');
+require(ABSPATH.'script/php/condb.php');
 if(!$query) die($null);
 
 $q = "INSERT INTO comments(address, date, name, comment) VALUES('$address', '$date', '$name', '$comment')";

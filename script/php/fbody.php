@@ -11,7 +11,7 @@ $__order = @$_GET["order"]=="id" ?
 $q = "SELECT id,profname,takh FROM auth" . $__isnew . $__order;
 require(ABSPATH.'script/php/condb.php');
 ?>
-<div id='main' style="text-align:center">
+<div id='poets'>
     <?php if(isset($_GET['new'])) { ?>
         <p style="font-size:.6em;text-align:right">
 	    مەبەست لە شاعیرانی نوێ، ئەو شاعیرانەن کە لە ژیان دا ماون.
