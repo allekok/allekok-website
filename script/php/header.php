@@ -60,7 +60,7 @@ else
 	    <a href='<?php echo _SITE; ?>/'>
 		<h1><?php echo _TITLE; ?></h1>
 	    </a>
-	    <?php if(!$is_it_search) { ?>
+	    <?php if(!@$is_it_search) { ?>
 		<!-- Search Icon -->
 		<button id='tS' class='header-icon material-icons'
 			style='left:0'>search</button>
@@ -82,7 +82,7 @@ else
 	      ><i class="material-icons"
 	       >arrow_downward</i></a>
 	</div>
-	<?php if(!$is_it_search) { ?>
+	<?php if(!@$is_it_search) { ?>
 	    <!-- Search Section -->
 	    <div id='search'>
 		<form id='search-form' action='/' method='GET'
