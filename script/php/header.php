@@ -5,7 +5,7 @@ $requri = @filter_var($_SERVER['REQUEST_URI'],
 if(@$ath)
     $ogimg = _SITE.get_poet_image($ath,true);
 else 
-    $ogimg = _SITE.'/logo/logo-128.png';
+    $ogimg = _SITE.'/logo/logo-128.jpg';
 ?>
 <html dir='rtl' lang='ckb'>
     <head>
