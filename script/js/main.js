@@ -109,14 +109,13 @@ var arabi_to_latin = arabi_to_latin || function (s)
 	'([ء-يٱ-ە])‌([^ء-يٱ-ە])', '$1$2'
     ];
     
-    let i = 0;
-    for (i = 0; i < sConvertStandardise.length; i += 2)
+    for (let i = 0; i < sConvertStandardise.length; i += 2)
     {
         s = s.replace(new RegExp(sConvertStandardise[i], 'g'),
 		      sConvertStandardise[i + 1]);
     }
     
-    for (i = 0; i < sConvertArabic2Latin.length; i += 2)
+    for (let i = 0; i < sConvertArabic2Latin.length; i += 2)
     {
         s = s.replace(new RegExp(sConvertArabic2Latin[i], 'gim'),
 		      sConvertArabic2Latin[i + 1]);
@@ -124,7 +123,7 @@ var arabi_to_latin = arabi_to_latin || function (s)
     s = s.replace(new RegExp('ll', 'gim'), 'Ľ').
 	replace(new RegExp('rr', 'gim'), 'Ŕ');
     
-    for (i = 0; i < sOnsetI.length; i += 2)
+    for (let i = 0; i < sOnsetI.length; i += 2)
     {
         s = s.replace(new RegExp(sOnsetI[i], 'gim'), sOnsetI[i + 1]);
     }
@@ -209,7 +208,7 @@ var toggle_Like = toggle_Like || function ()
         favsString += `<a href='/${favs[a].url}'
 ><img class='PI${favs[a].poetID}' src='/style/img/poets/profile/profile_0.png'
 style='display:inline-block;vertical-align:middle;width:2.5em;border-radius:50%;
-margin-left:.25em'>${favs[a].poetName} &rsaquo; ${favs[a].book} &rsaquo; ${favs[a].poem} </a>`;
+margin-left:.25em'>${favs[a].poetName} &rsaquo; ${favs[a].poem}</a>`;
 	if(imgs.indexOf(favs[a].poetID) === -1)
 	    imgs.push(favs[a].poetID);
     }    
@@ -386,7 +385,7 @@ var Liked = Liked || function ()
     const bookmarksIcon = document.getElementById('tL'),
 	  ico = document.getElementById("like-icon"),
 	  tN = document.getElementById('tN');
-    let bookmarks = get_bookmarks(), i = 0;
+    let bookmarks = get_bookmarks();
     
     if(!bookmarks)
     {
@@ -401,7 +400,7 @@ var Liked = Liked || function ()
     }
     
     let where = -1;
-    for(i in bookmarks)
+    for(const i in bookmarks)
     {
 	if(bookmarks[i].url == poemObject.url)
 	{
