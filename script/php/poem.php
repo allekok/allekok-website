@@ -219,24 +219,21 @@ style='display:inline-block'
 		     Dictionary results
 		-->
 		<style>
-		 #wordResKawa button {
-                     cursor:pointer;
-                     font-size:inherit;
-                     background:none
-		 }
-		 #wordMore {
+		 #wordMore
+		 {
                      text-align:left
 		 }
-		 #wordMore a {
+		 #wordMore a
+		 {
                      text-align:center;
                      padding:.3em .8em
 		 }
-		 #wordMore a:hover {
+		 #wordMore a:hover
+		 {
                      text-decoration:none;
 		 }
 		</style>
-		<div id="wordResFerheng"></div>
-		<div id="wordResKawa"></div>
+		<div id="wordResult"></div>
 		<div id="wordMore"></div>
 	    </div>
 	</div>
@@ -496,94 +493,50 @@ style='vertical-align:middle;margin:1em auto'></div>";
 		  addEventListener("submit", function(e)
 		  {
 		      e.preventDefault();
-		      const q = document.getElementById("wordTxt");
-		      if(q.value == "")
-		      {
-			  q.focus();
-			  return;
-		      }
-		      document.getElementById("wordMore").
-			       innerHTML = "";
-		      search_ferheng(
-			  q.value,
-			  "#wordResFerheng");
-		      search_farhangumejuikawa(
-			  q.value,
-			  "#wordResKawa");
+		      lookup('wordTxt', 'wordResult');
 		  });
-	 
-	 function search_ferheng (q, t)
+	 function lookup (q_el_id, result_el_id)
 	 {
-	     t = document.querySelector(t);
-	     t.innerHTML = loaderMin;
-	     
-	     getUrl(
-		 `/tewar/search/ferheng.info.php?q=${q}&n=1` ,
-		 function(responseText)
-		 {
-		     document.getElementById("wordMore").
-			      innerHTML =
-				  `<a class='link' 
-target='_blank' href='https://allekok.com/tewar/?q=${q}'
->گەڕانی زیاتر لە "تەوار"دا</a>`;
-		     if (responseText == "null")
-		     {
-			 t.innerHTML = "";
-			 return;
-		     }
-		     const res = isJson(responseText);
-		     let fin = "<span class='tp' \
-style='display:block;font-size:.9em;padding:.3em .5em'\
->فەرهەنگی ئەناهیتا: </span>";
-		     for( const a in res )
-		     {
-			 fin += "<div><section><a \
-target='_blank' rel='noopener noreferrer nofollow' \
-href='"+res[a].link+"' class='link-color'\
->"+res[a].title+"</a></section><section \
-style='word-wrap:break-word;font-size:.87em;\
-text-indent:1em;'>"+res[a].desc+"</section></div>";
-		     }
-		     t.innerHTML = fin;
-		 });
-	 }
-     	 
-	 function search_farhangumejuikawa (q, t)
-	 {
-	     t = document.querySelector(t);
-	     t.innerHTML = loaderMin;
-	     
-	     getUrl(
-		 `/tewar/search/farhangumejuikawa.com.php?q=${q}&n=1`,
-		 function(responseText)
-		 {
-		     if (responseText == "null")
-		     {
-			 t.innerHTML = "";
-			 return;
-		     }
+	     const q_el = document.getElementById(q_el_id);
+	     const dicts = ['henbane-borine','xal','kawe'];
+	     const dicts_req = dicts.join(',');
+	     const result_el = document.getElementById(result_el_id);
+	     const q = encodeURIComponent(q_el.value.trim());
+	     const request = `/tewar/src/backend/lookup.php?q=${q}&dicts=${dicts_req}&output=json`;
+	     const loading = '<div class="loading"></div>';
+	     const wordMore = document.getElementById('wordMore');
 
-		     res = isJson(responseText);
-		     let fin = "<span class='tp' \
-style='display:block;font-size:.9em;padding:.3em .5em'\
->فەرهەنگی کاوە: </span>";
-		     for( const a in res )
+	     if(!q)
+	     {
+		 q_el.focus();
+		 return;
+	     }
+	     if(dicts.length == 0)
+	     {
+		 result_el.innerHTML = '<p>(تکایە فەرهەنگێک هەڵبژێرن)</p>';
+		 return;
+	     }
+
+	     // Loading animation
+	     result_el.innerHTML = loading;
+
+	     getUrl(request, function(response) {
+		 response = isJson(response);
+		 if(! response) return;
+		 
+		 let toprint = '';
+		 for(const i in response)
+		 {
+		     const res = response[i];
+		     for(const j in res)
 		     {
-			 fin += "<div><section\
->"+res[a].link+"</section><section style='\
-word-wrap:break-word;font-size:.87em;\
-text-indent:1em;'>"+res[a].desc+"</section></div>";
+			 const r = res[j];
+			 toprint += `<p>- ${r}</p>`;
 		     }
-		     
-		     t.innerHTML = fin;
-		     t.getElementsByTagName("form")[0].
-		       setAttribute("target", "_blank");
-		     document.querySelectorAll("#wordResKawa button").
-			      forEach(function (item)
-			      {
-				  item.classList.add("link-color");
-			      });
-		 });
+		 }
+		 result_el.innerHTML = toprint;
+	     });
+	     wordMore.innerHTML = `<a target='_blank' href='/tewar/?q=${q}'>گەڕانی زیاتر لە "تەوار"دا</a>`;
 	 }
      });
     </script>
