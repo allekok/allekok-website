@@ -607,6 +607,19 @@ var getUrl = getUrl || function (url, callback)
     client.send();
 }
 
+var postUrl = postUrl || function (url, request, callback)
+{
+    const client = new XMLHttpRequest();
+    client.open('post', url);
+    client.onload = function ()
+    {
+	callback(this.responseText);
+    }
+    client.setRequestHeader(
+	"Content-type","application/x-www-form-urlencoded");
+    client.send(request);
+}
+
 /* Check if bookmarked */
 var bookmarksIcon = document.getElementById('tL'),
     likeico = document.getElementById('like-icon'),

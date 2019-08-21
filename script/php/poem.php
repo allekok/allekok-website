@@ -495,43 +495,44 @@ style='vertical-align:middle;margin:1em auto'></div>";
 		      e.preventDefault();
 		      lookup('wordTxt', 'wordResult');
 		  });
+	 
 	 function lookup (q_el_id, result_el_id)
 	 {
-	     const q_el = document.getElementById(q_el_id);
-	     const dicts = ['henbane-borine','xal','kawe'];
-	     const dicts_req = dicts.join(',');
-	     const result_el = document.getElementById(result_el_id);
-	     const q = encodeURIComponent(q_el.value.trim());
-	     const request = `/tewar/src/backend/lookup.php?q=${q}&dicts=${dicts_req}&output=json`;
-	     const loading = '<div class="loading"></div>';
-	     const wordMore = document.getElementById('wordMore');
-
+	     const q_el = document.getElementById(q_el_id),
+		   dicts = ['henbane-borine','xal','kawe',
+			    'bashur','kameran','e2k','zkurd'],
+		   dicts_req = dicts.join(','),
+		   result_el = document.getElementById(result_el_id),
+		   q = encodeURIComponent(q_el.value.trim()),
+		   url = '/tewar/src/backend/lookup.php',
+		   request = `q=${q}&dicts=${dicts_req}&output=json`,
+		   loading = '<div class="loader"></div>',
+		   wordMore = document.getElementById('wordMore');
+	     
 	     if(!q)
 	     {
 		 q_el.focus();
-		 return;
-	     }
-	     if(dicts.length == 0)
-	     {
-		 result_el.innerHTML = '<p>(تکایە فەرهەنگێک هەڵبژێرن)</p>';
 		 return;
 	     }
 
 	     // Loading animation
 	     result_el.innerHTML = loading;
 
-	     getUrl(request, function(response) {
+	     postUrl(url, request, function(response) {
 		 response = isJson(response);
 		 if(! response) return;
 		 
 		 let toprint = '';
 		 for(const i in response)
 		 {
+		     if(i == 'time') continue;
+		     
 		     const res = response[i];
-		     for(const j in res)
+		     for(const w in res)
 		     {
-			 const r = res[j];
-			 toprint += `<p>- ${r}</p>`;
+			 const m = res[w];
+			 if(! m) continue;
+			 toprint += `<p>- <b>${w}</b>: ${m}</p>`;
 		     }
 		 }
 		 result_el.innerHTML = toprint;
