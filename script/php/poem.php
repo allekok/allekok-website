@@ -97,7 +97,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	     Bookmark button
 	-->
         <button class='bigger material-icons icon-round'
-		       style="padding:.5em"
+		style="padding:.5em"
 	>arrow_upward
 	</button
 	><button class='smaller material-icons icon-round'
@@ -262,7 +262,7 @@ style='display:inline-block'
     <?php } ?>
     <!-- Comments -->
     <h1 class="color-blue"
-	       style="font-size:1em;text-align:right;padding-top:.5em">
+	style="font-size:1em;text-align:right;padding-top:.5em">
 	بیر و ڕاکان
     </h1>
     <div id="hon-comments">
@@ -283,7 +283,7 @@ style='display:inline-block'
 		   placeholder="نێوی خۆتان لێرە بنووسن.">
             <textarea
 		placeholder="بیر و ڕای خۆتان سەبارەت بەو شێعرە لێرە بنووسن... *" 
-		id="commTxt" name='comment'></textarea>
+			     id="commTxt" name='comment'></textarea>
             <div id="message"></div>
             <button class='button bth' type="submit"
 		    style="font-size:.7em;padding:1em 1.5em"
@@ -319,10 +319,9 @@ style='margin-top:.5em'></div>",
 	     }
 	     
 	     message.innerHTML = loader;
-	     
-	     client.onload = function()
-	     {
-		 const res = isJson(this.responseText);
+
+	     postUrl("/script/php/comments-add.php", request, function (responseText) {
+		 const res = isJson(responseText);
 		 
 		 if(res && res.status)
 		 {
@@ -347,13 +346,7 @@ div class='comm-footer'>"+res.date+"</div></div>";
 		     }
 		     window.location = "#hon-comments-body";
 		 }
-	     }
-	     
-	     client.open("POST", "/script/php/comments-add.php");
-	     client.setRequestHeader(
-		 "Content-type",
-		 "application/x-www-form-urlencoded");
-	     client.send(request);
+	     });
 	 }
 	 
 	 document.getElementById("frmComm").
