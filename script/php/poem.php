@@ -148,7 +148,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 title='{$row[1]['name']}' target='_blank' 
 rel='noopener noreferrer nofollow' 
 style='display:inline-block'
->ئەم شێعرە لەسەر &laquo;{$ext_link[0]}&raquo;</a> ";
+>ئەم دەقە لەسەر &laquo;{$ext_link[0]}&raquo;</a> ";
             $probability = intval($ext_link[2]) / 4 * 100;
             $probability = "<i style='font-size:.7em;letter-spacing:1px'>%</i>" .
 			   num_convert($probability, "en", "ckb");
@@ -176,7 +176,7 @@ style='display:inline-block'
 		 Latin <-> Arabic
 	    -->
 	    <i class='material-icons icon-round'
-	    >translate</i> 
+	    >compare_arrows</i>
 	    گۆڕینی ئەلفوبێ: 
 	    <button class='button link' type="button"
 		    id="convertToLatBtn"
@@ -188,17 +188,23 @@ style='display:inline-block'
 		       font-size:.9em'
 	     >Elfubêy Latîn</i></button>
 	</div>
+	<div>
+	    <i class="material-icons icon-round">dehaze</i>
+	    <button type="button"
+		    id="make_poem_dict"
+		    style="font-size:1em">
+		دروست کردنی فەرهەنگ بۆ ئەم دەقە
+	    </button>
+	</div>
 	<div style='text-align:center'>
 	    <!--
 		 Dictionary lookup form
 	    -->
 	    <form id="wordFrm"
 		  style="display:flex;margin:auto">
-		<i class="icon-round"
-		   style="margin:auto 0 auto 1em;
-			  font-weight:bold;
-			  font-size:.7em">
-		    تەوار
+		<i class="material-icons icon-round"
+		   style="height:100%;margin:auto 0 auto .5em">
+		    translate
 		</i>
 		<section style="width:100%;margin:auto">
 		    <input type="text" id="wordTxt"
@@ -238,12 +244,25 @@ style='display:inline-block'
 	    </div>
 	</div>
     </div>
-    <!-- Poem context -->
-    <article id='hon'>
-	<?php
-	echo $row[1]['hon'];
-	?>
-    </article>
+    <div id="poem-wrapper">
+	<div id="poem_dict" style="font-size:.55em;
+		 text-align:right;border-left:2px solid;
+		 padding-left:1em;margin-left:1em;
+		 word-break:break-word;display:none">
+	    <div id="poem_dict_close"
+		 style="text-align:left;font-size:1.5em;
+		     cursor:pointer"
+	    ><i class="material-icons"
+	     >arrow_forward</i></div>
+	    <div id="poem_dict_context"></div>
+	</div>
+	<!-- Poem context -->
+	<article id='hon'>
+	    <?php
+	    echo $row[1]['hon'];
+	    ?>
+	</article>
+    </div>
     <script>
      /* Set poem font size */
      document.getElementById("hon").
@@ -486,13 +505,13 @@ style='vertical-align:middle;margin:1em auto'></div>";
 		  addEventListener("submit", function(e)
 		  {
 		      e.preventDefault();
-		      lookup('wordTxt', 'wordResult');
+		      const q_el = document.getElementById('wordTxt');
+		      lookup(q_el, 'wordResult');
 		  });
 	 
-	 function lookup (q_el_id, result_el_id)
+	 function lookup (q_el, result_el_id)
 	 {
-	     const q_el = document.getElementById(q_el_id),
-		   dicts = ['henbane-borine','xal','kawe',
+	     const dicts = ['henbane-borine','xal','kawe',
 			    'bashur','kameran','e2k','zkurd'],
 		   dicts_req = dicts.join(','),
 		   result_el = document.getElementById(result_el_id),
@@ -525,13 +544,43 @@ style='vertical-align:middle;margin:1em auto'></div>";
 		     {
 			 const m = res[w];
 			 if(! m) continue;
-			 toprint += `<p>- <b>${w}</b>: ${m}</p>`;
+			 toprint += `- <b>${w}</b>: <p>${m}</p>`;
 		     }
 		 }
 		 result_el.innerHTML = toprint;
 	     });
 	     wordMore.innerHTML = `<a target='_blank' href='/tewar/?q=${q}'>گەڕانی زیاتر لە "تەوار"دا</a>`;
 	 }
+
+	 document.getElementById('make_poem_dict').
+		  addEventListener('click', function() {
+		      const poem = document.getElementById('hon').innerText;
+		      const q_el = document.createElement('textarea');
+		      
+		      q_el.value = poem;
+		      lookup(q_el, 'poem_dict_context');
+
+		      const poem_wrapper_el = document.getElementById('poem-wrapper');
+		      const poem_dict_el = document.getElementById('poem_dict');
+		      const hon_el = document.getElementById('hon');
+		      
+		      poem_wrapper_el.style.display = 'flex';
+		      poem_dict_el.style.display = 'block';
+		      poem_dict_el.style.width = '35%';
+		      hon_el.style.width = '65%';
+		  });
+	 
+	 document.getElementById('poem_dict_close').
+		  addEventListener('click', function() {
+		      const poem_wrapper_el = document.getElementById('poem-wrapper');
+		      const poem_dict_el = document.getElementById('poem_dict');
+		      const hon_el = document.getElementById('hon');
+		      
+		      poem_wrapper_el.style.display = '';
+		      poem_dict_el.style.width = '';
+		      poem_dict_el.style.display = 'none';
+		      hon_el.style.width = '';
+		  });
      });
     </script>
 </div>

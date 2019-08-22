@@ -208,7 +208,7 @@ var toggle_Like = toggle_Like || function ()
         favsString += `<a href='/${favs[a].url}'
 ><img class='PI${favs[a].poetID}' src='/style/img/poets/profile/profile_0.png'
 style='display:inline-block;vertical-align:middle;width:2.5em;border-radius:50%;
-margin-left:.25em'>${favs[a].poetName} &rsaquo; ${favs[a].poem}</a>`;
+margin-left:.5em'>${favs[a].poetName} &rsaquo; ${favs[a].poem}</a>`;
 	if(imgs.indexOf(favs[a].poetID) === -1)
 	    imgs.push(favs[a].poetID);
     }    
