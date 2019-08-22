@@ -6,12 +6,10 @@ cd $Allekok_path
 #images
 cp $Download_repo/allekok.com/image/sent-by-users/* \
    style/img/poets/new/
-rm style/img/poets/new/index.md
 
 #poet-descs
 cp $Download_repo/allekok.com/text/infos-written-by-users/* \
    pitew/res/
-rm pitew/res/index.md
 
 #news.txt
 cp build-tools/res/news.txt-sample \
