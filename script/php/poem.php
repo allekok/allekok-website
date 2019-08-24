@@ -511,8 +511,8 @@ style='vertical-align:middle;margin:1em auto'></div>";
 	 
 	 function lookup (q_el, result_el_id)
 	 {
-	     const dicts = ['henbane-borine','xal','kawe',
-			    'bashur','kameran','e2k','zkurd'],
+	     const dicts = ['henbane-borine','xal',
+			    'bashur','kameran'],
 		   dicts_req = dicts.join(','),
 		   result_el = document.getElementById(result_el_id),
 		   q = encodeURIComponent(q_el.value.trim()),
