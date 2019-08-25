@@ -28,7 +28,7 @@ else
 			       echo $_theme_dark ? 
 				    'main-dark.css' :
 				    'main.css';
-			       ?>?v40'/>
+			       ?>?v41'/>
 	<title>
 	    <?php echo $title; ?>
 	</title>

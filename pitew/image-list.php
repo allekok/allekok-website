@@ -36,31 +36,29 @@ $poet = isset($_GET['poet']) ?
 	</div>
     </div>
     <style>
-     .imglist{width:35%;display:inline-block;
-	 vertical-align:top;padding:1em .5em;
-	 font-size:.55em}
-     .imglist:nth-child(3n-1){border-left:1px solid #eee;
-	 border-right:1px solid #eee;width:45%}
-     .imglist:nth-child(3n){width:20%}
+     .imglist-con{display:flex;text-align:right}
+     .imglist{vertical-align:top;padding:.2em 1em;
+	 font-size:.55em;width:100%}
     </style>
     <div>
-	<section class='imglist'
-	>یارمەتیدەر</section
-		   ><section
-			class='imglist'
-		    >نێوی شاعیر</section
-			       ><section
-				    class='imglist'
-				>وێنە</section>
+	<div class="imglist-con">
+	    <section class='imglist color-blue'
+	    >یارمەتیدەر</section>
+	    <section class='imglist color-blue'
+	    >نێوی شاعیر</section>
+	    <section class='imglist color-blue'
+	    >وێنە</section>
+	</div>
 	<?php
 	$_list = make_list(ABSPATH."style/img/poets/new/");
 	foreach($_list as $_l)
 	{
-            echo "<section class='imglist'
+            echo "<div class='imglist-con'><section 
+class='imglist'
 >" . $_l['name'] . "</section><section class='imglist'
 >" . $_l['poet'] . "</section><section class='imglist'
 >" . "<a class='link' href='/style/img/poets/new/{$_l['filename']}'
->وێنە</a></section>";
+>وێنە</a></section></div>";
 	}
 	
 	function make_list($path)

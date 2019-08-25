@@ -34,9 +34,8 @@ include(ABSPATH . 'script/php/header.php');
     </div>
     
     <style>
-     .pmlist{display:inline-block;vertical-align:top;padding:1em .5em;font-size:.55em}
-     .pmlist:nth-child(odd){width:30%}
-     .pmlist:nth-child(even){text-align:right;width:70%;border-right:1px solid #eee}
+     .pmlist-container{display:flex}
+     .pmlist{vertical-align:top;padding:.2em 1em;font-size:.55em;text-align:right}
     </style>
     
     <?php
@@ -48,30 +47,35 @@ include(ABSPATH . 'script/php/header.php');
     if(!$query) die();
     $_pmnum = num_convert(mysqli_num_rows($query), "en", "ckb");
     ?>
-    <div style="font-size:.6em;margin:1em 0 0">
-        ژمارەی شێعرەکان<?php
+    <div style="display:flex;font-size:.55em;
+		margin:1em 0">
+	<div style="width:100%;text-align:right;
+		    padding:0 .5em">
+        ئەژماری شێعرەکان<?php
 		       if($_name1)
 			   echo "ی \"$_name1\"";
-		       echo " &rsaquo; <span style='letter-spacing:1.5px;'>". $_pmnum . "</span>";
+		       echo " : <span style='letter-spacing:1.5px'>". $_pmnum . "</span>";
 		       ?>
     </div>
-    <div style='text-align:right;
-		margin:.3em 0;
-		font-size:.65em;
-		padding:.5em'>
+    <div style='width:100%;text-align:left;
+		padding:0 .5em'>
         <?php if($_name1) { ?>
-            <a class='link' href="/pitew/poem-list.php">
-		تەواوی ئەو شێعرانەی نووسراون
+            <a href="/pitew/poem-list.php">
+		تەواوی شێعرەکان &rsaquo;
             </a>
         <?php } ?>
     </div>
-    <section class='pmlist'
-    >یارمەتیدەر</section><section style='text-align:center'
-				  class='pmlist'>شێعر</section>
+    </div>
+    <div class="pmlist-container">
+	<section style="width:100%"
+	    class='pmlist color-blue'>یارمەتیدەر</section>
+	<section style="width:100%"
+	    class='pmlist color-blue'>شێعر</section>
+    </div>
     
     <?php
     if(! $_pmnum)
-	echo "<span style='font-size:1em;display:block'>•</span>";
+	echo "<div style='font-size:1em'>•</div>";
 
     while($_l = mysqli_fetch_assoc($query))
     {
@@ -81,9 +85,9 @@ include(ABSPATH . 'script/php/header.php');
         if($_l["contributor"] == "")
 	    $_l["contributor"] = "ناشناس";
         
-        echo "<section class='pmlist'>{$_l['contributor']}</section
+        echo "<div class='pmlist-container'><section class='pmlist'>{$_l['contributor']}</section
 ><section class='pmlist'><a class='link' href='/{$_l['status']['url']}'
-><span>{$_l['poet']}</span> &rsaquo; {$_l['poem-name']}</a></section>";
+><span>{$_l['poet']}</span> &rsaquo; {$_l['poem-name']}</a></section></div>";
     }
     
     mysqli_close($conn);

@@ -7,7 +7,7 @@ ul, li, ol, header, div, footer, article, section, nav, img, table, tr,
 td, th, textarea, span, i, sup, sub{padding:0;margin:0;border:0;font-family:inherit;font-weight:normal;transition:all .15s ease-out;text-align:inherit;box-sizing:border-box}
 input, textarea, button{-webkit-appearance:none;appearance:none;outline:none;border-radius:0;background:none;color:#fff}
 input, textarea{padding:1em;text-align:right;border-bottom:2px solid #fff;display:block;margin:auto}
-textarea{height:5em;min-height:5em}
+textarea{height:7em;min-height:5em}
 input:focus,textarea:focus{border-bottom-color:#ff1}
 textarea:focus{height:15em}
 i{font-style:normal}
