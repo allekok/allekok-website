@@ -286,7 +286,7 @@ style='display:inline-block'
     </h1>
     <div id="hon-comments">
 	<div style="padding:.5em 0;font-size:.6em;text-align:right">
-            دەتوانن بیر و ڕای خۆتان سەبارەت بەم شێعرە بنووسن.
+            دەتوانن بیر و ڕای خۆتان سەبارەت بەم شێعرە لێرە بنووسن.
 	    <br>
 	    تکایە ئەگەر ئەم دەقە هەڵەی تێدایە پێمانی ڕا بگەیێنن.
 	</div>
@@ -326,7 +326,6 @@ style='margin-top:.5em'></div>",
 	 function send_comment()
 	 {
 	     const comment = document.getElementById("commTxt"),
-		   client = new XMLHttpRequest(),
 		   request = "address=" + poem_adrs +
 			     "&name=" + encodeURIComponent(name.value) +
 			     "&comment=" + encodeURIComponent(comment.value);
@@ -395,7 +394,7 @@ address='$address' and blocked=0";
 		    if(res && res.err != 1)
 		    {
 			let newComm = "";
-			for(a in res)
+			for(const a in res)
 			{
 			    newComm += "<div class='comment'\
 ><div class='comm-name'>"+res[a].name+":</div><div \
@@ -453,15 +452,6 @@ class='comm-footer'>"+res[a].date+"</div></div>";
 	       newLabel = "ئەلفوبێی عەرەبی",
 	       origin_poem = document.getElementById("hon").innerHTML;
 	 
-	 function poem_kind()
-	 {
-	     if(origin_poem.indexOf("<div class=\"n\">")!=-1)
-	     {
-		 return "new";
-	     }
-	     return "classic";
-	 }
-	 
 	 function convert_to_latin(toarabi=false)
 	 {
 	     const tar = document.getElementById("hon");
@@ -473,7 +463,7 @@ class='comm-footer'>"+res[a].date+"</div></div>";
 		 const ltn = arabi_to_latin(tar.innerText)
 		     .replace(/\n/g, "<br>\n");
 		 tar.innerHTML =
-		     poem_kind()=="new" ?
+		     poem_kind(origin_poem)=="new" ?
 		     "<div class=\"n\"><div class=\"m dltr\">" +
 		     ltn + "</div></div>" :
 		     "<div class=\"b\">" + ltn + "</div>";

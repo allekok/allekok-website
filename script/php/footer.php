@@ -5,6 +5,6 @@
       ><i class="material-icons"
        >arrow_upward</i></a>
 </footer>
-<script defer src='/script/js/main.js?v33'></script>
+<script defer src='/script/js/main.js?v34'></script>
 </body>
 </html>

@@ -620,6 +620,15 @@ var postUrl = postUrl || function (url, request, callback)
     client.send(request);
 }
 
+var poem_kind = poem_kind || function (poem)
+{
+    if(poem.indexOf("<div class=\"n\">")!=-1)
+    {
+	return "new";
+    }
+    return "classic";
+}
+
 /* Check if bookmarked */
 var bookmarksIcon = document.getElementById('tL'),
     likeico = document.getElementById('like-icon'),
