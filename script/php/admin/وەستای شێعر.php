@@ -1,145 +1,149 @@
 <?php
 require('session.php');
-// add,edit poems
 include_once("../constants.php");
+include_once(ABSPATH . "script/php/colors.php");
+include_once(ABSPATH . "script/php/functions.php");
+
+$title = _TITLE . " &raquo; وەستای شێعر";
+$desc = "وەستای شێعر";
+$keys = _KEYS;
+$t_desc = "";
+
+include(ABSPATH . 'script/php/header.php');
 ?>
-<!DOCTYPE HTML>
-<html dir="rtl" lang="ckb">
-    <head>
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<script>
-	 function chDirection() {
-	     var poem = document.getElementById("hon");
-	     if(poem.style.direction=="rtl") {
-		 poem.style.direction = "ltr";
-		 poem.style.textAlign = "left";
-	     } else {
-		 poem.style.direction = "rtl";
-		 poem.style.textAlign = "right";
-	     }
-	 }
-	 function newr() {
-	     document.getElementById("hon").value = "";
-	     document.getElementById("row").value = "";
-	     document.getElementById("name").value = "";
-	     document.getElementById("hdesc").value = "";
-	     document.getElementById("frmbash").submit();
-	 }	     
-	 function next() {
-	     document.getElementById("hon").value = "";
-	     var id = parseInt(document.getElementById("row").value)+1;
-	     document.getElementById("row").value = id;
-	     document.getElementById("name").value = "";
-	     document.getElementById("hdesc").value = "";
-	     document.getElementById("frmbash").submit();
-	 }
-	 function back() {
-	     document.getElementById("hon").value = "";
-	     var id = parseInt(document.getElementById("row").value)-1;
-	     document.getElementById("row").value = id;
-	     document.getElementById("name").value = "";
-	     document.getElementById("hdesc").value = "";
-	     document.getElementById("frmbash").submit();
-	 }
-	 ////////////
-	 function make_mdcf() {
-	     var inp = document.querySelector("#hon");
-	     var start = inp.selectionStart;
-	     var end = inp.selectionEnd;
-	     var sel = inp.value.substring(start,end)
-	     if(sel != "" || inp.value == "") {
-		 
-		 var out = "<div class='m d cf'>\n" + sel + "\n</div>";
-		 
-		 var part1 = inp.value.substring(0, start);
-		 var part2 = inp.value.substr(end);
-		 
-		 out = part1 + out + part2;
-		 
-		 inp.value = out;
-	     }
-	     inp.focus();
-	 }
-	 function make_b() {
-	     var inp = document.querySelector("#hon");
-	     var start = inp.selectionStart;
-	     var end = inp.selectionEnd;
-	     var sel = inp.value.substring(start,end)
-	     if(sel != "" || inp.value == "") {
-		 
-		 var out = "<div class='b'>\n" + sel + "\n</div>";
-		 
-		 var part1 = inp.value.substring(0, start);
-		 var part2 = inp.value.substr(end);
-		 
-		 out = part1 + out + part2;
-		 
-		 inp.value = out;
-	     }
-	     inp.focus();
-	 }
-	 function make_n() {
-	     var inp = document.querySelector("#hon");
-	     var start = inp.selectionStart;
-	     var end = inp.selectionEnd;
-	     var sel = inp.value.substring(start,end)
-	     if(sel != "" || inp.value == "") {
-		 
-		 var out = "<div class='n'><div class='m'>\n" + sel + "\n</div></div>";
-		 
-		 var part1 = inp.value.substring(0, start);
-		 var part2 = inp.value.substr(end);
-		 
-		 out = part1 + out + part2;
-		 
-		 inp.value = out;
-	     }
-	     inp.focus();
-	 }
-	 function make_mptr() {
-	     var inp = document.querySelector("#hon");
-	     var start = inp.selectionStart;
-	     var end = inp.selectionEnd;
-	     var sel = inp.value.substring(start,end)
-	     if(sel != "" || inp.value == "") {
-		 
-		 var out = "<div class='m'><div class='ptr'>\n" + sel + "\n</div></div>";
-		 
-		 var part1 = inp.value.substring(0, start);
-		 var part2 = inp.value.substr(end);
-		 
-		 out = part1 + out + part2;
-		 
-		 inp.value = out;
-	     }
-	     inp.focus();
-	 }
-	 function make_ptrptrh() {
-	     var inp = document.querySelector("#hon");
-	     var start = inp.selectionStart;
-	     var end = inp.selectionEnd;
-	     var sel = inp.value.substring(start,end)
-	     if(sel != "" || inp.value == "") {
-		 
-		 var out = "<div class='ptr ptrh'>\n" + sel + "\n</div>";
-		 
-		 var part1 = inp.value.substring(0, start);
-		 var part2 = inp.value.substr(end);
-		 
-		 out = part1 + out + part2;
-		 
-		 inp.value = out;
-	     }
-	     inp.focus();
-	 }
+<script>
+ function chDirection() {
+     var poem = document.getElementById("hon");
+     if(poem.style.direction=="rtl") {
+	 poem.style.direction = "ltr";
+	 poem.style.textAlign = "left";
+     } else {
+	 poem.style.direction = "rtl";
+	 poem.style.textAlign = "right";
+     }
+ }
+ function newr() {
+     document.getElementById("hon").value = "";
+     document.getElementById("row").value = "";
+     document.getElementById("name").value = "";
+     document.getElementById("hdesc").value = "";
+     document.getElementById("frmbash").submit();
+ }	     
+ function next() {
+     document.getElementById("hon").value = "";
+     var id = parseInt(document.getElementById("row").value)+1;
+     document.getElementById("row").value = id;
+     document.getElementById("name").value = "";
+     document.getElementById("hdesc").value = "";
+     document.getElementById("frmbash").submit();
+ }
+ function back() {
+     document.getElementById("hon").value = "";
+     var id = parseInt(document.getElementById("row").value)-1;
+     document.getElementById("row").value = id;
+     document.getElementById("name").value = "";
+     document.getElementById("hdesc").value = "";
+     document.getElementById("frmbash").submit();
+ }
+ ////////////
+ function make_mdcf() {
+     var inp = document.querySelector("#hon");
+     var start = inp.selectionStart;
+     var end = inp.selectionEnd;
+     var sel = inp.value.substring(start,end)
+     if(sel != "" || inp.value == "") {
 	 
-	 function num_convert() {
-	     const en_num = [/0/g,/1/g,/2/g,/3/g,/4/g,/5/g,/6/g,/7/g,/8/g,/9/g],
-		   fa_num = [/۰/g,/۱/g,/۲/g,/۳/g,/۴/g,/۵/g,/۶/g,/۷/g,/۸/g,/۹/g],
-		   ku_num = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
-	     
-	     const not_allow = [
-		 /\"/g, /&#34;/g,/&#۳۴;/g,
+	 var out = "<div class='m d cf'>\n" + sel + "\n</div>";
+	 
+	 var part1 = inp.value.substring(0, start);
+	 var part2 = inp.value.substr(end);
+	 
+	 out = part1 + out + part2;
+	 
+	 inp.value = out;
+     }
+     inp.focus();
+ }
+ function make_b() {
+     var inp = document.querySelector("#hon");
+     var start = inp.selectionStart;
+     var end = inp.selectionEnd;
+     var sel = inp.value.substring(start,end)
+     if(sel != "" || inp.value == "") {
+	 
+	 var out = "<div class='b'>\n" + sel + "\n</div>";
+	 
+	 var part1 = inp.value.substring(0, start);
+	 var part2 = inp.value.substr(end);
+	 
+	 out = part1 + out + part2;
+	 
+	 inp.value = out;
+     }
+     inp.focus();
+ }
+ function make_n() {
+     var inp = document.querySelector("#hon");
+     var start = inp.selectionStart;
+     var end = inp.selectionEnd;
+     var sel = inp.value.substring(start,end)
+     if(sel != "" || inp.value == "") {
+	 
+	 var out = "<div class='n'><div class='m'>\n" + sel + "\n</div></div>";
+	 
+	 var part1 = inp.value.substring(0, start);
+	 var part2 = inp.value.substr(end);
+	 
+	 out = part1 + out + part2;
+	 
+	 inp.value = out;
+     }
+     inp.focus();
+ }
+ function make_mptr() {
+     var inp = document.querySelector("#hon");
+     var start = inp.selectionStart;
+     var end = inp.selectionEnd;
+     var sel = inp.value.substring(start,end)
+     if(sel != "" || inp.value == "") {
+	 
+	 var out = "<div class='m'><div class='ptr'>\n" + sel + "\n</div></div>";
+	 
+	 var part1 = inp.value.substring(0, start);
+	 var part2 = inp.value.substr(end);
+	 
+	 out = part1 + out + part2;
+	 
+	 inp.value = out;
+     }
+     inp.focus();
+ }
+ function make_ptrptrh() {
+     var inp = document.querySelector("#hon");
+     var start = inp.selectionStart;
+     var end = inp.selectionEnd;
+     var sel = inp.value.substring(start,end)
+     if(sel != "" || inp.value == "") {
+	 
+	 var out = "<div class='ptr ptrh'>\n" + sel + "\n</div>";
+	 
+	 var part1 = inp.value.substring(0, start);
+	 var part2 = inp.value.substr(end);
+	 
+	 out = part1 + out + part2;
+	 
+	 inp.value = out;
+     }
+     inp.focus();
+ }
+ 
+ function num_convert() {
+     const en_num = [/0/g,/1/g,/2/g,/3/g,/4/g,/5/g,/6/g,/7/g,/8/g,/9/g],
+	   fa_num = [/۰/g,/۱/g,/۲/g,/۳/g,/۴/g,/۵/g,/۶/g,/۷/g,/۸/g,/۹/g],
+	   ku_num = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+     
+     const not_allow = [
+	 /\"/g, /&#34;/g,/&#۳۴;/g,
 	     ];
              const allowed = ["\'", "\'","\'"];
 	     
@@ -162,148 +166,126 @@ include_once("../constants.php");
 	 function nbr_convert() {
 	     
 	     var input = document.querySelector('#hon');
-		 var output = input.value;
+	 var output = input.value;
+	 
+	 output = output.replace(/\n/g, "<br>\n");
+	 
+	 input.value = output;
+ }
+	 function make_sup() {
+	     var inp = document.querySelector("#hon");
+	     var start = inp.selectionStart;
+	     var end = inp.selectionEnd;
+	     var sel = inp.value.substring(start,end)
+	     if(sel != "" || inp.value == "") {
 		 
-		 output = output.replace(/\n/g, "<br>\n");
+		 var out = "<sup>" + sel + "</sup>";
 		 
-		 input.value = output;
+		 var part1 = inp.value.substring(0, start);
+		 var part2 = inp.value.substr(end);
+		 
+		 out = part1 + out + part2;
+		 
+		 inp.value = out;
+	     }
+	     inp.focus();
 	 }
-		 function make_sup() {
-		     var inp = document.querySelector("#hon");
-		     var start = inp.selectionStart;
-		     var end = inp.selectionEnd;
-		     var sel = inp.value.substring(start,end)
-		     if(sel != "" || inp.value == "") {
-			 
-			 var out = "<sup>" + sel + "</sup>";
-			 
-			 var part1 = inp.value.substring(0, start);
-			 var part2 = inp.value.substr(end);
-			 
-			 out = part1 + out + part2;
-			 
-			 inp.value = out;
-		     }
-		     inp.focus();
-		 }
-	</script>
-	<meta charset='utf8'>
-	<title>
-	    <?php echo _TITLE; ?> &raquo; 
-	    نووسینی شێعر
-	</title>
-	<link rel="stylesheet" href="/style/css/main.css?v17">
+</script>
+<style>
+ #poets * {
+     font-size:18px;
+ }
+ 
+ form {
+     width:100%;
+     max-width:1000px;
+     margin:0 auto;
+ }
+ 
+ input[type=text], textarea {
+     width:100%;
+     margin:auto;
+     display:block;
+ }
+ 
+ input[type=text] {
+     margin-bottom:15px;
+ }
+ input[name=row] {
+     text-align:left;
+ }
+ textarea {
+     height:30em;
+     min-height:30em;
+     margin-bottom:20px;
+     max-width:100%;
+     direction:ltr;
+     text-align:left;
+ }
+ .not {
+     padding:10px 5px;
+     margin:0 auto 10px;
+     text-align:center;
+ }
+ .r {
+     background-color:rgba(255,0,0,0.1);
+ }
+ .g {
+     background-color:rgba(0,255,0,0.1);
+ }
+ select {
+     width:60%;
+     padding:5px 1.5%;
+     margin-right:20px;
+     border-radius:1em;
+     outline:0;
+     border:2px solid #fff;
+     margin-bottom:10px;
+     background:#000;
+     color:#fff;
+ }
+ #poets button {
+     margin:15px .5%;
+     padding:10px 0;
+     border:2px solid <?php echo $_color_black; ?>;
+     border-radius:1em;
+     cursor:pointer;
+     width:24%;
+     text-align:center;
+     float:right;
+     font-weight:bold;
+ }
+ 
+ #poets a {
+     padding: 0.15em 0 0.05em;
+     text-align: center;
+     font-size:1em;
+     margin:0 1em;
+ }
+ #toolbox {
+     text-align:center;
+     padding:1em 0;
+ }
+ #tools {
+     text-align:center;
+ }
+ #tools button {
+     width:auto;
+     padding:0.2em 0.4em;
+     font-size:0.7em;
+     margin:0 0.2em 0.5em;
+ }
+</style>
 
-	<style>
-	 * {
-	     font-family:'kurd',monospace;
-	     font-size:20px;
-	 }
-	 
-	 form {
-	     width:100%;
-	     max-width:900px;
-	     margin:0 auto;
-	 }
-	 
-	 input[type=text], textarea {
-	     width:94%;
-	     margin:auto;
-	     display:block;
-	     box-shadow: 0 5px 10px #ddd;
-	 }
-	 
-	 input[type=text] {
-	     margin-bottom:15px;
-	 }
-	 input[name=row] {
-	     text-align:left;
-	 }
-	 textarea {
-	     height:30em;
-	     min-height:30em;
-	     margin-bottom:20px;
-	     max-width:94%;
-	     direction:ltr;
-	     text-align:left;
-	 }
-	 .not {
-	     padding:10px 5px;
-	     margin:0 auto 10px;
-	     text-align:center;
-	 }
-	 .r {
-	     background-color:rgba(255,0,0,0.1);
-	 }
-	 .g {
-	     background-color:rgba(0,255,0,0.1);
-	 }
-	 select {
-	     width:60%;
-	     padding:5px 1.5%;
-	     margin-right:20px;
-	     border:0;
-	     margin-bottom:10px;
-	     background-color:#f0f0f0;
-	 }
-	 button {
-	     margin:15px 0;
-	     padding:10px 0;
-	     background:#00AFF5;
-	     color:#fff;
-	     border:0;
-	     cursor:pointer;
-	     width:25%;
-	     text-align:center;
-	     float:right;
-	 }
-	 button:hover {
-	     opacity:0.6;
-	 }
-	 
-	 a {
-             color: rgb(204,51,0);
-             text-decoration: none;
-             padding: 0.15em 0 0.05em;
-             text-align: center;
-             font-size:1em;
-             border-bottom:1px solid #ddd;
-             margin:0 1em;
-         }
-         #toolbox {
-             text-align:center;
-             padding:1em 0;
-         }
-         a:hover {
-             background:#eee;
-             border-bottom:0;
-             text-decoration:none;
-         }
-         #search-res a {
-             color:black;
-         }
-         #tools {
-             text-align:center;
-         }
-         #tools button {
-             width:auto;
-             padding:0.2em 0.4em;
-             font-size:0.65em;
-             margin:0 0.2em 0.5em;
-         }
-	</style>
-
-    </head>
-    <body>
-	
-	<div id="toolbox">
-            <a onclick="event.preventDefault();window.open('http://allekok.com/script/php/admin/sitemap.php', '_blank','width=300,height=320','')" href="sitemap.php">
-                زیاد کردن
-            </a><a onclick="event.preventDefault();window.open('http://allekok.com/script/php/admin/search-poems.php', '_blank','width=300,height=320','')" href="search-poems.php">
-                دروست کردن
-            </a>
-        </div>
-	
+<div id="poets">
+    <div id="toolbox">
+        <a onclick="event.preventDefault();window.open('http://allekok.com/script/php/admin/sitemap.php', '_blank','width=300,height=320','')" href="sitemap.php">
+            زیاد کردن
+        </a><a onclick="event.preventDefault();window.open('http://allekok.com/script/php/admin/search-poems.php', '_blank','width=300,height=320','')" href="search-poems.php">
+            دروست کردن
+        </a>
+    </div>
+    
 <?php
 function tbl_name_to_address($_tbl) {
     $_tbl = explode("_", $_tbl);
@@ -358,7 +340,7 @@ if($dbcache=='') {
 	    echo("<div class='not g'>
 					دۆزیمەوە!
 <br>
-<a style='display:block;font-size:.6em;color:#222;' href='/{$link}' target='_blank'>$link</a>
+<a style='display:block' href='/{$link}' target='_blank'>$link</a>
 					</div>");
 	} else {
 	    $q = "UPDATE `" . $_tbl . "` SET `id`=$rowd,`name`='$name',`hon`=" . '"'.$hon . '"' . ",`hdesc`='$hdesc' WHERE id=" . $rowd;
@@ -373,7 +355,7 @@ if($dbcache=='') {
 		echo("<div class='not g'>
 						شیعرەکە بەڕۆژ بۆوە!
 <br>
-<a style='display:block;font-size:.6em;color:#222;' href='/{$link}' target='_blank'>$link</a>
+<a style='display:block' href='/{$link}' target='_blank'>$link</a>
 						</div>");
 		
 		$f = fopen("../../../desktop/update/books/update-version.txt","r+");
@@ -420,7 +402,7 @@ if($dbcache=='') {
 	    echo("<div class='not g'>
 					ئەم شیعرە بە ئاڵەکۆکەوە زیادکرا!
 <br>
-<a style='display:block;font-size:.6em;color:#222;' href='/{$link}' target='_blank'>$link</a>
+<a style='display:block' href='/{$link}' target='_blank'>$link</a>
 					</div>");
 	    
 	    $f = fopen("../../../desktop/update/books/update-version.txt","r+");
@@ -458,139 +440,70 @@ if($dbcache=='') {
 }
 ?>
 
-	<form action='' method='POST' id='frmbash'>
-	    شاعیر: 
-	    <select name='db' onchange='form.submit()'>
-		<option value=''></option>
-		<?php
-		$db='index';
-		$q='SELECT * FROM auth';
-		include(ABSPATH.'script/php/condb.php');
-		if(mysqli_num_rows($query)) {
+    <form action='' method='POST' id='frmbash'>
+	شاعیر: 
+	<select name='db' onchange='form.submit()'>
+	    <option value=''></option>
+	    <?php
+	    $db='index';
+	    $q='SELECT * FROM auth';
+	    include(ABSPATH.'script/php/condb.php');
+	    if(mysqli_num_rows($query)) {
 
-		    while($row=mysqli_fetch_assoc($query)) {
-			//if($row['takh']!='') { 
-			//$tkh = ' (' . $row['takh'] . ')';
-			//}
-		?>
-		<option value="tbl<?php echo $row['id'] ?>" <?php $seldb="tbl" . $row['id']; if($dbcache == $seldb) { echo 'selected'; }?>>
-		    <?php echo $row['profname']; ?>
-		</option>
-		
+		while($row=mysqli_fetch_assoc($query)) {
+		    //if($row['takh']!='') { 
+		    //$tkh = ' (' . $row['takh'] . ')';
+		    //}
+	    ?>
+	    <option value="tbl<?php echo $row['id'] ?>" <?php $seldb="tbl" . $row['id']; if($dbcache == $seldb) { echo 'selected'; }?>>
+		<?php echo $row['profname']; ?>
+	    </option>
+	    
 		<?php } } mysqli_close($conn); ?>
-	    </select>
-	    <br />
-	    کتێب: 
-	    <select name='tbl'>
-		
-
-		<?php
-		$db = 'index';
-		$q = 'SELECT * FROM auth WHERE id='. substr($dbcache,3);
-		include(ABSPATH.'script/php/condb.php');
-		if($query) {
-		    $row = mysqli_fetch_assoc($query);
-		    $rbks = explode(',',$row['bks']);
-		    for($i=0;$i<count($rbks);$i++) {
-			if($rbks[$i]!=='') {
-			    $b = $i+1;
-			    $seltbl="_" . $b; if($tblcache == $seltbl) { $seltbllabel='selected'; }
-			    echo("<option value='_" . $b . "' " . $seltbllabel . ">" . $rbks[$i] . "</option>");
-			    $seltbllabel = "";
-			}
+	</select>
+	<br />
+	کتێب: 
+	<select name='tbl'>
+	    <?php
+	    $db = 'index';
+	    $q = 'SELECT * FROM auth WHERE id='. substr($dbcache,3);
+	    include(ABSPATH.'script/php/condb.php');
+	    if($query) {
+		$row = mysqli_fetch_assoc($query);
+		$rbks = explode(',',$row['bks']);
+		for($i=0;$i<count($rbks);$i++) {
+		    if($rbks[$i]!=='') {
+			$b = $i+1;
+			$seltbl="_" . $b; if($tblcache == $seltbl) { $seltbllabel='selected'; }
+			echo("<option value='_" . $b . "' " . $seltbllabel . ">" . $rbks[$i] . "</option>");
+			$seltbllabel = "";
 		    }
 		}
-		mysqli_close($conn);
-		?>
-
-	    </select>
-	    <br />
-	    <input placeholder='ژمارەی شیعر' id='row' name='row' type='text' value="<?php  echo $rowd;  ?>" />
-	    <input placeholder='ناوی شیعر' id='name' name='name' type='text' value="<?php  echo $name;  ?>" />
-	    <div id="search-res"></div>
-	    <input placeholder='لە بارەی ئەم شیعرەدا' id='hdesc' name='hdesc' type='text' value="<?php  echo $hdesc;  ?>" />
-	    <div style='text-align:center'>
-		<button type='button' onclick="next()" style="background:rgb(153, 51, 51);">دوایی</button>
-		
-		<button type='submit'><?php echo $butt; ?></button>
-		
-		<button type='button' onclick="newr()" style="background:rgb(51, 51, 255);">تازە</button>
-		
-		<button type='button' onclick="back()" style="background:rgb(153, 0, 204);">پێشوو</button>
-	    </div>
+	    }
+	    mysqli_close($conn);
+	    ?>
+	</select>
+	<br />
+	<input placeholder='ژمارەی شیعر' id='row' name='row' type='text' value="<?php  echo $rowd;  ?>" />
+	<input placeholder='ناوی شیعر' id='name' name='name' type='text' value="<?php  echo $name;  ?>" />
+	<div id="search-res"></div>
+	<input placeholder='لە بارەی ئەم شیعرەدا' id='hdesc' name='hdesc' type='text' value="<?php  echo $hdesc;  ?>" />
+	<div style='text-align:center'>
+	    <button type='button' onclick="next()">دوایی</button>
 	    
-	    <div id="tools">
-		<button class='button' type='button' onclick="make_mdcf()">m d cf</button><button class='button' type='button' onclick="make_b()">b</button><button class='button' type='button' onclick="make_n()">n</button><button class='button' type='button' onclick="make_mptr()">m ptr</button><button class='button' type='button' onclick="make_ptrptrh()">ptr ptrh</button><button class='button' type='button' onclick="nbr_convert()">\n -> br</button><button class='button' type='button' onclick="make_sup()">sup</button><button class='button' type='button' onclick="num_convert()">ژمارەی کوردی</button><button class="button" type="button" onclick="chDirection()">RTL<>LTR</button>
-	    </div>
-	    <textarea placeholder='شیعر' id='hon' name='hon'><?php echo $hon; ?></textarea><br />
+	    <button type='submit'><?php echo $butt; ?></button>
 	    
-	</form>
+	    <button type='button' onclick="newr()">تازە</button>
+	    
+	    <button type='button' onclick="back()">پێشوو</button>
+	</div>
 	
-	<script>
-
-	 function search(e) {
-	     // Search Function ---> Send search phrases ajaxly to server.
-	     
-	     var str=document.getElementById("name").value;
-	     var sres=document.getElementById("search-res");
-	     // var s=document.getElementById('search');
-
-	     // the below line is from some source.
-	     var C = (typeof e.which === "number") ? e.which : e.keyCode;
-	     var noActionKeys = [16, 17, 18, 91, 20, 9, 93, 37, 38, 39, 40, 32, 224, 13];
-	     
-	     if(noActionKeys.indexOf(C) === -1) {
-
-		 // 27 keyCode = Esc Key
-		 if(C == 27) {
-		     // s.style.display="none";
-		     sres.style.display="none";
-		     return;
-
-		 } else {
-		     var loading = "<div class='loader' id='loader'></div>";
-
-		     if(str.length===0) {
-			 sres.style.display="none";
-			 sres.innerHTML= loading;
-			 return;
-		     }
-
-		     sres.innerHTML=loading;
-		     sres.style.display="block";
-		     xmlhttp=new XMLHttpRequest();
-		     
-		     xmlhttp.onreadystatechange=function() {
-			 if(this.readyState==4 && this.status==200) {
-
-			     sres.innerHTML=this.responseText;
-			 }
-		     }
-		 }
-
-		 var request = "live-search.php?q="+str;
-
-		 xmlhttp.open("GET",request);
-		 xmlhttp.send();
-
-		 // the End of noActionKeys, IF....
-	     } else {
-		 if(str === "") {
-		     sres.style.display="none";
-		     sres.innerHTML= loading;
-		     return;
-		 } 
-	     }
-	 }
-	 
-	 var sk = document.getElementById("name");
-	 if(sk !== null) {
-	     sk.addEventListener("keyup", function(e) {
-		 search(e);
-	     });
-	 }
-	</script>
-
-    </body>
-
-</html>
+	<div id="tools">
+	    <button class='button' type='button' onclick="make_mdcf()">m d cf</button><button class='button' type='button' onclick="make_b()">b</button><button class='button' type='button' onclick="make_n()">n</button><button class='button' type='button' onclick="make_mptr()">m ptr</button><button class='button' type='button' onclick="make_ptrptrh()">ptr ptrh</button><button class='button' type='button' onclick="nbr_convert()" style="direction:ltr">\n -> br</button><button class='button' type='button' onclick="make_sup()">sup</button><button class='button' type='button' onclick="num_convert()">ژمارەی کوردی</button><button class="button" type="button" onclick="chDirection()">RTL<>LTR</button>
+	</div>
+	<textarea placeholder='شیعر' id='hon' name='hon'><?php echo $hon; ?></textarea><br />	
+    </form>    
+</div>
+<?php
+include_once(ABSPATH . "script/php/footer.php");
+?>
