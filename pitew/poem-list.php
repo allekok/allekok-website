@@ -35,7 +35,7 @@ include(ABSPATH . 'script/php/header.php');
     
     <style>
      .pmlist-container{display:flex}
-     .pmlist{vertical-align:top;padding:.2em 1em;font-size:.55em;text-align:right}
+     .pmlist-container section{vertical-align:top;padding:.2em 1em;font-size:.55em;text-align:right}
     </style>
     
     <?php
@@ -68,9 +68,9 @@ include(ABSPATH . 'script/php/header.php');
     </div>
     <div class="pmlist-container">
 	<section style="width:100%"
-	    class='pmlist color-blue'>یارمەتیدەر</section>
+	    class='color-blue'>یارمەتیدەر</section>
 	<section style="width:100%"
-	    class='pmlist color-blue'>شێعر</section>
+	    class='color-blue'>شێعر</section>
     </div>
     
     <?php
@@ -85,9 +85,9 @@ include(ABSPATH . 'script/php/header.php');
         if($_l["contributor"] == "")
 	    $_l["contributor"] = "ناشناس";
         
-        echo "<div class='pmlist-container'><section class='pmlist'>{$_l['contributor']}</section
-><section class='pmlist'><a class='link' href='/{$_l['status']['url']}'
-><span>{$_l['poet']}</span> &rsaquo; {$_l['poem-name']}</a></section></div>";
+        echo "<div class='pmlist-container'><section>{$_l['contributor']}</section
+><section><a href='/{$_l['status']['url']}'
+>{$_l['poet']} &rsaquo; {$_l['poem-name']}</a></section></div>";
     }
     
     mysqli_close($conn);
