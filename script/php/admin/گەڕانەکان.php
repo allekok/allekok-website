@@ -1,152 +1,75 @@
-<?php require('session.php'); ?>
-<!DOCTYPE HTML>
-<html dir="rtl">
-    <head>
-        <title>
-            گەڕانەکان
-        </title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/style/css/main.css?v4">
-        <style>
-         * {
-             padding:0;
-             margin:0;
-             border:0;
-             outline:0;
-             font-family:'kurd',monospace;
-             font-size:inherit;
-             transition:all 0.2s ease;
-             -webkit-transition:all 0.2s ease;
-         }
-         
-         input[type=text] {
-             display: block;
-             width:96%;
-             padding:0.2em 2%;
-             border-bottom:2px solid #ccc;
-             margin:0 0 1em;
-         }
-         
-         input[type=text]:focus {
-             border-bottom:2px solid #06d;
-             box-shadow:0 2px 1px #ddd;
-         }
-         
-         button[type=submit] {
-             display:block;
-             width:100%;
-             max-width:100px;
-             padding:0.3em 0;
-             margin:auto;
-         }
-         
-         .g {
-             background-color:rgba(0,255,0,0.2);
-             color:green;
-             display:block;
-         }
-         .r {
-             background-color:rgba(255,0,0,0.2);
-             color:red;
-             display:block;
-         }
-         
-         table {
-             margin: auto;
-             width: 100%;
-             max-width: 700px;
-         }
-         
-         th {
-             background:#eee;
-         }
-         
-         td {
-             border-bottom:1px solid #ddd;
-         }
-         
-         img {
-             width:100%;
-         }
-         a {
-             color: #fff;
-             background: #06f;
-             text-decoration: none;
-             display: block;
-             padding: 0.5em 0;
-             text-align: center;
-             box-shadow: 0 2px 1px #bbb;
-         }
-         a:hover {
-             opacity:0.7;
-         }
-        </style>
-    </head>
+<?php
+require('session.php');
+include_once("../constants.php");
+include_once(ABSPATH . "script/php/colors.php");
+include_once(ABSPATH . "script/php/functions.php");
+
+$title = _TITLE . " &raquo; گەڕانەکان";
+$desc = "گەڕانەکان";
+$keys = _KEYS;
+$t_desc = "";
+
+include(ABSPATH . 'script/php/header.php');
+?>
+<div id="poets">        
+    <?php
+    $db = "search";
+    $q = "select Cipi, rtakh, rbook, rname, 
+poet_id, book_id, poem_id id from poems 
+where Cipi>1 order by Cipi DESC";
     
-    <body>
+    require(ABSPATH . "script/php/condb.php");
+    
+    $_ths = [
+        ["Cipi",
+	 "5%"],
+	["شێعر",
+	 "90%"],
+	["ژمارە",
+	 "5%"],
+    ];
+    
+    echo "<table style='font-size:.6em'>";
+    echo "<tr>";
+    
+    foreach($_ths as $_th) {
         
-        <div id="toolbox">
-            
-        </div>
-        
-        <?php
-        
-        $db = "search";
-        $q = "select Cipi, rtakh, rbook, rname, id from poems where Cipi!=0 order by Cipi DESC";
-        
-        require("../condb.php");
-        
-        $_ths = array(
-            array("Cipi",
-		  "5%"),
-            array("شاعیر",
-		  "15%"),
-            array("کتێب",
-		  "18%"),
-            array("شێعر",
-		  "45%"),
-            array("ژمارە",
-		  "5%"),
-            array("کاروبار",
-		  "12%")
-        );
-        
-        echo "<table>";
-        echo "<tr>";
-        
-        foreach($_ths as $_th) {
-            
-            echo "<th style='width:{$_th[1]};'>";
-            echo $_th[0];
-            echo "</th>";
-        }
+        echo "<th class='color-blue' style='width:{$_th[1]};'>";
+        echo $_th[0];
+        echo "</th>";
+    }
+    
+    echo "</tr>";
+    
+    while($res = mysqli_fetch_assoc($query))
+    {
+        echo "<tr style='text-align:right'>";
+
+	echo "<td>";
+        echo num_convert($res['Cipi'], 'en', 'ckb');
+        echo "</td>";
+
+	$adrs = 'poet:'.$res['poet_id'].
+		'/book:'.$res['book_id'].
+		'/poem:'.$res['poem_id'];
+	echo "<td>";
+        echo "<a href='/$adrs'>".
+	     $res['rtakh'].' &rsaquo; '.
+	     $res['rbook'].' &rsaquo; '.
+	     $res['rname'] . '</a>';
+        echo "</td>";
+	
+	echo "<td>";
+        echo num_convert($res['id'], 'en', 'ckb');
+        echo "</td>";
         
         echo "</tr>";
-        
-        while($res = mysqli_fetch_assoc($query)) {
-            
-            echo "<tr>";
-            
-            foreach($res as $_r) {
-                echo "<td>";
-                echo $_r;
-                echo "</td>";
-            }
-            
-            //operations
-            echo "<td>";
-            echo "</td>";
-            
-            echo "</tr>";
-        }
-        
-        echo "</table>";
-        
-        mysqli_close($conn);
-        
-        ?>
-        
-    </body>
+    }
     
-</html>
+    echo "</table>";
+    mysqli_close($conn);
+    ?>
+</div>
+<?php
+include_once(ABSPATH . "script/php/footer.php");
+?>
