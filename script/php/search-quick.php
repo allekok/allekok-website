@@ -110,8 +110,7 @@ class='material-icons' style='padding:0 0 0 .5em;
 font-size:.8em' onclick='ss(this)' type='button' 
 >dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
-><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
-> › {$poem['rname']}</a></div>";
+>{$poem['rtakh']} › {$poem['rname']}</a></div>";
 	    if(--$poems_max == 0) break;
 	}
 	else
@@ -131,8 +130,7 @@ class='material-icons' style='padding:0 0 0 .5em;
 font-size:.8em' onclick='ss(this)' type='button' 
 >dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
-><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
-> › {$poem['rname']}</a></div>";
+>{$poem['rtakh']} › {$poem['rname']}</a></div>";
 		if(--$poems_max == 0) break;
 	    }
 	}

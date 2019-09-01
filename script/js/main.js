@@ -489,8 +489,8 @@ var ss = ss || function (button)
     let href = button.parentNode.querySelector("a").getAttribute("href");
     href = href.substr(href.indexOf("=")+1);
     href = href.split("/");
-    button.innerHTML = "<i class='loader-round' \
-style='width:1em;height:1em'></i>";
+    button.innerHTML = "<div class='loader-round' \
+style='width:1em;height:1em'></div>";
     const pt = href[0].split(":")[1],
 	  bk = href[1].split(":")[1],
 	  pm = href[2].split(":")[1];

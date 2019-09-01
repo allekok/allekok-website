@@ -157,12 +157,11 @@ ORDER BY Cipi DESC";
 	    if(false !== strpos($poem['name'],$s_sanitized))
 	    {
 		$res_poems_html .= "<div style='display:flex'><button 
-class='material-icons' style='background:none;padding:0 0 0 .5em;
+class='material-icons' style='padding:0 0 0 .5em;
 font-size:.8em' onclick='ss(this)' type='button' 
 >dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
-><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
-> › {$poem['rname']}</a></div>";
+>{$poem['rtakh']} › {$poem['rname']}</a></div>";
 		$poems[$i] = [];
 		if(--$poems_max == 0) break;
 	    }
@@ -178,12 +177,11 @@ font-size:.8em' onclick='ss(this)' type='button'
 		false !== strpos($poem['poem'],$s_sanitized)))
 	    {
 		$res_poems_context_html .= "<div style='display:flex'><button 
-class='material-icons' style='background:none;padding:0 0 0 .5em;
+class='material-icons' style='padding:0 0 0 .5em;
 font-size:.8em' onclick='ss(this)' type='button' 
 >dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
-><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
-> › {$poem['rname']}</a></div>";
+>{$poem['rtakh']} › {$poem['rname']}</a></div>";
 		$poems[$i] = [];
 		if(--$poems_max == 0) break;
 	    }
@@ -199,12 +197,11 @@ font-size:.8em' onclick='ss(this)' type='button'
 				 $s_sanitized_more))
 	    {
 		$res_poems_html .= "<div style='display:flex'><button 
-class='material-icons' style='background:none;padding:0 0 0 .5em;
+class='material-icons' style='padding:0 0 0 .5em;
 font-size:.8em' onclick='ss(this)' type='button' 
 >dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
-><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
-> › {$poem['rname']}</a></div>";
+>{$poem['rtakh']} › {$poem['rname']}</a></div>";
 		$poems[$i] = [];
 		if(--$poems_max == 0) break;
 	    }
@@ -222,12 +219,11 @@ font-size:.8em' onclick='ss(this)' type='button'
 				 $s_sanitized_more)))
 	    {
 		$res_poems_context_html .= "<div style='display:flex'><button 
-class='material-icons' style='background:none;padding:0 0 0 .5em;
+class='material-icons' style='padding:0 0 0 .5em;
 font-size:.8em' onclick='ss(this)' type='button' 
 >dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
-><i>{$poem['rtakh']}</i> › <i>{$poem['rbook']}</i
-> › {$poem['rname']}</a></div>";
+>{$poem['rtakh']} › {$poem['rname']}</a></div>";
 		if(--$poems_max == 0) break;
 	    }
 	}
