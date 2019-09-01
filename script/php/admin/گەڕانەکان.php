@@ -15,7 +15,7 @@ include(ABSPATH . 'script/php/header.php');
     <?php
     $db = "search";
     $q = "select Cipi, rtakh, rbook, rname, 
-poet_id, book_id, poem_id id from poems 
+poet_id, book_id, poem_id, id from poems 
 where Cipi>1 order by Cipi DESC";
     
     require(ABSPATH . "script/php/condb.php");
