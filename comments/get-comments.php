@@ -7,7 +7,8 @@ include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/functions.php");
 
 // number of comments
-$n = filter_var(@$_GET["n"], FILTER_VALIDATE_INT) ? $_GET["n"] : 50;
+$n = @filter_var($_GET["n"], FILTER_VALIDATE_INT) ?
+     $_GET["n"] : 20;
 
 // query for non-blocked comments
 $db = "index";
@@ -77,5 +78,4 @@ if($query) {
 }
 
 mysqli_close($conn);
-
 ?>

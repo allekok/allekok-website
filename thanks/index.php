@@ -149,10 +149,10 @@ include(ABSPATH . "script/php/header.php");
 	>شوکری فەزڵی</a>
     </p>
     <p>
-	<i>سپاسی تایبەت</i> &rsaquo; بۆ 
+	<i>سپاس</i> &rsaquo; بۆ 
 	<a href="/pitew/contributors/"
 	   class="link-underline"
-	>هەموو ئەو کەسانەی</a> کە لە 
+	>هەموو ئەو کەسانەی</a> لە
 	<a href="/pitew/first.php"
 	   class="link-underline"
 	>پتەوکردنی ئاڵەکۆک</a>

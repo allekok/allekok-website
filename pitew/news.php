@@ -9,6 +9,8 @@ $keys = _KEYS;
 $t_desc = "";
 
 include(ABSPATH . "script/php/header.php");
+$n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
+     $_GET['n'] : 15; /* Number of poems */
 ?>
 <style>
  .link {
@@ -27,9 +29,43 @@ include(ABSPATH . "script/php/header.php");
         تازەکان
     </h1>
     <div style="font-size:.6em;padding-right:2em">
+	<div class="tools-menu">
+	    <div style="display:flex;font-size:1.15em">
+		<div style="padding-left:1em">
+		    ئەژمار:
+		</div>
+		<style>
+		 .tmi
+		 {
+		     padding:0 .6em;
+		     font-size:1.1em;
+		 }
+		</style>
+		<div>
+		<?php 
+		function print_tools_menu ($all, $sel)
+		{
+		    foreach($all as $o)
+		    {
+			if($o == $sel)
+			{
+			    $_ = num_convert($o, 'en', 'ckb');
+			    echo "<span class='color-blue tmi'>{$_}</span>";
+			}
+			else
+			{
+			    $_ = num_convert($o, 'en', 'ckb');
+			    echo "<a href='?n=$o' class='tmi'>{$_}</a>";
+			}
+		    }
+		}
+
+		print_tools_menu(['50','30','15'], $n);
+		?>
+		</div>
+	    </div>
+	</div>
 	<?php
-	$n = filter_var(@$_GET["n"],FILTER_VALIDATE_INT) ?
-	     $_GET["n"] : 15; /* Number of poems */
 	$i = 0;
 	$now = date_create(date("Y-m-d H:i:s"));
 	$news_txt = "news.txt";
@@ -74,7 +110,7 @@ style='padding:0;margin:0'
 href='/poet:$pt/book:$bk/poem:$pm'><img style='display:inline-block;
 vertical-align:middle;width:2.5em;border-radius:50%;margin-left:.25em' 
 src='$image_uri'> $poet &rsaquo; $book &rsaquo; $poem</a
-><i style='font-size:.8em;display:block'><i class='material-icons'
+><i style='font-size:.88em;display:block'><i class='material-icons'
 >date_range</i> $diff</i></div>";
 		$i++;
 		mysqli_close($conn);

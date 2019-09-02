@@ -534,7 +534,7 @@ style='vertical-align:middle;margin:1em auto'></div>";
 		     {
 			 const m = res[w];
 			 if(! m) continue;
-			 toprint += `- <b>${w}</b>: <p>${m}</p>`;
+			 toprint += `- <i class='color-blue'>${w}</i>: <p>${m}</p>`;
 		     }
 		 }
 		 result_el.innerHTML = toprint;

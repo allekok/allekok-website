@@ -123,7 +123,7 @@ header a h1{font-size:1.3em;margin:0 0 .2em}
 button:hover{color:#00e}
 a:hover{color:#00e}
 #Acomms div{text-align:justify;padding:1em 1em 3em 1em;position:relative;border-radius:1em;margin-bottom:1em}
-.h{position:absolute;bottom:0;left:0;display:block;font-size:.75em;text-align:center;background:rgba(255,255,255,.5);color:black;border-radius:0 1.5em 0 0;padding:0 1em}
+.h{position:absolute;bottom:0;left:0;display:block;font-size:.75em;text-align:center;background:rgba(255,255,255,.5);color:black;border-radius:0 1.5em 0;padding:0 1em}
 .h::before{content:'date_range ';font-family:'Material Icons';font-size:1.4em;vertical-align:middle}
 .h::after{content:' favorite';font-family:'Material Icons';font-size:1.4em;vertical-align:middle}
 .link{margin:.5em 0;padding:0 .3em}

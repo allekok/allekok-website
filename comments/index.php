@@ -16,7 +16,7 @@ include(ABSPATH . "script/php/header.php");
         بیر و ڕاکان
     </h1>
     <div style='font-size:.55em;margin:.5em 0'>
-        ژمارەی بیروڕاکان: 
+        ئەژماری بیروڕاکان: 
         <?php
         $db = "index";
         $q = "select id from comments where blocked=0";
@@ -41,7 +41,7 @@ include(ABSPATH . "script/php/header.php");
 	     const res = JSON.parse(responseText);
              if(res.err != 1) {
 		 let newComm = "";
-		 for(a in res)
+		 for(const a in res)
 		 {
                      newComm += "<div class='comment'><div class='comm-name'\
 >"+res[a].name+"<span \
