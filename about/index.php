@@ -87,32 +87,32 @@ include(ABSPATH."script/php/header.php");
     </div>
 </div>
 <script>
- window.onload = function () {
+ window.onload = function ()
+ {
      getUrl("/about/about-comments.php",
-	    function (responseText)
+	    function (response)
 	    {
 		const Acomms = document.
-			     getElementById("Acomms");
-		Acomms.innerHTML=responseText;
-		Acomms.style.animation="tL-top 0.8s \
+			       getElementById("Acomms");
+		Acomms.innerHTML=response;
+		Acomms.style.animation="tL-top .8s \
 cubic-bezier(.18,.89,.32,1.28)";
 	    });
  }
  
  function append() {
-     const httpd = new XMLHttpRequest(),
-	   res = document.getElementById('message'),
+     const res = document.getElementById('message'),
 	   comm = document.getElementById('commTxt'),
 	   loader = document.getElementById('commloader'),
 	   succMess = "<i style='display:block;background:rgba(102,255,204,.1);\
-color:#444;font-size:.5em'>زۆر سپاس بۆ دەربڕینی بیر و ڕاتان سەبارەت بە ئاڵەکۆک.</i>",
+font-size:.5em'>زۆر سپاس بۆ دەربڕینی بیر و ڕاتان سەبارەت بە ئاڵەکۆک.</i>",
 	   failMess = "<i style='display:block;background:rgba(204,51,0,.1);\
-color:#444;font-size:.5em'>کێشەیەک هەیە. تکایە دووبارە هەوڵ دەنەوە.</i>",
+font-size:.5em'>کێشەیەک هەیە. تکایە دووبارە هەوڵ دەنەوە.</i>",
 	   OoRError = "<i style='display:block;background:rgba(204,51,0,.1);\
-color:#444;font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پیت زیاتر بێ.</i>",
+font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پیت زیاتر بێ.</i>",
 	   request = "comm="+encodeURIComponent(comm.value);
 
-     if(comm.value === "")
+     if(comm.value == '')
      {
          comm.focus();
          return;
@@ -131,9 +131,8 @@ color:#444;font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پ
      comm.style.background = "#eee";
      comm.style.color = "#999";
 
-     httpd.open("POST","/about/append.php");
-     httpd.onload = function() {
-         const respond = JSON.parse(this.responseText);
+     postUrl("/about/append.php", request, function(response) {
+         const respond = JSON.parse(response);
          if(respond.message == "ok")
 	 {
 	     res.innerHTML = succMess;
@@ -157,14 +156,12 @@ color:#444;font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پ
          loader.style.display = "none";
          comm.style.background = "";
          comm.style.color = "";
-     }
-     httpd.setRequestHeader(
-	 "Content-type",
-	 "application/x-www-form-urlencoded");
-     httpd.send(request);
+     });
  }
+ 
  document.getElementById("frmComm").
-	  addEventListener("submit", function(e) {
+	  addEventListener("submit", function(e)
+	  {
 	      e.preventDefault();
 	      append();
 	  });

@@ -80,7 +80,7 @@ echo "\n/پتەوکردنی ئاڵەکۆک/\n";
 echo last(ABSPATH . "pitew/QA.txt") . "\n";
 
 /* allekok-desktop */
-echo "\n/بەرنامەی دێسکتاپی ئاڵەکۆک/\n";
+echo "\n/دابەزاندنی بەرنامەی ئاڵەکۆک/\n";
 echo last(ABSPATH . "desktop/QA.txt") . "\n";
 
 /* dev/tools */

@@ -9,7 +9,7 @@ input, textarea, button{-webkit-appearance:none;appearance:none;outline:none;bor
 input, textarea{padding:1em;text-align:right;border-bottom:2px solid #fff;display:block;margin:auto}
 textarea{height:7em;min-height:5em}
 input:focus,textarea:focus{border-bottom-color:#ff1}
-textarea:focus{height:15em}
+textarea:focus{height:17em}
 i{font-style:normal}
 a{text-decoration:none;color:#fff}
 a:hover,button:hover{text-decoration:none;color:#ff1}
