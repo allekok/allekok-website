@@ -130,6 +130,7 @@ include(ABSPATH . "script/php/header.php");
 	 {
 	     if(themes.indexOf(c[1]) !== -1)
 		 button_select(c[1]);
+	     break;
 	 }
 	 else
 	 {
