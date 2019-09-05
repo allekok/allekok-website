@@ -66,8 +66,8 @@ if(! isset($_REQUEST['html']))
 {
     foreach($poems as $k => $p)
     {
-	$p['hon'] = str_replace(["\r","&#39;","&#34;","&laquo;","&raquo;"],
-                                ["","'","\"","«","»"], $p['hon']);
+	$p['hon'] = str_replace(["\r","&#39;","&#34;","&laquo;","&raquo;","<sup>","</sup>"],
+                                ["","'","\"","«","»"," [","] "], $p['hon']);
 	$p['hon'] = preg_replace("/\n\n+/", "\n\n", $p['hon']);
 	$p['hon'] = trim(filter_var($p['hon'],
 				    FILTER_SANITIZE_STRING));
