@@ -32,8 +32,8 @@ $_poet1 = isset($_GET['poet']) ?
 	 function check()
 	 {
              const poet = document.getElementById("poetTxt"),
-		   txts = document.querySelectorAll("input, textarea"),
-		   btns = document.querySelectorAll("button[type=submit]");
+		   txts = document.querySelectorAll("#poets input, #poets textarea"),
+		   btns = document.querySelectorAll("#poets button[type=submit]");
 	     
              if (poet.value == "")
 	     {
@@ -114,7 +114,7 @@ $_poet1 = isset($_GET['poet']) ?
 	    
             <div class="input-label-box" style="margin-top:1em">
 		<textarea id="poetDescTxt" name="poetDesc"
-			  style="font-size:.7em;width:100%"
+			  style="font-size:.7em;width:100%;height:15em"
 			  placeholder="زانیاریەکان سەبارەت بە شاعیر *"></textarea>
 	    </div>
 
@@ -213,8 +213,8 @@ color:#555;font-size:.55em;padding:.3em'>زۆر سپاس. دوای پێداچو�
      const poet = document.getElementById("poetTxt"),
 	   poetDesc = document.getElementById("poetDescTxt"),
 	   mess = document.getElementById("message"),
-	   txts = document.querySelectorAll("input, textarea"),
-	   btns = document.querySelectorAll("button[type=submit]");
+	   txts = document.querySelectorAll("#poets input, #poets textarea"),
+	   btns = document.querySelectorAll("#poets button[type=submit]");
      
      mess.innerHTML = poet.value = poetDesc.value = "";
 

@@ -62,8 +62,8 @@ include(ABSPATH . 'script/php/header.php');
      function check ()
      {
          const poet = document.getElementById("poetTxt"),
-               txts = document.querySelectorAll("input, textarea"),
-               btns = document.querySelectorAll("button[type=submit]");
+               txts = document.querySelectorAll("#poets input, #poets textarea"),
+               btns = document.querySelectorAll("#poets button[type=submit]");
          
          if(poet.value == "")
 	 {

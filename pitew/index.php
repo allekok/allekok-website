@@ -36,8 +36,8 @@ $_book1 = isset($_GET['book']) ?
 	 const cntri = document.getElementById("contributorTxt"),
 	       poet = document.getElementById("poetTxt"),
 	       book = document.getElementById("bookTxt"),
-	       txts = document.querySelectorAll("input, textarea"),
-	       btns = document.querySelectorAll("button[type=submit]");
+	       txts = document.querySelectorAll("#poets input, #poets textarea"),
+	       btns = document.querySelectorAll("#poets button[type=submit]");
 	 
          if(poet.value == "")
 	 {
@@ -140,7 +140,7 @@ $_book1 = isset($_GET['book']) ?
 		       placeholder="سەرناوی شێعر">
 	    </div>
 	    <div class="input-label-box" style="margin-top:1em">
-		<textarea id="poemConTxt" name="poem" style="font-size:.7em;max-width:100%;min-width:100%" placeholder="دەقی شێعر *"></textarea>
+		<textarea id="poemConTxt" name="poem" style="font-size:.7em;max-width:100%;min-width:100%;height:20em" placeholder="دەقی شێعر *"></textarea>
 	    </div>
 
             <div class='loader' style="display:none"></div>
@@ -253,8 +253,8 @@ $_book1 = isset($_GET['book']) ?
 	   poemName = document.getElementById("poemNameTxt"),
 	   poem = document.getElementById("poemConTxt"),
 	   mess = document.getElementById("message"),
-	   txts = document.querySelectorAll("input, textarea"),
-	   btns = document.querySelectorAll("button[type=submit]");
+	   txts = document.querySelectorAll("#poets input, #poets textarea"),
+	   btns = document.querySelectorAll("#poets button[type=submit]");
      
      mess.innerHTML = poet.value = book.value =
 	 poemName.value = poem.value = "";
