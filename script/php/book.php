@@ -50,12 +50,12 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 	       style="display:none"
 	       name="order" value="asc">
 	<button type='submit'
-		class="icon-round"
-		style="padding:.2em .35em 0;
+		      class="icon-round"
+		      style="padding:.2em .35em 0;
 		      display:inline-block;
 		      font-size:1.2em;margin-left:.2em"
 	><i style="font-size:.9em">ئا</i><i class="material-icons"
-	    >arrow_downward</i></button>
+					 >arrow_downward</i></button>
 	<a id="new_poem_a"
 	   style="display:inline-block;
 	       font-size:1.2em;
@@ -80,10 +80,10 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 	    <div class="poem-item"
 		 style="display:flex">
 		<button class="material-icons button"
-			style="font-size:1em;
+			       style="font-size:1em;
 			       padding:0 0 0 .5em"
-			type="button"
-			title="نیشان‌دانی بەشی سەرەتای ئەم شێعرە"
+			       type="button"
+			       title="نیشان‌دانی بەشی سەرەتای ئەم شێعرە"
 		>dehaze</button
 		       ><a href="<?php 
 				 echo "/poet:".
@@ -118,36 +118,12 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 	     }
 	 });
      }
-
-     function show_summary(button)
-     {
-	 button.innerHTML = "<div class='loader-round' \
-style='width:1em;height:1em'></div>";
-	 
-	 let href = button.parentNode.
-			   querySelector("a").
-			   getAttribute("href");
-	 href = href.split("/");
-	 const pt = href[1].split(":")[1],
-	       bk = href[2].split(":")[1],
-	       pm = href[3].split(":")[1];
-	 
-	 getUrl("/script/php/poem-summary.php?pt="+
-		pt+"&bk="+bk+"&pm="+pm, function(responseText)
-		{
-		    const san_txt = responseText.replace(/\n/g, "<br>");
-		    button.innerHTML = "dehaze";
-		    button.parentNode.outerHTML += "<div \
-style='padding:1em;font-size:.55em'\
->"+san_txt+"</div>";
-		});
-     }
      
      document.querySelectorAll("#sp button").
-	      forEach(function(e) {
-		  e.addEventListener(
+	      forEach(function(b) {
+		  b.addEventListener(
 		      "click", function () {
-			  show_summary(e);
+			  show_summary_poem(b);
 		      });
 	      });
     </script>

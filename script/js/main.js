@@ -3,8 +3,9 @@ var bookmarks_name = bookmarks_name || 'favorites';
 var arabi_to_latin = arabi_to_latin || function (s)
 {
     /* 
-     * Taken from "Pellk KurdiNus".
-     * https://allekok.com/kurdi-nus/kurdi-nus-central-kurdish.html
+     * Copyright (C) 2010 by Pellk KurdiNus, 
+     * 2019 by Allekok under GPLv2 License.
+     * https://github.com/allekok/kurdi-nus
      */
     const sConvertArabic2Latin = [
 	'و([اێۆە])', 'w$1', 
@@ -148,20 +149,20 @@ var poetImage = poetImage || function (pID, callback)
 
 var toggle_search = toggle_search || function ()
 {
-    const searchSec = document.getElementById('search'),
-	  searchKey = document.getElementById("search-key"),
-	  searchIcon = document.getElementById('tS');
+    const Sec = document.getElementById('search'),
+	  Key = document.getElementById("search-key"),
+	  Icon = document.getElementById('tS');
     
-    if(searchSec.style.display != "block")
+    if(Sec.style.display != "block")
     {
-        searchSec.style.display = "block";
-        searchIcon.style.opacity="1";
-        searchKey.focus();
+        Sec.style.display = "block";
+        Icon.style.opacity="1";
+        Key.focus();
     }
     else
     {
-        searchSec.style.display="none";
-        searchIcon.style.opacity="";
+        Sec.style.display="none";
+        Icon.style.opacity="";
     }
 }
 
@@ -245,32 +246,32 @@ var toggle_nav = toggle_nav || function ()
 
 var search = search || function (e)
 {
-    const searchRes = document.getElementById("search-res"),
-	  searchSec = document.getElementById("search"),
-	  searchKey = document.getElementById("search-key"),
-	  q = searchKey.value,
+    const Res = document.getElementById("search-res"),
+	  Sec = document.getElementById("search"),
+	  Key = document.getElementById("search-key"),
+	  q = Key.value,
 	  currentKey = e.keyCode,
 	  noActionKeys = [16, 17, 18, 91, 20, 9, 93,
 			  37, 38, 39, 40, 32, 224, 13];
     if(q.length < 3)
     {
-        searchRes.style.display="none";
+        Res.style.display="none";
         return;
     }
     if(currentKey == 27)
     {
-	searchRes.style.display="none";
-	searchKey.value="";
+	Res.style.display="none";
+	Key.value="";
         return;
     }
     if(noActionKeys.indexOf(currentKey) !== -1) return;
     
-    searchRes.style.display="block";
-    searchRes.innerHTML="<div class='loader'></div>";
+    Res.style.display="block";
+    Res.innerHTML="<div class='loader'></div>";
     getUrl(`/script/php/search-quick.php?q=${q}`,
 	   function(response)
 	   {
-	       searchRes.innerHTML = response;
+	       Res.innerHTML = response;
 	   });
 }
 
@@ -484,25 +485,59 @@ var isJson = isJson || function (str)
     }
 }
 
-var ss = ss || function (button)
+var parse_allekok_link = parse_allekok_link || function (link)
 {
-    let href = button.parentNode.querySelector("a").getAttribute("href");
-    href = href.substr(href.indexOf("=")+1);
-    href = href.split("/");
+    link = link.split('/');
+    return {
+	pt: link[0].split(':')[1],
+	bk: link[1].split(':')[1],
+	pm: link[2].split(':')[1],
+    };
+}
+
+var parse_search_link = parse_search_link || function (link)
+{
+    link = link.substr(link.indexOf('=')+1);
+    return parse_allekok_link(link);
+}
+
+var parse_poem_link = parse_poem_link || function (link)
+{
+    link = link.substr(1);
+    return parse_allekok_link(link);
+}
+
+var show_summary = show_summary || function (button, parse_func)
+{
     button.innerHTML = "<div class='loader-round' \
 style='width:1em;height:1em'></div>";
-    const pt = href[0].split(":")[1],
-	  bk = href[1].split(":")[1],
-	  pm = href[2].split(":")[1];
+    
+    const href = button.parentNode.querySelector('a').
+	  getAttribute('href');
+    const href_parsed = parse_func(href);
+    const pt = href_parsed.pt,
+	  bk = href_parsed.bk,
+	  pm = href_parsed.pm;
     
     getUrl(`/script/php/poem-summary.php?pt=${pt}&bk=${bk}&pm=${pm}`,
 	   function(response)
 	   {
                button.innerHTML = "dehaze";
+	       
                const san_txt = response.replace(/\n/g, "<br>");
                button.parentNode.outerHTML += `<div
 style='padding:1em;font-size:.55em'>${san_txt}</div>`;
 	   });
+}
+
+var show_summary_search = show_summary_search || function (btn)
+{
+    show_summary(btn, parse_search_link);
+}
+
+var show_summary_poem = show_summary_poem || function (btn)
+{
+    show_summary(btn, parse_poem_link);
 }
 
 var filterp = filterp || function (needle="", context, lastChance=false)
@@ -675,11 +710,11 @@ else if(tN)
 
 document.getElementById("search-form").
     addEventListener("submit", function(e) {
-	const searchKey = document.getElementById("search-key");
-	if(searchKey.value == "")
+	const Key = document.getElementById("search-key");
+	if(Key.value == "")
 	{
             e.preventDefault();
-            searchKey.focus();
+            Key.focus();
 	}
     });
 

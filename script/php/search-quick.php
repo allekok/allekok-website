@@ -107,7 +107,7 @@ ORDER BY Cipi DESC";
 	{
 	    $res_poems_html .= "<div style='display:flex'><button 
 class='material-icons' style='padding:0 0 0 .5em;
-font-size:.8em' onclick='ss(this)' type='button' 
+font-size:.8em' onclick='show_summary_search(this)' type='button' 
 >dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 >{$poem['rtakh']} › {$poem['rname']}</a></div>";
@@ -127,7 +127,7 @@ font-size:.8em' onclick='ss(this)' type='button'
 	    {
 		$res_poems_context_html .= "<div style='display:flex'><button 
 class='material-icons' style='padding:0 0 0 .5em;
-font-size:.8em' onclick='ss(this)' type='button' 
+font-size:.8em' onclick='show_summary_search(this)' type='button' 
 >dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 >{$poem['rtakh']} › {$poem['rname']}</a></div>";
