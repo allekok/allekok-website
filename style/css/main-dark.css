@@ -105,7 +105,6 @@ header a h1{font-size:1.3em;margin:0 0 .2em}
 .b .m1, .b .m2, .b .m3, .ptr .m1, .ptr .m2, .ptr .m3{padding:3px 0;font-size:inherit}
 .m{padding:3px 13px 3px 7px;text-align:right}
 .cf{background:#090909}
-.back-blue,.loader,.loader-round{background:#ff1}
 .loader{height:2px;animation:loading 1s ease infinite;display:block;margin:1em auto}
 .loader-round{width:1.5em;height:1.5em;border-radius:50%;animation:loading-round 1s ease infinite;margin:1em auto;display:block}
 .fontsize{font-size:.65em;padding:1em 0 2em}
@@ -125,6 +124,7 @@ footer{padding:1em 0;width:100%;font-size:.6em;text-align:center;margin-top:1em}
 footer a{display:inline-block;padding:.5em .3em}
 footer i,#header-nav i{font-size:1.4em}
 .icon-round{background:#fff;color:#000;border-radius:50%}
+.back-blue,.loader,.loader-round{background:#ff1}
 .eee-desc,.border-right-eee,.border-right-999{border-right:2px solid}
 .link-underline{border-bottom:2px solid #ff1}
 .color-white{color:#000}
