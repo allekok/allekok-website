@@ -26,9 +26,9 @@ else
 	<link rel='stylesheet'
 	      href='/style/css/<?php
 			       echo $_theme_dark ? 
-				    'main-dark.css' :
-				    'main.css';
-			       ?>?v43'/>
+				    'main-dark-comp.css' :
+				    'main-comp.css';
+			       ?>?v1'/>
 	<title>
 	    <?php echo $title; ?>
 	</title>
