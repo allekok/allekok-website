@@ -11,7 +11,7 @@ foreach(_input as $i=>$input)
     // Remove New-lines
     $css = preg_replace('/\n+/u', '', $css);
     // ' {}(),:; ' -> '{}'
-    $css = preg_replace('/\s*([{}\(\),:;])\s*/', '$1', $css);
+    $css = preg_replace('/\s*([{},:;])\s*/', '$1', $css);
     // Replace many spaces with one space
     $css = preg_replace('/\s+/', ' ', $css);
 
