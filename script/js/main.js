@@ -2,11 +2,11 @@ var bookmarks_name = bookmarks_name || 'favorites';
 
 var arabi_to_latin = arabi_to_latin || function (s)
 {
-    /* 
+    /** 
      * Copyright (C) 2010 by Pellk KurdiNus, 
      * 2019 by Allekok under GPLv2 License.
      * https://github.com/allekok/kurdi-nus
-     */
+     **/
     const sConvertArabic2Latin = [
 	'و([اێۆە])', 'w$1', 
 	'ی([اێۆە])', 'y$1',
@@ -86,7 +86,6 @@ var arabi_to_latin = arabi_to_latin || function (s)
 	'([bcçdfghjklmnpqrsştvwxz][bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2' 
     ];
 
-    // Standardize Arabic scripts Array
     const sConvertStandardise = [
 	'‌{1,}', '‌', 
 	'لاَ|لأ|لآ', 'لا',
