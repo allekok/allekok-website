@@ -74,6 +74,7 @@ self.addEventListener('install', function(event) {
 		profile+'89.jpg',
 		profile+'71.jpg',
 		profile+'73.jpg',
+		profile+'93.jpg',
 		'/script/js/main.js?v36',
 		'/style/css/main-comp.css?v3',
 		'/style/css/main-dark-comp.css?v3',
