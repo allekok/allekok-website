@@ -81,7 +81,9 @@ imp,C,Cipi FROM poems");
             while($res=mysqli_fetch_assoc($query))
 	    {
 		$res['rname'] = $res['name'];
-		$res['name'] = san_data($res['name']);		
+		$res['name'] = san_data($res['name']);
+		$res['hon'] = preg_replace('/<sup>.*<\/sup>/ui',
+					   '', $res['hon']);
 		$res['hon'] = san_data($res['hon']);
 		$res['hon_true'] = san_data_more($res['hon']);
 		$res['hdesc'] = san_data($res['hdesc']);
