@@ -183,8 +183,7 @@ if($poems_max !== 0 and
     $poem_search_kind<4)
 {
     $q =  "SELECT name,hdesc,poet_id,book_id,poem_id,
-poem,poem_true,rbook,rname,rtakh FROM poems WHERE len>=$s_len $selected_poet_query 
-ORDER BY Cipi DESC";
+poem,poem_true,rbook,rname,rtakh FROM poems WHERE len>=$s_len $selected_poet_query";
     $query = mysqli_query($sql_connection,$q);
     while($poem = mysqli_fetch_assoc($query))
     {

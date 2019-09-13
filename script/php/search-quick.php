@@ -98,8 +98,7 @@ href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
 if($poems_max !== 0)
 {
     $q =  "SELECT name,hdesc,poet_id,book_id,poem_id,
-poem,rbook,rname,rtakh FROM poems WHERE 1 $selected_poet_query 
-ORDER BY Cipi DESC";
+poem,rbook,rname,rtakh FROM poems WHERE 1 $selected_poet_query";
     $query = mysqli_query($sql_connection,$q);
     while($poem = mysqli_fetch_assoc($query))
     {

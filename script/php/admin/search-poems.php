@@ -21,49 +21,40 @@ include(ABSPATH . 'script/php/header.php');
 <div id="poets">
     <?php
     /* READ */
-    $db = "index";
-    $q = "SELECT * FROM auth ORDER BY takh ASC";
-    require(ABSPATH."script/php/condb.php");
+    $db = 'index';
+    $q = 'SELECT * FROM auth ORDER BY takh ASC';
+    require(ABSPATH . 'script/php/condb.php');
     $aths_num = mysqli_num_rows($query);
     $bks_num = 0;
     $pms_num = 0;
     $aths = [];
     while($res=mysqli_fetch_assoc($query))
     {
-	$res['bks'] = explode(",",$res['bks']);
+	$res['bks'] = explode(',',$res['bks']);
 	$bks_num += count($res['bks']);
 	$aths[] = $res;
     }
 
-    /* Save imp, C, Cipi cloumns. */
-    mysqli_select_db($conn,_DB_PREFIX."search");
-    $query = mysqli_query($conn, "SELECT poet_id,book_id,poem_id,
-imp,C,Cipi FROM poems");
+    /* Save Cipi column. */
+    mysqli_select_db($conn,_DB_PREFIX.'search');
+    $query = mysqli_query($conn, 'SELECT poet_id,book_id,poem_id,Cipi 
+FROM poems');
     $Cs = [];
     if($query)
     {
 	while($res = mysqli_fetch_assoc($query))
 	{
-	    $Cs[] = [
-		'poet_id'=>$res['poet_id'],
-		'book_id'=>$res['book_id'],
-		'poem_id'=>$res['poem_id'],
-		'imp'=>$res['imp'],
-		'C'=>$res['C'],
-		'Cipi'=>$res['Cipi']
-	    ];
+	    $Cs["{$res['poet_id']}/{$res['book_id']}/{$res['poem_id']}"]
+	    =$res['Cipi'];
 	}
     }
     /* WRITE*/
     $error = false;
-    $string = "";
+    $string = '';
     /* Truncate 'poems' table */
-    mysqli_query($conn,"TRUNCATE TABLE poems");
-    
-    $kurdish_nums = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹',
-		     '۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
-    $other_nums = ['0','1','2','3','4','5','6','7','8','9',
-		   '٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+    mysqli_query($conn,'TRUNCATE TABLE poems');
+
+    $poems = [];
     $Cs_key = 0;
     foreach($aths as $ath)
     {
@@ -75,11 +66,12 @@ imp,C,Cipi FROM poems");
             $book_id = ($i+1);
             mysqli_select_db($conn,_DB_PREFIX."index");
             $_tbl = "tbl{$poet_id}_{$book_id}";
-	    $poems = [];
             $query = mysqli_query($conn,"SELECT * FROM $_tbl");
 	    $pms_num += mysqli_num_rows($query);
             while($res=mysqli_fetch_assoc($query))
 	    {
+		$res['poet_id'] = $poet_id;
+		$res['book_id'] = $book_id;
 		$res['rname'] = $res['name'];
 		$res['name'] = san_data($res['name']);
 		$res['hon'] = preg_replace('/<sup>.*<\/sup>/ui',
@@ -89,52 +81,49 @@ imp,C,Cipi FROM poems");
 		$res['hdesc'] = san_data($res['hdesc']);
 		$res['len'] = (strlen($res['hon'])>strlen($res['hdesc'])) ?
 			      strlen($res['hon']) : strlen($res['hdesc']);
+		$res = array_merge(['rbook' => $rbook],$res);
+		$res = array_merge(['rtakh' => $rtakh],$res);
+		
+		$cipi = @intval($Cs["$poet_id/$book_id/{$res['id']}"]);
+		array_unshift($res, $cipi);
 		$poems[] = $res;
             }
-            mysqli_select_db($conn,_DB_PREFIX."search");
-            foreach($poems as $pm)
-	    {
-		$pname = $pm['name'];
-		$phon = $pm['hon'];
-		$phon_true = $pm['hon_true'];
-		$phdesc = $pm['hdesc'];
-		$poem_id = $pm['id'];
-		$rname = $pm['rname'];
-		$phonlen = $pm['len'];
-		if($poet_id == @$Cs[$Cs_key]['poet_id'] and
-		    $book_id == @$Cs[$Cs_key]['book_id'] and
-		    $poem_id == @$Cs[$Cs_key]['poem_id'])
-		{
-                    $pm['Cs'] = $Cs[$Cs_key];
-		}
-		else
-		{
-                    $pm['Cs'] = ['imp'=>1,'C'=>0,'Cipi'=>0];
-		}
-		$Cs_key++;
-		
-		$imp = $pm['Cs']['imp'];
-		$C = $pm['Cs']['C'];
-		$Cipi = $pm['Cs']['Cipi'];
-		
-		$q = "INSERT INTO `poems`(`name`,`hdesc`,`poet_id`,
-`book_id`,`poem_id`,`poem`,`rname`,`rbook`,`rtakh`,`imp`,`C`,
+	    rsort($poems);
+	}
+    }
+    
+    mysqli_select_db($conn,_DB_PREFIX."search");
+    foreach($poems as $pm)
+    {
+	$poet_id = $pm['poet_id'];
+	$book_id = $pm['book_id'];
+	$rtakh = $pm['rtakh'];
+	$rbook = $pm['rbook'];
+	$pname = $pm['name'];
+	$phon = $pm['hon'];
+	$phon_true = $pm['hon_true'];
+	$phdesc = $pm['hdesc'];
+	$poem_id = $pm['id'];
+	$rname = $pm['rname'];
+	$phonlen = $pm['len'];
+	$Cipi = $pm[0];
+	
+	$q = "INSERT INTO `poems`(`name`,`hdesc`,`poet_id`,
+`book_id`,`poem_id`,`poem`,`rname`,`rbook`,`rtakh`,
 `Cipi`,`len`,`poem_true`) VALUES ('$pname','$phdesc','$poet_id',
 '$book_id','$poem_id'," . '"' . $phon . '"' . ",'$rname','$rbook',
-'$rtakh',$imp,$C,$Cipi,$phonlen,'$phon_true')";
-		$query = mysqli_query($conn, $q);		
-		if(!$query)
-		{
-                    $error = true;
-		    $string .= "<p class='line'><a class='link' 
+'$rtakh',$Cipi,$phonlen,'$phon_true')";
+	$query = mysqli_query($conn, $q);		
+	if(!$query)
+	{
+            $error = true;
+	    $string .= "<p class='line'><a class='link' 
 href='/poet:$poet_id'>$rtakh</a> &rsaquo; <a class='link' 
 href='/poet:$poet_id/book:$book_id'>$rbook</a> &rsaquo; <a 
 class='link' href='/poet:$poet_id/book:$book_id/poem:$poem_id'
 >$rname</a>: <b style='color:red'>نەء!</b></p>";
-		}
-		
-            }
 	}
+	
     }
     mysqli_close($conn);
     /* Print error messages */
