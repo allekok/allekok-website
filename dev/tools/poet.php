@@ -3,10 +3,10 @@
  * Input: REQUEST:(poet,k)
  * Output: JSON
  */
-include_once("../../script/php/constants.php");
-include_once(ABSPATH . "script/php/functions.php");
+require_once('../../script/php/constants.php');
+require(ABSPATH . 'script/php/functions.php');
 
-header("Content-type: application/json; charset=UTF-8");
+header('Content-type: application/json; charset=UTF-8');
 
 $null = json_encode(null);
 $pt = isset($_REQUEST['poet']) ?
@@ -16,18 +16,18 @@ $pt = isset($_REQUEST['poet']) ?
 if(isset($_REQUEST['k']))
 {
     $k = $_REQUEST['k'];
-    if($k == "alive") 
+    if($k == 'alive')
 	$kind = "kind='alive'";
-    elseif($k == "dead") 
+    elseif($k == 'dead')
 	$kind = "kind='dead'";
-    elseif($k == "bayt")
+    elseif($k == 'bayt')
 	$kind = "kind='bayt'";
     else
-	$kind = "1";
+	$kind = '1';
 }
 else
 {
-    $kind = "1";
+    $kind = '1';
 }
 
 function get_poet ()
@@ -38,15 +38,16 @@ function get_poet ()
     
     foreach ($poets as $pt)
     {
-	if($pt == "all")
+	if($pt == 'all')
 	    $q = "SELECT * FROM auth WHERE $kind ORDER BY takh";
         elseif(filter_var($pt, FILTER_VALIDATE_INT))
 	    $q = "SELECT * FROM auth WHERE id=$pt";
         else
-	    $q = "SELECT * FROM auth WHERE name='$pt' or takh='$pt' or profname='$pt'";
+	    $q = "SELECT * FROM auth WHERE 
+name='$pt' or takh='$pt' or profname='$pt'";
 	
         $db = "index";
-        require(ABSPATH . "script/php/condb.php");        
+        require(ABSPATH . 'script/php/condb.php');
         if($query)
 	{
 	    while($res = mysqli_fetch_assoc($query))

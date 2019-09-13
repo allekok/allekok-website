@@ -30,5 +30,4 @@ include(ABSPATH . "script/php/header.php");
      document.querySelector("input[name=password]").focus();
     </script>
 </div>
-
 <?php include_once(ABSPATH . "script/php/footer.php"); ?>

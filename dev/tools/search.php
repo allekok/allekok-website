@@ -6,9 +6,11 @@
 /* Header */
 $timer_start = microtime(true);
 require("../../script/php/functions.php");
-$s = isset($_REQUEST['q']) ? $_REQUEST['q'] : die();
+header("Content-type:application/json; charset=UTF-8");
+$null = json_encode(NULL);
+$s = isset($_REQUEST['q']) ? $_REQUEST['q'] : die($null);
 $s_sanitized = san_data($s);
-if($s_sanitized=="") die();
+if($s_sanitized=="") die($null);
 $s_len = strlen($s_sanitized);
 $s_sanitized_more = san_data_more($s_sanitized);
 $selected_poet = isset($_REQUEST['poet']) ?
@@ -34,9 +36,9 @@ $res_poems_context_1 = [];
 $res_poems_context_2 = [];
 
 /* Load Data From Search Database */
-$sql_connection = mysqli_connect(_HOST,_USER,_PASS) or die();
-mysqli_select_db($sql_connection, _DB_PREFIX."search");
-mysqli_set_charset($sql_connection,"utf8");
+$sql_connection = mysqli_connect(_HOST,_USER,_PASS,
+				 _DB_PREFIX.'search') or die($null);
+mysqli_set_charset($sql_connection,'utf8');
 if($poets_max !== 0 and !$selected_poet)
 {
     $q = "SELECT id,rtakh,takh,profname,name,hdesc FROM 
@@ -299,6 +301,5 @@ $result = [
     'books'=>$res_books,
     'poems'=>$res_poems,
 ];
-header("Content-type:application/json; charset=UTF-8");
 echo json_encode($result);
 ?>
