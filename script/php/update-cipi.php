@@ -1,13 +1,13 @@
 <?php
-include_once("constants.php");
+include_once('constants.php');
 function redirect($url, $statusCode = 303)
 {
     header('Location: ' . $url, true, $statusCode);
     die();
 }
 
-$uri = filter_var(@$_GET['uri'],FILTER_SANITIZE_STRING);
-$address = explode("/", $uri);
+$uri = @filter_var($_GET['uri'],FILTER_SANITIZE_STRING);
+$address = explode('/', $uri);
 if(count($address) != 3) die();
 foreach($address as $i=>$ad)
 {
@@ -15,20 +15,22 @@ foreach($address as $i=>$ad)
 }
 
 $db = 'search';
-$q = "SELECT C,Cipi,imp FROM poems WHERE poet_id='$address[0]' and book_id='$address[1]' and poem_id='$address[2]'";
+$q = "SELECT Cipi FROM poems WHERE 
+poet_id='$address[0]' and book_id='$address[1]' and poem_id='$address[2]'";
 include("condb.php");
 
-if(mysqli_num_rows($query)===1) {
+if(mysqli_num_rows($query)===1)
+{
     $res = mysqli_fetch_assoc($query);
-    $imp = $res['imp'];
-    $C = $res['C']+1;
-    $Cipi = $C / $imp;
+    $Cipi = $res['Cipi']+1;
     
-    $query = mysqli_query($conn,"UPDATE `poems` SET `C`=$C, `Cipi`=$Cipi WHERE poet_id='$address[0]' and book_id='$address[1]' and poem_id='$address[2]'");
+    $query = mysqli_query($conn,"UPDATE `poems` SET 
+`Cipi`=$Cipi WHERE poet_id='$address[0]' and 
+book_id='$address[1]' and poem_id='$address[2]'");
 
     mysqli_close($conn);
     
-    if($query)
-        redirect(_SITE.'/'.$uri);
+    // if($query)
+    redirect(_SITE.'/'.$uri);
 }
 ?>
