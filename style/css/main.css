@@ -106,6 +106,7 @@ header a h1{font-size:1.3em;margin:0 0 .2em}
 .cf{background:#f6f6f6}
 .loader{height:2px;animation:loading 1s ease infinite;display:block;margin:1em auto}
 .loader-round{width:1.5em;height:1.5em;border-radius:50%;animation:loading-round 1s ease infinite;margin:1em auto;display:block}
+#main-loader{position:fixed;bottom:0;left:.5em;display:none}
 .fontsize{font-size:.65em;padding:1em 0 2em}
 .fontsize button:hover,.toolbar a:hover{background:#00e;color:#fff}
 #Acomms div{text-align:justify;padding:1em 1em 3em 1em;position:relative;border-radius:1em;margin-bottom:1em}
