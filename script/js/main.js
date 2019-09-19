@@ -778,35 +778,38 @@ var concat_url_query = concat_url_query || function (url, q)
     if(c.pt)
 	url = `/?ath=${c.pt}&bk=${c.bk}&id=${c.pm}`;
     
-    if(url.indexOf('?') === -1)
-	return url + '?' + q;
+    if(url.indexOf('?') !== -1)
+	return url + '&' + q;
     
-    return url + '&' + q;
+    return url + '?' + q;	
 }
 
 var ajax = ajax || function (parent='body', target='#poets')
 {
-    const t = document.querySelector(target);
-    const p = document.querySelector(parent);
-    const loading = document.getElementById('main-loader');
+    const t = document.querySelector(target),
+	  p = document.querySelector(parent),
+	  loading = document.getElementById('main-loader');
     
     p.querySelectorAll('a').forEach(function (o) {
 	if(o.getAttribute('target') != '_blank')
 	{
 	    o.onclick = function (e) {
-		e.preventDefault();
-		
-		loading.style.display = 'block';
-
 		const href = o.getAttribute('href');
-		const url = concat_url_query(href, 'nohead&nofoot')
-
-		getUrl(url, function (response) {
-		    t.innerHTML = response;
-		    ajax(parent, target);
-		    loading.style.display = 'none';
-		    window.history.pushState({url: url}, '', href);
-		});
+		if(href.indexOf('#') === -1)
+		{
+		    e.preventDefault();
+		    
+		    loading.style.display = 'block';
+		    
+		    const url = concat_url_query(href, 'nohead&nofoot')
+		    
+		    getUrl(url, function (response) {
+			t.innerHTML = response;
+			ajax(parent, target);
+			loading.style.display = 'none';
+			window.history.pushState({url: url}, '', href);
+		    });
+		}
 	    }
 	}
     });
@@ -816,10 +819,10 @@ ajax();
 
 window.onpopstate = function ()
 {
-    const loading = document.getElementById('main-loader');
-    const t = document.querySelector('#poets');
-    const S = window.history.state;
-    const url = S.url;
+    const loading = document.getElementById('main-loader'),
+	  t = document.querySelector('#poets'),
+	  S = window.history.state,
+	  url = S.url;
     
     loading.style.display = 'block';
     

@@ -120,7 +120,7 @@ header a h1{font-size:1.3em;margin:0 0 .2em}
 .ptrh{font-size:.58em;padding-bottom:.9em}
 .d{font-size:.85em;padding:1em}
 .dltr{direction:ltr;text-align:left}
-footer{padding:1em 0;width:100%;font-size:.6em;text-align:center;margin-top:1em}
+footer{padding:1em 0;width:100%;font-size:.6em;text-align:center}
 footer a{display:inline-block;padding:.5em .3em}
 footer i,#header-nav i{font-size:1.4em}
 .icon-round{background:#fff;color:#000;border-radius:50%}
@@ -135,6 +135,8 @@ footer i,#header-nav i{font-size:1.4em}
 .next div,.prev div{display:inline-block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:90%;vertical-align:middle}
 .next i,.prev i{font-size:inherit;display:inline-block;width:10%;max-width:.8em;vertical-align:top}
 #poem_dict p{text-align:justify}
+.fbody-nav{margin-top:1em}
+.fbody-nav a{display:inline-block;padding:0 1em;font-size:.65em}
 @media only screen and (min-width:600px)
 {
     body{font-size:28px}
