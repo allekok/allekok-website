@@ -8,8 +8,8 @@ $_name1 = isset($_GET['name']) ?
 	  filter_var($_GET['name'],FILTER_SANITIZE_STRING) : '';
 
 $title = $_name1 ?
-	 _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; نووسینی شێعر &raquo; شێعرەکانی \"$_name1\"" :
-	 _TITLE . " &raquo; پتەوکردنی ئاڵەکۆک &raquo; نووسینی شێعر &raquo; شێعرەکان";
+	 _TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; نووسینی شێعر &rsaquo; شێعرەکانی \"$_name1\"" :
+	 _TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; نووسینی شێعر &rsaquo; شێعرەکان";
 $desc = "ئەو شێعرانەی کە نووسیوتانە";
 $keys = _KEYS;
 $t_desc = "";

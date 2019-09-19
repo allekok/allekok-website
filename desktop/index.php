@@ -3,7 +3,7 @@ include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = _TITLE . " &raquo; بەرنامەی دێسکتاپی ئاڵەکۆک";
+$title = _TITLE . " &rsaquo; بەرنامەی دێسکتاپی ئاڵەکۆک";
 $desc = "داگرتنی بەرنامەی دێسکتاپی ئاڵەکۆک بۆ ویندۆز و لینوکس";
 $keys = _KEYS;
 $t_desc = "";

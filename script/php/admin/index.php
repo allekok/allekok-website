@@ -4,7 +4,7 @@ include_once("../constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = _TITLE . " &raquo; مدیر";
+$title = _TITLE . " &rsaquo; مدیر";
 $desc = "مدیر";
 $keys = _KEYS;
 $t_desc = "";

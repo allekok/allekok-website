@@ -5,7 +5,7 @@ include_once(ABSPATH . "script/php/functions.php");
 
 $title =
     _TITLE .
-    " &raquo; پتەوکردنی ئاڵەکۆک &raquo; ناردنی وێنەی شاعیران &raquo; وێنەکان";
+    " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; ناردنی وێنەی شاعیران &rsaquo; وێنەکان";
 $desc = "ئەو وێنانەی کە بۆتان ناردوویین";
 $keys = _KEYS;
 $t_desc = "";

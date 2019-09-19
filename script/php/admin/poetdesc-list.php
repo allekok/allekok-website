@@ -23,7 +23,7 @@ if(strtolower($job) == 'delete' and $nm and $pt)
 }
 /* Delete */
 
-$title = _TITLE . " &raquo; نووسینی زانیاری سەبارەت بە شاعیران";
+$title = _TITLE . " &rsaquo; نووسینی زانیاری سەبارەت بە شاعیران";
 $desc = "نووسینی زانیاری سەبارەت بە شاعیران";
 $keys = _KEYS;
 $t_desc = "";
