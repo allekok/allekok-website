@@ -110,17 +110,6 @@ include(ABSPATH . 'script/php/header.php');
      }
     </script>
     
-    <style>
-     .input-label-box {
-	 display:flex;
-	 margin:0 .5em;
-     }
-     .input-label-box label {
-	 font-size:1em;
-	 margin:auto .5em;
-     }
-    </style>
-    
     <div style='font-size:.75em'>
         <?php echo @$uploaded; ?>
     </div>
@@ -129,13 +118,13 @@ include(ABSPATH . 'script/php/header.php');
 	  enctype="multipart/form-data"
 	  style="max-width:800px;margin:auto;
 	      padding-top:1em;font-size:.7em">
-	<div class="input-label-box">
+	<div class="input-label-box-poet-image">
             <input type="text" id="cntriTxt" name="cntri"
 		   style="font-size:1em;width:100%"
 		   value="<?php echo $_name1; ?>"
 		   placeholder="نێوی خۆتان لێرە بنووسن.">
 	</div>
-	<div class="input-label-box" style="margin:1em .5em">
+	<div class="input-label-box-poet-image" style="margin:1em .5em">
 	    <label for="poetTxt">شاعیر: </label>
             <input onblur="check()" type="text" id="poetTxt" name="poet"
 		   style="font-size:1em;width:94%;padding:1em 3%"

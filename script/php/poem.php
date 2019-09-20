@@ -96,15 +96,15 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	     Other tools button
 	     Bookmark button
 	-->
-        <button class='bigger material-icons icon-round'
+        <button class='bigger material-icons icon-round icon-round-poem'
 		style="padding:.5em"
 	>arrow_upward
 	</button
-	><button class='smaller material-icons icon-round'
+	><button class='smaller material-icons icon-round icon-round-poem'
 		 style="padding:.5em"
 	 >arrow_downward
         </button
-	><button id='copy-sec' class='copy material-icons icon-round'
+	><button id='copy-sec' class='copy material-icons icon-round icon-round-poem'
 		 style="padding:.5em"
 	 >content_copy
         </button
@@ -113,7 +113,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	     $bk == 1 and
 	     $row[1]['id'] == 1) )
 	 {
-	 ?><button id='like-icon' class='material-icons icon-round'
+	 ?><button id='like-icon' class='material-icons icon-round icon-round-poem'
 		   style="padding:.5em"
 	   >bookmark_border
 	 </button
@@ -121,7 +121,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	  }
 	  ?><button id='extlnkico'
 		    style='padding:.5em'
-		    class='material-icons icon-round' 
+		    class='material-icons icon-round icon-round-poem' 
 		    title='ئامێرەکانی‌تر'>more_horiz
 	  </button>
     </div>
@@ -131,19 +131,12 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
     -->
     <div style='display:none'
 	 id='extlnk'>
-	<style>
-	 .icon-round {
-	     font-size:1.2em;
-	     padding:.3em;
-	     margin-left:.5em
-	 }
-	</style>
 	<?php
 	if($row[1]['link'])
 	{
             $ext_link = explode("[t]", $row[1]['link']);
             echo "<div>";
-            echo "<i class='material-icons icon-round'>link</i>";
+            echo "<i class='material-icons icon-round icon-round-poem'>link</i>";
             echo "<a href='{$ext_link[1]}' 
 title='{$row[1]['name']}' target='_blank' 
 rel='noopener noreferrer nofollow' 
@@ -161,7 +154,7 @@ style='display:inline-block'
 	    <!--
 		 Plain/text link
 	    -->
-	    <i class='material-icons icon-round'
+	    <i class='material-icons icon-round icon-round-poem'
 	    >insert_drive_file</i>
 	    <?php
             echo "<a href='/dev/tools/poem-plain.php?poet=$ath&book=$bk&poem=$id' 
@@ -175,7 +168,7 @@ style='display:inline-block'
 	    <!--
 		 Latin <-> Arabic
 	    -->
-	    <i class='material-icons icon-round'
+	    <i class='material-icons icon-round icon-round-poem'
 	    >compare_arrows</i>
 	    گۆڕینی ئەلفوبێ: 
 	    <button class='button link' type="button"
@@ -189,7 +182,7 @@ style='display:inline-block'
 	     >Elfubêy Latîn</i></button>
 	</div>
 	<div>
-	    <i class="material-icons icon-round">dehaze</i>
+	    <i class="material-icons icon-round icon-round-poem">dehaze</i>
 	    <button type="button"
 		    id="make_poem_dict"
 		    style="font-size:1em">
@@ -202,7 +195,7 @@ style='display:inline-block'
 	    -->
 	    <form id="wordFrm"
 		  style="display:flex;margin:auto">
-		<i class="material-icons icon-round"
+		<i class="material-icons icon-round icon-round-poem"
 		   style="height:100%;margin:auto 0 auto .5em">
 		    translate
 		</i>
@@ -224,21 +217,6 @@ style='display:inline-block'
 		<!--
 		     Dictionary results
 		-->
-		<style>
-		 #wordMore
-		 {
-                     text-align:left
-		 }
-		 #wordMore a
-		 {
-                     text-align:center;
-                     padding:.3em .8em
-		 }
-		 #wordMore a:hover
-		 {
-                     text-decoration:none;
-		 }
-		</style>
 		<div id="wordResult"></div>
 		<div id="wordMore"></div>
 	    </div>

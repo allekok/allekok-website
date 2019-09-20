@@ -10,34 +10,13 @@ $t_desc = "";
 
 include(ABSPATH . 'script/php/header.php');
 ?>
-<style>
- .pitewsec small{display:block;text-align:justify}
- #QAtxt {
-     font-size: .65em;
-     text-align: right;
-     display: block;
-     margin: 1em auto 0;
-     width:100%;
-     max-width:100%;
- }
- .btn {
-     font-size:.7em;
-     width:50%;
-     padding:.8em 0;
-     max-width:150px;
-     margin:auto;
-     display:block;
-     text-align:center
- }
-</style>
-
 <div id="poets" style="text-align:right">
     <h1 class="color-blue" style="text-align:right;
 	       font-size:1em">
         پتەوکردن
     </h1>
     <div style='padding-right:1em'>
-	<section class='pitewsec'>
+	<section class='pitewsec pitewsec-first'>
             <a href="index.php">
 		<i class='material-icons'>note_add</i>
 		<h3>
@@ -55,7 +34,7 @@ include(ABSPATH . 'script/php/header.php');
 		داگرتنی دیوانی شاعیران
 		</a>
 	    </small>
-	</section><section class='pitewsec'>
+	</section><section class='pitewsec pitewsec-first'>
             <a href="poet-image.php">
 		<i class='material-icons'>image</i>
 		<h3>
@@ -66,7 +45,7 @@ include(ABSPATH . 'script/php/header.php');
 		    ئەگەر وێنەی هەریەک لەو شاعیرانەی کە لەسەر ئاڵەکۆک وێنەیان نیە لەلاتانە، یان بە تێ‌بینی خۆتان وێنەیەکی باشتری هەرکام لە شاعیران‌و لەلایە، بۆ ناردنی لێرە کرتە بکەن.
                 </small>
             </a>
-	</section><section class='pitewsec'>
+	</section><section class='pitewsec pitewsec-first'>
             <a href="edit-poet.php">
 		<i class='material-icons'>person</i>
 		<h3>
@@ -77,7 +56,7 @@ include(ABSPATH . 'script/php/header.php');
 		    ئەگەر زانیاری زیاترتان سەبارەت بە هەریەک لە شاعیران هەیە دەتوانن لێرە کرتە بکەن و بینووسن. هەروەها ئەگەر هەڵەیەک لە زانیاریەکانی سەر ئاڵەکۆک سەبارەت بەهەرکام لە شاعیران دەبینن، دەتوانن بە کرتە کردن لێرە بۆمان بنووسن، تا پێداچوونەوەی بەسەردا بکەیین.
                 </small>
             </a>
-	</section><section class='pitewsec'>
+	</section><section class='pitewsec pitewsec-first'>
             <a href="/comments/">
 		<i class='material-icons'>question_answer</i>
 		<h3>
@@ -88,7 +67,7 @@ include(ABSPATH . 'script/php/header.php');
 		    ئەگەر هەڵەیەک لەناو هەریەک لە شێعرەکان دا بەدی دەکەن دەتوانن لە ژێر ئەو شێعرە لە بەشی نووسینی بیر و ڕا دا، ڕەخنەکەتان بنووسن تا لە زووترین کات دا پێداچوونەوەی بەسەردا بکرێ.
                 </small>
             </a>
-	</section></section><section class='pitewsec'>
+	</section></section><section class='pitewsec pitewsec-first'>
             <a href="/about">
 		<i class='material-icons'
 		><img src='/logo/logo-64.jpg'
@@ -118,9 +97,10 @@ include(ABSPATH . 'script/php/header.php');
             بۆ وەرگرتنی وەڵامی پرسیارەکەتان، سەردانی ئەم لاپەڕە بکەنەوە.
         </small>
         <form id="frmQA" action="save.php" method="POST">
-            <textarea id="QAtxt" placeholder="پرسیارەکەو لێرە بنووسن..."></textarea>
+            <textarea id="QAtxt" class="QAtxt-first"
+		      placeholder="پرسیارەکەو لێرە بنووسن..."></textarea>
             <div id="QAres"></div>
-            <button type="submit" class='button btn'>ناردن</button>
+            <button type="submit" class='button btn-first'>ناردن</button>
         </form>
         
         <div>

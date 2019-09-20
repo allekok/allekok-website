@@ -31,36 +31,6 @@ include(ABSPATH . 'script/php/header.php');
 	    زانیاریەکان
 	</div>
     </div>
-    
-    <style>
-     .epld {
-         padding: 1em;
-         font-size: .6em;
-         text-align: right;
-     }
-     .epld-title {
-         padding: 0 1em;
-         border-right: 2px solid;
-         font-size: 1.05em;
-     }
-     .epld-body {
-         padding:1em;
-         text-align:justify;
-	 word-wrap:break-word;
-     }
-     #num_pdl {
-         font-size: .55em;
-         display: inline-block;
-         padding: .5em 1em;
-     }
-     .epld-expand {
-	 font-size:1.1em;
-	 padding:.5em 1.5em .5em .5em;
-     }
-     .epld-expand .material-icons {
-	 font-size:1.1em;
-     }
-    </style>
     <script>
      function expand (item,path)
      {
@@ -111,7 +81,7 @@ class='material-icons'>keyboard_arrow_up</i>";
      }
     </script>
     
-    <div>
+    <div class="poetdesc-list-main">
 	<?php
 	$_list = make_list(ABSPATH."pitew/res/");
 	$_count = 0;

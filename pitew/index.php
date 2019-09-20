@@ -89,16 +89,6 @@ $_book1 = isset($_GET['book']) ?
          });
      }
     </script>
-    <style>
-     .input-label-box {
-	 display:flex;
-	 margin:0 .5em;
-     }
-     .input-label-box label {
-	 font-size:.7em;
-	 margin:auto .5em;
-     }
-    </style>
     
     <div style="max-width:800px;margin:auto">
 	<div style='font-size:.53em;text-align:right;padding:0 1em 1em'>
@@ -109,7 +99,7 @@ $_book1 = isset($_GET['book']) ?
 	    </a>
 	</div>
         <form id="frmComm" action="append.php" method="POST">
-            <div class="input-label-box">
+            <div class="input-label-box-index">
 		<input type="text" id="contributorTxt" name="contributor"
 		       style="font-size:.7em;width:100%"
 		       value="<?php echo $_name1; ?>"
@@ -120,26 +110,26 @@ $_book1 = isset($_GET['book']) ?
 			padding:.5em 1em 0;font-size:.53em"
 	    >ئەو شێعرە بە نێوی خۆتان لەسەر ئاڵەکۆک دادەندرێ.</div>
             <div class="border-eee" style="margin:.8em 0"></div>
-	    <div class="input-label-box">
+	    <div class="input-label-box-index">
 		<label for="poetTxt">شاعیر: </label>
 		<input type="text" onblur="check()" id="poetTxt"
 		       name="poet" style="font-size:.7em;width:94%"
 		       value="<?php echo $_poet1; ?>"
 		       placeholder="ناوی شاعیر *">
 	    </div>
-	    <div class="input-label-box" style="margin-top:1em;">
+	    <div class="input-label-box-index" style="margin-top:1em;">
 		<label for="bookTxt">کتێب: </label>
 		<input type="text" id="bookTxt" name="book"
 		       style="font-size:.7em;width:94%"
 		       value="<?php echo $_book1; ?>"
 		       placeholder="ناوی کتێب">
 	    </div>
-	    <div class="input-label-box" style="margin-top:1em">
+	    <div class="input-label-box-index" style="margin-top:1em">
 		<input type="text" id="poemNameTxt" name="poemName"
 		       style="font-size:.7em;width:100%"
 		       placeholder="سەرناوی شێعر">
 	    </div>
-	    <div class="input-label-box" style="margin-top:1em">
+	    <div class="input-label-box-index" style="margin-top:1em">
 		<textarea id="poemConTxt" name="poem" style="font-size:.7em;max-width:100%;min-width:100%;height:20em" placeholder="دەقی شێعر *"></textarea>
 	    </div>
 

@@ -28,48 +28,12 @@ include(ABSPATH . 'script/php/header.php');
         </div>
     </div>
     
-    <style>
-     .eee {
-         text-align:right;
-         font-size:.6em;
-         padding:.2em 1em;
-     }
-     .eee-nfo {
-	 font-size:.65em;
-         font-family:monospace;
-     }
-     .eee span {
-	 font-size:.85;
-     }
-     .eee-desc {
-	 font-size:.85em;
-         padding:0 1em 1em;
-         margin-right:1em;
-         display:none;
-     }
-     .eee .material-icons {
-	 vertical-align: middle;
-         font-size: 1.5em;
-         margin-right: .1em;
-         cursor:pointer;
-     }
-     .eee .material-icons:hover {
-         opacity:.7;
-     }
-     #filter-txt {
-	 max-width: 1200px;
-	 width: 100%;
-	 font-size: .65em;
-	 margin-bottom:.5em;
-     }
-    </style>
-    
-    <div>
+    <div id="pdfs-search">
 	<input type="text" id="filter-txt" onkeyup="_filter()"
 	       placeholder="گەڕان لە کتێبەکان‌دا...">
     </div>
     
-    <main id="main">
+    <main id="pdfs-main">
 <?php
 $base = "https://github.com/allekok/diwan/raw/master/";
 $list_uri = "pdfs.txt";

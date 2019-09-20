@@ -10,17 +10,7 @@ $t_desc = "";
 
 include(ABSPATH . "script/php/header.php");
 ?>
-<style>
- p {
-     font-size:.55em;
-     text-align:justify;
-     padding:.4em 1em .4em .5em;
- }
- #poets a, #poets i {
-     padding:0 .6em;
- }
-</style>
-<div id="poets">
+<div id="poets" class="thanks-main">
     <h1 class="color-blue" style="font-size:1em;
 	       text-align:right">
         سپاس و پێزانین بۆ...

@@ -85,34 +85,23 @@ $_poet1 = isset($_GET['poet']) ?
 	 }
 	</script>
 	
-	<style>
-	 .input-label-box {
-	     display:flex;
-	     margin:0 .5em;
-	 }
-	 .input-label-box label {
-	     font-size:.8em;
-	     margin:auto .5em;
-	 }
-	</style>
-
         <form id="frmComm" action="save.php" method="POST">
 	    
-	    <div class="input-label-box">
+	    <div class="input-label-box-edit-poet">
 		<input type="text" id="contributorTxt" name="contributor"
 		       style="font-size:.7em;width:100%"
 		       value="<?php echo $_name1; ?>"
 		       placeholder="نێوی خۆتان لێرە بنووسن.">
 	    </div>
 
-	    <div class="input-label-box" style="margin-top:1em">
+	    <div class="input-label-box-edit-poet" style="margin-top:1em">
 		<label for="poetTxt">شاعیر: </label>
 		<input onblur="check()" type="text" id="poetTxt" name="poet"
 		       style="font-size:.7em;width:94%;padding:1em 3%"
 		       value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
 	    </div>
 	    
-            <div class="input-label-box" style="margin-top:1em">
+            <div class="input-label-box-edit-poet" style="margin-top:1em">
 		<textarea id="poetDescTxt" name="poetDesc"
 			  style="font-size:.7em;width:100%;height:15em"
 			  placeholder="زانیاریەکان سەبارەت بە شاعیر *"></textarea>

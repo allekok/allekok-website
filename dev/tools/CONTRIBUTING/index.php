@@ -10,86 +10,6 @@ $t_desc = "";
 
 include(ABSPATH . 'script/php/header.php');
 ?>
-<style>
- code {
-     direction:ltr;
-     text-align:left;
-     font-family:'kurd', monospace;
-     padding:0 .3em;
-     margin:0 .3em;
- }
- code.bash {
-     display:block;
-     border-left:2px solid;
-     word-wrap:break-word;
-     text-indent:0;
-     padding:1em;
-     margin:.5em 0;
- }
- #QAtxt {
-     font-size: .65em;
-     text-align: right;
-     max-width: 100%;
-     width: 100%;
-     display: block;
-     margin: auto;
- }
- .btn {
-     font-size: .7em;
-     width: 50%;
-     padding: .8em 0;
-     max-width: 150px;
-     text-align:center;
-     display:block;
-     margin:auto;
- }
- #poets a {
-     border-bottom:2px solid <?php echo $_color; ?>;
- }
- pre {
-     overflow:auto;
- }
- pre code {
-     overflow:auto;
-     font-size:.85em;
-     word-spacing:5px;
- }
- main h1 {
-     font-size:1.5em;
-     color:<?php echo $_color; ?>;
- }
- main h2 {
-     font-size:1.3em;
-     color:<?php echo $_color; ?>;
-     margin-top:1em;
- }
- main h3 {
-     font-size:1.1em;
-     color:<?php echo $_color; ?>;
-     margin-top:1em;
- }
- main h1, main h2, main h3 {
-     text-align:right;
- }
- main ul, ol {
-     padding-right:2em;
-     list-style-type:arabic-indic;
-     font-size:.9em
- }
- main p {
-     text-indent: 1em;
- }
- main img {
-     display:block;
-     margin: 1em auto;
-     max-width:100%;
-     cursor:pointer;
- }
- main .material-icons {
-     display: inline;
-     font-size: 1.5em;
- }
-</style>
 <div id="poets" style="text-align:right">
     <h1 style="font-size:1em">
         <i class="color-black">
@@ -102,7 +22,7 @@ include(ABSPATH . 'script/php/header.php');
 	    / &gt;
 	</i>
     </h1>
-    <div id="main" style="font-size:.6em;
+    <div id="main-contributing" style="font-size:.6em;
 	     text-align:justify;padding-right:1em">
 	<?php
 	echo @file_get_contents('CONTRIBUTING.html');
@@ -137,7 +57,7 @@ include(ABSPATH . 'script/php/header.php');
     <h1 class='color-blue' style="font-size:1em">
         پرسیار و وەڵام
     </h1>
-    <div style="padding-right:1em">
+    <div id="frm-contributing" style="padding-right:1em">
         <small style="font-size:.6em;display:block">
             ئەگەر سەبارەت بەم بابەتە پرسیارێک‌و هەیە لێرە بینووسن.
             <br>

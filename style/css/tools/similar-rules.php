@@ -21,6 +21,7 @@ function similar_blocks ($blk)
     return $res;
 }
 
+$c = 0;
 foreach($blocks as $i => $blk)
 {
     if($i > $blocks_len/2)
@@ -30,6 +31,9 @@ foreach($blocks as $i => $blk)
     {
 	print_r($res);
 	echo "\n============================================\n";
+	$c++;
     }
 }
+
+echo 'Count: ' . $c . "\n";
 ?>
