@@ -808,6 +808,7 @@ var ajax = ajax || function (parent='body', target='#poets')
 			ajax(parent, target);
 			loading.style.display = 'none';
 			window.history.pushState({url: url}, '', href);
+			window.scrollTo(0,0)
 		    });
 		}
 	    }
