@@ -40,7 +40,7 @@ a:hover,button:hover{text-decoration:none;color:#00e}
 #tL-res{position:relative;font-size:.55em}
 #tL-res a{padding:.5em;display:block}
 .sli{display:inline-block;vertical-align:top;border:0;margin:.5em auto 0;width:96%}
-.sli:nth-child(even){border-bottom:2px solid}
+.sli:nth-child(odd){border-bottom:2px solid}
 .pitewsec{padding:.5em 0}
 .pitewsec i.material-icons{font-size:2em}
 .pitewsec h3{font-size:.8em;display:inline-block}
@@ -482,8 +482,8 @@ footer i,#header-nav i{font-size:1.4em}
 @media only screen and (min-width:600px)
 {
     body{font-size:28px}
-    .sli:nth-child(even){width:29%;border-left:2px solid;border-bottom:0}
-    .sli:nth-child(odd){width:69%}
+    .sli:nth-child(odd){width:29%;border-left:2px solid;border-bottom:0}
+    .sli:nth-child(even){width:69%}
     .sli{margin:1em auto}
     #poet-info{display:flex;margin-right:auto;margin-left:auto}
     .bks,.poetdesc{width:50%;margin-right:.5em;margin-left:.5em}
