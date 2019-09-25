@@ -29,7 +29,7 @@ include(ABSPATH . 'script/php/header.php');
     </div>
     
     <div id="pdfs-search">
-	<input type="text" id="filter-txt" onkeyup="_filter()"
+	<input type="text" id="filter-txt"
 	       placeholder="گەڕان لە کتێبەکان‌دا...">
     </div>
     
@@ -51,21 +51,21 @@ for($i = 0; $i<count($list); $i++)
     $name = str_replace(".pdf", "", strtolower($list[$i][0]));
     if($name === "فەقێ تەیران - دیوان")
     {
-        echo "<div class='eee'><span>$num.</span> <a href='https://archive.org/download/sarabia_20160323/%D8%AF%DB%8C%D9%88%D8%A7%D9%86%DB%8C%20%D9%81%DB%95%D9%82%DB%8E%20%D8%AA%DB%95%DB%8C%D8%B1%D8%A7%D9%86.pdf'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i></div>";
+        echo "<div class='eee'><span>$num.</span> <a target='_blank' href='https://archive.org/download/sarabia_20160323/%D8%AF%DB%8C%D9%88%D8%A7%D9%86%DB%8C%20%D9%81%DB%95%D9%82%DB%8E%20%D8%AA%DB%95%DB%8C%D8%B1%D8%A7%D9%86.pdf'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i></div>";
     }
     elseif($name == "سافی هیرانی - دیوان ۲")
     {
-        echo "<div class='eee'><span>$num.</span> <a href='https://archive.org/download/safi_hirani_diwan/%D8%B3%D8%A7%D9%81%DB%8C%20%D9%87%DB%8C%D8%B1%D8%A7%D9%86%DB%8C%20-%20%D8%AF%DB%8C%D9%88%D8%A7%D9%86.pdf'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i>";
-        echo "<i class='material-icons' onclick='roll(this)'>info_outline</i>";
+        echo "<div class='eee'><span>$num.</span> <a target='_blank' href='https://archive.org/download/safi_hirani_diwan/%D8%B3%D8%A7%D9%81%DB%8C%20%D9%87%DB%8C%D8%B1%D8%A7%D9%86%DB%8C%20-%20%D8%AF%DB%8C%D9%88%D8%A7%D9%86.pdf'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i>";
+        echo "<i class='material-icons pdfs-roll'>info_outline</i>";
         $list[$i][2] = str_replace("\n", "<br>", $list[$i][2]);
         echo "<div class='eee-desc'>{$list[$i][2]}</div></div>";
     }
     else
     {
-        echo "<div class='eee'><span>$num.</span> <a href='$base{$list[$i][0]}'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i>";
+        echo "<div class='eee'><span>$num.</span> <a target='_blank' href='$base{$list[$i][0]}'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i>";
         if(@$list[$i][2])
 	{
-            echo "<i class='material-icons' onclick='roll(this)'>info_outline</i>";
+            echo "<i class='material-icons pdfs-roll'>info_outline</i>";
             $list[$i][2] = str_replace("\n", "<br>", $list[$i][2]);
             echo "<div class='eee-desc'>{$list[$i][2]}</div>";
         }
@@ -90,12 +90,19 @@ for($i = 0; $i<count($list); $i++)
 	 }
      }
 
-     const needle = document.getElementById("filter-txt"),
-	   context = document.getElementById("main").querySelectorAll(".eee");
+     document.querySelectorAll('#pdfs-main .pdfs-roll').forEach(function (o)
+     {
+	 o.onclick = function () {roll(o)}
+     });
+
+     const needle = document.querySelector("#pdfs-search #filter-txt"),
+	   context = document.getElementById("pdfs-main").
+			      querySelectorAll(".eee");
      function _filter()
      {
 	 filterp(needle.value, context);
-     }     
+     }
+     needle.onkeyup = _filter;
     </script>
 </div>
 <?php

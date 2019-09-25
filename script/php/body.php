@@ -1,4 +1,8 @@
 <?php
+/* No head,foot */
+$no_head = isset($_GET['nohead']);
+$no_foot = isset($_GET['nofoot']);
+
 /** Default values **/
 $title = _TITLE . ' - ' . _DESC;
 /* Page title <title> */

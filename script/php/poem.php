@@ -7,20 +7,6 @@ if($row[0]) $row[0]['ckbid'] = num_convert(
 if($row[2]) $row[2]['ckbid'] = num_convert(
     $row[2]['id'],"en", "ckb");
 ?>
-<script>
- const pID = <?php echo $info['id']; ?>,
-       bID = <?php echo $bk; ?>,
-       mID = <?php echo $row[1]['id']; ?>,
-       poem_adrs = `poet:${pID}/book:${bID}/poem:${mID}`,
-       poemObject = {
-	   url: poem_adrs,
-	   poetID: pID,
-	   poetName: "<?php echo $info['takh']; ?>",
-	   book: "<?php echo $bknow[$bk-1]; ?>",
-	   poem: "<?php echo $row[1]['name']; ?>",
-       };
-</script>
-
 <div id="poets">
     <!-- Poet picture -->
     <img src="<?php 
@@ -243,7 +229,7 @@ style='display:inline-block'
     </div>
     <script>
      /* Set poem font size */
-     document.getElementById("hon").
+     document.getElementById('hon').
 	      style.fontSize = function(s)
 	      {
 		  if(s !== null && !isNaN(s))
@@ -293,262 +279,324 @@ style='display:inline-block'
 	     style='padding:0 .2em'></div>
     </div>
     <script>
-     window.addEventListener('load', function()
+     const pID = <?php echo $info['id']; ?>,
+	   bID = <?php echo $bk; ?>,
+	   mID = <?php echo $row[1]['id']; ?>;
+     window.poem_adrs = `poet:${pID}/book:${bID}/poem:${mID}`;
+     window.poemObject = {
+	 url: poem_adrs,
+	 poetID: pID,
+	 poetName: "<?php echo $info['takh']; ?>",
+	 book: "<?php echo $bknow[$bk-1]; ?>",
+	 poem: "<?php echo $row[1]['name']; ?>",
+     };
+     const loader = "<div class='loader' \
+			     style='margin-top:.5em'></div>",
+	   message = document.getElementById("message"),
+	   name = document.getElementById("commNameTxt"),
+	   comments = document.getElementById("hon-comments-body");
+     
+     function send_comment()
      {
-	 const loader = "<div class='loader' \
-style='margin-top:.5em'></div>",
-	       message = document.getElementById("message"),
-	       name = document.getElementById("commNameTxt"),
-	       comments = document.getElementById("hon-comments-body");
+	 const comment = document.getElementById("commTxt"),
+	       request = "address=" + poem_adrs +
+			 "&name=" + encodeURIComponent(name.value) +
+			 "&comment=" + encodeURIComponent(comment.value);
 	 
-	 function send_comment()
+	 if(comment.value == "")
 	 {
-	     const comment = document.getElementById("commTxt"),
-		   request = "address=" + poem_adrs +
-			     "&name=" + encodeURIComponent(name.value) +
-			     "&comment=" + encodeURIComponent(comment.value);
-	     
-	     if(comment.value == "")
-	     {
-		 comment.focus();
-		 return;
-	     }
-	     
-	     message.innerHTML = loader;
+	     comment.focus();
+	     return;
+	 }
+	 
+	 message.innerHTML = loader;
 
-	     postUrl("/script/php/comments-add.php", request, function (responseText) {
-		 const res = isJson(responseText);
+	 postUrl("/script/php/comments-add.php", request, function (responseText) {
+	     const res = isJson(responseText);
+	     
+	     if(res && res.status)
+	     {
+		 name.value = res.name;
+		 comment.value = "";
+		 message.style.background = "rgba(0,255,0,.1)";
+		 message.innerHTML = res.message;
+		 const newComm = "<div class='comment'><\
+	div class='comm-name'>"+res.name+":</div><\
+	div class='comm-body'>"+res.comment+"</div><\
+	div class='comm-footer'>"+res.date+"</div></div>";
+		 comments.innerHTML = newComm +
+				      comments.innerHTML;
 		 
-		 if(res && res.status)
+		 if(res.name != "ناشناس")
 		 {
-		     name.value = res.name;
-		     comment.value = "";
-		     message.style.background = "rgba(0,255,0,.1)";
-		     message.innerHTML = res.message;
-		     const newComm = "<div class='comment'><\
-div class='comm-name'>"+res.name+":</div><\
-div class='comm-body'>"+res.comment+"</div><\
-div class='comm-footer'>"+res.date+"</div></div>";
-		     comments.innerHTML = newComm +
-					  comments.innerHTML;
-		     
-		     if(res.name != "ناشناس")
-		     {
-			 localStorage.setItem(
-			     "contributor",
-			     JSON.stringify(
-				 {name: res.name}
-			     ));
-		     }
-		     window.location = "#hon-comments-body";
+		     localStorage.setItem(
+			 "contributor",
+			 JSON.stringify(
+			     {name: res.name}
+			 ));
 		 }
-	     });
-	 }
-	 
-	 document.getElementById("frmComm").
-		  addEventListener("submit", function(e)
-		  {
-		      e.preventDefault();
-		      send_comment();
-		  });
-	 
-	 <?php
-	 /* Check for comments */
-	 $db = 'index';
-	 $address = 'poet:'.$info['id'].
-		    '/book:'.$bk.
-		    '/poem:'.$row[1]['id'];
-	 $q = "select * from comments where 
-address='$address' and blocked=0";
-	 require("condb.php");
-	 
-	 if($query and
-	     @mysqli_num_rows($query)>0) {                 
-	 ?>
-	 getUrl('/script/php/comments-get.php?address='+
-		poem_adrs, function(responseText)
-		{
-		    const res = isJson(responseText);
-		    if(res && res.err != 1)
-		    {
-			let newComm = "";
-			for(const a in res)
-			{
-			    newComm += "<div class='comment'\
-><div class='comm-name'>"+res[a].name+":</div><div \
-class='comm-body'>"+res[a].comment+"</div><div \
-class='comm-footer'>"+res[a].date+"</div></div>";
-			}
-			comments.innerHTML = newComm;
-		    }
-		});
-	 <?php
-	 }
-	 ?>
-	 
-	 /* Load user name into `commNameTxt' */
-	 try
-	 {
-	     document.getElementById("commNameTxt").value =
-		 isJson(localStorage.getItem("contributor")).name;
-	 }
-	 catch (e) {}
-
-	 /* Footnotes */
-	 const sups = document.querySelectorAll("sup");
-	 sups.forEach(function(o)
-	 {
-	     o.addEventListener(
-		 "click", function()
-		 {
-		     window.scrollTo(
-			 0, document.querySelector(
-			     ".m.d.cf:last-child").
-				     offsetTop - 10);
-		 });
+		 window.location = "#hon-comments-body";
+	     }
 	 });
-
-	 /* Other tools window */
-	 document.getElementById("extlnkico").
-		  addEventListener("click" , function()
-		  {
-		      const extlnk = document.getElementById("extlnk");
-		      if(extlnk.style.display != "block")
-		      {
-			  extlnk.style.display = "block";
-			  extlnk.style.animation = ".25s tL";
-		      }
-		      else
-		      {
-			  extlnk.style.display = "none";
-		      }
-		  });
-
-	 /* Tewar */
-	 const convertToLatBtn = document.getElementById("convertToLatBtn"),
-	       defLabel = convertToLatBtn.innerHTML,
-	       newLabel = "ئەلفوبێی عەرەبی",
-	       origin_poem = document.getElementById("hon").innerHTML;
-	 
-	 function convert_to_latin(toarabi=false)
-	 {
-	     const tar = document.getElementById("hon");
-	     tar.style.animation = "";
-	     void tar.offsetWidth;
-	     
-	     if(!toarabi)
-	     {
-		 const ltn = arabi_to_latin(tar.innerText)
-		     .replace(/\n/g, "<br>\n");
-		 tar.innerHTML =
-		     poem_kind(origin_poem)=="new" ?
-		     "<div class=\"n\"><div class=\"m dltr\">" +
-		     ltn + "</div></div>" :
-		     "<div class=\"b\">" + ltn + "</div>";
-		 convertToLatBtn.innerHTML = newLabel;
-		 tar.style.direction = "ltr";
-	     }
-	     else
-	     {
-		 tar.innerHTML = origin_poem;
-		 convertToLatBtn.innerHTML = defLabel;
-		 tar.style.direction = "rtl";
-	     }
-	     tar.style.animation = "tL .5s";
+     }
+     
+     document.getElementById("frmComm").
+	      addEventListener("submit", function(e)
+	      {
+		  e.preventDefault();
+		  send_comment();
+	      });
+     
+     <?php
+     /* Check for comments */
+     $db = 'index';
+     $address = 'poet:'.$info['id'].
+		'/book:'.$bk.
+		'/poem:'.$row[1]['id'];
+     $q = "select id from comments where 
+address='$address' and blocked=0";
+     require('condb.php');
+     
+     if($query and
+	 mysqli_num_rows($query)>0)
+     {
+	 if(!$no_foot)
+	     echo "window.addEventListener('load', function () { ";
+     ?>
+     getUrl('/script/php/comments-get.php?address='+
+	    poem_adrs, function(responseText)
+	    {
+		const res = isJson(responseText);
+		if(res && res.err != 1)
+		{
+		    let newComm = "";
+		    for(const a in res)
+		    {
+			newComm += "<div class='comment'\
+			><div class='comm-name'>"+res[a].name+":</div><div \
+									   class='comm-body'>"+res[a].comment+"</div><div \
+															  class='comm-footer'>"+res[a].date+"</div></div>";
+		    }
+		    comments.innerHTML = newComm;
+		}
+	    });
+	 <?php
+	 if(!$no_foot) echo ' });';
 	 }
-	 
-	 convertToLatBtn.addEventListener(
+	 ?>
+     
+     /* Load user name into `commNameTxt' */
+     try
+     {
+	 document.getElementById("commNameTxt").value =
+	     isJson(localStorage.getItem("contributor")).name;
+     }
+     catch (e) {}
+
+     /* Footnotes */
+     const sups = document.querySelectorAll("sup");
+     sups.forEach(function(o)
+     {
+	 o.addEventListener(
 	     "click", function()
 	     {
-		 if(convertToLatBtn.innerHTML == defLabel)
-		     convert_to_latin();
-		 else
-		     convert_to_latin("origin");
+		 window.scrollTo(
+		     0, document.querySelector(
+			 ".m.d.cf:last-child").
+				 offsetTop - 10);
 	     });
-	 
-	 const loaderMin = "<div class='loader' \
-style='vertical-align:middle;margin:1em auto'></div>";
-	 
-	 document.getElementById("wordFrm").
-		  addEventListener("submit", function(e)
+     });
+
+     /* Other tools window */
+     document.getElementById("extlnkico").
+	      addEventListener("click" , function()
+	      {
+		  const extlnk = document.getElementById("extlnk");
+		  if(extlnk.style.display != "block")
 		  {
-		      e.preventDefault();
-		      const q_el = document.getElementById('wordTxt');
-		      lookup(q_el, 'wordResult');
-		  });
+		      extlnk.style.display = "block";
+		      extlnk.style.animation = ".25s tL";
+		  }
+		  else
+		  {
+		      extlnk.style.display = "none";
+		  }
+	      });
+
+     /* Tewar */
+     const convertToLatBtn = document.getElementById("convertToLatBtn"),
+	   defLabel = convertToLatBtn.innerHTML,
+	   newLabel = "ئەلفوبێی عەرەبی",
+	   origin_poem = document.getElementById("hon").innerHTML;
+     
+     function convert_to_latin(toarabi=false)
+     {
+	 const tar = document.getElementById("hon");
+	 tar.style.animation = "";
+	 void tar.offsetWidth;
 	 
-	 function lookup (q_el, result_el_id)
+	 if(!toarabi)
 	 {
-	     const dicts = ['xal', 'henbane-borine',
-			    'bashur', 'kameran'],
-		   dicts_req = dicts.join(','),
-		   result_el = document.getElementById(result_el_id),
-		   q = encodeURIComponent(q_el.value.trim()),
-		   url = '/tewar/src/backend/lookup.php',
-		   request = `q=${q}&dicts=${dicts_req}&output=json`,
-		   loading = '<div class="loader"></div>',
-		   wordMore = document.getElementById('wordMore');
-	     
-	     if(!q)
-	     {
-		 q_el.focus();
-		 return;
-	     }
-
-	     // Loading animation
-	     result_el.innerHTML = loading;
-
-	     postUrl(url, request, function(response) {
-		 response = isJson(response);
-		 if(! response) return;
-		 
-		 let toprint = '';
-		 for(const i in response)
-		 {
-		     if(i == 'time') continue;
-		     
-		     const res = response[i];
-		     for(const w in res)
-		     {
-			 const m = res[w];
-			 if(! m) continue;
-			 toprint += `- <i class='color-blue'>${w}</i>: <p>${m}</p>`;
-		     }
-		 }
-		 result_el.innerHTML = toprint;
-	     });
-	     wordMore.innerHTML = `<a target='_blank' href='/tewar/?q=${q}'>گەڕانی زیاتر لە "تەوار"دا</a>`;
+	     const ltn = arabi_to_latin(tar.innerText)
+		 .replace(/\n/g, "<br>\n");
+	     tar.innerHTML =
+		 poem_kind(origin_poem)=="new" ?
+		 "<div class=\"n\"><div class=\"m dltr\">" +
+		 ltn + "</div></div>" :
+		 "<div class=\"b\">" + ltn + "</div>";
+	     convertToLatBtn.innerHTML = newLabel;
+	     tar.style.direction = "ltr";
+	 }
+	 else
+	 {
+	     tar.innerHTML = origin_poem;
+	     convertToLatBtn.innerHTML = defLabel;
+	     tar.style.direction = "rtl";
+	 }
+	 tar.style.animation = "tL .5s";
+     }
+     
+     convertToLatBtn.addEventListener(
+	 "click", function()
+	 {
+	     if(convertToLatBtn.innerHTML == defLabel)
+		 convert_to_latin();
+	     else
+		 convert_to_latin("origin");
+	 });
+     
+     const loaderMin = "<div class='loader' \
+				    style='vertical-align:middle;margin:1em auto'></div>";
+     
+     document.getElementById("wordFrm").
+	      addEventListener("submit", function(e)
+	      {
+		  e.preventDefault();
+		  const q_el = document.getElementById('wordTxt');
+		  lookup(q_el, 'wordResult');
+	      });
+     
+     function lookup (q_el, result_el_id)
+     {
+	 const dicts = ['xal', 'henbane-borine',
+			'bashur', 'kameran'],
+	       dicts_req = dicts.join(','),
+	       result_el = document.getElementById(result_el_id),
+	       q = encodeURIComponent(q_el.value.trim()),
+	       url = '/tewar/src/backend/lookup.php',
+	       request = `q=${q}&dicts=${dicts_req}&output=json`,
+	       loading = '<div class="loader"></div>',
+	       wordMore = document.getElementById('wordMore');
+	 
+	 if(!q)
+	 {
+	     q_el.focus();
+	     return;
 	 }
 
-	 document.getElementById('make_poem_dict').
-		  addEventListener('click', function() {
-		      const poem = document.getElementById('hon').innerText;
-		      const q_el = document.createElement('textarea');
-		      
-		      q_el.value = poem;
-		      lookup(q_el, 'poem_dict_context');
+	 // Loading animation
+	 result_el.innerHTML = loading;
 
-		      const poem_wrapper_el = document.getElementById('poem-wrapper');
-		      const poem_dict_el = document.getElementById('poem_dict');
-		      const hon_el = document.getElementById('hon');
-		      
-		      poem_wrapper_el.style.display = 'flex';
-		      poem_dict_el.style.display = 'block';
-		      poem_dict_el.style.width = '35%';
-		      hon_el.style.width = '65%';
+	 postUrl(url, request, function(response) {
+	     response = isJson(response);
+	     if(! response) return;
+	     
+	     let toprint = '';
+	     for(const i in response)
+	     {
+		 if(i == 'time') continue;
+		 
+		 const res = response[i];
+		 for(const w in res)
+		 {
+		     const m = res[w];
+		     if(! m) continue;
+		     toprint += `- <i class='color-blue'>${w}</i>: <p>${m}</p>`;
+		 }
+	     }
+	     result_el.innerHTML = toprint;
+	 });
+	 wordMore.innerHTML = `<a target='_blank' href='/tewar/?q=${q}'>گەڕانی زیاتر لە "تەوار"دا</a>`;
+     }
+
+     document.getElementById('make_poem_dict').
+	      addEventListener('click', function() {
+		  const poem = document.getElementById('hon').innerText,
+			q_el = document.createElement('textarea');
+		  
+		  q_el.value = poem;
+		  lookup(q_el, 'poem_dict_context');
+
+		  const poem_wrapper_el = document.getElementById('poem-wrapper'),
+			poem_dict_el = document.getElementById('poem_dict'),
+			hon_el = document.getElementById('hon');
+		  
+		  poem_wrapper_el.style.display = 'flex';
+		  poem_dict_el.style.display = 'block';
+		  poem_dict_el.style.width = '35%';
+		  hon_el.style.width = '65%';
+	      });
+     
+     document.getElementById('poem_dict_close').
+	      addEventListener('click', function() {
+		  const poem_wrapper_el = document.getElementById('poem-wrapper'),
+			poem_dict_el = document.getElementById('poem_dict'),
+			hon_el = document.getElementById('hon');
+		  
+		  poem_wrapper_el.style.display = '';
+		  poem_dict_el.style.width = '';
+		  poem_dict_el.style.display = 'none';
+		  hon_el.style.width = '';
+	      });
+     try
+     {
+	 document.getElementById("like-icon").
+		  addEventListener("click", Liked);
+     } catch(e) {}
+
+     try
+     {
+	 document.getElementById("copy-sec").
+		  addEventListener("click", copyPoem);
+     } catch(e) {}
+
+     try
+     {
+	 document.querySelector(".smaller").
+		  addEventListener("click", function()
+		  {
+		      save_fs("smaller")
 		  });
-	 
-	 document.getElementById('poem_dict_close').
-		  addEventListener('click', function() {
-		      const poem_wrapper_el = document.getElementById('poem-wrapper');
-		      const poem_dict_el = document.getElementById('poem_dict');
-		      const hon_el = document.getElementById('hon');
-		      
-		      poem_wrapper_el.style.display = '';
-		      poem_dict_el.style.width = '';
-		      poem_dict_el.style.display = 'none';
-		      hon_el.style.width = '';
+     } catch(e) {}
+
+     try
+     {
+	 document.querySelector(".bigger").
+		  addEventListener("click", function()
+		  {
+		      save_fs("bigger")
 		  });
-     });
+     } catch(e) {}
+
+     <?php
+     if(!$no_foot)
+	 echo "window.addEventListener('load', function () { ";
+     ?>
+     const likeico = document.getElementById('like-icon');
+     const favs = get_bookmarks();
+     if(favs)
+     {
+	 for(const i in favs)
+	 {
+	     if(favs[i].url == poemObject.url)
+	     {
+		 likeico.innerHTML = 'bookmark';
+		 likeico.classList.add('back-blue');
+		 likeico.style.animation = 'll .4s ease-out forwards';
+		 break;
+	     }
+	 }
+     }
+     <?php if(!$no_foot) echo ' });' ?>
     </script>
 </div>

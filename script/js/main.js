@@ -670,9 +670,8 @@ var poem_kind = poem_kind || function (poem)
     return "classic";
 }
 
-/* Check if bookmarked */
+/* Check if bookmarks? */
 var bookmarksIcon = document.getElementById('tL'),
-    likeico = document.getElementById('like-icon'),
     favs = get_bookmarks(),
     tN = document.getElementById('tN'),
     tS = document.getElementById('tS');
@@ -689,20 +688,6 @@ if(favs)
 	{
 	    bookmarksIcon.style.left = "0";
 	    tN.style.left = "1.3em";
-	}
-    }
-    
-    if(typeof poemObject !== "undefined")
-    {
-	for(const i in favs)
-	{
-	    if(favs[i].url == poemObject.url)
-	    {
-		likeico.innerHTML = "bookmark";
-		likeico.classList.add("back-blue");
-		likeico.style.animation = "ll .4s ease-out forwards";
-		break;
-	    }
 	}
     }
 }
@@ -742,36 +727,6 @@ try
 	addEventListener("click", toggle_nav);
 } catch(e) {}
 
-try
-{
-    document.getElementById("like-icon").
-	addEventListener("click", Liked);
-} catch(e) {}
-
-try
-{
-    document.getElementById("copy-sec").
-	addEventListener("click", copyPoem);
-} catch(e) {}
-
-try
-{
-    document.querySelector(".smaller").
-	addEventListener("click", function()
-			 {
-			     save_fs("smaller")
-			 });
-} catch(e) {}
-
-try
-{
-    document.querySelector(".bigger").
-	addEventListener("click", function()
-			 {
-			     save_fs("bigger")
-			 });
-} catch(e) {}
-
 var concat_url_query = concat_url_query || function (url, q)
 {
     const c = parse_poem_link(url);
@@ -782,6 +737,22 @@ var concat_url_query = concat_url_query || function (url, q)
 	return url + '&' + q;
     
     return url + '?' + q;	
+}
+
+var eval_js = eval_js || function (str)
+{
+    const scripts_beg = str.matchAll('<script>'),
+	  scripts_end = str.matchAll('</script>');
+    while(true)
+    {
+	const s_b = scripts_beg.next();
+	if(s_b.done) break;
+	
+	const s_e = scripts_end.next();
+	const js = str.substring(s_b.value.index+8,
+				 s_e.value.index);
+	eval(js);
+    }
 }
 
 var ajax = ajax || function (parent='body', target='#poets')
@@ -804,11 +775,12 @@ var ajax = ajax || function (parent='body', target='#poets')
 		    const url = concat_url_query(href, 'nohead&nofoot')
 		    
 		    getUrl(url, function (response) {
-			t.innerHTML = response;
+			window.history.pushState({url: url}, '', href);
+			window.scrollTo(0,0);
+			t.outerHTML = response;
+			eval_js(response);
 			ajax(parent, target);
 			loading.style.display = 'none';
-			window.history.pushState({url: url}, '', href);
-			window.scrollTo(0,0)
 		    });
 		}
 	    }
@@ -822,13 +794,14 @@ window.onpopstate = function ()
 {
     const loading = document.getElementById('main-loader'),
 	  t = document.querySelector('#poets'),
-	  S = window.history.state,
-	  url = S.url;
+	  S = window.history.state;
+    if(!S) return;
+    const url = S.url;
     
     loading.style.display = 'block';
     
     getUrl(url, function (response) {
-	t.innerHTML = response;
+	t.outerHTML = response;
 	ajax();
 	loading.style.display = 'none';
     });

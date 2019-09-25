@@ -81,7 +81,7 @@ class='material-icons'>keyboard_arrow_up</i>";
      }
     </script>
     
-    <div class="poetdesc-list-main">
+    <div id="poetdesc-list-main">
 	<?php
 	$_list = make_list(ABSPATH."pitew/res/");
 	$_count = 0;

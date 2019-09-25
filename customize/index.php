@@ -19,13 +19,11 @@ include(ABSPATH . "script/php/header.php");
         <span>
             گۆڕینی ڕەنگ: 
 	</span>
-	<button type="button"
-		      id="set_theme_light" onclick="set_theme('light')">
+	<button type="button" id="set_theme_light">
 	    <i class="material-icons">brightness_5</i>
 	    ڕووناک
 	</button>
-	<button type="button"
-		      id="set_theme_dark" onclick="set_theme('dark')">
+	<button type="button" id="set_theme_dark">
 	    <i class="material-icons">brightness_2</i>
 	    تاریک
 	</button>
@@ -40,8 +38,7 @@ include(ABSPATH . "script/php/header.php");
 	</small>
 	<textarea id="user_codes_text"
 		  placeholder="/* Javascript Code */"></textarea>
-	<button type="button" class="button"
-		onclick="save_user_codes('user_codes_text',this)">
+	<button type="button" class="button" id="user_codes_button">
 	    پاشەکەوت کردن
 	</button>
     </div>
@@ -118,6 +115,10 @@ include(ABSPATH . "script/php/header.php");
  }
  if(user_codes_storage)
      document.getElementById('user_codes_text').value = user_codes_storage;
+ document.getElementById('set_theme_light').onclick = function(){set_theme('light')}
+ document.getElementById('set_theme_dark').onclick = function(){set_theme('dark')}
+ const user_codes_button = document.getElementById('user_codes_button');
+ user_codes_button.onclick = function(){save_user_codes('user_codes_text',user_codes_button)}
 </script>
 <?php
 include_once(ABSPATH . "script/php/footer.php");

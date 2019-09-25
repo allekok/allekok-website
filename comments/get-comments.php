@@ -58,7 +58,7 @@ if($query) {
 
 	// poet's name
         $r["ptn"] = mysqli_fetch_assoc($query)["takh"];
-
+	
 	// query poem's name per each comment
         $q = "select name from tbl{$r["naddress"][0][1]}_{$r["naddress"][1][1]} where id={$r["naddress"][2][1]}";
         $query = mysqli_query($conn, $q);
@@ -68,7 +68,7 @@ if($query) {
 
 	// remove temp item "naddress"
         unset($r["naddress"]);
-
+	
 	// replace new comments by old ones
         $comms[$b] = $r;
     }
