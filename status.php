@@ -72,7 +72,7 @@ mysqli_close($conn);
 echo "\n/ئاڵەکۆک؟/\n";
 echo filter_var(
     file_get_contents(
-	'https://allekok.com/about/about-comments.php?num=1'),
+	_SITE . '/about/about-comments.php?num=1'),
     FILTER_SANITIZE_STRING) . "\n";
 
 /* pitew */
@@ -128,15 +128,14 @@ function last ($path, $n=1)
     $file = explode("\nend\n", $file);
     $file = array_reverse($file);
     $return = '';
-    $i = 0;
     
     foreach($file as $item)
     {
-	if($n == $i) break;
+	if($n == 0) break;
 	$item = trim($item);
 	if(!$item) continue;
 	$return .= "- $item\n";
-	$i++;
+	$n--;
     }
     $return = trim($return);
     if($return)
