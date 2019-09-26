@@ -6,7 +6,7 @@ h1, h2, h3, h4, h5, h6, p, input, a, form, button, select,
 ul, li, ol, header, div, footer, article, section, nav, img, table, tr,
 td, th, textarea, span, i, sup, sub{padding:0;margin:0;border:0;font-family:inherit;font-weight:normal;transition:all .15s ease-out;text-align:inherit;box-sizing:border-box}
 input, textarea, button{-webkit-appearance:none;appearance:none;outline:none;border-radius:0;background:none;color:#fff}
-input, textarea{padding:1em;text-align:right;border:1px solid #333;border-radius:2em;display:block;margin:auto}
+input, textarea{padding:1em;text-align:right;border:2px solid #333;border-radius:2em;display:block;margin:auto}
 textarea{height:15em;min-height:5em}
 input:focus,textarea:focus{border-color:#ff1}
 i{font-style:normal}

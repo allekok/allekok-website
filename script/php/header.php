@@ -18,7 +18,7 @@ else
 			       echo $_theme_dark ? 
 				    'main-dark-comp.css' :
 				    'main-comp.css';
-			       ?>?v5'/>
+			       ?>?v6'/>
 	<title>
 	    <?php echo $title; ?>
 	</title>

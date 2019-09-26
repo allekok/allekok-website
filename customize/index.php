@@ -29,7 +29,7 @@ include(ABSPATH . "script/php/header.php");
  #user_codes small
  {
      font-family:'kurd',monospace;
-     font-size:.65em;
+     font-size:.7em;
      text-indent:1em;
      display:block;
  }
@@ -40,6 +40,7 @@ include(ABSPATH . "script/php/header.php");
      width:100%;
      font-family:'kurd',monospace;
      font-size:.6em;
+     margin-top:1em;
  }
  #user_codes button
  {
