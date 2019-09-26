@@ -5,7 +5,7 @@
       ><i class="material-icons"
        >arrow_upward</i></a>
 </footer>
-<script defer src='/script/js/main.js?v36'></script>
+<script defer src='/script/js/main.js?v37'></script>
 <script>	 
  /* Users can evaluate their own code. */
  const userCodes = localStorage.getItem('user-codes') || false;

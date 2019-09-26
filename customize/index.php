@@ -38,7 +38,6 @@ include(ABSPATH . "script/php/header.php");
      direction:ltr;
      text-align:left;
      width:100%;
-     max-width:600px;
      font-family:'kurd',monospace;
      font-size:.6em;
  }

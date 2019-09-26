@@ -291,7 +291,7 @@ style='display:inline-block'
 	    تکایە ئەگەر ئەم دەقە هەڵەی تێدایە پێمانی ڕا بگەیێنن.
 	</div>
 	<form id="frmComm"
-	      style="max-width:700px;margin:auto"
+	      style="margin:auto"
 	      action="/script/php/comments-add.php"
 	      method="POST">
 	    <!--
