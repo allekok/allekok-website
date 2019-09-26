@@ -70,7 +70,7 @@ header a h1{font-size:1.3em;margin:0 0 .2em}
 #poet-info{margin-top:1em;max-width:1000px}
 .bks,.poetdesc{font-size:.65em;width:100%;margin:0 auto 1.5em;text-align:right}
 .bks a,.poetnm{padding:.5em 1.8em .5em 0;display:block}
-.bks p,.poetdesc p{padding:.2em .5em .2em 0;color:#ff1}
+.bks p,.poetdesc p{padding:.2em .5em .2em 0;color:#ff1;font-size:1.2em}
 #adrs{font-size:.8em;padding-top:.5em;text-align:center}
 #adrs a, #current-location{padding:0 .2em;display:inline-block}
 #sp{padding:0 .2em 1em;margin:auto;text-align:right}
