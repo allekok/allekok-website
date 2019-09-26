@@ -23,8 +23,8 @@ function expand_color ($color)
     if(strlen($color) == 3)
     {
         $color = str_repeat(substr($color,0,1), 2) .
-               str_repeat(substr($color,1,1), 2) .
-               str_repeat(substr($color,2,1), 2);
+		 str_repeat(substr($color,1,1), 2) .
+		 str_repeat(substr($color,2,1), 2);
     }
     return $color;
 }
@@ -44,5 +44,12 @@ function color_inverse ($color)
         $color_inverse .= $c;
     }
     return $color_inverse;
+}
+function my_color_inverse($color)
+{
+    $theme = [
+	'00e' => 'cf0',
+    ];
+    return @$theme[$color] ? $theme[$color] : color_inverse($color);
 }
 ?>
