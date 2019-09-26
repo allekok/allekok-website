@@ -72,7 +72,7 @@ header a h1{font-size:1.3em;margin:0 0 .2em}
 #adrs{font-size:.8em;padding-top:.5em;text-align:center}
 #adrs a, #current-location{padding:0 .2em;display:inline-block}
 #sp{padding:0 .2em 1em;margin:auto;text-align:right}
-#sp .poem-item{text-align:right;font-size:.65em}
+#sp .poem-item{text-align:right;font-size:.65em;display:flex}
 #sp a{padding:.3em .2em;width:100%}
 #bkondesc,#bhondesc{padding:0 1em;font-size:.6em;display:block}
 #bhondesc{text-align:left;border-left:2px solid}

@@ -227,7 +227,7 @@ margin-left:.5em'>${favs[a].poetName} &rsaquo; ${favs[a].poem}</a>`;
 		});
 	});
     });
-    ajax('#tL-res');
+    ajax();
 }
 
 var toggle_nav = toggle_nav || function ()
@@ -797,6 +797,7 @@ window.onpopstate = function ()
 	  S = window.history.state;
     if(!S) return;
     const url = S.url;
+    if(!url) return;
     
     loading.style.display = 'block';
     

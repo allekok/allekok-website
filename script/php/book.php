@@ -74,27 +74,22 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 	<?php
 	while($row = mysqli_fetch_assoc($query))
 	{
-	    $rid_k = num_convert($row['id'],
-				 "en","ckb");
+	    $rid_k = num_convert($row['id'],'en','ckb');
 	?>
-	    <div class="poem-item"
-		 style="display:flex">
+	    <div class="poem-item">
 		<button class="material-icons button"
-			       style="font-size:1em;
+			style="font-size:1em;
 			       padding:0 0 0 .5em"
-			       type="button"
-			       title="نیشان‌دانی بەشی سەرەتای ئەم شێعرە"
+			type="button"
+			title="نیشان‌دانی بەشی سەرەتای ئەم شێعرە"
 		>dehaze</button
 		       ><a href="<?php 
-				 echo "/poet:".
-				      $ath.
-				      "/book:".
-				      $bk.
-				      "/poem:".
-				      $row['id']; 
+				 echo '/poet:'.$ath.
+				      '/book:'.$bk.
+				      '/poem:'.$row['id']; 
 				 ?>">
 		    <?php
-		    echo($rid_k.". ".$row['name']);
+		    echo($rid_k.'. '.$row['name']);
 		    ?>
 		       </a>
 	    </div>
@@ -104,18 +99,15 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
     </div>
     <script>
      /* Book completion icon click event */
-     const bk_comp = document.querySelector(".bk-comp");
+     const bk_comp = document.querySelector("#poets .bk-comp");
      if(bk_comp !== null)
      {
 	 bk_comp.addEventListener("click", function() {
 	     const tt = document.getElementById('bk-comp-tt');
-	     if(tt !== null)
-	     {
-		 if(tt.style.display === "block") 
-		     tt.style.display = "none";
-		 else 
-		     tt.style.display = "block";
-	     }
+	     if(tt.style.display === "block") 
+		 tt.style.display = "none";
+	     else 
+		 tt.style.display = "block";
 	 });
      }
      

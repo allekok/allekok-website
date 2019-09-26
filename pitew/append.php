@@ -19,8 +19,8 @@ $poem = isset($_POST['poem']) ?
 if(empty($poet) or empty($poem))
 {
     $res = [
-        "state" => 0,
-        "message" => "<i style='font-size:.5em;padding:1em .5em;display:block;background:rgba(255,0,0,.1)'>تکایە ناوی شاعیر و شێعرەکەی بنووسن.</i>"
+        'state' => 0,
+        'message' => "<i style='font-size:.5em;padding:1em .5em;display:block;background:rgba(255,0,0,.1)'>تکایە ناوی شاعیر و شێعرەکەی بنووسن.</i>"
     ];
     die( json_encode($res) );
 }
@@ -28,8 +28,6 @@ if(empty($poet) or empty($poem))
 /* Optional */
 $contributor = isset($_POST['contributor']) ?
 	       filter_var($_POST['contributor'], FILTER_SANITIZE_STRING) : '';
-$poetDesc = isset($_POST['poetDesc']) ?
-	    filter_var($_POST['poetDesc'], FILTER_SANITIZE_STRING) : '';
 $book = isset($_POST['book']) ?
 	filter_var($_POST['book'], FILTER_SANITIZE_STRING) : '';
 $poemName = isset($_POST['poemName']) ?
@@ -38,12 +36,12 @@ $poemName = isset($_POST['poemName']) ?
 $date = date("Y-m-d_h:i:sa");
 
 /* status -> 0,-1,1 */
-$status = ["status" => 0, "url" => "", "desc" => ""];
+$status = ['status' => 0, 'url' => '', 'desc' => ''];
 $status = json_encode($status);
 
-$db = "index";
-$q = "INSERT INTO `pitew`(`contributor`, `poet`, `book`, `poem-name`, `poem`, `date`, `status`, `poetDesc`) VALUES ('$contributor', '$poet', '$book', '$poemName', '$poem', '$date', '$status','$poetDesc')";
-require(ABSPATH."script/php/condb.php");
+$db = 'index';
+$q = "INSERT INTO `pitew` (`id`, `contributor`, `email`, `poet`, `book`, `poem-name`, `poem-desc`, `poem`, `date`, `status`, `poetDesc`) VALUES (NULL, '$contributor', '', '$poet', '$book', '$poemName', '', '$poem', '$date', '$status', '')";
+require(ABSPATH.'script/php/condb.php');
 
 if($query)
 {
@@ -56,6 +54,10 @@ if($query)
     ];
     
     echo(json_encode($res));
+}
+else
+{
+    echo($null);
 }
 
 mysqli_close($conn);
