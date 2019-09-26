@@ -78,9 +78,9 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 	?>
 	    <div class="poem-item">
 		<button class="material-icons button"
-			style="font-size:1em;
+			       style="font-size:1em;
 			       padding:0 0 0 .5em"
-			type="button"
+			       type="button"
 			title="نیشان‌دانی بەشی سەرەتای ئەم شێعرە"
 		>dehaze</button
 		       ><a href="<?php 

@@ -53,7 +53,7 @@ class='imglist'
 >" . $_l['name'] . "</section><section class='imglist'
 >" . $_l['poet'] . "</section><section class='imglist'
 >" . "<a class='link' href='/style/img/poets/new/{$_l['filename']}'
->وێنە</a></section></div>";
+target='_blank'>وێنە</a></section></div>";
 	}
 	
 	function make_list($path)

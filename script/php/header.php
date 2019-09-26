@@ -98,3 +98,6 @@ if(!$no_head) {
 <?php
 } // no-head
 ?>
+<script>
+ document.title = `<?php echo html_entity_decode($title); ?>`;
+</script>

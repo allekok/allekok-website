@@ -47,7 +47,7 @@ $_book1 = isset($_GET['book']) ?
 	    </div>
 	    <div id="pitew-stats"
 		 style="text-align:right;text-indent:1em;
-			padding:.5em 1em 0;font-size:.53em"
+		     padding:.5em 1em 0;font-size:.53em"
 	    >ئەو شێعرە بە نێوی خۆتان لەسەر ئاڵەکۆک دادەندرێ.</div>
             <div class="border-eee" style="margin:.8em 0"></div>
 	    <div class="input-label-box-index">
@@ -94,32 +94,7 @@ $_book1 = isset($_GET['book']) ?
     </div>
 </div>
 
-<script>
- <?php
- if(!$no_head)
-     echo 'window.onload = function() { ';
- ?>
- const contri = isJson(localStorage.getItem('contributor'));
- if(contri && contri.name)
- {
-     document.getElementById('contributorTxt').value = contri.name;
-     document.getElementById('poems-list').href += '?name=' + contri.name;
-     
-     getUrl(`stats.php?contributor=${contri.name}`, function(responseText)
-     {
-         if(responseText)
-	 {
-	     const res = document.getElementById('pitew-stats');
-	     res.innerHTML = 'جەنابتان تا ئێستا ' + responseText + 
-			     ' شێعرتان لەسەر ئاڵەکۆک نووسیوەتەوە.';
-	     res.style.animation = 'tL 1.2s ease forwards';
-         }
-     });
- }
- <?php
- if(!$no_head) echo ' } ';
- ?>
- 
+<script> 
  function pitew ()
  {
      const contributor = document.getElementById('contributorTxt'),
@@ -256,14 +231,32 @@ $_book1 = isset($_GET['book']) ?
  }
  document.getElementById('poetTxt').onblur = check;
 	 <?php
+	 if(!$no_head)
+	     echo 'window.onload = function() { ';
+
 	 if($_poet1)
-	 {
-	     if(!$no_head)
-		 echo 'window.addEventListener("load",check)';
-	     else
-		 echo 'check()';
-	 }
+	     echo 'check();';
          ?>
+ const contri = isJson(localStorage.getItem('contributor'));
+ if(contri && contri.name)
+ {
+     document.getElementById('contributorTxt').value = contri.name;
+     document.getElementById('poems-list').href += '?name=' + contri.name;
+     
+     getUrl(`stats.php?contributor=${contri.name}`, function(responseText)
+     {
+         if(responseText)
+	 {
+	     const res = document.getElementById('pitew-stats');
+	     res.innerHTML = 'جەنابتان تا ئێستا ' + responseText + 
+			     ' شێعرتان لەسەر ئاڵەکۆک نووسیوەتەوە.';
+	     res.style.animation = 'tL 1.2s ease forwards';
+         }
+     });
+ }
+	 <?php
+	 if(!$no_head) echo ' } ';
+	 ?>
 </script>
 <?php
 include_once(ABSPATH . "script/php/footer.php");

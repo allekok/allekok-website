@@ -30,57 +30,7 @@ include(ABSPATH . 'script/php/header.php');
 	<div id="current-location">
 	    زانیاریەکان
 	</div>
-    </div>
-    <script>
-     function expand (item,path)
-     {
-	 const parent = item.parentNode.parentNode.
-			     querySelector(".epld-body"),
-	       from = [/\nend\n/g,
-		       /\nend/g,
-		       /\n/g,],
-	       to = ["<div style='border-top:2px solid;margin:1em'></div>",
-		     "<div style='border-top:2px solid;margin:1em'></div>",
-		     "<br>"];
-	 
-	 if(parent.style.overflow != "hidden")
-	 {
-	     parent.style.overflow = "hidden";
-	     parent.style.maxHeight = "150px";
-	     item.innerHTML = "زیاتر <i \
-class='material-icons'>keyboard_arrow_down</i>";
-	 }
-	 else
-	 {
-	     item.innerHTML = "<div class='loader'></div>";
-	     if(path)
-	     {
-		 getUrl(path,function(responseText)
-		 {
-		     responseText = responseText.trim();
-		     for(const i in from)
-		     {
-			 responseText =
-			     responseText.replace(from[i], to[i]);
-		     }
-		     parent.innerHTML = responseText;
-		     parent.style.overflow = "";
-		     parent.style.maxHeight = "";
-		     item.innerHTML = "<i \
-class='material-icons'>keyboard_arrow_up</i>";
-		 });
-	     }
-	     else
-	     {
-		 parent.style.overflow = "";
-		 parent.style.maxHeight = "";
-		 item.innerHTML = "<i \
-class='material-icons'>keyboard_arrow_up</i>";
-	     }
-	 }
-     }
-    </script>
-    
+    </div>    
     <div id="poetdesc-list-main">
 	<?php
 	$_list = make_list(ABSPATH."pitew/res/");
@@ -98,7 +48,7 @@ class='material-icons'>keyboard_arrow_up</i>";
 		}
 		$_encoded_name = urlencode($_l['name']);
 		$_html .= "<div class='epld'
-><section class='epld-title'><a 
+><section class='epld-title'><a target='_blank'
 href='/pitew/res/{$_l["filename"]}' 
 title='وەشانی plain/text'><i 
 class='material-icons' style='font-size:1.5em'
@@ -114,7 +64,7 @@ max-height:150px'";
 		$_html .= ">{$_l['content']}</section>";
 		$_html .= "<div style='text-align:left'
 ><button class='epld-expand button' 
-onclick='expand(this,\"/pitew/res/{$_l["filename"]}\")'
+data-uri='/pitew/res/{$_l['filename']}'
 >زیاتر <i class='material-icons'>keyboard_arrow_down</i
 ></button></div></div>";
 		$_count++;
@@ -201,6 +151,62 @@ style='font-size:1em;display:block'>&bull;</span>";
 	</div>
     </div>
 </div>
+<script>
+ function expand (item,path)
+ {
+     const parent = item.parentNode.parentNode.
+			 querySelector(".epld-body"),
+	   from = [/\nend\n/g,
+		   /\nend/g,
+		   /\n/g,],
+	   to = ["<div style='border-top:2px solid;margin:1em'></div>",
+		 "<div style='border-top:2px solid;margin:1em'></div>",
+		 "<br>"];
+     
+     if(parent.style.overflow != "hidden")
+     {
+	 parent.style.overflow = "hidden";
+	 parent.style.maxHeight = "150px";
+	 item.innerHTML = "زیاتر <i \
+class='material-icons'>keyboard_arrow_down</i>";
+     }
+     else
+     {
+	 item.innerHTML = "<div class='loader'></div>";
+	 if(path)
+	 {
+	     getUrl(path,function(responseText)
+	     {
+		 responseText = responseText.trim();
+		 for(const i in from)
+		 {
+		     responseText =
+			 responseText.replace(from[i], to[i]);
+		 }
+		 parent.innerHTML = responseText;
+		 parent.style.overflow = "";
+		 parent.style.maxHeight = "";
+		 item.innerHTML = "<i \
+class='material-icons'>keyboard_arrow_up</i>";
+	     });
+	 }
+	 else
+	 {
+	     parent.style.overflow = "";
+	     parent.style.maxHeight = "";
+	     item.innerHTML = "<i \
+class='material-icons'>keyboard_arrow_up</i>";
+	 }
+     }
+ }
+ document.querySelectorAll('.epld-expand').forEach(function (o)
+ {
+     o.onclick = function ()
+     {
+	 expand(o, o.getAttribute('data-uri'));
+     }
+ });
+</script>
 <?php
 include_once(ABSPATH . "script/php/footer.php");
 ?>

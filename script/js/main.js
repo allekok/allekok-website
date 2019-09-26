@@ -529,10 +529,8 @@ style='width:1em;height:1em'></div>";
 	   function(response)
 	   {
                button.innerHTML = "dehaze";
-	       
                const san_txt = response.replace(/\n/g, "<br>");
-               button.parentNode.outerHTML += `<div
-style='padding:1em;font-size:.55em'>${san_txt}</div>`;
+               button.parentNode.outerHTML += `<div style='padding:1em;font-size:.55em'>${san_txt}</div>`;
 	   });
 }
 
