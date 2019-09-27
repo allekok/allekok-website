@@ -320,10 +320,7 @@ style='display:inline-block'
 		 comment.value = "";
 		 message.style.background = "rgba(0,255,0,.1)";
 		 message.innerHTML = res.message;
-		 const newComm = "<div class='comment'><\
-	div class='comm-name'>"+res.name+":</div><\
-	div class='comm-body'>"+res.comment+"</div><\
-	div class='comm-footer'>"+res.date+"</div></div>";
+		 const newComm = "<div class='comment'><div class='comm-name'>"+res.name+":</div><div class='comm-body'>"+res.comment+"</div><div class='comm-footer'>"+res.date+"</div></div>";
 		 comments.innerHTML = newComm +
 				      comments.innerHTML;
 		 

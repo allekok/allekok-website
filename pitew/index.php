@@ -163,7 +163,7 @@ $_book1 = isset($_GET['book']) ?
      
      txts.forEach( function(e)
      {
-         e.style.borderBottomColor = "";
+         e.style.borderColor = "";
          e.style.background = "";
      });
      btns.forEach( function(e)
@@ -184,7 +184,7 @@ $_book1 = isset($_GET['book']) ?
      {
          txts.forEach( function(e)
 	 {
-             e.style.borderBottomColor = "";
+             e.style.borderColor = "";
              e.style.background = "";
          });
          btns.forEach( function(e)
@@ -201,7 +201,7 @@ $_book1 = isset($_GET['book']) ?
 	 {
              txts.forEach( function(e)
 	     {
-                 e.style.borderBottomColor = '<?php echo $_color; ?>';
+                 e.style.borderColor = '<?php echo $_color; ?>';
              });
 	     
              btns.forEach( function(e)
@@ -218,7 +218,7 @@ $_book1 = isset($_GET['book']) ?
 	 {
              txts.forEach( function(e)
 	     {
-                 e.style.borderBottomColor = "";
+                 e.style.borderColor = "";
                  e.style.background = "";
              });
 	     

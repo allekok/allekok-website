@@ -12,7 +12,7 @@ include(ABSPATH."script/php/header.php");
 ?>
 <div id="poets">
     <h1 class="color-blue"
-	       style="font-size:1em;text-align:right">
+	style="font-size:1em;text-align:right">
 	سەبارەت
     </h1>
     <div style="text-align:right;font-size:.6em;padding-right:1em">
@@ -68,7 +68,7 @@ include(ABSPATH."script/php/header.php");
 	if($nzuri) {
 	?>
             <h1 id="Acomms-title" class="color-blue"
-		    style="text-align:right;
+		style="text-align:right;
 		    margin:0 0 .5em;
 		    font-size:1em">
 		بیر و ڕاکان
@@ -126,10 +126,10 @@ font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پیت زیا
      if(comm.value.length > 2685)
      {
          res.innerHTML = OoRError;
-         comm.style.borderTopColor = "rgb(204,51,0)";
+         comm.style.borderColor = "rgb(204,51,0)";
          comm.focus();
          setTimeout(function() {
-	     comm.style.borderTopColor = "";
+	     comm.style.borderColor = "";
          }, 3000);
          return;
      }     
@@ -142,7 +142,7 @@ font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پیت زیا
          if(respond.message == "ok")
 	 {
 	     res.innerHTML = succMess;
-	     comm.style.borderTopColor = "#06d";
+	     comm.style.borderColor = "#06d";
 	     const Acomms = document.getElementById('Acomms'),
 		   AcommsTitle = document.getElementById('Acomms-title');
 	     Acomms.style.display = "block";
@@ -154,9 +154,9 @@ font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پیت زیا
 	 else
 	 {
 	     res.innerHTML = failMess;
-	     comm.style.borderTopColor = "rgb(204,51,0)";
+	     comm.style.borderColor = "rgb(204,51,0)";
 	     setTimeout(function() {
-                 comm.style.borderTopColor = "";
+                 comm.style.borderColor = "";
 	     }, 3000);
          }
          loader.style.display = "none";

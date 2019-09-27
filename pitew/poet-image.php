@@ -142,7 +142,7 @@ include(ABSPATH . 'script/php/header.php');
 	     {
                  txts.forEach( function(e)
 		 {
-		     e.style.borderBottomColor = '<?php echo $_color; ?>';
+		     e.style.borderColor = '<?php echo $_color; ?>';
                  });
                  btns.forEach( function(e)
 		 {
@@ -157,7 +157,7 @@ include(ABSPATH . 'script/php/header.php');
 	     {
                  txts.forEach( function(e)
 		 {
-		     e.style.borderBottomColor = "";
+		     e.style.borderColor = "";
 		     e.style.background = "";
                  });
 	     }
