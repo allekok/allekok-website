@@ -15,7 +15,7 @@ file_put_contents(dark_css_path, $main_css);
 /* functions */
 function color_inverse_string ($s)
 {
-    return $s[1].color_inverse($s[2]).$s[3];
+    return $s[1].my_color_inverse($s[2]).$s[3];
 }
 
 function expand_color ($color)
@@ -49,6 +49,7 @@ function my_color_inverse($color)
 {
     $theme = [
 	'00e' => 'cf0',
+	'fff' => '222',
     ];
     return @$theme[$color] ? $theme[$color] : color_inverse($color);
 }

@@ -1,17 +1,17 @@
 @font-face{font-family:'kurd';font-display:swap;font-style:normal;font-weight:400;src:url('/style/font/DroidNaskh-Regular.woff2') format('woff2')}
 @font-face{font-family:'Material Icons';font-display:swap;font-style:normal;font-weight:400;src:url('/style/font/Material-Icons.woff2') format('woff2')}
 html, body{height:100%;margin:0}
-body{font-family:'kurd', arial;font-size:24px;line-height:2.5;background:#000;color:#fff;padding:1em;max-width:1000px;margin:0 auto;position:relative;animation:tL .5s}
+body{font-family:'kurd', arial;font-size:24px;line-height:2.5;background:#222;color:#fff;padding:1em;max-width:1000px;margin:0 auto;position:relative;animation:tL .5s}
 h1, h2, h3, h4, h5, h6, p, input, a, form, button, select,
 ul, li, ol, header, div, footer, article, section, nav, img, table, tr,
 td, th, textarea, span, i, sup, sub{padding:0;margin:0;border:0;font-family:inherit;font-weight:normal;transition:all .15s ease-out;text-align:inherit;box-sizing:border-box}
 input, textarea, button{-webkit-appearance:none;appearance:none;outline:none;border-radius:0;background:none;color:#fff}
 input, textarea{padding:1em;text-align:right;border:2px solid #333;border-radius:2em;display:block;margin:auto}
 textarea{height:15em;min-height:5em}
-input:focus,textarea:focus{border-color:#ff1}
+input:focus,textarea:focus{border-color:#cf0}
 i{font-style:normal}
 a{text-decoration:none;color:#fff}
-a:hover,button:hover{text-decoration:none;color:#ff1}
+a:hover,button:hover{text-decoration:none;color:#cf0}
 .poet-pic-small{display:block;margin:0 auto;border-radius:50%;max-width:100px}
 .poetnm a,header a,.fontsize button{display:inline-block}
 @keyframes tL{
@@ -45,7 +45,7 @@ a:hover,button:hover{text-decoration:none;color:#ff1}
 .pitewsec i.material-icons{font-size:2em}
 .pitewsec h3{font-size:.8em;display:inline-block}
 .pitewsec small{font-size:.6em}
-#hon sup{cursor:pointer;color:#ff1;padding:0 3px;}
+#hon sup{cursor:pointer;color:#cf0;padding:0 3px;}
 .color-black, #hon sup:hover{color:#fff}
 #commNameTxt,#commTxt{font-size:.6em;width:100%;margin-top:.5em}
 .comm-name{font-size:.7em;line-height:2;margin-bottom:.5em}
@@ -57,7 +57,7 @@ a:hover,button:hover{text-decoration:none;color:#ff1}
 .material-icons{font-family:'Material Icons';direction:ltr;line-height:1;display:inline-block;-moz-font-feature-settings:'liga';-moz-osx-font-smoothing:grayscale;vertical-align:middle}
 .sub-num{vertical-align:bottom}
 header{position:relative}
-.poet:hover,.color-blue,.selected,.link-color,.link:hover,a:hover,button:hover,.search-main .cb:hover{color:#ff1}
+.poet:hover,.color-blue,.selected,.link-color,.link:hover,a:hover,button:hover,.search-main .cb:hover{color:#cf0}
 header a h1{font-size:1.3em;margin:0 0 .2em}
 #poets{text-align:center}
 .poet{width:24%;display:inline-block;vertical-align:top;max-width:115px;margin:.5em .5% .1em}
@@ -68,7 +68,7 @@ header a h1{font-size:1.3em;margin:0 0 .2em}
 #poet-info{margin-top:1em;max-width:1000px}
 .bks,.poetdesc{font-size:.65em;width:100%;margin:0 auto 1.5em;text-align:right}
 .bks a,.poetnm{padding:.5em 1.8em .5em 0;display:block}
-.bks p,.poetdesc p{padding:.2em .5em .2em 0;color:#ff1;font-size:1.2em}
+.bks p,.poetdesc p{padding:.2em .5em .2em 0;color:#cf0;font-size:1.2em}
 #adrs{font-size:.8em;padding-top:.5em;text-align:center}
 #adrs a, #current-location{padding:0 .2em;display:inline-block}
 #sp{padding:0 .2em 1em;margin:auto;text-align:right}
@@ -84,7 +84,7 @@ header a h1{font-size:1.3em;margin:0 0 .2em}
 #search-key{font-size:.65em;width:100%;text-align:right}
 #search-btn{font-size:1.4em;padding:0 .3em}
 #search-res{display:none;padding:1em .3em;position:relative;max-width:850px;margin:auto}
-#search-res #bhon, .bhoh-newdaq{font-size:.6em;padding:.5em 0;color:#ff1;text-align:right}
+#search-res #bhon, .bhoh-newdaq{font-size:.6em;padding:.5em 0;color:#cf0;text-align:right}
 #search-res a{font-size:.55em}
 #search-res a h3{font-size:1em;margin-top:.2em}
 #search-res section a h3{white-space:nowrap;overflow:hidden}
@@ -106,7 +106,7 @@ header a h1{font-size:1.3em;margin:0 0 .2em}
 .loader-round{width:1.5em;height:1.5em;border-radius:50%;animation:loading-round 1s ease infinite;margin:1em auto;display:block}
 #main-loader{position:fixed;bottom:0;left:.5em;display:none}
 .fontsize{font-size:.65em;padding:1em 0 2em}
-.fontsize button:hover,.toolbar a:hover{background:#ff1;color:#000}
+.fontsize button:hover,.toolbar a:hover{background:#cf0;color:#222}
 #Acomms div{text-align:justify;padding:1em 1em 3em 1em;position:relative;border-radius:1em;margin-bottom:1em}
 .h{position:absolute;bottom:0;left:0;display:block;font-size:.75em;text-align:center;background:rgba(255,255,255,.5);color:black;border-radius:0 1.5em 0;padding:0 1em}
 .h::before{content:'date_range ';font-family:'Material Icons';font-size:1.4em;vertical-align:middle}
@@ -121,18 +121,18 @@ header a h1{font-size:1.3em;margin:0 0 .2em}
 footer{padding:1em 0;width:100%;font-size:.6em;text-align:center}
 footer a{display:inline-block;padding:.5em .3em}
 footer i,#header-nav i{font-size:1.4em}
-.icon-round{background:#fff;color:#000;border-radius:50%}
+.icon-round{background:#fff;color:#222;border-radius:50%}
 .icon-round-poem {
     font-size:1.2em;
     padding:.3em;
     margin-left:.5em
 }
-.back-blue,.loader,.loader-round{background:#ff1}
+.back-blue,.loader,.loader-round{background:#cf0}
 .eee-desc,.border-right-eee,.border-right-999{border-right:2px solid}
-.link-underline,#main-contributing a{border-bottom:2px solid #ff1}
-.color-white{color:#000}
-#header-nav{position:absolute;z-index:999;background:#000;left:1em;padding:1em;font-size:.6em;border:2px solid;border-radius:1em}
-.border-blue{border-color:#ff1}
+.link-underline,#main-contributing a{border-bottom:2px solid #cf0}
+.color-white{color:#222}
+#header-nav{position:absolute;z-index:999;background:#222;left:1em;padding:1em;font-size:.6em;border:2px solid;border-radius:1em}
+.border-blue{border-color:#cf0}
 #extlnk{font-size:.6em;max-width:600px;margin:0 auto 2em;padding:0 1em;text-align:right}
 .next div,.prev div{display:inline-block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:90%;vertical-align:middle}
 .next i,.prev i{font-size:inherit;display:inline-block;width:10%;max-width:.8em;vertical-align:top}
@@ -235,16 +235,16 @@ footer i,#header-nav i{font-size:1.4em}
 }
 #main-contributing h1 {
     font-size:1.5em;
-    color:#ff1;
+    color:#cf0;
 }
 #main-contributing h2 {
     font-size:1.3em;
-    color:#ff1;
+    color:#cf0;
     margin-top:1em;
 }
 #main-contributing h3 {
     font-size:1.1em;
-    color:#ff1;
+    color:#cf0;
     margin-top:1em;
 }
 #main-contributing ul, ol {
@@ -264,16 +264,16 @@ footer i,#header-nav i{font-size:1.4em}
 }
 #main-manual  h1 {
     font-size:1.818em;
-    color:#ff1;
+    color:#cf0;
 }
 #main-manual  h2 {
     font-size:1.618em;
-    color:#ff1;
+    color:#cf0;
     margin-top:1em;
 }
 #main-manual  h3 {
     font-size:1.418em;
-    color:#ff1;
+    color:#cf0;
     margin-top:1em;
 }
 .comment,.prev,#main-contributing h1, #main-contributing h2, #main-contributing h3,#main-manual  h1, #main-manual  h2, #main-manual  h3 {
@@ -290,7 +290,7 @@ footer i,#header-nav i{font-size:1.4em}
     margin:1em auto;
     max-width:100%;
     cursor:pointer;
-    background:#000;
+    background:#222;
     padding:1em 1em 0;
     border-radius:5px;
 }
@@ -435,7 +435,7 @@ footer i,#header-nav i{font-size:1.4em}
     text-align:right;
     display:none;
     position:absolute;
-    background:#000;
+    background:#222;
     min-width:200px;
     max-width:200px;
     overflow-y:auto;
