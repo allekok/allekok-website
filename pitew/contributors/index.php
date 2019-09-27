@@ -10,27 +10,6 @@ $t_desc = "";
 
 include(ABSPATH . "script/php/header.php");
 ?>
-<style>
- #contributions div small {
-     display:block;
-     padding-right:2em;
- }
- #contributions div .stats-min {
-     display:block;
-     font-size:.85em;
- }
- #contributions div .stats-min .material-icons {
-     font-size:1.1em;
-     padding:0 0 0 .2em;
-     display:inline-block;
- }
- .epld-expand {
-     font-size:1em;
-     padding:0 .5em;
-     display:block;
-     margin-right:1em
- }
-</style>
 <div id="poets" style="text-align:right">
     <div id='adrs'>
 	<a href="/pitew/first.php">

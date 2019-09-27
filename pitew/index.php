@@ -30,76 +30,6 @@ $_book1 = isset($_GET['book']) ?
 	</div>
     </div>
     
-    <script>
-     function check ()
-     {
-	 const cntri = document.getElementById("contributorTxt"),
-	       poet = document.getElementById("poetTxt"),
-	       book = document.getElementById("bookTxt"),
-	       txts = document.querySelectorAll("#poets input, #poets textarea"),
-	       btns = document.querySelectorAll("#poets button[type=submit]");
-	 
-         if(poet.value == "")
-	 {
-             txts.forEach( function(e)
-	     {
-                 e.style.borderBottomColor = "";
-                 e.style.background = "";
-             });
-             btns.forEach( function(e)
-	     {
-                 e.style.border = "";
-             });
-             return;
-         }
-
-	 getUrl("isitnew.php?poet="+poet.value, function(responseText)
-	 {
-             const res = JSON.parse(responseText);
-             if(res.id != "0")
-	     {
-                 txts.forEach( function(e)
-		 {
-                     e.style.borderBottomColor = '<?php echo $_color; ?>';
-                 });
-		 
-                 btns.forEach( function(e)
-		 {
-                     e.style.border = '2px solid <?php echo $_color; ?>';
-                 });
-                 
-                 poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
-                 poet.style.backgroundRepeat = "no-repeat";
-                 poet.style.backgroundSize = "auto 100%";
-                 poet.style.backgroundPosition = "left center";
-             }
-	     else
-	     {
-                 txts.forEach( function(e)
-		 {
-                     e.style.borderBottomColor = "";
-                     e.style.background = "";
-                 });
-		 
-                 btns.forEach( function(e)
-		 {
-                     e.style.border = "";
-                 });
-             }
-         });
-     }
-    </script>
-    <style>
-     .input-label-box {
-	 display:flex;
-	 margin:0 .5em;
-     }
-     .input-label-box label {
-	 font-size:.7em;
-	 margin:auto .5em;
-     }
-    </style>
-    
     <div style="max-width:800px;margin:auto">
 	<div style='font-size:.53em;text-align:right;padding:0 1em 1em'>
 	    دەتوانن بۆ نووسینەوەی شێعر ئەم دیوانانە بەکار بهێنن: 
@@ -109,7 +39,7 @@ $_book1 = isset($_GET['book']) ?
 	    </a>
 	</div>
         <form id="frmComm" action="append.php" method="POST">
-            <div class="input-label-box">
+            <div class="input-label-box-index">
 		<input type="text" id="contributorTxt" name="contributor"
 		       style="font-size:.7em;width:100%"
 		       value="<?php echo $_name1; ?>"
@@ -117,29 +47,29 @@ $_book1 = isset($_GET['book']) ?
 	    </div>
 	    <div id="pitew-stats"
 		 style="text-align:right;text-indent:1em;
-			padding:.5em 1em 0;font-size:.53em"
+		     padding:.5em 1em 0;font-size:.53em"
 	    >ئەو شێعرە بە نێوی خۆتان لەسەر ئاڵەکۆک دادەندرێ.</div>
             <div class="border-eee" style="margin:.8em 0"></div>
-	    <div class="input-label-box">
+	    <div class="input-label-box-index">
 		<label for="poetTxt">شاعیر: </label>
-		<input type="text" onblur="check()" id="poetTxt"
+		<input type="text" id="poetTxt"
 		       name="poet" style="font-size:.7em;width:94%"
 		       value="<?php echo $_poet1; ?>"
 		       placeholder="ناوی شاعیر *">
 	    </div>
-	    <div class="input-label-box" style="margin-top:1em;">
+	    <div class="input-label-box-index" style="margin-top:1em;">
 		<label for="bookTxt">کتێب: </label>
 		<input type="text" id="bookTxt" name="book"
 		       style="font-size:.7em;width:94%"
 		       value="<?php echo $_book1; ?>"
 		       placeholder="ناوی کتێب">
 	    </div>
-	    <div class="input-label-box" style="margin-top:1em">
+	    <div class="input-label-box-index" style="margin-top:1em">
 		<input type="text" id="poemNameTxt" name="poemName"
 		       style="font-size:.7em;width:100%"
 		       placeholder="سەرناوی شێعر">
 	    </div>
-	    <div class="input-label-box" style="margin-top:1em">
+	    <div class="input-label-box-index" style="margin-top:1em">
 		<textarea id="poemConTxt" name="poem" style="font-size:.7em;max-width:100%;min-width:100%;height:20em" placeholder="دەقی شێعر *"></textarea>
 	    </div>
 
@@ -156,10 +86,6 @@ $_book1 = isset($_GET['book']) ?
 			  padding:.8em 2.5em"
 	    >پاک کردنەوە</button>
         </form>	
-        <?php
-	if($_poet1) 
-            echo '<script>window.addEventListener("load",check)</script>';
-        ?>
     </div>
     <div style="margin-top:2em;font-size:.65em">
         <a id='poems-list' class='link' href="poem-list.php">
@@ -168,78 +94,53 @@ $_book1 = isset($_GET['book']) ?
     </div>
 </div>
 
-<script>
- window.onload = function()
- {
-     const contri = isJson(localStorage.getItem("contributor"));
-     if(contri && contri.name)
-     {
-	 document.getElementById('contributorTxt').value = contri.name;
-	 document.getElementById('poems-list').href += '?name=' + contri.name;
-	 
-	 getUrl(`stats.php?contributor=${contri.name}`, function(responseText)
-	 {
-             if(responseText != "")
-	     {
-		 const res = document.getElementById("pitew-stats");
-		 res.innerHTML = "جەنابتان تا ئێستا " + responseText + 
-				 " شێعرتان لەسەر ئاڵەکۆک نووسیوەتەوە.";	     
-		 res.style.animation = "tL 1.2s ease forwards";
-             }
-	 });
-     }     
- }
- 
+<script> 
  function pitew ()
  {
-     const contributor = document.getElementById("contributorTxt"),
-	   poet = document.getElementById("poetTxt"),
-	   book = document.getElementById("bookTxt"),
-	   poemName = document.getElementById("poemNameTxt"),
-	   poem = document.getElementById("poemConTxt"),
-	   mess = document.getElementById("message"),
-	   loader = document.querySelector(".loader"),
-	   http = new XMLHttpRequest(),
+     const contributor = document.getElementById('contributorTxt'),
+	   poet = document.getElementById('poetTxt'),
+	   book = document.getElementById('bookTxt'),
+	   poemName = document.getElementById('poemNameTxt'),
+	   poem = document.getElementById('poemConTxt'),
+	   mess = document.getElementById('message'),
+	   loader = document.querySelector('.loader'),
 	   quest = `contributor=${encodeURIComponent(contributor.value)}&poet=${encodeURIComponent(poet.value)}&book=${encodeURIComponent(book.value)}&poemName=${encodeURIComponent(poemName.value)}&poem=${encodeURIComponent(poem.value)}`;
 
-     if(poet.value == "")
+     if(poet.value == '')
      {
          poet.focus();
          return;
      }
-     if(poem.value == "")
+     if(poem.value == '')
      {
          poem.focus();
          return;
      }
      
-     loader.style.display = "block";
+     loader.style.display = 'block';
      
-     http.onreadystatechange = function()
+     postUrl('/pitew/append.php', quest, function(response)
      {
-         if(this.readyState == 4 && this.status == 200)
+	 const res = JSON.parse(response);
+	 loader.style.display = 'none';
+	 if(res)
 	 {
-	     const res = JSON.parse(this.responseText);
-	     loader.style.display="none";
 	     mess.innerHTML = res.message;
 	     
 	     if(res.state == 1)
 	     {
-                 poemName.value = poem.value = "";
-                 localStorage.setItem("contributor",
+		 poemName.value = poem.value = '';
+		 localStorage.setItem('contributor',
 				      JSON.stringify(
 					  {name : res.contributor.name}
 				      ));
 	     }
-         }
-     }
-     http.open("post", "append.php");
-     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-     http.send(quest);
+	 }
+     });
  }
  
- document.getElementById("frmComm").
-	  addEventListener("submit", function(e)
+ document.getElementById('frmComm').
+	  addEventListener('submit', function(e)
 	  {
 	      e.preventDefault();
 	      pitew();
@@ -254,7 +155,8 @@ $_book1 = isset($_GET['book']) ?
 	   poem = document.getElementById("poemConTxt"),
 	   mess = document.getElementById("message"),
 	   txts = document.querySelectorAll("#poets input, #poets textarea"),
-	   btns = document.querySelectorAll("#poets button[type=submit]");
+	   btns = document.querySelectorAll("#poets button[type=submit]"),
+	   loader = document.querySelector('.loader');
      
      mess.innerHTML = poet.value = book.value =
 	 poemName.value = poem.value = "";
@@ -268,7 +170,93 @@ $_book1 = isset($_GET['book']) ?
      {
          e.style.border = "";
      });
+     loader.style.display = 'none';
  });
+ function check ()
+ {
+     const cntri = document.getElementById("contributorTxt"),
+	   poet = document.getElementById("poetTxt"),
+	   book = document.getElementById("bookTxt"),
+	   txts = document.querySelectorAll("#poets input, #poets textarea"),
+	   btns = document.querySelectorAll("#poets button[type=submit]");
+     
+     if(poet.value == "")
+     {
+         txts.forEach( function(e)
+	 {
+             e.style.borderBottomColor = "";
+             e.style.background = "";
+         });
+         btns.forEach( function(e)
+	 {
+             e.style.border = "";
+         });
+         return;
+     }
+
+     getUrl("isitnew.php?poet="+poet.value, function(responseText)
+     {
+         const res = JSON.parse(responseText);
+         if(res.id != "0")
+	 {
+             txts.forEach( function(e)
+	     {
+                 e.style.borderBottomColor = '<?php echo $_color; ?>';
+             });
+	     
+             btns.forEach( function(e)
+	     {
+                 e.style.border = '2px solid <?php echo $_color; ?>';
+             });
+             
+             poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
+             poet.style.backgroundRepeat = "no-repeat";
+             poet.style.backgroundSize = "auto 100%";
+             poet.style.backgroundPosition = "left center";
+         }
+	 else
+	 {
+             txts.forEach( function(e)
+	     {
+                 e.style.borderBottomColor = "";
+                 e.style.background = "";
+             });
+	     
+             btns.forEach( function(e)
+	     {
+                 e.style.border = "";
+             });
+         }
+     });
+ }
+ document.getElementById('poetTxt').onblur = check;
+	 <?php
+	 if(!$no_head)
+	     echo 'window.onload = function() { ';
+
+	 if($_poet1)
+	     echo 'check();';
+         ?>
+ const contri = isJson(localStorage.getItem('contributor'));
+ if(contri && contri.name)
+ {
+     document.getElementById('contributorTxt').value = contri.name;
+     document.getElementById('poems-list').href += '?name=' + contri.name;
+     
+     getUrl(`stats.php?contributor=${contri.name}`, function(responseText)
+     {
+         if(responseText)
+	 {
+	     const res = document.getElementById('pitew-stats');
+	     res.innerHTML = 'جەنابتان تا ئێستا ' + responseText + 
+			     ' شێعرتان لەسەر ئاڵەکۆک نووسیوەتەوە.';
+	     res.style.animation = 'tL 1.2s ease forwards';
+         }
+     });
+ }
+	 <?php
+	 if(!$no_head) echo ' } ';
+	 ?>
 </script>
 <?php
 include_once(ABSPATH . "script/php/footer.php");

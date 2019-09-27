@@ -138,7 +138,7 @@ var poetImage = poetImage || function (pID, callback)
     const client = new XMLHttpRequest(),
 	  url = `/style/img/poets/profile/profile_${pID}.jpg`;
     client.open("get", url);
-    client.onload = function()
+    client.onload = function() // FIX: onloadstart
     {
 	if(this.status != 404)
 	    callback(url);
@@ -155,13 +155,13 @@ var toggle_search = toggle_search || function ()
     if(Sec.style.display != "block")
     {
         Sec.style.display = "block";
-        Icon.style.opacity="1";
+        Icon.classList.add('color-blue');
         Key.focus();
     }
     else
     {
         Sec.style.display="none";
-        Icon.style.opacity="";
+        Icon.classList.remove('color-blue');
     }
 }
 
@@ -198,7 +198,7 @@ var toggle_Like = toggle_Like || function ()
     if(bookmarksSection.style.display == "block")
     {
         bookmarksSection.style.display = "none";
-        bookmarksIcon.style.opacity = "";
+        bookmarksIcon.classList.remove('color-blue');
         return;
     }    
     const favs = get_bookmarks();
@@ -216,7 +216,7 @@ margin-left:.5em'>${favs[a].poetName} &rsaquo; ${favs[a].poem}</a>`;
     
     bookmarksSection.style.display = "block";
     bookmarksSection.style.animation = "tL .2s";
-    bookmarksIcon.style.opacity = "1";
+    bookmarksIcon.classList.add('color-blue');
 
     imgs.map(function(pID) {
 	poetImage(pID, function(url) {
@@ -227,6 +227,7 @@ margin-left:.5em'>${favs[a].poetName} &rsaquo; ${favs[a].poem}</a>`;
 		});
 	});
     });
+    ajax();
 }
 
 var toggle_nav = toggle_nav || function ()
@@ -487,10 +488,16 @@ var isJson = isJson || function (str)
 var parse_allekok_link = parse_allekok_link || function (link)
 {
     link = link.split('/');
+    for(let i=0; i<3; i++)
+    {
+	if(! link[i]) link[i] = '';
+	link[i] = link[i].split(':')[1];
+    }
+    
     return {
-	pt: link[0].split(':')[1],
-	bk: link[1].split(':')[1],
-	pm: link[2].split(':')[1],
+	pt: link[0] || '',
+	bk: link[1] || '',
+	pm: link[2] || '',
     };
 }
 
@@ -522,10 +529,8 @@ style='width:1em;height:1em'></div>";
 	   function(response)
 	   {
                button.innerHTML = "dehaze";
-	       
                const san_txt = response.replace(/\n/g, "<br>");
-               button.parentNode.outerHTML += `<div
-style='padding:1em;font-size:.55em'>${san_txt}</div>`;
+               button.parentNode.outerHTML += `<div style='padding:1em;font-size:.55em'>${san_txt}</div>`;
 	   });
 }
 
@@ -663,9 +668,8 @@ var poem_kind = poem_kind || function (poem)
     return "classic";
 }
 
-/* Check if bookmarked */
+/* Check if bookmarks? */
 var bookmarksIcon = document.getElementById('tL'),
-    likeico = document.getElementById('like-icon'),
     favs = get_bookmarks(),
     tN = document.getElementById('tN'),
     tS = document.getElementById('tS');
@@ -682,20 +686,6 @@ if(favs)
 	{
 	    bookmarksIcon.style.left = "0";
 	    tN.style.left = "1.3em";
-	}
-    }
-    
-    if(typeof poemObject !== "undefined")
-    {
-	for(const i in favs)
-	{
-	    if(favs[i].url == poemObject.url)
-	    {
-		likeico.innerHTML = "bookmark";
-		likeico.classList.add("back-blue");
-		likeico.style.animation = "ll .4s ease-out forwards";
-		break;
-	    }
 	}
     }
 }
@@ -735,32 +725,83 @@ try
 	addEventListener("click", toggle_nav);
 } catch(e) {}
 
-try
+var concat_url_query = concat_url_query || function (url, q)
 {
-    document.getElementById("like-icon").
-	addEventListener("click", Liked);
-} catch(e) {}
+    const c = parse_poem_link(url);
+    if(c.pt)
+	url = `/?ath=${c.pt}&bk=${c.bk}&id=${c.pm}`;
+    
+    if(url.indexOf('?') !== -1)
+	return url + '&' + q;
+    
+    return url + '?' + q;	
+}
 
-try
+var eval_js = eval_js || function (str)
 {
-    document.getElementById("copy-sec").
-	addEventListener("click", copyPoem);
-} catch(e) {}
+    const scripts_beg = str.matchAll('<script>'),
+	  scripts_end = str.matchAll('</script>');
+    while(true)
+    {
+	const s_b = scripts_beg.next();
+	if(s_b.done) break;
+	
+	const s_e = scripts_end.next();
+	const js = str.substring(s_b.value.index+8,
+				 s_e.value.index);
+	eval(js);
+    }
+}
 
-try
+var ajax = ajax || function (parent='body', target='#poets')
 {
-    document.querySelector(".smaller").
-	addEventListener("click", function()
-			 {
-			     save_fs("smaller")
-			 });
-} catch(e) {}
+    const t = document.querySelector(target),
+	  p = document.querySelector(parent),
+	  loading = document.getElementById('main-loader');
+    
+    p.querySelectorAll('a').forEach(function (o) {
+	if(o.getAttribute('target') != '_blank')
+	{
+	    o.onclick = function (e) {
+		const href = o.getAttribute('href');
+		if(href.indexOf('#') === -1)
+		{
+		    e.preventDefault();
+		    
+		    loading.style.display = 'block';
+		    
+		    const url = concat_url_query(href, 'nohead&nofoot')
+		    
+		    getUrl(url, function (response) {
+			window.history.pushState({url: url}, '', href);
+			window.scrollTo(0,0);
+			t.outerHTML = response;
+			eval_js(response);
+			ajax(parent, target);
+			loading.style.display = 'none';
+		    });
+		}
+	    }
+	}
+    });
+}
 
-try
+ajax();
+
+window.onpopstate = function ()
 {
-    document.querySelector(".bigger").
-	addEventListener("click", function()
-			 {
-			     save_fs("bigger")
-			 });
-} catch(e) {}
+    const loading = document.getElementById('main-loader'),
+	  t = document.querySelector('#poets'),
+	  S = window.history.state;
+    if(!S) return;
+    const url = S.url;
+    if(!url) return;
+    
+    loading.style.display = 'block';
+    
+    getUrl(url, function (response) {
+	t.outerHTML = response;
+	ajax();
+	loading.style.display = 'none';
+    });
+}

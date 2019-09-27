@@ -28,48 +28,12 @@ include(ABSPATH . 'script/php/header.php');
         </div>
     </div>
     
-    <style>
-     .eee {
-         text-align:right;
-         font-size:.6em;
-         padding:.2em 1em;
-     }
-     .eee-nfo {
-	 font-size:.65em;
-         font-family:monospace;
-     }
-     .eee span {
-	 font-size:.85;
-     }
-     .eee-desc {
-	 font-size:.85em;
-         padding:0 1em 1em;
-         margin-right:1em;
-         display:none;
-     }
-     .eee .material-icons {
-	 vertical-align: middle;
-         font-size: 1.5em;
-         margin-right: .1em;
-         cursor:pointer;
-     }
-     .eee .material-icons:hover {
-         opacity:.7;
-     }
-     #filter-txt {
-	 max-width: 1200px;
-	 width: 100%;
-	 font-size: .65em;
-	 margin-bottom:.5em;
-     }
-    </style>
-    
-    <div>
-	<input type="text" id="filter-txt" onkeyup="_filter()"
+    <div id="pdfs-search">
+	<input type="text" id="filter-txt"
 	       placeholder="گەڕان لە کتێبەکان‌دا...">
     </div>
     
-    <main id="main">
+    <main id="pdfs-main">
 <?php
 $base = "https://github.com/allekok/diwan/raw/master/";
 $list_uri = "pdfs.txt";
@@ -87,21 +51,21 @@ for($i = 0; $i<count($list); $i++)
     $name = str_replace(".pdf", "", strtolower($list[$i][0]));
     if($name === "فەقێ تەیران - دیوان")
     {
-        echo "<div class='eee'><span>$num.</span> <a href='https://archive.org/download/sarabia_20160323/%D8%AF%DB%8C%D9%88%D8%A7%D9%86%DB%8C%20%D9%81%DB%95%D9%82%DB%8E%20%D8%AA%DB%95%DB%8C%D8%B1%D8%A7%D9%86.pdf'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i></div>";
+        echo "<div class='eee'><span>$num.</span> <a target='_blank' href='https://archive.org/download/sarabia_20160323/%D8%AF%DB%8C%D9%88%D8%A7%D9%86%DB%8C%20%D9%81%DB%95%D9%82%DB%8E%20%D8%AA%DB%95%DB%8C%D8%B1%D8%A7%D9%86.pdf'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i></div>";
     }
     elseif($name == "سافی هیرانی - دیوان ۲")
     {
-        echo "<div class='eee'><span>$num.</span> <a href='https://archive.org/download/safi_hirani_diwan/%D8%B3%D8%A7%D9%81%DB%8C%20%D9%87%DB%8C%D8%B1%D8%A7%D9%86%DB%8C%20-%20%D8%AF%DB%8C%D9%88%D8%A7%D9%86.pdf'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i>";
-        echo "<i class='material-icons' onclick='roll(this)'>info_outline</i>";
+        echo "<div class='eee'><span>$num.</span> <a target='_blank' href='https://archive.org/download/safi_hirani_diwan/%D8%B3%D8%A7%D9%81%DB%8C%20%D9%87%DB%8C%D8%B1%D8%A7%D9%86%DB%8C%20-%20%D8%AF%DB%8C%D9%88%D8%A7%D9%86.pdf'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i>";
+        echo "<i class='material-icons pdfs-roll'>info_outline</i>";
         $list[$i][2] = str_replace("\n", "<br>", $list[$i][2]);
         echo "<div class='eee-desc'>{$list[$i][2]}</div></div>";
     }
     else
     {
-        echo "<div class='eee'><span>$num.</span> <a href='$base{$list[$i][0]}'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i>";
+        echo "<div class='eee'><span>$num.</span> <a target='_blank' href='$base{$list[$i][0]}'>$name</a> <i class='eee-nfo'>({$list[$i][1]} ,PDF)</i>";
         if(@$list[$i][2])
 	{
-            echo "<i class='material-icons' onclick='roll(this)'>info_outline</i>";
+            echo "<i class='material-icons pdfs-roll'>info_outline</i>";
             $list[$i][2] = str_replace("\n", "<br>", $list[$i][2]);
             echo "<div class='eee-desc'>{$list[$i][2]}</div>";
         }
@@ -126,12 +90,19 @@ for($i = 0; $i<count($list); $i++)
 	 }
      }
 
-     const needle = document.getElementById("filter-txt"),
-	   context = document.getElementById("main").querySelectorAll(".eee");
+     document.querySelectorAll('#pdfs-main .pdfs-roll').forEach(function (o)
+     {
+	 o.onclick = function () {roll(o)}
+     });
+
+     const needle = document.querySelector("#pdfs-search #filter-txt"),
+	   context = document.getElementById("pdfs-main").
+			      querySelectorAll(".eee");
      function _filter()
      {
 	 filterp(needle.value, context);
-     }     
+     }
+     needle.onkeyup = _filter;
     </script>
 </div>
 <?php

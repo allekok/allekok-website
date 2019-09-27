@@ -1,22 +1,30 @@
-<footer id="footer">
-    <?php
-    include('footer-links.php');
-    ?><a href="#" title="چوونە سەرەوە"
-      ><i class="material-icons"
-       >arrow_upward</i></a>
-</footer>
-<script defer src='/script/js/main.js?v37'></script>
-<script>	 
- /* Users can evaluate their own code. */
- const userCodes = localStorage.getItem('user-codes') || false;
- try
- {
-     eval(userCodes);
- }
- catch(e)
- {
-     console.warn(`"user-codes" Can not be evaluated.\n${e}`);
- }
-</script>
+<?php
+$no_foot = isset($_GET['nofoot']);
+if(!$no_foot) {
+?>
+    <footer id="footer">
+	<?php
+	include('footer-links.php');
+	?><a href="#" title="چوونە سەرەوە"
+	  ><i class="material-icons"
+	   >arrow_upward</i></a>
+    </footer>
+    <div class="loader-round" id="main-loader"></div>
+    <script defer src='/script/js/main.js?v37'></script>
+    <script>	 
+     /* Users can evaluate their own code. */
+     const userCodes = localStorage.getItem('user-codes') || false;
+     try
+     {
+	 eval(userCodes);
+     }
+     catch(e)
+     {
+	 console.warn(`"user-codes" Can not be evaluated.\n${e}`);
+     }
+    </script>
 </body>
 </html>
+<?php
+} // no-foot
+?>

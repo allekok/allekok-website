@@ -10,64 +10,8 @@ $t_desc = "";
 
 include(ABSPATH . "script/php/header.php");
 ?>
-<style>
- #QAtxt {
-     font-size: .65em;
-     text-align: right;
-     max-width: 100%;
-     width: 100%;
-     display: block;
-     margin: 1em auto 0;
- }
- .btn {
-     font-size: .7em;
-     width: 50%;
-     padding: .8em 0;
-     max-width: 150px;
-     display:block;
-     text-align:center;
-     margin:auto
- }
- main h1 {
-     font-size:1.818em;
-     color:<?php echo $_color; ?>;
- }
- main h2 {
-     font-size:1.618em;
-     color:<?php echo $_color; ?>;
-     margin-top:1em;
- }
- main h3 {
-     font-size:1.418em;
-     color:<?php echo $_color; ?>;
-     margin-top:1em;
- }
- main h1, main h2, main h3 {
-     text-align:right;
- }
- main ul, main ol {
-     padding-right:2em;
- }
- main p {
-     text-indent:1em;
- }
- main img {
-     display:block;
-     margin:1em auto;
-     max-width:100%;
-     cursor:pointer;
-     background:#fff;
-     padding:1em 1em 0;
-     border-radius:5px;
- }
- main .material-icons {
-     display: inline;
-     vertical-align: middle;
-     font-size: 1.5em;
- }
-</style>
 <div id="poets" style="text-align:right">
-    <main style="font-size:.6em;text-align:justify">
+    <main id="main-manual" style="font-size:.6em;text-align:justify">
 	<?php
 	echo file_get_contents("manual.html");
 	?>
@@ -91,7 +35,7 @@ include(ABSPATH . "script/php/header.php");
 	       padding:.5em 0 0">
 	پرسیار و وەڵام
     </h1>
-    <div style="padding-right:1em">
+    <div id="frm-manual" style="padding-right:1em">
 	<small style="font-size:.6em;display:block">
             ئەگەر پرسیارێک‌و سەبارەت بە "چۆنیەتی بەکارهێنانی ئاڵەکۆک" هەیە دەتوانن لێرە بیپرسن.
 	    <br>

@@ -12,17 +12,6 @@ include(ABSPATH . "script/php/header.php");
 $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
      $_GET['n'] : 15; /* Number of poems */
 ?>
-<style>
- .link {
-     display:block;
-     border-bottom:0;
-     padding:.2em 1em;
- }
- .link i {
-     font-size:.85em;
- }
-</style>
-
 <div id="poets" style="text-align:right">
     <h1 class="color-blue" style="font-size:1em;
 	       text-align:right">
@@ -34,13 +23,6 @@ $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
 		<div style="padding-left:1em">
 		    ئەژمار:
 		</div>
-		<style>
-		 .tmi
-		 {
-		     padding:0 .6em;
-		     font-size:1.1em;
-		 }
-		</style>
 		<div>
 		<?php 
 		function print_tools_menu ($all, $sel)
@@ -50,12 +32,12 @@ $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
 			if($o == $sel)
 			{
 			    $_ = num_convert($o, 'en', 'ckb');
-			    echo "<span class='color-blue tmi'>{$_}</span>";
+			    echo "<span class='color-blue tmi-news'>{$_}</span>";
 			}
 			else
 			{
 			    $_ = num_convert($o, 'en', 'ckb');
-			    echo "<a href='?n=$o' class='tmi'>{$_}</a>";
+			    echo "<a href='?n=$o' class='tmi-news'>{$_}</a>";
 			}
 		    }
 		}
@@ -105,8 +87,7 @@ $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
 		$poem = mysqli_fetch_assoc($query)["name"];
 		$image_uri = get_poet_image($pt,true);
 		
-		echo "<div style='margin:1.2em 0'><a class='link' 
-style='padding:0;margin:0'
+		echo "<div style='margin:1.2em 0'><a class='link-news' 
 href='/poet:$pt/book:$bk/poem:$pm'><img style='display:inline-block;
 vertical-align:middle;width:2.5em;border-radius:50%;margin-left:.25em' 
 src='$image_uri'> $poet &rsaquo; $book &rsaquo; $poem</a

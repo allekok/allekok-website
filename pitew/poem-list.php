@@ -31,13 +31,7 @@ include(ABSPATH . 'script/php/header.php');
 	    <i class='material-icons'></i>
 	    شێعرەکان
 	</div>
-    </div>
-    
-    <style>
-     .pmlist-container{display:flex}
-     .pmlist-container section{vertical-align:top;padding:.2em 1em;font-size:.55em;text-align:right}
-    </style>
-    
+    </div>    
     <?php
     $db = 'index';
     $q = $_name1 ?

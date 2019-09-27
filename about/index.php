@@ -12,7 +12,7 @@ include(ABSPATH."script/php/header.php");
 ?>
 <div id="poets">
     <h1 class="color-blue"
-	style="font-size:1em;text-align:right">
+	       style="font-size:1em;text-align:right">
 	سەبارەت
     </h1>
     <div style="text-align:right;font-size:.6em;padding-right:1em">
@@ -65,41 +65,47 @@ include(ABSPATH."script/php/header.php");
 	$nzuri = file_exists($uri) ?
 		 filesize($uri)>0 :
 		 false;
+	if($nzuri) {
 	?>
-        <h1 id="Acomms-title" class="color-blue"
-	    style="text-align:right;
-		margin:0 0 .5em;
-		font-size:1em;<?php 
-			      if(!$nzuri)
-				  echo 'display:none';
-			      ?>">
-            بیر و ڕاکان
-        </h1>
-        <div id="Acomms"
-	     style="font-size:.6em;max-width:800px;
-		 background:white;border-radius:1em;
-		 margin:auto;
-		 <?php 
-		 if(!$nzuri)
-		     echo 'display:none;';
-		 ?>">
-        </div>
+            <h1 id="Acomms-title" class="color-blue"
+		    style="text-align:right;
+		    margin:0 0 .5em;
+		    font-size:1em">
+		بیر و ڕاکان
+            </h1>
+            <div id="Acomms"
+		 style="font-size:.6em;max-width:800px;
+		     background:white;border-radius:1em;
+		     margin:auto">
+		<?php
+		$uri = ABSPATH . "about/comments.txt";
+		if(! file_exists($uri))
+		    die();
+
+		$comments = file_get_contents($uri);
+		$comments = explode("[comment]",$comments);
+		$comments = array_reverse($comments);
+		$limit = (false === filter_var(@$_GET['num'],
+					       FILTER_VALIDATE_INT)) ?
+			-1 :
+			 $_GET['num'];
+		$_n = 0;
+		foreach($comments as $c)
+		{
+		    if($_n == $limit) break;
+		    if(!isset($_GET["plain"]))
+			$c = str_replace("\n", "<br>", $c);
+		    echo $c;
+		    $_n++;
+		}
+
+		echo '</div>';
+		} // $nzuri
+		?>
+	    </div>
     </div>
 </div>
-<script>
- window.onload = function ()
- {
-     getUrl("/about/about-comments.php",
-	    function (response)
-	    {
-		const Acomms = document.
-			       getElementById("Acomms");
-		Acomms.innerHTML=response;
-		Acomms.style.animation="tL-top .8s \
-cubic-bezier(.18,.89,.32,1.28)";
-	    });
- }
- 
+<script> 
  function append() {
      const res = document.getElementById('message'),
 	   comm = document.getElementById('commTxt'),

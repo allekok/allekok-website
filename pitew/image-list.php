@@ -35,11 +35,6 @@ $poet = isset($_GET['poet']) ?
 	    وێنەکان
 	</div>
     </div>
-    <style>
-     .imglist-con{display:flex;text-align:right}
-     .imglist{vertical-align:top;padding:.2em 1em;
-	 font-size:.55em;width:100%}
-    </style>
     <div>
 	<div class="imglist-con">
 	    <section class='imglist color-blue'
@@ -58,7 +53,7 @@ class='imglist'
 >" . $_l['name'] . "</section><section class='imglist'
 >" . $_l['poet'] . "</section><section class='imglist'
 >" . "<a class='link' href='/style/img/poets/new/{$_l['filename']}'
->وێنە</a></section></div>";
+target='_blank'>وێنە</a></section></div>";
 	}
 	
 	function make_list($path)

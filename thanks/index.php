@@ -10,17 +10,7 @@ $t_desc = "";
 
 include(ABSPATH . "script/php/header.php");
 ?>
-<style>
- p {
-     font-size:.55em;
-     text-align:justify;
-     padding:.4em 1em .4em .5em;
- }
- #poets a, #poets i {
-     padding:0 .6em;
- }
-</style>
-<div id="poets">
+<div id="poets" class="thanks-main">
     <h1 class="color-blue" style="font-size:1em;
 	       text-align:right">
         سپاس و پێزانین بۆ...
@@ -76,28 +66,23 @@ include(ABSPATH . "script/php/header.php");
 	>کەماڵ ڕەحمانی</a> &rsaquo; بۆ 
         <a href="/pitew/poem-list.php?name=کەماڵ ڕەحمانی"
 	   class="link-underline"
-	>نووسینی 
-            <span style="opacity:0"
-		  id="pitew-stats">.....</span>
+	>نووسینی             
+	    <?php
+	    $_name = "کەماڵ ڕەحمانی";
+	    $db = 'index';
+	    $q = "SELECT id FROM pitew WHERE 
+contributor='$_name' and status 
+LIKE '{\"status\":1%'";
+	    require(ABSPATH.'script/php/condb.php');
+	    
+	    if($query)
+		echo num_convert(mysqli_num_rows($query),
+				 'en','ckb');
+
+	    mysqli_close($conn);
+	    ?>
             شێعر لەسەر ئاڵەکۆک
         </a>
-	<script>
-	 window.onload = function()
-	 {
-             const name = "کەماڵ ڕەحمانی",
-		   res = document.getElementById("pitew-stats");
-             getUrl(`/pitew/stats.php?contributor=${name}`,
-		    function(responseText)
-		    {
-			if(responseText !== "")
-			{
-			    res.innerHTML = responseText; 
-			    res.style.animation =
-				"tL 1.2s ease forwards";
-			}
-		    });
-	 }
-	</script>
     </p>
     <p>
         <a href="http://telegram.me/Kurdish_Poetry"

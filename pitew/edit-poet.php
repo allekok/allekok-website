@@ -29,90 +29,26 @@ $_poet1 = isset($_GET['poet']) ?
     
     <div style="max-width:800px;margin:auto">    
 	<script>
-	 function check()
-	 {
-             const poet = document.getElementById("poetTxt"),
-		   txts = document.querySelectorAll("#poets input, #poets textarea"),
-		   btns = document.querySelectorAll("#poets button[type=submit]");
-	     
-             if (poet.value == "")
-	     {
-		 txts.forEach( function(e)
-		 {
-                     e.style.borderBottomColor = "";
-                     e.style.background = "";
-		 });
-		 btns.forEach( function(e)
-		 {
-                     e.style.border = "";
-		 });
-		 return;
-             }
-
-             getUrl('isitnew.php?poet='+poet.value, function(responseText)
-	     {
-                 const res = JSON.parse(responseText);
-                 
-                 if(res.id != '0')
-		 {
-                     txts.forEach( function(e)
-		     {
-                         e.style.borderBottomColor = '<?php echo $_color; ?>';
-                     });
-                     btns.forEach( function(e)
-		     {
-			 e.style.border = '2px solid <?php echo $_color; ?>';
-                     });
-                     poet.style.backgroundImage =
-			 `url(/style/img/poets/profile/profile_${res.img}.jpg`;
-                     poet.style.backgroundRepeat = "no-repeat";
-                     poet.style.backgroundSize = "auto 100%";
-                     poet.style.backgroundPosition = "left center";
-                 }
-		 else
-		 {
-                     txts.forEach( function(e)
-		     {
-                         e.style.borderBottomColor = "";
-                         e.style.background = "";
-                     });
-                     btns.forEach( function(e)
-		     {
-                         e.style.border = "";
-                     });
-                 }
-             });
-	 }
+	 
 	</script>
 	
-	<style>
-	 .input-label-box {
-	     display:flex;
-	     margin:0 .5em;
-	 }
-	 .input-label-box label {
-	     font-size:.8em;
-	     margin:auto .5em;
-	 }
-	</style>
-
         <form id="frmComm" action="save.php" method="POST">
 	    
-	    <div class="input-label-box">
+	    <div class="input-label-box-edit-poet">
 		<input type="text" id="contributorTxt" name="contributor"
 		       style="font-size:.7em;width:100%"
 		       value="<?php echo $_name1; ?>"
 		       placeholder="نێوی خۆتان لێرە بنووسن.">
 	    </div>
 
-	    <div class="input-label-box" style="margin-top:1em">
+	    <div class="input-label-box-edit-poet" style="margin-top:1em">
 		<label for="poetTxt">شاعیر: </label>
-		<input onblur="check()" type="text" id="poetTxt" name="poet"
+		<input type="text" id="poetTxt" name="poet"
 		       style="font-size:.7em;width:94%;padding:1em 3%"
 		       value="<?php echo $_poet1; ?>" placeholder="نێوی شاعیر *">
 	    </div>
 	    
-            <div class="input-label-box" style="margin-top:1em">
+            <div class="input-label-box-edit-poet" style="margin-top:1em">
 		<textarea id="poetDescTxt" name="poetDesc"
 			  style="font-size:.7em;width:100%;height:15em"
 			  placeholder="زانیاریەکان سەبارەت بە شاعیر *"></textarea>
@@ -129,33 +65,91 @@ $_poet1 = isset($_GET['poet']) ?
             <button type="button" id="clearBtn" class='button'
 		    style="font-size:.7em;padding:.8em 2.5em;
 			  margin-top:1em">پاک کردنەوە</button>
-        </form>
-        
-        <?php if($_poet1) { ?>
-            <script>window.addEventListener("load",check)</script>
-	<?php } ?>
-        
+        </form>        
     </div>
     
     <div style="margin-top:2em;font-size:.65em">
         <a id='desc-list' class='link'
 	   href='poetdesc-list.php'
 	>ئەو زانیاریانەی کە نووسیوتانە</a>
-    </div>
-    
+    </div>    
 </div>
 
 <script>
- window.onload = function()
+ function check()
  {
-     const contributor = isJson(localStorage.getItem("contributor"));
+     const poet = document.getElementById("poetTxt"),
+	   txts = document.querySelectorAll("#poets input, #poets textarea"),
+	   btns = document.querySelectorAll("#poets button[type=submit]");
      
-     if( contributor )
+     if (poet.value == "")
      {
-         document.getElementById("contributorTxt").value = contributor.name;
-         document.getElementById("desc-list").href += "?name=" + contributor.name;
+	 txts.forEach( function(e)
+	 {
+             e.style.borderBottomColor = "";
+             e.style.background = "";
+	 });
+	 btns.forEach( function(e)
+	 {
+             e.style.border = "";
+	 });
+	 return;
      }
+
+     getUrl('isitnew.php?poet='+poet.value, function(responseText)
+     {
+         const res = JSON.parse(responseText);
+         
+         if(res.id != '0')
+	 {
+             txts.forEach( function(e)
+	     {
+                 e.style.borderBottomColor = '<?php echo $_color; ?>';
+             });
+             btns.forEach( function(e)
+	     {
+		 e.style.border = '2px solid <?php echo $_color; ?>';
+             });
+             poet.style.backgroundImage =
+		 `url(/style/img/poets/profile/profile_${res.img}.jpg`;
+             poet.style.backgroundRepeat = "no-repeat";
+             poet.style.backgroundSize = "auto 100%";
+             poet.style.backgroundPosition = "left center";
+         }
+	 else
+	 {
+             txts.forEach( function(e)
+	     {
+                 e.style.borderBottomColor = "";
+                 e.style.background = "";
+             });
+             btns.forEach( function(e)
+	     {
+                 e.style.border = "";
+             });
+         }
+     });
  }
+ document.getElementById('poetTxt').onblur = check;
+	 <?php
+	 if(!$no_head)
+	     echo 'window.onload = function() { ';
+	 
+	 if($_poet1)
+	     echo 'check();';
+         ?>
+ 
+ const contributor = isJson(localStorage.getItem("contributor"));
+ 
+ if( contributor )
+ {
+     document.getElementById("contributorTxt").value = contributor.name;
+     document.getElementById("desc-list").href += "?name=" + contributor.name;
+ }
+ 
+	 <?php
+	 if(!$no_head) echo ' } ';
+	 ?>
  
  function pitew ()
  {
@@ -187,7 +181,7 @@ $_poet1 = isset($_GET['poet']) ?
          if(this.responseText == "ok")
 	 {             
              mess.innerHTML = "<i style='display:block;background:rgba(0,200,0,0.1);\
-color:#555;font-size:.55em;padding:.3em'>زۆر سپاس. دوای پێداچوونەوە لەسەر ئاڵەکۆک دادەندرێ.</i>";
+font-size:.55em;padding:.3em'>زۆر سپاس. دوای پێداچوونەوە لەسەر ئاڵەکۆک دادەندرێ.</i>";
              loader.style.display = "none";
              poet.value = poetDesc.value = "";
              
@@ -229,7 +223,6 @@ color:#555;font-size:.55em;padding:.3em'>زۆر سپاس. دوای پێداچو�
      });
  });
 </script>
-
 <?php
 include_once(ABSPATH . "script/php/footer.php");
 ?>

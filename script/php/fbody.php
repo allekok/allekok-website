@@ -31,4 +31,14 @@ require(ABSPATH.'script/php/condb.php');
     }
     mysqli_close($conn);
     ?>
+    <div class='fbody-nav'>
+	<?php 
+	if(isset($_GET['new']))
+	    echo '<a href="/">شاعیرانی کۆچ‌کردوو</a>';
+	else
+	    echo '<a href="/?new">شاعیرانی نوێ</a>';
+	
+	echo '<a href="/poet:73">بەیتی کوردی</a>';
+	?>
+    </div>
 </div>
