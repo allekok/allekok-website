@@ -206,7 +206,7 @@ include(ABSPATH . 'script/php/header.php');
     </script>
 
     <h1 class='color-blue'
-	style='font-size:1em;text-align:right'>
+	       style='font-size:1em;text-align:right'>
 	پرسیار و وەڵام
     </h1>
     <div style='padding-right:1em;text-align:right'>
