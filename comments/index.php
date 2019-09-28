@@ -14,9 +14,16 @@ include(ABSPATH . "script/php/header.php");
 $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
      $_GET['n'] : 20;
 ?>
+<style>
+ .tmi-news
+ {
+     padding:0 .6em;
+     font-size:1.1em;
+ }
+</style>
 <div id="poets">
     <h1 class="color-blue"
-	style="font-size:1em;text-align:right">
+	       style="font-size:1em;text-align:right">
         بیر و ڕاکان
     </h1>
     <div class="tools-menu" style="font-size:.6em;padding-right:2em;margin-bottom:1em">
@@ -30,16 +37,12 @@ $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
 		{
 		    foreach($all as $o)
 		    {
+			$_ = num_convert($o, 'en', 'ckb');
+			
 			if($o == $sel)
-			{
-			    $_ = num_convert($o, 'en', 'ckb');
 			    echo "<span class='color-blue tmi-news'>{$_}</span>";
-			}
 			else
-			{
-			    $_ = num_convert($o, 'en', 'ckb');
 			    echo "<a href='?n=$o' class='tmi-news'>{$_}</a>";
-			}
 		    }
 		}
 

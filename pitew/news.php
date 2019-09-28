@@ -41,16 +41,12 @@ $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
 		    {
 			foreach($all as $o)
 			{
+			    $_ = num_convert($o, 'en', 'ckb');
+			    
 			    if($o == $sel)
-			    {
-				$_ = num_convert($o, 'en', 'ckb');
 				echo "<span class='color-blue tmi-news'>{$_}</span>";
-			    }
 			    else
-			    {
-				$_ = num_convert($o, 'en', 'ckb');
 				echo "<a href='?n=$o' class='tmi-news'>{$_}</a>";
-			    }
 			}
 		    }
 
