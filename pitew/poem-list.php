@@ -16,6 +16,9 @@ $t_desc = "";
 
 include(ABSPATH . 'script/php/header.php');
 ?>
+<style>
+ .pmlist-container section{vertical-align:top;padding:.2em 1em;font-size:.55em;text-align:right}
+</style>
 <div id="poets">
     <div id='adrs'>
 	<a href="first.php">

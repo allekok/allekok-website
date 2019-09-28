@@ -12,6 +12,18 @@ include(ABSPATH . "script/php/header.php");
 $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
      $_GET['n'] : 15; /* Number of poems */
 ?>
+<style>
+ .link-news {
+     display:block;
+     border-bottom:0;
+     padding:0;margin:0
+ }
+ .tmi-news
+ {
+     padding:0 .6em;
+     font-size:1.1em;
+ }
+</style>
 <div id="poets" style="text-align:right">
     <h1 class="color-blue" style="font-size:1em;
 	       text-align:right">
@@ -24,26 +36,26 @@ $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
 		    ئەژمار:
 		</div>
 		<div>
-		<?php 
-		function print_tools_menu ($all, $sel)
-		{
-		    foreach($all as $o)
+		    <?php 
+		    function print_tools_menu ($all, $sel)
 		    {
-			if($o == $sel)
+			foreach($all as $o)
 			{
-			    $_ = num_convert($o, 'en', 'ckb');
-			    echo "<span class='color-blue tmi-news'>{$_}</span>";
-			}
-			else
-			{
-			    $_ = num_convert($o, 'en', 'ckb');
-			    echo "<a href='?n=$o' class='tmi-news'>{$_}</a>";
+			    if($o == $sel)
+			    {
+				$_ = num_convert($o, 'en', 'ckb');
+				echo "<span class='color-blue tmi-news'>{$_}</span>";
+			    }
+			    else
+			    {
+				$_ = num_convert($o, 'en', 'ckb');
+				echo "<a href='?n=$o' class='tmi-news'>{$_}</a>";
+			    }
 			}
 		    }
-		}
 
-		print_tools_menu(['50','30','15'], $n);
-		?>
+		    print_tools_menu(['50','30','15'], $n);
+		    ?>
 		</div>
 	    </div>
 	</div>

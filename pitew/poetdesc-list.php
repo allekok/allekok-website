@@ -16,6 +16,35 @@ $_poet = isset($_GET['poet']) ?
 
 include(ABSPATH . 'script/php/header.php');
 ?>
+<style>
+ #poetdesc-list-main .epld {
+     padding: 1em;
+     font-size: .6em;
+     text-align: right;
+ }
+ #poetdesc-list-main .epld-title {
+     padding: 0 1em;
+     border-right: 2px solid;
+     font-size: 1.05em;
+ }
+ #poetdesc-list-main .epld-body {
+     padding:1em;
+     text-align:justify;
+     word-wrap:break-word;
+ }
+ #poetdesc-list-main #num_pdl {
+     font-size: .55em;
+     display: inline-block;
+     padding: .5em 1em;
+ }
+ #poetdesc-list-main .epld-expand {
+     font-size:1.1em;
+     padding:.5em 1.5em .5em .5em;
+ }
+ #poetdesc-list-main .epld-expand .material-icons {
+     font-size:1.1em;
+ }
+</style>
 <div id="poets">    
     <div id='adrs'>
 	<a href="first.php">

@@ -15,6 +15,12 @@ $_name1 = isset($_GET['name']) ?
 $_poet1 = isset($_GET['poet']) ?
 	  filter_var($_GET['poet'], FILTER_SANITIZE_STRING) : '';
 ?>
+<style>
+ .input-label-box-edit-poet label {
+     font-size:.8em;
+     margin:auto .5em;
+ }
+</style>
 <div id="poets">
     <div id='adrs'>
 	<a href="first.php">

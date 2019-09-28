@@ -10,6 +10,27 @@ $t_desc = "";
 
 include(ABSPATH . "script/php/header.php");
 ?>
+<style>
+ #contributions div small {
+     display:block;
+     padding-right:2em;
+ }
+ #contributions div .stats-min {
+     display:block;
+     font-size:.85em;
+ }
+ #contributions div .stats-min .material-icons {
+     font-size:1.1em;
+     padding:0 0 0 .2em;
+     display:inline-block;
+ }
+ #contributions .epld-expand {
+     font-size:1em;
+     padding:0 .5em;
+     display:block;
+     margin-right:1em
+ }
+</style>
 <div id="poets" style="text-align:right">
     <div id='adrs'>
 	<a href="/pitew/first.php">
@@ -65,7 +86,7 @@ include(ABSPATH . "script/php/header.php");
 	    echo "</a></h3>";
 	    $contributions_poems = open($E[2]);
 	    echo '<small><i class=\'stats-min\'>';
-	    echo "<a href='{$E[2]}' title='وەشانی plain/text'
+	    echo "<a target='_blank' href='{$E[2]}' title='وەشانی plain/text'
 ><i class='material-icons'>insert_drive_file</i></a>";
 	    echo 'ئەژمار: ';
 	    echo num_convert(
@@ -82,8 +103,8 @@ include(ABSPATH . "script/php/header.php");
 		$n++;
 	    }
 	    echo '</small>';
-	    echo "</div><div><button class='epld-expand' 
-onclick='expand(this)'><i class='material-icons' 
+	    echo "</div><div><button class='epld-expand'
+><i class='material-icons' 
 style='font-size:inherit;display:inline-block'
 >keyboard_arrow_down</i></button></div>";
 	    echo '</div>';
@@ -112,6 +133,10 @@ style='font-size:inherit;display:inline-block'\
 >keyboard_arrow_up</i>";	     
      }
  }
+ document.querySelectorAll('.epld-expand').forEach(function (o)
+ {
+     o.onclick = function () {expand(o)}
+ });
 </script>
 <?php
 include_once(ABSPATH."script/php/footer.php");

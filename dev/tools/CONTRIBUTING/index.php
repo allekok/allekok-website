@@ -10,6 +10,46 @@ $t_desc = "";
 
 include(ABSPATH . 'script/php/header.php');
 ?>
+<style>
+ #main-contributing code {
+     direction:ltr;
+     text-align:left;
+     font-family:'kurd', monospace;
+     padding:0 .3em;
+     margin:0 .3em;
+ }
+ #main-contributing code.bash {
+     display:block;
+     border-left:2px solid;
+     word-wrap:break-word;
+     text-indent:0;
+     padding:1em;
+     margin:.5em 0;
+ }
+ #main-contributing pre {
+     overflow:auto;
+ }
+ #main-contributing pre code {
+     overflow:auto;
+     font-size:.85em;
+     word-spacing:5px;
+ }
+ #main-contributing ul, ol {
+     padding-right:2em;
+     list-style-type:arabic-indic;
+     font-size:.9em
+ }
+ #main-contributing img {
+     display:block;
+     margin: 1em auto;
+     max-width:100%;
+     cursor:pointer;
+ }
+ #main-contributing .material-icons {
+     display: inline;
+     font-size: 1.5em;
+ }
+</style>
 <div id="poets" style="text-align:right">
     <h1 style="font-size:1em">
         <i class="color-black">

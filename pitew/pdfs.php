@@ -10,6 +10,41 @@ $t_desc = "";
 
 include(ABSPATH . 'script/php/header.php');
 ?>
+<style>
+ #pdfs-main .eee {
+     text-align:right;
+     font-size:.6em;
+     padding:.2em 1em;
+ }
+ #pdfs-main .eee-nfo {
+     font-size:.65em;
+     font-family:monospace;
+ }
+ #pdfs-main .eee span {
+     font-size:.85em;
+ }
+ #pdfs-main .eee-desc {
+     font-size:.85em;
+     padding:0 1em 1em;
+     margin-right:1em;
+     display:none;
+ }
+ #pdfs-main .eee .material-icons {
+     vertical-align: middle;
+     font-size: 1.5em;
+     margin-right: .1em;
+     cursor:pointer;
+ }
+ #pdfs-main .eee .material-icons:hover {
+     opacity:.7;
+ }
+ #pdfs-search #filter-txt {
+     max-width: 1200px;
+     width: 100%;
+     font-size: .65em;
+     margin-bottom:.5em;
+ }
+</style>
 <div id="poets" style="max-width:1000px">
     
     <div id='adrs'>

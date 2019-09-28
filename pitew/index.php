@@ -17,7 +17,12 @@ $_poet1 = isset($_GET['poet']) ?
 $_book1 = isset($_GET['book']) ?
 	  filter_var($_GET['book'], FILTER_SANITIZE_STRING) : '';
 ?>
-
+<style>
+ .input-label-box-index label {
+     font-size:.7em;
+     margin:auto .5em;
+ }
+</style>
 <div id="poets">
     <div id='adrs'>
 	<a href="first.php">

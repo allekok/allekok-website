@@ -10,6 +10,34 @@ $t_desc = "";
 
 include(ABSPATH . 'script/php/header.php');
 ?>
+<style>
+ .code-dev {
+     direction:ltr;
+     text-align:left;
+     display:block;
+     border-left:2px solid;
+     word-wrap:break-word;
+     text-indent:0;
+     padding:1em;
+     font-family:'kurd', monospace;
+     margin:.5em 0;
+ }
+ .h2-dev {
+     text-align:right;
+     text-indent:1em;
+     font-size:.85em;
+     padding-top:1em;
+ }
+ .p-dev {
+     text-indent:2em; padding:1em 0;font-size:.6em;
+ }
+ .a-dev {
+     margin:0;
+ }
+ .back-eee-dev {
+     padding:0 .5em;
+ }
+</style>
 <div id="poets">
     <h1 style="font-size:1em;text-align:right">
         <i class="color-black">
@@ -206,7 +234,7 @@ include(ABSPATH . 'script/php/header.php');
     </script>
 
     <h1 class='color-blue'
-	       style='font-size:1em;text-align:right'>
+	style='font-size:1em;text-align:right'>
 	پرسیار و وەڵام
     </h1>
     <div style='padding-right:1em;text-align:right'>

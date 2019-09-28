@@ -45,7 +45,12 @@ $t_desc = "";
 
 include(ABSPATH . 'script/php/header.php');
 ?>
-
+<style>
+ .input-label-box-poet-image label {
+     font-size:1em;
+     margin:auto .5em;
+ }
+</style>
 <div id="poets">
     <div id='adrs'>
 	<a href="first.php">
@@ -81,10 +86,10 @@ include(ABSPATH . 'script/php/header.php');
 	</div>
         
         <button class='file-btn' type="button"
-		onclick="document.querySelector('input[name=profile]').click()"
-		style="display:inline-block;font-size:1.3em;padding:1em;
+		       onclick="document.querySelector('input[name=profile]').click()"
+		       style="display:inline-block;font-size:1.3em;padding:1em;
 		       border:2px solid;border-radius:1em;margin:.5em 0"
-		id='upldlikebtn'>
+		       id='upldlikebtn'>
             هەڵبژاردنی وێنە
         </button><br>
         <div style="padding-top:.2em;max-width:350px;margin:auto;
@@ -102,7 +107,7 @@ include(ABSPATH . 'script/php/header.php');
 	       name="profile" accept="image/png, image/jpeg">
         <div id="frmUploadMess"></div>
         <button class='button bth' type="submit"
-		       style="margin-top:1em;font-size:1em;
+		style="margin-top:1em;font-size:1em;
 		       padding:.8em 2.5em;border-radius:1em"
 	>ناردن</button>
     </form>

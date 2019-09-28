@@ -10,6 +10,16 @@ $t_desc = "";
 
 include(ABSPATH . "script/php/header.php");
 ?>
+<style>
+ .thanks-main p {
+     font-size:.55em;
+     text-align:justify;
+     padding:.4em 1em .4em .5em;
+ }
+ .thanks-main a, .thanks-main i {
+     padding:0 .6em;
+ }
+</style>
 <div id="poets" class="thanks-main">
     <h1 class="color-blue" style="font-size:1em;
 	       text-align:right">

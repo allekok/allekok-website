@@ -10,6 +10,9 @@ $t_desc = "";
 
 include(ABSPATH . 'script/php/header.php');
 ?>
+<style>
+ .pitewsec-first small{display:block;text-align:justify}
+</style>
 <div id="poets" style="text-align:right">
     <h1 class="color-blue" style="text-align:right;
 	       font-size:1em">

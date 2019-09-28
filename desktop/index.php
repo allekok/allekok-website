@@ -10,6 +10,11 @@ $t_desc = "";
 
 include(ABSPATH . "script/php/header.php");
 ?>
+<style>
+ .pitewsec-desktop {
+     font-size:1.2em
+ }
+</style>
 <div id="poets" style="text-align:right">
     <h1 class="color-blue" style="font-size:1em">
         دابەزاندنی بەرنامەی ئاڵەکۆک
@@ -72,68 +77,68 @@ include(ABSPATH . "script/php/header.php");
 	بیر و ڕاکان
     </h1>
     <div style="padding-right:1em">
-            <form id="frmQA" action="save.php" method="POST">
-		<textarea id="QAtxt" class="QAtxt-desktop"
-			  placeholder="بیروڕای خۆتان سەبارەت بە بەرنامەی دێسکتاپی ئاڵەکۆک لێرە بنووسن."
-		></textarea>
-		<div id="QAres"></div>
-		<button type="submit" class='button btn-desktop'>ناردن</button>
-            </form>
-            
-            <div>
-		<?php
-		if(@filesize("QA.txt") > 0) {
-                    
-                    $f = fopen("QA.txt", "r");
-                    $cc = fread($f, filesize("QA.txt"));
-                    $cc = array_reverse(explode("\nend\n", $cc));
-                    
-                    foreach($cc as $c) {
-			if(!empty($c)) {
-			    $c = preg_replace(
-				["/\[code\]\n*/","/\n*\[\/code\]/"],
-				["<code>","</code>"], $c);
-                            $c = str_replace(["\n"], ["<br>"], $c);
-                            echo "<div class='comment'><div class='comm-body'>".$c."</div></div>";
-			}
-                    }
-                    
-                    fclose($f);
-		}
-		
-		?>
-            </div>
-            
-            <script>
-             
-             document.querySelector("#frmQA").addEventListener("submit", function(e) {
-		 e.preventDefault();
-		 
-		 var txt = document.querySelector("#QAtxt");
-		 var t = document.querySelector("#QAres");
-		 var loader = "<div class='loader'></div>";
-		 
-		 if(txt.value == "") {
-                     txt.focus();
-                     return;
-		 }
-		 
-		 t.innerHTML = loader;
-		 
-		 var x = new XMLHttpRequest();
-		 x.onload = function() {
-                     if(this.responseText == "1") {
-			 t.innerHTML = "<span style='background:rgba(0,255,0,.08);color:green;display:block;padding:1em;font-size:.6em'>زۆرسپاس بۆ دەربڕینی بیروڕاتان.</span>";
-			 txt.value = "";
-                     }
-		 }
-		 x.open("POST", "save.php");
-		 x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		 x.send(`txt=${encodeURIComponent(txt.value)}`);
-             });
-            </script>
-	</div>
+        <form id="frmQA" action="save.php" method="POST">
+	    <textarea id="QAtxt" class="QAtxt-desktop"
+		      placeholder="بیروڕای خۆتان سەبارەت بە بەرنامەی دێسکتاپی ئاڵەکۆک لێرە بنووسن."
+	    ></textarea>
+	    <div id="QAres"></div>
+	    <button type="submit" class='button btn-desktop'>ناردن</button>
+        </form>
+        
+        <div>
+	    <?php
+	    if(@filesize("QA.txt") > 0) {
+                
+                $f = fopen("QA.txt", "r");
+                $cc = fread($f, filesize("QA.txt"));
+                $cc = array_reverse(explode("\nend\n", $cc));
+                
+                foreach($cc as $c) {
+		    if(!empty($c)) {
+			$c = preg_replace(
+			    ["/\[code\]\n*/","/\n*\[\/code\]/"],
+			    ["<code>","</code>"], $c);
+                        $c = str_replace(["\n"], ["<br>"], $c);
+                        echo "<div class='comment'><div class='comm-body'>".$c."</div></div>";
+		    }
+                }
+                
+                fclose($f);
+	    }
+	    
+	    ?>
+        </div>
+        
+        <script>
+         
+         document.querySelector("#frmQA").addEventListener("submit", function(e) {
+	     e.preventDefault();
+	     
+	     var txt = document.querySelector("#QAtxt");
+	     var t = document.querySelector("#QAres");
+	     var loader = "<div class='loader'></div>";
+	     
+	     if(txt.value == "") {
+                 txt.focus();
+                 return;
+	     }
+	     
+	     t.innerHTML = loader;
+	     
+	     var x = new XMLHttpRequest();
+	     x.onload = function() {
+                 if(this.responseText == "1") {
+		     t.innerHTML = "<span style='background:rgba(0,255,0,.08);color:green;display:block;padding:1em;font-size:.6em'>زۆرسپاس بۆ دەربڕینی بیروڕاتان.</span>";
+		     txt.value = "";
+                 }
+	     }
+	     x.open("POST", "save.php");
+	     x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	     x.send(`txt=${encodeURIComponent(txt.value)}`);
+         });
+        </script>
     </div>
+</div>
 </div>
 
 <?php

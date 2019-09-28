@@ -10,6 +10,42 @@ $t_desc = "";
 
 include(ABSPATH . "script/php/header.php");
 ?>
+<style>
+ #set_theme, #user_codes
+ {
+     text-align:right;
+     font-size:.7em;
+     padding:.3em 1em;
+ }
+ #set_theme button
+ {
+     font-size:inherit;
+     margin:0 1em 0 0;
+ }
+ #user_codes small
+ {
+     font-family:'kurd',monospace;
+     font-size:.75em;
+     text-indent:1em;
+     display:block;
+ }
+ #user_codes_text
+ {
+     direction:ltr;
+     text-align:left;
+     width:100%;
+     font-family:'kurd',monospace;
+     font-size:.6em;
+     height:20em;
+ }
+ #user_codes button
+ {
+     display:block;
+     margin:auto;
+     padding:1em;
+     font-size:.8em;
+ }
+</style>
 <div id="poets" style="text-align:right">
     <h1 class="color-blue" style="font-size:1em">
         گۆڕینی شێوەی ئاڵەکۆک

@@ -1,3 +1,21 @@
+<style>
+ .search-main .dropbtn {
+     cursor:pointer;
+     padding:.5em 1em;
+     vertical-align:middle;
+ }
+ .search-main .dropdown {
+     position:relative;
+     display:inline-block;
+ }
+ .search-main .dropdown-content a {
+     padding:0 1em;
+     display:block;
+     overflow:hidden;
+     white-space:nowrap;
+     text-overflow:ellipsis;
+ }
+</style>
 <div id="poets" class="search-main">
     <div>
 	<form id="search-form" action="/" method="GET"><input type="text" id="search-key" class='search-key-php' name="q" placeholder="گەڕان بۆ ..." value="<?php echo htmlspecialchars($_GET['q']); ?>"><button type="submit" id="search-btn" class='material-icons'>search</button></form>

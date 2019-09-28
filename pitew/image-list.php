@@ -19,6 +19,11 @@ $poet = isset($_GET['poet']) ?
 	filter_var($_GET['poet'],FILTER_SANITIZE_STRING) :
 	"";
 ?>
+<style>
+ .imglist-con{display:flex;text-align:right}
+ .imglist{vertical-align:top;padding:.2em 1em;
+     font-size:.55em;width:100%}
+</style>
 <div id="poets">  
     <div id='adrs'>
 	<a href="first.php">
