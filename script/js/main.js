@@ -760,8 +760,7 @@ var ajax = ajax || function (parent='body', target='#poets')
 	  loading = document.getElementById('main-loader');
     
     p.querySelectorAll('a').forEach(function (o) {
-	if(o.getAttribute('target') != '_blank' ||
-	   o.getAttribute('ajax') != 'no')
+	if(o.getAttribute('target') != '_blank')
 	{
 	    o.onclick = function (e) {
 		const href = o.getAttribute('href');
