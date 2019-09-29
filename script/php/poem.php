@@ -545,6 +545,7 @@ address='$address' and blocked=0";
 		  poem_dict_el.style.display = 'none';
 		  hon_el.style.width = '';
 	      });
+     
      try
      {
 	 document.getElementById("like-icon").
@@ -574,7 +575,7 @@ address='$address' and blocked=0";
 		      save_fs("bigger")
 		  });
      } catch(e) {}
-
+     
      <?php
      if(!$no_foot)
 	 echo "window.addEventListener('load', function () { ";

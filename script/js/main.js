@@ -805,3 +805,33 @@ window.onpopstate = function ()
 	loading.style.display = 'none';
     });
 }
+
+try
+{
+    document.getElementById("like-icon").
+	addEventListener("click", Liked);
+} catch(e) {}
+
+try
+{
+    document.getElementById("copy-sec").
+	addEventListener("click", copyPoem);
+} catch(e) {}
+
+try
+{
+    document.querySelector(".smaller").
+	addEventListener("click", function()
+			 {
+			     save_fs("smaller")
+			 });
+} catch(e) {}
+
+try
+{
+    document.querySelector(".bigger").
+	addEventListener("click", function()
+			 {
+			     save_fs("bigger")
+			 });
+} catch(e) {}
