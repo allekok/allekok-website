@@ -737,18 +737,30 @@ var concat_url_query = concat_url_query || function (url, q)
     return url + '?' + q;	
 }
 
+var match_all = match_all || function (str, needle, n=-1)
+{
+    let res = [];
+    let p = 0, r = -1;
+    while(-1 !== (r=str.indexOf(needle, p)))
+    {
+	if(n == 0) break;
+	n--;
+	
+	res.push(r);
+	p = r+1;
+    }
+    return res || false;
+}
+
 var eval_js = eval_js || function (str)
 {
-    const scripts_beg = str.matchAll('<script>'),
-	  scripts_end = str.matchAll('</script>');
-    while(true)
+    const scripts_beg = match_all(str, '<script>'),
+	  scripts_end = match_all(str, '</script>');
+    for(const i in scripts_beg)
     {
-	const s_b = scripts_beg.next();
-	if(s_b.done) break;
-	
-	const s_e = scripts_end.next();
-	const js = str.substring(s_b.value.index+8,
-				 s_e.value.index);
+	const s_b = scripts_beg[i];
+	const s_e = scripts_end[i];
+	const js = str.substring(s_b+8, s_e);
 	eval(js);
     }
 }
