@@ -93,12 +93,14 @@ if(!$no_head) {
 	    </div>
 <?php
 } // no-head
-else
-{
 ?>
-    <script>
-     document.title = `<?php echo html_entity_decode($title); ?>`;
-    </script>
-<?php
-}
-?>
+<main id="MAIN">
+    <?php
+    if($no_head) {
+    ?>
+	<script>
+	 document.title = `<?php echo html_entity_decode($title); ?>`;
+	</script>
+    <?php
+    }
+    ?>

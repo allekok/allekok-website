@@ -1,3 +1,4 @@
+</main> <?php /* header.php */ ?>
 <?php
 $no_foot = isset($_GET['nofoot']);
 if(!$no_foot) {
@@ -10,7 +11,7 @@ if(!$no_foot) {
 	   >arrow_upward</i></a>
     </footer>
     <div class="loader-round" id="main-loader"></div>
-    <script defer src='/script/js/main.js?v46'></script>
+    <script defer src='/script/js/main.js?v47'></script>
     <script>	 
      /* Users can evaluate their own code. */
      const userCodes = localStorage.getItem('user-codes') || false;
@@ -28,3 +29,4 @@ if(!$no_foot) {
 <?php
 } // no-foot
 ?>
+

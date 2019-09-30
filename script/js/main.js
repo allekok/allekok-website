@@ -765,7 +765,7 @@ var eval_js = eval_js || function (str)
     }
 }
 
-var ajax = ajax || function (parent='body', target='#poets')
+var ajax = ajax || function (parent='body', target='#MAIN')
 {
     const t = document.querySelector(target),
 	  p = document.querySelector(parent),
@@ -803,7 +803,7 @@ ajax();
 window.onpopstate = function ()
 {
     const loading = document.getElementById('main-loader'),
-	  t = document.querySelector('#poets'),
+	  t = document.querySelector('#MAIN'),
 	  S = window.history.state;
     if(!S) return;
     const url = S.url;
