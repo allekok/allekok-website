@@ -37,8 +37,8 @@ poets WHERE len>=$s_len";
     $query = mysqli_query($sql_connection,$q);
     while($poet = mysqli_fetch_assoc($query))
     {
-	if(false !== strpos($poet['takh'],$s_sanitized) or
-	    false !== strpos($poet['profname'],$s_sanitized))
+	if(false !== @strpos($poet['takh'],$s_sanitized) or
+	    false !== @strpos($poet['profname'],$s_sanitized))
 	{
 	    $poet_image = get_poet_image($poet['id'], true);
 	    $res_poets_html .= "<section><a href='/poet:{$poet['id']}'
@@ -54,8 +54,8 @@ poets WHERE len>=$s_len";
     {
 	foreach($poets as $i=>$poet)
 	{
-	    if(false !== strpos($poet['name'],$s_sanitized) or
-		false !== strpos($poet['hdesc'],$s_sanitized))
+	    if(false !== @strpos($poet['name'],$s_sanitized) or
+		false !== @strpos($poet['hdesc'],$s_sanitized))
 	    {
 		$poet_image = get_poet_image($poet['id'], true);
 		$res_poets_html .= "<section><a href='/poet:{$poet['id']}'
@@ -70,14 +70,14 @@ poets WHERE len>=$s_len";
 	foreach($poets as $poet)
 	{
 	    if($poet != [] and (
-		false !== strpos(san_data_more($poet['takh']),
-				 $s_sanitized_more) or
-		false !== strpos(san_data_more($poet['profname']),
-				 $s_sanitized_more) or
-		false !== strpos(san_data_more($poet['name']),
-				 $s_sanitized_more) or
-		false !== strpos(san_data_more($poet['hdesc']),
-				 $s_sanitized_more)))
+		false !== @strpos(san_data_more($poet['takh']),
+				  $s_sanitized_more) or
+		false !== @strpos(san_data_more($poet['profname']),
+				  $s_sanitized_more) or
+		false !== @strpos(san_data_more($poet['name']),
+				  $s_sanitized_more) or
+		false !== @strpos(san_data_more($poet['hdesc']),
+				  $s_sanitized_more)))
 	    {
 		$poet_image = get_poet_image($poet['id'], true);
 		$res_poets_html .= "<section><a href='/poet:{$poet['id']}'
@@ -94,7 +94,7 @@ if($books_max !== 0)
     $query = mysqli_query($sql_connection, $q);
     while($book = mysqli_fetch_assoc($query))
     {
-	if(false !== strpos($book['book'],$s_sanitized))
+	if(false !== @strpos($book['book'],$s_sanitized))
 	{
 	    $res_books_html .= "<a 
 href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
@@ -110,7 +110,7 @@ href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
     {
 	foreach($books as $i=>$book)
 	{
-	    if(false !== strpos($book['book_desc'],$s_sanitized))
+	    if(false !== @strpos($book['book_desc'],$s_sanitized))
 	    {
 		$res_books_html .= "<a 
 href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
@@ -125,10 +125,10 @@ href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
 	foreach($books as $book)
 	{
 	    if($book != [] and (
-		false !== strpos(san_data_more($book['book']),
-				 $s_sanitized_more) or 
-		false !== strpos(san_data_more($book['book_desc']),
-				 $s_sanitized_more)))
+		false !== @strpos(san_data_more($book['book']),
+				  $s_sanitized_more) or 
+		false !== @strpos(san_data_more($book['book_desc']),
+				  $s_sanitized_more)))
 	    {
 		$res_books_html .= "<a 
 href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
@@ -153,7 +153,7 @@ poem,poem_true,rbook,rname,rtakh FROM poems WHERE len>=$s_len $selected_poet_que
     {
 	foreach($poems as $i=>$poem)
 	{
-	    if(false !== strpos($poem['name'],$s_sanitized))
+	    if(false !== @strpos($poem['name'],$s_sanitized))
 	    {
 		$res_poems_html .= "<div style='display:flex'><button 
 class='material-icons' style='padding:0 0 0 .5em;
@@ -172,8 +172,8 @@ font-size:.8em' onclick='show_summary_search(this)' type='button'
 	foreach($poems as $i=>$poem)
 	{
 	    if($poem!=[] and (
-		false !== strpos($poem['hdesc'],$s_sanitized) or
-		false !== strpos($poem['poem'],$s_sanitized)))
+		false !== @strpos($poem['hdesc'],$s_sanitized) or
+		false !== @strpos($poem['poem'],$s_sanitized)))
 	    {
 		$res_poems_context_html .= "<div style='display:flex'><button 
 class='material-icons' style='padding:0 0 0 .5em;
@@ -192,8 +192,8 @@ font-size:.8em' onclick='show_summary_search(this)' type='button'
 	foreach($poems as $i=>$poem)
 	{
 	    if($poem!=[] and
-		false !== strpos(san_data_more($poem['name']),
-				 $s_sanitized_more))
+		false !== @strpos(san_data_more($poem['name']),
+				  $s_sanitized_more))
 	    {
 		$res_poems_html .= "<div style='display:flex'><button 
 class='material-icons' style='padding:0 0 0 .5em;
@@ -212,10 +212,10 @@ font-size:.8em' onclick='show_summary_search(this)' type='button'
 	foreach($poems as $poem)
 	{
 	    if($poem!=[] and (
-		false !== strpos(san_data_more($poem['hdesc']),
-				 $s_sanitized_more) or
-		false !== strpos($poem['poem_true'],
-				 $s_sanitized_more)))
+		false !== @strpos(san_data_more($poem['hdesc']),
+				  $s_sanitized_more) or
+		false !== @strpos($poem['poem_true'],
+				  $s_sanitized_more)))
 	    {
 		$res_poems_context_html .= "<div style='display:flex'><button 
 class='material-icons' style='padding:0 0 0 .5em;
