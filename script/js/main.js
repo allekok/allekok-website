@@ -813,6 +813,7 @@ window.onpopstate = function ()
     
     getUrl(url, function (response) {
 	t.outerHTML = response;
+	eval_js(response);
 	ajax();
 	loading.style.display = 'none';
     });
