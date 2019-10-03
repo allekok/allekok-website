@@ -34,8 +34,8 @@ poets WHERE len>=$s_len";
     $query = mysqli_query($sql_connection,$q);    
     while($poet = mysqli_fetch_assoc($query))
     {
-	if(false !== strpos($poet['takh'],$s_sanitized) or
-	    false !== strpos($poet['profname'],$s_sanitized))
+	if(false !== @strpos($poet['takh'],$s_sanitized) or
+	    false !== @strpos($poet['profname'],$s_sanitized))
 	{
 	    $poet_image = get_poet_image($poet['id'], true);
 	    $res_poets_html .= "<section><a href='/poet:{$poet['id']}'
@@ -51,8 +51,8 @@ poets WHERE len>=$s_len";
     {
 	foreach($poets as $poet)
 	{
-	    if(false !== strpos($poet['name'],$s_sanitized) or
-		false !== strpos($poet['hdesc'],$s_sanitized))
+	    if(false !== @strpos($poet['name'],$s_sanitized) or
+		false !== @strpos($poet['hdesc'],$s_sanitized))
 	    {
 		$poet_image = get_poet_image($poet['id'], true);
 		$res_poets_html .= "<section><a href='/poet:{$poet['id']}'
@@ -69,7 +69,7 @@ if($books_max !== 0)
     $query = mysqli_query($sql_connection, $q);
     while($book = mysqli_fetch_assoc($query))
     {
-	if(false !== strpos($book['book'],$s_sanitized))
+	if(false !== @strpos($book['book'],$s_sanitized))
 	{
 	    $res_books_html .= "<a 
 href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
@@ -85,7 +85,7 @@ href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
     {
 	foreach($books as $book)
 	{
-	    if(false !== strpos($book['book_desc'],$s_sanitized))
+	    if(false !== @strpos($book['book_desc'],$s_sanitized))
 	    {
 		$res_books_html .= "<a 
 href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
@@ -102,7 +102,7 @@ poem,rbook,rname,rtakh FROM poems WHERE 1 $selected_poet_query";
     $query = mysqli_query($sql_connection,$q);
     while($poem = mysqli_fetch_assoc($query))
     {
-	if(false !== strpos($poem['name'],$s_sanitized))
+	if(false !== @strpos($poem['name'],$s_sanitized))
 	{
 	    $res_poems_html .= "<div style='display:flex'><button 
 class='material-icons' style='padding:0 0 0 .5em;
@@ -121,8 +121,8 @@ font-size:.8em' onclick='show_summary_search(this)' type='button'
     {
 	foreach($poems as $poem)
 	{
-	    if(false !== strpos($poem['hdesc'],$s_sanitized) or
-		false !== strpos($poem['poem'],$s_sanitized))
+	    if(false !== @strpos($poem['hdesc'],$s_sanitized) or
+		false !== @strpos($poem['poem'],$s_sanitized))
 	    {
 		$res_poems_context_html .= "<div style='display:flex'><button 
 class='material-icons' style='padding:0 0 0 .5em;
