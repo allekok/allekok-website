@@ -1,36 +1,28 @@
 * Allekok.com system specifications
-** Resources
-*** Code base
-    Languages:
-- PHP
-- HTML
-- CSS
-- JAVASCRIPT
-- Shell
-**** Required PHP Libraries:
-- JSON
-- MBString
-- MySQLi
-**** No 3rd party Javascript/CSS libraries.
-*** Images
-- Icons: [[./favicon.ico][favicon.ico]]
-- Logos: [[./logo][./logo]]
-- Poets: [[./style/img/poets/profile/][profile_(Poet-ID).jpg]]
-- Sent by users: [[./style/img/poets/new][new/*.(jpeg,png)]]
-*** Texts
-- Lists: [[./pitew/res/list.txt][./pitew/res/list.txt]] , [[./style/img/poets/new/list.txt][./style/img/poets/new/list.txt]]
-- Infos written by users: [[./pitew/res/][./pitew/res/*.txt]]
-- Date and time of last poem updates: [[./last-update.txt][last-update.txt]]
-- A detailed list of pdfs: [[./pitew/pdfs.txt][pdfs.txt]]
-- A list of recently added/edited poems: [[./pitew/news.txt][news.txt]]
-- Update-version(s), Update-log(s): [[./desktop/update/][update-*.txt]]
- - Desc: Version updates for allekok-desktop and allekok-android clients.
-- Q&A Text Files: QA.txt (There are many, all over the repository)
-- Comments on 'allekok': [[./about/comments.txt][./about/comments.txt]]
-*** Databases
-    MySQL databases
-**** Database: index
-***** Table: auth
+** Source code
+    Languages: PHP, HTML, CSS, JS, SHELL
+    /No 3rd party JS/CSS libraries/
+*** PHP
+    Required Libraries: JSON, MBString, MySQLi
+** Images
+*** Icons: [[./favicon][./favicons]]
+*** Logos: [[./logo][./logo]]
+*** Poets: [[./style/img/poets/profile/][./style/img/poets/profile]]
+*** Sent by users: [[./style/img/poets/new][./style/img/poets/new]]
+** Texts
+*** Lists: [[./pitew/res/list.txt][./pitew/res/list.txt]] , [[./style/img/poets/new/list.txt][./style/img/poets/new/list.txt]]
+*** Infos written by users: [[./pitew/res/][./pitew/res/*.txt]]
+*** Date and time of last poem updates: [[./last-update.txt][./last-update.txt]]
+*** A detailed list of pdfs: [[./pitew/pdfs.txt][./pitew/pdfs.txt]]
+*** A list of recently added/edited poems: [[./pitew/news.txt][./pitew/news.txt]]
+*** Update-version(s), Update-log(s): [[./desktop/update/][update-*.txt]]
+    Version update files that notify Allekok apps based on '[[https://github.com/allekok/allekok-client][allekok-client]]'.
+*** Q&A text files: QA.txt (There are many, all over the repository)
+*** User comments on 'allekok.com': [[./about/comments.txt][./about/comments.txt]]
+** Databases
+   MySQL databases
+*** Database: index
+**** Table: auth
       Columns:
 - id
 - name
@@ -41,16 +33,16 @@
 - bksdesc
 - bks_completion
 - kind
-***** Table: tbl(Poet-ID)_(Book-ID)
-      Columns:
+**** Table: tbl(Poet-ID)_(Book-ID)
+     Columns:
 - id
 - name
 - hon
 - hdesc
 - link
 - lang
-***** Table: comments
-      Columns:
+**** Table: comments
+     Columns:
 - id
 - address
 - date
@@ -58,8 +50,8 @@
 - comment
 - read
 - blocked
-***** Table: pitew
-      Columns:
+**** Table: pitew
+     Columns:
 - id
 - contributor
 - email
@@ -71,9 +63,9 @@
 - date
 - status
 - poetDesc
-**** Database: search
-***** Table: poets
-      Columns
+*** Database: search
+**** Table: poets
+     Columns:
 - id
 - name
 - takh
@@ -81,7 +73,7 @@
 - hdesc
 - rtakh
 - len
-***** Table: books
+**** Table: books
       Columns:
 - id
 - book
@@ -91,7 +83,7 @@
 - rbook
 - rtakh
 - len
-***** Table: poems
+**** Table: poems
       Columns:
 - id
 - name
