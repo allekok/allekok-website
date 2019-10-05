@@ -782,7 +782,7 @@ var ajax = ajax || function (parent='body', target='#MAIN')
 		    
 		    loading.style.display = 'block';
 		    
-		    const url = concat_url_query(href, 'nohead&nofoot')
+		    const url = concat_url_query(href, 'nohead&nofoot');
 		    
 		    getUrl(url, function (response) {
 			window.history.pushState({url: url}, '', href);
