@@ -106,10 +106,12 @@ LIKE '{\"status\":1%'";
     </p>
     <p>
         <a href="https://www.kurditgroup.org/"
+	   target='_blank' rel='noopener noreferrer nofollow'
 	   class="link-underline"
 	>کوردئایتیگرووپ</a>
         &rsaquo; بۆ 
         <a href="https://www.kurditgroup.org/fontconvertor"
+	   target='_blank' rel='noopener noreferrer nofollow'
 	   class="link-underline"
 	>ئامێری وەرگێڕی فۆنت</a>
         کە بۆ نووسینەوەی بەشێک لە 
@@ -123,7 +125,7 @@ LIKE '{\"status\":1%'";
         </i>
         &rsaquo; بۆ 
         <a href="/kurdi-nus/kurdi-nus-central-kurdish.html"
-	   class="link-underline"
+	   target="_blank" class="link-underline"
 	>ئامێری پەڵک کوردی‌نووس</a>
         کە بۆ نووسینەوەی بەشێک لە 
         <a href="/poet:85/book:1"
