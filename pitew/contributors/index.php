@@ -98,7 +98,7 @@ include(ABSPATH . "script/php/header.php");
 		if(trim($e[1]) == 'ناشناس' or trim($e[1]) == 'ئاڵەکۆک')
 		    continue;
 		echo '<p>';
-		echo num_convert(($n).'. '.trim($e[1]), 'en', 'ckb');
+		echo num_convert($n, 'en', 'ckb') . '. '.trim($e[1]);
 		echo '</p>';
 		$n++;
 	    }
