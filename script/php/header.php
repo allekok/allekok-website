@@ -52,10 +52,7 @@ if(!$no_head) {
 	    <header>
 		<!-- Title -->
 		<a href='<?php echo _SITE; ?>/'>
-		    <!-- شەڕە، شەڕە، شەڕە -->
-		    <h1 style="color:rgb(200,0,0);
-			       text-shadow:0 0 15px"
-		    ><?php echo _TITLE; ?></h1>
+		    <h1><?php echo _TITLE; ?></h1>
 		</a>
 		    <!-- Search Icon -->
 		    <button id='tS' class='header-icon material-icons'
