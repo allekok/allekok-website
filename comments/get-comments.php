@@ -23,7 +23,7 @@ if($query) {
     $comms = []; // comments
     while($res = mysqli_fetch_assoc($query)) {
         
-        if($res["name"] == "")
+        if(trim($res["name"]) == "")
 	    $res["name"] = "ناشناس";
         
         $res["pt"] = substr($res['address'],strlen("poet:"),strpos($res['address'], "/")-strlen("poet:")); // poet's id from address(poet:{$pt}/...)
