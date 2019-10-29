@@ -8,12 +8,16 @@
      position:relative;
      display:inline-block;
  }
- .search-main .dropdown-content a {
+ .search-main .drp-a {
      padding:0 1em;
      display:block;
      overflow:hidden;
      white-space:nowrap;
      text-overflow:ellipsis;
+     cursor:pointer;
+ }
+ .drp-a:hover {
+     color:<?php echo $_color; ?>;
  }
 </style>
 <div id="poets" class="search-main">
@@ -55,16 +59,16 @@
 		    </button>
 		    <div id="myDropdown" class="dropdown-content">
 			<input type="text" placeholder="گەڕان..." id="myInput">
-			<a href="">
+			<p class='drp-a' href="">
 			    تەواوی شاعیران
-			</a>
+			</p>
 			<?php
 			
 			foreach($os as $o) {
 			    if(@$_selPT == $o['takh']) {
-				echo "<a href='{$o['takh']}' selected='1000'>{$o['takh']}</a>";
+				echo "<p class='drp-a' href='{$o['takh']}' selected='1000'>{$o['takh']}</p>";
 			    } else {
-				echo "<a href='{$o['takh']}'>{$o['takh']}</a>";
+				echo "<p class='drp-a' href='{$o['takh']}'>{$o['takh']}</p>";
 			    }
 			}
 			
@@ -163,7 +167,7 @@
  }
 
  function which_PT_selected() {
-     const dpas = document.querySelectorAll(".dropdown-content a");
+     const dpas = document.querySelectorAll(".drp-a");
      let dpass = [];
      
      for(let i=0; i<dpas.length; i++) {
@@ -272,7 +276,7 @@
      
      toggle_checkbox(document.querySelector("#cb-pm i"), `pt=${pts}&bk=${bks}&pm=${pms_num}&k=${pm_sum}`);
  }
- const dpas = document.querySelectorAll(".dropdown-content a");
+ const dpas = document.querySelectorAll(".drp-a");
  dpas.forEach(function(dpa) {
      dpa.addEventListener("click", function(e) {
 	 e.preventDefault();
@@ -320,7 +324,7 @@
      xmlhttp.send();
  }
  
- document.querySelector("#search-form").addEventListener("submit", function(e) {
+ document.getElementById("search-form").addEventListener("submit", function(e) {
      e.preventDefault();
      if(document.querySelector('.search-key-php').value == "") {
 	 document.querySelector('.search-key-php').focus();
