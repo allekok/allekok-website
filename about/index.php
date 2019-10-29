@@ -56,8 +56,7 @@ include(ABSPATH."script/php/header.php");
 	    ></div>
             <button type="submit"
 		    style="font-size:.7em;
-			  width:50%;
-			  max-width:150px"
+			  padding:.5em 1.5em"
 		    class='button'>ناردن</button>
         </form>
         <?php

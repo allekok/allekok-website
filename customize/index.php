@@ -41,8 +41,8 @@ include(ABSPATH . "script/php/header.php");
  #user_codes button
  {
      display:block;
-     margin:auto;
-     padding:1em;
+     margin:1em auto 0;
+     padding:1em 2em;
      font-size:.8em;
  }
 </style>
@@ -107,9 +107,9 @@ include(ABSPATH . "script/php/header.php");
 	       el = document.getElementById(id);
 	 
 	 if(id == target)
-	     el.className = "button selected";
+	     el.className = "selected";
 	 else
-	     el.className = "button";
+	     el.className = "";
      }
  }
  if(document.cookie)

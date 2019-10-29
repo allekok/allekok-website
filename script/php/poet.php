@@ -13,7 +13,7 @@
 					    ?>'
 	   style="position:absolute;bottom:0;left:0;
 		 padding:.5em .5em 0;font-size:.9em"
-	   class="material-icons button"
+	   class="material-icons"
 	   title="ناردنی وێنە">add_a_photo</a>
     </div>
     <!-- Address bar -->

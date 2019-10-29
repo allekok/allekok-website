@@ -157,7 +157,7 @@ style='display:inline-block'
 	    <i class='material-icons icon-round icon-round-poem'
 	    >compare_arrows</i>
 	    گۆڕینی ئەلفوبێ: 
-	    <button class='button link' type="button"
+	    <button class='link' type="button"
 		    id="convertToLatBtn"
 		    style="font-size:1em;margin-right:.5em;
 			   letter-spacing:.5px"
@@ -175,7 +175,9 @@ style='display:inline-block'
 		دروست کردنی فەرهەنگ بۆ ئەم دەقە
 	    </button>
 	</div>
-	<div style='text-align:center'>
+	<div style='text-align:center;
+		    border-top:1px solid;
+		    padding-top:1em;margin-top:1em'>
 	    <!--
 		 Dictionary lookup form
 	    -->
@@ -192,7 +194,7 @@ style='display:inline-block'
 		</section
 		><section style="margin:auto">
 		    <button type="submit" id="wordBtn"
-			    class='button material-icons'
+			    class='material-icons'
 			    style="font-size:2em;
 				  padding:0 .5em"
 		    >search</button>
@@ -269,7 +271,7 @@ style='display:inline-block'
 			     id="commTxt" name='comment'></textarea>
             <div id="message"></div>
             <button class='button bth' type="submit"
-		    style="font-size:.7em;padding:1em 1.5em"
+		    style="font-size:.7em;padding:.5em 1.5em"
 	    >ناردن</button>
 	</form>
 	<!--

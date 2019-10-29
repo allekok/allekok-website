@@ -102,9 +102,10 @@ $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
 
 	    echo "<div class='comment'><div class='comm-name'
 >".$r['name']."<span 
-style='font-size:.7em'> سەبارەت بە شێعری </span><a class='link-color' 
+style='font-size:.7em'> سەبارەت بە شێعری </span><a
 style='font-size:.75em;padding:0 .3em' 
-href='/".$r['address']."'>".$r['ptn']." &rsaquo; ".$r['pmn']."</a
+href='/".$r['address']."'><i class='color-blue'>".$r['ptn']."</i
+> &rsaquo; <i class='color-blue'>".$r['pmn']."</i></a
 ><span style='font-size:.7em'> نووسیویەتی:</span></div
 ><div class='comm-body'>".$r['comment']."</div><div class='comm-footer'
 >".$r['date']."</div></div>";

@@ -77,7 +77,7 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 	    $rid_k = num_convert($row['id'],'en','ckb');
 	?>
 	    <div class="poem-item">
-		<button class="material-icons button"
+		<button class="material-icons"
 			       style="font-size:1em;
 			       padding:0 0 0 .5em"
 			       type="button"

@@ -355,5 +355,6 @@
      }
      document.getElementById("myDropdown").classList.remove("show");
  });
- search_deep("<?php echo @$_GET['selPT'];?>");
+ 
+ search_deep("<?php echo @$_GET['selPT']; ?>");
 </script>

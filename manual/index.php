@@ -94,31 +94,30 @@ include(ABSPATH . "script/php/header.php");
 	</div>
     </div>
     <script>
-     
-     document.querySelector("#frmQA").addEventListener("submit", function(e) {
+     document.querySelector("#frmQA").addEventListener("submit", function(e)
+     {
          e.preventDefault();
          
-         var txt = document.querySelector("#QAtxt");
-         var t = document.querySelector("#QAres");
-         var loader = "<div class='loader'></div>";
+         const txt = document.querySelector("#QAtxt"),
+               t = document.querySelector("#QAres"),
+	       loader = "<div class='loader'></div>",
+	       x = new XMLHttpRequest();
          
-         if(txt.value == "") {
+         if(txt.value == '')
+	 {
              txt.focus();
              return;
          }
          
          t.innerHTML = loader;
-         
-         var x = new XMLHttpRequest();
-         x.onload = function() {
-             if(this.responseText == "1") {
-                 t.innerHTML = "<span style='background:rgba(0,255,0,.08); color:green;display:block;padding:1em; font-size:.6em;'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
+         postUrl('save.php', `txt=${encodeURIComponent(txt.value)}`, function(response)
+	 {
+             if(response == "1")
+	     {
+                 t.innerHTML = "<i style='background:rgba(0,255,0,.08);color:green;display:block;padding:1em;font-size:.6em'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</i>";
                  txt.value = "";
              }
-         }
-         x.open("POST", "save.php");
-         x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-         x.send(`txt=${encodeURIComponent(txt.value)}`);
+         });
      });
     </script>
 </div>
