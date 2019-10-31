@@ -100,6 +100,8 @@ $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
 	    //poem's name
             $r["pmn"] = mysqli_fetch_assoc($query)["name"];
 
+	    $r['name'] = trim($r['name']) ? $r['name'] : 'ناشناس';
+
 	    echo "<div class='comment'><div class='comm-name'
 >".$r['name']."<span 
 style='font-size:.7em'> سەبارەت بە شێعری </span><a
