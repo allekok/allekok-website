@@ -278,7 +278,7 @@ style='display:inline-block'
 	     Comments
 	-->
 	<div id='hon-comments-body'
-	     style='padding:0 .2em'></div>
+	     style='padding:1em .2em'></div>
     </div>
     <script>
      const pID = <?php echo $info['id']; ?>,
