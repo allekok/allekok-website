@@ -85,10 +85,10 @@ include(ABSPATH . 'script/php/header.php');
 		   placeholder="نێوی شاعیر *">
 	</div>
         
-        <button class='file-btn' type="button"
+        <button class='file-btn button' type="button"
 		       onclick="document.querySelector('input[name=profile]').click()"
 		       style="display:inline-block;font-size:1.3em;padding:1em;
-		       border:2px solid;border-radius:1em;margin:.5em 0"
+		       border-radius:1em;margin:.5em 0"
 		       id='upldlikebtn'>
             هەڵبژاردنی وێنە
         </button><br>
@@ -134,7 +134,7 @@ include(ABSPATH . 'script/php/header.php');
              });
 	     btns.forEach( function(e)
 	     {
-		 e.style.border = '';
+		 e.style.background = '';
              });
              return;
          }
@@ -151,7 +151,7 @@ include(ABSPATH . 'script/php/header.php');
                  });
                  btns.forEach( function(e)
 		 {
-		     e.style.border = '2px solid <?php echo $_color; ?>';
+		     e.style.background = '<?php echo $_color; ?>';
                  });
                  poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
                  poet.style.backgroundRepeat = "no-repeat";
@@ -182,8 +182,7 @@ include(ABSPATH . 'script/php/header.php');
 	      {
 		  const filebtn = document.querySelector(".file-btn");
 		  filebtn.innerHTML = "هەڵبژێردرا.";
-		  filebtn.style.color = '<?php echo $_color; ?>';
-		  filebtn.style.border = "";
+		  filebtn.style.background = '<?php echo $_color; ?>';
 	      });
 
      const contri = isJson(localStorage.getItem("contributor"));

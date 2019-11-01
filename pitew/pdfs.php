@@ -36,7 +36,7 @@ include(ABSPATH . 'script/php/header.php');
      cursor:pointer;
  }
  #pdfs-main .eee .material-icons:hover {
-     opacity:.7;
+     color:<?php echo $_color; ?>;
  }
  #pdfs-search #filter-txt {
      max-width: 1200px;

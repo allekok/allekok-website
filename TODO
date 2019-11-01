@@ -4,3 +4,4 @@
 * TODO (/script/php/book.php) Let users download a whole book (ie. build PDFs).
 * TODO (/script/php/book.php) Link to reference pdfs located in (/pitew/pdfs.php).
 * TODO (/script/php/search.php) Fix bugs and make it work AJAXly.
+* DONE (/pitew/*.php) change background color of submit button on check().
