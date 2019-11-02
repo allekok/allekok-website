@@ -129,7 +129,7 @@ footer i,#header-nav i{font-size:1.4em}
     padding:.3em;
     margin-left:.5em
 }
-.back-blue,.loader,.loader-round{background:#cf0}
+.btn-selected,.back-blue,.loader,.loader-round{background:#cf0}
 .eee-desc,.border-right-eee,.border-right-999{border-right:2px solid}
 .link-underline,#main-contributing a{border-bottom:2px solid #cf0}
 .color-white{color:#222}

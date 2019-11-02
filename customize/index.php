@@ -141,11 +141,11 @@ include(ABSPATH . "script/php/header.php");
      localStorage.setItem(user_codes_storage_name,
 			  user_codes.value);
      
-     submit_button.className = 'selected';
+     submit_button.className = 'button btn-selected';
      submit_button.innerHTML = 'پاشەکەوت کرا.';
      setTimeout(function ()
      {
-	 submit_button.className = '';
+	 submit_button.className = 'button';
 	 submit_button.innerHTML = 'پاشەکەوت کردن';
      }, 3000);
  }
