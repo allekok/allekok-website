@@ -208,11 +208,13 @@ include(ABSPATH . 'script/php/header.php');
          }
          if(fl.value == "")
 	 {
-	     flbtn.style.borderColor = "red";
+	     flbtn.style.background = "red";
+	     flbtn.style.color = "white";
 	     
 	     setTimeout(function()
 	     {
-		 flbtn.style.borderColor = "";
+		 flbtn.style.background = "";
+		 flbtn.style.color = "";
 	     }, 2000);
 	     return;
          }
