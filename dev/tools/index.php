@@ -53,15 +53,18 @@ include(ABSPATH . 'script/php/header.php');
     <div style="text-align:justify">
         <p class='p-dev' style="padding-top:0;text-indent:0">
 	    <a class="a-dev" href="https://github.com/allekok/www.allekok.com/"
-	       style="display:inline-block;padding:.5em 0 .2em">
+	       style="display:inline-block;padding:.5em 0 .2em"
+	       target="_blank">
 		- بۆ داگرتنی کۆدەکانی ئاڵەکۆک لێرە کرتە بکەن.
             </a><br>
 	    <a class="a-dev" href="https://github.com/allekok/allekok-poems/"
-	       style="display:inline-block;padding:.5em 0 .2em">
+	       style="display:inline-block;padding:.5em 0 .2em"
+	       target="_blank">
 		- بۆ داگرتنی شێعرەکانی ئاڵەکۆک لێرە کرتە بکەن.
             </a><br>
 	    <a class="a-dev" href="https://github.com/allekok/allekok-downloads/"
-	       style="display:inline-block;padding:.5em 0 .2em">
+	       style="display:inline-block;padding:.5em 0 .2em"
+	       target="_blank">
 		- بۆ داگرتنی کەرەستەکانی‌تری ئاڵەکۆک لێرە کرتە بکەن.
             </a>
 	</p>
