@@ -388,7 +388,7 @@ address='$address' and blocked=0";
      try
      {
 	 document.getElementById("commNameTxt").value =
-	     isJson(localStorage.getItem("contributor")).name;
+	     JSON.parse(localStorage.getItem("contributor")).name;
      }
      catch (e) {}
 
