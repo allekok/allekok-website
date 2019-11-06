@@ -26,7 +26,8 @@ $assoc = [
     "mewlewi-vejin" => "http://vejinbooks.com/view/%D8%AF%DB%8C%D9%88%D8%A7%D9%86%DB%8C_%D9%85%DB%95%D9%88%D9%84%DB%95%D9%88%DB%8C/%DA%BE%DB%95%D8%B1%DA%86%DB%8C%D8%AA_%D8%AF%D8%A7%D8%A8%D9%88%D9%88_%D9%BE%DB%8E%D9%85",
     "piremerd" => "https://github.com/allekok/diwan/raw/master/%D9%BE%DB%8C%D8%B1%DB%95%D9%85%DB%8E%D8%B1%D8%AF%20-%20%D9%BE%DB%8C%D8%B1%DB%95%D9%85%DB%8E%D8%B1%D8%AF%20%D9%88%20%D9%BE%DB%8E%D8%AF%D8%A7%DA%86%D9%88%D9%88%D9%86%DB%95%D9%88%DB%95%DB%8C%DB%95%DA%A9%DB%8C%20%D9%86%D9%88%DB%8E%DB%8C.pdf",
     "nali-nami" => "https://github.com/allekok/diwan/raw/master/%D9%86%D8%A7%D9%84%DB%8C%20-%20%D8%AF%DB%8C%D9%88%D8%A7%D9%86.pdf",
-    "nali-giw" => "https://github.com/allekok/diwan/raw/master/%D9%86%D8%A7%D9%84%DB%8C%20-%20%D8%AF%DB%8C%D9%88%D8%A7%D9%86%20-%20%DA%86%D8%A7%D9%BE%DB%8C%20%DA%AF%DB%8C%D9%88.pdf"
+    "nali-giw" => "https://github.com/allekok/diwan/raw/master/%D9%86%D8%A7%D9%84%DB%8C%20-%20%D8%AF%DB%8C%D9%88%D8%A7%D9%86%20-%20%DA%86%D8%A7%D9%BE%DB%8C%20%DA%AF%DB%8C%D9%88.pdf",
+    "mehwi" => "https://github.com/allekok/diwan/raw/master/%D9%85%DB%95%D8%AD%D9%88%DB%8C%20-%20%D8%AF%DB%8C%D9%88%D8%A7%D9%86.pdf",
 ];
 
 if(@$assoc[$q])
