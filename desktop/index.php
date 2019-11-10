@@ -45,12 +45,12 @@ include(ABSPATH . "script/php/header.php");
 	</section><section class='pitewsec pitewsec-desktop'>
             <svg style="width:2em;vertical-align:middle;fill:<?php echo $_color_black; ?>" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"/></svg>
             <small>
-		<a href="https://github.com/allekok/allekok-desktop/releases/download/v1.0.0/allekok.Setup.1.0.0.windows.amd64.exe"
+		<a href="https://github.com/allekok/allekok-desktop/releases/download/v1.2.3/allekok.Setup.1.2.3_x64.exe"
 		   target="_blank">دابەزاندن بۆ ویندۆز</a>
 		<small style='font-size:.7em;display:block'>
-                    وەشانی ۱.۰.۰ - 
+                    وەشانی ۱.٢.٣ -
                     <a target="_blank" rel="noopener noreferrer nofollow"
-		       href="https://github.com/allekok/allekok-desktop/releases/tag/v1.0.0">
+		       href="https://github.com/allekok/allekok-desktop/releases/">
 			وەشانەکانی تر...
                     </a>
 		</small>
