@@ -136,6 +136,20 @@ include(ABSPATH . 'script/php/header.php');
      }
      inp.focus();
  }
+
+ function getPitew ()
+ {
+     const getPitewIdTxt = document.getElementById('getPitewIdTxt');
+     const request = '/script/php/admin/getPitew.php?id='+getPitewIdTxt.value;
+     getUrl(request, function (response) {
+	 response = isJson(response);
+	 if(!response) return;
+
+	 document.getElementById('name') = response.poemName;
+	 document.getElementById('hdesc') = 'نووسین: '+response.contributor;
+	 document.getElementById('hon') = response.poem;
+     });
+ }
  
  function num_convert() {
      const en_num = [/0/g,/1/g,/2/g,/3/g,/4/g,/5/g,/6/g,/7/g,/8/g,/9/g],
@@ -500,6 +514,8 @@ if($dbcache=='') {
 	
 	<div id="tools">
 	    <button class='button' type='button' onclick="make_mdcf()">m d cf</button><button class='button' type='button' onclick="make_b()">b</button><button class='button' type='button' onclick="make_n()">n</button><button class='button' type='button' onclick="make_mptr()">m ptr</button><button class='button' type='button' onclick="make_ptrptrh()">ptr ptrh</button><button class='button' type='button' onclick="nbr_convert()" style="direction:ltr">\n -> br</button><button class='button' type='button' onclick="make_sup()">sup</button><button class='button' type='button' onclick="num_convert()">ژمارەی کوردی</button><button class="button" type="button" onclick="chDirection()">RTL<>LTR</button>
+		<input type="text" id="getPitewIdTxt" placeholder="Pitew id" />
+		<button type="button" id="getPitewBtn" onclick="getPitew()">getPitew</button>
 	</div>
 	<textarea placeholder='شیعر' id='hon' name='hon'><?php echo $hon; ?></textarea><br />	
     </form>    
