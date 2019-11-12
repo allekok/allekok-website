@@ -140,15 +140,17 @@ include(ABSPATH . 'script/php/header.php');
  function getPitew ()
  {
      const getPitewIdTxt = document.getElementById('getPitewIdTxt');
-     const request = '/script/php/admin/getPitew.php?id='+getPitewIdTxt.value;
+     const id = getPitewIdTxt.value;
+     const request = '/script/php/admin/get-pitew.php?id='+id;
      getUrl(request, function (response) {
 	 response = isJson(response);
 	 if(!response) return;
 
-	 document.getElementById('name') = response.poemName;
-	 document.getElementById('hdesc') = 'نووسین: '+response.contributor;
-	 document.getElementById('hon') = response.poem;
+	 document.getElementById('name').value = response.poemName;
+	 document.getElementById('hdesc').value = 'نووسین: '+response.contributor;
+	 document.getElementById('hon').value = response.poem;
      });
+     localStorage.setItem('pitew-id', id);
  }
  
  function num_convert() {
@@ -516,6 +518,18 @@ if($dbcache=='') {
 	    <button class='button' type='button' onclick="make_mdcf()">m d cf</button><button class='button' type='button' onclick="make_b()">b</button><button class='button' type='button' onclick="make_n()">n</button><button class='button' type='button' onclick="make_mptr()">m ptr</button><button class='button' type='button' onclick="make_ptrptrh()">ptr ptrh</button><button class='button' type='button' onclick="nbr_convert()" style="direction:ltr">\n -> br</button><button class='button' type='button' onclick="make_sup()">sup</button><button class='button' type='button' onclick="num_convert()">ژمارەی کوردی</button><button class="button" type="button" onclick="chDirection()">RTL<>LTR</button>
 		<input type="text" id="getPitewIdTxt" placeholder="Pitew id" />
 		<button type="button" id="getPitewBtn" onclick="getPitew()">getPitew</button>
+		<script>
+		 const getPitewIdTxt = document.getElementById('getPitewIdTxt');
+		 getPitewIdTxt.value = localStorage.getItem('pitew-id');
+		 getPitewIdTxt.onkeydown = function (e)
+		 {
+		     if(e.keyCode == 13)
+		     {
+			 e.preventDefault();
+			 getPitew();
+		     }
+		 }
+		</script>
 	</div>
 	<textarea placeholder='شیعر' id='hon' name='hon'><?php echo $hon; ?></textarea><br />	
     </form>    

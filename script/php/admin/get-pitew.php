@@ -6,11 +6,11 @@ $id = false !== filter_var($_GET['id'], FILTER_VALIDATE_INT) ?
       $_GET['id'] : die();
 
 $db = 'index';
-$q = 'SELECT * FROM pitew WHERE id=$id';
+$q = "SELECT * FROM pitew WHERE id=$id";
 require(ABSPATH.'script/php/condb.php');
 if(!$query) die();
 
-$row = mysqli_fetch_assoc($conn, $query);
+$row = mysqli_fetch_assoc($query);
 
 header("Content-type:application/json; charset=utf-8");
 echo json_encode(
