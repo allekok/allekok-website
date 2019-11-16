@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+# Resize Images
+# Program: ImageMagick
+
+WIDTH=100
+HEIGHT=100
+IMG_PATH=style/img/poets/profile
+cd $IMG_PATH
+
+ls | grep ".jpg" |
+    while read f; do
+	convert $f -resize $WIDTHx$HEIGHT $f.0
+	mv $f.0 $f
+	echo "$f RESIZED."
+    done
