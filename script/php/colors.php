@@ -1,5 +1,5 @@
 <?php
-$_theme_dark = @$_COOKIE['theme'] == 'dark';
+$_theme_dark = (@$_COOKIE['theme'] == 'dark');
 if($_theme_dark)
 {
     $_color = '#cf0';

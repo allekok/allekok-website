@@ -29,4 +29,3 @@ if(!$no_foot) {
 <?php
 } // no-foot
 ?>
-
