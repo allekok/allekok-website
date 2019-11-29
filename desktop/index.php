@@ -26,7 +26,7 @@ include(ABSPATH . "script/php/header.php");
 		<a href="https://github.com/allekok/allekok-android/releases/download/v1.2.3/allekok-v1.2.3.apk"
 		   target="_blank">دابەزاندن بۆ ئەندرۆید</a>
 		<small style='font-size:.7em;display:block'>
-                    وەشانی ١.٢.٢ - 
+                    وەشانی ١.٢.٣ - 
                     بۆ ئەندرۆیدی ٤.١ بۆ سەرێ
 		</small>
             </small>
