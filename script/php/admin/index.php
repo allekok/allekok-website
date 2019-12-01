@@ -31,7 +31,8 @@ include(ABSPATH . 'script/php/header.php');
 	".","..","IP-blacklist.php","IP-blacklist-sample.php",
 	"SHA512.php","capture","comment-block.php","comment-read.php",
 	"index.php","link-ganjoor.php","login.php","password.php",
-	"password-sample.php","session.php","error_log",".htaccess"
+	"password-sample.php","session.php","error_log",".htaccess",
+	"sql-columns.php","sanitize-poems.php","get-pitew.php",
     ];
     foreach($files as $f)
     {
