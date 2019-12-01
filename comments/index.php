@@ -11,7 +11,7 @@ $t_desc = "";
 include(ABSPATH . "script/php/header.php");
 
 // number of comments
-$n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
+$n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
      $_GET['n'] : 20;
 ?>
 <style>
@@ -23,7 +23,7 @@ $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
 </style>
 <div id="poets">
     <h1 class="color-blue"
-	       style="font-size:1em;text-align:right">
+	style="font-size:1em;text-align:right">
         بیر و ڕاکان
     </h1>
     <div class="tools-menu" style="font-size:.6em;padding-right:2em;margin-bottom:1em">
@@ -41,12 +41,17 @@ $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
 			
 			if($o == $sel)
 			    echo "<span class='color-blue tmi-news'>{$_}</span>";
+			elseif($sel == -1 and $_ == 'هەموو')
+			    echo "<span class='color-blue tmi-news'>هەموو</span>";
 			else
+			{
+			    if($o == 'هەموو') $o = -1;
 			    echo "<a href='?n=$o' class='tmi-news'>{$_}</a>";
+			}
 		    }
 		}
 
-		print_tools_menu(['70','35','20'], $n);
+		print_tools_menu(['70','35','20','هەموو'], $n);
 		?>
 	    </div>
 	</div>

@@ -9,8 +9,9 @@ $keys = _KEYS;
 $t_desc = "";
 
 include(ABSPATH . "script/php/header.php");
-$n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
-     $_GET['n'] : 15; /* Number of poems */
+/* Number of poems */
+$n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
+     $_GET['n'] : 20;
 ?>
 <style>
  .link-news {
@@ -45,12 +46,17 @@ $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) ?
 			    
 			    if($o == $sel)
 				echo "<span class='color-blue tmi-news'>{$_}</span>";
+			    elseif($sel == -1 and $_ == 'هەموو')
+				echo "<span class='color-blue tmi-news'>هەموو</span>";
 			    else
+			    {
+				if($o == 'هەموو') $o = -1;
 				echo "<a href='?n=$o' class='tmi-news'>{$_}</a>";
+			    }
 			}
 		    }
 
-		    print_tools_menu(['50','30','15'], $n);
+		    print_tools_menu(['70','35','20','هەموو'], $n);
 		    ?>
 		</div>
 	    </div>

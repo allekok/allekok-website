@@ -50,6 +50,7 @@ function my_color_inverse($color)
     $theme = [
 	'00e' => 'cf0',
 	'fff' => '222',
+	'e00' => 'f55',
     ];
     return @$theme[$color] ? $theme[$color] : color_inverse($color);
 }
