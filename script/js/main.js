@@ -2,11 +2,9 @@ var bookmarks_name = bookmarks_name || 'favorites';
 
 var arabi_to_latin = arabi_to_latin || function (s)
 {
-    /** 
-     * Copyright (C) 2010 by Pellk KurdiNus, 
-     * 2019 by Allekok under GPLv2 License.
-     * https://github.com/allekok/kurdi-nus
-     **/
+    /* `arabi_to_latin' function:
+       Copyright (C) 2010 by Pellk KurdiNus under GPLv2 License.
+       https://github.com/allekok/kurdi-nus */
     const sConvertArabic2Latin = [
 	'و([اێۆە])', 'w$1', 
 	'ی([اێۆە])', 'y$1',
@@ -138,7 +136,7 @@ var poetImage = poetImage || function (pID, callback)
     const client = new XMLHttpRequest(),
 	  url = `/style/img/poets/profile/profile_${pID}.jpg`;
     client.open("get", url);
-    client.onload = function() // FIX: onloadstart
+    client.onload = function()
     {
 	if(this.status != 404)
 	    callback(url);

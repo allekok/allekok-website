@@ -1,29 +1,30 @@
+-*- mode:org -*-
 * Allekok.com system specifications
 ** Source code
-    Languages: PHP, HTML, CSS, JS, SHELL
-    /No 3rd party JS/CSS libraries/
-*** PHP
-    Required Libraries: JSON, MBString, MySQLi
+Languages: PHP, HTML, CSS, JS, SHELL
+/No 3rd party JS/CSS libraries/
+- PHP
+  Required Libraries: JSON, MBString, MySQLi
 ** Images
-*** Icons: [[./favicon][./favicons]]
-*** Logos: [[./logo][./logo]]
-*** Poets: [[./style/img/poets/profile/][./style/img/poets/profile]]
-*** Sent by users: [[./style/img/poets/new][./style/img/poets/new]]
+- Icons: [[./favicon][./favicons]]
+- Logos: [[./logo][./logo]]
+- Poets: [[./style/img/poets/profile/][./style/img/poets/profile]]
+- Sent by users: [[./style/img/poets/new][./style/img/poets/new]]
 ** Texts
-*** Lists: [[./pitew/res/list.txt][./pitew/res/list.txt]] , [[./style/img/poets/new/list.txt][./style/img/poets/new/list.txt]]
-*** Infos written by users: [[./pitew/res/][./pitew/res/*.txt]]
-*** Date and time of last poem updates: [[./last-update.txt][./last-update.txt]]
-*** A detailed list of pdfs: [[./pitew/pdfs.txt][./pitew/pdfs.txt]]
-*** A list of recently added/edited poems: [[./pitew/news.txt][./pitew/news.txt]]
-*** Update-version(s), Update-log(s): [[./desktop/update/][update-*.txt]]
-    Version update files that notify Allekok apps based on '[[https://github.com/allekok/allekok-client][allekok-client]]'.
-*** Q&A text files: QA.txt (There are many, all over the repository)
-*** User comments on 'allekok.com': [[./about/comments.txt][./about/comments.txt]]
+- Lists: [[./pitew/res/list.txt][./pitew/res/list.txt]] , [[./style/img/poets/new/list.txt][./style/img/poets/new/list.txt]]
+- Infos written by users: [[./pitew/res/][./pitew/res/*.txt]]
+- Date and time of last poem updates: [[./last-update.txt][./last-update.txt]]
+- A detailed list of pdfs: [[./pitew/pdfs.txt][./pitew/pdfs.txt]]
+- A list of recently added/edited poems: [[./pitew/news.txt][./pitew/news.txt]]
+- Update-version(s), Update-log(s): [[./desktop/update/][update-*.txt]]
+  Version update files that notify Allekok apps based on '[[https://github.com/allekok/allekok-client][allekok-client]]'.
+- Q&A text files: QA.txt (There are many, all over the repository)
+- User comments on 'allekok.com': [[./about/comments.txt][./about/comments.txt]]
 ** Databases
    MySQL databases
 *** Database: index
 **** Table: auth
-      Columns:
+Columns:
 - id
 - name
 - takh
@@ -34,7 +35,7 @@
 - bks_completion
 - kind
 **** Table: tbl(Poet-ID)_(Book-ID)
-     Columns:
+Columns:
 - id
 - name
 - hon
@@ -42,7 +43,7 @@
 - link
 - lang
 **** Table: comments
-     Columns:
+Columns:
 - id
 - address
 - date
@@ -51,7 +52,7 @@
 - read
 - blocked
 **** Table: pitew
-     Columns:
+Columns:
 - id
 - contributor
 - email
@@ -65,7 +66,7 @@
 - poetDesc
 *** Database: search
 **** Table: poets
-     Columns:
+Columns:
 - id
 - name
 - takh
@@ -74,7 +75,7 @@
 - rtakh
 - len
 **** Table: books
-      Columns:
+Columns:
 - id
 - book
 - book_desc
@@ -84,7 +85,7 @@
 - rtakh
 - len
 **** Table: poems
-      Columns:
+Columns:
 - id
 - name
 - hdesc
