@@ -8,6 +8,7 @@ const _USER = '';
 const _PASS = '';
 /* Default database name without prefix */
 const _DEFAULT_DB = '';
+const _SEARCH_DB = '';
 /* Database prefix, this constant is used
    in 'condb.php'. -> Database_name = _DB_PREFIX . $db; */
 const _DB_PREFIX = '';
