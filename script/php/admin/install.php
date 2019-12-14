@@ -3,7 +3,8 @@
    and run 'php install.php' or navigate to 'install.php' in your browser. */
 /* If you need help contact me on telegram: @allekok */
 
-require("script/php/constants.php");
+require('session.php');
+require("../constants.php");
 
 /* Tables */
 const MAIN_TABLES = [
