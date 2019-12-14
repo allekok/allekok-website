@@ -7,7 +7,7 @@
 ۱. بچنە نیشانی `script/php` و نێوی فایلی `constants-sample.php` بگۆڕن بۆ
 `constants.php`.  
 ۲. بەشەکانی `ABSPATH` و `_HOST` و `_USER` و `_PASS` و `_DEFAULT_DB` و
-`_DB_PREFIX` بە دروستی پڕبکەنەوە.  
+`_SEARCH_DB` بە دروستی پڕبکەنەوە.  
 ٣. لە لاپەڕەی [داگرتنی کەرەستەکانی ئاڵەکۆک](https://github.com/allekok/allekok-downloads/downloads/allekok.com/sql)،
 دەیتابەیسەکانی ئاڵەکۆک (`index.sql.gz`, `search.sql.gz`) دابەزێنن و بە دەیتابەیسەکانی سێروێری `MySQL` ـەکەتان زیادی بکەن. دەتوانن بۆ ئاسان
 بوونەوەی کاری زیادکردنی دەیتابەیس، `phpmyadmin` بەکار بێنن.  

@@ -20,7 +20,6 @@ if(! empty($_REQUEST['id'])) {
     
     $_id = $_REQUEST['id'];
     
-    $db = "index";
     $q = "select * from auth where id=$_id";
     
     require(ABSPATH."script/php/condb.php");

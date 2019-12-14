@@ -1,19 +1,16 @@
 <?php
-/* ABSOLUTE PATH, eg: '/home/allekok.com/' */
+/* Absolute path, eg: '/home/allekok.com/' */
 const ABSPATH = '/';
 
-/* MYSQL */
+/* MySQL */
 const _HOST = 'localhost';
 const _USER = '';
 const _PASS = '';
-/* Default database name without prefix */
+/* Databases */
 const _DEFAULT_DB = '';
 const _SEARCH_DB = '';
-/* Database prefix, this constant is used
-   in 'condb.php'. -> Database_name = _DB_PREFIX . $db; */
-const _DB_PREFIX = '';
 
-/* WEBSITE */
+/* Website */
 /* Could be 'https://' */
 define('_SITE', 'http://' . @$_SERVER['HTTP_HOST']);
 const _TITLE = 'ئاڵەکۆک';

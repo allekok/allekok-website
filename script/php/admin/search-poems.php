@@ -21,7 +21,6 @@ include(ABSPATH . 'script/php/header.php');
 <div id="poets">
     <?php
     /* READ */
-    $db = 'index';
     $q = 'SELECT * FROM auth ORDER BY takh ASC';
     require(ABSPATH . 'script/php/condb.php');
     $aths_num = mysqli_num_rows($query);
@@ -36,7 +35,7 @@ include(ABSPATH . 'script/php/header.php');
     }
 
     /* Save Cipi column. */
-    mysqli_select_db($conn,_DB_PREFIX.'search');
+    mysqli_select_db($conn,_SEARCH_DB);
     $query = mysqli_query($conn, 'SELECT poet_id,book_id,poem_id,Cipi 
 FROM poems');
     $Cs = [];
@@ -64,7 +63,7 @@ FROM poems');
 	{
             $rbook = $ath['bks'][$i];
             $book_id = ($i+1);
-            mysqli_select_db($conn,_DB_PREFIX."index");
+            mysqli_select_db($conn,_DEFAULT_DB);
             $_tbl = "tbl{$poet_id}_{$book_id}";
             $query = mysqli_query($conn,"SELECT * FROM $_tbl");
 	    $pms_num += mysqli_num_rows($query);
@@ -92,7 +91,7 @@ FROM poems');
 	}
     }
     
-    mysqli_select_db($conn,_DB_PREFIX."search");
+    mysqli_select_db($conn,_SEARCH_DB);
     foreach($poems as $pm)
     {
 	$poet_id = $pm['poet_id'];

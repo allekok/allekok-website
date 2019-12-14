@@ -23,7 +23,6 @@ include(ABSPATH . 'script/php/header.php');
        class="link" href="search-poems.php">شێعرەکان</a>
     <?php
     /* READ */
-    $db = "index";
     $q = "SELECT * FROM auth ORDER BY takh ASC";
     require(ABSPATH."script/php/condb.php");
     $aths_num = mysqli_num_rows($query);
@@ -43,7 +42,7 @@ include(ABSPATH . 'script/php/header.php');
 	      "</p><p class='line'>ئەژماری کتێبەکان: ".
 	      num_convert($bks_num,'en','ckb')."</p>";
     $error = false;
-    mysqli_select_db($conn,_DB_PREFIX."search");
+    mysqli_select_db($conn,_SEARCH_DB);
     mysqli_query($conn,"TRUNCATE TABLE books");
     
     foreach($aths as $ath)

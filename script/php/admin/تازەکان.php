@@ -43,7 +43,6 @@ include(ABSPATH . "script/php/header.php");
             نووسینی شێعر
         </h3><br>
         <?php
-        $db = "index";
         $q = "select * from pitew where status LIKE '{\"status\":0%' order by id DESC";
         
         require(ABSPATH."script/php/condb.php");

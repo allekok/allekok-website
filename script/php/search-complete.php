@@ -28,7 +28,7 @@ $res_poems_context_html = "";
 
 /* Load Data From Search Database */
 $sql_connection = mysqli_connect(_HOST,_USER,_PASS,
-				 _DB_PREFIX.'search') or die();
+				 _SEARCH_DB) or die();
 mysqli_set_charset($sql_connection,"utf8");
 if($poets_max !== 0 and !$selected_poet)
 {

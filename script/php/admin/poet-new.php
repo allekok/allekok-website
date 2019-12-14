@@ -14,7 +14,6 @@ include(ABSPATH . 'script/php/header.php');
 <?php
 // get the last id+1
 
-$db = "index";
 $q = "select id from auth order by id DESC";
 require(ABSPATH."script/php/condb.php");
 

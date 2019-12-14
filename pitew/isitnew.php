@@ -13,7 +13,6 @@ if( isset($_GET['poet']) )
 {
     $_poet = trim(filter_var($_GET['poet'], FILTER_SANITIZE_STRING));
     
-    $db = 'index';
     $q = "select id from auth where 
 takh='$_poet' or profname='$_poet'";
     require(ABSPATH.'script/php/condb.php');

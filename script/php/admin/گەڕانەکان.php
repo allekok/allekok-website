@@ -13,7 +13,7 @@ include(ABSPATH . 'script/php/header.php');
 ?>
 <div id="poets">        
     <?php
-    $db = "search";
+    $db = _SEARCH_DB;
     $q = "select Cipi, rtakh, rbook, rname, 
 poet_id, book_id, poem_id, id from poems 
 where Cipi>1 order by Cipi DESC";

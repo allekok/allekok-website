@@ -8,7 +8,6 @@ require_once(ABSPATH . "script/php/functions.php");
 
 $poets = [];
 
-$db = "index";
 $q = "SELECT id,bks FROM auth ORDER BY id ASC";
 require(ABSPATH . "script/php/condb.php");
 while ($res = mysqli_fetch_assoc($query))

@@ -106,14 +106,16 @@ var arabi_to_latin = arabi_to_latin || function (s)
 	'ه', 'ھ', 
 	'([ء-يٱ-ە])‌([^ء-يٱ-ە])', '$1$2'
     ];
+
+    let i;
     
-    for (let i = 0; i < sConvertStandardise.length; i += 2)
+    for (i = 0; i < sConvertStandardise.length; i += 2)
     {
         s = s.replace(new RegExp(sConvertStandardise[i], 'g'),
 		      sConvertStandardise[i + 1]);
     }
     
-    for (let i = 0; i < sConvertArabic2Latin.length; i += 2)
+    for (i = 0; i < sConvertArabic2Latin.length; i += 2)
     {
         s = s.replace(new RegExp(sConvertArabic2Latin[i], 'gim'),
 		      sConvertArabic2Latin[i + 1]);
@@ -121,7 +123,7 @@ var arabi_to_latin = arabi_to_latin || function (s)
     s = s.replace(new RegExp('ll', 'gim'), 'Ľ').
 	replace(new RegExp('rr', 'gim'), 'Ŕ');
     
-    for (let i = 0; i < sOnsetI.length; i += 2)
+    for (i = 0; i < sOnsetI.length; i += 2)
     {
         s = s.replace(new RegExp(sOnsetI[i], 'gim'), sOnsetI[i + 1]);
     }

@@ -31,7 +31,6 @@ $poet_id = explode(':', $_[0])[1];
 $book_id = explode(':', $_[1])[1];
 $poem_id = explode(':', $_[2])[1];
 
-$db = 'index';
 $tbl = 'tbl' . $poet_id . '_' . $book_id;
 $q = "select id from $tbl where id=$poem_id";
 require(ABSPATH.'script/php/condb.php');

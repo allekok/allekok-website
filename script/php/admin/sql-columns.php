@@ -13,7 +13,6 @@ if(isset($_GET["column"]))
 function remove_column($name)
 {
     $poets = [];
-    $db = "index";
     $q = "SELECT id,bks FROM auth";
     require(ABSPATH."script/php/condb.php");
     if(!$query) return false;
@@ -39,7 +38,6 @@ function remove_column($name)
 function add_column($column)
 {
     $poets = [];
-    $db = "index";
     $q = "SELECT id,bks FROM auth";
     require(ABSPATH."script/php/condb.php");
     if(!$query) return false;

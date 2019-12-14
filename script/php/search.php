@@ -33,7 +33,6 @@
 	    <div style="text-align:center">
 		<div class="dropdown">
 		    <?php
-                    $db = "index";
                     $q = "select takh from auth order by takh ASC";
                     require("condb.php");
                     $os = [];

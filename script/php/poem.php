@@ -348,7 +348,6 @@ style='display:inline-block'
      
      <?php
      /* Check for comments */
-     $db = 'index';
      $address = 'poet:'.$info['id'].
 		'/book:'.$bk.
 		'/poem:'.$row[1]['id'];

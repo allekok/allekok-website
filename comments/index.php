@@ -57,7 +57,6 @@ $n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
 	</div>
     </div>
     <?php
-    $db = 'index';
     $q = 'select * from comments where blocked=0 order by id DESC';
     require(ABSPATH . 'script/php/condb.php');
     if($query)

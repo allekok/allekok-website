@@ -43,35 +43,35 @@ if(!$sql)
     die("Mysql connection failed. Maybe your username or password is wrong.\n");
 
 /* Database */
-$query = "CREATE DATABASE IF NOT EXISTS `" . _DB_PREFIX._DEFAULT_DB . "`";
+$query = "CREATE DATABASE IF NOT EXISTS `" . _DEFAULT_DB . "`";
 $result = mysqli_query($sql, $query);
 if(!$result)
-    die("Mysql database creation failed.\nDatabase:" . _DB_PREFIX._DEFAULT_DB . "\n");
+    die("Mysql database creation failed.\nDatabase:" . _DEFAULT_DB . "\n");
 
-$query = "CREATE DATABASE IF NOT EXISTS `" . _DB_PREFIX._SEARCH_DB . "`";
+$query = "CREATE DATABASE IF NOT EXISTS `" . _SEARCH_DB . "`";
 $result = mysqli_query($sql, $query);
 if(!$result)
-    die("Mysql database creation failed.\nDatabase:" . _DB_PREFIX._SEARCH_DB . "\n");
+    die("Mysql database creation failed.\nDatabase:" . _SEARCH_DB . "\n");
 
 /* Tables */
-mysqli_select_db($sql, _DB_PREFIX._DEFAULT_DB);
+mysqli_select_db($sql, _DEFAULT_DB);
 foreach(MAIN_TABLES as $tbl)
 {
     $query = "CREATE TABLE IF NOT EXISTS `{$tbl['name']}` ({$tbl['columns_str']})";
     $result = mysqli_query($sql, $query);
     if(!$result)
 	die("Mysql table creation failed.\nDatabase:" .
-	    _DB_PREFIX._DEFAULT_DB . "\nTable:{$tbl['name']}\n");
+	    _DEFAULT_DB . "\nTable:{$tbl['name']}\n");
 }
 
-mysqli_select_db($sql, _DB_PREFIX._SEARCH_DB);
+mysqli_select_db($sql, _SEARCH_DB);
 foreach(SEARCH_TABLES as $tbl)
 {
     $query = "CREATE TABLE IF NOT EXISTS `{$tbl['name']}` ({$tbl['columns_str']})";
     $result = mysqli_query($sql, $query);
     if(!$result)
 	die("Mysql table creation failed.\nDatabase:" .
-	    _DB_PREFIX._SEARCH_DB . "\nTable:{$tbl['name']}\n");
+	    _SEARCH_DB . "\nTable:{$tbl['name']}\n");
 }
 
 mysqli_close($sql);

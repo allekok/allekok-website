@@ -333,7 +333,7 @@ if($dbcache=='') {
 			</div>");
     $q='SELECT * FROM ' . $_tbl;
     $conn = mysqli_connect(_HOST, _USER, _PASS);
-    mysqli_select_db($conn,'allekokc_index');
+    mysqli_select_db($conn,_DEFAULT_DB);
     mysqli_set_charset($conn,"utf8");
     $query = mysqli_query($conn, $q);
     
@@ -343,7 +343,7 @@ if($dbcache=='') {
     $pre_link = tbl_name_to_address($_tbl);
     $q = 'SELECT * FROM ' . $_tbl . ' WHERE id=' . $rowd;
     $conn = mysqli_connect(_HOST, _USER, _PASS);
-    mysqli_select_db($conn,'allekokc_index');
+    mysqli_select_db($conn,_DEFAULT_DB);
     mysqli_set_charset($conn,"utf8");
     $query = mysqli_query($conn, $q);
     
@@ -361,7 +361,7 @@ if($dbcache=='') {
 	} else {
 	    $q = "UPDATE `" . $_tbl . "` SET `id`=$rowd,`name`='$name',`hon`=" . '"'.$hon . '"' . ",`hdesc`='$hdesc' WHERE id=" . $rowd;
             $conn = mysqli_connect(_HOST, _USER, _PASS);
-            mysqli_select_db($conn,'allekokc_index');
+            mysqli_select_db($conn,_DEFAULT_DB);
             mysqli_set_charset($conn,"utf8");
             $query = mysqli_query($conn, $q);
             
@@ -409,7 +409,7 @@ if($dbcache=='') {
     } else {
 	$q = "INSERT INTO `" . $_tbl . "`(`id`, `name`, `hon`, `hdesc`) VALUES ($rowd,'$name',".'"'.$hon.'"'.",'$hdesc')";
         $conn = mysqli_connect(_HOST, _USER, _PASS);
-        mysqli_select_db($conn,'allekokc_index');
+        mysqli_select_db($conn,_DEFAULT_DB);
         mysqli_set_charset($conn,"utf8");
         $query = mysqli_query($conn, $q);
         
@@ -461,7 +461,6 @@ if($dbcache=='') {
 	<select name='db' onchange='form.submit()'>
 	    <option value=''></option>
 	    <?php
-	    $db='index';
 	    $q='SELECT * FROM auth';
 	    include(ABSPATH.'script/php/condb.php');
 	    if(mysqli_num_rows($query)) {
@@ -481,7 +480,6 @@ if($dbcache=='') {
 	کتێب: 
 	<select name='tbl'>
 	    <?php
-	    $db = 'index';
 	    $q = 'SELECT * FROM auth WHERE id='. substr($dbcache,3);
 	    include(ABSPATH.'script/php/condb.php');
 	    if($query) {

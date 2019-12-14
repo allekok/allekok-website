@@ -13,7 +13,6 @@ $_name = isset($_GET['contributor']) ?
 	 filter_var($_GET['contributor'],
 		    FILTER_SANITIZE_STRING) : die();
 
-$db = 'index';
 $q = "SELECT id FROM pitew WHERE 
 contributor='$_name' and status 
 LIKE '{\"status\":1%'";

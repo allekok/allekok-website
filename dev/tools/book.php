@@ -18,7 +18,6 @@ $_bk = isset($_REQUEST['book']) ?
        die($null);
 if(empty($_bk)) die($null);
 
-$db = 'index';
 $where = filter_var($_pt, FILTER_VALIDATE_INT) ?
 	 "id=$_pt" :
 	 "takh='$_pt' or profname='$_pt' or name='$_pt'";

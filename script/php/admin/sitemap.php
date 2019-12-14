@@ -12,7 +12,6 @@ require_once(ABSPATH."script/php/functions.php");
 $sitemap = "sitemap.xml";
 $sm = fopen(ABSPATH . $sitemap, "w");
 
-$db = 'index';
 $q = 'select * from auth';
 require(ABSPATH."script/php/condb.php");
 $poets_num = mysqli_num_rows($query);

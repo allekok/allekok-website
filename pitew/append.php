@@ -39,7 +39,6 @@ $date = date("Y-m-d_h:i:sa");
 $status = ['status' => 0, 'url' => '', 'desc' => ''];
 $status = json_encode($status);
 
-$db = 'index';
 $q = "INSERT INTO `pitew` (`id`, `contributor`, `email`, `poet`, `book`, `poem-name`, `poem-desc`, `poem`, `date`, `status`, `poetDesc`) VALUES (NULL, '$contributor', '', '$poet', '$book', '$poemName', '', '$poem', '$date', '$status', '')";
 require(ABSPATH.'script/php/condb.php');
 

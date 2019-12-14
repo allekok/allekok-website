@@ -15,7 +15,6 @@ echo $hons_num;
 
 /* New-Poems */
 echo "\n\n/نووسینی شێعر/\n";
-$db = "index";
 $q = "select * from pitew where status LIKE '{\"status\":0%' order by id DESC";
 require(ABSPATH."script/php/condb.php");
 if($query and (mysqli_num_rows($query) > 0))

@@ -11,7 +11,6 @@ $n = @filter_var($_GET["n"], FILTER_VALIDATE_INT) ?
      $_GET["n"] : 20;
 
 // query for non-blocked comments
-$db = "index";
 $q = "select * from comments where blocked=0 order by id DESC LIMIT 0, {$n}";
 include(ABSPATH . "script/php/condb.php");
 

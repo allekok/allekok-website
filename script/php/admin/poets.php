@@ -68,7 +68,6 @@ include(ABSPATH . 'script/php/header.php');
     include(ABSPATH."script/php/colors.php");
     
     
-    $db = "index";
     $q = "select id, profname from auth order by takh";
     
     require(ABSPATH."script/php/condb.php");

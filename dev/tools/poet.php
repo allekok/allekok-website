@@ -46,7 +46,6 @@ function get_poet ()
 	    $q = "SELECT * FROM auth WHERE 
 name='$pt' or takh='$pt' or profname='$pt'";
 	
-        $db = "index";
         require(ABSPATH . 'script/php/condb.php');
         if($query)
 	{

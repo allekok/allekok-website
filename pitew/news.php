@@ -84,7 +84,6 @@ $n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
 		$date = @date_create($ln["date"]);
 		$diff = format_DD(date_diff($now,$date,true));
 
-		$db = "index";
 		$q = "select takh,bks from auth where id=$pt";
 		include(ABSPATH . "script/php/condb.php");
 		if(! $query) continue;

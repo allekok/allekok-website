@@ -1,6 +1,5 @@
 <?php
 /* Number of all poets,books,poems */
-$db='index';
 $q='select * from stats';
 include('condb.php');
 

@@ -14,7 +14,7 @@ foreach($address as $i=>$ad)
     $address[$i] = intval(explode(":",$ad)[1]);
 }
 
-$db = 'search';
+$db = _SEARCH_DB;
 $q = "SELECT Cipi FROM poems WHERE 
 poet_id='$address[0]' and book_id='$address[1]' and poem_id='$address[2]'";
 include("condb.php");

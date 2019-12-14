@@ -22,7 +22,6 @@ $_pm = isset($_REQUEST['poem']) ?
        die($null);
 if(empty($_pm)) die($null);
 
-$db = "index";
 $where = filter_var($_pt, FILTER_VALIDATE_INT) ?
 	 "id=$_pt" :
 	 "takh='$_pt' or profname='$_pt' or name='$_pt'";

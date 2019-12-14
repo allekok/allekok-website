@@ -79,7 +79,6 @@ include(ABSPATH . "script/php/header.php");
 	>نووسینی             
 	    <?php
 	    $_name = "کەماڵ ڕەحمانی";
-	    $db = 'index';
 	    $q = "SELECT id FROM pitew WHERE 
 contributor='$_name' and status 
 LIKE '{\"status\":1%'";
