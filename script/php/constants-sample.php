@@ -13,6 +13,8 @@ const _SEARCH_DB = '';
 /* Website */
 /* Could be 'https://' */
 define('_SITE', 'http://' . @$_SERVER['HTTP_HOST']);
+/* Relative path to web server's root */
+const _R = '/';
 const _TITLE = 'ئاڵەکۆک';
 const _DESC = 'شێعری شاعیرانی کورد';
 const _KEYS = 'ئاڵەکۆک,شێعر,شاعیر,بەیت,چیرۆک,هەڵبەست,شیعر,کورد,کوردستان';

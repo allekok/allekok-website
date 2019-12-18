@@ -1,12 +1,12 @@
 /* Caching static resources */
 const cache_ver = 'v112',
-      profile = '/style/img/poets/profile/profile_';
+      profile = 'style/img/poets/profile/profile_';
 
 self.addEventListener('install', function(event) {
     event.waitUntil(
 	caches.open(cache_ver).then(function(cache) {
 	    return cache.addAll([
-		'/sw.js',
+		'sw.js',
 		profile+'0.png',
 		profile+'1.jpg',
 		profile+'2.jpg',
@@ -75,15 +75,15 @@ self.addEventListener('install', function(event) {
 		profile+'71.jpg',
 		profile+'73.jpg',
 		profile+'93.jpg',
-		'/script/js/main-min.js?v1',
-		'/style/css/main-comp.css?v12',
-		'/style/css/main-dark-comp.css?v12',
-		'/favicon/favicon.ico',
-		'/favicon/site.webmanifest',
-		'/style/font/DroidNaskh-Regular.woff2',
-		'/style/font/Material-Icons.woff2',
-		'/logo/logo-64.png',
-		'/not-found.html?v5',
+		'script/js/main.js?v1',
+		'style/css/main-comp.css?v13',
+		'style/css/main-dark-comp.css?v13',
+		'favicon/favicon.ico',
+		'favicon/site.webmanifest',
+		'style/font/DroidNaskh-Regular.woff2',
+		'style/font/Material-Icons.woff2',
+		'logo/logo-64.png',
+		'not-found.html?v5',
 	    ]);
 	}));
 });
@@ -109,6 +109,6 @@ self.addEventListener('fetch', function(event) {
 		return response;
 	    });
 	}).catch(function() {
-	    return caches.match('/not-found.html?v5');
+	    return caches.match('not-found.html?v5');
 	}));
 });

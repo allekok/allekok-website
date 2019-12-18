@@ -22,8 +22,8 @@ require(ABSPATH.'script/php/condb.php');
     {
 	while($row=mysqli_fetch_assoc($query))
 	{
-	    $imgsrc = get_poet_image($row['id'],true);
-	    echo '<a class="poet" href="/poet:'.$row['id'].'"
+	    $imgsrc = _R . get_poet_image($row['id'],false);
+	    echo '<a class="poet" href="' . _R . 'poet:'.$row['id'].'"
 ><img alt="'.$row['profname'].'" src="'.$imgsrc.'"
 ><h3 title="'.$row['profname'].'"
 >'.$row['takh'].'</h3></a>';
@@ -34,11 +34,11 @@ require(ABSPATH.'script/php/condb.php');
     <div class='fbody-nav'>
 	<?php 
 	if(isset($_GET['new']))
-	    echo '<a href="/">شاعیرانی کۆچ‌کردوو</a>';
+	    echo '<a href="' . _R . '">شاعیرانی کۆچ‌کردوو</a>';
 	else
-	    echo '<a href="/?new">شاعیرانی نوێ</a>';
+	    echo '<a href="' . _R . '?new">شاعیرانی نوێ</a>';
 	
-	echo '<a href="/poet:73">بەیتی کوردی</a>';
+	echo '<a href="' . _R . 'poet:73">بەیتی کوردی</a>';
 	?>
     </div>
 </div>
