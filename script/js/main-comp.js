@@ -1,3 +1,6 @@
+/* Relative path to root */
+const _relativePath = "/";
+
 const _R = _relativePath || "/";
 const _R_LEN = _R.length;
 var bookmarks_name = bookmarks_name || 'favorites';
