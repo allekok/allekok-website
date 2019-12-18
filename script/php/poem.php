@@ -10,16 +10,16 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 <div id="poets">
     <!-- Poet picture -->
     <img src="<?php 
-	      echo get_poet_image($info['id'], true); 
+	      echo _R . get_poet_image($info['id'], false); 
 	      ?>" class="poet-pic-small"
 	 alt="<?php echo $info['profname']; ?>">
     <!-- Address -->
     <div id='adrs'>
-	<a href="<?php echo "/poet:$ath"; ?>">
+	<a href="<?php echo _R . "poet:$ath"; ?>">
 	    <?php echo $info['takh']; ?>
 	</a>
 	<i> &rsaquo; </i>
-	<a href="<?php echo "/poet:$ath/book:$bk"; ?>">
+	<a href="<?php echo _R . "poet:$ath/book:$bk"; ?>">
 	    <?php echo $bknow[$bk-1]; ?>
 	</a>
 	<i> &rsaquo; </i>
@@ -40,7 +40,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	    <div class="prev">
 		<a style="display:block"
 		   href="<?php 
-			 echo "/poet:".$info['id']."/book:".
+			 echo _R . "poet:".$info['id']."/book:".
 			      $bk."/poem:".$row[0]['id'];
 			 ?>"
 		><i
@@ -60,7 +60,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	    <div class="next">
 		<a style="display:block"
 		   href="<?php
-			 echo "/poet:".$info['id']."/book:".
+			 echo _R . "poet:".$info['id']."/book:".
 			      $bk."/poem:".$row[2]['id'];
 			 ?>"
 		><div
@@ -143,7 +143,7 @@ style='display:inline-block'
 	    <i class='material-icons icon-round icon-round-poem'
 	    >insert_drive_file</i>
 	    <?php
-            echo "<a href='/dev/tools/poem-plain.php?poet=$ath&book=$bk&poem=$id' 
+            echo "<a href='"._R."dev/tools/poem-plain.php?poet=$ath&book=$bk&poem=$id' 
 title='{$row[1]['name']}' target='_blank' 
 rel='noopener noreferrer nofollow' 
 style='display:inline-block'
@@ -258,7 +258,7 @@ style='display:inline-block'
 	</div>
 	<form id="frmComm"
 	      style="margin:auto"
-	      action="/script/php/comments-add.php"
+	      action="<?php echo _R; ?>script/php/comments-add.php"
 	      method="POST">
 	    <!--
 		 Comment submition form
@@ -268,7 +268,7 @@ style='display:inline-block'
 		   placeholder="نێوی خۆتان لێرە بنووسن.">
             <textarea
 		placeholder="بیر و ڕای خۆتان سەبارەت بەو شێعرە لێرە بنووسن... *" 
-			     id="commTxt" name='comment'></textarea>
+		id="commTxt" name='comment'></textarea>
             <div id="message"></div>
             <button class='button bth' type="submit"
 		    style="font-size:.7em;padding:.5em 1.5em"
@@ -313,7 +313,7 @@ style='display:inline-block'
 	 
 	 message.innerHTML = loader;
 
-	 postUrl("/script/php/comments-add.php", request, function (responseText) {
+	 postUrl("<?php echo _R; ?>script/php/comments-add.php", request, function (responseText) {
 	     const res = isJson(responseText);
 	     
 	     if(res && res.status)
@@ -332,7 +332,7 @@ style='display:inline-block'
 			 "contributor",
 			 JSON.stringify(
 			     {name: res.name}
-			 ));
+		     ));
 		 }
 		 window.location = "#hon-comments-body";
 	     }
@@ -341,9 +341,9 @@ style='display:inline-block'
      
      document.getElementById("frmComm").
 	      addEventListener("submit", function(e)
-	      {
-		  e.preventDefault();
-		  send_comment();
+		  {
+		      e.preventDefault();
+		      send_comment();
 	      });
      
      <?php
@@ -352,7 +352,7 @@ style='display:inline-block'
 		'/book:'.$bk.
 		'/poem:'.$row[1]['id'];
      $q = "select id from comments where 
-address='$address' and blocked=0";
+address='$address' and blocked=0"; // Add limit 0,1
      require('condb.php');
      
      if($query and
@@ -361,23 +361,23 @@ address='$address' and blocked=0";
 	 if(!$no_foot)
 	     echo "window.addEventListener('load', function () { ";
      ?>
-     getUrl('/script/php/comments-get.php?address='+
+     getUrl('<?php echo _R; ?>script/php/comments-get.php?address='+
 	    poem_adrs, function(responseText)
-	    {
-		const res = isJson(responseText);
-		if(res && res.err != 1)
-		{
-		    let newComm = "";
-		    for(const a in res)
-		    {
-			newComm += "<div class='comment'\
+	 {
+	     const res = isJson(responseText);
+	     if(res && res.err != 1)
+	     {
+		 let newComm = "";
+		 for(const a in res)
+		 {
+		     newComm += "<div class='comment'\
 			><div class='comm-name'>"+res[a].name+":</div><div \
 									   class='comm-body'>"+res[a].comment+"</div><div \
 															  class='comm-footer'>"+res[a].date+"</div></div>";
-		    }
-		    comments.innerHTML = newComm;
-		}
-	    });
+		 }
+		 comments.innerHTML = newComm;
+	     }
+     });
 	 <?php
 	 if(!$no_foot) echo ' });';
 	 }
@@ -394,31 +394,31 @@ address='$address' and blocked=0";
      /* Footnotes */
      const sups = document.querySelectorAll("sup");
      sups.forEach(function(o)
-     {
-	 o.addEventListener(
-	     "click", function()
-	     {
-		 window.scrollTo(
-		     0, document.querySelector(
-			 ".m.d.cf:last-child").
-				 offsetTop - 10);
+	 {
+	     o.addEventListener(
+		 "click", function()
+		 {
+		     window.scrollTo(
+			 0, document.querySelector(
+			     ".m.d.cf:last-child").
+				     offsetTop - 10);
 	     });
      });
 
      /* Other tools window */
      document.getElementById("extlnkico").
 	      addEventListener("click" , function()
-	      {
-		  const extlnk = document.getElementById("extlnk");
-		  if(extlnk.style.display != "block")
 		  {
-		      extlnk.style.display = "block";
-		      extlnk.style.animation = ".25s tL";
-		  }
-		  else
-		  {
-		      extlnk.style.display = "none";
-		  }
+		      const extlnk = document.getElementById("extlnk");
+		      if(extlnk.style.display != "block")
+		      {
+			  extlnk.style.display = "block";
+			  extlnk.style.animation = ".25s tL";
+		      }
+		      else
+		      {
+			  extlnk.style.display = "none";
+		      }
 	      });
 
      /* Tewar */
@@ -461,17 +461,17 @@ address='$address' and blocked=0";
 		 convert_to_latin();
 	     else
 		 convert_to_latin("origin");
-	 });
+     });
      
      const loaderMin = "<div class='loader' \
 				    style='vertical-align:middle;margin:1em auto'></div>";
      
      document.getElementById("wordFrm").
 	      addEventListener("submit", function(e)
-	      {
-		  e.preventDefault();
-		  const q_el = document.getElementById('wordTxt');
-		  lookup(q_el, 'wordResult');
+		  {
+		      e.preventDefault();
+		      const q_el = document.getElementById('wordTxt');
+		      lookup(q_el, 'wordResult');
 	      });
      
      function lookup (q_el, result_el_id)
@@ -481,7 +481,7 @@ address='$address' and blocked=0";
 	       dicts_req = dicts.join(','),
 	       result_el = document.getElementById(result_el_id),
 	       q = encodeURIComponent(q_el.value.trim()),
-	       url = '/tewar/src/backend/lookup.php',
+	       url = '<?php echo _R; ?>tewar/src/backend/lookup.php',
 	       request = `q=${q}&dicts=${dicts_req}&output=json`,
 	       loading = '<div class="loader"></div>',
 	       wordMore = document.getElementById('wordMore');
@@ -514,7 +514,7 @@ address='$address' and blocked=0";
 	     }
 	     result_el.innerHTML = toprint;
 	 });
-	 wordMore.innerHTML = `<a target='_blank' href='/tewar/?q=${q}'>گەڕانی زیاتر لە "تەوار"دا</a>`;
+	 wordMore.innerHTML = `<a target='_blank' href='<?php echo _R; ?>tewar/?q=${q}'>گەڕانی زیاتر لە "تەوار"دا</a>`;
      }
 
      document.getElementById('make_poem_dict').
@@ -563,8 +563,8 @@ address='$address' and blocked=0";
      {
 	 document.querySelector(".smaller").
 		  addEventListener("click", function()
-		  {
-		      save_fs("smaller")
+		      {
+			  save_fs("smaller")
 		  });
      } catch(e) {}
 
@@ -572,8 +572,8 @@ address='$address' and blocked=0";
      {
 	 document.querySelector(".bigger").
 		  addEventListener("click", function()
-		  {
-		      save_fs("bigger")
+		      {
+			  save_fs("bigger")
 		  });
      } catch(e) {}
      

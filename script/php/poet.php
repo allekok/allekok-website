@@ -3,14 +3,15 @@
     <div style="position:relative;max-width:180px;
 		margin:auto">
 	<img src="<?php 
-		  echo get_poet_image($ath,true); 
+		  echo _R . get_poet_image($ath,false);
 		  ?>"
 	     class="poet-pic-small"
 	     alt="<?php echo $row['profname']; ?>"
 	>
-	<a href='/pitew/poet-image.php?poet=<?php
-					    echo $row['takh'];
-					    ?>'
+	<a href='<?php echo _R;
+		 ?>pitew/poet-image.php?poet=<?php
+					     echo $row['takh'];
+					     ?>'
 	   style="position:absolute;bottom:0;left:0;
 		 padding:.5em .5em 0;font-size:.9em"
 	   class="material-icons"
@@ -36,7 +37,7 @@
 	    <?php
 	    $rbks = explode(',',$row['bks']);
 	    for($i=0;$i<count($rbks);$i++) {
-		echo "<a href='/poet:" . $row['id'] .
+		echo "<a href='"._R."poet:" . $row['id'] .
 		     "/book:" . ($i+1) .
 		     "'>" . num_convert($i+1,"en","ckb") .
 		     ". " . $rbks[$i] . "</a>";
@@ -69,12 +70,12 @@
 		{
 		    echo "<h3 class='poetnm'><a class='link'
 style='border-bottom:0;margin:0'
-href='/pitew/image-list.php?poet={$row['takh']}'
+href='" . _R . "pitew/image-list.php?poet={$row['takh']}'
 ><i class='material-icons'>photo_library</i> وێنەکان</a></h3>";
 		    break;
 		}
 	    }
-	    $edit_uri = "/pitew/edit-poet.php?poet={$row['takh']}";
+	    $edit_uri = _R . "pitew/edit-poet.php?poet={$row['takh']}";
 	    ?>
 	    <div style="text-align:right;">
 		<a style="font-size:.8em;
@@ -120,7 +121,7 @@ href='/pitew/image-list.php?poet={$row['takh']}'
 			foreach($result as $n) {
 			    echo "<a style=\"font-size:.8em;
 padding:.5em;display:block;margin:0\" 
-href=\"/pitew/poetdesc-list.php?name={$n[0][0]}&poet={$n[0][1]}\"
+href=\""._R."pitew/poetdesc-list.php?name={$n[0][0]}&poet={$n[0][1]}\"
 ><span style='display:block'>
 &laquo;".num_convert(
 		    str_replace("&#34;",'"',$n[0][0]),"en","ckb")."&raquo; نووسیویەتی:

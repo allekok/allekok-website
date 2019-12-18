@@ -77,10 +77,6 @@ include(ABSPATH."script/php/header.php");
 		     background:white;border-radius:1em;
 		     margin:auto">
 		<?php
-		$uri = ABSPATH . "about/comments.txt";
-		if(! file_exists($uri))
-		    die();
-
 		$comments = file_get_contents($uri);
 		$comments = explode("[comment]",$comments);
 		$comments = array_reverse($comments);
@@ -97,12 +93,11 @@ include(ABSPATH."script/php/header.php");
 		    echo $c;
 		    $_n++;
 		}
-
-		echo '</div>';
 		} // $nzuri
 		?>
 	    </div>
     </div>
+</div>
 </div>
 <script> 
  function append() {
@@ -136,7 +131,7 @@ font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پیت زیا
      comm.style.background = "#eee";
      comm.style.color = "#999";
 
-     postUrl("/about/append.php", request, function(response) {
+     postUrl("<?php echo _R; ?>about/append.php", request, function(response) {
          const respond = JSON.parse(response);
          if(respond.message == "ok")
 	 {
@@ -166,9 +161,9 @@ font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پیت زیا
  
  document.getElementById("frmComm").
 	  addEventListener("submit", function(e)
-	  {
-	      e.preventDefault();
-	      append();
+	      {
+		  e.preventDefault();
+		  append();
 	  });
 </script>
 <?php

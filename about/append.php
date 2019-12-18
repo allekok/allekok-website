@@ -37,7 +37,7 @@ if(isset($_POST['comm']) and
     $color = color_random();
     $uri = "comments.txt";
     $div = "<div style='color:{$color['fore']};background:{$color['back']}'>";
-    if(filesize($uri)>0)
+    if(file_exists($uri) and @filesize($uri)>0)
 	$comment = $sign.$div.$comm.$header."</div>";
     else
 	$comment = $div.$comm.$header."</div>";

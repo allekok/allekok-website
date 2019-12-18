@@ -1,7 +1,7 @@
 <div id="poets">
     <!-- Poet picture -->
     <img src="<?php 
-	      echo get_poet_image($info['id'],true); 
+	      echo _R . get_poet_image($info['id'],false);
 	      ?>"
 	 class="poet-pic-small"
 	 alt="<?php echo $info['profname']; ?>"
@@ -12,7 +12,7 @@
      ?>
     <!-- Address bar -->
     <div id='adrs'>
-	<a href="/poet:<?php echo $ath; ?>">
+	<a href="<?php echo _R; ?>poet:<?php echo $ath; ?>">
 	    <?php
 	    echo $info['takh'];
 	    ?>
@@ -62,11 +62,12 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 	       padding:.58em"
 	   class="material-icons icon-round"
 	   title="نووسینی شێعرێکی تازە"
-	   href="/pitew/index.php?poet=<?php 
-				       echo $info['takh'].
-					    "&book=".
-					    $bknow[$bk-1];
-				       ?>"
+	   href="<?php echo _R; 
+		 ?>pitew/index.php?poet=<?php 
+					echo $info['takh'].
+					     "&book=".
+					     $bknow[$bk-1];
+					?>"
 	>note_add</a>
     </form>
     <!-- List of poems -->
@@ -84,7 +85,7 @@ title='تەواوی ئەو کتێبە لە سەر ئاڵەکۆک، نووسرا�
 			title="نیشان‌دانی بەشی سەرەتای ئەم شێعرە"
 		>dehaze</button
 		       ><a href="<?php 
-				 echo '/poet:'.$ath.
+				 echo _R . 'poet:'.$ath.
 				      '/book:'.$bk.
 				      '/poem:'.$row['id']; 
 				 ?>">
