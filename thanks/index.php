@@ -63,18 +63,18 @@ include(ABSPATH . "script/php/header.php");
 	   target='_blank' rel='noopener noreferrer nofollow'
 	   class="link-underline"
 	>کەناڵی تێلێگرامی چەپکەگوڵ</a> و
-	<a href="/poet:80"
+	<a href="<?php echo _R; ?>poet:80"
 	   class="link-underline"
 	>کەماڵ ڕەحمانی</a> &rsaquo; بۆ
-        <a href="/poet:65/book:1"
+        <a href="<?php echo _R; ?>poet:65/book:1"
 	   class="link-underline"
 	>دیوانی شەونمی، حەقیقی</a>
     </p>
     <p>
-        <a href="/poet:80"
+        <a href="<?php echo _R; ?>poet:80"
 	   class="link-underline"
 	>کەماڵ ڕەحمانی</a> &rsaquo; بۆ 
-        <a href="/pitew/poem-list.php?name=کەماڵ ڕەحمانی"
+        <a href="<?php echo _R; ?>pitew/poem-list.php?name=کەماڵ ڕەحمانی"
 	   class="link-underline"
 	>نووسینی             
 	    <?php
@@ -99,7 +99,7 @@ LIKE '{\"status\":1%'";
 	   class="link-underline"
 	>کەناڵی تێلێگرامی شیعر و هۆنراوە</a> &rsaquo; 
         بۆ بەشێکی چووک لە 
-        <a href="/poet:82/book:1"
+        <a href="<?php echo _R; ?>poet:82/book:1"
 	   class="link-underline"
 	>شێعرەکانی سافیی هیرانی</a>
     </p>
@@ -114,7 +114,7 @@ LIKE '{\"status\":1%'";
 	   class="link-underline"
 	>ئامێری وەرگێڕی فۆنت</a>
         کە بۆ نووسینەوەی بەشێک لە 
-        <a href="/poet:85/book:1"
+        <a href="<?php echo _R; ?>poet:85/book:1"
 	   class="link-underline"
 	>دیوانی یانەی‌دڵانی، مدهۆش</a> بەکار هاتووە.
     </p>
@@ -123,11 +123,11 @@ LIKE '{\"status\":1%'";
             ئاکۆ مەحموودی، ئاسۆ مەحموودی 
         </i>
         &rsaquo; بۆ 
-        <a href="/kurdi-nus/kurdi-nus-central-kurdish.html"
+        <a href="<?php echo _R; ?>kurdi-nus/kurdi-nus-central-kurdish.html"
 	   target="_blank" class="link-underline"
 	>ئامێری پەڵک کوردی‌نووس</a>
         کە بۆ نووسینەوەی بەشێک لە 
-        <a href="/poet:85/book:1"
+        <a href="<?php echo _R; ?>poet:85/book:1"
 	   class="link-underline"
 	>دیوانی یانەی‌دڵانی، مدهۆش</a> بەکار هاتووە.
     </p>
@@ -136,20 +136,20 @@ LIKE '{\"status\":1%'";
 	   class="link-underline"
 	   target='_blank' rel='noopener noreferrer nofollow'
 	>کوردیپێدیا</a> &rsaquo; بۆ وێنەی 
-	<a href="/poet:50"
+	<a href="<?php echo _R; ?>poet:50"
 	   class="link-underline"
 	>بەختیار زێوەر</a>
 	و
-	<a href="/poet:71"
+	<a href="<?php echo _R; ?>poet:71"
 	   class="link-underline"
 	>شوکری فەزڵی</a>
     </p>
     <p>
 	<i>سپاس</i> &rsaquo; بۆ 
-	<a href="/pitew/contributors/"
+	<a href="<?php echo _R; ?>pitew/contributors/"
 	   class="link-underline"
 	>هەموو ئەو کەسانەی</a> لە
-	<a href="/pitew/first.php"
+	<a href="<?php echo _R; ?>pitew/first.php"
 	   class="link-underline"
 	>پتەوکردنی ئاڵەکۆک</a>
 	‌دا یارمەتی‌مان دەدەن.

@@ -65,7 +65,7 @@ include(ABSPATH . 'script/php/header.php');
     <div id="main-contributing" style="font-size:.6em;
 	     text-align:justify;padding-right:1em">
 	<?php
-	echo @file_get_contents('CONTRIBUTING.html');
+	@include('CONTRIBUTING.php');
 	?>
     </div>
     <script>
@@ -157,7 +157,7 @@ include(ABSPATH . 'script/php/header.php');
              const x = new XMLHttpRequest();
              x.onload = function() {
                  if(this.responseText == "1") {
-                     t.innerHTML = "<span style='background:rgba(0,255,0,.08); color:green; ?>;display:block;padding:1em; font-size:.6em;'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
+                     t.innerHTML = "<span style='background:rgba(0,255,0,.08); color:green; display:block;padding:1em; font-size:.6em;'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
                  }
              }
              x.open("POST", "save.php");

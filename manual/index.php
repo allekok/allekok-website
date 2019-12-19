@@ -35,7 +35,7 @@ include(ABSPATH . "script/php/header.php");
 <div id="poets" style="text-align:right">
     <main id="main-manual" style="font-size:.6em;text-align:justify">
 	<?php
-	echo file_get_contents("manual.html");
+	@include("manual.php");
 	?>
     </main>
     
