@@ -39,7 +39,7 @@ $_book1 = isset($_GET['book']) ?
 	<div style='font-size:.53em;text-align:right;padding:0 1em 1em'>
 	    دەتوانن بۆ نووسینەوەی شێعر ئەم دیوانانە بەکار بهێنن: 
 	    <a class='link-underline'
-	       style='display:inline-block;padding:0' href="/pitew/pdfs.php">
+	       style='display:inline-block;padding:0' href="pdfs.php">
 		داگرتنی دیوانی شاعیران
 	    </a>
 	</div>
@@ -124,58 +124,58 @@ $_book1 = isset($_GET['book']) ?
      
      loader.style.display = 'block';
      
-     postUrl('/pitew/append.php', quest, function(response)
-     {
-	 const res = JSON.parse(response);
-	 loader.style.display = 'none';
-	 if(res)
+     postUrl('append.php', quest, function(response)
 	 {
-	     mess.innerHTML = res.message;
-	     
-	     if(res.state == 1)
+	     const res = JSON.parse(response);
+	     loader.style.display = 'none';
+	     if(res)
 	     {
-		 poemName.value = poem.value = '';
-		 localStorage.setItem('contributor',
-				      JSON.stringify(
-					  {name : res.contributor.name}
-				      ));
+		 mess.innerHTML = res.message;
+		 
+		 if(res.state == 1)
+		 {
+		     poemName.value = poem.value = '';
+		     localStorage.setItem('contributor',
+					  JSON.stringify(
+					      {name : res.contributor.name}
+		     ));
+		 }
 	     }
-	 }
      });
  }
  
  document.getElementById('frmComm').
 	  addEventListener('submit', function(e)
-	  {
-	      e.preventDefault();
-	      pitew();
+	      {
+		  e.preventDefault();
+		  pitew();
 	  });
  
  const clearBtn = document.getElementById("clearBtn");
  clearBtn.addEventListener("click", function()
- {    
-     const poet = document.getElementById("poetTxt"),
-	   book = document.getElementById("bookTxt"),
-	   poemName = document.getElementById("poemNameTxt"),
-	   poem = document.getElementById("poemConTxt"),
-	   mess = document.getElementById("message"),
-	   txts = document.querySelectorAll("#poets input, #poets textarea"),
-	   btns = document.querySelectorAll("#poets button[type=submit]"),
-	   loader = document.querySelector('.loader');
-     
-     mess.innerHTML = poet.value = book.value =
-	 poemName.value = poem.value = "";
-     
-     txts.forEach( function(e)
-     {
-         e.style.borderColor = "";
-         e.style.background = "";
-     });
-     btns.forEach( function(e)
-     {
-         e.style.background = "";
-     });
-     loader.style.display = 'none';
+     {    
+	 const poet = document.getElementById("poetTxt"),
+	       book = document.getElementById("bookTxt"),
+	       poemName = document.getElementById("poemNameTxt"),
+	       poem = document.getElementById("poemConTxt"),
+	       mess = document.getElementById("message"),
+	       txts = document.querySelectorAll("#poets input, #poets textarea"),
+	       btns = document.querySelectorAll("#poets button[type=submit]"),
+	       loader = document.querySelector('.loader');
+	 
+	 mess.innerHTML = poet.value = book.value =
+	     poemName.value = poem.value = "";
+	 
+	 txts.forEach( function(e)
+	     {
+		 e.style.borderColor = "";
+		 e.style.background = "";
+	 });
+	 btns.forEach( function(e)
+	     {
+		 e.style.background = "";
+	 });
+	 loader.style.display = 'none';
  });
  function check ()
  {
@@ -188,50 +188,50 @@ $_book1 = isset($_GET['book']) ?
      if(poet.value == "")
      {
          txts.forEach( function(e)
-	 {
-             e.style.borderColor = "";
-             e.style.background = "";
+	     {
+		 e.style.borderColor = "";
+		 e.style.background = "";
          });
          btns.forEach( function(e)
-	 {
-             e.style.background = "";
+	     {
+		 e.style.background = "";
          });
          return;
      }
 
      getUrl("isitnew.php?poet="+poet.value, function(responseText)
-     {
-         const res = JSON.parse(responseText);
-         if(res.id != "0")
 	 {
-             txts.forEach( function(e)
+             const res = JSON.parse(responseText);
+             if(res.id != "0")
 	     {
-                 e.style.borderColor = '<?php echo $_color; ?>';
-             });
-	     
-             btns.forEach( function(e)
+		 txts.forEach( function(e)
+		     {
+			 e.style.borderColor = '<?php echo $_color; ?>';
+		 });
+		 
+		 btns.forEach( function(e)
+		     {
+			 e.style.background = '<?php echo $_color; ?>';
+		 });
+		 
+		 poet.style.backgroundImage = `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg)`;
+		 poet.style.backgroundRepeat = "no-repeat";
+		 poet.style.backgroundSize = "auto 100%";
+		 poet.style.backgroundPosition = "left center";
+             }
+	     else
 	     {
-                 e.style.background = '<?php echo $_color; ?>';
-             });
-             
-             poet.style.backgroundImage = `url(/style/img/poets/profile/profile_${res.img}.jpg`;
-             poet.style.backgroundRepeat = "no-repeat";
-             poet.style.backgroundSize = "auto 100%";
-             poet.style.backgroundPosition = "left center";
-         }
-	 else
-	 {
-             txts.forEach( function(e)
-	     {
-                 e.style.borderColor = "";
-                 e.style.background = "";
-             });
-	     
-             btns.forEach( function(e)
-	     {
-                 e.style.background = "";
-             });
-         }
+		 txts.forEach( function(e)
+		     {
+			 e.style.borderColor = "";
+			 e.style.background = "";
+		 });
+		 
+		 btns.forEach( function(e)
+		     {
+			 e.style.background = "";
+		 });
+             }
      });
  }
  document.getElementById('poetTxt').onblur = check;
@@ -249,14 +249,14 @@ $_book1 = isset($_GET['book']) ?
      document.getElementById('poems-list').href += '?name=' + contri.name;
      
      getUrl(`stats.php?contributor=${contri.name}`, function(responseText)
-     {
-         if(responseText)
 	 {
-	     const res = document.getElementById('pitew-stats');
-	     res.innerHTML = 'جەنابتان تا ئێستا ' + responseText + 
-			     ' شێعرتان لەسەر ئاڵەکۆک نووسیوەتەوە.';
-	     res.style.animation = 'tL 1.2s ease forwards';
-         }
+             if(responseText)
+	     {
+		 const res = document.getElementById('pitew-stats');
+		 res.innerHTML = 'جەنابتان تا ئێستا ' + responseText + 
+				 ' شێعرتان لەسەر ئاڵەکۆک نووسیوەتەوە.';
+		 res.style.animation = 'tL 1.2s ease forwards';
+             }
      });
  }
 	 <?php

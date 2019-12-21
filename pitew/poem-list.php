@@ -65,7 +65,7 @@ include(ABSPATH . 'script/php/header.php');
 	<div style='width:100%;text-align:left;
 		    padding:0 .5em'>
             <?php if($_name1) { ?>
-		<a href="/pitew/poem-list.php">
+		<a href="<?php echo _R; ?>pitew/poem-list.php">
 		    تەواوی شێعرەکان &rsaquo;
 		</a>
             <?php } ?>
@@ -136,7 +136,7 @@ include(ABSPATH . 'script/php/header.php');
 	    echo "<i class='material-icons color-red'>close</i> ";
 	}
         echo "<a href='?name={$_l['contributor']}'>{$_l['contributor']}</a></section
-	><section><a href='/{$_l['status']['url']}'
+	><section><a href='" . _R . "{$_l['status']['url']}'
 	>{$_l['poet']} &rsaquo; {$_l['poem-name']}</a>";
 
 	if($_l['status']['status'] === -1)

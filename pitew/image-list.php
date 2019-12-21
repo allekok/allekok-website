@@ -57,7 +57,7 @@ $poet = isset($_GET['poet']) ?
 class='imglist'
 >" . $_l['name'] . "</section><section class='imglist'
 >" . $_l['poet'] . "</section><section class='imglist'
->" . "<a class='link' href='/style/img/poets/new/{$_l['filename']}'
+>" . "<a class='link' href='" . _R . "style/img/poets/new/{$_l['filename']}'
 target='_blank'>وێنە</a></section></div>";
 	}
 	
