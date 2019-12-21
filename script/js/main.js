@@ -270,7 +270,7 @@ var search = search || function (e)
     
     Res.style.display="block";
     Res.innerHTML="<div class='loader'></div>";
-    getUrl(`{$_R}script/php/search-quick.php?q=${q}`,
+    getUrl(`${_R}script/php/search-quick.php?q=${q}`,
 	   function(response)
 	   {
 	       Res.innerHTML = response;

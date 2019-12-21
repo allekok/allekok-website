@@ -40,8 +40,8 @@ poets WHERE len>=$s_len";
 	if(false !== @strpos($poet['takh'],$s_sanitized) or
 	    false !== @strpos($poet['profname'],$s_sanitized))
 	{
-	    $poet_image = get_poet_image($poet['id'], true);
-	    $res_poets_html .= "<section><a href='/poet:{$poet['id']}'
+	    $poet_image = _R.get_poet_image($poet['id'], false);
+	    $res_poets_html .= "<section><a href='"._R."poet:{$poet['id']}'
 ><img src='$poet_image'><h3>{$poet['rtakh']}</h3></a></section>";
 	    if(--$poets_max == 0) break;
 	}
@@ -57,8 +57,8 @@ poets WHERE len>=$s_len";
 	    if(false !== @strpos($poet['name'],$s_sanitized) or
 		false !== @strpos($poet['hdesc'],$s_sanitized))
 	    {
-		$poet_image = get_poet_image($poet['id'], true);
-		$res_poets_html .= "<section><a href='/poet:{$poet['id']}'
+		$poet_image = _R.get_poet_image($poet['id'], false);
+		$res_poets_html .= "<section><a href='"._R."poet:{$poet['id']}'
 ><img src='$poet_image'><h3>{$poet['rtakh']}</h3></a></section>";
 		$poets[$i]=[];
 		if(--$poets_max == 0) break;
@@ -79,8 +79,8 @@ poets WHERE len>=$s_len";
 		false !== @strpos(san_data_more($poet['hdesc']),
 				  $s_sanitized_more)))
 	    {
-		$poet_image = get_poet_image($poet['id'], true);
-		$res_poets_html .= "<section><a href='/poet:{$poet['id']}'
+		$poet_image = _R.get_poet_image($poet['id'], false);
+		$res_poets_html .= "<section><a href='"._R."poet:{$poet['id']}'
 ><img src='$poet_image'><h3>{$poet['rtakh']}</h3></a></section>";
 		if(--$poets_max == 0) break;
 	    }
@@ -97,7 +97,7 @@ if($books_max !== 0)
 	if(false !== @strpos($book['book'],$s_sanitized))
 	{
 	    $res_books_html .= "<a 
-href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
+href='"._R."poet:{$book['poet_id']}/book:{$book['book_id']}'
 ><i>{$book['rtakh']}</i> › {$book['rbook']}</a>";
 	    if(--$books_max == 0) break;
 	}
@@ -113,7 +113,7 @@ href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
 	    if(false !== @strpos($book['book_desc'],$s_sanitized))
 	    {
 		$res_books_html .= "<a 
-href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
+href='"._R."poet:{$book['poet_id']}/book:{$book['book_id']}'
 ><i>{$book['rtakh']}</i> › {$book['rbook']}</a>";
 		$books[$i] = [];
 		if(--$books_max == 0) break;
@@ -131,7 +131,7 @@ href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
 				  $s_sanitized_more)))
 	    {
 		$res_books_html .= "<a 
-href='/poet:{$book['poet_id']}/book:{$book['book_id']}'
+href='"._R."poet:{$book['poet_id']}/book:{$book['book_id']}'
 ><i>{$book['rtakh']}</i> › {$book['rbook']}</a>";
 		if(--$books_max == 0) break;
 	    }
@@ -158,7 +158,7 @@ poem,poem_true,rbook,rname,rtakh FROM poems WHERE len>=$s_len $selected_poet_que
 		$res_poems_html .= "<div style='display:flex'><button 
 class='material-icons' style='padding:0 0 0 .5em;
 font-size:.8em' onclick='show_summary_search(this)' type='button' 
->dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
+>dehaze</button><a href='"._R."script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 >{$poem['rtakh']} › {$poem['rname']}</a></div>";
 		$poems[$i] = [];
@@ -178,7 +178,7 @@ font-size:.8em' onclick='show_summary_search(this)' type='button'
 		$res_poems_context_html .= "<div style='display:flex'><button 
 class='material-icons' style='padding:0 0 0 .5em;
 font-size:.8em' onclick='show_summary_search(this)' type='button' 
->dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
+>dehaze</button><a href='"._R."script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 >{$poem['rtakh']} › {$poem['rname']}</a></div>";
 		$poems[$i] = [];
@@ -198,7 +198,7 @@ font-size:.8em' onclick='show_summary_search(this)' type='button'
 		$res_poems_html .= "<div style='display:flex'><button 
 class='material-icons' style='padding:0 0 0 .5em;
 font-size:.8em' onclick='show_summary_search(this)' type='button' 
->dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
+>dehaze</button><a href='"._R."script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 >{$poem['rtakh']} › {$poem['rname']}</a></div>";
 		$poems[$i] = [];
@@ -220,7 +220,7 @@ font-size:.8em' onclick='show_summary_search(this)' type='button'
 		$res_poems_context_html .= "<div style='display:flex'><button 
 class='material-icons' style='padding:0 0 0 .5em;
 font-size:.8em' onclick='show_summary_search(this)' type='button' 
->dehaze</button><a href='/script/php/update-cipi.php?uri=poet:
+>dehaze</button><a href='"._R."script/php/update-cipi.php?uri=poet:
 {$poem['poet_id']}/book:{$poem['book_id']}/poem:{$poem['poem_id']}'
 >{$poem['rtakh']} › {$poem['rname']}</a></div>";
 		if(--$poems_max == 0) break;
