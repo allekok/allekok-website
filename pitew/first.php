@@ -33,7 +33,7 @@ include(ABSPATH . 'script/php/header.php');
 		
 	    </a>
 	    <small>
-		دەتوانن بۆ نووسینەوەی شێعر لەم دیوانانە کەڵک وەرگرن: <a class="link-underline" style='display:inline-block' href="/pitew/pdfs.php">
+		دەتوانن بۆ نووسینەوەی شێعر لەم دیوانانە کەڵک وەرگرن: <a class="link-underline" style='display:inline-block' href="pdfs.php">
 		داگرتنی دیوانی شاعیران
 		</a>
 	    </small>
@@ -60,7 +60,7 @@ include(ABSPATH . 'script/php/header.php');
                 </small>
             </a>
 	</section><section class='pitewsec pitewsec-first'>
-            <a href="/comments/">
+            <a href="<?php echo _R; ?>comments/">
 		<i class='material-icons'>question_answer</i>
 		<h3>
                     ڕاست‌کردنەوەی هەڵەکانی ناو شێعر
@@ -71,9 +71,9 @@ include(ABSPATH . 'script/php/header.php');
                 </small>
             </a>
 	</section></section><section class='pitewsec pitewsec-first'>
-            <a href="/about">
+            <a href="<?php echo _R; ?>about">
 		<i class='material-icons'
-		><img src='/logo/logo-64.jpg'
+		><img src='<?php echo _R; ?>logo/logo-64.jpg'
 		      style='border:2px solid;
 			   border-radius:50%;
 			   padding:.02em;width:.9em;
