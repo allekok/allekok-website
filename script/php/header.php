@@ -58,9 +58,11 @@ if(!$no_head) {
 		<a href='<?php echo _SITE; ?>/'>
 		    <h1><?php echo _TITLE; ?></h1>
 		</a>
-		    <!-- Search Icon -->
-		    <button id='tS' class='header-icon material-icons'
-				style='left:0'>search</button>
+		<?php if(@!$is_it_search) { ?>
+		<!-- Search Icon -->
+		<button id='tS' class='header-icon material-icons'
+			    style='left:0'>search</button>
+		<?php } // @!$is_it_search ?>
 		<!-- Bookmarks Icon -->
 		<button id='tL' class='header-icon material-icons'
 			style='left:1.3em;display:none'
@@ -78,6 +80,7 @@ if(!$no_head) {
 		  ><i class="material-icons"
 		   >arrow_downward</i></a>
 	    </div>
+	    <?php if(@!$is_it_search) { ?>
 		<!-- Search Section -->
 		<div id='search'>
 		    <form id='search-form' action='<?php echo _R; ?>' method='GET'
@@ -91,6 +94,7 @@ if(!$no_head) {
 		      >search</button></form>
 		    <div id='search-res'></div>
 		</div>
+	    <?php } // @!$is_it_search ?>
 	    <!-- Bookmarks -->
 	    <div id='tL-res' style='display:none'>
 		<div id='tL-res-res'></div>

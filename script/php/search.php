@@ -22,7 +22,7 @@
 </style>
 <div id="poets" class="search-main">
     <div>
-	<form id="search-form" action="/" method="GET"><input type="text" id="search-key" class='search-key-php' name="q" placeholder="گەڕان بۆ ..." value="<?php echo htmlspecialchars($_GET['q']); ?>"><button type="submit" id="search-btn" class='material-icons'>search</button></form>
+	<form id="search-form" action="<?php echo _R; ?>" method="GET"><input type="text" id="search-key" class='search-key-php' name="q" placeholder="گەڕان بۆ ..." value="<?php echo htmlspecialchars($_GET['q']); ?>"><button type="submit" id="search-btn" class='material-icons'>search</button></form>
     </div>
 
     <section class='sli' style="text-align:right;padding-left:.5em">
@@ -319,7 +319,7 @@
      xmlhttp.onload = function() {
 	 res.innerHTML = this.responseText;
      }
-     xmlhttp.open("get",`/script/php/search-complete.php?${request}`);
+     xmlhttp.open("get",`<?php echo _R; ?>script/php/search-complete.php?${request}`);
      xmlhttp.send();
  }
  
