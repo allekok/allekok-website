@@ -117,7 +117,7 @@ $_poet1 = isset($_GET['poet']) ?
 		 e.style.background = '<?php echo $_color; ?>';
              });
              poet.style.backgroundImage =
-		 `url(/style/img/poets/profile/profile_${res.img}.jpg`;
+		 `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg`;
              poet.style.backgroundRepeat = "no-repeat";
              poet.style.backgroundSize = "auto 100%";
              poet.style.backgroundPosition = "left center";
