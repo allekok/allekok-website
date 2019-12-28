@@ -93,7 +93,7 @@ include(ABSPATH . "script/php/header.php");
      let expires = new Date();
      expires.setTime(expires.getTime() + (days*24*3600*1000));
      expires = expires.toUTCString();
-     document.cookie = `theme=${kind};expires=${expires};path=<?php echo _R; ?>`;
+     document.cookie = `theme=${kind};expires=${expires};path=/`;
      button_select(kind);
      window.location.reload();
  }
