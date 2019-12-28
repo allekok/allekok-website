@@ -78,11 +78,11 @@ include(ABSPATH . 'script/php/header.php');
 		$_encoded_name = urlencode($_l['name']);
 		$_html .= "<div class='epld'
 ><section class='epld-title'><a target='_blank'
-href='/pitew/res/{$_l["filename"]}' 
+href='"._R."pitew/res/{$_l["filename"]}' 
 title='وەشانی plain/text'><i 
 class='material-icons' style='font-size:1.5em'
 >insert_drive_file</i></a> &laquo;<a 
-href='/pitew/poetdesc-list.php?name=$_encoded_name'
+href='"._R."pitew/poetdesc-list.php?name=$_encoded_name'
 >" . num_convert($_l['name'],"en","ckb") . "</a
 >&raquo; سەبارەت بە &laquo;" .
 			  $_l['poet'] .
@@ -93,7 +93,7 @@ max-height:150px'";
 		$_html .= ">{$_l['content']}</section>";
 		$_html .= "<div style='text-align:left'
 ><button class='epld-expand button' 
-data-uri='/pitew/res/{$_l['filename']}'
+data-uri='"._R."pitew/res/{$_l['filename']}'
 >زیاتر <i class='material-icons'>keyboard_arrow_down</i
 ></button></div></div>";
 		$_count++;
@@ -164,7 +164,7 @@ border-top:2px solid;margin:1em'
 		    padding:.5em'>
             <?php if($_name) { ?>
 		<a class='link' 
-		   href="/pitew/poetdesc-list.php">
+		   href="<?php echo _R; ?>pitew/poetdesc-list.php">
 		    &lsaquo; تەواوی ئەو زانیاریانەی نووسراون
 		</a>
             <?php } ?>

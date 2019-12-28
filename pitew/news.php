@@ -98,7 +98,7 @@ $n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
 		if(! $query) continue;
 		
 		$poem = mysqli_fetch_assoc($query)["name"];
-		$image_uri = get_poet_image($pt,true);
+		$image_uri = _R . get_poet_image($pt,false);
 		
 		echo "<div style='margin:1.2em 0'><a class='link-news' 
 href='/poet:$pt/book:$bk/poem:$pm'><img style='display:inline-block;
