@@ -1,1 +1,22 @@
-<a href="<?php echo _R; ?>donate/" class="color-blue">یارمەتی ماڵی</a><a title="سەبارەت بە ئاڵەکۆک" href="<?php echo _R; ?>about/">ئاڵەکۆک؟</a><a title="تازەکانی ئاڵەکۆک" href="<?php echo _R; ?>pitew/news.php">تازەکان</a><a title="پتەوکردنی ئاڵەکۆک" href="<?php echo _R; ?>pitew/first.php">پتەوکردن</a><a title="سپاس و پێزانین" href="<?php echo _R; ?>thanks/">سپاس</a><a title="دابەزاندنی بەرنامەی ئاڵەکۆک" href="<?php echo _R; ?>desktop/"><i class="material-icons">phone_iphone‌laptop</i></a><a title="کۆد" href="<?php echo _R; ?>dev/tools/"><i class="material-icons">code</i></a><a title="چۆنیەتی بەکارهێنانی ئاڵەکۆک" href="<?php echo _R; ?>manual/"><i class="material-icons">help</i></a><a title="گۆڕانکاری" href="<?php echo _R; ?>customize/"><i class="material-icons">settings</i></a>
+<a href="<?php echo _R; ?>donate/"
+   class="color-blue"><?php P("donate"); ?></a>
+<a title="<?php P("about allekok"); ?>"
+   href="<?php echo _R; ?>about/"><?php P("allekok?"); ?></a>
+<a title="<?php P("allekok news"); ?>"
+   href="<?php echo _R; ?>pitew/news.php"><?php P("news"); ?></a>
+<a title="<?php P("allekok pitew"); ?>"
+   href="<?php echo _R; ?>pitew/first.php"><?php P("pitew"); ?></a>
+<a title="<?php P("thanks.."); ?>"
+   href="<?php echo _R; ?>thanks/"><?php P("thanks"); ?></a>
+<a title="<?php P("desktop"); ?>" href="<?php echo _R; ?>desktop/">
+    <i class="material-icons">phone_iphone‌laptop</i>
+</a>
+<a title="<?php P("code"); ?>" href="<?php echo _R; ?>dev/tools/">
+    <i class="material-icons">code</i>
+</a>
+<a title="<?php P("manual"); ?>" href="<?php echo _R; ?>manual/">
+    <i class="material-icons">help</i>
+</a>
+<a title="<?php P("customize"); ?>" href="<?php echo _R; ?>customize/">
+    <i class="material-icons">settings</i>
+</a>

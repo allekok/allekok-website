@@ -4,14 +4,12 @@ if(!$no_head) {
 ?>
     <!DOCTYPE html>
     <?php
-    $requri = @filter_var($_SERVER['REQUEST_URI'],
-			  FILTER_SANITIZE_STRING);
     if(@$ath)
 	$ogimg = _SITE.get_poet_image($ath,true);
     else 
 	$ogimg = _SITE.'/logo/logo-128.jpg';
     ?>
-    <html dir='rtl' lang='ckb'>
+    <html dir='<?php echo $site_dir; ?>' lang='<?php echo $site_lang_cc; ?>'>
 	<head>
 	    <script>	 
              if ('serviceWorker' in navigator)
@@ -37,9 +35,6 @@ if(!$no_head) {
 	    <meta property='og:title' content='<?php echo $desc; ?>' />
 	    <meta property='og:description' content='' />
 	    <meta property='og:type' content='website' />
-	    <meta property='og:url' content='<?php
-					     echo _SITE.$requri;
-					     ?>' />
 	    <meta property='og:image' content='<?php echo $ogimg; ?>' />
 	    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo _R; ?>favicon/apple-touch-icon.png">
 	    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo _R; ?>favicon/favicon-32x32.png">
@@ -55,28 +50,28 @@ if(!$no_head) {
 	    <!-- Header -->
 	    <header>
 		<!-- Title -->
-		<a href='<?php echo _SITE; ?>/'>
-		    <h1><?php echo _TITLE; ?></h1>
+		<a href='<?php echo _SITE . "/?lang={$site_lang}"; ?>'>
+		    <h1><?php echo SP("title"); ?></h1>
 		</a>
 		<?php if(@!$is_it_search) { ?>
-		<!-- Search Icon -->
-		<button id='tS' class='header-icon material-icons'
-			    style='left:0'>search</button>
+		    <!-- Search Icon -->
+		    <button id='tS' class='header-icon material-icons'
+			    style='<?php echo $site_anti_align; ?>:0'>search</button>
 		<?php } // @!$is_it_search ?>
 		<!-- Bookmarks Icon -->
 		<button id='tL' class='header-icon material-icons'
-			style='left:1.3em;display:none'
+			style='<?php echo $site_anti_align; ?>:1.3em;display:none'
 		>bookmark</button>
 		<!-- Nav Icon -->
 		<button id='tN' class='header-icon material-icons'
-			style='left:2.6em'
+			style='<?php echo $site_anti_align; ?>:2.6em'
 		>more_vert</button>
 	    </header>
 	    <!-- Links -->
 	    <div id="header-nav" style="display:none">
 		<?php
 		include('footer-links.php');
-		?><a href="#footer" title="چوونە خوارەوە"
+		?><a href="#footer" title="<?php P("bottom"); ?>"
 		  ><i class="material-icons"
 		   >arrow_downward</i></a>
 	    </div>
@@ -87,7 +82,7 @@ if(!$no_head) {
 		    ><input type='text'
 			    id='search-key'
 			    onkeyup='search(event)'
-			    placeholder='گەڕان بۆ ...' name='q'
+			    placeholder='<?php P("search for"); ?>' name='q'
 		     ><button type='submit'
 			      id='search-btn'
 			      class='material-icons'

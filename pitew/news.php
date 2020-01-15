@@ -28,7 +28,7 @@ $n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
 <div id="poets" style="text-align:right">
     <h1 class="color-blue" style="font-size:1em;
 	       text-align:right">
-        تازەکان
+        <?php P("news"); ?>
     </h1>
     <div style="font-size:.6em;padding-right:2em">
 	<div class="tools-menu">

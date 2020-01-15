@@ -4,10 +4,10 @@ $no_head = isset($_GET['nohead']);
 $no_foot = isset($_GET['nofoot']);
 
 /** Default values **/
-$title = _TITLE . ' - ' . _DESC;
+$title = SP("title") . ' - ' . SP("desc");
 /* Page title <title> */
 
-$desc = _DESC;
+$desc = SP("desc");
 /* Page description <meta name="description"> ,
    <meta property="og:title"> */
 

@@ -36,9 +36,9 @@ require(ABSPATH.'script/php/condb.php');
 	if(isset($_GET['new']))
 	    echo '<a href="' . _R . '">شاعیرانی کۆچ‌کردوو</a>';
 	else
-	    echo '<a href="' . _R . '?new">شاعیرانی نوێ</a>';
+	    echo '<a href="' . _R . '?new">' . SP("new poets") . '</a>';
 	
-	echo '<a href="' . _R . 'poet:73">بەیتی کوردی</a>';
+	echo '<a href="' . _R . 'poet:73">' . SP("beyt") . '</a>';
 	?>
     </div>
 </div>

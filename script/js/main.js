@@ -2,6 +2,16 @@ const _R = _relativePath || "/";
 const _R_LEN = _R.length;
 var bookmarks_name = bookmarks_name || 'favorites';
 
+var set_cookie = set_cookie || function (cookie_name, value, days=1000, path="/")
+{
+    let expires = new Date();
+    expires.setTime(expires.getTime() + (days*24*3600*1000));
+    expires = expires.toUTCString();
+    const cookie = `${cookie_name}=${value};expires=${expires};path=${path}`;
+    document.cookie = cookie;
+    return cookie;
+}
+
 var arabi_to_latin = arabi_to_latin || function (s)
 {
     /* `arabi_to_latin' function:

@@ -11,7 +11,7 @@ $t_desc = "";
 include(ABSPATH . "script/php/header.php");
 ?>
 <style>
- #set_theme, #user_codes
+ #set_theme, #user_codes, #set_lang
  {
      text-align:right;
      font-size:.7em;
@@ -64,6 +64,12 @@ include(ABSPATH . "script/php/header.php");
 	    تاریک
 	</button>
     </div>
+    <div id="set_lang">
+	<span>
+	    <?php P("language"); ?>:
+	</span>
+	<?php P("site lang"); ?>
+    </div>
     <!-- User codes -->
     <div id="user_codes">
 	<span>
@@ -88,7 +94,7 @@ include(ABSPATH . "script/php/header.php");
  {
      if(themes.indexOf(kind) === -1)
 	 return false;
-
+     
      const days = 1000;
      let expires = new Date();
      expires.setTime(expires.getTime() + (days*24*3600*1000));

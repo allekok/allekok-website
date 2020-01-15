@@ -6,7 +6,7 @@ if(!$no_foot) {
     <footer id="footer">
 	<?php
 	include('footer-links.php');
-	?><a href="#" title="چوونە سەرەوە"
+	?><a href="#" title="<?php P("top"); ?>"
 	  ><i class="material-icons"
 	   >arrow_upward</i></a>
     </footer>
