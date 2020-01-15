@@ -1,9 +1,9 @@
 <?php
+$ver = @$_GET['ver'];
+$pt = @$_GET['pt'];
 
-$ver = $_GET['ver'];
-$pt = $_GET['pt'];
-
-$f = fopen("update-log.txt" , "r");
+$f = @fopen("update-log.txt" , "r");
+if(!$f) die();
 
 while(! feof($f) ) {
     $l = fgets($f);
@@ -15,5 +15,4 @@ while(! feof($f) ) {
 }
 
 fclose($f);
-
 ?>

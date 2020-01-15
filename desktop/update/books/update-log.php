@@ -1,10 +1,10 @@
 <?php
+$ver = @$_GET['ver'];
+$bk = @$_GET['bk'];
+$pt = @$_GET['pt'];
 
-$ver = $_GET['ver'];
-$bk = $_GET['bk'];
-$pt = $_GET['pt'];
-
-$f = fopen("update-log.txt" , "r");
+$f = @fopen("update-log.txt" , "r");
+if(!$f) die();
 $ls = [];
 
 while(! feof($f) ) {
@@ -17,5 +17,4 @@ while(! feof($f) ) {
 }
 
 fclose($f);
-
 ?>
