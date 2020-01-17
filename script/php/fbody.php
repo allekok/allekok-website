@@ -14,7 +14,7 @@ require(ABSPATH.'script/php/condb.php');
 <div id='poets'>
     <?php if(isset($_GET['new'])) { ?>
         <p style="font-size:.6em;text-align:right">
-	    مەبەست لە شاعیرانی نوێ، ئەو شاعیرانەن کە لە ژیان دا ماون.
+	    <?php P("new poets desc"); ?>
         </p>
     <?php
     }
@@ -34,7 +34,7 @@ require(ABSPATH.'script/php/condb.php');
     <div class='fbody-nav'>
 	<?php 
 	if(isset($_GET['new']))
-	    echo '<a href="' . _R . '">شاعیرانی کۆچ‌کردوو</a>';
+	    echo '<a href="' . _R . '">' . SP("dead poets") . '</a>';
 	else
 	    echo '<a href="' . _R . '?new">' . SP("new poets") . '</a>';
 	

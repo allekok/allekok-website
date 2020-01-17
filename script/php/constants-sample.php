@@ -14,9 +14,11 @@ const _DEFAULT_DB = 'allekok_main';
 const _SEARCH_DB = 'allekok_search';
 
 /* Website */
-/* Could be 'https://' */
-define('_SITE', 'http://' . @$_SERVER['HTTP_HOST']);
 /* Relative path to web server's root */
 const _R = '/';
-const _KEYS = 'ئاڵەکۆک,شێعر,شاعیر,بەیت,چیرۆک,هەڵبەست,شیعر,کورد,کوردستان';
+/* Could be 'https://' */
+define('_SITE', 'http://' . @$_SERVER['HTTP_HOST']);
+$_TITLE = SP("title");
+$_DESC = SP("desc");
+$_KEYS = SP("keys");
 ?>

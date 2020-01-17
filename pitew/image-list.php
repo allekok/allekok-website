@@ -4,10 +4,10 @@ include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
 $title =
-    _TITLE .
+    $_TITLE .
     " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; ناردنی وێنەی شاعیران &rsaquo; وێنەکان";
 $desc = "ئەو وێنانەی کە بۆتان ناردوویین";
-$keys = _KEYS;
+$keys = $_KEYS;
 $t_desc = "";
 
 include(ABSPATH . 'script/php/header.php');

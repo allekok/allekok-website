@@ -23,9 +23,9 @@ if(strtolower($job) == 'delete' and $nm and $pt)
 }
 /* Delete */
 
-$title = _TITLE . " &rsaquo; نووسینی زانیاری سەبارەت بە شاعیران";
+$title = $_TITLE . " &rsaquo; نووسینی زانیاری سەبارەت بە شاعیران";
 $desc = "نووسینی زانیاری سەبارەت بە شاعیران";
-$keys = _KEYS;
+$keys = $_KEYS;
 $t_desc = "";
 
 include(ABSPATH . 'script/php/header.php');

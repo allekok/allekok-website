@@ -3,9 +3,9 @@ include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = _TITLE . " &rsaquo; یارمەتی ماڵی";
+$title = $_TITLE . " &rsaquo; یارمەتی ماڵی";
 $desc = "ناردنی پارە بۆ پشتیوانی ئاڵەکۆک";
-$keys = _KEYS;
+$keys = $_KEYS;
 $t_desc = "";
 
 include(ABSPATH . "script/php/header.php");

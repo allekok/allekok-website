@@ -11,10 +11,10 @@ $n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
      $_GET['n'] : 20;
 
 $title = $_name1 ?
-	 _TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; نووسینی شێعر &rsaquo; شێعرەکانی \"$_name1\"" :
-	 _TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; نووسینی شێعر &rsaquo; شێعرەکان";
+	 $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; نووسینی شێعر &rsaquo; شێعرەکانی \"$_name1\"" :
+	 $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; نووسینی شێعر &rsaquo; شێعرەکان";
 $desc = "ئەو شێعرانەی کە نووسیوتانە";
-$keys = _KEYS;
+$keys = $_KEYS;
 $t_desc = "";
 
 include(ABSPATH . 'script/php/header.php');

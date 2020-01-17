@@ -3,10 +3,10 @@ include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = _TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo;
+$title = $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo;
  نووسینی زانیاری سەبارەت بە شاعیران &rsaquo; زانیاریەکان";
 $desc = "ئەو زانیاریانەی کە لەسەر ئاڵەکۆک‌تان نووسیوە";
-$keys = _KEYS;
+$keys = $_KEYS;
 $t_desc = "";
 
 $_name = isset($_GET['name']) ?

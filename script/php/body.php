@@ -4,14 +4,14 @@ $no_head = isset($_GET['nohead']);
 $no_foot = isset($_GET['nofoot']);
 
 /** Default values **/
-$title = SP("title") . ' - ' . SP("desc");
+$title = $_TITLE . ' - ' . $_DESC;
 /* Page title <title> */
 
-$desc = SP("desc");
+$desc = $_DESC;
 /* Page description <meta name="description"> ,
    <meta property="og:title"> */
 
-$keys = _KEYS;
+$keys = $_KEYS;
 /* Page keywords <meta name="keywords"> */
 
 $t_desc = "";
@@ -44,7 +44,7 @@ bks,kind FROM auth WHERE id={$ath}";
     if($row = mysqli_fetch_assoc($query)) {
         mysqli_close($conn);
         
-        $title = _TITLE . " &rsaquo; " . $row["profname"];        
+        $title = $_TITLE . " &rsaquo; " . $row["profname"];        
         $desc = "شێعرەکانی " . $row['profname'];
         $keys = "{$row["takh"]},{$row["profname"]},{$row["name"]},"
 	      . "شاعیر,شێعر,شعر";
@@ -76,7 +76,7 @@ elseif ($ath and $bk and !$id) {
             
             $bknow = explode(",",$info["bks"]);
 	    
-            $title = _TITLE . " &rsaquo; {$info["profname"]} &rsaquo; {$bknow[$bk-1]}";
+            $title = $_TITLE . " &rsaquo; {$info["profname"]} &rsaquo; {$bknow[$bk-1]}";
             $desc = "کتێبی " . $bknow[$bk-1] . "، " . $info["profname"];
             $keys = "{$bknow[$bk-1]},{$info["takh"]},{$info["profname"]},{$info["name"]},"
 		  . "بەرهەم,شێعر,شعر,شیعر";
@@ -90,7 +90,7 @@ elseif ($ath and $bk and !$id) {
 	mysqli_close($conn);
     } else {
 	$fbody = true;
-        $t_desc = "<h2>"._DESC."</h2>";
+        $t_desc = "<h2>".$_DESC."</h2>";
         include("header.php");
         include("fbody.php");
     }
@@ -143,7 +143,7 @@ elseif ($ath and $bk and $id) {
                     $row = [0,$row[0],0];
                 
 
-                $title = _TITLE . " &rsaquo; "
+                $title = $_TITLE . " &rsaquo; "
 		       . "{$info["profname"]} &rsaquo; {$bknow[$bk-1]} &rsaquo; {$row[1]["name"]}";
                 $desc = "شێعری " . $row[1]["name"] . "، " . $info["profname"];
                 $keys = "{$row[1]["name"]},{$bknow[$bk-1]},{$info["takh"]},{$info["profname"]},{$info["name"]},"
@@ -157,13 +157,13 @@ elseif ($ath and $bk and $id) {
 
         } else {
 	    $fbody = true;
-            $t_desc = "<h2>"._DESC."</h2>";
+            $t_desc = "<h2>".$_DESC."</h2>";
             include("header.php");
             include("fbody.php");
         }
     } else {
 	$fbody = true;
-        $t_desc = "<h2>"._DESC."</h2>";
+        $t_desc = "<h2>".$_DESC."</h2>";
         include("header.php");
         include("fbody.php");
     }
@@ -175,7 +175,7 @@ elseif ($ath and $bk and $id) {
      */
     
     $is_it_search = 1;
-    $title = _TITLE . " &rsaquo; گەڕان: " . $q;
+    $title = $_TITLE . " &rsaquo; گەڕان: " . $q;
     $desc = "گەڕان بۆ " . $q . " لە ئاڵەکۆک دا";
     $keys = "$q," . "ئاڵەکۆک,شێعر,شعر";
     
@@ -184,7 +184,7 @@ elseif ($ath and $bk and $id) {
     
 } else {
     $fbody = true;
-    $t_desc = "<h2>"._DESC."</h2>";
+    $t_desc = "<h2>".$_DESC."</h2>";
     include("header.php");
     include("fbody.php");
 }

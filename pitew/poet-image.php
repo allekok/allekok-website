@@ -38,9 +38,9 @@ max-width:200px;cursor:pointer'>";
     }
 }
 
-$title = _TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; ناردنی وێنەی شاعیران";
+$title = $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; ناردنی وێنەی شاعیران";
 $desc = "ناردنی وێنەی شاعیران بۆ ئاڵەکۆک";
-$keys = _KEYS;
+$keys = $_KEYS;
 $t_desc = "";
 
 include(ABSPATH . 'script/php/header.php');
