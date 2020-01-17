@@ -8,3 +8,5 @@
 * TODO (/customize/package) Build a package system.
 * TODO (script/js/main.js) Compress 'main.js'.
 * TODO (about/index.php) Fix the error on submitting very first comment.
+* TODO (script/js/main.js) Add previously viewed pages into "indexeddb" to restore them back again when viewer goes back in history.
+* TODO Make 'Allekok' less server-dependent. Try not to download poems that had been viewed before and haven't changed since then. (like 'allekok-client' but more intelligent)
