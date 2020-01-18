@@ -6,4 +6,6 @@ const output = "main-comp.js";
 file_put_contents(output,
 		  file_get_contents(constants_js) .
 		  "\n" . file_get_contents(main_js));
+
+exec("php 'tools/compress.php'");
 ?>
