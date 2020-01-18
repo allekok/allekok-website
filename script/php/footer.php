@@ -23,6 +23,13 @@ if(!$no_foot) {
      {
 	 console.warn(`"user-codes" Can not be evaluated.\n${e}`);
      }
+     /* Language-specific constants */
+     const site_lang = "<?php echo $site_lang; ?>";
+     const site_lang_cc = "<?php echo $site_lang_cc; ?>";
+     const site_dir = "<?php echo $site_dir; ?>";
+     const site_align = "<?php echo $site_align; ?>";
+     const site_anti_align = "<?php echo $site_anti_align; ?>";
+     const site_lang_show = "<?php P("language"); ?>";
     </script>
 </body>
 </html>
