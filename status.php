@@ -59,7 +59,7 @@ if($query and (mysqli_num_rows($query) > 0))
     while($res = mysqli_fetch_assoc($query))
     {
 	$res['name'] = $res['name'] ? $res['name'] : "ناشناس";
-	echo "- {$res['name']} › https://allekok.com/{$res['address']}\n";
+	echo "- {$res['name']} › "._SITE."/{$res['address']}\n";
     }
 }
 else

@@ -722,13 +722,7 @@ var eval_js = eval_js || function (str)
 
 var hashStr = hashStr || function (str)
 {
-    let hash = 0;
-    for (const i in str)
-    {
-	const ch = str.charCodeAt(i);
-	hash += ch;
-    }
-    return hash;
+    return str;
 }
 
 var ajax_findstate = ajax_findstate || function (url, max_delta=9000000)
