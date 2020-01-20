@@ -1,0 +1,29 @@
+بەشداربوون
+	ئەگەر دەتانهەوێ لە پتەوکردنی کۆدەکانی ئاڵەکۆک‌دا یارمەتی‌مان بدەن،
+	هەنگاوەکانی خوارەوە بپێون. ئەگەر پرسیارێک‌و هەبوو پەیوەندیم پێوە بکەن.
+	بۆ بینینی ڕێگاکانی پەیوەندی سەردانی فایلی 'CONTACT' بکەن.
+	
+	# First, fork 'www.allekok.com' repository
+	# Fill [your_username] field with your username on github
+	$ git clone https://github.com/[your_username]/www.allekok.com
+	$ cd www.allekok.com
+	
+	# Fill [your_branch_name] field with a name for your changes
+	$ git checkout -b [your_branch_name]
+	
+	# Start making your changes...When you done:
+	$ git add -p
+	# Fill [A message for your commit] field appropriately
+	$ git commit -m "[A message for your commit]"
+
+	# Fill [your_branch_name] with your previously created branch
+	$ git push origin [your_branch_name]
+	# Create a pull request on github
+	# If you don't have github, send the patch for your changes over to me
+	# by email. My email address is in 'CONTACT' file.
+	# Done. thank you!
+	
+	
+	ئەگەر بەدوای دەقی کوردی هەنگاوەکانی سەرەوە دەگەڕێن سەردانی لاپەڕەی
+	خوارەوە بکەن:
+	'dev/tools/CONTRIBUTING/CONTRIBUTING.md'

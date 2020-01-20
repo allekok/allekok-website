@@ -1,30 +1,42 @@
+# Global
 *~
-script/php/constants.php
-script/php/admin/IP-blacklist.php
-script/php/admin/password.php
-script/php/admin/capture/image.tar
-style/img/poets/new/*.jpeg
-style/img/poets/new/*.png
-style/img/poets/new/*.txt
-pitew/contributors/*.txt
-pitew/news.txt
-pitew/res/*.txt
-update-version.txt
-update-log.txt
-last-update.txt
-stats.txt
-pdfs.txt
 QA.txt
-about/comments.txt
-sitemap.xml
 error_log
 .htaccess
 node_modules
 package-lock.json
-test/
-tewar/
-kurdi-nus/
-rebwar/
-backup/
+
+# script
+script/php/constants.php
+script/php/admin/IP-blacklist.php
+script/php/admin/password.php
+script/php/admin/capture/image.tar
 script/js/constants.js
 script/js/main-comp.js
+
+# style
+style/img/poets/new/*.jpeg
+style/img/poets/new/*.png
+style/img/poets/new/*.txt
+
+# pitew
+pitew/contributors/*.txt
+pitew/pdfs.txt
+pitew/news.txt
+pitew/res/*.txt
+
+# desktop
+update-version.txt
+update-log.txt
+
+# about
+about/comments.txt
+
+# /
+/last-update.txt
+/sitemap.xml
+/test/
+/tewar/
+/kurdi-nus/
+/rebwar/
+/backup/

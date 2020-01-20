@@ -37,6 +37,7 @@
     <body>
         <img src="/logo/logo-64.png" alt="ئاڵەکۆک">
 	<script>
+	 /* Show the right theme-dependent colors */
 	 const themes = ['light' , 'dark'];
 	 if(document.cookie)
 	 {
@@ -49,7 +50,7 @@
 		 {
 		     if(c[1] == themes[1])
 		     {
-			 document.body.style.background = '#000';
+			 document.body.style.background = '#222';
 			 document.querySelector('img').style.filter = 'invert(1)';
 		     }
 		 }
