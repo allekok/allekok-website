@@ -1,4 +1,7 @@
 <?php
+const comments_file = "comments.txt";
+const comment_sign = "[comment]";
+
 function color_random ()
 {
     $R = mt_rand(0,255);
