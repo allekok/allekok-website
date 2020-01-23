@@ -10,8 +10,8 @@ $t_desc = "";
 
 include(ABSPATH . "script/php/header.php");
 
-// number of comments
-$n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
+/* Number of comments */
+$n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE ?
      $_GET['n'] : 20;
 ?>
 <style>
@@ -23,7 +23,7 @@ $n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
 </style>
 <div id="poets">
     <h1 class="color-blue"
-	style="font-size:1em;text-align:right">
+	       style="font-size:1em;text-align:right">
         بیر و ڕاکان
     </h1>
     <div class="tools-menu" style="font-size:.6em;padding-right:2em;margin-bottom:1em">
@@ -58,51 +58,51 @@ $n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
     </div>
     <?php
     $q = 'select * from comments where blocked=0 order by id DESC';
-    require(ABSPATH . 'script/php/condb.php');
+    include(ABSPATH . 'script/php/condb.php');
     if($query)
     {
-	echo "<div id='hon-comments-body'
-    style='padding-right:1em'>";
+	echo "<div id='hon-comments-body' 
+style='padding-right:1em'>";
 	$comms = [];
 	while($res = mysqli_fetch_assoc($query))
 	{
-	    if($n == 0) break;
+	    if($n-- == 0) break;
+	    /* Poet's id from address(poet:{$pt}/...) */
 	    $res['pt'] = substr($res['address'], 5,
-				strpos($res['address'], '/') - 5); // poet's id from address(poet:{$pt}/...)
-            $res['comment'] = str_replace("\n", "<br>\n", $res['comment']); // replace newlines with <br>
-            $res['date'] = explode(' ', $res['date']); // split date string by space
+				strpos($res['address'], '/') - 5);
+	    /* Replace newline characters with <br> */
+            $res['comment'] = str_replace("\n", "<br>\n", $res['comment']);
+	    /* Split 'date' string by spaces */
+            $res['date'] = explode(' ', $res['date']);
             $res['date'] = $res['date'][0] . ' ' . $res['date'][1];
             $res['date'] = num_convert($res['date'], 'en', 'ckb');
             $res['date'] = str_replace(['am','pm'],
 				       [' بەیانی ',' پاش‌نیوەڕۆ '],
-				       $res['date']); // replace am,pm with kurdish ones.
+				       $res['date']);
 	    $comms[] = $res;
-	    $n--;
 	}
 	foreach($comms as $r)
 	{
-            $r["naddress"] = explode("/", $r["address"]); // split address by slash("/")
-            for($a = 0; $a < count($r['naddress']); $a++) {
-		
-		$r["naddress"][$a] = explode(":", $r["naddress"][$a]);
-		// split "naddress" elements by ":"
-		// 0=>["poet", poet's_id], ...
-		
+	    /* Split address by slashes ('/') */
+            $_adrs = explode("/", $r["address"]);
+	    $_adrs_len = count($_adrs);
+            for($i = 0; $i < $_adrs_len; $i++)
+	    {
+		/* Split '$_adrs' elements by ":"
+		   0 => ["Poet", "Poet's id"], ... */
+		$_adrs[$i] = explode(":", $_adrs[$i]);
             }
 
-	    // query poet's takh per each comment
-            $q = "select takh from auth where id={$r["naddress"][0][1]}";
+	    /* Poet's name */
+            $q = "select takh from auth where id={$_adrs[0][1]}";
             $query = mysqli_query($conn, $q);
-
-	    // poet's name
-            $r["ptn"] = mysqli_fetch_assoc($query)["takh"];
+            $r["ptn"] = @mysqli_fetch_assoc($query)["takh"];
 	    
-	    // query poem's name per each comment
-            $q = "select name from tbl{$r["naddress"][0][1]}_{$r["naddress"][1][1]} where id={$r["naddress"][2][1]}";
+	    /* Poem title */ 
+	    $tbl = "tbl{$_adrs[0][1]}_{$_adrs[1][1]}";
+            $q = "select name from {$tbl} where id={$_adrs[2][1]}";
             $query = mysqli_query($conn, $q);
-
-	    //poem's name
-            $r["pmn"] = mysqli_fetch_assoc($query)["name"];
+            $r["pmn"] = @mysqli_fetch_assoc($query)["name"];
 
 	    $r['name'] = trim($r['name']) ? $r['name'] : 'ناشناس';
 
