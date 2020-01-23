@@ -135,16 +135,6 @@ var arabi_to_latin = arabi_to_latin || function (s)
     return s;
 }
 
-var set_cookie = set_cookie || function (cookie_name, value, days=1000, path="/")
-{
-    let expires = new Date();
-    expires.setTime(expires.getTime() + (days*24*3600*1000));
-    expires = expires.toUTCString();
-    const cookie = `${cookie_name}=${value};expires=${expires};path=${path}`;
-    document.cookie = cookie;
-    return cookie;
-}
-
 var poetImage = poetImage || function (pID, callback)
 {
     const client = new XMLHttpRequest(),

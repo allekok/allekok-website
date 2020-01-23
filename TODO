@@ -10,3 +10,4 @@
 * TODO (/customize/package) Build a package system.
 * TODO (about/index.php) Fix the error on submitting very first comment.
 * TODO Make 'Allekok' less server-dependent. Try not to download poems that had been viewed before and haven't changed since then. (like 'allekok-client' but more intelligent)
+* TODO Make (2nd DONE) optional, adjustable in 'customize/index.php'

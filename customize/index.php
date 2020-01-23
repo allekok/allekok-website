@@ -11,11 +11,15 @@ $t_desc = "";
 include(ABSPATH . "script/php/header.php");
 ?>
 <style>
+ #set_theme, #set_lang
+ {
+     border-bottom:1px solid;
+ }
  #set_theme, #user_codes, #set_lang
  {
      text-align:right;
      font-size:.7em;
-     padding:.3em 1em;
+     padding:.7em 1em;
  }
  #set_theme button
  {
@@ -45,6 +49,53 @@ include(ABSPATH . "script/php/header.php");
      padding:1em 2em;
      font-size:.8em;
  }
+ .dropdown
+ {
+     position:relative;
+ }
+ .dd-label
+ {
+     cursor:pointer;
+     display:inline-block;
+ }
+ .dd-label .material-icons
+ {
+     color:#00e;
+ }
+ .dd-label:hover
+ {
+     color:#00e;
+ }
+ .dd-frame
+ {
+     background:#fff;
+     color:#666;
+     display:none;
+     border:1px solid;
+     border-radius:1em;
+     z-index:999;
+     position:absolute;
+ }
+ .dd-frame ul
+ {
+     margin:0;
+     padding:0;
+ }
+ .dd-frame ul li
+ {
+     display:block;
+     padding:.5em;
+     font-size:.9em;
+ }
+ .dd-frame button
+ {
+     font-size:inherit;
+     display:block;
+ }
+ #dd-lang .dd-frame
+ {
+     min-width:90px;
+ }
 </style>
 <div id="poets" style="text-align:right">
     <h1 class="color-blue" style="font-size:1em">
@@ -65,10 +116,30 @@ include(ABSPATH . "script/php/header.php");
 	</button>
     </div>
     <div id="set_lang">
-	<span>
-	    <?php P("language"); ?>:
-	</span>
-	<?php P("site lang"); ?>
+	<div class="dropdown" id="dd-lang">
+	    <span>
+		<?php P("language"); ?>:
+	    </span>
+	    <div class="dd-label"
+	    ><?php echo SITE_LANGS[$site_lang]["lit"]; ?>
+		<span class='material-icons'
+		>keyboard_arrow_down</span></div>
+	    <div class="dd-frame">
+		<ul>
+		    <?php
+		    foreach(SITE_LANGS as $k => $v)
+		    {
+			echo "<li>";
+			if($site_lang != $k)
+			    echo "<button type='button' onclick='set_lang(\"{$k}\")'>" .
+				 $v["lit"] . "</button></li>";
+			else
+			    echo $v["lit"] . "</li>";
+		    }
+		    ?>
+		</ul>
+	    </div>
+	</div>
     </div>
     <!-- User codes -->
     <div id="user_codes">
@@ -100,6 +171,8 @@ include(ABSPATH . "script/php/header.php");
      expires.setTime(expires.getTime() + (days*24*3600*1000));
      expires = expires.toUTCString();
      document.cookie = `theme=${kind};expires=${expires};path=/`;
+     document.getElementById(`set_theme_${kind}`).
+	      querySelector(".material-icons").innerText = "sync";
      button_select(kind);
      window.location.reload();
  }
@@ -150,10 +223,10 @@ include(ABSPATH . "script/php/header.php");
      submit_button.className = 'button btn-selected';
      submit_button.innerHTML = 'پاشەکەوت کرا.';
      setTimeout(function ()
-     {
-	 submit_button.className = 'button';
-	 submit_button.innerHTML = 'پاشەکەوت کردن';
-     }, 3000);
+	 {
+	     submit_button.className = 'button';
+	     submit_button.innerHTML = 'پاشەکەوت کردن';
+	 }, 3000);
  }
  if(user_codes_storage)
      document.getElementById('user_codes_text').value = user_codes_storage;
@@ -161,6 +234,42 @@ include(ABSPATH . "script/php/header.php");
  document.getElementById('set_theme_dark').onclick = function(){set_theme('dark')}
  const user_codes_button = document.getElementById('user_codes_button');
  user_codes_button.onclick = function(){save_user_codes('user_codes_text',user_codes_button)}
+
+ function set_cookie (cookie_name, value, days=1000, path="/")
+ {
+     let expires = new Date();
+     expires.setTime(expires.getTime() + (days*24*3600*1000));
+     expires = expires.toUTCString();
+     const cookie = `${cookie_name}=${value};expires=${expires};path=${path}`;
+     document.cookie = cookie;
+     return cookie;
+ }
+ function toggle (label, target)
+ {
+     const icon = label.querySelector(".material-icons");
+     if(target.style.display != "block")
+     {
+	 target.style.display = "block";
+	 icon.innerText = "keyboard_arrow_up";
+     }
+     else
+     {
+	 target.style.display = "none";
+	 icon.innerText = "keyboard_arrow_down";
+     }
+ }
+ const dd_lang = document.getElementById("dd-lang");
+ const dd_lang_label = dd_lang.querySelector(".dd-label");
+ const dd_lang_frame = dd_lang.querySelector(".dd-frame");
+ dd_lang_label.addEventListener("click", function () {
+     toggle(dd_lang_label, dd_lang_frame);
+ });
+ function set_lang (lang)
+ {
+     set_cookie("lang", lang);
+     dd_lang_label.querySelector(".material-icons").innerText = "sync";
+     window.location.reload();
+ }
 </script>
 <?php
 include_once(ABSPATH . "script/php/footer.php");

@@ -5,22 +5,26 @@ const SITE_LANGS = [
 	"dir" => "rtl",
 	"align" => "right",
 	"cc" => "ckb",
+	"lit" => "کوردیی سۆرانی",
     ],
     "fa" => [
 	"dir" => "rtl",
 	"align" => "right",
 	"cc" => "fa",
+	"lit" => "فارسی",
     ],
-    "ku" => [
-	"dir" => "ltr",
-	"align" => "left",
-	"cc" => "ku",
-    ],
-    "en" => [
-	"dir" => "ltr",
-	"align" => "left",
-	"cc" => "en",
-    ],
+    /* "ku" => [
+       "dir" => "ltr",
+       "align" => "left",
+       "cc" => "ku",
+       "lit" => "Kurdî",
+     * ],
+     * "en" => [
+       "dir" => "ltr",
+       "align" => "left",
+       "cc" => "en",
+       "lit" => "English",
+     * ], */
 ];
 function SP ($key)
 {
@@ -175,12 +179,6 @@ $Ps = [
 	"fa" => "زبان",
 	"ku" => "",
 	"en" => "Language",
-    ],
-    "site lang" => [
-	"ckb" => "کوردی سۆرانی",
-	"fa" => "فارسی",
-	"ku" => "Kurdî",
-	"en" => "English",
     ],
     "" => [
 	"ckb" => "",
