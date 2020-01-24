@@ -715,8 +715,11 @@ var hashStr = hashStr || function (str)
     return str;
 }
 
-var ajax_findstate = ajax_findstate || function (url, max_delta=9000000)
+var ajax_findstate = ajax_findstate || function (url, max_delta=-1)
 {
+    /* Default 'max_delta': 5-days */
+    if(max_delta == -1)
+	max_delta = 5 * 24 * 60 * 60 * 1000;
     const time = Date.now(),
 	  db_name = `hist_${hashStr(url)}`;
     try
