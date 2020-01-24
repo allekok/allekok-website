@@ -31,6 +31,6 @@ $assoc = [
     "tahir" => "https://github.com/allekok/diwan/raw/master/%D8%AA%D8%A7%D9%87%DB%8C%D8%B1%20%D8%A8%DB%95%DA%AF%DB%8C%20%D8%AC%D8%A7%D9%81%20-%20%D8%AF%DB%8C%D9%88%D8%A7%D9%86.pdf",
 ];
 
-if(@$assoc[$q])
+if(isset($assoc[$q]))
     redirect($assoc[$q]);
 ?>
