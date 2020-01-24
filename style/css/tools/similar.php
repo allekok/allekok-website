@@ -1,5 +1,5 @@
 <?php
-$css = file_get_contents('main-comp.css');
+$css = file_get_contents(main_comp);
 
 function str_pop_0(&$string)
 {

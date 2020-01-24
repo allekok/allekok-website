@@ -1,8 +1,8 @@
 <?php
+require_once("constants.php");
 /* run */
-require("../../script/php/constants.php");
-const main_css_path = ABSPATH."style/css/main.css";
-const dark_css_path = ABSPATH."style/css/main-dark.css";
+const main_css_path = main;
+const dark_css_path = main_dark;
 $main_css = file_get_contents(main_css_path);
 $main_css = preg_replace_callback(
     "/(#)([0-9a-f]+)(})/i",

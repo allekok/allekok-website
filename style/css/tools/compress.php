@@ -1,6 +1,8 @@
 <?php
-const _input = ['main.css','main-dark.css'];
-const _output = ['main-comp.css','main-dark-comp.css'];
+require_once("constants.php");
+
+const _input = [main, main_dark];
+const _output = [main_comp, main_dark_comp];
 
 foreach(_input as $i=>$input)
 {

@@ -1,11 +1,17 @@
 <?php
-const main_js = "main.js";
-const constants_js = "constants.js";
-const output = "main-comp.js";
+require_once("constants.php");
+
+const input = main;
+const output = main_comp;
 
 file_put_contents(output,
-		  file_get_contents(constants_js) .
-		  "\n" . file_get_contents(main_js));
+		  file_get_contents(js_constants) .
+		  "\n" . file_get_contents(input));
+echo "`(constants.js + main.js)` Done.\n";
 
-exec("php 'tools/compress.php'");
+exec("php tools/compress.php");
+echo "`compress` Done.\n";
+
+exec("php tools/update_ver.php");
+echo "`update_ver` Done.\n";
 ?>

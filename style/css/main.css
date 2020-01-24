@@ -6,10 +6,10 @@ td, th, textarea, span, i, sup, sub{padding:0;margin:0;border:0;font-family:inhe
 input, textarea, button{-webkit-appearance:none;appearance:none;outline:none;border-radius:0;background:none;color:#000}
 input, textarea{padding:1em;text-align:right;border:1px solid #000;border-radius:1em;display:block;margin:auto}
 textarea{height:15em;min-height:5em}
-input:focus,textarea:focus{border-color:#00e}
+.border-blue,input:focus,textarea:focus{border-color:#00e}
 i{font-style:normal}
 .button{background:#000;color:#fff;border-radius:1em}
-.button:hover{background:#00e;color:#fff}
+.button:hover,.fontsize button:hover,.toolbar a:hover{background:#00e;color:#fff}
 a{text-decoration:none;color:#000}
 a:hover, button:hover{text-decoration:none;color:#00e}
 .poet-pic-small{display:block;margin:0 auto;border-radius:50%;max-width:100px}
@@ -107,7 +107,6 @@ header a h1{font-size:1.3em;margin:0 0 .2em}
 .loader-round{width:1.5em;height:1.5em;border-radius:50%;animation:loading-round 1s ease infinite;margin:1em auto;display:block}
 #main-loader{position:fixed;bottom:0;left:.5em;display:none}
 .fontsize{font-size:.65em;padding:1em 0 2em}
-.fontsize button:hover,.toolbar a:hover{background:#00e;color:#fff}
 #Acomms div{text-align:justify;padding:1em 1em 3em 1em;position:relative;border-radius:1em;margin-bottom:1em}
 .h{position:absolute;bottom:0;left:0;display:block;font-size:.75em;text-align:center;background:rgba(255,255,255,.5);color:black;border-radius:0 1.5em 0;padding:0 1em}
 .h::before{content:'date_range ';font-family:'Material Icons';font-size:1.4em;vertical-align:middle}
@@ -133,7 +132,6 @@ footer i,#header-nav i{font-size:1.4em}
 .link-underline,#main-contributing a{border-bottom:2px solid #00e}
 .color-white{color:#fff}
 #header-nav{position:absolute;z-index:999;background:#fff;left:1em;padding:1em;font-size:.6em;border:2px solid;border-radius:1em}
-.border-blue{border-color:#00e}
 #extlnk{font-size:.6em;max-width:600px;margin:0 auto 2em;padding:0 1em;text-align:right}
 .next div,.prev div{display:inline-block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:90%;vertical-align:middle}
 .next i,.prev i{font-size:inherit;display:inline-block;width:10%;max-width:.8em;vertical-align:top}

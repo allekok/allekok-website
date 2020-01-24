@@ -1,8 +1,10 @@
 <?php
+require_once("constants.php");
+
 /* Using 'javascript-minifier.com's API. */
 const api = "https://javascript-minifier.com/raw";
-const input = "main-comp.js";
-const output = "main-comp.js";
+const input = main_comp;
+const output = main_comp;
 
 $content = file_get_contents(input);
 
