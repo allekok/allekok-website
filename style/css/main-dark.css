@@ -228,6 +228,11 @@ footer i,#header-nav i{font-size:1.4em}
 {
     text-decoration:none;
 }
+.dd-frame
+{
+    background:#222;
+    color:#999;
+}
 @media only screen and (min-width:600px)
 {
     body{font-size:28px}

@@ -60,16 +60,14 @@ include(ABSPATH . "script/php/header.php");
  }
  .dd-label .material-icons
  {
-     color:#00e;
+     color:<?php echo $_color; ?>;
  }
  .dd-label:hover
  {
-     color:#00e;
+     color:<?php echo $_color; ?>;
  }
  .dd-frame
  {
-     background:#fff;
-     color:#666;
      display:none;
      border:1px solid;
      border-radius:1em;
