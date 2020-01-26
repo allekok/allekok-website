@@ -174,6 +174,7 @@ $_book1 = isset($_GET['book']) ?
 	 btns.forEach( function(e)
 	     {
 		 e.style.background = "";
+		 e.style.color = "";
 	 });
 	 loader.style.display = 'none';
  });
@@ -212,6 +213,7 @@ $_book1 = isset($_GET['book']) ?
 		 btns.forEach( function(e)
 		     {
 			 e.style.background = '<?php echo $_color; ?>';
+			 e.style.color = '#fff';
 		 });
 		 
 		 poet.style.backgroundImage = `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg)`;
@@ -230,18 +232,19 @@ $_book1 = isset($_GET['book']) ?
 		 btns.forEach( function(e)
 		     {
 			 e.style.background = "";
+			 e.style.color = "";
 		 });
              }
      });
  }
  document.getElementById('poetTxt').onblur = check;
-	 <?php
-	 if(!$no_head)
-	     echo 'window.onload = function() { ';
+ <?php
+ if(!$no_head)
+     echo 'window.onload = function() { ';
 
-	 if($_poet1)
-	     echo 'check();';
-         ?>
+ if($_poet1)
+     echo 'check();';
+ ?>
  const contri = isJson(localStorage.getItem('contributor'));
  if(contri && contri.name)
  {
@@ -259,9 +262,9 @@ $_book1 = isset($_GET['book']) ?
              }
      });
  }
-	 <?php
-	 if(!$no_head) echo ' } ';
-	 ?>
+ <?php
+ if(!$no_head) echo ' } ';
+ ?>
 </script>
 <?php
 include_once(ABSPATH . "script/php/footer.php");

@@ -58,10 +58,6 @@ include(ABSPATH . "script/php/header.php");
      cursor:pointer;
      display:inline-block;
  }
- .dd-label .material-icons
- {
-     color:<?php echo $_color; ?>;
- }
  .dd-label:hover
  {
      color:<?php echo $_color; ?>;
@@ -82,7 +78,7 @@ include(ABSPATH . "script/php/header.php");
  .dd-frame ul li
  {
      display:block;
-     padding:.5em;
+     padding:0 .5em;
      font-size:.9em;
  }
  .dd-frame button
@@ -115,7 +111,7 @@ include(ABSPATH . "script/php/header.php");
     </div>
     <div id="set_lang">
 	<div class="dropdown" id="dd-lang">
-	    <span>
+	    <span style="padding-left:1em">
 		<?php P("language"); ?>:
 	    </span>
 	    <div class="dd-label"

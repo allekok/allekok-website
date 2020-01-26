@@ -128,44 +128,46 @@ include(ABSPATH . 'script/php/header.php');
          if(poet.value == "")
 	 {
              txts.forEach( function(e)
-	     {
-                 e.style.borderTopColor = "";
-                 e.style.background = "";
+		 {
+                     e.style.borderTopColor = "";
+                     e.style.background = "";
              });
 	     btns.forEach( function(e)
-	     {
-		 e.style.background = '';
+		 {
+		     e.style.background = '';
+		     e.style.color = '';
              });
              return;
          }
 
          getUrl("isitnew.php?poet="+poet.value, function(responseText)
-	 {
-	     const res = JSON.parse(responseText);
-	     
-	     if(res.id != "0")
 	     {
-                 txts.forEach( function(e)
+		 const res = JSON.parse(responseText);
+		 
+		 if(res.id != "0")
 		 {
-		     e.style.borderColor = '<?php echo $_color; ?>';
-                 });
-                 btns.forEach( function(e)
+                     txts.forEach( function(e)
+			 {
+			     e.style.borderColor = '<?php echo $_color; ?>';
+                     });
+                     btns.forEach( function(e)
+			 {
+			     e.style.background = '<?php echo $_color; ?>';
+			     e.style.color = '#fff';
+                     });
+                     poet.style.backgroundImage = `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg`;
+                     poet.style.backgroundRepeat = "no-repeat";
+                     poet.style.backgroundSize = "auto 100%";
+                     poet.style.backgroundPosition = "left center";
+		 }
+		 else
 		 {
-		     e.style.background = '<?php echo $_color; ?>';
-                 });
-                 poet.style.backgroundImage = `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg`;
-                 poet.style.backgroundRepeat = "no-repeat";
-                 poet.style.backgroundSize = "auto 100%";
-                 poet.style.backgroundPosition = "left center";
-	     }
-	     else
-	     {
-                 txts.forEach( function(e)
-		 {
-		     e.style.borderColor = "";
-		     e.style.background = "";
-                 });
-	     }
+                     txts.forEach( function(e)
+			 {
+			     e.style.borderColor = "";
+			     e.style.background = "";
+                     });
+		 }
          });
      }
      document.getElementById('poetTxt').onblur = check;
@@ -179,10 +181,10 @@ include(ABSPATH . 'script/php/header.php');
      
      document.querySelector("input[type=file]").
 	      addEventListener("change", function ()
-	      {
-		  const filebtn = document.querySelector(".file-btn");
-		  filebtn.innerHTML = "هەڵبژێردرا.";
-		  filebtn.style.background = '<?php echo $_color; ?>';
+		  {
+		      const filebtn = document.querySelector(".file-btn");
+		      filebtn.innerHTML = "هەڵبژێردرا.";
+		      filebtn.style.background = '<?php echo $_color; ?>';
 	      });
 
      const contri = isJson(localStorage.getItem("contributor"));
@@ -193,58 +195,58 @@ include(ABSPATH . 'script/php/header.php');
      }
      
      document.getElementById("frmUpload").addEventListener("submit", function(e)
-     {
-         e.preventDefault();
-         
-         const poetTxt = document.getElementById("poetTxt"),
-	       nameTxt = document.getElementById("cntriTxt"),
-	       fl = document.querySelector("input[name=profile]"),
-	       flbtn = document.querySelector(".file-btn");
-	 
-         if(poetTxt.value == "")
 	 {
-	     poetTxt.focus();
-	     return;
-         }
-         if(fl.value == "")
-	 {
-	     flbtn.style.background = "red";
-	     flbtn.style.color = "white";
+             e.preventDefault();
+             
+             const poetTxt = document.getElementById("poetTxt"),
+		   nameTxt = document.getElementById("cntriTxt"),
+		   fl = document.querySelector("input[name=profile]"),
+		   flbtn = document.querySelector(".file-btn");
 	     
-	     setTimeout(function()
+             if(poetTxt.value == "")
 	     {
-		 flbtn.style.background = "";
-		 flbtn.style.color = "";
-	     }, 2000);
-	     return;
-         }
-         
-         const frmts = ["image/jpeg", "image/png"],
-	       frmUploadMess = document.getElementById("frmUploadMess");
-	 
-         if(frmts.indexOf(fl.files[0].type) === -1)
-	 {
-	     frmUploadMess.innerHTML = "<i style='background:rgba(204,51,0,0.1);\
+		 poetTxt.focus();
+		 return;
+             }
+             if(fl.value == "")
+	     {
+		 flbtn.style.background = "#e00";
+		 flbtn.style.color = "#fff";
+		 
+		 setTimeout(function()
+		     {
+			 flbtn.style.background = "";
+			 flbtn.style.color = "";
+		     }, 2000);
+		 return;
+             }
+             
+             const frmts = ["image/jpeg", "image/png"],
+		   frmUploadMess = document.getElementById("frmUploadMess");
+	     
+             if(frmts.indexOf(fl.files[0].type) === -1)
+	     {
+		 frmUploadMess.innerHTML = "<i style='background:rgba(204,51,0,0.1);\
 color:#444;font-size:.7em;display:block;padding:0.3em'\
 >ئەو شتەی هەڵتانبژاردووە وێنە نییە، وێنەیەک هەڵبژێرن.</i>";
-	     return;
-         }
-         if(fl.files[0].size > 5242880)
-	 {
-	     frmUploadMess.innerHTML = "<i style='background:rgba(204,51,0,0.1);\
+		 return;
+             }
+             if(fl.files[0].size > 5242880)
+	     {
+		 frmUploadMess.innerHTML = "<i style='background:rgba(204,51,0,0.1);\
 color:#444;font-size:.7em;display:block;padding:0.3em'\
 >نابێ گەورەیی وێنەکەتان لە 5MB زیاتر بێت.</i>";
-	     return;
-         }
-         
-         localStorage.setItem("contributor",
-			      JSON.stringify({name: nameTxt.value}));
-         
-         document.cookie = "poet="+poetTxt.value;
-         document.cookie = "name="+nameTxt.value;
-         
-         document.getElementById("frmUpload").submit();
-         frmUploadMess.innerHTML="<div class='loader'></div>";
+		 return;
+             }
+             
+             localStorage.setItem("contributor",
+				  JSON.stringify({name: nameTxt.value}));
+             
+             document.cookie = "poet="+poetTxt.value;
+             document.cookie = "name="+nameTxt.value;
+             
+             document.getElementById("frmUpload").submit();
+             frmUploadMess.innerHTML="<div class='loader'></div>";
      });
 	     <?php  if(!$no_head) echo ' }); ' ?>
     </script>

@@ -91,49 +91,52 @@ $_poet1 = isset($_GET['poet']) ?
      if (poet.value == "")
      {
 	 txts.forEach( function(e)
-	 {
-             e.style.borderColor = "";
-             e.style.background = "";
+	     {
+		 e.style.borderColor = "";
+		 e.style.background = "";
 	 });
 	 btns.forEach( function(e)
-	 {
-             e.style.background = "";
+	     {
+		 e.style.background = "";
+		 e.style.color = "";
 	 });
 	 return;
      }
 
      getUrl('isitnew.php?poet='+poet.value, function(responseText)
-     {
-         const res = JSON.parse(responseText);
-         
-         if(res.id != '0')
 	 {
-             txts.forEach( function(e)
+             const res = JSON.parse(responseText);
+             
+             if(res.id != '0')
 	     {
-                 e.style.borderColor = '<?php echo $_color; ?>';
-             });
-             btns.forEach( function(e)
+		 txts.forEach( function(e)
+		     {
+			 e.style.borderColor = '<?php echo $_color; ?>';
+		 });
+		 btns.forEach( function(e)
+		     {
+			 e.style.background = '<?php echo $_color; ?>';
+			 e.style.color = "#fff";
+		 });
+		 poet.style.backgroundImage =
+		     `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg`;
+		 poet.style.backgroundRepeat = "no-repeat";
+		 poet.style.backgroundSize = "auto 100%";
+		 poet.style.backgroundPosition = "left center";
+             }
+	     else
 	     {
-		 e.style.background = '<?php echo $_color; ?>';
-             });
-             poet.style.backgroundImage =
-		 `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg`;
-             poet.style.backgroundRepeat = "no-repeat";
-             poet.style.backgroundSize = "auto 100%";
-             poet.style.backgroundPosition = "left center";
-         }
-	 else
-	 {
-             txts.forEach( function(e)
-	     {
-                 e.style.borderColor = "";
-                 e.style.background = "";
-             });
-             btns.forEach( function(e)
-	     {
-                 e.style.background = "";
-             });
-         }
+		 txts.forEach( function(e)
+		     {
+			 e.style.borderColor = "";
+			 e.style.background = "";
+		 });
+		 btns.forEach( function(e)
+		     {
+			 e.style.background = "";
+			 e.style.color = "";
+		 });
+             }
      });
  }
  document.getElementById('poetTxt').onblur = check;
@@ -202,31 +205,32 @@ font-size:.55em;padding:.3em'>زۆر سپاس. دوای پێداچوونەوە �
  
  document.getElementById("frmComm").
 	  addEventListener("submit", function(e)
-	  {
-	      e.preventDefault();
-	      pitew();
+	      {
+		  e.preventDefault();
+		  pitew();
 	  });
 
  const clearBtn = document.getElementById("clearBtn");
  clearBtn.addEventListener("click", function ()
- {    
-     const poet = document.getElementById("poetTxt"),
-	   poetDesc = document.getElementById("poetDescTxt"),
-	   mess = document.getElementById("message"),
-	   txts = document.querySelectorAll("#poets input, #poets textarea"),
-	   btns = document.querySelectorAll("#poets button[type=submit]");
-     
-     mess.innerHTML = poet.value = poetDesc.value = "";
+     {    
+	 const poet = document.getElementById("poetTxt"),
+	       poetDesc = document.getElementById("poetDescTxt"),
+	       mess = document.getElementById("message"),
+	       txts = document.querySelectorAll("#poets input, #poets textarea"),
+	       btns = document.querySelectorAll("#poets button[type=submit]");
+	 
+	 mess.innerHTML = poet.value = poetDesc.value = "";
 
-     txts.forEach( function(e)
-     {
-	 e.style.borderColor = "";
-	 e.style.background = "";
-     });
-     btns.forEach( function(e)
-     {
-	 e.style.background = '';
-     });
+	 txts.forEach( function(e)
+	     {
+		 e.style.borderColor = "";
+		 e.style.background = "";
+	 });
+	 btns.forEach( function(e)
+	     {
+		 e.style.background = '';
+		 e.style.color = "";
+	 });
  });
 </script>
 <?php
