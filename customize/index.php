@@ -11,11 +11,11 @@ $t_desc = "";
 include(ABSPATH . "script/php/header.php");
 ?>
 <style>
- #set_theme, #set_lang
+ #set_theme, #set_lang, #toggle_ajaxsave
  {
      border-bottom:1px solid;
  }
- #set_theme, #user_codes, #set_lang
+ #set_theme, #user_codes, #set_lang, #toggle_ajaxsave
  {
      text-align:right;
      font-size:.7em;
@@ -90,6 +90,11 @@ include(ABSPATH . "script/php/header.php");
  {
      min-width:90px;
  }
+ #toggle_ajaxsave button
+ {
+     font-size:1.4em;
+     padding:.3em;
+ }
 </style>
 <div id="poets" style="text-align:right">
     <h1 class="color-blue" style="font-size:1em">
@@ -109,6 +114,7 @@ include(ABSPATH . "script/php/header.php");
 	    تاریک
 	</button>
     </div>
+    <!-- Language -->
     <div id="set_lang">
 	<div class="dropdown" id="dd-lang">
 	    <span style="padding-left:1em">
@@ -134,6 +140,16 @@ include(ABSPATH . "script/php/header.php");
 		</ul>
 	    </div>
 	</div>
+    </div>
+    <!-- Toggle Ajax -->
+    <div id="toggle_ajaxsave">
+        <span style="padding-left:1em">
+            پاشەکەوت‌کردنی لاپەڕەکان:
+	</span>
+	<button type="button" class="button material-icons back-blue color-white"
+		      id="toggle_ajaxsave_btn">
+	    check
+	</button>
     </div>
     <!-- User codes -->
     <div id="user_codes">
@@ -214,7 +230,7 @@ include(ABSPATH . "script/php/header.php");
      localStorage.setItem(user_codes_storage_name,
 			  user_codes.value);
      
-     submit_button.className = 'button btn-selected';
+     submit_button.className = 'button btn-selected color-white';
      submit_button.innerHTML = 'پاشەکەوت کرا.';
      setTimeout(function ()
 	 {
@@ -262,6 +278,49 @@ include(ABSPATH . "script/php/header.php");
  {
      set_cookie("lang", lang);
      dd_lang_label.querySelector(".material-icons").innerText = "sync";
+     window.location.reload();
+ }
+ function get_cookie (key)
+ {
+     if(document.cookie)
+     {
+	 const cookies = document.cookie.split(';');
+	 
+	 for(const i in cookies)
+	 {
+	     const c = cookies[i].split('=');
+	     if(c[0].trim() == key)
+	     {
+		 return c[1];
+		 break;
+	     }
+	 }
+     }
+     return false;
+ }
+ const toggle_ajaxsave_btn = document.getElementById("toggle_ajaxsave_btn");
+ toggle_ajaxsave_btn.addEventListener("click", toggle_ajaxsave);
+ const _temp = (get_cookie("ajax_save_p") === "0");
+ if(_temp)
+ {
+     toggle_ajaxsave_btn.innerText = "close";
+     toggle_ajaxsave_btn.classList.remove("back-blue");
+     toggle_ajaxsave_btn.classList.remove("color-white");
+ }
+ function toggle_ajaxsave ()
+ {
+     const state = get_cookie("ajax_save_p");
+     if(state === "0")
+     {
+	 set_cookie("ajax_save_p", "1");
+	 toggle_ajaxsave_btn.innerText = "check";
+     }
+     else
+     {
+	 set_cookie("ajax_save_p", "0");
+	 toggle_ajaxsave_btn.innerText = "close";
+     }
+     toggle_ajaxsave_btn.innerText = "sync";
      window.location.reload();
  }
 </script>

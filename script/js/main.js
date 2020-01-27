@@ -717,9 +717,11 @@ var hashStr = hashStr || function (str)
 
 var ajax_findstate = ajax_findstate || function (url, max_delta=-1)
 {
+    if(!ajax_save_p) return false;
+    
     /* Default 'max_delta': 5-days */
     if(max_delta == -1)
-	max_delta = 5 * 24 * 60 * 60 * 1000;
+	max_delta = ajax_save_duration;
     const time = Date.now(),
 	  db_name = `hist_${hashStr(url)}`;
     try
@@ -740,6 +742,8 @@ var ajax_findstate = ajax_findstate || function (url, max_delta=-1)
 
 var ajax_savestate = ajax_savestate || function (url,content)
 {
+    if(!ajax_save_p) return;
+    
     const time = Date.now(),
 	  db_name = `hist_${hashStr(url)}`,
 	  db_obj = {url:url, time:time, content:content};

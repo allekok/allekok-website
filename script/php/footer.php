@@ -11,7 +11,7 @@ if(!$no_foot) {
 	   >arrow_upward</i></a>
     </footer>
     <div class="loader-round" id="main-loader"></div>
-    <script defer src='<?php echo _R; ?>script/js/main-comp.js?v10'></script>
+    <script defer src='<?php echo _R; ?>script/js/main-comp.js?v14'></script>
     <script>	 
      /* Users can evaluate their own code. */
      const userCodes = localStorage.getItem('user-codes') || false;
@@ -30,6 +30,13 @@ if(!$no_foot) {
      const site_align = "<?php echo $site_align; ?>";
      const site_anti_align = "<?php echo $site_anti_align; ?>";
      const site_lang_show = "<?php P("language"); ?>";
+     /* Ajax-save toggle */
+     const ajax_save_p = <?php echo @$_COOKIE["ajax_save_p"] === "0" ?
+				    "false" : "true"; ?>;
+     const ajax_save_days = <?php echo @filter_var($_COOKIE["ajax_save_d"],
+						   FILTER_VALIDATE_INT) ?
+				       abs($_COOKIE["ajax_save_d"]) : 5; ?>;
+     const ajax_save_duration = ajax_save_days * 24 * 60 * 60 * 1000;
     </script>
 </body>
 </html>
