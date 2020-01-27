@@ -717,8 +717,6 @@ var hashStr = hashStr || function (str)
 
 var ajax_findstate = ajax_findstate || function (url, max_delta=-1)
 {
-    if(!ajax_save_p) return false;
-    
     /* Default 'max_delta': 5-days */
     if(max_delta == -1)
 	max_delta = ajax_save_duration;
@@ -742,8 +740,6 @@ var ajax_findstate = ajax_findstate || function (url, max_delta=-1)
 
 var ajax_savestate = ajax_savestate || function (url,content)
 {
-    if(!ajax_save_p) return;
-    
     const time = Date.now(),
 	  db_name = `hist_${hashStr(url)}`,
 	  db_obj = {url:url, time:time, content:content};
@@ -770,7 +766,7 @@ var ajax = ajax || function (parent='body', target='#MAIN')
 		    const url = concat_url_query(href, 'nohead&nofoot');
 
 		    let content = "";
-		    if(content = ajax_findstate(url))
+		    if(ajax_save_p && (content = ajax_findstate(url)))
 		    {
 			window.history.pushState({url: url}, '', href);
 			window.scrollTo(0,0);
@@ -788,7 +784,7 @@ var ajax = ajax || function (parent='body', target='#MAIN')
 			    eval_js(response);
 			    ajax(parent, target);
 			    loading.style.display = 'none';
-			    ajax_savestate(url, response);
+			    if(ajax_save_p) ajax_savestate(url, response);
 			});
 		    }
 		}
