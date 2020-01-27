@@ -174,7 +174,7 @@ $_book1 = isset($_GET['book']) ?
 	 btns.forEach( function(e)
 	     {
 		 e.style.background = "";
-		 e.style.color = "";
+		 e.classList.remove("color-white");
 	 });
 	 loader.style.display = 'none';
  });
@@ -196,6 +196,7 @@ $_book1 = isset($_GET['book']) ?
          btns.forEach( function(e)
 	     {
 		 e.style.background = "";
+		 e.classList.add("color-white");
          });
          return;
      }
@@ -213,7 +214,7 @@ $_book1 = isset($_GET['book']) ?
 		 btns.forEach( function(e)
 		     {
 			 e.style.background = '<?php echo $_color; ?>';
-			 e.style.color = '#fff';
+			 e.classList.add("color-white");
 		 });
 		 
 		 poet.style.backgroundImage = `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg)`;
@@ -232,7 +233,7 @@ $_book1 = isset($_GET['book']) ?
 		 btns.forEach( function(e)
 		     {
 			 e.style.background = "";
-			 e.style.color = "";
+			 e.classList.remove("color-white");
 		 });
              }
      });

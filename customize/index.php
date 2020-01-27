@@ -85,6 +85,7 @@ include(ABSPATH . "script/php/header.php");
  {
      font-size:inherit;
      display:block;
+     width:100%;
  }
  #dd-lang .dd-frame
  {

@@ -209,33 +209,6 @@ include(ABSPATH . 'script/php/header.php');
 		سەرنجێکی بچووک: تەواوی ئەو زانیاریانە بە فۆرمەتی JSON لە ئیختیارو دادەندرێ.
 	    </p>
     </div>
-    
-    <script>
-     function make_code() {
-	 var inp = document.querySelector("#QAtxt"),
-	     start = inp.selectionStart,
-	     end = inp.selectionEnd,
-	     sel = inp.value.substring(start,end);
-	 if(sel != "" || inp.value == "") {
-	     
-	     var out = "[code]" + sel + "[/code]";
-	     
-	     var part1 = inp.value.substring(0, start);
-	     var part2 = inp.value.substr(end);
-	     
-	     out = part1 + out + part2;
-	     
-	     inp.value = out;
-	 } else {
-	     inp.value += "[code][/code]";
-	 }
-	 
-	 inp.style.direction="ltr";
-	 inp.style.textAlign="left";
-	 inp.focus();
-     }
-    </script>
-
     <h1 class='color-blue'
 	style='font-size:1em;text-align:right'>
 	پرسیار و وەڵام
@@ -248,7 +221,7 @@ include(ABSPATH . 'script/php/header.php');
 	</small>
         <form id="frmQA" action="save.php" method="POST" style="">
 	    <div style='text-align:center'>
-		<button type="button" class='back-blue color-white' style="display:inline-block;padding:.7em;font-size:.45em;cursor:pointer;margin:0 auto 5px 10px;font-weight:bold;font-family:monospace;" onclick="make_code()">Code</button><span style="font-size:.55em">ئەگەر کۆدی تێدایە لە پرسیارەکەتان تکایە "Code" بەکار بێنن.
+		<button type="button" class='button' style="display:inline-block;padding:.7em;font-size:.45em;cursor:pointer;margin:0 auto 5px 10px;font-weight:bold;font-family:monospace;" id="make-code">Code</button><span style="font-size:.55em">ئەگەر کۆدی تێدایە لە پرسیارەکەتان تکایە "Code" بەکار بێنن.
 		</span>
 	    </div>
             <textarea id="QAtxt" class="QAtxt-dev"></textarea>
@@ -258,39 +231,36 @@ include(ABSPATH . 'script/php/header.php');
         
         <div>
             <?php
-            if(@filesize("QA.txt") > 0) {
-                
-                $f = fopen("QA.txt", "r");
-                $cc = fread($f, filesize("QA.txt"));
+            if(file_exists("QA.txt"))
+	    {
+                $cc = file_get_contents("QA.txt");
                 $cc = explode("\nend\n", $cc);
-                
                 $cc = array_reverse($cc);
-		
-                foreach($cc as $c) {
-                    if(!empty($c)) {
+                foreach($cc as $c)
+		{
+                    if(!empty($c))
+		    {
 			$c = preg_replace(
 			    ["/\[code\]\n*/","/\n*\[\/code\]/"],
 			    ["<code class='code-dev'>","</code>"], $c);
-                        $c = str_replace(["\n"], ["<br>"], $c);
-                        echo "<div class='comment'><div class='comm-body'>".$c."</div></div>";
+                        $c = str_replace("\n", "<br>", $c);
+                        echo "<div class='comment'><div class='comm-body'>".
+			     $c."</div></div>";
                     }
                 }
-                
-                fclose($f);
             }
-            
             ?>
         </div>
-        
         <script>
          document.querySelector("#frmQA").addEventListener("submit", function(e) {
              e.preventDefault();
              
-             var txt = document.querySelector("#QAtxt"),
-		 t = document.querySelector("#QAres"),
-		 loader = "<div class='loader'></div>";
+             const txt = document.querySelector("#QAtxt"),
+		   t = document.querySelector("#QAres"),
+		   loader = "<div class='loader'></div>";
              
-             if(txt.value == "") {
+             if(txt.value.trim() == "")
+	     {
                  txt.focus();
                  return;
              }
@@ -298,17 +268,43 @@ include(ABSPATH . 'script/php/header.php');
              t.innerHTML = loader;
              
              const x = new XMLHttpRequest();
-             x.onload = function() {
-                 if(this.responseText == "1") {
+             x.onload = function()
+	     {
+                 if(this.responseText == "1")
+		 {
                      t.innerHTML = "<span style='background:rgba(0,255,0,.08);color:green;display:block;padding:1em;font-size:.6em'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
                  }
              }
              x.open("POST", "save.php");
-             x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+             x.setRequestHeader("Content-type",
+				"application/x-www-form-urlencoded");
              x.send(`txt=${encodeURIComponent(txt.value)}`);
          });
+	 
+	 function make_code()
+	 {
+	     const inp = document.querySelector("#QAtxt"),
+		   start = inp.selectionStart,
+		   end = inp.selectionEnd,
+		   sel = inp.value.substring(start,end);
+	     if(sel != "" || inp.value == "")
+	     {
+		 let out = "[code]" + sel + "[/code]";
+		 let part1 = inp.value.substring(0, start);
+		 let part2 = inp.value.substr(end);
+		 out = part1 + out + part2;
+		 inp.value = out;
+	     }
+	     else
+		 inp.value += "[code][/code]";
+	     
+	     inp.style.direction="ltr";
+	     inp.style.textAlign="left";
+	     inp.focus();
+	 }
+	 document.getElementById("make-code").addEventListener(
+	     "click", make_code);
         </script>
-        
     </div>
 </div>
 <?php

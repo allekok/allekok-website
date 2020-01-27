@@ -129,13 +129,13 @@ include(ABSPATH . 'script/php/header.php');
 	 {
              txts.forEach( function(e)
 		 {
-                     e.style.borderTopColor = "";
+                     e.style.borderColor = "";
                      e.style.background = "";
              });
 	     btns.forEach( function(e)
 		 {
 		     e.style.background = '';
-		     e.style.color = '';
+		     e.classList.remove("color-white");
              });
              return;
          }
@@ -153,7 +153,7 @@ include(ABSPATH . 'script/php/header.php');
                      btns.forEach( function(e)
 			 {
 			     e.style.background = '<?php echo $_color; ?>';
-			     e.style.color = '#fff';
+			     e.classList.add("color-white");
                      });
                      poet.style.backgroundImage = `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg`;
                      poet.style.backgroundRepeat = "no-repeat";
@@ -185,6 +185,7 @@ include(ABSPATH . 'script/php/header.php');
 		      const filebtn = document.querySelector(".file-btn");
 		      filebtn.innerHTML = "هەڵبژێردرا.";
 		      filebtn.style.background = '<?php echo $_color; ?>';
+		      filebtn.classList.add("color-white");
 	      });
 
      const contri = isJson(localStorage.getItem("contributor"));
@@ -210,13 +211,13 @@ include(ABSPATH . 'script/php/header.php');
              }
              if(fl.value == "")
 	     {
-		 flbtn.style.background = "#e00";
-		 flbtn.style.color = "#fff";
+		 flbtn.style.background = "<?php echo $_color; ?>";
+		 flbtn.classList.add("color-white");
 		 
 		 setTimeout(function()
 		     {
 			 flbtn.style.background = "";
-			 flbtn.style.color = "";
+			 flbtn.classList.remove("color-white");
 		     }, 2000);
 		 return;
              }
