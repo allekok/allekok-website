@@ -211,13 +211,13 @@ include(ABSPATH . 'script/php/header.php');
              }
              if(fl.value == "")
 	     {
-		 flbtn.style.background = "<?php echo $_color; ?>";
-		 flbtn.classList.add("color-white");
+		 flbtn.style.color = "#fff";
+		 flbtn.classList.add("back-red");
 		 
 		 setTimeout(function()
 		     {
-			 flbtn.style.background = "";
-			 flbtn.classList.remove("color-white");
+			 flbtn.style.color = "";
+			 flbtn.classList.remove("back-red");
 		     }, 2000);
 		 return;
              }

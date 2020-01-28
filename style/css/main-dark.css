@@ -59,6 +59,7 @@ a:hover, button:hover{text-decoration:none;color:#cf0}
 header{position:relative}
 .poet:hover,.color-blue,.selected,.link-color,.link:hover,a:hover,button:hover,.search-main .cb:hover{color:#cf0}
 .color-red{color:#f55}
+.back-red{background:#f55}
 header a h1{font-size:1.3em;margin:0 0 .2em}
 #poets{text-align:center}
 .poet{width:24%;display:inline-block;vertical-align:top;max-width:115px;margin:.5em .5% .1em}
