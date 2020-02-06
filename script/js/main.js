@@ -251,15 +251,11 @@ var search = search || function (e)
     const Res = document.getElementById("search-res"),
 	  Sec = document.getElementById("search"),
 	  Key = document.getElementById("search-key"),
-	  q = Key.value,
+	  q = Key.value.trim(),
 	  currentKey = e.keyCode,
 	  noActionKeys = [16, 17, 18, 91, 20, 9, 93,
 			  37, 38, 39, 40, 32, 224, 13];
-    if(q.length < 3)
-    {
-        Res.style.display="none";
-        return;
-    }
+    if(! q) return;
     if(currentKey == 27)
     {
 	Res.style.display="none";
