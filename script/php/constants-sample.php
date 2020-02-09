@@ -17,7 +17,7 @@ const _SEARCH_DB = 'allekok_search';
 /* Relative path to web server's root */
 const _R = '/';
 /* Could be 'https://' */
-define('_SITE', 'http://' . @$_SERVER['HTTP_HOST']);
+define('_SITE', 'http://' . @$_SERVER['HTTP_HOST'] . _R);
 $_TITLE = SP("title");
 $_DESC = SP("desc");
 $_KEYS = SP("keys");

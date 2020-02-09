@@ -5,9 +5,9 @@ if(!$no_head) {
     <!DOCTYPE html>
     <?php
     if(@$ath)
-	$ogimg = _SITE.get_poet_image($ath,true);
+	$ogimg = _SITE.get_poet_image($ath,false);
     else 
-	$ogimg = _SITE.'/logo/logo-128.jpg';
+	$ogimg = _SITE.'logo/logo-128.jpg';
     ?>
     <html dir='<?php echo $site_dir; ?>' lang='<?php echo $site_lang_cc; ?>'>
 	<head>
@@ -50,7 +50,7 @@ if(!$no_head) {
 	    <!-- Header -->
 	    <header>
 		<!-- Title -->
-		<a href='<?php echo _SITE; ?>/'>
+		<a href='<?php echo _SITE; ?>'>
 		    <h1><?php echo SP("title"); ?></h1>
 		</a>
 		<?php if(@!$is_it_search) { ?>

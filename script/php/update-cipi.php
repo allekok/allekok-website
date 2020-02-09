@@ -31,6 +31,6 @@ book_id='$address[1]' and poem_id='$address[2]'");
     mysqli_close($conn);
     
     // if($query)
-    redirect(_SITE.'/'.$uri);
+    redirect(_SITE . $uri);
 }
 ?>

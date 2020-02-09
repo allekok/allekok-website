@@ -59,7 +59,7 @@ if($query and (mysqli_num_rows($query) > 0))
     while($res = mysqli_fetch_assoc($query))
     {
 	$res['name'] = $res['name'] ? $res['name'] : "ناشناس";
-	echo "- {$res['name']} › "._SITE."/{$res['address']}\n";
+	echo "- {$res['name']} › "._SITE."{$res['address']}\n";
     }
 }
 else
@@ -72,7 +72,7 @@ echo "\n/ئاڵەکۆک؟/\n";
 echo filter_var(
     str_replace("<i class='h'>", "\t",
 		file_get_contents(
-		    _SITE . '/about/about-comments.php?num=1')),
+		    _SITE . 'about/about-comments.php?num=1')),
     FILTER_SANITIZE_STRING) . "\n";
 
 /* pitew */

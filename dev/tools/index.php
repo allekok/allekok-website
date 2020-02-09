@@ -76,7 +76,7 @@ include(ABSPATH . 'script/php/header.php');
 	    یەکەم، وەرگرتنی زانیاری سەبارەت بە شاعیران
         </h2><p class='p-dev'>
 	    <code class='border-blue code-dev'>
-                <?php echo _SITE; ?>/dev/tools/poet.php?poet=ناوی شاعیر یان ژمارەی شاعیر
+                <?php echo _SITE; ?>dev/tools/poet.php?poet=ناوی شاعیر یان ژمارەی شاعیر
 	    </code>
 	    ئێوە ئەگەر بچنە ئادرسی سەرەوە و بە جێی "ناوی شاعیر یان ژمارەی شاعیر"، بنووسن هەژار یان تەنیا ژمارەی 1، دەبینن کە تەواوی زانیاریەکانی ئاڵەکۆک سەبارەت بەم شاعیرەتان بۆ دەهێنێت.
 	    <br><br>
@@ -88,14 +88,14 @@ include(ABSPATH . 'script/php/header.php');
 	    &bull;
 	    ژمارەی شاعیر ئەم ژمارەیە کە لە ئادرسی لاپەڕەی شاعیردا بەم جۆرە نووسراوە: 
 	    <code class='code-dev'>
-		<?php echo _SITE; ?>/poet:ژمارەی شاعیر
+		<?php echo _SITE; ?>poet:ژمارەی شاعیر
 	    </code>
 	    <br>
 	    &bull;
 	    بۆ وەرگرتنی زانیاری سەبارەت بە چەند شاعیر، ناوی شاعیرەکان یان ژمارەکەیان بەم جۆرە لەیەکتر جودا بکەنەوە:
 	    بۆ نموونە:
 	    <code class='code-dev'>
-		<?php echo _SITE; ?>/dev/tools/poet.php?poet=1,هێمن,3
+		<?php echo _SITE; ?>dev/tools/poet.php?poet=1,هێمن,3
 	    </code>
 	    ئەو نیشانیەی سەرەوە، زانیاریەکانی سەبارەت بە شاعیری ژمارە 1(هەژار)، شاعیری ژمارە 3(وەفایی) و هێمن،تان نیشان دەدا.
 	    <br>
@@ -106,7 +106,7 @@ include(ABSPATH . 'script/php/header.php');
 	    دووهەم، وەرگرتنی زانیاری سەبارەت بە کتێبەکان
         </h2><p class='p-dev'>
 	    <code class='border-blue code-dev'>
-                <?php echo _SITE; ?>/dev/tools/book.php?poet=ناوی شاعیر یان ژمارەی شاعیر&book=ناوی کتێب یان ژمارەی کتێب
+                <?php echo _SITE; ?>dev/tools/book.php?poet=ناوی شاعیر یان ژمارەی شاعیر&book=ناوی کتێب یان ژمارەی کتێب
 	    </code>
 	    ئەگەر بچنە ئادرسی سەرەوە و بە جێی "ناوی شاعیر یان ژمارەی شاعیر" بنووسن هەژار یان تەنیا ڕەقەمی 1 و بە جێی "ناوی کتێب یان ژمارەی کتێب" بنووسن ئاڵەکۆک یان تەنیا ڕەقەمی 3، دەبینن کە تەواوی زانیاریەکانی ئاڵەکۆک سەبارەت بەو کتێبە‌و بۆ دەهێنێت.
 	    <br><br>
@@ -115,11 +115,11 @@ include(ABSPATH . 'script/php/header.php');
 	    &bull;
 	    ژمارەی کتێب ئەم ژمارەیە کە لە ئادرسی لاپەڕەی ئەم کتێبەدا نووسراوە: 
 	    <code class='code-dev'>
-		<?php echo _SITE; ?>/poet:ژمارەی شاعیر/book:ژمارەی کتێب
+		<?php echo _SITE; ?>poet:ژمارەی شاعیر/book:ژمارەی کتێب
 	    </code>
 	    <br>
 	    بۆ نموونە ئەگەر ئێوە بچنە ناو لاپەڕەی کتێبی ئاڵەکۆکی هەژار موکریانی‌دا، دەبینن کە نیشانی ماڵپەڕەکە بەم جۆرە نووسراوە:
-	    <?php echo _SITE; ?>/poet:1/book:3
+	    <?php echo _SITE; ?>poet:1/book:3
 	    <br>
 	    لە ڕوی ئەم نیشانیە دیارە کە ژمارەی کتێبی ئاڵەکۆک، 3یە.
 	    <br></p>
@@ -127,7 +127,7 @@ include(ABSPATH . 'script/php/header.php');
 		سێهەم، وەرگرتنی زانیاری سەبارەت بە شێعرەکان
 	    </h2><p class='p-dev'>
 		<code class='border-blue code-dev'>
-                    <?php echo _SITE; ?>/dev/tools/poem.php?poet=ناو یان ژمارەی شاعیر&book=ناو یان ژمارەی کتێب&poem=ناو یان ژمارەی شێعر
+                    <?php echo _SITE; ?>dev/tools/poem.php?poet=ناو یان ژمارەی شاعیر&book=ناو یان ژمارەی کتێب&poem=ناو یان ژمارەی شێعر
 		</code>
 		ئەگەر سەردانی نیشانی سەرەوە بکەن و بە جێی "ناو یان ژمارەی شاعیر" بنووسن هەژار یان 1 و بە جێی "ناو یان ژمارەی کتێب" بنووسن ئاڵەکۆک یان 3 و بە جێی "ناو یان ژمارەی شێعر" بنووسن لای لایە یان 1، شێعری لای لایەی هەژارموکریانی‌تان بۆ دەهێنێت.
 		<br><br>
@@ -136,7 +136,7 @@ include(ABSPATH . 'script/php/header.php');
 		&bull;
 		بۆ دۆزینەوەی ژمارەی شێعر، سەردانی لاپەڕەی ئەو شێعرەی مەبەست‌تانە بکەن و ئەم ژمارەی لەپەنای ناوی شێعر هاتووە، ئەمە ژمارەی شێعرەکەیە. ئەگەر بڕواننە نیشانی ئەم لاپەڕەش دەتوانن ژمارەی شێعر بدۆزنەوە.
 		<code class='code-dev'>
-		    <?php echo _SITE; ?>/poet:ژمارەی شاعیر/book:ژمارەی کتێب/poem:ژمارەی شێعر
+		    <?php echo _SITE; ?>poet:ژمارەی شاعیر/book:ژمارەی کتێب/poem:ژمارەی شێعر
 		</code>
 		<br>
 		&bull;
@@ -144,7 +144,7 @@ include(ABSPATH . 'script/php/header.php');
 		<br>
 		بۆ نموونە:
 		<code class='code-dev'>
-                    <?php echo _SITE; ?>/dev/tools/poem.php?poet=1&book=3&poem=لای لایە,2,6
+                    <?php echo _SITE; ?>dev/tools/poem.php?poet=1&book=3&poem=لای لایە,2,6
 		</code>
 		<br>
 		&bull;
@@ -152,7 +152,7 @@ include(ABSPATH . 'script/php/header.php');
 		<br>
 		لە حاڵەتی ئاسایی دا شێعرەکان بە فۆرمەتی سادە نیشان دەدرێن. بەڵام ئەگەر بە شێوەی خوارەوە نیشانیەکەی بگۆڕن، شێعرەکان بە شێوەی html نیشان دەدرێن.
 		<code class='code-dev'>
-                    <?php echo _SITE; ?>/dev/tools/poem.php?poet=1&book=3&poem=1,3&html
+                    <?php echo _SITE; ?>dev/tools/poem.php?poet=1&book=3&poem=1,3&html
 		</code>
 		<br>
 		&bull; 
@@ -162,7 +162,7 @@ include(ABSPATH . 'script/php/header.php');
 		چوارەم، گەڕان لە ئاڵەکۆک‌دا
 	    </h2><p class='p-dev'>
 		<code class='border-blue code-dev'>
-		    <?php echo _SITE; ?>/dev/tools/search.php?q=وشە&poet=ناوی شاعیر&pt=ئەژماری شاعیران&bk=ئەژماری کتێبەکان&pm=ئەژماری شێعرەکان&k=چۆنیەتی گەڕان
+		    <?php echo _SITE; ?>dev/tools/search.php?q=وشە&poet=ناوی شاعیر&pt=ئەژماری شاعیران&bk=ئەژماری کتێبەکان&pm=ئەژماری شێعرەکان&k=چۆنیەتی گەڕان
 		</code>
 		&bull; 
 		<i class="back-eee back-eee-dev">q</i> : 
@@ -199,7 +199,7 @@ include(ABSPATH . 'script/php/header.php');
 		<br>
 		بۆ نموونە: 
 		<code class='code-dev'>
-		    <?php echo _SITE; ?>/dev/tools/search.php?q=ئاشق&poet=هێمن&pt=0&bk=0&pm=30&k=3
+		    <?php echo _SITE; ?>dev/tools/search.php?q=ئاشق&poet=هێمن&pt=0&bk=0&pm=30&k=3
 		</code>
 		لینکی سەرەوە بەدوای وشەی "ئاشق" لە شێعرەکانی هێمن دا دەگەڕێت.
 		<br>
