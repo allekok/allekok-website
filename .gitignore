@@ -40,3 +40,7 @@ about/comments.txt
 /kurdi-nus/
 /rebwar/
 /backup/
+
+# favicon
+/favicon/browserconfig.xml
+/favicon/site.webmanifest
