@@ -33,7 +33,7 @@ include(ABSPATH . "script/php/header.php");
 </style>
 <div id="poets" style="text-align:right">
     <div id='adrs'>
-	<a href="/pitew/first.php">
+	<a href="<?php echo _R; ?>pitew/first.php">
 	    پتەوکردنی ئاڵەکۆک
 	</a>
 	<i> &rsaquo; </i>
@@ -64,15 +64,15 @@ include(ABSPATH . "script/php/header.php");
 	
 	$array = [
 	    ['poems', 'نووسینی شێعر', 'poems.txt',
-	     'note_add', '/pitew/poem-list.php'],
+	     'note_add', _R.'pitew/poem-list.php'],
 	    ['images', 'ناردنی وێنەی شاعیران', 'images.txt',
-	     'image', '/pitew/image-list.php'],
+	     'image', _R.'pitew/image-list.php'],
 	    ['poet-descs', 'نووسینی زانیاری سەبارەت بە شاعیران',
-	     'poet-descs.txt', 'person', '/pitew/poetdesc-list.php'],
+	     'poet-descs.txt', 'person', _R.'pitew/poetdesc-list.php'],
 	    ['comments', 'ڕاست‌کردنەوەی هەڵەکانی ناو شێعر',
-	     'comments.txt', 'question_answer', '/comments/'],
+	     'comments.txt', 'question_answer', _R.'comments/'],
 	    ['pdfs', 'ناردنی دیوانی شاعیران', 'pdfs.txt',
-	     'cloud_download', '/pitew/pdfs.php'],
+	     'cloud_download', _R.'pitew/pdfs.php'],
 	];
 
 	foreach ($array as $E)
