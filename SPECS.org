@@ -1,4 +1,3 @@
--*- mode:org -*-
 * Allekok.com system specifications
 ** Source code
 Languages: PHP, HTML, CSS, JS, SHELL

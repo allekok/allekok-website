@@ -22,7 +22,7 @@ include(ABSPATH . "script/php/header.php");
     </h1>
     <div style="padding-right:1em;padding-bottom:2em">
 	<?php
-	$date_expire = "2019-12-16";
+	$date_expire = "2020-12-16";
 	$date_expire = date_create($date_expire);
 	$date_now = date("Y-m-d");
 	$date_now = date_create($date_now);
