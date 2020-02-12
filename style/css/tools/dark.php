@@ -10,6 +10,9 @@ $main_css = preg_replace_callback(
 $main_css = preg_replace_callback(
     "/(#)([0-9a-f]+)(;)/i",
     "color_inverse_string",$main_css);
+$main_css = preg_replace_callback(
+    "/(#)([0-9a-f]+)(\s+)/i",
+    "color_inverse_string",$main_css);
 file_put_contents(dark_css_path, $main_css);
 
 /* functions */
