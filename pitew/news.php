@@ -101,7 +101,7 @@ $n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
 		$image_uri = _R . get_poet_image($pt,false);
 		
 		echo "<div style='margin:1.2em 0'><a class='link-news' 
-href='/poet:$pt/book:$bk/poem:$pm'><img style='display:inline-block;
+href='"._R."poet:$pt/book:$bk/poem:$pm'><img style='display:inline-block;
 vertical-align:middle;width:2.5em;border-radius:50%;margin-left:.25em' 
 src='$image_uri'> $poet &rsaquo; $book &rsaquo; $poem</a
 ><i style='font-size:.88em;display:block'><i class='material-icons'
