@@ -139,6 +139,6 @@ function save_QA($input)
     $f = fopen("QA.txt", "a");
     fwrite($f, $input."\nend\n");
     fclose($f);
-    echo "1";
+    return "1";
 }
 ?>

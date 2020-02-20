@@ -492,7 +492,8 @@ header a h1
     padding:1em 1em 3em 1em;
     position:relative;
     border-radius:1em;
-    margin-bottom:1em
+    margin-bottom:1em;
+    word-break:break-word;
 }
 .h
 {
