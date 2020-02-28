@@ -11,7 +11,7 @@ if(!$no_foot) {
 	   >arrow_upward</i></a>
     </footer>
     <div class="loader-round" id="main-loader"></div>
-    <script defer src='<?php echo _R; ?>script/js/main-comp.js?v20'></script>
+    <script defer src='<?php echo _R; ?>script/js/main-comp.js?v21'></script>
     <script>	 
      /* Users can evaluate their own code. */
      const userCodes = localStorage.getItem('user-codes') || false;

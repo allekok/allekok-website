@@ -780,7 +780,7 @@ var ajax = ajax || function (parent='body', target='#MAIN')
 			    eval_js(response);
 			    ajax(parent, target);
 			    loading.style.display = 'none';
-			    if(ajax_save_p) ajax_savestate(url, response);
+			    ajax_savestate(url, response);
 			});
 		    }
 		}
