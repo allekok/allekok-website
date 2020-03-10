@@ -9,9 +9,9 @@ file_put_contents(output,
 		  "\n" . file_get_contents(input));
 echo "`(constants.js + main.js)` Done.\n";
 
-exec("php tools/compress.php");
+exec("php compress.php");
 echo "`compress` Done.\n";
 
-exec("php tools/update_ver.php");
+exec("php update_ver.php");
 echo "`update_ver` Done.\n";
 ?>

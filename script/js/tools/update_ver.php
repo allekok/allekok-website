@@ -1,5 +1,5 @@
 <?php
-const files = ["../php/footer.php", "../../sw.js"];
+const files = ["../../php/footer.php", "../../../sw.js"];
 
 foreach(files as $f)
 {
