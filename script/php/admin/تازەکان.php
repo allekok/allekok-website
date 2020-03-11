@@ -91,7 +91,7 @@ include(ABSPATH . "script/php/header.php");
                     $entry["poet"] = $entry[0];
                     $entry["name"] = $entry[1];
                     $entry["uri"] = $uri;
-                    array_unshift($entry, filemtime("/home/allekokc/public_html" . $uri));
+                    array_unshift($entry, filemtime(substr(ABSPATH,0,-1) . $uri));
                     $_list[] = $entry;
                 }
             }
@@ -138,7 +138,7 @@ include(ABSPATH . "script/php/header.php");
                     $entry["poet"] = $entry[0];
                     $entry["name"] = $entry[1];
                     $entry["uri"] = $uri;
-                    array_unshift($entry, filemtime("/home/allekokc/public_html" . $uri));
+                    array_unshift($entry, filemtime(substr(ABSPATH,0,-1) . $uri));
                     $_list[] = $entry;
                 }
             }
