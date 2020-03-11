@@ -132,7 +132,7 @@ include(ABSPATH . "script/php/header.php");
 		    {
 			echo "<li>";
 			if($site_lang != $k)
-			    echo "<button type='button' onclick='set_lang(\"{$k}\")'>" .
+			    echo "<button type='button' class='langOpt' L='$k'>" .
 				 $v["lit"] . "</button></li>";
 			else
 			    echo $v["lit"] . "</li>";
@@ -148,7 +148,7 @@ include(ABSPATH . "script/php/header.php");
             پاشەکەوت‌کردنی لاپەڕەکان:
 	</span>
 	<button type="button" class="button material-icons back-blue color-white"
-		      id="toggle_ajaxsave_btn">
+		id="toggle_ajaxsave_btn">
 	    check
 	</button>
     </div>
@@ -281,6 +281,11 @@ include(ABSPATH . "script/php/header.php");
      dd_lang_label.querySelector(".material-icons").innerText = "sync";
      window.location.reload();
  }
+ document.querySelectorAll(".langOpt").forEach(function (o) {
+     o.addEventListener("click", function () {
+	 set_lang(o.getAttribute("L"));
+     });
+ });
  function get_cookie (key)
  {
      if(document.cookie)
