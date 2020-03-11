@@ -183,7 +183,7 @@ if( isset($_REQUEST["name"]) && isset($_REQUEST["takh"]) && isset($_REQUEST["pro
         <a href="poets.php">
             شاعیران
         </a>
-        <a onclick="event.preventDefault();window.open('http://allekok.com/script/php/add/cp/smgen.php', '_blank','width=300,height=200','')" style="background:rgb(102, 0, 51);" href="smgen.php">
+        <a onclick="event.preventDefault();window.open('<?php echo _SITE; ?>script/php/admin/sitemap.php', '_blank','width=300,height=200','')" style="background:rgb(102, 0, 51);" href="sitemap.php">
             سازکردنی سایت‌مەپ
         </a>
     </div>

@@ -75,7 +75,7 @@ self.addEventListener('install', function(event) {
 		profile+'71.jpg',
 		profile+'73.jpg',
 		profile+'93.jpg',
-		'script/js/main-comp.js?v23',
+		'script/js/main-comp.js?v24',
 		'style/css/main-comp.css?v25',
 		'style/css/main-dark-comp.css?v25',
 		'favicon/favicon.ico',

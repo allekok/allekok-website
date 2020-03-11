@@ -21,32 +21,15 @@ include(ABSPATH . "script/php/header.php");
         یارمەتی‌دانی ماڵی ئاڵەکۆک
     </h1>
     <div style="padding-right:1em;padding-bottom:2em">
-	<?php
-	$date_expire = "2020-12-16";
-	$date_expire = date_create($date_expire);
-	$date_now = date("Y-m-d");
-	$date_now = date_create($date_now);
-	$date_diff = date_diff($date_expire, $date_now, true);
-	$date_diff_days = num_convert($date_diff->days, "en", "ckb");
-	?>
-	<h2 class="color-blue" style="text-align:center">
-	    <?php
-	    echo $date_diff_days;
-	    ?>
-	    ڕۆژ
-	</h2>
 	<p>
 	    سڵاو بۆ هاوڕێیانی بەڕێزی ئاڵەکۆک، 
 	</p>
 	<p>
-	    تەنیا
-	    <?php echo $date_diff_days; ?>
-	    ڕۆژ ماوە بۆ تەواو بوونی ڕێکەوتی هاست و دامەنەی ئاڵەکۆک. تکایە ئەگەر دەتانهەوێ ئاڵەکۆک لەسەر هێڵی ئینتێرنێت بمێنێتەوە، یارمەتی‌مان بدەن.
+	    هەر جۆرەی کە ئاگادارن ئاڵەکۆک بەرنامەیەکە کە لە بەکارهێنەرانی هیچ پارەیەکی وەرناگرێ و هیچ پارەیەکیش عاییدی بەکارهێنەرانی نابێ و بەکارهێنەرانی تەنیا بە ویستی خۆیان ئەم بەرنامەی ڕادەگرن و ئەگەر بکرێ پتەوی دەکەن.
 	    <br>
-	    هەزینەی ئەم هاست و دامەنەی کە ئێستا بەکاری دێنین، ساڵانە بەپوڵی ئێران ٢٠٠هەزار تمەنە.
-	    <br>
+	    بەڵام ڕاگرتنی ماڵپەڕی ئاڵەکۆک لەسەر هێڵی ئینتێڕنێت پارەی پێویستە هەر بۆیە
 	    تکایە هەرچەندێکی لەتواناتان دایە یارمەتی‌مان بدەن.
-	    پێشەکی زۆرسپاسی یارمەتی‌و دەکەم.
+	    پێشەکی زۆرسپاسی یارمەتیەکان‌و دەکەم.
 	</p>
 	<h3 class="color-blue" style="font-size:.7em;padding-top:1em">
 	    ناردنی پارە لەسەر ئینتێرنێت
@@ -83,7 +66,7 @@ include(ABSPATH . "script/php/header.php");
 	    <br>
 	    ئیمەیلی ئاڵەکۆک:
 	    <i style="direction:ltr;display:inline-block;background:#eee;font-family:monospace;padding:0 .5em"
-	    >one@allekok.com</i>
+	    >one@allekok.ir</i>
 	    <br>
 	    ئایدی تێلێگرامی ئاڵەکۆک:
 	    <i style="direction:ltr;display:inline-block;background:#eee;font-family:monospace;padding:0 .5em"

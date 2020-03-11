@@ -295,9 +295,9 @@ include(ABSPATH . 'script/php/header.php');
 
 <div id="poets">
     <div id="toolbox">
-        <a onclick="event.preventDefault();window.open('http://allekok.com/script/php/admin/sitemap.php', '_blank','width=300,height=320','')" href="sitemap.php">
+        <a onclick="event.preventDefault();window.open('<?php echo _SITE; ?>script/php/admin/sitemap.php', '_blank','width=300,height=320','')" href="sitemap.php">
             زیاد کردن
-        </a><a onclick="event.preventDefault();window.open('http://allekok.com/script/php/admin/search-poems.php', '_blank','width=300,height=320','')" href="search-poems.php">
+        </a><a onclick="event.preventDefault();window.open('<?php echo _SITE; ?>script/php/admin/search-poems.php', '_blank','width=300,height=320','')" href="search-poems.php">
             دروست کردن
         </a>
     </div>

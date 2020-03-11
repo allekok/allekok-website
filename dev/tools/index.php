@@ -52,17 +52,17 @@ include(ABSPATH . 'script/php/header.php');
     </h1>
     <div style="text-align:justify">
         <p class='p-dev' style="padding-top:0;text-indent:0">
-	    <a class="a-dev" href="https://github.com/allekok/www.allekok.com/"
+	    <a class="a-dev" href="https://github.com/allekok/allekok-website"
 	       style="display:inline-block;padding:.5em 0 .2em"
 	       target="_blank">
 		- بۆ داگرتنی کۆدەکانی ئاڵەکۆک لێرە کرتە بکەن.
             </a><br>
-	    <a class="a-dev" href="https://github.com/allekok/allekok-poems/"
+	    <a class="a-dev" href="https://github.com/allekok/allekok-poems"
 	       style="display:inline-block;padding:.5em 0 .2em"
 	       target="_blank">
 		- بۆ داگرتنی شێعرەکانی ئاڵەکۆک لێرە کرتە بکەن.
             </a><br>
-	    <a class="a-dev" href="https://github.com/allekok/allekok-downloads/"
+	    <a class="a-dev" href="https://github.com/allekok/allekok-downloads"
 	       style="display:inline-block;padding:.5em 0 .2em"
 	       target="_blank">
 		- بۆ داگرتنی کەرەستەکانی‌تری ئاڵەکۆک لێرە کرتە بکەن.
@@ -83,7 +83,7 @@ include(ABSPATH . 'script/php/header.php');
 	    تکایە سەرنج بدەن:
 	    <br>
 	    &bull;
-	    ئەگەر دەتانهەوێ ناوی شاعیر بنووسن، تکایە ئەو ناوەی کە لە لاپەڕەی یەکەمی ئاڵەکۆک بە ئادرسی "<a class="link a-dev" style="direction:ltr;text-align:left" href='<?php echo _SITE; ?>'>allekok.com</a>" بۆ هەر یەک لە شاعیران دابین کراوە، بنووسن.
+	    ئەگەر دەتانهەوێ ناوی شاعیر بنووسن، تکایە ئەو ناوەی کە لە لاپەڕەی یەکەمی ئاڵەکۆک بە ئادرسی "<a class="link a-dev" style="direction:ltr;text-align:left" href='<?php echo _SITE; ?>'><?php echo _SITE; ?></a>" بۆ هەر یەک لە شاعیران دابین کراوە، بنووسن.
 	    <br><br>
 	    &bull;
 	    ژمارەی شاعیر ئەم ژمارەیە کە لە ئادرسی لاپەڕەی شاعیردا بەم جۆرە نووسراوە: 

@@ -1,6 +1,6 @@
 ## بەشداربوون
 ئەگەر دەتانهەوێ لە نووسینی کۆدەکانی ئاڵەکۆک‌دا بەشداربن، دەبێ ئەو هەنگاوانەی خوارەوە بپێون:
-1. بچنە [لاپەڕەی گیت‌هاب‌ی ئاڵەکۆک](https://github.com/allekok/www.allekok.com) و ئەم پڕۆژەیە `Fork` بکەن.
+1. بچنە [لاپەڕەی گیت‌هاب‌ی ئاڵەکۆک](https://github.com/allekok/allekok-website) و ئەم پڕۆژەیە `Fork` بکەن.
 2. ئەم پڕۆژەی فۆڕک‌و کردووە بۆسەر لاپەڕەی خۆتان، ‍`Clone`ی بکەن بۆ سەر کامپیوتێڕەکەتان.
 3. `Branch`ێک ساز بکەن بە نێوێک کە نیشان‌دەری گۆڕانکاریەکەو بێت.
 4. گۆڕانکاریەکان‌و بە ئەنجام بگەیێنن‌و ‍`commit`یان بکەن.
@@ -10,9 +10,9 @@
 ئەگەریش کێشەیەک هەبوو پێتان ڕادەگەیێنین.
 ## نموونە
 ```bash
-# First, fork 'www.allekok.com' repository
-$ git clone https://github.com/your_username/www.allekok.com
-$ cd www.allekok.com
+# First, fork 'allekok-website' repository
+$ git clone https://github.com/your_username/allekok-website
+$ cd allekok-website
 $ git branch 'your_branch_name'
 $ git checkout 'your_branch_name'
 $ git add -p

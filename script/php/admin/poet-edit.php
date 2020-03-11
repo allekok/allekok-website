@@ -225,8 +225,8 @@ if(! empty($_REQUEST['id'])) {
         <a href="poets.php">
             شاعیران
         </a>
-        <a onclick="event.preventDefault();window.open('http://allekok.com/script/php/add/cp/make_search.php', '_blank','width=300,height=200','')" style="background:rgb(102, 0, 51);" href="make_search.php" target='_blank'>
-            make_search.php
+        <a onclick="event.preventDefault();window.open('<?php echo _SITE; ?>script/php/admin/search-poets.php', '_blank','width=300,height=200','')" style="background:rgb(102, 0, 51);" href="search-poets.php" target='_blank'>
+            search-poets.php
         </a>
     </div>
     

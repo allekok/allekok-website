@@ -3,10 +3,10 @@
 	هەنگاوەکانی خوارەوە بپێون. ئەگەر پرسیارێک‌و هەبوو پەیوەندیم پێوە بکەن.
 	بۆ بینینی ڕێگاکانی پەیوەندی سەردانی فایلی 'CONTACT' بکەن.
 	
-	# First, fork 'www.allekok.com' repository
+	# First, fork 'allekok-website' repository
 	# Fill [your_username] field with your username on github
-	$ git clone https://github.com/[your_username]/www.allekok.com
-	$ cd www.allekok.com
+	$ git clone https://github.com/[your_username]/allekok-website
+	$ cd allekok-website
 	
 	# Fill [your_branch_name] field with a name for your changes
 	$ git checkout -b [your_branch_name]

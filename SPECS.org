@@ -1,4 +1,4 @@
-* Allekok.com system specifications
+* Allekok website system specifications
 ** Source code
 Languages: PHP, HTML, CSS, JS, SHELL
 /No 3rd party JS/CSS libraries/
@@ -18,7 +18,7 @@ Languages: PHP, HTML, CSS, JS, SHELL
 - Update-version(s), Update-log(s): [[./desktop/update/][./desktop/update-*.txt]]
   Version update files that notify Allekok apps based on '[[https://github.com/allekok/allekok-client][allekok-client]]'.
 - Q&A text files: QA.txt (There are many, all over the repository)
-- User comments on 'allekok.com': [[./about/comments.txt][./about/comments.txt]]
+- User comments on 'Allekok website': [[./about/comments.txt][./about/comments.txt]]
 ** Databases
    MySQL databases
 *** Database: index
