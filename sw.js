@@ -103,12 +103,21 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
+    function recFetch (url, limit=-1) {
+	return fetch(url).then(res => {
+	    if(res.status !== 200 &&
+	       res.status !== 404 && limit-- !== 0)
+		return recFetch(url, limit);
+	    return res;
+	});
+    }
     event.respondWith(
 	caches.match(event.request).then(function(resp) {
-	    return resp || fetch(event.request).then(function(response) {
+	    return resp || recFetch(event.request, 100).then(response => {
 		return response;
 	    });
-	}).catch(function() {
-	    return caches.match('not-found.html?v5');
-	}));
+	})
+    );
 });
+
+
