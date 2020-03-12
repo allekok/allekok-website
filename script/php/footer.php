@@ -35,7 +35,7 @@ if(!$no_foot) {
 				    "false" : "true"; ?>;
      const ajax_save_days = <?php echo @filter_var($_COOKIE["ajax_save_d"],
 						   FILTER_VALIDATE_INT) ?
-				       abs($_COOKIE["ajax_save_d"]) : 5; ?>;
+				       abs($_COOKIE["ajax_save_d"]) : 1; ?>;
      const ajax_save_duration = ajax_save_days * 24 * 60 * 60 * 1000;
     </script>
 </body>
