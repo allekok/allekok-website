@@ -50,10 +50,12 @@ include(ABSPATH . "script/php/header.php");
 	<p style="padding-right:1em">
 	    تکایە یارمەتی‌تان بۆ ژمارە کارتی خوارەوە بنێرن. پێشەکی سپاس‌و دەکەین.
 	    <br>
-	    <span style="background: #eee;
-			 padding: 1em 2em;
+	    <span style="padding: .5em 1em;
 			 display: block;
-			 text-align: center">
+			 text-align: center;
+			 border:2px solid;
+			 border-radius:1em;
+			 margin:1em 0">
 		<span style="letter-spacing: .2em;font-size: 1.3em">
 		    ٦٠٣٧٩٩٧١٣٥٣٩٤٥٨٤
 		</span>
@@ -65,11 +67,15 @@ include(ABSPATH . "script/php/header.php");
 	    تکایە ئەگەر بەشێوەی ڕاستەوخۆ (کارت بە کارت) یارمەتی‌مان دەدەن، نێوی خۆتان و ئەندازەی یارمەتیەکەتان‌ بە ئیمەیل یان لەسەر تێلێگرام بۆمان بنێرن.
 	    <br>
 	    ئیمەیلی ئاڵەکۆک:
-	    <i style="direction:ltr;display:inline-block;background:#eee;font-family:monospace;padding:0 .5em"
+	    <i style="font-weight:bold;
+		      direction:ltr;display:inline-block;
+		      font-family:monospace;padding:0 .5em"
 	    >one@allekok.ir</i>
 	    <br>
 	    ئایدی تێلێگرامی ئاڵەکۆک:
-	    <i style="direction:ltr;display:inline-block;background:#eee;font-family:monospace;padding:0 .5em"
+	    <i style="font-weight:bold;
+		      direction:ltr;display:inline-block;
+		      font-family:monospace;padding:0 .5em"
 	    >@allekok</i>
 	</p>
 	<p style="padding-right:1em">
