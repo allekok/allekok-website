@@ -456,32 +456,30 @@ if($dbcache=='') {
 }
 ?>
 
-    <form action='' method='POST' id='frmbash'>
+    <form method='POST' id='frmbash'>
 	شاعیر: 
 	<select name='db' onchange='form.submit()'>
 	    <option value=''></option>
 	    <?php
+	    $db = _DEFAULT_DB;
 	    $q='SELECT * FROM auth';
-	    include(ABSPATH.'script/php/condb.php');
+	    require(ABSPATH.'script/php/condb.php');
 	    if(mysqli_num_rows($query)) {
-
 		while($row=mysqli_fetch_assoc($query)) {
-		    //if($row['takh']!='') { 
-		    //$tkh = ' (' . $row['takh'] . ')';
-		    //}
 	    ?>
 	    <option value="tbl<?php echo $row['id'] ?>" <?php $seldb="tbl" . $row['id']; if($dbcache == $seldb) { echo 'selected'; }?>>
 		<?php echo $row['profname']; ?>
 	    </option>
 	    
-		<?php } } mysqli_close($conn); ?>
+	    <?php } } mysqli_close($conn); ?>
 	</select>
 	<br />
 	کتێب: 
 	<select name='tbl'>
 	    <?php
+	    $db = _DEFAULT_DB;
 	    $q = 'SELECT * FROM auth WHERE id='. substr($dbcache,3);
-	    include(ABSPATH.'script/php/condb.php');
+	    require(ABSPATH.'script/php/condb.php');
 	    if($query) {
 		$row = mysqli_fetch_assoc($query);
 		$rbks = explode(',',$row['bks']);
