@@ -76,23 +76,19 @@ include(ABSPATH."script/php/header.php");
 		 style="font-size:.6em;max-width:800px;
 		     background:white;border-radius:1em;
 		     margin:auto">
+		<div class="loader" style="padding:0"></div>
+		<script>
+		 <?php if(!$no_head) { ?>
+		 window.addEventListener("load", function () {
+		 <?php } ?>
+		     getUrl("about-comments.php", function (html) {
+			 document.getElementById("Acomms").innerHTML = html;
+		     });
+		     <?php if(!$no_head) { ?>
+		 });
+		     <?php } ?>
+		</script>
 		<?php
-		$comments = file_get_contents($uri);
-		$comments = explode("[comment]",$comments);
-		$comments = array_reverse($comments);
-		$limit = (false === filter_var(@$_GET['num'],
-					       FILTER_VALIDATE_INT)) ?
-			-1 :
-			 $_GET['num'];
-		$_n = 0;
-		foreach($comments as $c)
-		{
-		    if($_n == $limit) break;
-		    if(!isset($_GET["plain"]))
-			$c = str_replace("\n", "<br>", $c);
-		    echo $c;
-		    $_n++;
-		}
 		} // $nzuri
 		?>
 	    </div>
