@@ -13,3 +13,4 @@
 * TODO Make 'Allekok' less server-dependent. Try not to download poems that had been viewed before and haven't changed since then. (like 'allekok-client' but more intelligent)
 * TODO news.txt: Group following poems of the same book in one entry
 * TODO A program that counts syllables in a poem.
+* TODO Add poem navigation part after poem context as well.
