@@ -68,6 +68,7 @@ $n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
 	     res.innerHTML = '<div class="loader"></div>';
 	     getUrl(`get-news.php?n=${n}`, function (html) {
 		 res.innerHTML = html;
+		 ajax();
 	     });
 	 }
 	 <?php if(!$no_head) { ?>

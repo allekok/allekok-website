@@ -278,9 +278,9 @@ include(ABSPATH . "script/php/header.php");
  function set_lang (lang)
  {
      set_cookie("lang", lang);
-     dd_lang_label.querySelector(".material-icons").innerText = "sync";
      window.location.reload();
      toggle(dd_lang_label, dd_lang_frame);
+     dd_lang_label.querySelector(".material-icons").innerText = "sync";
  }
  document.querySelectorAll(".langOpt").forEach(function (o) {
      o.addEventListener("click", function () {
