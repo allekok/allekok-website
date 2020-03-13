@@ -245,6 +245,52 @@ style='display:inline-block'
 	    <?php echo $row[1]['hdesc']; ?>
 	</span>
     <?php } ?>
+    <!-- Navigation -->
+    <div class="nav"
+	 style="<?php 
+		if(!($row[0] or $row[2])) echo "display:none;";
+		elseif(!$row[0]) echo "text-align:left;";
+		elseif(!$row[2]) echo "text-align:right;";
+		else echo "display:flex;";
+		?>">
+	<?php if($row[0]) { ?>
+	    <!-- Previous -->
+	    <div class="prev">
+		<a style="display:block"
+		   href="<?php 
+			 echo _R . "poet:".$info['id']."/book:".
+			      $bk."/poem:".$row[0]['id'];
+			 ?>"
+		><i
+		 >&lsaquo;</i><div
+			      ><?php 
+			       echo $row[0]['ckbid'].". ".
+				    trim($row[0]['name']);
+			       ?>
+		 </div>
+		</a>
+	    </div>
+	<?php
+	}
+	if($row[2]) {
+	?>
+	    <!-- Next -->
+	    <div class="next">
+		<a style="display:block"
+		   href="<?php
+			 echo _R . "poet:".$info['id']."/book:".
+			      $bk."/poem:".$row[2]['id'];
+			 ?>"
+		><div
+		 ><?php 
+		  echo $row[2]['ckbid'].". ".
+		       trim($row[2]['name']);
+		  ?>
+		</div><i>&rsaquo;</i>
+		</a>
+	    </div>
+	<?php } ?>
+    </div>
     <!-- Comments -->
     <h1 class="color-blue"
 	style="font-size:1em;text-align:right;padding-top:.5em">
@@ -277,8 +323,7 @@ style='display:inline-block'
 	<!--
 	     Comments
 	-->
-	<div id='hon-comments-body'
-	     style='padding:1em .2em'></div>
+	<div id='hon-comments-body'></div>
     </div>
     <script>
      const pID = <?php echo $info['id']; ?>,
@@ -361,6 +406,7 @@ address='$address' and blocked=0"; // Add limit 0,1
 	 if(!$no_foot)
 	     echo "window.addEventListener('load', function () { ";
      ?>
+     document.getElementById("hon-comments-body").style.padding = "1em .2em";
      getUrl('<?php echo _R; ?>script/php/comments-get.php?address='+
 	    poem_adrs, function(responseText)
 	 {
