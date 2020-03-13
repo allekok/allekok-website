@@ -56,70 +56,36 @@ $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE ?
 	    </div>
 	</div>
     </div>
-    <?php
-    $q = 'select * from comments where blocked=0 order by id DESC';
-    include(ABSPATH . 'script/php/condb.php');
-    if($query)
-    {
-	echo "<div id='hon-comments-body' 
-style='padding-right:1em'>";
-	$comms = [];
-	while($res = mysqli_fetch_assoc($query))
-	{
-	    if($n-- == 0) break;
-	    /* Poet's id from address(poet:{$pt}/...) */
-	    $res['pt'] = substr($res['address'], 5,
-				strpos($res['address'], '/') - 5);
-	    /* Replace newline characters with <br> */
-            $res['comment'] = str_replace("\n", "<br>\n", $res['comment']);
-	    /* Split 'date' string by spaces */
-            $res['date'] = explode(' ', $res['date']);
-            $res['date'] = $res['date'][0] . ' ' . $res['date'][1];
-            $res['date'] = num_convert($res['date'], 'en', 'ckb');
-            $res['date'] = str_replace(['am','pm'],
-				       [' بەیانی ',' پاش‌نیوەڕۆ '],
-				       $res['date']);
-	    $comms[] = $res;
-	}
-	foreach($comms as $r)
-	{
-	    /* Split address by slashes ('/') */
-            $_adrs = explode("/", $r["address"]);
-	    $_adrs_len = count($_adrs);
-            for($i = 0; $i < $_adrs_len; $i++)
-	    {
-		/* Split '$_adrs' elements by ":"
-		   0 => ["Poet", "Poet's id"], ... */
-		$_adrs[$i] = explode(":", $_adrs[$i]);
-            }
-
-	    /* Poet's name */
-            $q = "select takh from auth where id={$_adrs[0][1]}";
-            $query = mysqli_query($conn, $q);
-            $r["ptn"] = @mysqli_fetch_assoc($query)["takh"];
-	    
-	    /* Poem title */ 
-	    $tbl = "tbl{$_adrs[0][1]}_{$_adrs[1][1]}";
-            $q = "select name from {$tbl} where id={$_adrs[2][1]}";
-            $query = mysqli_query($conn, $q);
-            $r["pmn"] = @mysqli_fetch_assoc($query)["name"];
-
-	    $r['name'] = trim($r['name']) ? $r['name'] : 'ناشناس';
-
-	    echo "<div class='comment'><div class='comm-name'
->".$r['name']."<span 
+    <div id="result"></div>
+    <script>
+     function loadComments (n) {
+	 const result = document.getElementById("result");
+	 result.innerHTML = "<div class='loader'></div>";
+	 getUrl(`get-comments.php?n=${n}`, function (resp) {
+	     resp = JSON.parse(resp);
+	     let accum = "";
+	     for(const comment of resp) {
+		 accum += `<div class='comment'><div class='comm-name'
+>${comment.name}<span 
 style='font-size:.7em'> سەبارەت بە شێعری </span><a
 style='font-size:.75em;padding:0 .3em' 
-href='"._R.$r['address']."'><i class='color-blue'>".$r['ptn']."</i
-> &rsaquo; <i class='color-blue'>".$r['pmn']."</i></a
+href='${_R + comment.address}'><i class='color-blue'>${comment.ptn}</i
+> &rsaquo; <i class='color-blue'>${comment.pmn}</i></a
 ><span style='font-size:.7em'> نووسیویەتی:</span></div
-><div class='comm-body'>".$r['comment']."</div><div class='comm-footer'
->".$r['date']."</div></div>";
-	}
-	echo '</div>';
-    }
-    mysqli_close($conn);
-    ?>
+><div class='comm-body'>${comment.comment}</div><div class='comm-footer'
+>${comment.date}</div></div>`;
+	     }
+	     result.innerHTML = accum;
+	 });
+     }
+     <?php if(! $no_head) { ?>
+     window.addEventListener("load", function () {
+     <?php } ?>
+	 loadComments("<?php echo $n; ?>");
+	 <?php if(! $no_head) { ?>
+     });
+	 <?php } ?>
+    </script>
 </div>
 <?php
 include_once(ABSPATH . 'script/php/footer.php');

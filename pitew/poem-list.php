@@ -3,7 +3,6 @@ include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-
 $_name1 = isset($_GET['name']) ?
 	  filter_var($_GET['name'],FILTER_SANITIZE_STRING) : '';
 // number of poems
@@ -51,6 +50,7 @@ include(ABSPATH . 'script/php/header.php');
     include(ABSPATH . "script/php/condb.php");
     if(!$query) die();
     $_pmnum = num_convert(mysqli_num_rows($query), "en", "ckb");
+    mysqli_close($conn);
     ?>
     <div style="display:flex;font-size:.55em;
 		margin:1em 0">
@@ -108,46 +108,23 @@ include(ABSPATH . 'script/php/header.php');
 	<section style="width:100%"
 		 class='color-blue'>شێعر</section>
     </div>
-    
-    <?php
-    if(! $_pmnum)
-	echo "<div style='font-size:1em'>•</div>";
-
-    while($_l = mysqli_fetch_assoc($query))
-    {
-	if($n-- == 0) break;
-        $_l['status'] = json_decode($_l['status'], true);
-        if($_l['poem-name'] == "")
-	    $_l['poem-name'] = "شێعر";
-        if($_l["contributor"] == "")
-	    $_l["contributor"] = "ناشناس";
-
-	echo "<div class='pmlist-container'><section>";
-	if($_l['status']['status'] === 1)
-	{
-	    echo "<i class='material-icons color-blue'>check</i> ";
-	}
-	elseif($_l['status']['status'] === 0)
-	{
-	    echo "<i class='material-icons'>sync</i> ";
-	}
-	else
-	{
-	    echo "<i class='material-icons color-red'>close</i> ";
-	}
-        echo "<a href='?name={$_l['contributor']}'>{$_l['contributor']}</a></section
-	><section><a href='" . _R . "{$_l['status']['url']}'
-	>{$_l['poet']} &rsaquo; {$_l['poem-name']}</a>";
-
-	if($_l['status']['status'] === -1)
-	{
-	    echo "<br><i class='color-blue'>هۆکار</i>: " . $_l['status']['desc'];
-	}
-	echo "</section></div>";
-    }
-    
-    mysqli_close($conn);
-    ?>
+    <div id="result"></div>
+    <script>
+     function loadPoemList (name, n) {
+	 const result = document.getElementById("result");
+	 result.innerHTML = "<div class='loader'></div>";
+	 getUrl(`get-poem-list.php?name=${name}&n=${n}`, function (resp) {
+	     result.innerHTML = resp;
+	 });
+     }
+     <?php if(! $no_head) { ?>
+     window.addEventListener("load", function () {
+     <?php } ?>
+	 loadPoemList("<?php echo $_name1; ?>", "<?php echo $n; ?>");
+	 <?php if(! $no_head) { ?>
+     });
+	 <?php } ?>
+    </script>
 </div>
 <?php
 include_once(ABSPATH . "script/php/footer.php");

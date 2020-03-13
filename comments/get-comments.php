@@ -12,9 +12,10 @@ header("Content-Type: application/json; charset=UTF-8");
 /* Number of comments */
 $n = @filter_var($_GET["n"], FILTER_VALIDATE_INT) ?
      $_GET["n"] : 20;
+$LIMIT = $n == -1 ? "" : "LIMIT 0, $n";
 
 /* Query for non-blocked comments */
-$q = "select * from comments where blocked=0 order by id DESC LIMIT 0, {$n}";
+$q = "select * from comments where blocked=0 order by id DESC $LIMIT";
 include(ABSPATH . "script/php/condb.php");
 if(!$query) die(json_encode(["err"=>1]));
 
