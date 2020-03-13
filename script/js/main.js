@@ -706,6 +706,29 @@ var eval_js = eval_js || function (str)
     }
 }
 
+var garbageCollector = garbageCollector || function (interval = 750) {
+    function collectHistList () {
+	let list = [];
+	let k = null;
+	for(let i = 0;
+	    (k = localStorage.key(i)) !== null;
+	    i++) {
+	    if(k.indexOf("hist_") === 0)
+		list.push(k);
+	}
+	return list;
+    }
+    const hist_list = collectHistList();
+    if(!hist_list) return;
+    const GCT = setInterval(function () {
+	const hist_item = hist_list.pop();
+	if(typeof(hist_item) == 'undefined')
+	    clearInterval(GCT);
+	else
+	    ajax_findstate(hist_item.substr(5));
+    }, interval);
+}
+
 var hashStr = hashStr || function (str)
 {
     return str;
@@ -713,7 +736,6 @@ var hashStr = hashStr || function (str)
 
 var ajax_findstate = ajax_findstate || function (url, max_delta=-1)
 {
-    /* Default 'max_delta': 5-days */
     if(max_delta == -1)
 	max_delta = ajax_save_duration;
     const time = Date.now(),
@@ -932,3 +954,6 @@ try
 			     save_fs("bigger")
 			 });
 } catch(e) {}
+
+/* Garbage Collector */
+garbageCollector();

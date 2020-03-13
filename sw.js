@@ -75,7 +75,7 @@ self.addEventListener('install', function(event) {
 		profile+'71.jpg',
 		profile+'73.jpg',
 		profile+'93.jpg',
-		'script/js/main-comp.js?v24',
+		'script/js/main-comp.js?v33',
 		'style/css/main-comp.css?v26',
 		'style/css/main-dark-comp.css?v26',
 		'favicon/favicon.ico',
@@ -103,21 +103,12 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-    function recFetch (url, limit=-1) {
-	return fetch(url).then(res => {
-	    if(res.status !== 200 &&
-	       res.status !== 404 && limit-- !== 0)
-		return recFetch(url, limit);
-	    return res;
-	});
-    }
     event.respondWith(
 	caches.match(event.request).then(function(resp) {
-	    return resp || recFetch(event.request, 100).then(response => {
+	    return resp || fetch(event.request).then(response => {
 		return response;
 	    });
-	})
-    );
+	}));
 });
 
 

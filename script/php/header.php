@@ -50,7 +50,7 @@ if(!$no_head) {
 	    <!-- Header -->
 	    <header>
 		<!-- Title -->
-		<a href='<?php echo _SITE; ?>'>
+		<a href='<?php echo _R; ?>'>
 		    <h1><?php echo SP("title"); ?></h1>
 		</a>
 		<?php if(@!$is_it_search) { ?>
