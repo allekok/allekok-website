@@ -53,17 +53,20 @@ $poet = isset($_GET['poet']) ?
 	</div>
 	<div id="result"></div>
 	<script>
-	 function loadImageList (n) {
+	 function loadImageList (n, name, poet) {
 	     const result = document.getElementById("result");
 	     result.innerHTML = "<div class='loader'></div>";
-	     getUrl(`get-image-list.php?n=${n}`, function (resp) {
-		 result.innerHTML = resp;
+	     getUrl(`get-image-list.php?n=${n}&name=${name}&poet=${poet}`,
+		    function (resp) {
+			result.innerHTML = resp;
 	     });
 	 }
 	 <?php if(!$no_head) { ?>
 	 window.addEventListener("load", function () {
 	 <?php } ?>
-	     loadImageList("<?php echo $n; ?>");
+	     loadImageList("<?php echo $n; ?>",
+			   "<?php echo $name; ?>",
+			   "<?php echo $poet; ?>");
 	     <?php if(!$no_head) { ?>
 	 });
 	     <?php } ?>

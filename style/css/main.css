@@ -269,12 +269,11 @@ header a h1
 }
 .bks a,.poetnm
 {
-    padding:.5em 1.8em .5em 0;
-    display:block
+    padding:.2em 2em .2em .2em;
+    display:block;
 }
 .bks p,.poetdesc p
 {
-    padding:.2em .5em .2em 0;
     color:#00e;
     font-size:1.2em
 }
@@ -798,15 +797,8 @@ footer i,#header-nav i
     }
     #poet-info
     {
-	display:flex;
 	margin-right:auto;
 	margin-left:auto
-    }
-    .bks,.poetdesc
-    {
-	width:50%;
-	margin-right:.5em;
-	margin-left:.5em
     }
     footer a
     {

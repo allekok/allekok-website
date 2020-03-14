@@ -77,62 +77,57 @@ href='" . _R . "pitew/image-list.php?poet={$row['takh']}'
 	    }
 	    $edit_uri = _R . "pitew/edit-poet.php?poet={$row['takh']}";
 	    ?>
-	    <div style="text-align:right;">
-		<a style="font-size:.8em;
-			  padding:1em;display:block"
-		   href="<?php echo $edit_uri; ?>">
-		    زانیاری زیاترتان سەبارەت بە 
-		    &laquo;
-		    <?php echo $row['takh']; ?>
-		    &raquo;
-		    هەیە؟ دەتوانن لێرە کرتە بکەن و بینووسن.
-		</a>
-		<div>
-		    <!-- Infos written by users -->
-		    <?php
-		    $_uri = ABSPATH . "pitew/res/";
-		    if(file_exists($_uri)) {
-			$ignore = [".","..","README.md","list.txt"];
-			$dir = opendir($_uri);
-			$result = [];
-			while(false !== ($pe = readdir($dir))) {
-			    if(in_array($pe,$ignore))
-				continue;
-			    $e = explode("_", str_replace(".txt","",$pe));
-			    if(@$e[1] == $row['takh']) {
-				$ef = fopen($_uri.$pe, "r");
-				while(! feof($ef))
+	</div>
+	<div class="poetdesc">
+		<!-- Infos written by users -->
+		<?php
+		$_uri = ABSPATH . "pitew/res/";
+		if(file_exists($_uri)) {
+		    $ignore = [".","..","README.md","list.txt"];
+		    $dir = opendir($_uri);
+		    $result = [];
+		    while(false !== ($pe = readdir($dir))) {
+			if(in_array($pe,$ignore))
+			    continue;
+			$e = explode("_", str_replace(".txt","",$pe));
+			if(@$e[1] == $row['takh']) {
+			    $ef = fopen($_uri.$pe, "r");
+			    while(! feof($ef))
+			    {
+				if($ef_ln = trim(fgets($ef)))
 				{
-				    if($ef_ln = trim(fgets($ef)))
-				    {
-					$ef_ln = num_convert(
-					    str_replace("&#34;","\"",$ef_ln),
-					    "en", "ckb");
-					$ef_ln = mb_substr($ef_ln,0,100);
-					break;
-				    }
+				    $ef_ln = num_convert(
+					str_replace("&#34;","\"",$ef_ln),
+					"en", "ckb");
+				    $ef_ln = mb_substr($ef_ln,0,150);
+				    break;
 				}
-				fclose($ef);
-				$result[] = [$e, $ef_ln];
 			    }
+			    fclose($ef);
+			    $result[] = [$e, $ef_ln];
 			}
-			closedir($dir);
-			
-			foreach($result as $n) {
-			    echo "<a style=\"font-size:.8em;
-padding:.5em;display:block;margin:0\" 
+		    }
+		    closedir($dir);
+
+		    echo "<p>زانیاریەکانی بەکارهێنەران";
+		    echo "<a style='padding:1em'
+		   href='{$edit_uri}' class='material-icons'>add</a>";
+		    echo "</p>";
+		    
+		    foreach($result as $n) {
+			echo "<a style=\"font-size:.9em;
+padding-right:2em;display:block;margin:0\" 
 href=\""._R."pitew/poetdesc-list.php?name={$n[0][0]}&poet={$n[0][1]}\"
 ><span style='display:block'>
 &laquo;".num_convert(
-		    str_replace("&#34;",'"',$n[0][0]),"en","ckb")."&raquo; نووسیویەتی:
-</span><span style='padding-right:1em;
+		str_replace("&#34;",'"',$n[0][0]),"en","ckb")."&raquo; نووسیویەتی:
+</span><span style='padding-right:.5em;margin-right:1em;
 font-size:1em;display:block;white-space:nowrap;overflow:hidden;
 text-overflow:ellipsis;border-right:2px solid'>{$n[1]}...</span></a>";
-			}
 		    }
-		    ?>
-		</div>
-	    </div>
+		}
+		?>
 	</div>
     </div>
+</div>
 </div>
