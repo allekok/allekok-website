@@ -83,21 +83,18 @@ self.addEventListener('install', function(event) {
 		'style/font/DroidNaskh-Regular.woff2',
 		'style/font/Material-Icons.woff2',
 		'logo/logo-64.png',
-		'not-found.html?v5',
+		'not-found.html?v6',
 	    ]);
 	}));
 });
 
 self.addEventListener('activate', function(event) {
     const cacheWhitelist = [cache_ver];
-    
     event.waitUntil(
 	caches.keys().then(function(keyList) {
 	    return Promise.all(keyList.map(function(key) {
 		if(cacheWhitelist.indexOf(key) === -1)
-		{
 		    return caches.delete(key);
-		}
 	    }));
 	}));
 });
@@ -108,6 +105,8 @@ self.addEventListener('fetch', function(event) {
 	    return resp || fetch(event.request).then(response => {
 		return response;
 	    });
+	}).catch(function () {
+	    return caches.match("not-found.html?v6");
 	}));
 });
 
