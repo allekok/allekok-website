@@ -560,7 +560,8 @@ address='$address' and blocked=0"; // Add limit 0,1
 	     }
 	     result_el.innerHTML = toprint;
 	 });
-	 wordMore.innerHTML = `<a target='_blank' href='<?php echo _R; ?>tewar/?q=${q}'>گەڕانی زیاتر لە "تەوار"دا</a>`;
+	 wordMore.innerHTML = `<a target='_blank' href='<?php echo _R; ?>tewar/?q=${q}'>گەڕانی زیاتر لە تەواردا &rsaquo;</a>` +
+			      `<a target='_blank' href='<?php echo _R; ?>tewar-legacy/?q=${q}'>گەڕانی زیاتر لە فەرهەنگە ئانلاینەکان‌دا &rsaquo;</a>`;
      }
 
      document.getElementById('make_poem_dict').
