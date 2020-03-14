@@ -106,6 +106,8 @@ function make_list($path)
 	    ["\nend\n", "\nend", "\n\n\n", "\n\n", "\n"],
 	    ["<div style='
 	      border-top:2px solid;margin:1em'
+  ></div>", "<div style='
+	      border-top:2px solid;margin:1em'
   ></div>", "؛ ", "؛ ", "؛ "], $content);
 
 	$e = [
