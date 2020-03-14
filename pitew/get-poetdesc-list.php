@@ -40,7 +40,7 @@ href='"._R."pitew/poetdesc-list.php?name=$_encoded_name'
 max-height:150px'";
 	    $_html .= ">{$_l['content']}</section>";
 	    $_html .= "<div style='text-align:left'
-><button class='epld-expand button' 
+><button class='epld-expand' 
 data-uri='"._R."pitew/res/{$_l['filename']}'
 >زیاتر <i class='material-icons'>keyboard_arrow_down</i
 ></button></div></div>";
@@ -83,7 +83,7 @@ function make_list($path)
 {
     global $n;
     $not = [".","..","README.md","list.txt"];
-    $chunk = 4 * 100;
+    $chunk = 250;
     $d = file_exists($path) ?
 	 opendir($path) : die();
     $list = [];
@@ -97,14 +97,16 @@ function make_list($path)
 			      str_replace([".txt"],
 					  "",$e_name));
 	$f = fopen($path.$e_name,'r');
-	$content = ltrim(fread($f, $chunk)) .
+	$_chunk = trim(fread($f, 2 * $chunk));
+	
+	$content = mb_substr($_chunk, 0, $chunk) .
 		   '...';
 	fclose($f);
 	$content = str_replace(
-	    ["\nend\n","\n"],
+	    ["\nend\n", "\nend", "\n\n\n", "\n\n", "\n"],
 	    ["<div style='
 	      border-top:2px solid;margin:1em'
-  ></div>","<br>"], $content);
+  ></div>", "؛ ", "؛ ", "؛ "], $content);
 
 	$e = [
 	    "filemtime"=>filemtime($path.$e_name),

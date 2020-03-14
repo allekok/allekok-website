@@ -11,13 +11,17 @@ $t_desc = "";
 include(ABSPATH . "script/php/header.php");
 ?>
 <style>
+ #contributions .pitewsec {
+     max-width:450px;
+     margin:auto;
+ }
  #contributions div small {
      display:block;
      padding-right:2em;
  }
  #contributions div .stats-min {
      display:block;
-     font-size:.85em;
+     font-size:.95em;
  }
  #contributions div .stats-min .material-icons {
      font-size:1.1em;
@@ -78,7 +82,7 @@ include(ABSPATH . "script/php/header.php");
 	foreach ($array as $E)
 	{
 	    echo "<div id='contributions-{$E[0]}' class='pitewsec'>";
-	    echo "<div style='overflow:hidden;max-height:200px'>";
+	    echo "<div style='overflow:hidden;max-height:300px'>";
 	    echo "<a href='{$E[4]}'>";
 	    echo "<i class='material-icons'>{$E[3]}</i> ";
 	    echo '<h3>';
@@ -97,8 +101,13 @@ include(ABSPATH . "script/php/header.php");
 	    foreach($contributions_poems as $e) {
 		if(trim($e[1]) == 'ناشناس' or trim($e[1]) == 'ئاڵەکۆک')
 		    continue;
-		echo '<p>';
-		echo num_convert($n, 'en', 'ckb') . '. '.trim($e[1]);
+		$e[1] = trim($e[1]);
+		echo '<p style="display:flex;border-bottom:1px solid">';
+		echo "<i style='width:70%'>" .
+		     num_convert($n, 'en', 'ckb') . '. ' .
+		     "<a href='{$E[4]}?name={$e[1]}'>".$e[1]."</a></i><i ".
+		     "style='width:30%;text-align:left'>".
+		     num_convert($e[0],"en","ckb")." جار</i>";
 		echo '</p>';
 		$n++;
 	    }
@@ -119,7 +128,7 @@ style='font-size:inherit;display:inline-block'
 			 parentNode.querySelector("div");
      if(parent.style.overflow != "hidden") {
 	 parent.style.overflow = "hidden";
-	 parent.style.maxHeight = "200px";
+	 parent.style.maxHeight = "300px";
 	 item.innerHTML = "<i class='material-icons' \
 style='font-size:inherit;display:inline-block'\
 >keyboard_arrow_down</i>";

@@ -818,7 +818,11 @@ var ajax_popstate = ajax_popstate || function ()
     const loading = document.getElementById('main-loader'),
 	  t = document.querySelector('#MAIN'),
 	  S = window.history.state;
-    if(!S) return;
+    if(!S) {
+	/* First State */
+	window.location.reload();
+	return;
+    }
     const url = S.url;
     if(!url) return;
     

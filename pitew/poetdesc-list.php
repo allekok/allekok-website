@@ -41,7 +41,7 @@ include(ABSPATH . 'script/php/header.php');
  }
  #poetdesc-list-main .epld-expand {
      font-size:1.1em;
-     padding:.5em 1.5em .5em .5em;
+     padding:.5em;
  }
  #poetdesc-list-main .epld-expand .material-icons {
      font-size:1.1em;

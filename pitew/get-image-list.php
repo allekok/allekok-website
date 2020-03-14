@@ -41,6 +41,7 @@ function make_list($path)
 	if($name and
 	    $exp_e_name[1] != $name)
 	continue;
+	if($n-- == 0) break;
 	$e = [
 	    "filemtime"=>filemtime($path.$e_name),
 	    "filename"=>$e_name,
@@ -48,7 +49,6 @@ function make_list($path)
 	    "name"=>$exp_e_name[1],
 	];
 	$list[] = $e;
-	if(--$n == 0) break;
     }
     rsort($list);
     return $list;
