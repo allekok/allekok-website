@@ -555,7 +555,7 @@ address='$address' and blocked=0"; // Add limit 0,1
 		 {
 		     const m = res[w];
 		     if(! m) continue;
-		     toprint += `- <i class='color-blue'>${w}</i>: <p>${m}</p>`;
+		     toprint += `<i class='color-blue'>${w}</i>: ${m}<br>`;
 		 }
 	     }
 	     result_el.innerHTML = toprint;
