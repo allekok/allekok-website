@@ -4,6 +4,7 @@
 * DONE (/script/php/search.php) Fix bugs and make it work AJAXly.
 * DONE (script/js/main.js) Compress 'main.js'.
 * DONE Make (2nd DONE) optional, adjustable in 'customize/index.php'
+* DONE Add poem navigation part after poem context as well.
 * TODO Let users verify poems and publish them by doing some heavy work on cpu. something like mining Bitcoin.
 * TODO Build PDFs from text.
 * TODO (/script/php/book.php) Let users download a whole book (ie. build PDFs).
@@ -12,5 +13,4 @@
 * TODO (about/index.php) Fix the error on submitting very first comment.
 * TODO Make 'Allekok' less server-dependent. Try not to download poems that had been viewed before and haven't changed since then. (like 'allekok-client' but more intelligent)
 * TODO news.txt: Group following poems of the same book in one entry
-* TODO A program that counts syllables in a poem.
-* TODO Add poem navigation part after poem context as well.
+* TODO (/script/php/search.php) Fix search poet names bug + Add more options
