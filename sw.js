@@ -102,8 +102,16 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
     event.respondWith(
 	caches.match(event.request).then(function(resp) {
-	    return resp || fetch(event.request).then(response => {
-		return response;
+	    return resp || fetch(event.request).then(function (R) {
+		if(event.request.url.endsWith(".ttf") ||
+		   event.request.url.endsWith(".otf")) {
+		    return caches.open(cache_ver).then((cache) => {
+			console.log(event.request.url);
+			cache.put(event.request, R.clone());
+			return R;
+		    });
+		}
+		return R;
 	    });
 	}).catch(function () {
 	    return caches.match("not-found.html?v7");

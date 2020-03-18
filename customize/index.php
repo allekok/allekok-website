@@ -11,11 +11,11 @@ $t_desc = "";
 include(ABSPATH . "script/php/header.php");
 ?>
 <style>
- #set_theme, #set_lang, #toggle_ajaxsave
+ #set_theme, #set_lang, #toggle_ajaxsave, #set_font
  {
      border-bottom:1px solid;
  }
- #set_theme, #user_codes, #set_lang, #toggle_ajaxsave
+ #set_theme, #user_codes, #set_lang, #toggle_ajaxsave, #set_font
  {
      text-align:right;
      font-size:.7em;
@@ -91,6 +91,19 @@ include(ABSPATH . "script/php/header.php");
  {
      min-width:90px;
  }
+ .dd-frame img
+ {
+     max-width:100%;
+     display:block;
+ }
+ .dd-frame img:hover
+ {
+     opacity:.5;
+ }
+ #dd-font .dd-frame
+ {
+     max-width:320px;
+ }
  #toggle_ajaxsave button
  {
      font-size:1.4em;
@@ -148,9 +161,53 @@ include(ABSPATH . "script/php/header.php");
             پاشەکەوت‌کردنی لاپەڕەکان:
 	</span>
 	<button type="button" class="button material-icons back-blue color-white"
-		id="toggle_ajaxsave_btn">
+		      id="toggle_ajaxsave_btn">
 	    check
 	</button>
+    </div>
+    <!-- Font -->
+    <div id="set_font">
+	<div class="dropdown" id="dd-font">
+	    <span style="padding-left:1em">
+		قەڵەم:
+	    </span>
+	    <div class="dd-label"
+	    ><?php
+	     $fonts = json_decode(
+		 file_get_contents("fonts/fonts.txt"), true);
+	     if(isset($_COOKIE["font"]) and $_COOKIE["font"]!="null") {
+		 $font = filter_var($_COOKIE["font"], FILTER_SANITIZE_STRING);
+		 $font_name = substr($font, 0, strrpos($font, "."));
+		 echo $font_name;
+	     }
+	     else
+		 echo "نەسخ";
+	     ?>
+		<span class='material-icons'
+		>keyboard_arrow_down</span></div>
+	    <div class="dd-frame">
+		<ul>
+		    <li>
+			<button style="text-align:center;
+				       border-bottom:1px solid;
+				       padding:1em 0"
+				       class="fontOpt" type="button" L=""
+			>نەسخ</button>
+		    </li>
+		    <?php
+		    foreach($fonts as $o)
+		    {
+			if(file_exists(ABSPATH."customize/fonts/font-files/{$o["title"]}.ttf"))
+			    $fnt = ".ttf";
+			elseif(file_exists(ABSPATH."customize/fonts/font-files/{$o["title"]}.otf"))
+			    $fnt = ".otf";
+			echo "<li><img src='fonts/font-imgs/{$o["title"]}.png' 
+class='fontOpt' F='{$o["title"]}{$fnt}'></li>";
+		    }
+		    ?>
+		</ul>
+	    </div>
+	</div>
     </div>
     <!-- User codes -->
     <div id="user_codes">
@@ -269,11 +326,29 @@ include(ABSPATH . "script/php/header.php");
 	 icon.innerText = "keyboard_arrow_down";
      }
  }
+ const dd_font = document.getElementById("dd-font");
+ const dd_font_label = dd_font.querySelector(".dd-label");
+ const dd_font_frame = dd_font.querySelector(".dd-frame");
+ dd_font_label.addEventListener("click", function () {
+     toggle(dd_font_label, dd_font_frame);
+ });
  const dd_lang = document.getElementById("dd-lang");
  const dd_lang_label = dd_lang.querySelector(".dd-label");
  const dd_lang_frame = dd_lang.querySelector(".dd-frame");
  dd_lang_label.addEventListener("click", function () {
      toggle(dd_lang_label, dd_lang_frame);
+ });
+ function set_font (font)
+ {
+     set_cookie("font", font);
+     window.location.reload();
+     toggle(dd_font_label, dd_font_frame);
+     dd_font_label.querySelector(".material-icons").innerText = "sync";
+ }
+ document.querySelectorAll(".fontOpt").forEach(function (o) {
+     o.addEventListener("click", function () {
+	 set_font(o.getAttribute("F"));
+     });
  });
  function set_lang (lang)
  {
