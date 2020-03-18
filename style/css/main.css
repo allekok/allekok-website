@@ -569,10 +569,10 @@ footer
     font-size:.6em;
     text-align:center
 }
-footer a
+footer a, footer button
 {
     display:inline-block;
-    padding:.5em .3em
+    padding:.3em .2em
 }
 footer i,#header-nav i
 {
@@ -801,9 +801,9 @@ footer i,#header-nav i
 	margin-right:auto;
 	margin-left:auto
     }
-    footer a
+    footer a, footer button
     {
-	padding:.5em .41em
+	padding:.3em .25em
     }
 }
 /* Animations */
