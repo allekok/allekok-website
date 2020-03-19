@@ -21,7 +21,7 @@ if(!$no_head) {
 				    echo $_theme_dark ? 
 					 'main-dark-comp.css' :
 					 'main-comp.css';
-				    ?>?v37'/>
+				    ?>?v38'/>
 	    <title>
 		<?php echo $title; ?>
 	    </title>
