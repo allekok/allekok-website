@@ -8,7 +8,7 @@ body
 {
     font-family:'kurd', arial;
     font-size:24px;
-    line-height:2.1;
+    line-height:2.5;
     background:#222;
     color:#fff;
     padding:.5em;
@@ -269,7 +269,7 @@ header a h1
 }
 .bks a,.poetnm
 {
-    padding:.4em 2em .4em .2em;
+    padding:.2em 2em .2em .2em;
     display:block;
 }
 .bks p,.poetdesc p

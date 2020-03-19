@@ -116,7 +116,7 @@ href='" . _R . "pitew/image-list.php?poet={$row['takh']}'
 		    
 		    foreach($result as $n) {
 			echo "<a style=\"font-size:.9em;
-padding-right:2em;display:block;margin:0 0 .75em\" 
+padding-right:2em;display:block;margin:0\" 
 href=\""._R."pitew/poetdesc-list.php?name={$n[0][0]}&poet={$n[0][1]}\"
 ><span style='display:block'>
 &laquo;".num_convert(
