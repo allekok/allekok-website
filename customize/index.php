@@ -104,6 +104,17 @@ include(ABSPATH . "script/php/header.php");
  {
      max-width:320px;
  }
+ .fontOpt p
+ {
+     text-align:center;
+     font-size:.9em;
+ }
+ .fontOpt
+ {
+     border-bottom:1px solid;
+     padding:.5em 0;
+     font-family:none;
+ }
  #toggle_ajaxsave button
  {
      font-size:1.4em;
@@ -173,8 +184,6 @@ include(ABSPATH . "script/php/header.php");
 	    </span>
 	    <div class="dd-label"
 	    ><?php
-	     $fonts = json_decode(
-		 file_get_contents("fonts/fonts.txt"), true);
 	     if(isset($_COOKIE["font"]) and $_COOKIE["font"]!="null") {
 		 $font = filter_var($_COOKIE["font"], FILTER_SANITIZE_STRING);
 		 $font_name = substr($font, 0, strrpos($font, "."));
@@ -195,14 +204,12 @@ include(ABSPATH . "script/php/header.php");
 			>نەسخ</button>
 		    </li>
 		    <?php
+		    $fonts = json_decode(
+			file_get_contents("fonts/list.txt"), true);
 		    foreach($fonts as $o)
 		    {
-			if(file_exists(ABSPATH."customize/fonts/font-files/{$o["title"]}.ttf"))
-			    $fnt = ".ttf";
-			elseif(file_exists(ABSPATH."customize/fonts/font-files/{$o["title"]}.otf"))
-			    $fnt = ".otf";
-			echo "<li><img src='fonts/font-imgs/{$o["title"]}.png' 
-class='fontOpt' F='{$o["title"]}{$fnt}'></li>";
+			echo "<li><button type='button' class='fontOpt' F='{$o[0]}.{$o[2]}'
+><p>{$o[0]}</p><img src='fonts/font-imgs/{$o[0]}.{$o[1]}'></button></li>";
 		    }
 		    ?>
 		</ul>
