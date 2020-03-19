@@ -27,10 +27,11 @@ if(!$no_head) {
 	    </title>
 	    <style>
 	     @font-face{font-family:'Material Icons';font-display:swap;font-style:normal;font-weight:400;src:url('<?php echo _R; ?>style/font/Material-Icons.woff2') format('woff2')}
-	     <?php if(isset($_COOKIE["font"]) and $_COOKIE["font"]!="null") {
+	     <?php if(!empty(@$_COOKIE["font"]) and
+		 @$_COOKIE["font"]!="null") {
 		 $font = filter_var($_COOKIE["font"], FILTER_SANITIZE_STRING);
-		 $fname_ = substr($font, 0, strrpos($font, "."));
-		 $fformat = substr($font, strrpos($font, ".")+1);
+		 $fname_ = mb_substr($font, 0, strrpos($font, "."));
+		 $fformat = mb_substr($font, strrpos($font, ".")+1);
 		 if($fformat == "ttf") $fformat = "truetype";
 		 elseif($fformat == "otf") $fformat = "opentype";
 		 echo "@font-face{font-family:'{$fname_}';font-display:swap;font-style:normal;src:url('"._R."customize/fonts/font-files/{$font}') format('{$fformat}')}
@@ -71,11 +72,11 @@ body{font-family:'{$fname_}'}";
 		<?php } // @!$is_it_search ?>
 		<!-- Bookmarks Icon -->
 		<button id='tL' class='header-icon material-icons'
-			    style='<?php echo $site_anti_align; ?>:1.3em;display:none'
+			style='<?php echo $site_anti_align; ?>:1.3em;display:none'
 		>bookmark</button>
 		<!-- Nav Icon -->
 		<button id='tN' class='header-icon material-icons'
-			    style='<?php echo $site_anti_align; ?>:2.6em'
+			style='<?php echo $site_anti_align; ?>:2.6em'
 		>more_vert</button>
 	    </header>
 	    <!-- Links -->

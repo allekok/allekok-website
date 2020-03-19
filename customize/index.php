@@ -184,7 +184,8 @@ include(ABSPATH . "script/php/header.php");
 	    </span>
 	    <div class="dd-label"
 	    ><?php
-	     if(isset($_COOKIE["font"]) and $_COOKIE["font"]!="null") {
+	     if(!empty(@$_COOKIE["font"]) and
+		 @$_COOKIE["font"]!="null") {
 		 $font = filter_var($_COOKIE["font"], FILTER_SANITIZE_STRING);
 		 $font_name = substr($font, 0, strrpos($font, "."));
 		 echo $font_name;
@@ -200,7 +201,7 @@ include(ABSPATH . "script/php/header.php");
 			<button style="text-align:center;
 				       border-bottom:1px solid;
 				       padding:1em 0"
-				       class="fontOpt" type="button" L=""
+				class="fontOpt" type="button" L=""
 			>نەسخ</button>
 		    </li>
 		    <?php
