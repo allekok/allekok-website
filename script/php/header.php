@@ -30,8 +30,8 @@ if(!$no_head) {
 	     <?php if(!empty(@$_COOKIE["font"]) and
 		 @$_COOKIE["font"]!="null") {
 		 $font = filter_var($_COOKIE["font"], FILTER_SANITIZE_STRING);
-		 $fname_ = mb_substr($font, 0, strrpos($font, "."));
-		 $fformat = mb_substr($font, strrpos($font, ".")+1);
+		 $fname_ = substr($font, 0, strrpos($font, "."));
+		 $fformat = substr($font, strrpos($font, ".")+1);
 		 if($fformat == "ttf") $fformat = "truetype";
 		 elseif($fformat == "otf") $fformat = "opentype";
 		 echo "@font-face{font-family:'{$fname_}';font-display:swap;font-style:normal;src:url('"._R."customize/fonts/font-files/{$font}') format('{$fformat}')}
