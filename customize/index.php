@@ -117,8 +117,8 @@ include(ABSPATH . "script/php/header.php");
  }
  #toggle_ajaxsave button
  {
-     font-size:1.4em;
-     padding:.3em;
+     font-size:1em;
+     padding:.5em;
  }
 </style>
 <div id="poets" style="text-align:right">
