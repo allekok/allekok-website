@@ -32,6 +32,12 @@ include(ABSPATH . "script/php/header.php");
      padding-top: 1em;
      <?php if(!$_theme_custom) echo "display:none"; ?>
  }
+ #set_theme_custom_colors input[type=color]
+ {
+     display:inline-block;
+     padding:.5em 0;
+     margin-right:1em;
+ }
  #set_theme_custom_colors ._colors
  {
      display: inline-block;
@@ -165,19 +171,27 @@ include(ABSPATH . "script/php/header.php");
 	<div id="set_theme_custom_colors">
 	    <p>
 		ڕەنگی پەڕە: <input type="text" class="_colors"
-				   value="<?php echo $_colors[0]; ?>">
+				   value="<?php echo $_colors[0]; ?>"
+			    ><input type="color" class="_colors_c"
+				    value="<?php echo $_colors[0]; ?>">
 	    </p>
 	    <p>
 		ڕەنگی نووسراوە: <input type="text" class="_colors"
-				       value="<?php echo $_colors[1]; ?>">
+				       value="<?php echo $_colors[1]; ?>"
+				><input type="color" class="_colors_c"
+					value="<?php echo $_colors[1]; ?>">
 	    </p>
 	    <p>
 		ڕەنگی تایبەت: <input type="text" class="_colors"
-				     value="<?php echo $_colors[2]; ?>">
+				     value="<?php echo $_colors[2]; ?>"
+			      ><input type="color" class="_colors_c"
+				      value="<?php echo $_colors[2]; ?>">
 	    </p>
 	    <p>
 		ڕەنگی هەڵە: <input type="text" class="_colors"
-				   value="<?php echo $_colors[3]; ?>">
+				   value="<?php echo $_colors[3]; ?>"
+			    ><input type="color" class="_colors_c"
+				    value="<?php echo $_colors[3]; ?>">
 	    </p>
 	    <p style="text-align:center;padding-top:.7em">
 		<button type="button" class="button"
@@ -367,6 +381,12 @@ include(ABSPATH . "script/php/header.php");
  document.getElementById('set_theme_dark').onclick = function(){set_theme('dark')}
  document.getElementById('set_theme_custom_colors_submit').onclick = () => {set_colors()};
  document.getElementById('set_theme_custom').onclick = () => {set_theme('custom')};
+ document.getElementById('set_theme_custom_colors').
+	  querySelectorAll('._colors_c').forEach((o) => {
+	      o.addEventListener("input", () => {
+		  o.parentNode.querySelector('._colors').value = o.value;
+	      });
+	  });
  const user_codes_button = document.getElementById('user_codes_button');
  user_codes_button.onclick = function(){save_user_codes('user_codes_text',user_codes_button)}
 
