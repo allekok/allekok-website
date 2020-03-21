@@ -569,12 +569,16 @@ footer
     font-size:.6em;
     text-align:center
 }
+footer button
+{
+    font-size:inherit;
+}
 footer a, footer button
 {
     display:inline-block;
     padding:.3em .2em
 }
-footer i,#header-nav i
+footer i
 {
     font-size:1.4em
 }
@@ -605,17 +609,6 @@ footer i,#header-nav i
 .color-white
 {
     color:#222
-}
-#header-nav
-{
-    position:absolute;
-    z-index:999;
-    background:#222;
-    left:1em;
-    padding:1em;
-    font-size:.6em;
-    border:2px solid;
-    border-radius:1em
 }
 #extlnk
 {
@@ -745,7 +738,7 @@ footer i,#header-nav i
     font-size:.55em;
     border-radius:1em;
 }
-#header-nav a,.search-main .show
+.search-main .show
 {
     display:block;
 }

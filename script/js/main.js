@@ -232,20 +232,6 @@ margin-left:.5em'>${favs[a].poetName} &rsaquo; ${favs[a].poem}</a>`;
     ajax();
 }
 
-var toggle_nav = toggle_nav || function ()
-{
-    const nav = document.getElementById('header-nav');
-    if(nav.style.display == 'none')
-    {
-	nav.style.display = '';
-	nav.style.animation = 'tL-top .1s';
-    }
-    else
-    {
-	nav.style.display = 'none';
-    }
-}
-
 var search = search || function (e)
 {
     const Res = document.getElementById("search-res"),
@@ -382,8 +368,7 @@ var copyPoem = copyPoem || function ()
 var Liked = Liked || function ()
 {
     const bookmarksIcon = document.getElementById('tL'),
-	  ico = document.getElementById("like-icon"),
-	  tN = document.getElementById('tN');
+	  ico = document.getElementById("like-icon");
     let bookmarks = get_bookmarks();
     
     if(!bookmarks)
@@ -394,7 +379,6 @@ var Liked = Liked || function ()
 	ico.classList.add("back-blue");
         ico.style.animation = "ll .4s ease-out forwards";
         bookmarksIcon.style.display = "block";
-	tN.style.left = "2.6em";
 	return;
     }
     
@@ -428,7 +412,6 @@ var Liked = Liked || function ()
 	{
             localStorage.removeItem(bookmarks_name);
             bookmarksIcon.style.display = "none";
-	    tN.style.left = "1.3em";
         }
 	ico.innerHTML = "bookmark_border";
 	ico.classList.remove("back-blue");
@@ -852,7 +835,6 @@ window.onpopstate = ajax_popstate;
 /* Check if bookmarks? */
 const bookmarksIcon = document.getElementById('tL'),
       favs = get_bookmarks(),
-      tN = document.getElementById('tN'),
       tS = document.getElementById('tS'),
       bookmarksIconLeft = bookmarksIcon.style.left;
 if(favs)
@@ -870,34 +852,10 @@ if(favs)
 	else
 	{
 	    if(bookmarksIconLeft)
-	    {
 		bookmarksIcon.style.left = "0";
-		tN.style.left = "1.3em";
-	    }
 	    else
-	    {
 		bookmarksIcon.style.right = "0";
-		tN.style.right = "1.3em";
-	    }
-	    
 	}
-    }
-}
-else if(tN)
-{
-    if(tS)
-    {
-	if(bookmarksIconLeft)
-	    tN.style.left = "1.3em";
-	else
-	    tN.style.right = "1.3em";
-    }
-    else
-    {
-	if(bookmarksIconLeft)
-	    tN.style.left = "0";
-	else
-	    tN.style.right = "0";
     }
 }
 
@@ -921,12 +879,6 @@ try
 {
     document.getElementById("tS").
 	addEventListener("click", toggle_search);
-} catch(e) {}
-
-try
-{
-    document.getElementById("tN").
-	addEventListener("click", toggle_nav);
 } catch(e) {}
 
 try

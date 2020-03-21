@@ -21,7 +21,7 @@ if(!$no_head) {
 				    echo $_theme_dark ? 
 					 'main-dark-comp.css' :
 					 'main-comp.css';
-				    ?>?v40'/>
+				    ?>?v41'/>
 	    <title>
 		<?php echo $title; ?>
 	    </title>
@@ -74,20 +74,7 @@ body{font-family:'{$fname_}'}";
 		<button id='tL' class='header-icon material-icons'
 			style='<?php echo $site_anti_align; ?>:1.3em;display:none'
 		>bookmark</button>
-		<!-- Nav Icon -->
-		<button id='tN' class='header-icon material-icons'
-			style='<?php echo $site_anti_align; ?>:2.6em'
-		>more_vert</button>
 	    </header>
-	    <!-- Links -->
-	    <div id="header-nav" style="display:none">
-		<?php
-		include('footer-links.php');
-		?><button onclick="window.scrollTo(0, document.getElementById('footer').offsetTop)"
-			  title="<?php P("bottom"); ?>"
-		  ><i class="material-icons"
-		   >arrow_downward</i></button>
-	    </div>
 	    <?php if(@!$is_it_search) { ?>
 		<!-- Search Section -->
 		<div id='search'>
