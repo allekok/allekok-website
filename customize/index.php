@@ -26,6 +26,26 @@ include(ABSPATH . "script/php/header.php");
      font-size:inherit;
      margin:0 1em 0 0;
  }
+ #set_theme_custom_colors
+ {
+     font-size: .9em;
+     padding-top: 1em;
+     <?php if(!$_theme_custom) echo "display:none"; ?>
+ }
+ #set_theme_custom_colors ._colors
+ {
+     display: inline-block;
+     padding: .1em .5em;
+     max-width: 100px;
+     direction: ltr;
+     text-align: left;
+     margin-right: .5em;
+     font-size:.9em;
+ }
+ #set_theme_custom_colors_submit
+ {
+     padding:.5em 1em;
+ }
  #user_codes small
  {
      font-family:'kurd',monospace;
@@ -138,6 +158,34 @@ include(ABSPATH . "script/php/header.php");
 	    <i class="material-icons">brightness_2</i>
 	    تاریک
 	</button>
+	<button type="button" id="set_theme_custom">
+	    <i class="material-icons">settings</i>
+	    ڕەنگی‌تر
+	</button>
+	<div id="set_theme_custom_colors">
+	    <p>
+		ڕەنگی پەڕە: <input type="text" class="_colors"
+				   value="<?php echo $_colors[0]; ?>">
+	    </p>
+	    <p>
+		ڕەنگی نووسراوە: <input type="text" class="_colors"
+				       value="<?php echo $_colors[1]; ?>">
+	    </p>
+	    <p>
+		ڕەنگی تایبەت: <input type="text" class="_colors"
+				     value="<?php echo $_colors[2]; ?>">
+	    </p>
+	    <p>
+		ڕەنگی هەڵە: <input type="text" class="_colors"
+				   value="<?php echo $_colors[3]; ?>">
+	    </p>
+	    <p style="text-align:center;padding-top:.7em">
+		<button type="button" class="button"
+			style="font-size:.9em"
+			id="set_theme_custom_colors_submit"
+		>پاشەکەوت کردن</button>
+	    </p>
+	</div>
     </div>
     <!-- Language -->
     <div id="set_lang">
@@ -154,12 +202,11 @@ include(ABSPATH . "script/php/header.php");
 		    <?php
 		    foreach(SITE_LANGS as $k => $v)
 		    {
-			echo "<li>";
 			if($site_lang != $k)
-			    echo "<button type='button' class='langOpt' L='$k'>" .
+			    echo "<li><button type='button' class='langOpt' L='$k'>" .
 				 $v["lit"] . "</button></li>";
 			else
-			    echo $v["lit"] . "</li>";
+			    echo "<li style='opacity:.75'>" . $v["lit"] . "</li>";
 		    }
 		    ?>
 		</ul>
@@ -233,7 +280,7 @@ include(ABSPATH . "script/php/header.php");
     </div>
 </div>
 <script>
- const themes = ['light' , 'dark'],
+ const themes = ['light' , 'dark' , 'custom'],
        user_codes_storage_name = 'user-codes',
        user_codes_storage = localStorage.getItem(user_codes_storage_name);
  
@@ -304,10 +351,22 @@ include(ABSPATH . "script/php/header.php");
 	     submit_button.innerHTML = 'پاشەکەوت کردن';
 	 }, 3000);
  }
+ function set_colors ()
+ {
+     let colors = [];
+     document.getElementById('set_theme_custom_colors').
+	      querySelectorAll('._colors').forEach((o) => {
+		  colors.push(o.value);
+	      });
+     set_cookie('colors', colors.join(','));
+     window.location.reload();
+ }
  if(user_codes_storage)
      document.getElementById('user_codes_text').value = user_codes_storage;
  document.getElementById('set_theme_light').onclick = function(){set_theme('light')}
  document.getElementById('set_theme_dark').onclick = function(){set_theme('dark')}
+ document.getElementById('set_theme_custom_colors_submit').onclick = () => {set_colors()};
+ document.getElementById('set_theme_custom').onclick = () => {set_theme('custom')};
  const user_codes_button = document.getElementById('user_codes_button');
  user_codes_button.onclick = function(){save_user_codes('user_codes_text',user_codes_button)}
 

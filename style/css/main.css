@@ -1,20 +1,8 @@
-/* Main */
+/* Main, Colors first */
 html, body
 {
     height:100%;
     margin:0;
-}
-body
-{
-    font-family:'kurd', arial;
-    font-size:24px;
-    line-height:2.5;
-    background:#fff;
-    color:#000;
-    padding:.5em;
-    max-width:1000px;
-    margin:0 auto;
-    position:relative
 }
 h1, h2, h3, h4, h5, h6, p, input, a, form, button, select,
 ul, li, ol, header, div, footer, article, section, nav, img,
@@ -29,6 +17,67 @@ table, tr, td, th, textarea, span, i, sup, sub
     text-align:inherit;
     box-sizing:border-box
 }
+
+/* <Colors> */
+/* Background: White */
+body, .dd-frame, .search-main .dropdown-content {
+    background:#fff;
+}
+/* Color: White */
+.button:hover,.fontsize button:hover,.toolbar a:hover,
+.icon-round,.color-white {
+    color:#fff;
+}
+/* Color: Black */
+body, input, textarea, button, a, .color-black, #hon sup:hover {
+    color:#000;
+}
+/* Background: Black */
+.icon-round {
+    background:#000;
+}
+/* Background: Blue */
+.button:hover,.fontsize button:hover,.toolbar a:hover,
+.btn-selected,.back-blue,.loader,.loader-round {
+    background:#00e;
+}
+/* Color: Blue */
+#hon sup,.poet:hover,.color-blue,.selected,.link-color,
+.link:hover,a:hover,button:hover,.search-main .cb:hover,
+.bks p,.poetdesc p,#search-res #bhon,.bhoh-newdaq,
+#main-contributing h1,#main-contributing h2,
+#main-contributing h3,#main-manual h1,#main-manual h2,
+#main-manual h3 {
+    color:#00e;
+}
+/* Border: Blue */
+.border-blue,input:focus,textarea:focus,.link-underline,
+#main-contributing a {
+    border-color:#00e
+}
+/* Color: Red */
+.color-red {
+    color:#e00
+}
+/* Background: Red */
+.back-red {
+    background:#e00
+}
+/* </Colors> */
+
+.button {
+    border:1px solid;
+}
+body
+{
+    font-family:'kurd', arial;
+    font-size:24px;
+    line-height:2.5;
+    padding:.5em;
+    max-width:1000px;
+    margin:0 auto;
+    position:relative
+}
 input, textarea, button
 {
     -webkit-appearance:none;
@@ -36,49 +85,102 @@ input, textarea, button
     outline:none;
     border-radius:0;
     background:none;
-    color:#000
 }
 input, textarea
 {
     padding:1em;
     text-align:right;
-    border:1px solid #000;
+    border:1px solid;
     border-radius:1em;
     display:block;
     margin:auto
+}
+.button
+{
+    border-radius:1em
+}
+a
+{
+    text-decoration:none;
+}
+#hon sup
+{
+    cursor:pointer;
+    padding:0 3px;
+}
+.bks p,.poetdesc p
+{
+    font-size:1.2em
+}
+#search-res #bhon, .bhoh-newdaq
+{
+    font-size:.6em;
+    padding:.5em 0;
+    text-align:right
+}
+.h
+{
+    position:absolute;
+    bottom:0;
+    left:0;
+    display:block;
+    font-size:.75em;
+    text-align:center;
+    /* <Constant across diff. themes> */
+    background:rgba(255,255,255,.5);
+    color:black;
+    /* </Constant across diff. themes> */
+    border-radius:0 1.5em 0;
+    padding:0 1em
+}
+.icon-round
+{
+    border-radius:50%
+}
+.link-underline,#main-contributing a
+{
+    border-bottom:2px solid;
+}
+#main-contributing h1
+{
+    font-size:1.5em;
+}
+#main-contributing h2
+{
+    font-size:1.3em;
+    margin-top:1em;
+}
+#main-contributing h3
+{
+    font-size:1.1em;
+    margin-top:1em;
+}
+#main-manual h1
+{
+    font-size:1.818em;
+}
+#main-manual h2
+{
+    font-size:1.618em;
+    margin-top:1em;
+}
+#main-manual h3
+{
+    font-size:1.418em;
+    margin-top:1em;
 }
 textarea
 {
     height:15em;
     min-height:5em
 }
-.border-blue,input:focus,textarea:focus
-{
-    border-color:#00e
-}
 i
 {
     font-style:normal
 }
-.button
-{
-    background:#eee;
-    border-radius:1em
-}
-.button:hover,.fontsize button:hover,.toolbar a:hover
-{
-    background:#00e;
-    color:#fff
-}
-a
-{
-    text-decoration:none;
-    color:#000
-}
 a:hover, button:hover
 {
     text-decoration:none;
-    color:#00e
 }
 .poet-pic-small
 {
@@ -129,16 +231,6 @@ a:hover, button:hover
 .pitewsec small
 {
     font-size:.6em
-}
-#hon sup
-{
-    cursor:pointer;
-    color:#00e;
-    padding:0 3px;
-}
-.color-black, #hon sup:hover
-{
-    color:#000
 }
 #commNameTxt,#commTxt
 {
@@ -204,19 +296,6 @@ header
 {
     position:relative
 }
-.poet:hover,.color-blue,.selected,.link-color,
-.link:hover,a:hover,button:hover,.search-main .cb:hover
-{
-    color:#00e
-}
-.color-red
-{
-    color:#e00
-}
-.back-red
-{
-    background:#e00
-}
 header a h1
 {
     font-size:1.3em;
@@ -271,11 +350,6 @@ header a h1
 {
     padding:.2em 2em .2em .2em;
     display:block;
-}
-.bks p,.poetdesc p
-{
-    color:#00e;
-    font-size:1.2em
 }
 #adrs
 {
@@ -359,13 +433,6 @@ header a h1
     position:relative;
     max-width:850px;
     margin:auto
-}
-#search-res #bhon, .bhoh-newdaq
-{
-    font-size:.6em;
-    padding:.5em 0;
-    color:#00e;
-    text-align:right
 }
 #search-res a
 {
@@ -494,19 +561,6 @@ header a h1
     margin-bottom:1em;
     word-break:break-word;
 }
-.h
-{
-    position:absolute;
-    bottom:0;
-    left:0;
-    display:block;
-    font-size:.75em;
-    text-align:center;
-    background:rgba(255,255,255,.5);
-    color:black;
-    border-radius:0 1.5em 0;
-    padding:0 1em
-}
 .h::before
 {
     content:'date_range ';
@@ -582,33 +636,15 @@ footer i
 {
     font-size:1.4em
 }
-.icon-round
-{
-    background:#000;
-    color:#fff;
-    border-radius:50%
-}
 .icon-round-poem 
 {
     font-size:1.2em;
     padding:.3em;
     margin-left:.5em
 }
-.btn-selected,.back-blue,.loader,.loader-round
-{
-    background:#00e
-}
 .eee-desc,.border-right-eee,.border-right-999
 {
     border-right:2px solid
-}
-.link-underline,#main-contributing a
-{
-    border-bottom:2px solid #00e
-}
-.color-white
-{
-    color:#fff
 }
 #extlnk
 {
@@ -659,40 +695,6 @@ footer i
     display: block;
     margin: auto;
 }
-#main-contributing h1
-{
-    font-size:1.5em;
-    color:#00e;
-}
-#main-contributing h2
-{
-    font-size:1.3em;
-    color:#00e;
-    margin-top:1em;
-}
-#main-contributing h3
-{
-    font-size:1.1em;
-    color:#00e;
-    margin-top:1em;
-}
-#main-manual h1
-{
-    font-size:1.818em;
-    color:#00e;
-}
-#main-manual h2
-{
-    font-size:1.618em;
-    color:#00e;
-    margin-top:1em;
-}
-#main-manual h3
-{
-    font-size:1.418em;
-    color:#00e;
-    margin-top:1em;
-}
 .comment,.prev,#main-contributing h1,
 #main-contributing h2, #main-contributing h3,
 #main-manual  h1, #main-manual  h2, #main-manual  h3
@@ -728,7 +730,6 @@ footer i
     text-align:right;
     display:none;
     position:absolute;
-    background:#fff;
     min-width:200px;
     max-width:200px;
     overflow-y:auto;
@@ -761,11 +762,6 @@ footer i
 #wordMore a:hover
 {
     text-decoration:none;
-}
-.dd-frame
-{
-    background:#fff;
-    color:#666;
 }
 /* Different screen sizes */
 @media only screen and (min-width:600px)
