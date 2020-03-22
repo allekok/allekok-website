@@ -32,13 +32,16 @@ include(ABSPATH . "script/php/header.php");
      padding-top: 1em;
      <?php if(!$_theme_custom) echo "display:none"; ?>
  }
- #set_theme_custom_colors input[type=color]
+ #set_theme_custom_colors ._colors_c
  {
      display:inline-block;
      padding:0;
      margin-right:1em;
      box-sizing:initial;
      border:0;
+     height:2em;
+     width:3em;
+     vertical-align:text-bottom;
  }
  #set_theme_custom_colors ._colors
  {
