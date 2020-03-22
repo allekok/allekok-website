@@ -35,8 +35,10 @@ include(ABSPATH . "script/php/header.php");
  #set_theme_custom_colors input[type=color]
  {
      display:inline-block;
-     padding:.5em 0;
+     padding:0;
      margin-right:1em;
+     box-sizing:initial;
+     border:0;
  }
  #set_theme_custom_colors ._colors
  {
