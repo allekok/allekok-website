@@ -203,7 +203,7 @@ search_deep(which_PT_selected(), checks());"
  function filterFunction() {
      const needle = document.getElementById("myInput").value,
 	   context = document.getElementById("myDropdown").
-			      querySelectorAll("a");
+			      querySelectorAll("p");
      filterp(needle, context);
  }
  function isiOS() {
@@ -221,7 +221,7 @@ search_deep(which_PT_selected(), checks());"
      }
      else e.select();
  }
- document.querySelector('.search-main #myInput').onclick = filterFunction;
+ document.querySelector('.search-main #myInput').onkeyup = filterFunction;
  document.getElementById("search_toggle_poets_btn").onclick = myFunction;
  document.querySelector("#cb-pt").onclick = function() {
      const pts = (document.querySelector("#cb-pt i").innerHTML !=
