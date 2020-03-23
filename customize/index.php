@@ -276,7 +276,7 @@ include(ABSPATH . "script/php/header.php");
 		    foreach($fonts as $o)
 		    {
 			echo "<li><button type='button' class='fontOpt' F='{$o[0]}.{$o[2]}'
-><p>{$o[0]}</p><img src='fonts/font-imgs/{$o[0]}.{$o[1]}'></button></li>";
+><p>{$o[0]}</p><img lsrc='fonts/font-imgs/{$o[0]}.{$o[1]}'></button></li>";
 		    }
 		    ?>
 		</ul>
@@ -422,6 +422,9 @@ include(ABSPATH . "script/php/header.php");
  const dd_font_label = dd_font.querySelector(".dd-label");
  const dd_font_frame = dd_font.querySelector(".dd-frame");
  dd_font_label.addEventListener("click", function () {
+     dd_font_frame.querySelectorAll(".fontOpt img").forEach((img) => {
+	 img.src = img.getAttribute("lsrc");
+     });
      toggle(dd_font_label, dd_font_frame);
  });
  const dd_lang = document.getElementById("dd-lang");
