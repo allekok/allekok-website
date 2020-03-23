@@ -17,7 +17,7 @@
      cursor:pointer;
  }
  .drp-a:hover {
-     color:<?php echo $_color; ?>;
+     color:<?php echo $_colors[2]; ?>;
  }
 </style>
 <div id="poets" class="search-main">

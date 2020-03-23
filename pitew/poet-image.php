@@ -148,11 +148,11 @@ include(ABSPATH . 'script/php/header.php');
 		 {
                      txts.forEach( function(e)
 			 {
-			     e.style.borderColor = '<?php echo $_color; ?>';
+			     e.style.borderColor = '<?php echo $_colors[2]; ?>';
                      });
                      btns.forEach( function(e)
 			 {
-			     e.style.background = '<?php echo $_color; ?>';
+			     e.style.background = '<?php echo $_colors[2]; ?>';
 			     e.classList.add("color-white");
                      });
                      poet.style.backgroundImage = `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg`;
@@ -184,7 +184,7 @@ include(ABSPATH . 'script/php/header.php');
 		  {
 		      const filebtn = document.querySelector(".file-btn");
 		      filebtn.innerHTML = "هەڵبژێردرا.";
-		      filebtn.style.background = '<?php echo $_color; ?>';
+		      filebtn.style.background = '<?php echo $_colors[2]; ?>';
 		      filebtn.classList.add("color-white");
 	      });
 

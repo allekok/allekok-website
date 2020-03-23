@@ -111,11 +111,11 @@ $_poet1 = isset($_GET['poet']) ?
 	     {
 		 txts.forEach( function(e)
 		     {
-			 e.style.borderColor = '<?php echo $_color; ?>';
+			 e.style.borderColor = '<?php echo $_colors[2]; ?>';
 		 });
 		 btns.forEach( function(e)
 		     {
-			 e.style.background = '<?php echo $_color; ?>';
+			 e.style.background = '<?php echo $_colors[2]; ?>';
 			 e.classList.add("color-white");
 		 });
 		 poet.style.backgroundImage =

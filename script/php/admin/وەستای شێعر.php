@@ -263,7 +263,7 @@ include(ABSPATH . 'script/php/header.php');
  #poets button {
      margin:15px .5%;
      padding:10px 0;
-     border:2px solid <?php echo $_color_black; ?>;
+     border:2px solid <?php echo $_colors[1]; ?>;
      border-radius:1em;
      cursor:pointer;
      width:24%;

@@ -91,7 +91,7 @@ include(ABSPATH . "script/php/header.php");
  }
  .dd-label:hover
  {
-     color:<?php echo $_color; ?>;
+     color:<?php echo $_colors[2]; ?>;
  }
  .dd-frame
  {

@@ -39,7 +39,7 @@ include(ABSPATH . 'script/php/header.php');
      cursor:pointer;
  }
  #pdfs-main .eee .material-icons:hover {
-     color:<?php echo $_color; ?>;
+     color:<?php echo $_colors[2]; ?>;
  }
  #pdfs-search #filter-txt {
      max-width: 1200px;
