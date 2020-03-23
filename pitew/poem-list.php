@@ -115,6 +115,7 @@ include(ABSPATH . 'script/php/header.php');
 	 result.innerHTML = "<div class='loader'></div>";
 	 getUrl(`get-poem-list.php?name=${name}&n=${n}`, function (resp) {
 	     result.innerHTML = resp;
+	     ajax();
 	 });
      }
      <?php if(! $no_head) { ?>

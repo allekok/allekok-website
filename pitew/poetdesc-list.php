@@ -71,6 +71,7 @@ include(ABSPATH . 'script/php/header.php');
      getUrl(`get-poetdesc-list.php?poet=${poet}&name=${name}&n=${n}`,
 	    function (resp) {
 		result.innerHTML = resp;
+		ajax();
 		document.querySelectorAll('.epld-expand').forEach(function (o)
 		    {
 			o.onclick = function ()
