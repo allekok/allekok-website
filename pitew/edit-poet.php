@@ -189,8 +189,8 @@ $_poet1 = isset($_GET['poet']) ?
      {
          if(this.responseText == "ok")
 	 {             
-             mess.innerHTML = "<i style='display:block;background:rgba(0,200,0,0.1);\
-font-size:.55em;padding:.3em'>زۆر سپاس. دوای پێداچوونەوە لەسەر ئاڵەکۆک دادەندرێ.</i>";
+             mess.innerHTML = "<i class='color-blue' style='display:block;\
+font-size:.55em;padding:.3em'>زۆر سپاس. بە ئاڵەکۆکەوە زیاد کرا.</i>";
              loader.style.display = "none";
              poet.value = poetDesc.value = "";
              

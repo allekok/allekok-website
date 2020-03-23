@@ -27,9 +27,9 @@ if( isset($_FILES['profile']) and
     {
         if( move_uploaded_file($_profile['tmp_name'], $_profile_dist) )
 	{
-            $uploaded = "<i style='font-size:0.7em;
-background:rgba(0,250,0,0.1);padding:.3em;display:block;margin-top:.8em'
->زۆر سپاس بۆ ئێوە. ئەو وێنە دوای پێداچوونەوە لەسەر ئاڵەکۆک دادەندرێ.</i><img 
+            $uploaded = "<i class='color-blue' style='font-size:.7em;
+padding:.3em;display:block;margin-top:.8em'
+>زۆر سپاس بۆ ئێوە. ئەم وێنە بە ئاڵەکۆکەوە زیادکرا.</i><img 
 src='$_profile_dist' onclick=\"window.location='$_profile_dist';\" 
 id='profilepic' style='width:100%;margin:auto;display:block;min-width:70px;
 max-width:200px;cursor:pointer'>";
@@ -100,7 +100,7 @@ include(ABSPATH . 'script/php/header.php');
             بێت.
             <br>
             &bull; گەورەیی وێنەکە نابێ لە 
-            <span style='padding:0 .2em'>5MB</span>
+            <span style='padding:0 .2em'>5MiB</span>
             زیاتر بێت.
         </div>
         <input type="file" style='display:none'
@@ -227,16 +227,16 @@ include(ABSPATH . 'script/php/header.php');
 	     
              if(frmts.indexOf(fl.files[0].type) === -1)
 	     {
-		 frmUploadMess.innerHTML = "<i style='background:rgba(204,51,0,0.1);\
-color:#444;font-size:.7em;display:block;padding:0.3em'\
+		 frmUploadMess.innerHTML = "<i class='color-red' style='\
+font-size:.7em;display:block;padding:.3em'\
 >ئەو شتەی هەڵتانبژاردووە وێنە نییە، وێنەیەک هەڵبژێرن.</i>";
 		 return;
              }
              if(fl.files[0].size > 5242880)
 	     {
-		 frmUploadMess.innerHTML = "<i style='background:rgba(204,51,0,0.1);\
-color:#444;font-size:.7em;display:block;padding:0.3em'\
->نابێ گەورەیی وێنەکەتان لە 5MB زیاتر بێت.</i>";
+		 frmUploadMess.innerHTML = "<i class='color-red' style='\
+font-size:.7em;display:block;padding:.3em'\
+>نابێ گەورەیی وێنەکەتان لە 5MiB زیاتر بێت.</i>";
 		 return;
              }
              
