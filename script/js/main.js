@@ -234,29 +234,39 @@ margin-left:.5em'>${favs[a].poetName} &rsaquo; ${favs[a].poem}</a>`;
 
 var search = search || function (e)
 {
-    const Res = document.getElementById("search-res"),
-	  Sec = document.getElementById("search"),
-	  Key = document.getElementById("search-key"),
-	  q = Key.value.trim(),
-	  currentKey = e.keyCode,
-	  noActionKeys = [16, 17, 18, 91, 20, 9, 93,
-			  37, 38, 39, 40, 32, 224, 13];
-    if(! q) return;
-    if(currentKey == 27)
-    {
-	Res.style.display="none";
-	Key.value="";
-        return;
-    }
-    if(noActionKeys.indexOf(currentKey) !== -1) return;
-    
-    Res.style.display="block";
-    Res.innerHTML="<div class='loader'></div>";
-    getUrl(`${_R}script/php/search-quick.php?q=${q}`,
-	   function(response)
-	   {
-	       Res.innerHTML = response;
-	   });
+    setTimeout(() => {
+	const Res = document.getElementById("search-res"),
+	      Sec = document.getElementById("search"),
+	      Key = document.getElementById("search-key"),
+	      q = Key.value.trim(),
+	      currentKey = e.keyCode,
+	      noActionKeys = [16, 17, 18, 91, 20, 9, 93,
+			      37, 38, 39, 40, 32, 224, 13];
+	if(currentKey == 27)
+	{
+	    Res.style.display="none";
+	    Key.value="";
+            return;
+	}
+	if(noActionKeys.indexOf(currentKey) !== -1) return;
+	if(q) {
+	    Res.style.display="block";
+	    Res.innerHTML="<div class='loader'></div>";
+	    /* Server Search */
+	    getUrl(`${_R}script/php/search-quick.php?q=${q}`,
+		   (response) => {Res.innerHTML = response});
+	}
+	/* Find in Current Page */
+	findPage(q, document.getElementById("poets"));
+    }, 100);
+}
+
+var findPage = findPage || function (q_str, input_el) {
+    let input_html = input_el.innerHTML;
+    input_html = input_html.replace(/<i style="background:#FF5;color:#000">([^<]*)<\/i>/g,"$1");
+    input_html = input_html.replace(new RegExp(`>([^<>]*)(${q_str})([^<>]*)<`,"g"),
+				    '>$1<i style="background:#FF5;color:#000">$2</i>$3<');
+    input_el.innerHTML = input_html;
 }
 
 window.Clipboard = (function (window, document, navigator) {
@@ -525,7 +535,8 @@ var show_summary_poem = show_summary_poem || function (btn)
     show_summary(btn, parse_poem_link);
 }
 
-var filterp = filterp || function (needle="", context, lastChance=false)
+var filterp = filterp || function (needle="", context, lastChance=false,
+				   toDo=(x,r)=>{x.style.display = r ? "" : "none"})
 {
     let res = false;
     
@@ -535,20 +546,12 @@ var filterp = filterp || function (needle="", context, lastChance=false)
 	const cx = san_data(item.textContent, lastChance),
 	      _filterp = (needle == "") ? true :
 	      (cx.indexOf(needle) !== -1);
-	if (_filterp)
-	{
-	    item.style.display = "";
-	    res = true;
-	}
-	else
-	{
-	    item.style.display = "none";
-	    res = false;
-	}
+	if (_filterp) res = true;
+	toDo(item, _filterp);
     });
 
     if(!res && !lastChance)
-	filterp(needle, context, true);
+	filterp(needle, context, true, toDo);
 }
 
 var KurdishNumbers = KurdishNumbers || function (inp="")

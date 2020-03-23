@@ -112,7 +112,9 @@ include(ABSPATH . 'script/php/header.php');
      const needle = document.querySelector("#pdfs-search #filter-txt");
      function _filter()
      {
-	 filterp(needle.value, context);
+	 setTimeout(() => {
+	     filterp(needle.value, context);
+	 }, 100);
      }
      needle.onkeyup = _filter;
     </script>
