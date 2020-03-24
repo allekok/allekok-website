@@ -76,7 +76,7 @@ self.addEventListener('install', function(event) {
 		profile+'73.jpg',
 		profile+'93.jpg',
 		profile+'94.jpg',
-		'script/js/main-comp.js?v92',
+		'script/js/main-comp.js?v95',
 		'style/css/main-comp.css?v54',
 		'style/css/main-dark-comp.css?v54',
 		'favicon/favicon.ico',
@@ -84,7 +84,7 @@ self.addEventListener('install', function(event) {
 		'style/font/DroidNaskh-Regular.woff2',
 		'style/font/Material-Icons.woff2',
 		'logo/logo-64.png',
-		'not-found.html?v7',
+		'not-found.html?v8',
 	    ]);
 	}));
 });
@@ -115,7 +115,7 @@ self.addEventListener('fetch', function(event) {
 		return R;
 	    });
 	}).catch(function () {
-	    return caches.match("not-found.html?v7");
+	    return caches.match("not-found.html?v8");
 	}));
 });
 

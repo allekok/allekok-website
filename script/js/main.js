@@ -241,7 +241,8 @@ var search = search || function (e)
 	      q = Key.value.trim(),
 	      currentKey = e.keyCode,
 	      noActionKeys = [16, 17, 18, 91, 20, 9, 93,
-			      37, 38, 39, 40, 32, 224, 13];
+			      37, 38, 39, 40, 32, 224, 13],
+	      url = `${_R}script/php/search-quick.php?q=${q}`;
 	if(currentKey == 27)
 	{
 	    Res.style.display="none";
@@ -250,11 +251,18 @@ var search = search || function (e)
 	}
 	if(noActionKeys.indexOf(currentKey) !== -1) return;
 	if(q) {
-	    Res.style.display="block";
-	    Res.innerHTML="<div class='loader'></div>";
-	    /* Server Search */
-	    getUrl(`${_R}script/php/search-quick.php?q=${q}`,
-		   (response) => {Res.innerHTML = response});
+	    Res.style.display = "block";
+	    let content = false;
+	    if(content = ajax_findstate(url))
+		Res.innerHTML = content;
+	    else {
+		Res.innerHTML = "<div class='loader'></div>";
+		/* Server Search */
+		getUrl(url, (response) => {
+		    Res.innerHTML = response;
+		    ajax_savestate(url, response);
+		});
+	    }
 	}
 	/* Find in Current Page */
 	findPage(q, document.getElementById("poets"));
@@ -744,6 +752,9 @@ var ajax_findstate = ajax_findstate || function (url, max_delta=-1)
 
 var ajax_savestate = ajax_savestate || function (url,content)
 {
+    let tmp;
+    if(!(tmp = content.trim()) || tmp == "<script>const repeater=setInterval(()=>{if(navigator.onLine){window.location.reload();clearInterval(repeater);}},1000);</script>")
+	return;
     const time = Date.now(),
 	  db_name = `hist_${hashStr(url)}`,
 	  db_obj = {url:url, time:time, content:content};
