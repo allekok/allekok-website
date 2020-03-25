@@ -13,9 +13,9 @@ if( isset($_FILES['profile']) and
     $_profile = $_FILES["profile"];
     $_poet = filter_var($_COOKIE['poet'], FILTER_SANITIZE_STRING);
     $_name = @filter_var($_COOKIE['name'], FILTER_SANITIZE_STRING);
-    $_poet = str_replace(["/","\\",":","*","?","|","\"","<",">"],"",$_poet);
-    $_name = str_replace(["/","\\",":","*","?","|","\"","<",">"],"",$_name);
-    $_cnn = $_name ? $_name : $_SERVER['REMOTE_ADDR'];
+    $_poet = trim(str_replace(["/","\\",":","*","?","|","\"","<",">"],"",$_poet));
+    $_name = trim(str_replace(["/","\\",":","*","?","|","\"","<",">"],"",$_name));
+    $_cnn = $_name ? $_name : "ناشناس";
     $t = time();
     $_profile_dist = "../style/img/poets/new/{$_poet}_{$_cnn}_{$t}.".
 		     substr($_profile['type'], 6);

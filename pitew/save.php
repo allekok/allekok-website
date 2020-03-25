@@ -15,10 +15,10 @@ if(isset($_POST['poet']) and isset($_POST['poetDesc']))
     $_poet = filter_var($_POST['poet'], FILTER_SANITIZE_STRING);
     $_poetDesc = trim(filter_var($_POST['poetDesc'], FILTER_SANITIZE_STRING));
     
-    $_poet = str_replace(['/','\\',':','*','?','|','"','<','>'],'',$_poet);
+    $_poet = trim(str_replace(['/','\\',':','*','?','|','"','<','>'],'',$_poet));
     $_cntri = $_cntri ?
-	      str_replace(['/','\\',':','*','?','|','"','<','>'],'',$_cntri) :
-	      $_SERVER['REMOTE_ADDR'];
+	      trim(str_replace(['/','\\',':','*','?','|','"','<','>'],'',$_cntri)) :
+	      "ناشناس";
     $_filename = $_cntri . '_' . $_poet . '.txt';
     $_uri = "res/$_filename";
     

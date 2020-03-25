@@ -11,10 +11,10 @@ $null = json_encode(NULL);
 
 /* Required */
 $poet = isset($_POST['poet']) ?
-	filter_var($_POST['poet'], FILTER_SANITIZE_STRING) :
+	trim(filter_var($_POST['poet'], FILTER_SANITIZE_STRING)) :
 	die($null);
 $poem = isset($_POST['poem']) ?
-	filter_var($_POST['poem'], FILTER_SANITIZE_STRING) :
+	trim(filter_var($_POST['poem'], FILTER_SANITIZE_STRING)) :
 	die($null);
 if(empty($poet) or empty($poem))
 {
@@ -27,11 +27,11 @@ if(empty($poet) or empty($poem))
 
 /* Optional */
 $contributor = isset($_POST['contributor']) ?
-	       filter_var($_POST['contributor'], FILTER_SANITIZE_STRING) : '';
+	       trim(filter_var($_POST['contributor'], FILTER_SANITIZE_STRING)) : '';
 $book = isset($_POST['book']) ?
-	filter_var($_POST['book'], FILTER_SANITIZE_STRING) : '';
+	trim(filter_var($_POST['book'], FILTER_SANITIZE_STRING)) : '';
 $poemName = isset($_POST['poemName']) ?
-	    filter_var($_POST['poemName'], FILTER_SANITIZE_STRING) : '';
+	    trim(filter_var($_POST['poemName'], FILTER_SANITIZE_STRING)) : '';
 
 $date = date("Y-m-d_h:i:sa");
 
