@@ -12,13 +12,14 @@ require_once(ABSPATH."script/php/functions.php");
 $sitemap = "sitemap.xml";
 $sm = fopen(ABSPATH . $sitemap, "w");
 
-$q = 'select * from auth';
+$q = 'select * from auth ORDER BY id ASC';
 require(ABSPATH."script/php/condb.php");
 $poets_num = mysqli_num_rows($query);
 $books[0] = [];
 while($res=mysqli_fetch_assoc($query)) {
     $books[] = explode("," , $res['bks']);
 }
+$books_num_all = $poems_num_all = 0;
 
 fwrite($sm , "<?xml version='1.0' encoding='UTF-8'?>\n");
 fwrite($sm , "<urlset xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\nxsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd\"\nxmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
@@ -34,9 +35,9 @@ for($i=1;$i<=$poets_num;$i++) {
         fwrite($sm , "\n<url>\n<loc>".
 		     _SITE.
 		     "poet:$i/book:$j</loc>\n</url>");
-
+	
         $_tbl = "tbl{$i}_{$j}";
-        $q = "select * from $_tbl";
+        $q = "select * from `{$_tbl}`";
         $query = mysqli_query($conn, $q);
         $poems_num = mysqli_num_rows($query);
         $poems_num_all += $poems_num;
