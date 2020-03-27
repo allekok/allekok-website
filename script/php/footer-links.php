@@ -20,3 +20,6 @@
 <a title="<?php P("customize"); ?>" href="<?php echo _R; ?>customize/">
     <i class="material-icons">settings</i>
 </a>
+<a title="مافی کۆپی‌کردن" href="<?php echo _R; ?>dev/tools/license.php">
+    <i class="material-icons">copyright</i>
+</a>
