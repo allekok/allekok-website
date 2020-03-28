@@ -56,7 +56,7 @@ if(!$result)
 mysqli_select_db($sql, _DEFAULT_DB);
 foreach(MAIN_TABLES as $tbl)
 {
-    $query = "CREATE TABLE IF NOT EXISTS `{$tbl['name']}` ({$tbl['columns_str']})";
+    $query = "CREATE TABLE IF NOT EXISTS `{$tbl['name']}` ({$tbl['columns_str']}) ENGINE = MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci";
     $result = mysqli_query($sql, $query);
     if(!$result)
 	die("Mysql table creation failed.\nDatabase:" .
@@ -66,7 +66,7 @@ foreach(MAIN_TABLES as $tbl)
 mysqli_select_db($sql, _SEARCH_DB);
 foreach(SEARCH_TABLES as $tbl)
 {
-    $query = "CREATE TABLE IF NOT EXISTS `{$tbl['name']}` ({$tbl['columns_str']})";
+    $query = "CREATE TABLE IF NOT EXISTS `{$tbl['name']}` ({$tbl['columns_str']}) ENGINE = MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci";
     $result = mysqli_query($sql, $query);
     if(!$result)
 	die("Mysql table creation failed.\nDatabase:" .
