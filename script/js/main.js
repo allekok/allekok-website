@@ -253,19 +253,20 @@ var search = search || function (e)
 	if(q) {
 	    Res.style.display = "block";
 	    let content = false;
-	    if(content = ajax_findstate(url))
+	    if(content = ajax_findstate(url)) {
 		Res.innerHTML = content;
+		findPage(q, Res);
+	    }
 	    else {
 		Res.innerHTML = "<div class='loader'></div>";
 		/* Server Search */
 		getUrl(url, (response) => {
 		    Res.innerHTML = response;
 		    ajax_savestate(url, response);
+		    findPage(q, Res);
 		});
 	    }
 	}
-	/* Find in Current Page */
-	findPage(q, document.getElementById("poets"));
     }, 100);
 }
 
