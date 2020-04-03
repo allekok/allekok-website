@@ -11,7 +11,7 @@ $bk_id = @filter_var($_GET['bk_id'], FILTER_VALIDATE_INT) ?
 
 
 $tbl_name = "tbl{$pt_id}_$bk_id";
-$q = "CREATE TABLE IF NOT EXISTS `{$tbl_name}` (`id` INT(16), `name` TEXT, `hon` TEXT, `hdesc` TEXT, `link` TEXT, `lang` TEXT)";
+$q = "CREATE TABLE IF NOT EXISTS `{$tbl_name}` (`id` INT(16), `name` TEXT, `hon` TEXT, `hdesc` TEXT, `link` TEXT, `lang` TEXT, `tag` TEXT) ENGINE = MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci";
 require("../condb.php");
 
 if($query)
