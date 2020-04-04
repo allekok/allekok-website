@@ -1,4 +1,4 @@
-/* Main, Colors first */
+/* Main */
 html, body
 {
     height:100%;
@@ -791,4 +791,7 @@ footer i
     0%,100% { }
     15% {transform:scale(.5)}
     70% {transform:scale(.8)}
+}
+::-webkit-scrollbar {
+    width:.5em;
 }
