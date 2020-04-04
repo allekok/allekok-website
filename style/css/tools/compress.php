@@ -1,8 +1,8 @@
 <?php
 require_once("constants.php");
 
-const _input = [main, main_dark];
-const _output = [main_comp, main_dark_comp];
+const _input = [main];
+const _output = [main_comp];
 
 foreach(_input as $i=>$input)
 {

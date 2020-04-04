@@ -16,12 +16,7 @@ if(!$no_head) {
 		 navigator.serviceWorker.register('<?php echo _R; ?>sw.js');
 	    </script>
 	    <link rel='stylesheet'
-		  href='<?php echo _R;
-			?>style/css/<?php
-				    echo $_theme_dark ? 
-					 'main-dark-comp.css' :
-					 'main-comp.css';
-				    ?>?v54'/>
+		  href='<?php echo _R; ?>style/css/main-comp.css?v57'/>
 	    <title>
 		<?php echo $title; ?>
 	    </title>
@@ -39,9 +34,8 @@ body{font-family:'{$fname_}'}";
 	     } else { ?>
 	     @font-face{font-family:'kurd';font-display:swap;font-style:normal;font-weight:400;src:url('<?php echo _R; ?>style/font/DroidNaskh-Regular.woff2') format('woff2')}
 	     <?php } ?>
-	     <?php if($_theme_custom) {
-		 echo "body,.dd-frame,.search-main .dropdown-content{background:{$_colors[0]}}.button:hover,.fontsize button:hover,.toolbar a:hover,.icon-round,.color-white{color:{$_colors[0]}}body,input,textarea,button,a,.color-black,#hon sup:hover{color:{$_colors[1]}}.icon-round{background:{$_colors[1]}}.button:hover,.fontsize button:hover,.toolbar a:hover,.btn-selected,.back-blue,.loader,.loader-round{background:{$_colors[2]}}#hon sup,.poet:hover,.color-blue,.selected,.link-color,.link:hover,a:hover,button:hover,.search-main .cb:hover,.bks p,.poetdesc p,#search-res #bhon,.bhoh-newdaq,#main-contributing h1,#main-contributing h2,#main-contributing h3,#main-manual h1,#main-manual h2,#main-manual h3{color:{$_colors[2]}}.border-blue,input:focus,textarea:focus,.link-underline,#main-contributing a{border-color:{$_colors[2]}}.color-red{color:{$_colors[3]}}.back-red{background:{$_colors[3]}}";
-	     }
+	     <?php
+	     echo "body,.dd-frame,.search-main .dropdown-content{background:{$_colors[0]}}.button:hover,.fontsize button:hover,.toolbar a:hover,.icon-round,.color-white{color:{$_colors[0]}}body,input,textarea,button,a,.color-black,#hon sup:hover{color:{$_colors[1]}}.icon-round{background:{$_colors[1]}}.button:hover,.fontsize button:hover,.toolbar a:hover,.btn-selected,.back-blue,.loader,.loader-round{background:{$_colors[2]}}#hon sup,.poet:hover,.color-blue,.selected,.link-color,.link:hover,a:hover,button:hover,.search-main .cb:hover,.bks p,.poetdesc p,#search-res #bhon,.bhoh-newdaq,#main-contributing h1,#main-contributing h2,#main-contributing h3,#main-manual h1,#main-manual h2,#main-manual h3{color:{$_colors[2]}}.border-blue,input:focus,textarea:focus,.link-underline,#main-contributing a{border-color:{$_colors[2]}}.color-red{color:{$_colors[3]}}.back-red{background:{$_colors[3]}}";
 	     ?>
 	    </style>
 	    <meta charset='utf-8'>

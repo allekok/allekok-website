@@ -78,13 +78,10 @@ self.addEventListener('install', function(event) {
 		profile+'94.jpg',
 		profile+'96.jpg',
 		'script/js/main-comp.js?v96',
-		'style/css/main-comp.css?v54',
-		'style/css/main-dark-comp.css?v54',
+		'style/css/main-comp.css?v57',
 		'favicon/favicon.ico',
-		'favicon/site.webmanifest',
 		'style/font/DroidNaskh-Regular.woff2',
 		'style/font/Material-Icons.woff2',
-		'logo/logo-64.png',
 		'not-found.html?v8',
 	    ]);
 	}));
@@ -106,7 +103,10 @@ self.addEventListener('fetch', function(event) {
 	caches.match(event.request).then(function(resp) {
 	    return resp || fetch(event.request).then(function (R) {
 		if(event.request.url.endsWith(".ttf") ||
-		   event.request.url.endsWith(".otf")) {
+		   event.request.url.endsWith(".otf") ||
+		   event.request.url.endsWith(".webmanifest") ||
+		   event.request.url.endsWith(".jpg") ||
+		   event.request.url.endsWith(".png")) {
 		    return caches.open(cache_ver).then((cache) => {
 			console.log(event.request.url);
 			cache.put(event.request, R.clone());

@@ -17,53 +17,6 @@ table, tr, td, th, textarea, span, i, sup, sub
     text-align:inherit;
     box-sizing:border-box
 }
-
-/* <Colors> */
-/* Background: White */
-body, .dd-frame, .search-main .dropdown-content {
-    background:#fff;
-}
-/* Color: White */
-.button:hover,.fontsize button:hover,.toolbar a:hover,
-.icon-round,.color-white {
-    color:#fff;
-}
-/* Color: Black */
-body, input, textarea, button, a, .color-black, #hon sup:hover {
-    color:#000;
-}
-/* Background: Black */
-.icon-round {
-    background:#000;
-}
-/* Background: Blue */
-.button:hover,.fontsize button:hover,.toolbar a:hover,
-.btn-selected,.back-blue,.loader,.loader-round {
-    background:#00e;
-}
-/* Color: Blue */
-#hon sup,.poet:hover,.color-blue,.selected,.link-color,
-.link:hover,a:hover,button:hover,.search-main .cb:hover,
-.bks p,.poetdesc p,#search-res #bhon,.bhoh-newdaq,
-#main-contributing h1,#main-contributing h2,
-#main-contributing h3,#main-manual h1,#main-manual h2,
-#main-manual h3 {
-    color:#00e;
-}
-/* Border: Blue */
-.border-blue,input:focus,textarea:focus,.link-underline,
-#main-contributing a {
-    border-color:#00e
-}
-/* Color: Red */
-.color-red {
-    color:#e00
-}
-/* Background: Red */
-.back-red {
-    background:#e00
-}
-/* </Colors> */
 .cf,.ptr
 {
     border:2px solid;
@@ -456,7 +409,7 @@ header a h1
 {
     font-size:.6em;
     border-radius:50% 50% 0 0;
-    border-top:2px solid #000;
+    border-top:2px solid;
     text-align:center
 }
 #search-res section
@@ -722,7 +675,7 @@ footer i
     margin-bottom:.5em;
     border-radius:0;
     border:0;
-    border-bottom:2px solid #ccc;
+    border-bottom:2px solid;
 }
 .search-main .dropdown-content
 {

@@ -8,16 +8,12 @@ $content = preg_replace_callback(
     "/(style\/css\/main-comp\.css\?v)([0-9]+)/",
     "increase_ver", $content
 );
-$content = preg_replace_callback(
-    "/(style\/css\/main-dark-comp\.css\?v)([0-9]+)/",
-    "increase_ver", $content
-);
 file_put_contents(sw, $content);
 
 /* header */
 $content = file_get_contents(header);
 $content = preg_replace_callback(
-    "/('main-comp.css';\s+\?>\?v)([0-9]+)/",
+    "/(style\/css\/main-comp\.css\?v)([0-9]+)/",
     "increase_ver", $content
 );
 file_put_contents(header, $content);
