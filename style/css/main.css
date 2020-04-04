@@ -87,7 +87,7 @@ a
     background:rgba(255,255,255,.5);
     color:black;
     /* </Constant across diff. themes> */
-    border-radius:0 1.5em 0;
+    border-radius:0 1.5em 0 0;
     padding:0 1em
 }
 .icon-round
@@ -510,9 +510,16 @@ header a h1
     text-align:justify;
     padding:1em 1em 3em 1em;
     position:relative;
-    border-radius:1em;
-    margin-bottom:1em;
+    margin-bottom:1px;
     word-break:break-word;
+}
+#Acomms div:nth-child(1)
+{
+    border-radius:1em 1em 0 0;
+}
+#Acomms div:nth-last-child(1)
+{
+    border-radius:0 0 1em 1em;
 }
 .h::before
 {
