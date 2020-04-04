@@ -15,3 +15,4 @@
 * TODO Make 'Allekok' less server-dependent. Try not to download poems that had been viewed before and haven't changed since then. (like 'allekok-client' but more intelligent)
 * TODO news.txt: Group following poems of the same book in one entry
 * TODO Correct links to 'vejinbooks.com' + Add a search link instead.
+* TODO (pitew/*) Show copyright notice for contributors.
