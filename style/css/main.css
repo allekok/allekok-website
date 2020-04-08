@@ -144,6 +144,7 @@ a:hover, button:hover
     display:block;
     margin:0 auto;
     border-radius:50%;
+    width:100%;
     max-width:100px
 }
 .poetnm a,header a,.fontsize button
