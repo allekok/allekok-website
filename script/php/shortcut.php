@@ -29,6 +29,7 @@ $assoc = [
     "nali-giw" => "https://github.com/allekok/diwan/raw/master/%D9%86%D8%A7%D9%84%DB%8C%20-%20%D8%AF%DB%8C%D9%88%D8%A7%D9%86%20-%20%DA%86%D8%A7%D9%BE%DB%8C%20%DA%AF%DB%8C%D9%88.pdf",
     "mehwi" => "https://github.com/allekok/diwan/raw/master/%D9%85%DB%95%D8%AD%D9%88%DB%8C%20-%20%D8%AF%DB%8C%D9%88%D8%A7%D9%86.pdf",
     "tahir" => "https://github.com/allekok/diwan/raw/master/%D8%AA%D8%A7%D9%87%DB%8C%D8%B1%20%D8%A8%DB%95%DA%AF%DB%8C%20%D8%AC%D8%A7%D9%81%20-%20%D8%AF%DB%8C%D9%88%D8%A7%D9%86.pdf",
+    "muxtar" => "https://github.com/allekok/diwan/raw/master/%D8%A6%DB%95%D8%AD%D9%85%DB%95%D8%AF%20%D9%85%D9%88%D8%AE%D8%AA%D8%A7%D8%B1%20%D8%AC%D8%A7%D9%81%20-%20%D8%AF%DB%8C%D9%88%D8%A7%D9%86%20-%20%DA%86%D8%A7%D9%BE%DB%8C%DB%B2.pdf"
 ];
 
 if(isset($assoc[$q]))
