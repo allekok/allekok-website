@@ -167,14 +167,6 @@ style='display:inline-block'
 		       font-size:.9em'
 	     >Elfubêy Latîn</i></button>
 	</div>
-	<div>
-	    <i class="material-icons icon-round icon-round-poem">dehaze</i>
-	    <button type="button"
-		    id="make_poem_dict"
-		    style="font-size:1em">
-		دروست کردنی فەرهەنگ بۆ ئەم دەقە
-	    </button>
-	</div>
 	<div style='text-align:center;
 		    border-top:1px solid;
 		    padding-top:1em;margin-top:1em'>
@@ -551,9 +543,10 @@ address='$address' and blocked=0"; // Add limit 0,1
 		 if(i == 'time') continue;
 		 
 		 const res = response[i];
-		 for(const w in res)
+		 for(const i in res)
 		 {
-		     const m = res[w];
+		     const w = res[i][1];
+		     const m = res[i][2];
 		     if(! m) continue;
 		     toprint += `<i class='color-blue'>${w}</i>: ${m}<br>`;
 		 }
@@ -563,36 +556,6 @@ address='$address' and blocked=0"; // Add limit 0,1
 	 wordMore.innerHTML = `<a target='_blank' href='<?php echo _R; ?>tewar/?q=${q}'>گەڕانی زیاتر لە تەواردا &rsaquo;</a>` +
 			      `<a target='_blank' href='<?php echo _R; ?>tewar-legacy/?q=${q}'>گەڕانی زیاتر لە فەرهەنگە ئانلاینەکان‌دا &rsaquo;</a>`;
      }
-
-     document.getElementById('make_poem_dict').
-	      addEventListener('click', function() {
-		  const poem = document.getElementById('hon').innerText,
-			q_el = document.createElement('textarea');
-		  
-		  q_el.value = poem;
-		  lookup(q_el, 'poem_dict_context');
-
-		  const poem_wrapper_el = document.getElementById('poem-wrapper'),
-			poem_dict_el = document.getElementById('poem_dict'),
-			hon_el = document.getElementById('hon');
-		  
-		  poem_wrapper_el.style.display = 'flex';
-		  poem_dict_el.style.display = 'block';
-		  poem_dict_el.style.width = '35%';
-		  hon_el.style.width = '65%';
-	      });
-     
-     document.getElementById('poem_dict_close').
-	      addEventListener('click', function() {
-		  const poem_wrapper_el = document.getElementById('poem-wrapper'),
-			poem_dict_el = document.getElementById('poem_dict'),
-			hon_el = document.getElementById('hon');
-		  
-		  poem_wrapper_el.style.display = '';
-		  poem_dict_el.style.width = '';
-		  poem_dict_el.style.display = 'none';
-		  hon_el.style.width = '';
-	      });
      
      try
      {
