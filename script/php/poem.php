@@ -156,16 +156,19 @@ style='display:inline-block'
 	    -->
 	    <i class='material-icons icon-round icon-round-poem'
 	    >compare_arrows</i>
-	    گۆڕینی ئەلفوبێ: 
-	    <button class='link' type="button"
-		    id="convertToLatBtn"
+	    ئەلفووبێ: 
+	    <button class='link convertToEtcBtn' type="button"
 		    style="font-size:1em;margin-right:.5em;
-			   letter-spacing:.5px"
-	    ><i style='font-family:monospace;
-		       font-weight:bold;
-		       text-transform:uppercase;
-		       font-size:.9em'
-	     >Elfubêy Latîn</i></button>
+			   font-weight:bold"
+	    >کوردی</button>
+	    <button class='link convertToEtcBtn' type="button"
+		    style="font-size:1em;margin-right:.5em;
+			   font-family:monospace;font-weight:bold"
+	    >Kurdî</button>
+	    <button class='link convertToEtcBtn' type="button"
+		    style="font-size:1em;margin-right:.5em;
+			   font-weight:bold"
+	    >فارسی</button>
 	</div>
 	<div style='text-align:center;
 		    border-top:1px solid;
@@ -203,17 +206,6 @@ style='display:inline-block'
 	</div>
     </div>
     <div id="poem-wrapper">
-	<div id="poem_dict" style="font-size:.55em;
-		 text-align:right;border-left:2px solid;
-		 padding-left:1em;margin-left:1em;
-		 word-break:break-word;display:none">
-	    <div id="poem_dict_close"
-		 style="text-align:left;font-size:1.5em;
-		     cursor:pointer"
-	    ><i class="material-icons"
-	     >arrow_forward</i></div>
-	    <div id="poem_dict_context"></div>
-	</div>
 	<!-- Poem context -->
 	<article id='hon'>
 	    <?php
@@ -460,45 +452,42 @@ address='$address' and blocked=0"; // Add limit 0,1
 	      });
 
      /* Tewar */
-     const convertToLatBtn = document.getElementById("convertToLatBtn"),
-	   defLabel = convertToLatBtn.innerHTML,
-	   newLabel = "ئەلفوبێی عەرەبی",
-	   origin_poem = document.getElementById("hon").innerHTML;
+     const convertToEtcBtns = document.querySelectorAll(".convertToEtcBtn"),
+	   origin_poem = document.getElementById("hon").innerHTML,
+	   origin_poem_txt = document.getElementById("hon").innerText;
      
-     function convert_to_latin(toarabi=false)
+     function convert_to_etc (to="کوردی")
      {
 	 const tar = document.getElementById("hon");
 	 tar.style.animation = "";
 	 void tar.offsetWidth;
+	 let props;
 	 
-	 if(!toarabi)
+	 if(to == "Kurdî") props = [arabi_to_latin, "ltr"];
+	 else if(to == "فارسی") props = [kurdi_to_per, "rtl"];
+	 if(to == "کوردی")
 	 {
-	     const ltn = arabi_to_latin(tar.innerText)
+	     tar.innerHTML = origin_poem;
+	     tar.style.direction = "rtl";
+	 }
+	 else
+	 {
+	     const ltn = props[0](origin_poem_txt)
 		 .replace(/\n/g, "<br>\n");
 	     tar.innerHTML =
 		 poem_kind(origin_poem)=="new" ?
 		 "<div class=\"n\"><div class=\"m dltr\">" +
 		 ltn + "</div></div>" :
 		 "<div class=\"b\">" + ltn + "</div>";
-	     convertToLatBtn.innerHTML = newLabel;
-	     tar.style.direction = "ltr";
-	 }
-	 else
-	 {
-	     tar.innerHTML = origin_poem;
-	     convertToLatBtn.innerHTML = defLabel;
-	     tar.style.direction = "rtl";
+	     tar.style.direction = props[1];
 	 }
 	 tar.style.animation = "tL .5s";
      }
      
-     convertToLatBtn.addEventListener(
-	 "click", function()
-	 {
-	     if(convertToLatBtn.innerHTML == defLabel)
-		 convert_to_latin();
-	     else
-		 convert_to_latin("origin");
+     convertToEtcBtns.forEach(function (o) {
+	 o.addEventListener("click", function () {
+	     convert_to_etc(o.innerText);
+	 });
      });
      
      const loaderMin = "<div class='loader' \
@@ -514,13 +503,10 @@ address='$address' and blocked=0"; // Add limit 0,1
      
      function lookup (q_el, result_el_id)
      {
-	 const dicts = ['xal', 'henbane-borine',
-			'bashur', 'kameran'],
-	       dicts_req = dicts.join(','),
-	       result_el = document.getElementById(result_el_id),
+	 const result_el = document.getElementById(result_el_id),
 	       q = encodeURIComponent(q_el.value.trim()),
 	       url = '<?php echo _R; ?>tewar/src/backend/lookup.php',
-	       request = `q=${q}&dicts=${dicts_req}&output=json`,
+	       request = `q=${q}&dicts=all&output=json&n=1`,
 	       loading = '<div class="loader"></div>',
 	       wordMore = document.getElementById('wordMore');
 	 
@@ -533,7 +519,7 @@ address='$address' and blocked=0"; // Add limit 0,1
 	 // Loading animation
 	 result_el.innerHTML = loading;
 
-	 postUrl(url, request, function(response) {
+	 getUrl(`${url}?${request}`, function(response) {
 	     response = isJson(response);
 	     if(! response) return;
 	     

@@ -2,6 +2,24 @@ const _R = _relativePath || "/";
 const _R_LEN = _R.length;
 var bookmarks_name = bookmarks_name || 'favorites';
 
+var kurdi_to_per = kurdi_to_per || function (s) {
+    const sure = [["ئا","آ"],
+		  ["ئە","ا\u{64E}"],
+		  ["ئۆ","ا\u{64F}"],
+		  ["ئێ","ا\u{650}"],
+		  ["ئو","او"],
+		  ["ئی","ای"],
+		  ["ە","\u{64E}"],
+		  ["ۆ","\u{64F}"],
+		  ["ێ","\u{650}"],
+		  ["ڕ","ر"],
+		  ["ڵ","ل"],
+		  ["ڤ","و"]];
+    for(const o of sure)
+	s = s.replace(new RegExp(o[0],'g'), o[1]);
+    return s;
+}
+
 var arabi_to_latin = arabi_to_latin || function (s)
 {
     /* `arabi_to_latin' function:
