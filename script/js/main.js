@@ -2,155 +2,174 @@ const _R = _relativePath || "/";
 const _R_LEN = _R.length;
 var bookmarks_name = bookmarks_name || 'favorites';
 
-var kurdi_to_per = kurdi_to_per || function (s) {
-    const sure = [["ئا","آ"],
-		  ["ئە","ا\u{64E}"],
-		  ["ئۆ","ا\u{64F}"],
-		  ["ئێ","ا\u{650}"],
-		  ["ئو","او"],
-		  ["ئی","ای"],
-		  ["ە","\u{64E}"],
-		  ["ۆ","\u{64F}"],
-		  ["ێ","\u{650}"],
-		  ["ڕ","ر"],
-		  ["ڵ","ل"],
-		  ["ڤ","و"]];
-    for(const o of sure)
-	s = s.replace(new RegExp(o[0],'g'), o[1]);
-    return s;
+var ar2lat = ar2lat || function (s) {
+    window.bizroke = "i";
+    window.notsure = [["وو", "û", "uw", "wu", "ww"],
+		      ["ی", "î", "y", "îy"],
+		      ["و", "u", "w", "uw"]];
+    window.v = [["ە", "e"],
+		["ێ", "ê"],
+		["ۆ", "o"],
+		["ا", "a"],
+		["i", "i"],
+		["u", "u"],
+		["î", "î"],
+		["û", "û"]];
+    window.n = [["ق", "q"],
+		["ر", "r"],
+		["ڕ", "ř"],
+		["ت", "t"],
+		["ئ", "'"],
+		["ح", "ḧ"],
+		["ع", "'"],
+		["پ", "p"],
+		["س", "s"],
+		["ش", "ş"],
+		["د", "d"],
+		["ف", "f"],
+		["گ", "g"],
+		["غ", "ẍ"],
+		["ه", "h"],
+		["ژ", "j"],
+		["ک", "k"],
+		["ل", "l"],
+		["ڵ", "ɫ"],
+		["ز", "z"],
+		["خ", "x"],
+		["ج", "c"],
+		["چ", "ç"],
+		["ڤ", "v"],
+		["ب", "b"],
+		["ن", "n"],
+		["م", "m"],
+		["y", "y"],
+		["w", "w"]];
+    window.sure = v.concat(n);
+    window.determine_notsure = function (R, str) {
+	const pos = R[0];
+	const ch_arr = R[2];
+	const ch_len = ch_arr[0].length;
+	const prev_v = is_v(L(str, pos-1));
+	const next_v = is_v(L(str, pos + ch_len));
+	let i = 1; // v
+	if(ch_len == 2) {
+	    if(prev_v && next_v) i = 4; // v[cc]v
+	    else if(pos == 0 || prev_v) i = 3; // v[cv]c
+	    else if(next_v) i = 2; // c[vc]v
+	}
+	else {
+	    if(pos == 1 && next_v && !prev_v) i = 3; // c[vc]v
+	    else if(pos == 0 || prev_v || next_v) i = 2; // c
+	}
+	return i;
+    }
+    function transliterate (str) {
+	return apply_to_words(str, function(x) {
+	    if(!x) return x;
+	    if(x == "و") return "u";
+	    else if(x == "وو") return "û";
+	    else return add_bizroke(replace_sure(replace_notsure(x)))
+	});
+    }
+    return transliterate(s);
 }
 
-var arabi_to_latin = arabi_to_latin || function (s)
-{
-    /* `arabi_to_latin' function:
-       Copyright (C) 2010 by Pellk KurdiNus under GPLv2 License.
-       https://github.com/allekok/kurdi-nus */
-    const sConvertArabic2Latin = [
-	'و([اێۆە])', 'w$1', 
-	'ی([اێۆە])', 'y$1',
-	'([اێۆە])و', '$1w',
-	'([اێۆە])ی', '$1y',
-	'(^|[^ء-يٱ-ەwy])و([^ء-يٱ-ەwy])', '$1û$2',
-	'(^|[^ء-يٱ-ەwy])و', '$1w',
-	'یو', 'îw',
-	'یی', 'îy',
-	'وی', 'uy',
-	'وو', 'û', 
-	'ی', 'î',
-	'و', 'u',
-	'uu', 'û',
-
-	'([ء-يٱ-ەîuûwy])ڕ', '$1rr', 
-	'ر|ڕ', 'r',
-	'ش', 'ş',
-	'ئ', '',
-	'ا', 'a',
-	'ب', 'b',
-	'چ', 'ç',
-	'ج', 'c',
-	'د', 'd',
-	'ێ', 'ê',
-	'ە|ه‌', 'e',
-	'ف', 'f',
-	'خ|غ', 'x',
-	'گ', 'g',
-	'ح|ھ', 'h',
-	'ژ', 'j',
-	'ک', 'k',
-	'ڵ', 'll',
-	'ل', 'l',
-	'م', 'm',
-	'ن', 'n',
-	'ۆ', 'o',
-	'پ', 'p',
-	'ق', 'q',
-	'س', 's',
-	'ت', 't',
-	'ڤ', 'v',
-	'ز', 'z',
-	'ع', '\'',
-	'‌', '',
-	'؟', '?',
-	'،', '\,',
-	'؛', '\;',
-	'٠|۰', '0',
-	'١|۱', '1',
-	'٢|۲', '2',
-	'٣|۳', '3',
-	'٤|۴', '4',
-	'٥|۵', '5',
-	'٦|۶', '6',
-	'٧|۷', '7',
-	'٨|۸', '8',
-	'٩|۹', '9',
-	'»|«', '"',
-	'ـ', '',
-	'll', 'Ľ', 
-	'rr', 'Ŕ', 
-	'([bcçdfghjklĽmnpqrŔsştvwxz])([fjlĽmnrŔsşvwxyz])([fjlĽmnrŔsşvwxyz])([^aeêiîouûy])', '$1$2i$3$4', 
-	'([aeêiîouû])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])\\b', '$1$2$3i$4', 
-	'([fjlĽrŔsşwyz])([fjlĽmnrŔsşvwxyz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2$3', 
-	'([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1i$2$3', 
-	'([^aeêiîouû])([bcçdghkmnpqtvx])([fjlĽmnrŔsşvwxyz])($|[^aeêiîouû])', '$1$2i$3$4', 
-	'(^|[^aeêiîouy])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])($|[^aeêiîouû])', '$1$2i$3$4', 
-	'(^|[^a-zçşêîûĽŔ])([bcçdfghjklĽmnpqrŔsştvwxz])(\\s)', '$1$2i$3', 
-	'Ľ', 'll', 
-	'Ŕ', 'rr' 
-    ];
-
-    const sOnsetI = [
-	'([bcçdfghjklmnpqrsştvwxz])([wy][aeêiîouû])', '$1i$2', 
-	'(^|[^a-zêîûçş0-9\'’])([bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1$2i$3', 
-	'([bcçdfghjklmnpqrsştvwxz][bcçdfghjklĽmnpqrŔsştvwxz])([bcçdfghjklĽmnpqrŔsştvwxz])', '$1i$2' 
-    ];
-
-    const sConvertStandardise = [
-	'‌{1,}', '‌', 
-	'لاَ|لأ|لآ', 'لا',
-	'لً|لَ', 'ل',
-	'ص','س',
-	'ض', 'ز',
-	'ث', 'س',
-	'ظ', 'ز',
-	'ط', 'ت',
-	'ىَ|يَ|یَ', 'ی',
-	'رِ', 'ر',
-	'ؤ|وَ', 'و',
-	'ي|ى', 'ی',
-	'ذ', 'ز',
-	'ك', 'ک',
-	'ه‍', 'ھ',
-	'ه($|[^ء-يٱ-ە])', 'ە$1',
-	'ە‌', 'ە',
-	'ة', 'ە',
-	'ه', 'ھ', 
-	'([ء-يٱ-ە])‌([^ء-يٱ-ە])', '$1$2'
-    ];
-
-    let i;
-    
-    for (i = 0; i < sConvertStandardise.length; i += 2)
-    {
-        s = s.replace(new RegExp(sConvertStandardise[i], 'g'),
-		      sConvertStandardise[i + 1]);
+var ar2per = ar2per || function (s) {
+    window.bizroke = "\u{652}";
+    window.notsure = [["وو", "و\u{64F}", "و\u{651}"],
+		      ["یی", "یی", "ی\u{651}"]];
+    window.v = [["ە","\u{64E}"],
+		["ۆ","\u{64F}"],
+		["ێ","\u{650}"],
+		["و","و"],
+		["ی","ی"],
+		["ا","ا"],
+		["آ","آ"] // It is not a vowel. But it ends with a vowel
+	       ];
+    window.n = [["ئا","آ"],
+		["ئە","ا\u{64E}"],
+		["ئۆ","ا\u{64F}"],
+		["ئێ","ا\u{650}"],
+		["ئو","او"],
+		["ئی","ای"],
+		["ڕ","ر"],
+		["ڵ","ل"],
+		["ڤ","و"]];
+    window.sure = n.concat(v);
+    window.determine_notsure = function (R, str) {
+	const pos = R[0];
+	const ch_arr = R[2];
+	const ch_len = ch_arr[0].length;
+	const prev_v = is_v(L(str, pos-1));
+	const next_v = is_v(L(str, pos + ch_len));
+	let i = 1; // v
+	if(pos !== 0 && prev_v && next_v) i = 2; // v[cc]v
+	return i;
     }
-    
-    for (i = 0; i < sConvertArabic2Latin.length; i += 2)
-    {
-        s = s.replace(new RegExp(sConvertArabic2Latin[i], 'gim'),
-		      sConvertArabic2Latin[i + 1]);
+    function transliterate (str) {
+	return apply_to_words(str, function(x) {
+	    if(!x) return x;
+	    return add_bizroke(replace_sure(replace_notsure(x)))
+	});
     }
-    s = s.replace(new RegExp('ll', 'gim'), 'Ľ').
-	replace(new RegExp('rr', 'gim'), 'Ŕ');
-    
-    for (i = 0; i < sOnsetI.length; i += 2)
-    {
-        s = s.replace(new RegExp(sOnsetI[i], 'gim'), sOnsetI[i + 1]);
+    return transliterate(s);
+}
+
+var apply_to_words = apply_to_words || function (poem, fun) {
+    let lines = poem.split("\n");
+    for(const i in lines) {
+	lines[i] = lines[i].split(" ");
+	for(const j in lines[i])
+	    lines[i][j] = fun(lines[i][j]);
+	lines[i] = lines[i].join(" ");
     }
-    s = s.replace(new RegExp('Ľ', 'gim'), 'll').
-	replace(new RegExp('Ŕ', 'gim'), 'rr');
-    
-    return s;
+    return lines.join("\n");
+}
+
+var replace_sure = replace_sure || function (str, f=0, t=1) {
+    for(const o of sure)
+	str = str.replace(new RegExp(o[f],"g"), o[t]);
+    return str;
+}
+
+var replace_notsure = replace_notsure || function (str, i=0) {
+    let off = 0, R;
+    while(false !== (R = assoc_first(str, notsure, i, off))) {
+	const j = determine_notsure(R, str);
+	str = str_replace_pos(R[2][i], R[2][j], str, R[0]);
+	off = R[0] + R[2][j].length;
+    }
+    return str;
+}
+
+var assoc_first = assoc_first || function (str, arr, i=0, off=0) {
+    let pos, poses = [];
+    for(const o of arr)
+	if(-1 !== (pos = str.indexOf(o[i], off)))
+	    poses.push([pos, (1.0 / o[i].length), o]);
+    poses.sort();
+    return poses.length ? poses[0] : false;
+}
+
+var L = L || function (str, pos, len=1) { return str.substr(pos, len); }
+
+var is_v = is_v || function (c) {
+    if(c)
+	for(const o of v)
+	    if(o.indexOf(c) !== -1) return true;
+    return false;
+}
+
+var str_replace_pos = str_replace_pos || function (from, to, str, pos) {
+    return str.substr(0, pos) + to +
+	str.substr(pos + from.length);
+}
+
+var add_bizroke = add_bizroke || function (str) {
+    const L2 = L(str, 1);
+    if(!is_v(L(str, 0)) && (!L2 || !is_v(L(str, 1))))
+	str = str_replace_pos("", bizroke, str, 1);
+    return str;
 }
 
 var poetImage = poetImage || function (pID, callback)
@@ -930,18 +949,18 @@ try
 {
     document.querySelector(".smaller").
 	addEventListener("click", () =>
-			 {
-			     save_fs("smaller")
-			 });
+	    {
+		save_fs("smaller")
+	    });
 } catch(e) {}
 
 try
 {
     document.querySelector(".bigger").
 	addEventListener("click", () =>
-			 {
-			     save_fs("bigger")
-			 });
+	    {
+		save_fs("bigger")
+	    });
 } catch(e) {}
 
 /* Garbage Collector */

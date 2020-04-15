@@ -463,8 +463,8 @@ address='$address' and blocked=0"; // Add limit 0,1
 	 void tar.offsetWidth;
 	 let props;
 	 
-	 if(to == "Kurdî") props = [arabi_to_latin, "ltr"];
-	 else if(to == "فارسی") props = [kurdi_to_per, "rtl"];
+	 if(to == "Kurdî") props = [ar2lat, "ltr"];
+	 else if(to == "فارسی") props = [ar2per, "rtl"];
 	 if(to == "کوردی")
 	 {
 	     tar.innerHTML = origin_poem;
