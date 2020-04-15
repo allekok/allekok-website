@@ -41,9 +41,7 @@ var ar2lat = ar2lat || function (s) {
 		["ڤ", "v"],
 		["ب", "b"],
 		["ن", "n"],
-		["م", "m"],
-		["y", "y"],
-		["w", "w"]];
+		["م", "m"]];
     window.sure = v.concat(n);
     window.determine_notsure = function (R, str) {
 	const pos = R[0];
@@ -52,7 +50,8 @@ var ar2lat = ar2lat || function (s) {
 	const prev_v = is_v(L(str, pos-1));
 	const next_v = is_v(L(str, pos + ch_len));
 	let i = 1; // v
-	if(ch_len == 2) {
+	if(str.length == ch_len);
+	else if(ch_len == 2) {
 	    if(prev_v && next_v) i = 4; // v[cc]v
 	    else if(pos == 0 || prev_v) i = 3; // v[cv]c
 	    else if(next_v) i = 2; // c[vc]v
@@ -62,14 +61,6 @@ var ar2lat = ar2lat || function (s) {
 	    else if(pos == 0 || prev_v || next_v) i = 2; // c
 	}
 	return i;
-    }
-    function transliterate (str) {
-	return apply_to_words(str, function(x) {
-	    if(!x) return x;
-	    if(x == "و") return "u";
-	    else if(x == "وو") return "û";
-	    else return add_bizroke(replace_sure(replace_notsure(x)))
-	});
     }
     return transliterate(s);
 }
@@ -82,7 +73,7 @@ var ar2per = ar2per || function (s) {
 		      ["ئۆ","ا\u{64F}", "ئ\u{64F}"],
 		      ["ئێ","ا\u{650}", "ئ\u{650}"],
 		      ["ئو","او","ئو"],
-		      ["ئی","ای","ئوو"]];
+		      ["ئی","ای","ئی"]];
     window.v = [["ە","\u{64E}"],
 		["ۆ","\u{64F}"],
 		["ێ","\u{650}"],
@@ -104,19 +95,15 @@ var ar2per = ar2per || function (s) {
 	const next_v = is_v(L(str, pos + ch_len));
 	let i = 1; // v
 	if(pos !== 0 && prev_v && next_v) i = 2; // v[cc]v
-	else if(pos == 0) {
-	    for(let j = 2; j < notsure.length; j++)
-		if(notsure.indexOf(ch_arr, 2) !== -1) {i = 1; break;}
-	}
 	return i;
     }
-    function transliterate (str) {
-	return apply_to_words(str, function(x) {
-	    if(!x) return x;
-	    return add_bizroke(replace_sure(replace_notsure(x)))
-	});
-    }
     return transliterate(s);
+}
+
+var transliterate = transliterate || function (str) {
+    return apply_to_words(str, function(x) {
+	return add_bizroke(replace_sure(replace_notsure(x)))
+    });
 }
 
 var apply_to_words = apply_to_words || function (poem, fun) {
@@ -170,8 +157,9 @@ var str_replace_pos = str_replace_pos || function (from, to, str, pos) {
 }
 
 var add_bizroke = add_bizroke || function (str) {
+    const L1 = L(str, 0);
     const L2 = L(str, 1);
-    if(!is_v(L(str, 0)) && (!L2 || !is_v(L(str, 1))))
+    if(L1 && !is_v(L1) && (!L2 || !is_v(L(str, 1))))
 	str = str_replace_pos("", bizroke, str, 1);
     return str;
 }
