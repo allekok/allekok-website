@@ -77,7 +77,12 @@ var ar2lat = ar2lat || function (s) {
 var ar2per = ar2per || function (s) {
     window.bizroke = "\u{652}";
     window.notsure = [["وو", "و\u{64F}", "و\u{651}"],
-		      ["یی", "یی", "ی\u{651}"]];
+		      ["یی", "یی", "ی\u{651}"],
+		      ["ئە","ا\u{64E}", "ئ\u{64E}"],
+		      ["ئۆ","ا\u{64F}", "ئ\u{64F}"],
+		      ["ئێ","ا\u{650}", "ئ\u{650}"],
+		      ["ئو","او","ئو"],
+		      ["ئی","ای","ئوو"]];
     window.v = [["ە","\u{64E}"],
 		["ۆ","\u{64F}"],
 		["ێ","\u{650}"],
@@ -87,11 +92,6 @@ var ar2per = ar2per || function (s) {
 		["آ","آ"] // It is not a vowel. But it ends with a vowel
 	       ];
     window.n = [["ئا","آ"],
-		["ئە","ا\u{64E}"],
-		["ئۆ","ا\u{64F}"],
-		["ئێ","ا\u{650}"],
-		["ئو","او"],
-		["ئی","ای"],
 		["ڕ","ر"],
 		["ڵ","ل"],
 		["ڤ","و"]];
@@ -104,6 +104,10 @@ var ar2per = ar2per || function (s) {
 	const next_v = is_v(L(str, pos + ch_len));
 	let i = 1; // v
 	if(pos !== 0 && prev_v && next_v) i = 2; // v[cc]v
+	else if(pos == 0) {
+	    for(let j = 2; j < notsure.length; j++)
+		if(notsure.indexOf(ch_arr, 2) !== -1) {i = 1; break;}
+	}
 	return i;
     }
     function transliterate (str) {
