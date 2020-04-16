@@ -463,8 +463,8 @@ address='$address' and blocked=0"; // Add limit 0,1
 	 void tar.offsetWidth;
 	 let props;
 	 
-	 if(to == "Kurdî") props = [ar2lat, "ltr"];
-	 else if(to == "فارسی") props = [ar2per, "rtl"];
+	 if(to == "Kurdî") props = [ar2lat, "ltr", "dltr"];
+	 else if(to == "فارسی") props = [ar2per, "rtl", ""];
 	 if(to == "کوردی")
 	 {
 	     tar.innerHTML = origin_poem;
@@ -476,8 +476,8 @@ address='$address' and blocked=0"; // Add limit 0,1
 		 .replace(/\n/g, "<br>\n");
 	     tar.innerHTML =
 		 poem_kind(origin_poem)=="new" ?
-		 "<div class=\"n\"><div class=\"m dltr\">" +
-		 ltn + "</div></div>" :
+		 "<div class=\"n\"><div class=\"m " +
+		 props[2] + "\">" + ltn + "</div></div>" :
 		 "<div class=\"b\">" + ltn + "</div>";
 	     tar.style.direction = props[1];
 	 }
