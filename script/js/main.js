@@ -95,6 +95,10 @@ var ar2per = ar2per || function (s) {
 	const next_v = is_v(L(str, pos + ch_len));
 	let i = 1; // v
 	if(pos !== 0 && prev_v && next_v) i = 2; // v[cc]v
+	else if(pos !== 0 && prev_v) {
+	    for(let j = 2; j < notsure.length; j++)
+		if(notsure[j].indexOf(ch_arr[0]) !== -1) {i = 2; break;}
+	}
 	return i;
     }
     return transliterate(s);
