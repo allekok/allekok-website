@@ -83,7 +83,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 	     Bookmark button
 	-->
         <button class='bigger material-icons icon-round icon-round-poem'
-		style="padding:.5em"
+		       style="padding:.5em"
 	>arrow_upward
 	</button
 	><button class='smaller material-icons icon-round icon-round-poem'
@@ -217,10 +217,10 @@ style='display:inline-block'
      /* Set poem font size */
      document.getElementById('hon').
 	      style.fontSize = function(s)
-	      {
-		  if(s !== null && !isNaN(s))
-		      return `${s}px`;
-	      }
+     {
+	 if(s !== null && !isNaN(s))
+	     return `${s}px`;
+     }
      (localStorage.getItem('fontsize'));
     </script>
     <!-- Poem description -->
@@ -277,7 +277,7 @@ style='display:inline-block'
     </div>
     <!-- Comments -->
     <h1 class="color-blue"
-	style="font-size:1em;text-align:right;padding-top:.5em">
+	       style="font-size:1em;text-align:right;padding-top:.5em">
 	بیر و ڕاکان
     </h1>
     <div id="hon-comments">
@@ -463,8 +463,8 @@ address='$address' and blocked=0"; // Add limit 0,1
 	 void tar.offsetWidth;
 	 let props;
 	 
-	 if(to == "Kurdî") props = [ar2lat, "ltr", "dltr"];
-	 else if(to == "فارسی") props = [ar2per, "rtl", ""];
+	 if(to == "Kurdî") props = [transliterate_ar2lat, "ltr", "dltr"];
+	 else if(to == "فارسی") props = [transliterate_ar2per, "rtl", ""];
 	 if(to == "کوردی")
 	 {
 	     tar.innerHTML = origin_poem;

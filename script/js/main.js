@@ -2,53 +2,23 @@ const _R = _relativePath || "/";
 const _R_LEN = _R.length;
 var bookmarks_name = bookmarks_name || 'favorites';
 
-var ar2lat = ar2lat || function (s) {
-    window.bizroke = "i";
-    window.notsure = [["وو", "û", "uw", "wu", "ww"],
-		      ["ی", "î", "y", "îy"],
-		      ["و", "u", "w", "uw"]];
-    window.v = [["ە", "e"],
-		["ێ", "ê"],
-		["ۆ", "o"],
-		["ا", "a"],
-		["i", "i"],
-		["u", "u"],
-		["î", "î"],
-		["û", "û"]];
-    window.n = [["ق", "q"],
-		["ر", "r"],
-		["ڕ", "ř"],
-		["ت", "t"],
-		["ئ", "'"],
-		["ح", "ḧ"],
-		["ع", "'"],
-		["پ", "p"],
-		["س", "s"],
-		["ش", "ş"],
-		["د", "d"],
-		["ف", "f"],
-		["گ", "g"],
-		["غ", "ẍ"],
-		["ه", "h"],
-		["ژ", "j"],
-		["ک", "k"],
-		["ل", "l"],
-		["ڵ", "ɫ"],
-		["ز", "z"],
-		["خ", "x"],
-		["ج", "c"],
-		["چ", "ç"],
-		["ڤ", "v"],
-		["ب", "b"],
-		["ن", "n"],
-		["م", "m"]];
-    window.sure = v.concat(n);
-    window.determine_notsure = function (R, str) {
+var ar2IL = ar2IL || function (s) {
+    const notsure = [["وو", "û", "uw", "wu", "ww"],
+		     ["ی", "î", "y", "îy", "yî"],
+		     ["و", "u", "w", "uw", "wu"]];
+    const v = [["ە", "e"],
+	       ["ێ", "ê"],
+	       ["ۆ", "o"],
+	       ["ا", "a"],
+	       ["i", "i"],
+	       ["u", "u"],
+	       ["î", "î"],
+	       ["û", "û"]];
+    function determine_notsure (R, str) {
 	const pos = R[0];
-	const ch_arr = R[2];
-	const ch_len = ch_arr[0].length;
-	const prev_v = is_v(L(str, pos-1));
-	const next_v = is_v(L(str, pos + ch_len));
+	const ch_len = R[2][0].length;
+	const prev_v = is_v(L(str, pos-1), v);
+	const next_v = is_v(L(str, pos + ch_len), v);
 	let i = 1; // v
 	if(str.length == ch_len);
 	else if(ch_len == 2) {
@@ -58,55 +28,95 @@ var ar2lat = ar2lat || function (s) {
 	}
 	else {
 	    if(pos == 1 && next_v && !prev_v) i = 3; // c[vc]v
+	    else if(pos == 0 && !next_v) i = 4;
 	    else if(pos == 0 || prev_v || next_v) i = 2; // c
 	}
 	return i;
     }
-    return transliterate(s);
+    return add_bizroke(replace_notsure(s, notsure, determine_notsure), v);
+}
+var ar2lat = ar2lat || function (s) {
+    const sure = [["ە", "e"],
+		   ["ێ", "ê"],
+		   ["ۆ", "o"],
+		   ["ا", "a"],
+		   ["i", "i"],
+		   ["u", "u"],
+		   ["î", "î"],
+		   ["û", "û"],
+		   ["ق", "q"],
+		   ["ر", "r"],
+		   ["ڕ", "ř"],
+		   ["ت", "t"],
+		   ["ئ", "'"],
+		   ["ح", "ḧ"],
+		   ["ع", "'"],
+		   ["پ", "p"],
+		   ["س", "s"],
+		   ["ش", "ş"],
+		   ["د", "d"],
+		   ["ف", "f"],
+		   ["گ", "g"],
+		   ["غ", "ẍ"],
+		   ["ه", "h"],
+		   ["ژ", "j"],
+		   ["ک", "k"],
+		   ["ل", "l"],
+		   ["ڵ", "ɫ"],
+		   ["ز", "z"],
+		   ["خ", "x"],
+		   ["ج", "c"],
+		   ["چ", "ç"],
+		   ["ڤ", "v"],
+		   ["ب", "b"],
+		   ["ن", "n"],
+		   ["م", "m"]];
+    return replace_sure(ar2IL(s), sure);
 }
 
 var ar2per = ar2per || function (s) {
-    window.bizroke = "\u{652}";
-    window.notsure = [["وو", "و\u{64F}", "و\u{651}"],
-		      ["یی", "یی", "ی\u{651}"],
-		      ["ئە","ا\u{64E}", "ئ\u{64E}"],
-		      ["ئۆ","ا\u{64F}", "ئ\u{64F}"],
-		      ["ئێ","ا\u{650}", "ئ\u{650}"],
-		      ["ئو","او","ئو"],
-		      ["ئی","ای","ئی"]];
-    window.v = [["ە","\u{64E}"],
-		["ۆ","\u{64F}"],
-		["ێ","\u{650}"],
-		["و","و"],
-		["ی","ی"],
-		["ا","ا"],
-		["آ","آ"] // It is not a vowel. But it ends with a vowel
-	       ];
-    window.n = [["ئا","آ"],
-		["ڕ","ر"],
-		["ڵ","ل"],
-		["ڤ","و"]];
-    window.sure = n.concat(v);
-    window.determine_notsure = function (R, str) {
-	const pos = R[0];
-	const ch_arr = R[2];
-	const ch_len = ch_arr[0].length;
-	const prev_v = is_v(L(str, pos-1));
-	const next_v = is_v(L(str, pos + ch_len));
-	let i = 1; // v
-	if(pos !== 0 && prev_v && next_v) i = 2; // v[cc]v
-	else if(pos !== 0 && prev_v) {
-	    for(let j = 2; j < notsure.length; j++)
-		if(notsure[j].indexOf(ch_arr[0]) !== -1) {i = 2; break;}
+    const sure = [["wu", "و\u{64F}"],
+		  ["ە", "\u{64E}"],
+		  ["ڕ", "ر"],
+		  ["ێ", "\u{650}"],
+		  ["ۆ", "\u{64F}"],
+		  ["ڵ", "ل"],
+		  ["û", "و\u{64F}"],
+		  ["u", "و"],
+		  ["w", "و"],
+		  ["y", "ی"],
+		  ["î", "ی"],
+		  ["i", "\u{652}"]];
+    /* Tashdid */
+    function add_tashdid (str, tashdid="\u{651}") {
+	for (let i in str) {
+	    i = Number(i);
+	    if(str[i] == str[i+1])
+		str = str_replace_pos(
+		    str[i]+str[i], str[i]+tashdid, str, i);
 	}
-	return i;
+	return str;
     }
-    return transliterate(s);
+    /* Beginning 'Hemze' */
+    function determine_hemze (s) {
+	if(s.startsWith("ئ"))
+	    return determine_hemze(str_replace_pos("ئ", "ا", s, 0));
+	else if(s.startsWith("اا"))
+	    return str_replace_pos("اا", "آ", s, 0);
+	return s;
+    }
+    return replace_sure(add_tashdid(determine_hemze(ar2IL(s))), sure);
 }
 
-var transliterate = transliterate || function (str) {
+var transliterate_ar2lat = transliterate_ar2lat || function (str) {
     return apply_to_words(str, function(x) {
-	return add_bizroke(replace_sure(replace_notsure(x)))
+	return ar2lat(x);
+    });
+}
+
+var transliterate_ar2per = transliterate_ar2per || function (str) {
+    return apply_to_words(str, function(x) {
+	return ar2per(x);
     });
 }
 
@@ -121,16 +131,16 @@ var apply_to_words = apply_to_words || function (poem, fun) {
     return lines.join("\n");
 }
 
-var replace_sure = replace_sure || function (str, f=0, t=1) {
+var replace_sure = replace_sure || function (str, sure, f=0, t=1) {
     for(const o of sure)
 	str = str.replace(new RegExp(o[f],"g"), o[t]);
     return str;
 }
 
-var replace_notsure = replace_notsure || function (str, i=0) {
+var replace_notsure = replace_notsure || function (str, notsure, determine_fun, i=0) {
     let off = 0, R;
     while(false !== (R = assoc_first(str, notsure, i, off))) {
-	const j = determine_notsure(R, str);
+	const j = determine_fun(R, str);
 	str = str_replace_pos(R[2][i], R[2][j], str, R[0]);
 	off = R[0] + R[2][j].length;
     }
@@ -148,7 +158,7 @@ var assoc_first = assoc_first || function (str, arr, i=0, off=0) {
 
 var L = L || function (str, pos, len=1) { return str.substr(pos, len); }
 
-var is_v = is_v || function (c) {
+var is_v = is_v || function (c, v) {
     if(c)
 	for(const o of v)
 	    if(o.indexOf(c) !== -1) return true;
@@ -160,10 +170,12 @@ var str_replace_pos = str_replace_pos || function (from, to, str, pos) {
 	str.substr(pos + from.length);
 }
 
-var add_bizroke = add_bizroke || function (str) {
+var add_bizroke = add_bizroke || function (str, v, bizroke="i") {
+    const invalid = '.()،؛[]{}\'"؟!';
     const L1 = L(str, 0);
     const L2 = L(str, 1);
-    if(L1 && !is_v(L1) && (!L2 || !is_v(L(str, 1))))
+    if(L1 && -1 === invalid.indexOf(L1) &&
+       !is_v(L1, v) && (!L2 || !is_v(L(str, 1), v)))
 	str = str_replace_pos("", bizroke, str, 1);
     return str;
 }
