@@ -171,6 +171,7 @@ var str_replace_pos = str_replace_pos || function (from, to, str, pos) {
 }
 
 var add_bizroke = add_bizroke || function (str, v, bizroke="i") {
+    /* I don't know the exact specifications for this procedure. */
     const invalid = '.()،؛[]{}\'"؟!';
     const L1 = L(str, 0);
     const L2 = L(str, 1);
