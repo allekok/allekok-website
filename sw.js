@@ -78,7 +78,7 @@ self.addEventListener('install', function(event) {
 		profile+'94.jpg',
 		profile+'96.jpg',
 		'script/js/main-comp.js?v168',
-		'style/css/main-comp.css?v71',
+		'style/css/main-comp.css?v72',
 		'favicon/favicon.ico',
 		'style/font/DroidNaskh-Regular.woff2',
 		'style/font/Material-Icons.woff2',

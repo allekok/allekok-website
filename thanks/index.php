@@ -16,15 +16,22 @@ include(ABSPATH . "script/php/header.php");
      text-align:justify;
      padding:.4em 1em .4em .5em;
  }
- .thanks-main a, .thanks-main i {
-     padding:0 .6em;
- }
 </style>
 <div id="poets" class="thanks-main">
     <h1 class="color-blue" style="font-size:1em;
 	       text-align:right">
         سپاس و پێزانین بۆ...
     </h1>
+    <p>
+	<i>سپاس</i> &rsaquo; بۆ 
+	<a href="<?php echo _R; ?>pitew/contributors/"
+	   class="link-underline"
+	>هەموو ئەو کەسانەی</a> لە
+	<a href="<?php echo _R; ?>pitew/first.php"
+	   class="link-underline"
+	>پتەوکردنی ئاڵەکۆک</a>
+	‌دا یارمەتی‌مان دەدەن.
+    </p>
     <p>
         <a href="https://ganjoor.net/" target='_blank'
 	   rel='noopener noreferrer nofollow'
@@ -123,7 +130,7 @@ LIKE '{\"status\":1%'";
             ئاکۆ مەحموودی، ئاسۆ مەحموودی 
         </i>
         &rsaquo; بۆ 
-        <a href="<?php echo _R; ?>kurdi-nus/kurdi-nus-central-kurdish.html"
+        <a href="http://kurdinus.com/"
 	   target="_blank" class="link-underline"
 	>ئامێری پەڵک کوردی‌نووس</a>
         کە بۆ نووسینەوەی بەشێک لە 
@@ -143,16 +150,6 @@ LIKE '{\"status\":1%'";
 	<a href="<?php echo _R; ?>poet:71"
 	   class="link-underline"
 	>شوکری فەزڵی</a>
-    </p>
-    <p>
-	<i>سپاس</i> &rsaquo; بۆ 
-	<a href="<?php echo _R; ?>pitew/contributors/"
-	   class="link-underline"
-	>هەموو ئەو کەسانەی</a> لە
-	<a href="<?php echo _R; ?>pitew/first.php"
-	   class="link-underline"
-	>پتەوکردنی ئاڵەکۆک</a>
-	‌دا یارمەتی‌مان دەدەن.
     </p>
 </div>
 <?php
