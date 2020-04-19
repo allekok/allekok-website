@@ -45,10 +45,10 @@ include(ABSPATH . "script/php/header.php");
 	>Rebwar Tahir</a> &rsaquo; بۆ بەشێکی زۆر لە وێنەی شاعیران
     </p>
     <p>
-        <a href="http://www.vejinbooks.com/"
+        <a href="https://vejinbooks.com/"
 	   target='_blank' rel='noopener noreferrer nofollow'
 	   class="link-underline"
-	>ڤەژین بوکس</a> &rsaquo; بۆ بەشێکی زۆر لە شێعرەکان
+	>ڤەژینبوکس</a> &rsaquo; بۆ بەشێکی زۆر لە شێعرەکان
     </p>
     <p>
         <a href="http://diyako.yageyziman.com/هۆنراوە/"
@@ -123,7 +123,7 @@ LIKE '{\"status\":1%'";
         کە بۆ نووسینەوەی بەشێک لە 
         <a href="<?php echo _R; ?>poet:85/book:1"
 	   class="link-underline"
-	>دیوانی یانەی‌دڵانی، مدهۆش</a> بەکار هاتووە.
+	>دیوانی یانەی‌دڵانی، مەدهۆش</a> بەکار هاتووە.
     </p>
     <p>
         <i>
@@ -136,7 +136,7 @@ LIKE '{\"status\":1%'";
         کە بۆ نووسینەوەی بەشێک لە 
         <a href="<?php echo _R; ?>poet:85/book:1"
 	   class="link-underline"
-	>دیوانی یانەی‌دڵانی، مدهۆش</a> بەکار هاتووە.
+	>دیوانی یانەی‌دڵانی، مەدهۆش</a> بەکار هاتووە.
     </p>
     <p>
 	<a href="https://www.kurdipedia.org/"
