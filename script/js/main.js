@@ -3,47 +3,32 @@ const _R_LEN = _R.length;
 var bookmarks_name = bookmarks_name || 'favorites';
 
 var ar2IL = ar2IL || function (s) {
-    const notsure = [["وو", "û", "uw", "wu", "ww"],
-		     ["ی", "î", "y", "îy", "yî"],
-		     ["و", "u", "w", "uw", "wu"]];
-    const v = [["ە", "e"],
-	       ["ێ", "ê"],
-	       ["ۆ", "o"],
-	       ["ا", "a"],
-	       ["i", "i"],
-	       ["u", "u"],
-	       ["î", "î"],
-	       ["û", "û"]];
+    const notsure = [["ی", "î", "y"],
+		     ["و", "u", "w"]];
+    const v = "ەeێêۆoاaiuîû";
+    const n = "قwرڕتyئحعپسشدفگغهژکلڵزخجچڤبنم";
+    const bizroke = 'i';
     function determine_notsure (R, str) {
 	const pos = R[0];
-	const ch_len = R[2][0].length;
-	const prev_v = is_v(L(str, pos-1), v);
-	const next_v = is_v(L(str, pos + ch_len), v);
+	const ch_arr = R[1];
+	let prev_ch = L(str, pos-1);
+	if(prev_ch == "‌") prev_ch = L(str, pos-2);
+	const next_ch = L(str, pos+1);
+	const prev_v = is_x(prev_ch, v);
+	const next_v = is_x(next_ch, v);
 	let i = 1; // v
-	if(str.length == ch_len);
-	else if(ch_len == 2) {
-	    if(prev_v && next_v) i = 4; // v[cc]v
-	    else if(pos == 0 || prev_v) i = 3; // v[cv]c
-	    else if(next_v) i = 2; // c[vc]v
-	}
-	else {
-	    if(pos == 1 && next_v && !prev_v) i = 3; // c[vc]v
-	    else if(pos == 0 && !next_v) i = 4; // v[cv]c
-	    else if(pos == 0 || prev_v || next_v) i = 2; // c
-	}
+	if(!(is_x(str, ["و","وو"]) || (is_x(prev_ch, ch_arr[1]) && !next_v)) && 
+	   (pos == 0 || prev_v || next_v || (pos !== 1 && prev_ch != ch_arr[2] && is_x(ch_arr[0]+next_ch, ["وی","یو"])))) i = 2; // c
 	return i;
     }
-    return add_bizroke(replace_notsure(s, notsure, determine_notsure), v);
+    return replace_sure(add_bizroke(replace_notsure(s, notsure, determine_notsure),
+				    n, bizroke), [["uu", "û"], ["îî", "î"]]);
 }
 var ar2lat = ar2lat || function (s) {
     const sure = [["ە", "e"],
 		  ["ێ", "ê"],
 		  ["ۆ", "o"],
 		  ["ا", "a"],
-		  ["i", "i"],
-		  ["u", "u"],
-		  ["î", "î"],
-		  ["û", "û"],
 		  ["ق", "q"],
 		  ["ر", "r"],
 		  ["ڕ", "ř"],
@@ -76,12 +61,10 @@ var ar2lat = ar2lat || function (s) {
 
 var ar2per = ar2per || function (s) {
     const sure = [["wu", "و\u{64F}"],
+		  ["û", "و\u{64F}"],
 		  ["ە", "\u{64E}"],
-		  ["ڕ", "ر"],
 		  ["ێ", "\u{650}"],
 		  ["ۆ", "\u{64F}"],
-		  ["ڵ", "ل"],
-		  ["û", "و\u{64F}"],
 		  ["u", "و"],
 		  ["w", "و"],
 		  ["y", "ی"],
@@ -120,14 +103,19 @@ var transliterate_ar2per = transliterate_ar2per || function (str) {
 }
 
 var apply_to_words = apply_to_words || function (poem, fun) {
-    let lines = poem.split("\n");
-    for(const i in lines) {
-	lines[i] = lines[i].split(" ");
-	for(const j in lines[i])
-	    lines[i][j] = fun(lines[i][j]);
-	lines[i] = lines[i].join(" ");
+    let tokens = tokenizer(poem, "`1234567890-=~!@#$%^&*()_+[]{}\\|;:'\",./<>?؛،؟١٢٣٤٥٦٧٨٩٠ \n\t\r");
+    return tokens.map(fun).join('');
+}
+
+var tokenizer = tokenizer || function (str, include) {
+    let tokens = [], i = 0;
+    while(str[i] !== undefined) {
+	let token = '';
+	while(str[i] !== undefined && include.indexOf(str[i]) === -1) token += str[i++];
+	if(!token) while(include.indexOf(str[i]) !== -1) token += str[i++];
+	tokens.push(token);
     }
-    return lines.join("\n");
+    return tokens;
 }
 
 var replace_sure = replace_sure || function (str, sure, f=0, t=1) {
@@ -137,11 +125,10 @@ var replace_sure = replace_sure || function (str, sure, f=0, t=1) {
 }
 
 var replace_notsure = replace_notsure || function (str, notsure, determine_fun, i=0) {
-    let off = 0, R;
-    while(false !== (R = assoc_first(str, notsure, i, off))) {
+    let R;
+    while(false !== (R = assoc_first(str, notsure, i))) {
 	const j = determine_fun(R, str);
-	str = str_replace_pos(R[2][i], R[2][j], str, R[0]);
-	off = R[0] + R[2][j].length;
+	str = str_replace_pos(R[1][i], R[1][j], str, R[0]);
     }
     return str;
 }
@@ -150,17 +137,15 @@ var assoc_first = assoc_first || function (str, arr, i=0, off=0) {
     let pos, poses = [];
     for(const o of arr)
 	if(-1 !== (pos = str.indexOf(o[i], off)))
-	    poses.push([pos, (1.0 / o[i].length), o]);
+	    poses.push([pos, o]);
     poses.sort();
     return poses.length ? poses[0] : false;
 }
 
 var L = L || function (str, pos, len=1) { return str.substr(pos, len); }
 
-var is_v = is_v || function (c, v) {
-    if(c)
-	for(const o of v)
-	    if(o.indexOf(c) !== -1) return true;
+var is_x = is_x || function (c, x) {
+    if(c && x.indexOf(c) !== -1) return true;
     return false;
 }
 
@@ -169,13 +154,11 @@ var str_replace_pos = str_replace_pos || function (from, to, str, pos) {
 	str.substr(pos + from.length);
 }
 
-var add_bizroke = add_bizroke || function (str, v, bizroke="i") {
-    /* I don't know the exact specifications for this procedure. */
-    const invalid = '.()،؛[]{}\'"؟!';
+var add_bizroke = add_bizroke || function (str, n, bizroke="") {
+    /* I don't know the exact specification for this procedure. */
     const L1 = L(str, 0);
     const L2 = L(str, 1);
-    if(L1 && -1 === invalid.indexOf(L1) &&
-       !is_v(L1, v) && (!L2 || !is_v(L(str, 1), v)))
+    if(is_x(L1, n) && (!L2 || is_x(L2, n)))
 	str = str_replace_pos("", bizroke, str, 1);
     return str;
 }
