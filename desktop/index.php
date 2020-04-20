@@ -14,6 +14,13 @@ include(ABSPATH . "script/php/header.php");
  .pitewsec-desktop {
      font-size:1.2em
  }
+ .comment {
+     border-bottom:1px solid;
+ }
+ .comm-body {
+     border:0;
+     margin-left:.5em;
+ }
 </style>
 <div id="poets" style="text-align:right">
     <h1 class="color-blue" style="font-size:1em">
