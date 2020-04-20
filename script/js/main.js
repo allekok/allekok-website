@@ -2,6 +2,36 @@ const _R = _relativePath || "/";
 const _R_LEN = _R.length;
 var bookmarks_name = bookmarks_name || 'favorites';
 
+var apply_to_text = apply_to_text || function (el, proc) {
+    let html = '';
+    for(const o of el.childNodes) {
+	if(o.nodeName == '#text')
+	    html += proc(o.data);
+	else {
+	    apply_to_text(o, proc);
+	    if(o.outerHTML !== undefined)
+		html += o.outerHTML;
+	}
+    }
+    el.innerHTML = html;
+}
+
+var apply_to_words = apply_to_words || function (poem, fun) {
+    let tokens = tokenizer(poem, "`1234567890-=~!@#$%^&*()_+[]{}\\|;:'\",./<>?؛،؟١٢٣٤٥٦٧٨٩٠ \n\t\r");
+    return tokens.map(fun).join('');
+}
+
+var tokenizer = tokenizer || function (str, include) {
+    let tokens = [], i = 0;
+    while(str[i] !== undefined) {
+	let token = '';
+	while(str[i] !== undefined && include.indexOf(str[i]) === -1) token += str[i++];
+	if(!token) while(include.indexOf(str[i]) !== -1) token += str[i++];
+	tokens.push(token);
+    }
+    return tokens;
+}
+
 var ar2IL = ar2IL || function (s) {
     const notsure = [["ی", "î", "y"],
 		     ["و", "u", "w"]];
@@ -18,7 +48,8 @@ var ar2IL = ar2IL || function (s) {
 	const next_v = is_x(next_ch, v);
 	let i = 1; // v
 	if(!(is_x(str, ["و","وو"]) || (is_x(prev_ch, ch_arr[1]) && !next_v)) && 
-	   (pos == 0 || prev_v || next_v || (pos !== 1 && prev_ch != ch_arr[2] && is_x(ch_arr[0]+next_ch, ["وی","یو"])))) i = 2; // c
+	   (pos == 0 || prev_v || next_v ||
+	    (pos !== 1 && prev_ch != ch_arr[2] && is_x(ch_arr[0]+next_ch, ["وی","یو"]) && !is_x(L(str, pos+2), v)))) i = 2; // c
 	return i;
     }
     return replace_sure(add_bizroke(replace_notsure(s, notsure, determine_notsure),
@@ -70,10 +101,11 @@ var ar2per = ar2per || function (s) {
 		  ["y", "ی"],
 		  ["î", "ی"],
 		  ["i", "\u{652}"]];
+    const n = "قرڕتئحعپسشدفگغهژکلڵزخجچڤبنم";
     /* Tashdid */
-    function add_tashdid (str, tashdid="\u{651}") {
+    function add_tashdid (str, n, tashdid="\u{651}") {
 	for (let i = 0; i < str.length-2; i++) {
-	    if(str[i] == str[i+1])
+	    if(str[i] == str[i+1] && is_x(str[i], n))
 		str = str_replace_pos(
 		    str[i]+str[i], str[i]+tashdid, str, i);
 	}
@@ -87,7 +119,7 @@ var ar2per = ar2per || function (s) {
 	    return str_replace_pos("اا", "آ", s, 0);
 	return s;
     }
-    return replace_sure(add_tashdid(determine_hemze(ar2IL(s))), sure);
+    return replace_sure(add_tashdid(determine_hemze(ar2IL(s)), n), sure);
 }
 
 var transliterate_ar2lat = transliterate_ar2lat || function (str) {
@@ -100,22 +132,6 @@ var transliterate_ar2per = transliterate_ar2per || function (str) {
     return apply_to_words(str, function(x) {
 	return ar2per(x);
     });
-}
-
-var apply_to_words = apply_to_words || function (poem, fun) {
-    let tokens = tokenizer(poem, "`1234567890-=~!@#$%^&*()_+[]{}\\|;:'\",./<>?؛،؟١٢٣٤٥٦٧٨٩٠ \n\t\r");
-    return tokens.map(fun).join('');
-}
-
-var tokenizer = tokenizer || function (str, include) {
-    let tokens = [], i = 0;
-    while(str[i] !== undefined) {
-	let token = '';
-	while(str[i] !== undefined && include.indexOf(str[i]) === -1) token += str[i++];
-	if(!token) while(include.indexOf(str[i]) !== -1) token += str[i++];
-	tokens.push(token);
-    }
-    return tokens;
 }
 
 var replace_sure = replace_sure || function (str, sure, f=0, t=1) {

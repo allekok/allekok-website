@@ -453,8 +453,7 @@ address='$address' and blocked=0"; // Add limit 0,1
 
      /* Tewar */
      const convertToEtcBtns = document.querySelectorAll(".convertToEtcBtn"),
-	   origin_poem = document.getElementById("hon").innerHTML,
-	   origin_poem_txt = document.getElementById("hon").innerText;
+	   origin_poem = document.getElementById("hon").innerHTML;
      
      function convert_to_etc (to="کوردی")
      {
@@ -463,8 +462,8 @@ address='$address' and blocked=0"; // Add limit 0,1
 	 void tar.offsetWidth;
 	 let props;
 	 
-	 if(to == "Kurdî") props = [transliterate_ar2lat, "ltr", "dltr"];
-	 else if(to == "فارسی") props = [transliterate_ar2per, "rtl", ""];
+	 if(to == "Kurdî") props = [transliterate_ar2lat, "ltr"];
+	 else if(to == "فارسی") props = [transliterate_ar2per, "rtl"];
 	 if(to == "کوردی")
 	 {
 	     tar.innerHTML = origin_poem;
@@ -472,13 +471,13 @@ address='$address' and blocked=0"; // Add limit 0,1
 	 }
 	 else
 	 {
-	     const ltn = props[0](origin_poem_txt)
-		 .replace(/\n/g, "<br>\n");
-	     tar.innerHTML =
-		 poem_kind(origin_poem)=="new" ?
-		 "<div class=\"n\"><div class=\"m " +
-		 props[2] + "\">" + ltn + "</div></div>" :
-		 "<div class=\"b\">" + ltn + "</div>";
+	     tar.innerHTML = origin_poem;
+	     apply_to_text(tar, props[0]);
+	     if(props[1] == "ltr") {
+		 tar.querySelectorAll(".m").forEach(function (o) {
+		     o.classList.add("dltr");
+		 });
+	     }
 	     tar.style.direction = props[1];
 	 }
 	 tar.style.animation = "tL .5s";
