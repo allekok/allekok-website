@@ -16,13 +16,27 @@ if(!$no_head) {
 		 navigator.serviceWorker.register('<?php echo _R; ?>sw.js');
 	    </script>
 	    <link rel='stylesheet'
-		  href='<?php echo _R; ?>style/css/main-comp.css?v72'/>
+		  href='<?php echo _R; ?>style/css/main-comp.css?v73'/>
 	    <title>
 		<?php echo $title; ?>
 	    </title>
 	    <style>
 	     @font-face{font-family:'Material Icons';font-display:swap;font-style:normal;font-weight:400;src:url('<?php echo _R; ?>style/font/Material-Icons.woff2') format('woff2')}
-	     <?php if(!empty(@$_COOKIE["font"]) and
+	     <?php
+	     if(@$_COOKIE["interfont"]) {
+		 $interfont = filter_var(urldecode($_COOKIE["interfont"]),
+					 FILTER_SANITIZE_STRING);
+		 $font_ = basename($interfont);
+		 $fname_ = substr($font_, 0, strrpos($font_, "."));
+		 $fformat = strtolower(substr($font_, strrpos($font_, ".")+1));
+		 if($fformat == "ttf") $fformat = "truetype";
+		 elseif($fformat == "otf") $fformat = "opentype";
+		 elseif($fformat == "woff") $fformat = "woff";
+		 elseif($fformat == "woff2") $fformat = "woff2";
+		 echo "@font-face{font-family:'{$fname_}';font-display:swap;font-style:normal;src:url('{$interfont}') format('{$fformat}')}
+body{font-family:'{$fname_}'}";
+	     }
+	     elseif(!empty(@$_COOKIE["font"]) and
 		 @$_COOKIE["font"]!="null") {
 		 $font = filter_var($_COOKIE["font"], FILTER_SANITIZE_STRING);
 		 $fname_ = substr($font, 0, strrpos($font, "."));
@@ -36,6 +50,13 @@ body{font-family:'{$fname_}'}";
 	     <?php } ?>
 	     <?php
 	     echo "body,.dd-frame,.search-main .dropdown-content{background:{$_colors[0]}}.button:hover,.fontsize button:hover,.toolbar a:hover,.icon-round,.color-white{color:{$_colors[0]}}body,input,textarea,button,a,.color-black,#hon sup:hover{color:{$_colors[1]}}.icon-round{background:{$_colors[1]}}.button:hover,.fontsize button:hover,.toolbar a:hover,.btn-selected,.back-blue,.loader,.loader-round{background:{$_colors[2]}}#hon sup,.poet:hover,.color-blue,.selected,.link-color,.link:hover,a:hover,button:hover,.search-main .cb:hover,.bks p,.poetdesc p,#search-res #bhon,.bhoh-newdaq,#main-contributing h1,#main-contributing h2,#main-contributing h3,#main-manual h1,#main-manual h2,#main-manual h3{color:{$_colors[2]}}.border-blue,input:focus,textarea:focus,.link-underline,#main-contributing a{border-color:{$_colors[2]}}.color-red{color:{$_colors[3]}}.back-red{background:{$_colors[3]}}::-webkit-scrollbar-track{background:{$_colors[0]};}::-webkit-scrollbar-thumb{background:{$_colors[2]}}::selection{color:{$_colors[0]};background:{$_colors[2]}}::-moz-selection{color:{$_colors[0]};background:{$_colors[2]}}::placeholder{color:{$_colors[1]}}::-webkit-input-placeholder{color:{$_colors[1]}}::-ms-input-placeholder{color:{$_colors[1]}}";
+	     ?>
+	     <?php
+	     if(@$_back_img)
+		 echo "#global-back{background:url('{$_back_img}');
+background-size:{$_back_img_size};background-repeat:{$_back_img_repeat};
+background-attachment:{$_back_img_attach};background-position:{$_back_img_pos};
+opacity:{$_back_img_op}}";
 	     ?>
 	    </style>
 	    <meta charset='utf-8'>
@@ -57,6 +78,7 @@ body{font-family:'{$fname_}'}";
 	    <meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
+	    <div id="global-back"></div>
 	    <!-- Header -->
 	    <header>
 		<!-- Title -->
@@ -70,7 +92,7 @@ body{font-family:'{$fname_}'}";
 		<?php } // @!$is_it_search ?>
 		<!-- Bookmarks Icon -->
 		<button id='tL' class='header-icon material-icons'
-			style='<?php echo $site_anti_align; ?>:1.3em;display:none'
+			    style='<?php echo $site_anti_align; ?>:1.3em;display:none'
 		>bookmark</button>
 	    </header>
 	    <?php if(@!$is_it_search) { ?>

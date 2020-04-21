@@ -43,7 +43,9 @@ include(ABSPATH . "script/php/header.php");
      width:3em;
      vertical-align:text-bottom;
  }
- #set_theme_custom_colors ._colors
+ #set_theme_custom_colors ._colors,
+ #set_theme_custom_colors ._back_img,
+ #set_theme_custom_colors ._back_img_op
  {
      display: inline-block;
      padding: .1em .5em;
@@ -52,6 +54,14 @@ include(ABSPATH . "script/php/header.php");
      text-align: left;
      margin-right: .5em;
      font-size:.9em;
+ }
+ #set_theme_custom_colors ._back_img {
+     width: 60%;
+     max-width: 500px;
+ }
+ #set_theme_custom_colors ._back_img_op {
+     width: 60%;
+     max-width: 200px;
  }
  #set_theme_custom_colors_submit
  {
@@ -198,6 +208,77 @@ include(ABSPATH . "script/php/header.php");
 			    ><input type="color" class="_colors_c"
 				    value="<?php echo $_colors[3]; ?>">
 	    </p>
+	    <p>
+		وێنەی پەڕە: <input type="text" class="_back_img"
+				   value="<?php echo @$_back_img; ?>"
+				   placeholder="نیشانی ئینتێرنێتی وێنە" />
+	    </p>
+	    <p>
+		گەورەیی وێنە:
+		<select class="_back_img_size">
+		    <?php
+		    $back_sizes = ["cover", "auto", "contain"];
+		    foreach($back_sizes as $back_size) {
+			echo "<option value='$back_size'";
+			if($back_size == @$_back_img_size)
+			    echo " selected";
+			echo ">$back_size</option>";
+		    }
+		    ?>
+		</select>
+	    </p>
+	    <p>
+		دووپات بوونەوەی وێنە: 
+		<select class="_back_img_repeat">
+		    <?php
+		    $repeats = ["no-repeat", "repeat",
+				"repeat-x", "repeat-y",
+				"round", "space"];
+		    foreach($repeats as $repeat) {
+			echo "<option value='$repeat'";
+			if($repeat == @$_back_img_repeat)
+			    echo " selected";
+			echo ">$repeat</option>";
+		    }
+		    ?>
+		</select>
+	    </p>
+	    <p>
+		پێوەست بوونی وێنە:
+		<select class="_back_img_attach">
+		    <?php
+		    $attachments = ["fixed", "scroll", "local"];
+		    foreach($attachments as $attachment) {
+			echo "<option value='$attachment'";
+			if($attachment == @$_back_img_attach)
+			    echo " selected";
+			echo ">$attachment</option>";
+		    }
+		    ?>
+		</select>
+	    </p>
+	    <p>
+		جێگەی وێنە: 
+		<select class="_back_img_pos">
+		    <?php
+		    $positions = ["center center", "center left",
+				  "center right","bottom center",
+				  "bottom left", "bottom right",
+				  "top center", "top left", "top right"];
+		    foreach($positions as $position) {
+			echo "<option value='$position'";
+			if($position == @$_back_img_pos)
+			    echo " selected";
+			echo ">$position</option>";
+		    }
+		    ?>
+		</select>
+	    </p>
+	    <p>
+		کاڵ بوونەوەی وێنە: <input type="text" class="_back_img_op"
+					  value="<?php echo @$_back_img_op; ?>"
+					  placeholder="ژمارەیەک بەینی ٠.٠ تا ١.٠" />
+	    </p>
 	    <p style="text-align:center;padding-top:.7em">
 		<button type="button" class="button"
 			style="font-size:.9em"
@@ -263,6 +344,23 @@ include(ABSPATH . "script/php/header.php");
 		>keyboard_arrow_down</span></div>
 	    <div class="dd-frame">
 		<ul>
+		    <li style="margin:0 .5em;padding:1em 0;
+			       border-bottom:1px solid">
+			<p style="font-size:.8em">
+			    بەکارهێنانی قەڵەمێکی سەرهێڵ: 
+			</p>
+			<div style="display:flex">
+			    <input type="text" placeholder="نیشانی ئینتێرنێتی قەڵەم"
+				   id="internet-font-txt"
+				   style="direction:ltr;text-align:center;width:100%"
+				   value="<?php echo @$_COOKIE["interfont"]; ?>" />
+			    <button type="button" id="internet-font-btn"
+				    style="text-align:center;width:20%;
+					  font-size:.8em;border-radius:50%;
+					  margin-right:.5em"
+			    >ناردن</button>
+			</div>
+		    </li>
 		    <li>
 			<button style="text-align:center;
 				       border-bottom:1px solid;
@@ -380,11 +478,29 @@ include(ABSPATH . "script/php/header.php");
      set_cookie('colors', colors.join(','));
      window.location.reload();
  }
+ function set_back_img ()
+ {
+     const parent = document.getElementById('set_theme_custom_colors');
+     let img = parent.querySelector('._back_img').value.trim(),
+	 img_size = parent.querySelector('._back_img_size').value.trim(),
+	 img_repeat = parent.querySelector('._back_img_repeat').value.trim(),
+	 img_attach = parent.querySelector('._back_img_attach').value.trim(),
+	 img_pos = parent.querySelector('._back_img_pos').value.trim(),
+	 img_op = parent.querySelector('._back_img_op').value.trim();
+     img = encodeURIComponent(img);
+     set_cookie('backimg', img);
+     set_cookie('backimgsize', img_size);
+     set_cookie('backimgrepeat', img_repeat);
+     set_cookie('backimgattach', img_attach);
+     set_cookie('backimgpos', img_pos);
+     set_cookie('backimgop', img_op);
+     window.location.reload();
+ }
  if(user_codes_storage)
      document.getElementById('user_codes_text').value = user_codes_storage;
  document.getElementById('set_theme_light').onclick = function(){set_theme('light')}
  document.getElementById('set_theme_dark').onclick = function(){set_theme('dark')}
- document.getElementById('set_theme_custom_colors_submit').onclick = () => {set_colors()};
+ document.getElementById('set_theme_custom_colors_submit').onclick = () => {set_colors();set_back_img()};
  document.getElementById('set_theme_custom').onclick = () => {set_theme('custom')};
  document.getElementById('set_theme_custom_colors').
 	  querySelectorAll('._colors_c').forEach((o) => {
@@ -433,8 +549,16 @@ include(ABSPATH . "script/php/header.php");
  dd_lang_label.addEventListener("click", function () {
      toggle(dd_lang_label, dd_lang_frame);
  });
+ function set_interfont (font)
+ {
+     set_cookie("interfont", encodeURIComponent(font));
+     window.location.reload();
+     toggle(dd_font_label, dd_font_frame);
+     dd_font_label.querySelector(".material-icons").innerText = "sync";
+ }
  function set_font (font)
  {
+     set_cookie("interfont", "");
      set_cookie("font", font);
      window.location.reload();
      toggle(dd_font_label, dd_font_frame);
@@ -445,6 +569,11 @@ include(ABSPATH . "script/php/header.php");
 	 set_font(o.getAttribute("F"));
      });
  });
+ document.querySelector("#internet-font-btn").
+	  addEventListener("click", function () {
+	      set_interfont(document.querySelector(
+		  "#internet-font-txt").value.trim());
+	  });
  function set_lang (lang)
  {
      set_cookie("lang", lang);
