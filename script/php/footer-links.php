@@ -14,9 +14,6 @@
 <a title="<?php P("code"); ?>" href="<?php echo _R; ?>dev/tools/">
     <i class="material-icons">code</i>
 </a>
-<a title="<?php P("manual"); ?>" href="<?php echo _R; ?>manual/">
-    <i class="material-icons">help</i>
-</a>
 <a title="<?php P("customize"); ?>" href="<?php echo _R; ?>customize/">
     <i class="material-icons">settings</i>
 </a>

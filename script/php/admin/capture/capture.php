@@ -20,7 +20,6 @@ $resources = [
     "dev/tools/CONTRIBUTING/QA.txt",
     ".htaccess",
     "script/php/admin/.htaccess",
-    "manual/QA.txt",
     "script/php/constants.php",
     "script/php/admin/IP-blacklist.php",
     "script/php/admin/password.php",

@@ -1,14 +1,13 @@
 <?php
 /*
  * Input: REQUEST:(poet,book,poem)
- * Output: JSON, Header:(x-con-len)
+ * Output: TEXT, Header:(x-con-len)
  */
 require_once("../../script/php/constants.php");
 require(ABSPATH . "script/php/functions.php");
 
 header("Content-type:text/plain; charset=UTF-8");
 
-$null = json_encode(null);
 $_pt = isset($_REQUEST['poet']) ?
        filter_var($_REQUEST['poet'], FILTER_SANITIZE_STRING) :
        die($null);

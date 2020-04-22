@@ -87,10 +87,6 @@ echo last(ABSPATH . "desktop/QA.txt") . "\n";
 echo "\n/کۆدەکانی ئاڵەکۆک/\n";
 echo last(ABSPATH . "dev/tools/QA.txt") . "\n";
 
-/* manual */
-echo "\n/چۆنیەتی بەکارهێنانی ئاڵەکۆک/\n";
-echo last(ABSPATH . "manual/QA.txt") . "\n";
-
 /* CONTRIBUTING */
 echo "\n/بەشداربوون لە نووسینی کۆدەکانی ئاڵەکۆک/\n";
 echo last(ABSPATH . "dev/tools/CONTRIBUTING/QA.txt") . "\n";

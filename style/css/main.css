@@ -112,20 +112,6 @@ a
     font-size:1.1em;
     margin-top:1em;
 }
-#main-manual h1
-{
-    font-size:1.818em;
-}
-#main-manual h2
-{
-    font-size:1.618em;
-    margin-top:1em;
-}
-#main-manual h3
-{
-    font-size:1.418em;
-    margin-top:1em;
-}
 textarea
 {
     height:15em;
@@ -645,8 +631,7 @@ footer i
     padding:0 1em;
     font-size:.65em
 }
-.QAtxt-dev,.QAtxt-desktop,#frm-contributing #QAtxt,
-#frm-manual #QAtxt,.QAtxt-first
+.QAtxt-dev,.QAtxt-desktop,#frm-contributing #QAtxt,.QAtxt-first
 {
     font-size: .65em;
     text-align: right;
@@ -656,8 +641,7 @@ footer i
     margin: auto;
 }
 .comment,.prev,#main-contributing h1,
-#main-contributing h2, #main-contributing h3,
-#main-manual  h1, #main-manual  h2, #main-manual  h3
+#main-contributing h2, #main-contributing h3
 {
     text-align:right;
 }
@@ -668,8 +652,7 @@ footer i
     display:flex;
     margin:0 .5em;
 }
-.btn-first,#frm-manual .btn,
-#frm-contributing .btn,.btn-dev,.btn-desktop
+.btn-first,#frm-contributing .btn,.btn-dev,.btn-desktop
 {
     font-size:.7em;
     padding:.5em 1.5em;

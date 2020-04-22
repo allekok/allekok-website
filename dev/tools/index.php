@@ -11,7 +11,7 @@ $t_desc = "";
 include(ABSPATH . 'script/php/header.php');
 ?>
 <style>
- .code-dev {
+ #dev-main code {
      direction:ltr;
      text-align:left;
      display:block;
@@ -22,21 +22,34 @@ include(ABSPATH . 'script/php/header.php');
      font-family:'kurd', monospace;
      margin:.5em 0;
  }
- .h2-dev {
+ #dev-main h2, #dev-main h3 {
      text-align:right;
-     text-indent:1em;
-     font-size:.85em;
-     padding-top:1em;
+     padding-top:.5em;
+     margin-top:.5em;
+     color:<?php echo $_colors[2]; ?>;
  }
- .p-dev {
-     text-indent:2em; padding:1em 0;font-size:.6em;
+ #dev-main p {
+     text-indent:2em; padding:1em 0
  }
- .a-dev {
+ #dev-main a {
      margin:0;
  }
- .back-eee-dev {
-     padding:0 .5em;
+ #dev-main ul {
+     margin-right:2em
  }
+ #main-dev pre {
+     overflow:auto;
+ }
+ #main-dev pre code {
+     overflow:auto;
+     font-size:.85em;
+ }
+ #main-dev ul, ol {
+     padding-right:2em;
+     list-style-type:arabic-indic;
+     font-size:.9em
+ }
+
 </style>
 <div id="poets">
     <h1 style="font-size:1em;text-align:right">
@@ -50,164 +63,11 @@ include(ABSPATH . 'script/php/header.php');
 	    / &gt;
 	</i>
     </h1>
-    <div style="text-align:justify">
-        <p class='p-dev' style="padding-top:0;text-indent:0">
-	    <a class="a-dev" href="https://github.com/allekok/allekok-website"
-	       style="display:inline-block;padding:.5em 0 .2em"
-	       target="_blank">
-		- بۆ داگرتنی کۆدەکانی ئاڵەکۆک لێرە کرتە بکەن.
-            </a><br>
-	    <a class="a-dev" href="https://github.com/allekok/allekok-poems"
-	       style="display:inline-block;padding:.5em 0 .2em"
-	       target="_blank">
-		- بۆ داگرتنی شێعرەکانی ئاڵەکۆک لێرە کرتە بکەن.
-            </a><br>
-	    <a class="a-dev" href="https://github.com/allekok/allekok-downloads"
-	       style="display:inline-block;padding:.5em 0 .2em"
-	       target="_blank">
-		- بۆ داگرتنی کەرەستەکانی‌تری ئاڵەکۆک لێرە کرتە بکەن.
-            </a>
-	</p>
-        <p class='p-dev'>
-	    بەخێربێن! ئەم بەشە تایبەت بەو کەسانەیە کە لەبواری بەرنامەنووسی کامپیوتێردا شارەزایی‌یان هەیە.
-	    <br>
-	    لێرە کۆمەڵێک ئامێرمان ئامادە کردووە کە ئێوە بتوانن لە دەیتابەیسەکانی ئاڵەکۆک بۆ بەرنامەکان‌تان کەڵک وەرگرن.
-        </p><h2 class="color-blue h2-dev">
-	    یەکەم، وەرگرتنی زانیاری سەبارەت بە شاعیران
-        </h2><p class='p-dev'>
-	    <code class='border-blue code-dev'>
-                <?php echo _SITE; ?>dev/tools/poet.php?poet=ناوی شاعیر یان ژمارەی شاعیر
-	    </code>
-	    ئێوە ئەگەر بچنە ئادرسی سەرەوە و بە جێی "ناوی شاعیر یان ژمارەی شاعیر"، بنووسن هەژار یان تەنیا ژمارەی 1، دەبینن کە تەواوی زانیاریەکانی ئاڵەکۆک سەبارەت بەم شاعیرەتان بۆ دەهێنێت.
-	    <br><br>
-	    تکایە سەرنج بدەن:
-	    <br>
-	    &bull;
-	    ئەگەر دەتانهەوێ ناوی شاعیر بنووسن، تکایە ئەو ناوەی کە لە لاپەڕەی یەکەمی ئاڵەکۆک بە ئادرسی "<a class="link a-dev" style="direction:ltr;text-align:left" href='<?php echo _SITE; ?>'><?php echo _SITE; ?></a>" بۆ هەر یەک لە شاعیران دابین کراوە، بنووسن.
-	    <br><br>
-	    &bull;
-	    ژمارەی شاعیر ئەم ژمارەیە کە لە ئادرسی لاپەڕەی شاعیردا بەم جۆرە نووسراوە: 
-	    <code class='code-dev'>
-		<?php echo _SITE; ?>poet:ژمارەی شاعیر
-	    </code>
-	    <br>
-	    &bull;
-	    بۆ وەرگرتنی زانیاری سەبارەت بە چەند شاعیر، ناوی شاعیرەکان یان ژمارەکەیان بەم جۆرە لەیەکتر جودا بکەنەوە:
-	    بۆ نموونە:
-	    <code class='code-dev'>
-		<?php echo _SITE; ?>dev/tools/poet.php?poet=1,هێمن,3
-	    </code>
-	    ئەو نیشانیەی سەرەوە، زانیاریەکانی سەبارەت بە شاعیری ژمارە 1(هەژار)، شاعیری ژمارە 3(وەفایی) و هێمن،تان نیشان دەدا.
-	    <br>
-	    &bull; 
-	    بۆ وەرگرتنی زانیاریەکانی تەواوی شاعیران، بە جێی ناوی شاعیر بنووسن all .
-        </p>
-        <h2 class='color-blue h2-dev'>
-	    دووهەم، وەرگرتنی زانیاری سەبارەت بە کتێبەکان
-        </h2><p class='p-dev'>
-	    <code class='border-blue code-dev'>
-                <?php echo _SITE; ?>dev/tools/book.php?poet=ناوی شاعیر یان ژمارەی شاعیر&book=ناوی کتێب یان ژمارەی کتێب
-	    </code>
-	    ئەگەر بچنە ئادرسی سەرەوە و بە جێی "ناوی شاعیر یان ژمارەی شاعیر" بنووسن هەژار یان تەنیا ڕەقەمی 1 و بە جێی "ناوی کتێب یان ژمارەی کتێب" بنووسن ئاڵەکۆک یان تەنیا ڕەقەمی 3، دەبینن کە تەواوی زانیاریەکانی ئاڵەکۆک سەبارەت بەو کتێبە‌و بۆ دەهێنێت.
-	    <br><br>
-	    تکایە سەرنج بدەن:
-	    <br>
-	    &bull;
-	    ژمارەی کتێب ئەم ژمارەیە کە لە ئادرسی لاپەڕەی ئەم کتێبەدا نووسراوە: 
-	    <code class='code-dev'>
-		<?php echo _SITE; ?>poet:ژمارەی شاعیر/book:ژمارەی کتێب
-	    </code>
-	    <br>
-	    بۆ نموونە ئەگەر ئێوە بچنە ناو لاپەڕەی کتێبی ئاڵەکۆکی هەژار موکریانی‌دا، دەبینن کە نیشانی ماڵپەڕەکە بەم جۆرە نووسراوە:
-	    <?php echo _SITE; ?>poet:1/book:3
-	    <br>
-	    لە ڕوی ئەم نیشانیە دیارە کە ژمارەی کتێبی ئاڵەکۆک، 3یە.
-	    <br></p>
-	    <h2 class='color-blue h2-dev'>
-		سێهەم، وەرگرتنی زانیاری سەبارەت بە شێعرەکان
-	    </h2><p class='p-dev'>
-		<code class='border-blue code-dev'>
-                    <?php echo _SITE; ?>dev/tools/poem.php?poet=ناو یان ژمارەی شاعیر&book=ناو یان ژمارەی کتێب&poem=ناو یان ژمارەی شێعر
-		</code>
-		ئەگەر سەردانی نیشانی سەرەوە بکەن و بە جێی "ناو یان ژمارەی شاعیر" بنووسن هەژار یان 1 و بە جێی "ناو یان ژمارەی کتێب" بنووسن ئاڵەکۆک یان 3 و بە جێی "ناو یان ژمارەی شێعر" بنووسن لای لایە یان 1، شێعری لای لایەی هەژارموکریانی‌تان بۆ دەهێنێت.
-		<br><br>
-		سەرنج بدەن:
-		<br>
-		&bull;
-		بۆ دۆزینەوەی ژمارەی شێعر، سەردانی لاپەڕەی ئەو شێعرەی مەبەست‌تانە بکەن و ئەم ژمارەی لەپەنای ناوی شێعر هاتووە، ئەمە ژمارەی شێعرەکەیە. ئەگەر بڕواننە نیشانی ئەم لاپەڕەش دەتوانن ژمارەی شێعر بدۆزنەوە.
-		<code class='code-dev'>
-		    <?php echo _SITE; ?>poet:ژمارەی شاعیر/book:ژمارەی کتێب/poem:ژمارەی شێعر
-		</code>
-		<br>
-		&bull;
-		ئێوە دەتوانن بە جوێ کردنەوەی ناو یان ژمارەی شێعر بە "," سەبارەت بە هەرچەند شێعر کە بتانهەوێت، زانیاری وەرگرن.
-		<br>
-		بۆ نموونە:
-		<code class='code-dev'>
-                    <?php echo _SITE; ?>dev/tools/poem.php?poet=1&book=3&poem=لای لایە,2,6
-		</code>
-		<br>
-		&bull;
-		دەقی شێعرەکان بە دوو جۆر دەتوانن وەرگرن یەکەم بە فۆرمەتی سادە(text/plain) دووهەم بە فۆرمەتی (text/html).
-		<br>
-		لە حاڵەتی ئاسایی دا شێعرەکان بە فۆرمەتی سادە نیشان دەدرێن. بەڵام ئەگەر بە شێوەی خوارەوە نیشانیەکەی بگۆڕن، شێعرەکان بە شێوەی html نیشان دەدرێن.
-		<code class='code-dev'>
-                    <?php echo _SITE; ?>dev/tools/poem.php?poet=1&book=3&poem=1,3&html
-		</code>
-		<br>
-		&bull; 
-		بۆ وەرگرتنی تەواوی شێعرەکانی یەک کتێب بە جێی ژمارەی شێعر بنووسن all .
-	    </p>
-	    <h2 class='color-blue h2-dev'>
-		چوارەم، گەڕان لە ئاڵەکۆک‌دا
-	    </h2><p class='p-dev'>
-		<code class='border-blue code-dev'>
-		    <?php echo _SITE; ?>dev/tools/search.php?q=وشە&poet=ناوی شاعیر&pt=ئەژماری شاعیران&bk=ئەژماری کتێبەکان&pm=ئەژماری شێعرەکان&k=چۆنیەتی گەڕان
-		</code>
-		&bull; 
-		<i class="back-eee back-eee-dev">q</i> : 
-		ئەو وشەیەی کە دەتانهەوێ بەدووی دا بگەڕێن
-		<br>
-		&bull; 
-		<i class="back-eee back-eee-dev">poet</i> : 
-		گەڕان لە شێعرەکانی ئەم شاعیرەدا. سەرنج بدەن کە دەبێ نێوی شاعیر کە لە لاپەڕەی یەکەمی ئاڵەکۆک‌دا هاتووە بنووسن.
-		<br>
-		&bull; 
-		<i class="back-eee back-eee-dev">pt</i> : 
-		ئەژماری ئاکامەکان لە گەڕان بەنێو شاعیران‌دا
-		<br>
-		&bull; 
-		<i class="back-eee back-eee-dev">bk</i> : 
-		ئەژماری ئاکامەکان لە گەڕان بەنێو کتێبەکان‌دا
-		<br>
-		&bull; 
-		<i class="back-eee back-eee-dev">pm</i> : 
-		ئەژماری ئاکامەکان لە گەڕان بەنێو شێعرەکان‌دا
-		<br>
-		&bull; 
-		<i class="back-eee back-eee-dev">k</i> : <br>
-		<span style="padding-right:1em;text-indent:0;display:block;">
-		    - 
-		    ئەگەر بنووسن 1، گەڕانەکان تەنیا لە سەرناوی شێعرەکان‌دا دەبێ.
-		    <br>
-		    - 
-		    ئەگەر بنووسن 2، گەڕانەکان تەنیا لە دەقی شێعرەکان‌دا دەبێ.
-		    <br>
-		    - 
-		    ئەگەر بنووسن 3 یان هیچ نەنووسن، گەڕانەکان لە هەردوو نێوی شێعر و دەقی شێعردا دەبێ.
-		</span>
-		<br>
-		بۆ نموونە: 
-		<code class='code-dev'>
-		    <?php echo _SITE; ?>dev/tools/search.php?q=ئاشق&poet=هێمن&pt=0&bk=0&pm=30&k=3
-		</code>
-		لینکی سەرەوە بەدوای وشەی "ئاشق" لە شێعرەکانی هێمن دا دەگەڕێت.
-		<br>
-		سەرنج بدەن کە چون ptوbkمان سیفر داناون هەربۆیە هیچ گەڕانێک لە شاعیران و کتێبەکان دا ناکرێ و تەنیا لە شێعرەکان دا بەدوای ئەم وشەیە دەگەڕێت. چون pmمان 30 داناوە، ئەژماری ئاکامەکان، 30دانە دەبێ. چون kمان 3 داناوە بۆ وشەی دیاری کراو لە سەرناو و دەقی شێعرەکان‌دا دەگەڕێ.
-	    </p>
-	    <p class='p-dev'>
-		سەرنجێکی بچووک: تەواوی ئەو زانیاریانە بە فۆرمەتی JSON لە ئیختیارو دادەندرێ.
-	    </p>
+    <div id="dev-main" style="text-align:justify;font-size:.6em">
+	<?php
+	echo str_replace('{_SITE}', _SITE,
+			 @file_get_contents("dev.html"));
+	?>
     </div>
     <h1 class='color-blue'
 	style='font-size:1em;text-align:right'>

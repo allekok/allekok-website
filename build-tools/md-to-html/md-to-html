@@ -4,7 +4,8 @@
  * This file will be executed in '/' dir. 
  * So the paths are relative to '/'.
  */
-const files = ['manual/manual', 'dev/tools/CONTRIBUTING/CONTRIBUTING'];
+const files = ['dev/tools/CONTRIBUTING/CONTRIBUTING',
+	       'dev/tools/dev'];
 const fs = require('fs');
 const showdown = require('showdown');
 const converter = new showdown.Converter();
@@ -13,7 +14,7 @@ for (const i in files)
 {
     const text = fs.readFileSync(`${files[i]}.md`).toString();
     const html = converter.makeHtml(text);
-    fs.writeFileSync(`${files[i]}.php`, html);
+    fs.writeFileSync(`${files[i]}.html`, html);
 
-    console.log(`${files[i]}.md -> ${files[i]}.php`);
+    console.log(`${files[i]}.md -> ${files[i]}.html`);
 }

@@ -65,7 +65,7 @@ include(ABSPATH . 'script/php/header.php');
     <div id="main-contributing" style="font-size:.6em;
 	     text-align:justify;padding-right:1em">
 	<?php
-	@include('CONTRIBUTING.php');
+	@include('CONTRIBUTING.html');
 	?>
     </div>
     <script>
