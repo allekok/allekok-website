@@ -17,7 +17,7 @@ var apply_to_text = apply_to_text || function (el, proc) {
 }
 
 var apply_to_words = apply_to_words || function (poem, fun) {
-    let tokens = tokenizer(poem, "`1234567890-=~!@#$%^&*()_+[]{}\\|;:'\",./<>?؛،؟١٢٣٤٥٦٧٨٩٠ \n\t\r");
+    let tokens = tokenizer(poem, "«»`1234567890-=~!@#$%^&*()_+[]{}\\|;:'\",./<>?؛،؟١٢٣٤٥٦٧٨٩٠ \n\t\r");
     return tokens.map(fun).join('');
 }
 
