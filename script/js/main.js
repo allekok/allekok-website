@@ -189,9 +189,10 @@ var str_replace_pos = str_replace_pos || function (from, to, str, pos) {
 
 var add_bizroke = add_bizroke || function (str, n, bizroke="") {
     /* I don't know the exact specification for this procedure. */
+    function is_n (ch) { return is_x(ch, n) }
     const L1 = L(str, 0);
     const L2 = L(str, 1);
-    if(is_x(L1, n) && (!L2 || is_x(L2, n)))
+    if(is_n(L1) && (!L2 || is_n(L2)))
 	str = str_replace_pos("", bizroke, str, 1);
     return str;
 }
