@@ -25,3 +25,6 @@ RewriteRule ^new/? index.php?new    [NC,L]
 <filesMatch ".(woff|woff2|jpg|jpeg|png|ico)$">
 Header set Cache-Control "max-age=31536000, public"
 </filesMatch>
+
+# Default Charset
+AddDefaultCharset utf-8
