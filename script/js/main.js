@@ -35,21 +35,25 @@ var tokenizer = tokenizer || function (str, include) {
 var ar2IL = ar2IL || function (s) {
     const notsure = [["ی", "î", "y"],
 		     ["و", "u", "w"]];
+    const bizroke = 'i';
     const v = "ەeێêۆoاaiuîû";
     const n = "قwرڕتyئحعپسشدفگغهژکلڵزخجچڤبنم";
-    const bizroke = 'i';
+    function is_v (ch) { return is_x(ch, v) }
     function determine_notsure (R, str) {
 	const pos = R[0];
-	const ch_arr = R[1];
+	const ch = R[1][0];
+	const ch_v = R[1][1];
+	const ch_n = R[1][2];
 	let prev_ch = L(str, pos-1);
 	if(prev_ch == "‌") prev_ch = L(str, pos-2);
 	const next_ch = L(str, pos+1);
-	const prev_v = is_x(prev_ch, v);
-	const next_v = is_x(next_ch, v);
+	const prev_v = is_v(prev_ch);
+	const next_v = is_v(next_ch);
 	let i = 1; // v
-	if(!(is_x(str, ["و","وو"]) || (is_x(prev_ch, ch_arr[1]) && !next_v)) && 
+	if(!(is_x(str, ["و","وو"]) || (prev_ch == ch_v && !next_v)) && 
 	   (pos == 0 || prev_v || next_v ||
-	    (pos !== 1 && prev_ch != ch_arr[2] && is_x(ch_arr[0]+next_ch, ["وی","یو"]) && !is_x(L(str, pos+2), v)))) i = 2; // c
+	    (prev_ch != ch_n && (ch+next_ch) == "وی" &&
+	     !is_v(L(str, pos+2)) && pos !== 1))) i = 2; // c
 	return i;
     }
     return replace_sure(add_bizroke(replace_notsure(s, notsure, determine_notsure),

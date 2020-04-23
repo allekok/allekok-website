@@ -77,7 +77,7 @@ self.addEventListener('install', function(event) {
 		profile+'93.jpg',
 		profile+'94.jpg',
 		profile+'96.jpg',
-		'script/js/main-comp.js?v264',
+		'script/js/main-comp.js?v268',
 		'style/css/main-comp.css?v74',
 		'favicon/favicon.ico',
 		'style/font/DroidNaskh-Regular.woff2',
@@ -98,15 +98,20 @@ self.addEventListener('activate', function(event) {
 	}));
 });
 
+function endsWithP (str, arr) {
+    for(const o of arr)
+	if(str.endsWith(o)) return true;
+    return false;
+}
+
 self.addEventListener('fetch', function(event) {
     event.respondWith(
 	caches.match(event.request).then(function(resp) {
 	    return resp || fetch(event.request).then(function (R) {
-		if(event.request.url.endsWith(".ttf") ||
-		   event.request.url.endsWith(".otf") ||
-		   event.request.url.endsWith(".webmanifest") ||
-		   event.request.url.endsWith(".jpg") ||
-		   event.request.url.endsWith(".png")) {
+		if(endsWithP(event.request.url, ['.ttf','.otf','.woff',
+						 '.woff2','.svg','.webmanifest',
+						 '.jpg','.jpeg','.png']))
+		{
 		    return caches.open(cache_ver).then((cache) => {
 			console.log(event.request.url);
 			cache.put(event.request, R.clone());
@@ -119,5 +124,3 @@ self.addEventListener('fetch', function(event) {
 	    return caches.match("not-found.html?v8");
 	}));
 });
-
-

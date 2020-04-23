@@ -487,8 +487,7 @@ include(ABSPATH . "script/php/header.php");
 	 img_attach = parent.querySelector('._back_img_attach').value.trim(),
 	 img_pos = parent.querySelector('._back_img_pos').value.trim(),
 	 img_op = parent.querySelector('._back_img_op').value.trim();
-     img = encodeURIComponent(img);
-     set_cookie('backimg', img);
+     set_cookie('backimg', encodeURIComponent(img));
      set_cookie('backimgsize', img_size);
      set_cookie('backimgrepeat', img_repeat);
      set_cookie('backimgattach', img_attach);
