@@ -37,7 +37,7 @@ var ar2IL = ar2IL || function (s) {
 		     ["و", "u", "w"]];
     const bizroke = 'i';
     const v = "ەeێêۆoاaiuîû";
-    const n = "قwرڕتyئحعپسشدفگغهژکلڵزخجچڤبنم";
+    const n = "قwرڕتyئحعپسشدفگغهژکلڵزخجچڤبنمھ";
     function is_v (ch) { return is_x(ch, v) }
     function determine_notsure (R, str) {
 	const pos = R[0];
@@ -50,17 +50,19 @@ var ar2IL = ar2IL || function (s) {
 	const prev_v = is_v(prev_ch);
 	const next_v = is_v(next_ch);
 	let i = 1; // v
-	if(!(is_x(str, ["و","وو"]) || (prev_ch == ch_v && !next_v)) && 
+	if(!(is_x(str, ["و","وو","ی","یی"]) || (prev_ch == ch_v && !next_v)) && 
 	   (pos == 0 || prev_v || next_v ||
-	    (prev_ch != ch_n && (ch+next_ch) == "وی" &&
-	     !is_v(L(str, pos+2)) && pos !== 1))) i = 2; // c
+	    (prev_ch != ch_n && !is_v(L(str, pos+2)) && pos !== 1 &&
+	     ((ch+next_ch) == "وی" ||
+	      (is_v(L(str, pos-2)) && prev_ch == "y"))))) i = 2; // c
 	return i;
     }
     return replace_sure(add_bizroke(replace_notsure(s, notsure, determine_notsure),
 				    n, bizroke), [["uu", "û"], ["îî", "î"]]);
 }
 var ar2lat = ar2lat || function (s) {
-    const sure = [["ە", "e"],
+    const sure = [["ھ", "h"],
+		  ["ە", "e"],
 		  ["ێ", "ê"],
 		  ["ۆ", "o"],
 		  ["ا", "a"],
@@ -118,11 +120,13 @@ var ar2per = ar2per || function (s) {
 		  ["y", "ی"],
 		  ["î", "ی"],
 		  ["i", "\u{652}"]];
-    const n = "قرڕتئحعپسشدفگغهژکلڵزخجچڤبنم";
+    const n = "قرڕتئحعپسشدفگغهژکلڵزخجچڤبنمھ";
+    const v = "ەێۆاuûîi";
     /* Tashdid */
-    function add_tashdid (str, n, tashdid="\u{651}") {
+    function add_tashdid (str, n, v, tashdid="\u{651}") {
 	for (let i = 0; i < str.length-2; i++) {
-	    if(str[i] == str[i+1] && is_x(str[i], n))
+	    if(str[i] == str[i+1] && is_x(str[i], n) &&
+	       is_x(str[i-1], v) && is_x(str[i+2], v))
 		str = str_replace_pos(
 		    str[i]+str[i], str[i]+tashdid, str, i);
 	}
@@ -136,7 +140,7 @@ var ar2per = ar2per || function (s) {
 	    return str_replace_pos("اا", "آ", s, 0);
 	return s;
     }
-    return replace_sure(add_tashdid(determine_hemze(ar2IL(s)), n), sure);
+    return replace_sure(add_tashdid(determine_hemze(ar2IL(s)), n, v), sure);
 }
 
 var transliterate_ar2lat = transliterate_ar2lat || function (str) {
@@ -871,7 +875,7 @@ var ajax = ajax || function (parent='body', target='#MAIN')
     });
 }
 
-ajax();
+try { ajax() } catch (e) {}
 
 var ajax_popstate = ajax_popstate || function ()
 {
@@ -909,42 +913,44 @@ var ajax_popstate = ajax_popstate || function ()
 }
 
 window.onpopstate = ajax_popstate;
-/* Check if bookmarks? */
-const bookmarksIcon = document.getElementById('tL'),
-      favs = get_bookmarks(),
-      tS = document.getElementById('tS'),
-      bookmarksIconLeft = bookmarksIcon.style.left;
-if(favs)
-{
-    if(bookmarksIcon)
+try {
+    /* Check if bookmarks? */
+    const bookmarksIcon = document.getElementById('tL'),
+	  favs = get_bookmarks(),
+	  tS = document.getElementById('tS'),
+	  bookmarksIconLeft = bookmarksIcon.style.left;
+    if(favs)
     {
-        bookmarksIcon.style.display = "block";
-	if(tS)
+	if(bookmarksIcon)
 	{
-	    if(bookmarksIconLeft)
-		bookmarksIcon.style.left = "1.3em";
+            bookmarksIcon.style.display = "block";
+	    if(tS)
+	    {
+		if(bookmarksIconLeft)
+		    bookmarksIcon.style.left = "1.3em";
+		else
+		    bookmarksIcon.style.right = "1.3em";
+	    }
 	    else
-		bookmarksIcon.style.right = "1.3em";
-	}
-	else
-	{
-	    if(bookmarksIconLeft)
-		bookmarksIcon.style.left = "0";
-	    else
-		bookmarksIcon.style.right = "0";
+	    {
+		if(bookmarksIconLeft)
+		    bookmarksIcon.style.left = "0";
+		else
+		    bookmarksIcon.style.right = "0";
+	    }
 	}
     }
-}
 
-document.getElementById("search-form").
-    addEventListener("submit", function(e) {
-	const Key = document.getElementById("search-key");
-	if(Key.value == "")
-	{
-            e.preventDefault();
-            Key.focus();
-	}
-    });
+    document.getElementById("search-form").
+	addEventListener("submit", function(e) {
+	    const Key = document.getElementById("search-key");
+	    if(Key.value == "")
+	    {
+		e.preventDefault();
+		Key.focus();
+	    }
+	});
+} catch (e) {}
 
 try
 {
