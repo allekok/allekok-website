@@ -22,14 +22,14 @@ include(ABSPATH . 'script/php/header.php');
      font-family:'kurd', monospace;
      margin:.5em 0;
  }
- #dev-main h2, #dev-main h3 {
+ #dev-main h2, #dev-main h3, #dev-main h4 {
      text-align:right;
      padding-top:.5em;
      margin-top:.5em;
      color:<?php echo $_colors[2]; ?>;
  }
  #dev-main p {
-     text-indent:2em; padding:1em 0
+     padding:1em 0
  }
  #dev-main a {
      margin:0;
