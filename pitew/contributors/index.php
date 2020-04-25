@@ -93,9 +93,15 @@ include(ABSPATH . "script/php/header.php");
 	    echo "<a target='_blank' href='{$E[2]}' title='وەشانی plain/text'
 ><i class='material-icons'>insert_drive_file</i></a>";
 	    echo 'ئەژمار: ';
+	    echo '<i style="padding-left:2em">';
+	    echo num_convert(
+		number_format(
+		    $contributions_poems[0][1]),'en','ckb');
+	    echo 'کەس</i><i>';
 	    echo num_convert(
 		number_format(
 		    array_shift($contributions_poems)[0]),'en','ckb');
+	    echo 'جار</i>';
 	    echo '</i>';
 	    $n = 1;
 	    foreach($contributions_poems as $e) {
@@ -143,8 +149,8 @@ style='font-size:inherit;display:inline-block'\
      }
  }
  document.querySelectorAll('.epld-expand').forEach(function (o)
- {
-     o.onclick = function () {expand(o)}
+     {
+	 o.onclick = function () {expand(o)}
  });
 </script>
 <?php

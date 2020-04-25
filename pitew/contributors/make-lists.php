@@ -113,7 +113,7 @@ function sum ($array) {
 
 function save ($uri, $array) {
     $f = fopen($uri, 'w');
-    fwrite($f, sum($array) . "\t*\n");
+    fwrite($f, sum($array) . "\t" . count($array) . "\t*\n");
     foreach($array as $e) {
 	fwrite($f, implode("\t", $e) . "\n");
     }
