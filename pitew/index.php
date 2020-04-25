@@ -24,7 +24,7 @@ $_book1 = isset($_GET['book']) ?
  }
 </style>
 <div id="poets">
-    <div id='adrs'>
+    <div id='adrs' style="font-size:.9em">
 	<a href="first.php">
 	    پتەوکردنی ئاڵەکۆک
 	</a>
@@ -35,8 +35,8 @@ $_book1 = isset($_GET['book']) ?
 	</div>
     </div>
     
-    <div style="max-width:800px;margin:auto">
-	<div style='font-size:.53em;text-align:right;padding:0 1em 1em'>
+    <div>
+	<div style='font-size:.6em;text-align:right;padding:.5em 1em 1.5em'>
 	    دەتوانن بۆ نووسینەوەی شێعر ئەم دیوانانە بەکار بهێنن: 
 	    <a class='link-underline'
 	       style='display:inline-block;padding:0' href="pdfs.php">
@@ -50,10 +50,6 @@ $_book1 = isset($_GET['book']) ?
 		       value="<?php echo $_name1; ?>"
 		       placeholder="نێوی خۆتان لێرە بنووسن.">
 	    </div>
-	    <div id="pitew-stats"
-		 style="text-align:right;text-indent:1em;
-		     padding:.5em 1em 0;font-size:.53em"
-	    >ئەو شێعرە بە نێوی خۆتان لەسەر ئاڵەکۆک دادەندرێ.</div>
             <div class="border-eee" style="margin:.8em 0"></div>
 	    <div class="input-label-box-index">
 		<label for="poetTxt">شاعیر: </label>
@@ -240,32 +236,15 @@ $_book1 = isset($_GET['book']) ?
  }
  document.getElementById('poetTxt').onblur = check;
  <?php
- if(!$no_head)
-     echo 'window.onload = function() { ';
-
- if($_poet1)
-     echo 'check();';
+ if(!$no_head) echo 'window.onload = function() { ';
+ if($_poet1) echo 'check();';
  ?>
  const contri = isJson(localStorage.getItem('contributor'));
- if(contri && contri.name)
- {
+ if(contri && contri.name) {
      document.getElementById('contributorTxt').value = contri.name;
      document.getElementById('poems-list').href += '?name=' + contri.name;
-     
-     getUrl(`stats.php?contributor=${contri.name}`, function(responseText)
-	 {
-             if(responseText)
-	     {
-		 const res = document.getElementById('pitew-stats');
-		 res.innerHTML = 'جەنابتان تا ئێستا ' + responseText + 
-				 ' شێعرتان لەسەر ئاڵەکۆک نووسیوەتەوە.';
-		 res.style.animation = 'tL 1.2s ease forwards';
-             }
-     });
  }
- <?php
- if(!$no_head) echo ' } ';
- ?>
+ <?php if(!$no_head) echo ' } '; ?>
 </script>
 <?php
 include_once(ABSPATH . "script/php/footer.php");

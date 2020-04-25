@@ -42,13 +42,12 @@ include(ABSPATH . 'script/php/header.php');
      color:<?php echo $_colors[2]; ?>;
  }
  #pdfs-search #filter-txt {
-     max-width: 1200px;
      width: 100%;
      font-size: .65em;
      margin-bottom:.5em;
  }
 </style>
-<div id="poets" style="max-width:1000px">
+<div id="poets">
     
     <div id='adrs'>
         <a href="first.php">

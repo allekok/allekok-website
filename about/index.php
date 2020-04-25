@@ -73,7 +73,7 @@ include(ABSPATH."script/php/header.php");
 		بیر و ڕاکان
             </h1>
             <div id="Acomms"
-		 style="font-size:.6em;max-width:800px;
+		 style="font-size:.6em;
 		     background:white;border-radius:1em;
 		     margin:auto">
 		<div class="loader" style="padding:0"></div>

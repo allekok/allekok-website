@@ -3,7 +3,7 @@ include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = $_TITLE . " &rsaquo; بیر و ڕاکان";
+$title = $_TITLE . " &rsaquo; پەراوێز";
 $desc = "بیر و ڕای ئێوە سەبارەت بە شێعرەکان";
 $keys = $_KEYS;
 $t_desc = "";
@@ -24,7 +24,7 @@ $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE ?
 <div id="poets">
     <h1 class="color-blue"
 	       style="font-size:1em;text-align:right">
-        بیر و ڕاکان
+        پەراوێز
     </h1>
     <div class="tools-menu" style="font-size:.6em;padding-right:2em;margin-bottom:1em">
 	<div style="display:flex;font-size:1.15em">

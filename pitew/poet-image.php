@@ -69,8 +69,7 @@ include(ABSPATH . 'script/php/header.php');
     <!-- file upload sec -->
     <form id="frmUpload" method="POST"
 	  enctype="multipart/form-data"
-	  style="max-width:800px;margin:auto;
-	      padding-top:1em;font-size:.7em">
+	  style="padding-top:1em;font-size:.7em">
 	<div class="input-label-box-poet-image">
             <input type="text" id="cntriTxt" name="cntri"
 		   style="font-size:1em;width:100%"

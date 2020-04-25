@@ -22,7 +22,7 @@ $_poet1 = isset($_GET['poet']) ?
  }
 </style>
 <div id="poets">
-    <div id='adrs'>
+    <div id='adrs' style="margin-bottom:1em">
 	<a href="first.php">
 	    پتەوکردنی ئاڵەکۆک
 	</a>
@@ -33,7 +33,7 @@ $_poet1 = isset($_GET['poet']) ?
 	</div>
     </div>
     
-    <div style="max-width:800px;margin:auto">    
+    <div>    
 	<script>
 	 
 	</script>

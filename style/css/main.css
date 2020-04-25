@@ -31,7 +31,6 @@ body
     font-size:24px;
     line-height:2.5;
     padding:.5em;
-    max-width:1000px;
     margin:0 auto;
     position:relative
 }
@@ -281,7 +280,6 @@ header a h1
 #poet-info
 {
     margin-top:1em;
-    max-width:1000px
 }
 .bks,.poetdesc
 {
@@ -355,7 +353,6 @@ header a h1
 #search
 {
     width:100%;
-    max-width:1200px;
     display:none;
     margin:0 auto .5em
 }
@@ -375,7 +372,6 @@ header a h1
     display:none;
     padding:1em .3em;
     position:relative;
-    max-width:850px;
     margin:auto
 }
 #search-res a
@@ -555,7 +551,7 @@ header a h1
 .d
 {
     font-size:.85em;
-    padding:1em
+    padding:.5em
 }
 .dltr
 {
