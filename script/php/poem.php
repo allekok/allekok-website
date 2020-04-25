@@ -213,16 +213,6 @@ style='display:inline-block'
 	    ?>
 	</article>
     </div>
-    <script>
-     /* Set poem font size */
-     document.getElementById('hon').
-	      style.fontSize = function(s)
-     {
-	 if(s !== null && !isNaN(s))
-	     return `${s}px`;
-     }
-     (localStorage.getItem('fontsize'));
-    </script>
     <!-- Poem description -->
     <?php if($row[1]['hdesc']) { ?>
 	<span id='bhondesc' style='display:block'>
@@ -278,7 +268,7 @@ style='display:inline-block'
     <!-- Comments -->
     <h1 class="color-blue"
 	       style="font-size:1em;text-align:right;padding-top:.5em">
-	بیر و ڕاکان
+	پەراوێز
     </h1>
     <div id="hon-comments">
 	<div style="padding:.5em 0;font-size:.6em;text-align:right">
@@ -310,6 +300,14 @@ style='display:inline-block'
 	<div id='hon-comments-body'></div>
     </div>
     <script>
+     /* Set poem font size */
+     document.getElementById('hon').
+	      style.fontSize = function(s)
+     {
+	 if(s !== null && !isNaN(s))
+	     return `${s}px`;
+     }
+     (localStorage.getItem('fontsize'));
      const pID = <?php echo $info['id']; ?>,
 	   bID = <?php echo $bk; ?>,
 	   mID = <?php echo $row[1]['id']; ?>;
