@@ -457,13 +457,13 @@ if($dbcache=='') {
 		<option value=''></option>
 		<?php
 		$db = _DEFAULT_DB;
-		$q='SELECT * FROM auth';
+		$q='SELECT * FROM auth ORDER BY takh ASC';
 		require(ABSPATH.'script/php/condb.php');
 		if(mysqli_num_rows($query)) {
 		    while($row=mysqli_fetch_assoc($query)) {
 		?>
 		    <option value="tbl<?php echo $row['id'] ?>" <?php $seldb="tbl" . $row['id']; if($dbcache == $seldb) { echo 'selected'; }?>>
-			<?php echo $row['profname']; ?>
+			<?php echo $row['takh']; ?>
 		    </option>
 		    
 		<?php } } mysqli_close($conn); ?>
@@ -481,7 +481,8 @@ if($dbcache=='') {
 			if($rbks[$i]!=='') {
 			    $b = $i+1;
 			    $seltbl="_" . $b; if($tblcache == $seltbl) { $seltbllabel='selected'; }
-			    echo("<option value='_" . $b . "' " . $seltbllabel . ">" . $rbks[$i] . "</option>");
+			    echo("<option value='_" . $b . "' " . $seltbllabel . ">" . num_convert($i+1,"en","ckb") . 
+				 ". " . $rbks[$i] . "</option>");
 			    $seltbllabel = "";
 			}
 		    }
