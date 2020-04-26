@@ -12,7 +12,7 @@ include(ABSPATH."script/php/header.php");
 ?>
 <div id="poets">
     <h1 class="color-blue"
-	style="font-size:1em;text-align:right">
+	       style="font-size:1em;text-align:right">
 	سەبارەت
     </h1>
     <div style="text-align:right;font-size:.6em;padding-right:1em">
@@ -64,34 +64,31 @@ include(ABSPATH."script/php/header.php");
 	$nzuri = file_exists($uri) ?
 		 filesize($uri)>0 :
 		 false;
-	if($nzuri) {
 	?>
-            <h1 id="Acomms-title" class="color-blue"
+        <h1 id="Acomms-title" class="color-blue"
 		style="text-align:right;
-		    margin:0 0 .5em;
-		    font-size:1em">
-		بیر و ڕاکان
-            </h1>
-            <div id="Acomms"
-		 style="font-size:.6em;
-		     background:white;border-radius:1em;
-		     margin:auto">
-		<div class="loader" style="padding:0"></div>
-		<script>
-		 <?php if(!$no_head) { ?>
-		 window.addEventListener("load", function () {
-		 <?php } ?>
-		     getUrl("about-comments.php", function (html) {
-			 document.getElementById("Acomms").innerHTML = html;
-		     });
-		     <?php if(!$no_head) { ?>
+		margin:0 0 .5em;
+		font-size:1em
+		<?php if(!$nzuri) echo ";display:none" ?>">
+	    پەراوێز
+        </h1>
+        <div id="Acomms"
+	     style="font-size:.6em;
+		 background:white;border-radius:1em;
+		 margin:auto<?php if(!$nzuri) echo ";display:none" ?>">
+	    <div class="loader" style="padding:0"></div>
+	    <script>
+	     <?php if(!$no_head) { ?>
+	     window.addEventListener("load", function () {
+	     <?php } ?>
+		 getUrl("about-comments.php", function (html) {
+		     document.getElementById("Acomms").innerHTML = html;
 		 });
-		     <?php } ?>
-		</script>
-		<?php
-		} // $nzuri
-		?>
-	    </div>
+		 <?php if(!$no_head) { ?>
+	     });
+		 <?php } ?>
+	    </script>
+	</div>
     </div>
 </div>
 </div>

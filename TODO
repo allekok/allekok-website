@@ -6,13 +6,14 @@
 * DONE Make (2nd DONE) optional, adjustable in 'customize/index.php'
 * DONE Add poem navigation part after poem context as well.
 * DONE (/script/php/search.php) Fix search poet names bug + Add more options
+* DONE (about/index.php) Fix the error on submitting very first comment.
 * TODO Let users verify poems and publish them by doing some heavy work on cpu. something like mining Bitcoin.
 * TODO Build PDFs from text.
 * TODO (/script/php/book.php) Let users download a whole book (ie. build PDFs).
 * TODO (/script/php/book.php) Link to reference pdfs located in (/pitew/pdfs.php).
 * TODO (/customize/package) Build a package system.
-* TODO (about/index.php) Fix the error on submitting very first comment.
 * TODO Make 'Allekok' less server-dependent. Try not to download poems that had been viewed before and haven't changed since then. (like 'allekok-client' but more intelligent)
 * TODO news.txt: Group following poems of the same book in one entry
 * TODO Correct links to 'vejinbooks.com' + Add a search link instead.
 * TODO (pitew/*) Show copyright notice for contributors.
+* TODO Users should be able to write comments on all pages.
