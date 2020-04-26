@@ -12,6 +12,10 @@ $t_desc = "";
 include(ABSPATH . 'script/php/header.php');
 ?>
 <script>
+ document.querySelector("header").style.display = "none";
+ window.onload = () =>
+     document.querySelector("footer").style.display = "none";
+ document.body.style.padding = "0 1em";
  function chDirection() {
      var poem = document.getElementById("hon");
      if(poem.style.direction=="rtl") {
@@ -209,13 +213,11 @@ include(ABSPATH . 'script/php/header.php');
 </script>
 <style>
  #poets * {
-     font-size:18px;
+     font-size:14px;
  }
  
  form {
      width:100%;
-     max-width:1000px;
-     margin:0 auto;
  }
  
  input[type=text], textarea {
@@ -225,47 +227,44 @@ include(ABSPATH . 'script/php/header.php');
  }
  
  input[type=text] {
-     margin-bottom:15px;
+     margin-bottom:.2em;
+     padding:.5em 1em;
+     border-radius:.5em
  }
  input[name=row] {
-     text-align:left;
+     text-align:center;
+     direction:ltr;
  }
  textarea {
-     height:30em;
-     min-height:30em;
-     margin-bottom:20px;
+     height:27em;
      max-width:100%;
      direction:ltr;
      text-align:left;
  }
  .not {
-     padding:10px 5px;
-     margin:0 auto 10px;
      text-align:center;
+     display:inline-block;
  }
  .r {
-     background-color:rgba(255,0,0,0.1);
+     color:<?php echo $_colors[3] ?>;
  }
  .g {
-     background-color:rgba(0,255,0,0.1);
+     color:<?php echo $_colors[2] ?>;
  }
  select {
-     width:60%;
-     padding:5px 1.5%;
+     width:100%;
      margin-right:20px;
-     border-radius:1em;
+     border-radius:.5em;
      outline:0;
-     border:2px solid #fff;
-     margin-bottom:10px;
-     background:#000;
-     color:#fff;
+     border:2px solid <?php echo $_colors[1]; ?>;
+     margin-left:1em;
+     background:<?php echo $_colors[0]; ?>;
+     color:<?php echo $_colors[1]; ?>;
  }
  #poets button {
-     margin:15px .5%;
-     padding:10px 0;
+     margin:0 .5% .2em;
      border:2px solid <?php echo $_colors[1]; ?>;
-     border-radius:1em;
-     cursor:pointer;
+     border-radius:.5em;
      width:24%;
      text-align:center;
      float:right;
@@ -273,27 +272,25 @@ include(ABSPATH . 'script/php/header.php');
  }
  
  #poets a {
-     padding: 0.15em 0 0.05em;
      text-align: center;
-     font-size:1em;
      margin:0 1em;
  }
  #toolbox {
-     text-align:center;
-     padding:1em 0;
+     text-align:right;
+     display:inline-block
  }
  #tools {
      text-align:center;
  }
  #tools button {
      width:auto;
-     padding:0.2em 0.4em;
+     padding:0 0.4em;
      font-size:0.7em;
      margin:0 0.2em 0.5em;
  }
 </style>
-
 <div id="poets">
+<div>
     <div id="toolbox">
         <a onclick="event.preventDefault();window.open('<?php echo _SITE; ?>script/php/admin/sitemap.php', '_blank','width=300,height=320','')" href="sitemap.php">
             زیاد کردن
@@ -355,8 +352,7 @@ if($dbcache=='') {
 	    $link = $pre_link . "/poem:{$res["id"]}";
 	    echo("<div class='not g'>
 					دۆزیمەوە!
-<br>
-<a style='display:block' href='/{$link}' target='_blank'>$link</a>
+<a href='/{$link}' target='_blank'>$link</a>
 					</div>");
 	} else {
 	    $q = "UPDATE `" . $_tbl . "` SET `id`=$rowd,`name`='$name',`hon`=" . '"'.$hon . '"' . ",`hdesc`='$hdesc' WHERE id=" . $rowd;
@@ -370,8 +366,7 @@ if($dbcache=='') {
 		$link = $pre_link . "/poem:{$rowd}";
 		echo("<div class='not g'>
 						شیعرەکە بەڕۆژ بۆوە!
-<br>
-<a style='display:block' href='/{$link}' target='_blank'>$link</a>
+<a href='/{$link}' target='_blank'>$link</a>
 						</div>");
 		
 		$f = fopen("../../../desktop/update/books/update-version.txt","r+");
@@ -417,8 +412,7 @@ if($dbcache=='') {
 	    $link = $pre_link . "/poem:{$rowd}";
 	    echo("<div class='not g'>
 					ئەم شیعرە بە ئاڵەکۆکەوە زیادکرا!
-<br>
-<a style='display:block' href='/{$link}' target='_blank'>$link</a>
+<a href='/{$link}' target='_blank'>$link</a>
 					</div>");
 	    
 	    $f = fopen("../../../desktop/update/books/update-version.txt","r+");
@@ -455,50 +449,51 @@ if($dbcache=='') {
     }
 }
 ?>
-
-    <form method='POST' id='frmbash'>
-	شاعیر: 
-	<select name='db' onchange='form.submit()'>
-	    <option value=''></option>
-	    <?php
-	    $db = _DEFAULT_DB;
-	    $q='SELECT * FROM auth';
-	    require(ABSPATH.'script/php/condb.php');
-	    if(mysqli_num_rows($query)) {
-		while($row=mysqli_fetch_assoc($query)) {
-	    ?>
-	    <option value="tbl<?php echo $row['id'] ?>" <?php $seldb="tbl" . $row['id']; if($dbcache == $seldb) { echo 'selected'; }?>>
-		<?php echo $row['profname']; ?>
-	    </option>
-	    
-	    <?php } } mysqli_close($conn); ?>
-	</select>
-	<br />
-	کتێب: 
-	<select name='tbl'>
-	    <?php
-	    $db = _DEFAULT_DB;
-	    $q = 'SELECT * FROM auth WHERE id='. substr($dbcache,3);
-	    require(ABSPATH.'script/php/condb.php');
-	    if($query) {
-		$row = mysqli_fetch_assoc($query);
-		$rbks = explode(',',$row['bks']);
-		for($i=0;$i<count($rbks);$i++) {
-		    if($rbks[$i]!=='') {
-			$b = $i+1;
-			$seltbl="_" . $b; if($tblcache == $seltbl) { $seltbllabel='selected'; }
-			echo("<option value='_" . $b . "' " . $seltbllabel . ">" . $rbks[$i] . "</option>");
-			$seltbllabel = "";
+</div>
+<form method='POST' id='frmbash'>
+    <div style="display:flex;margin-bottom:.5em">
+	<p>شاعیر: </p>
+	    <select name='db' onchange='form.submit()'>
+		<option value=''></option>
+		<?php
+		$db = _DEFAULT_DB;
+		$q='SELECT * FROM auth';
+		require(ABSPATH.'script/php/condb.php');
+		if(mysqli_num_rows($query)) {
+		    while($row=mysqli_fetch_assoc($query)) {
+		?>
+		    <option value="tbl<?php echo $row['id'] ?>" <?php $seldb="tbl" . $row['id']; if($dbcache == $seldb) { echo 'selected'; }?>>
+			<?php echo $row['profname']; ?>
+		    </option>
+		    
+		<?php } } mysqli_close($conn); ?>
+	    </select>
+	    <p>کتێب: </p>
+	    <select name='tbl'>
+		<?php
+		$db = _DEFAULT_DB;
+		$q = 'SELECT * FROM auth WHERE id='. substr($dbcache,3);
+		require(ABSPATH.'script/php/condb.php');
+		if($query) {
+		    $row = mysqli_fetch_assoc($query);
+		    $rbks = explode(',',$row['bks']);
+		    for($i=0;$i<count($rbks);$i++) {
+			if($rbks[$i]!=='') {
+			    $b = $i+1;
+			    $seltbl="_" . $b; if($tblcache == $seltbl) { $seltbllabel='selected'; }
+			    echo("<option value='_" . $b . "' " . $seltbllabel . ">" . $rbks[$i] . "</option>");
+			    $seltbllabel = "";
+			}
 		    }
 		}
-	    }
-	    mysqli_close($conn);
-	    ?>
-	</select>
-	<br />
-	<input placeholder='ژمارەی شیعر' id='row' name='row' type='text' value="<?php  echo $rowd;  ?>" />
-	<input placeholder='ناوی شیعر' id='name' name='name' type='text' value="<?php  echo $name;  ?>" />
-	<div id="search-res"></div>
+		mysqli_close($conn);
+		?>
+	    </select>
+	</div>
+	<div style="display:flex">
+	    <input style="width:15%;margin-left:.2em" placeholder='ژمارە' id='row' name='row' type='text' value="<?php  echo $rowd;  ?>" />
+	    <input placeholder='ناوی شیعر' id='name' name='name' type='text' value="<?php  echo $name;  ?>" />
+	</div>
 	<input placeholder='لە بارەی ئەم شیعرەدا' id='hdesc' name='hdesc' type='text' value="<?php  echo $hdesc;  ?>" />
 	<div style='text-align:center'>
 	    <button type='button' onclick="next()">دوایی</button>
@@ -512,8 +507,10 @@ if($dbcache=='') {
 	
 	<div id="tools">
 	    <button class='button' type='button' onclick="make_mdcf()">m d cf</button><button class='button' type='button' onclick="make_b()">b</button><button class='button' type='button' onclick="make_n()">n</button><button class='button' type='button' onclick="make_mptr()">m ptr</button><button class='button' type='button' onclick="make_ptrptrh()">ptr ptrh</button><button class='button' type='button' onclick="nbr_convert()" style="direction:ltr">\n -> br</button><button class='button' type='button' onclick="make_sup()">sup</button><button class='button' type='button' onclick="num_convert()">ژمارەی کوردی</button><button class="button" type="button" onclick="chDirection()">RTL<>LTR</button>
-		<input type="text" id="getPitewIdTxt" placeholder="Pitew id" />
-		<button type="button" id="getPitewBtn" onclick="getPitew()">getPitew</button>
+		<div style="display:flex;width:100%;margin-bottom:.5em;border:1px solid;border-radius:.5em">
+		    <input style="margin:0;border:0" type="text" id="getPitewIdTxt" placeholder="ژمارەی شێعری ناردراو" />
+		    <button style="margin:0 .5em 0 0;border:0;padding:0 2em" type="button" id="getPitewBtn" onclick="getPitew()">وەرگرتن</button>
+		</div>
 		<script>
 		 const getPitewIdTxt = document.getElementById('getPitewIdTxt');
 		 getPitewIdTxt.value = localStorage.getItem('pitew-id');
