@@ -1,3 +1,4 @@
+/* -*- compile-command: "cd ../.. && make" -*- */
 const _R = _relativePath || "/";
 const _R_LEN = _R.length;
 var bookmarks_name = bookmarks_name || 'favorites';
@@ -171,12 +172,12 @@ var replace_notsure = replace_notsure || function (str, notsure, determine_fun, 
 }
 
 var assoc_first = assoc_first || function (str, arr, i=0, off=0) {
-    let pos, poses = [];
-    for(const o of arr)
-	if(-1 !== (pos = str.indexOf(o[i], off)))
-	    poses.push([pos, o]);
-    poses.sort();
-    return poses.length ? poses[0] : false;
+    const str_len = str.length;
+    for(let j = off; j < str_len; j++)
+	for(const o of arr)
+	    if(o[i] == str[j])
+		return [j, o];
+    return false;
 }
 
 var L = L || function (str, pos, len=1) { return str.substr(pos, len); }
@@ -830,8 +831,7 @@ var ajax_savestate = ajax_savestate || function (url,content)
 
 var ajax = ajax || function (parent='body', target='#MAIN')
 {
-    const t = document.querySelector(target),
-	  p = document.querySelector(parent),
+    const p = document.querySelector(parent),
 	  loading = document.getElementById('main-loader');
     
     p.querySelectorAll('a').forEach(function (o) {
@@ -847,26 +847,13 @@ var ajax = ajax || function (parent='body', target='#MAIN')
 		    
 		    const url = concat_url_query(href, 'nohead&nofoot');
 
-		    let content = "";
+		    let content;
 		    if(ajax_save_p && (content = ajax_findstate(url)))
-		    {
-			window.history.pushState({url: url}, '', href);
-			window.scrollTo(0,0);
-			t.outerHTML = content;
-			eval_js(content);
-			ajax(parent, target);
-			loading.style.display = 'none';
-		    }
-		    else
-		    {
-			getUrl(url, function (response) {
-			    window.history.pushState({url: url}, '', href);
-			    window.scrollTo(0,0);
-			    t.outerHTML = response;
-			    eval_js(response);
-			    ajax(parent, target);
-			    loading.style.display = 'none';
-			    ajax_savestate(url, response);
+		    { ajax_load(url, href, content, parent, target, loading); }
+		    else {
+			getUrl(url, function (content) {
+			    ajax_load(url, href, content, parent, target, loading);
+			    ajax_savestate(url, content);
 			});
 		    }
 		}
@@ -875,7 +862,15 @@ var ajax = ajax || function (parent='body', target='#MAIN')
     });
 }
 
-try { ajax() } catch (e) {}
+var ajax_load = ajax_load || function (url, href, content, parent, target, loading) {
+    const t = document.querySelector(target);
+    window.history.pushState({url: url}, '', href);
+    window.scrollTo(0,0);
+    t.outerHTML = content;
+    eval_js(content);
+    ajax(parent, target);
+    loading.style.display = 'none';
+}
 
 var ajax_popstate = ajax_popstate || function ()
 {
@@ -911,6 +906,8 @@ var ajax_popstate = ajax_popstate || function ()
 	});
     }
 }
+
+try { ajax() } catch (e) {}
 
 window.onpopstate = ajax_popstate;
 try {
