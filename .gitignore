@@ -18,6 +18,7 @@ script/js/main-comp.js
 style/img/poets/new/*.jpeg
 style/img/poets/new/*.png
 style/img/poets/new/*.txt
+style/css/main-comp.css
 
 # pitew
 pitew/contributors/*.txt
