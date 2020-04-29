@@ -144,17 +144,11 @@ var ar2per = ar2per || function (s) {
     return replace_sure(add_tashdid(determine_hemze(ar2IL(s)), n, v), sure);
 }
 
-var transliterate_ar2lat = transliterate_ar2lat || function (str) {
-    return apply_to_words(str, function(x) {
-	return ar2lat(x);
-    });
-}
+var transliterate_ar2lat = transliterate_ar2lat || function (str)
+{ return apply_to_words(str, (w) => ar2lat(w)) }
 
-var transliterate_ar2per = transliterate_ar2per || function (str) {
-    return apply_to_words(str, function(x) {
-	return ar2per(x);
-    });
-}
+var transliterate_ar2per = transliterate_ar2per || function (str)
+{ return apply_to_words(str, (w) => ar2per(w)) }
 
 var replace_sure = replace_sure || function (str, sure, f=0, t=1) {
     for(const o of sure)
