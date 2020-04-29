@@ -1,7 +1,7 @@
 ## داگرتنی کۆدەکانی ئاڵەکۆک
-- [کۆدەکانی ماڵپەڕی ئاڵەکۆک](https://github.com/allekok/allekok-website)
-- [شێعرەکانی ئاڵەکۆک](https://github.com/allekok/allekok-poems)
-- [کەرەستەکانی‌تری ئاڵەکۆک](https://github.com/allekok/allekok-downloads)
+- <a target='_blank' href='https://github.com/allekok/allekok-website'>کۆدەکانی ماڵپەڕی ئاڵەکۆک</a>
+- <a target='_blank' href='https://github.com/allekok/allekok-poems'>شێعرەکانی ئاڵەکۆک</a>
+- <a target='_blank' href='https://github.com/allekok/allekok-downloads'>کەرەستەکانی‌تری ئاڵەکۆک</a>
 ## API
 سەرنج بدەن: بەهاتنی وەشانی نوێی ئەم APIـانە قەت وەشانی پێشووتریان لەکار ناکەوێ.  
 سەرنج بدەن: تەواوی ئەو زانیاریانە بە فۆرمەتی JSON لە ئیختیارو دادەندرێ.  
