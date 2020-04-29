@@ -650,7 +650,7 @@ var san_data = san_data || function (inp="", lastChance=false)
 	/&laquo;/g, /&raquo;/g, /&rsaquo;/g, /&lsaquo;/g,
 	/&bull;/g, /&nbsp;/g, /\?/g, /!/g, /#/g, /&/g,
 	/\*/g, /\(/g, /\)/g, /-/g, /\+/g, /=/g, /_/g,
-	/\[/g, /\]/g, /{/g, /}/g, /</g, />/g, /\//g, /\|/,
+	/\[/g, /\]/g, /{/g, /}/g, /</g, />/g, /\//g, /؍/g, /\|/,
 	/\'/g, /\"/g, /;/g, /:/g, /,/g, /\./g, /~/g, /`/g,
 	/؟/g, /،/g, /»/g, /«/g, /ـ/g, /›/g, /‹/g, /•/g, /‌/g,
 	/\s+/g, /؛/g,
