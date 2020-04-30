@@ -51,11 +51,11 @@ var ar2IL = ar2IL || function (s) {
 	const prev_v = is_v(prev_ch);
 	const next_v = is_v(next_ch);
 	let i = 1; // v
-	if(!(is_x(str, ["و","وو","ی","یی"]) || (prev_ch == ch_v && !next_v)) && 
+	if(!(is_x(str, ["و","وو","ی","یی"]) ||
+	     (prev_ch == ch_v && !next_v && ch_v != L(str, pos-2))) && 
 	   (pos == 0 || prev_v || next_v ||
 	    (prev_ch != ch_n && !is_v(L(str, pos+2)) && pos !== 1 &&
-	     ((ch+next_ch) == "وی" ||
-	      (is_v(L(str, pos-2)) && prev_ch == "y"))))) i = 2; // c
+	     (is_v(L(str, pos-2)) && prev_ch == "y")))) i = 2; // c
 	return i;
     }
     return replace_sure(add_bizroke(replace_notsure(s, notsure, determine_notsure),
