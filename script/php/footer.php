@@ -12,7 +12,7 @@ if(!$no_foot) {
 	   >arrow_upward</i></button>
     </footer>
     <div class="loader-round" id="main-loader"></div>
-    <script defer src='<?php echo _R; ?>script/js/main-comp.js?v284'></script>
+    <script defer src='<?php echo _R; ?>script/js/main-comp.js?v285'></script>
     <script>
      /* Colors */
      let colors = [<?php
@@ -36,7 +36,7 @@ if(!$no_foot) {
      const userCodes = localStorage.getItem('user-codes') || false;
      try { eval(userCodes); }
      catch(e)
-     { console.warn(`"user-codes" Can not be evaluated.\n${e}`); }
+     { console.error(`"user-codes" Can not be evaluated.\n${e}`); }
     </script>
 </body>
 </html>
