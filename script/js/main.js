@@ -226,6 +226,9 @@ var toggle_search = toggle_search || function ()
 		Sec.style.display="none";
 		Icon.classList.remove('color-blue');
 	}
+
+	/* Clear The Search Stack */
+	sessionStorage.removeItem('searchStack');
 }
 
 var get_bookmarks = get_bookmarks || function ()
@@ -306,8 +309,11 @@ var search = search || function (e)
 		      url = `${_R}script/php/search-quick.php?q=${q}`;
 		if(currentKey == 27)
 		{
+			Res.innerHTML = "";
 			Res.style.display="none";
 			Key.value="";
+			/* Clear The Search Stack */
+			sessionStorage.removeItem('searchStack');
 			return;
 		}
 		if(noActionKeys.indexOf(currentKey) !== -1) return;
@@ -321,14 +327,34 @@ var search = search || function (e)
 			else {
 				Res.innerHTML = "<div class='loader'></div>";
 				/* Server Search */
+				searchStackPush(q);
 				getUrl(url, (response) => {
-					Res.innerHTML = response;
 					ajax_savestate(url, response);
-					findPage(q, Res);
+					if(searchStackPop(q)) {
+						Res.innerHTML = response;
+						findPage(q, Res);
+					}
 				});
 			}
 		}
 	}, 100);
+}
+
+var searchStackPush = searchStackPush || function (item) {
+	let array = isJson(sessionStorage.getItem('searchStack')) || [];
+	array.push(item);
+	sessionStorage.setItem('searchStack', JSON.stringify(array));
+}
+
+var searchStackPop = searchStackPop || function (item) {
+	let array = isJson(sessionStorage.getItem('searchStack')) || [];
+	let idx;
+	if((idx = array.lastIndexOf(item)) !== -1) {
+		array = array.slice(idx);
+		sessionStorage.setItem('searchStack', JSON.stringify(array));
+		return true;
+	}
+	return false;
 }
 
 var findPage = findPage || function (q_str, input_el) {
