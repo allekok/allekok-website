@@ -156,7 +156,7 @@ style='display:inline-block'
 			-->
 			<i class='material-icons icon-round icon-round-poem'
 			>compare_arrows</i>
-			ئەلفووبێ: 
+			ئەلفوبێ: 
 			<button class='link convertToEtcBtn' type="button"
 				style="font-size:1em;margin-right:.5em;
 				       font-weight:bold"
