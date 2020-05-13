@@ -451,14 +451,19 @@ var copyPoem = copyPoem || function ()
 		      /<div class="m dltr">/gi,
 		      /\r+/gi,
 	      ];
-	let text = document.getElementById("hon").innerHTML;
+	let title = document.getElementById("current-location").innerText.trim(),
+	    body = document.getElementById("hon").innerHTML,
+	    desc = document.getElementById("bhondesc").innerText.trim();
 	
 	for(const hc in htmlchars)
 	{
-		text = text.replace(htmlchars[hc], "");
-	}    
-	text = text.replace(/<sup>/gi, "[").replace(/<\/sup>/gi, "]");
-	text = text.replace(/\n\n+/g, "\n\n");
+		body = body.replace(htmlchars[hc], "");
+	}
+	body = body.replace(/<sup>/gi, "[").replace(/<\/sup>/gi, "]");
+	body = body.replace(/\n\n+/g, "\n\n");
+	body = body.trim();
+
+	text = title + "\n\n" + body + "\n\n" + desc;
 	text = text.trim();
 	
 	Clipboard.copy(text);
