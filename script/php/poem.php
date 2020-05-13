@@ -214,11 +214,9 @@ style='display:inline-block'
 		</article>
 	</div>
 	<!-- Poem description -->
-	<?php if($row[1]['hdesc']) { ?>
-		<span id='bhondesc' style='display:block'>
-			<?php echo $row[1]['hdesc']; ?>
-		</span>
-	<?php } ?>
+	<span id='bhondesc'<?php if(!$row[1]['hdesc']) echo "style='display:none'"; ?>>
+		<?php echo @$row[1]['hdesc']; ?>
+	</span>
 	<!-- Navigation -->
 	<div class="nav" id="bottom-nav"
 	     style="<?php 
@@ -412,11 +410,16 @@ style='display:inline-block'
 
 	 /* Tewar */
 	 const convertToEtcBtns = document.querySelectorAll(".convertToEtcBtn"),
-	       origin_poem = document.getElementById("hon").innerHTML;
+	       origin_poem_title = document.getElementById("current-location").innerHTML,
+	       origin_poem = document.getElementById("hon").innerHTML,
+	       origin_poem_desc = document.getElementById("bhondesc").innerHTML;
 	 
 	 function convert_to_etc (to="کوردی")
 	 {
-		 const tar = document.getElementById("hon");
+		 const tar = document.getElementById("hon"),
+		       title = document.getElementById("current-location"),
+		       desc = document.getElementById("bhondesc");
+		 
 		 tar.style.animation = "";
 		 void tar.offsetWidth;
 		 let props;
@@ -425,21 +428,30 @@ style='display:inline-block'
 		 else if(to == "فارسی") props = [transliterate_ar2per, "rtl"];
 		 if(to == "کوردی")
 		 {
+			 title.innerHTML = origin_poem_title;
 			 tar.innerHTML = origin_poem;
+			 desc.innerHTML = origin_poem_desc;
+			 title.style.direction = "rtl";
 			 tar.style.direction = "rtl";
+			 desc.style.direction = "rtl";
 		 }
 		 else
 		 {
+			 title.innerHTML = origin_poem_title;
 			 tar.innerHTML = origin_poem;
+			 desc.innerHTML = origin_poem_desc;
 			 apply_to_text(tar, props[0]);
+			 apply_to_text(title, props[0]);
+			 apply_to_text(desc, props[0]);
 			 if(props[1] == "ltr") {
 				 tar.querySelectorAll(".m").forEach(function (o) {
 					 o.classList.add("dltr");
 				 });
 			 }
+			 title.style.direction = props[1];
 			 tar.style.direction = props[1];
+			 desc.style.direction = props[1];
 		 }
-		 tar.style.animation = "tL .5s";
 	 }
 	 
 	 convertToEtcBtns.forEach(function (o) {
@@ -452,11 +464,10 @@ style='display:inline-block'
 				    style='vertical-align:middle;margin:1em auto'></div>";
 	 
 	 document.getElementById("wordFrm").
-		  addEventListener("submit", function(e)
-			  {
-				  e.preventDefault();
-				  const q_el = document.getElementById('wordTxt');
-				  lookup(q_el, 'wordResult');
+		  addEventListener("submit", function(e) {
+			  e.preventDefault();
+			  const q_el = document.getElementById('wordTxt');
+			  lookup(q_el, 'wordResult');
 		  });
 	 
 	 function lookup (q_el, result_el_id)
