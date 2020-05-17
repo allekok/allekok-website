@@ -36,26 +36,26 @@ $poems = [];
 
 foreach($_pms as $_pm)
 {    
-    if(! filter_var($_bk, FILTER_VALIDATE_INT))
-    {
-	$_bk = array_search($_bk, $poet['bks']);        
-        if($_bk === false) die($null);        
-        $_bk++;
-    }
-    elseif($_bk > count($poet['bks']))
-	die($null);
-    
-    $_tbl = "tbl{$poet['id']}_{$_bk}";
-    if($_pm == "all")
-	$where = "";
-    else
-	$where = filter_var($_pm, FILTER_VALIDATE_INT) ?
-		 "WHERE id=$_pm" : "WHERE name='$_pm'";
-    $q = "SELECT * FROM $_tbl $where ORDER BY id";
-    $query = mysqli_query($conn, $q);
-    
-    while($_ = mysqli_fetch_assoc($query))
-	$poems[] = $_;
+	if(! filter_var($_bk, FILTER_VALIDATE_INT))
+	{
+		$_bk = array_search($_bk, $poet['bks']);        
+		if($_bk === false) die($null);        
+		$_bk++;
+	}
+	elseif($_bk > count($poet['bks']))
+		die($null);
+	
+	$_tbl = "tbl{$poet['id']}_{$_bk}";
+	if($_pm == "all")
+		$where = "";
+	else
+		$where = filter_var($_pm, FILTER_VALIDATE_INT) ?
+			 "WHERE id=$_pm" : "WHERE name='$_pm'";
+	$q = "SELECT * FROM $_tbl $where ORDER BY id";
+	$query = mysqli_query($conn, $q);
+	
+	while($_ = mysqli_fetch_assoc($query))
+		$poems[] = $_;
 }
 mysqli_close($conn);
 if(empty($poems)) die($null);
@@ -63,16 +63,21 @@ if(empty($poems)) die($null);
 $reses_str = "شاعیر: {$poet['takh']}\nکتێب: {$poet['bks'][$_bk-1]}\n";
 foreach($poems as $k => $p)
 {
-    $p['hon'] = str_replace(["\r","&#39;","&#34;","&laquo;","&raquo;"],
-                            ["","'","\"","«","»"], $p['hon']);
-    $p['hon'] = preg_replace("/\n\n+/", "\n\n", $p['hon']);
-    $p['hon'] = trim(filter_var($p['hon'],
-				FILTER_SANITIZE_STRING));
-    
-    $reses_str .= "سەرناو: {$p["name"]}";
-    if(trim($p["hdesc"]))
-	$reses_str .= "\nلەبارەی شێعر: \n{$p["hdesc"]}";
-    $reses_str .= "\n\n{$p["hon"]}\n\n++++++++++++++++++++++\n";
+	$p['hon'] = str_replace(["\r","&#39;","&#34;","&laquo;","&raquo;"],
+				["","'","\"","«","»"], $p['hon']);
+	$p['hon'] = preg_replace("/\n\n+/", "\n\n", $p['hon']);
+	$p['hon'] = trim(filter_var($p['hon'],
+				    FILTER_SANITIZE_STRING));
+	
+	$reses_str .= "سەرناو: {$p["name"]}";
+	$p["hdesc"] = str_replace("<br>", " - ", $p["hdesc"]);
+	$p["hdesc"] = preg_replace("/\s\s+/u", " ", $p["hdesc"]);
+	$p["hdesc"] = filter_var($p["hdesc"], FILTER_SANITIZE_STRING);
+	$p["hdesc"] = str_replace(["&#34;","&#39;"],["\"","'"],$p["hdesc"]);
+	$p["hdesc"] = trim($p["hdesc"]);
+	if($p["hdesc"])
+		$reses_str .= "\nلەبارەی شێعر: {$p["hdesc"]}";
+	$reses_str .= "\n\n{$p["hon"]}\n\n++++++++++++++++++++++\n";
 }
 
 $content_length = mb_strlen($reses_str);
