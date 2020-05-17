@@ -50,12 +50,14 @@ var ar2IL = ar2IL || function (s) {
 		const next_ch = L(str, pos+1);
 		const prev_v = is_v(prev_ch);
 		const next_v = is_v(next_ch);
+		const next_ch2 = L(str, pos+2);
+		const prev_ch2 = L(str, pos-2);
 		let i = 1; // v
 		if(!(is_x(str, ["و","وو","ی","یی"]) ||
-		     (prev_ch == ch_v && !next_v && ch_v != L(str, pos-2))) && 
+		     (prev_ch2 != ch_v && prev_ch == ch_v && !next_v)) && 
 		   (pos == 0 || prev_v || next_v ||
-		    (prev_ch != ch_n && !is_v(L(str, pos+2)) && pos !== 1 &&
-		     (is_v(L(str, pos-2)) && prev_ch == "y")))) i = 2; // c
+		    (prev_ch != ch_n && !is_v(next_ch2) && pos !== 1 &&
+		     (is_v(prev_ch2) && prev_ch == "y")))) i = 2; // c
 		return i;
 	}
 	return replace_sure(add_bizroke(replace_notsure(s, notsure, determine_notsure),
