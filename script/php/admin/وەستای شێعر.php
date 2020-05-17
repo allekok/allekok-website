@@ -14,156 +14,193 @@ include(ABSPATH . 'script/php/header.php');
 <script>
  document.querySelector("header").style.display = "none";
  window.onload = () =>
-     document.querySelector("footer").style.display = "none";
+	 document.querySelector("footer").style.display = "none";
  document.body.style.padding = "0 1em";
  function chDirection() {
-     var poem = document.getElementById("hon");
-     if(poem.style.direction=="rtl") {
-	 poem.style.direction = "ltr";
-	 poem.style.textAlign = "left";
-     } else {
-	 poem.style.direction = "rtl";
-	 poem.style.textAlign = "right";
-     }
+	 var poem = document.getElementById("hon");
+	 if(poem.style.direction=="rtl") {
+		 poem.style.direction = "ltr";
+		 poem.style.textAlign = "left";
+	 } else {
+		 poem.style.direction = "rtl";
+		 poem.style.textAlign = "right";
+	 }
  }
  function newr() {
-     document.getElementById("hon").value = "";
-     document.getElementById("row").value = "";
-     document.getElementById("name").value = "";
-     document.getElementById("hdesc").value = "";
-     document.getElementById("frmbash").submit();
+	 document.getElementById("hon").value = "";
+	 document.getElementById("row").value = "";
+	 document.getElementById("name").value = "";
+	 document.getElementById("hdesc").value = "";
+	 document.getElementById("frmbash").submit();
  }	     
  function next() {
-     document.getElementById("hon").value = "";
-     var id = parseInt(document.getElementById("row").value)+1;
-     document.getElementById("row").value = id;
-     document.getElementById("name").value = "";
-     document.getElementById("hdesc").value = "";
-     document.getElementById("frmbash").submit();
+	 document.getElementById("hon").value = "";
+	 var id = parseInt(document.getElementById("row").value)+1;
+	 document.getElementById("row").value = id;
+	 document.getElementById("name").value = "";
+	 document.getElementById("hdesc").value = "";
+	 document.getElementById("frmbash").submit();
  }
  function back() {
-     document.getElementById("hon").value = "";
-     var id = parseInt(document.getElementById("row").value)-1;
-     document.getElementById("row").value = id;
-     document.getElementById("name").value = "";
-     document.getElementById("hdesc").value = "";
-     document.getElementById("frmbash").submit();
+	 document.getElementById("hon").value = "";
+	 var id = parseInt(document.getElementById("row").value)-1;
+	 document.getElementById("row").value = id;
+	 document.getElementById("name").value = "";
+	 document.getElementById("hdesc").value = "";
+	 document.getElementById("frmbash").submit();
  }
  ////////////
  function make_mdcf() {
-     var inp = document.querySelector("#hon");
-     var start = inp.selectionStart;
-     var end = inp.selectionEnd;
-     var sel = inp.value.substring(start,end)
-     if(sel != "" || inp.value == "") {
-	 
-	 var out = "<div class='m d cf'>\n" + sel + "\n</div>";
-	 
-	 var part1 = inp.value.substring(0, start);
-	 var part2 = inp.value.substr(end);
-	 
-	 out = part1 + out + part2;
-	 
-	 inp.value = out;
-     }
-     inp.focus();
+	 var inp = document.querySelector("#hon");
+	 var start = inp.selectionStart;
+	 var end = inp.selectionEnd;
+	 var sel = inp.value.substring(start,end)
+	 if(sel != "" || inp.value == "") {
+		 
+		 var out = "<div class='m d cf'>\n" + sel + "\n</div>";
+		 
+		 var part1 = inp.value.substring(0, start);
+		 var part2 = inp.value.substr(end);
+		 
+		 out = part1 + out + part2;
+		 
+		 inp.value = out;
+	 }
+	 inp.focus();
  }
  function make_b() {
-     var inp = document.querySelector("#hon");
-     var start = inp.selectionStart;
-     var end = inp.selectionEnd;
-     var sel = inp.value.substring(start,end)
-     if(sel != "" || inp.value == "") {
-	 
-	 var out = "<div class='b'>\n" + sel + "\n</div>";
-	 
-	 var part1 = inp.value.substring(0, start);
-	 var part2 = inp.value.substr(end);
-	 
-	 out = part1 + out + part2;
-	 
-	 inp.value = out;
-     }
-     inp.focus();
+	 var inp = document.querySelector("#hon");
+	 var start = inp.selectionStart;
+	 var end = inp.selectionEnd;
+	 var sel = inp.value.substring(start,end)
+	 if(sel != "" || inp.value == "") {
+		 
+		 var out = "<div class='b'>\n" + sel + "\n</div>";
+		 
+		 var part1 = inp.value.substring(0, start);
+		 var part2 = inp.value.substr(end);
+		 
+		 out = part1 + out + part2;
+		 
+		 inp.value = out;
+	 }
+	 inp.focus();
  }
  function make_n() {
-     var inp = document.querySelector("#hon");
-     var start = inp.selectionStart;
-     var end = inp.selectionEnd;
-     var sel = inp.value.substring(start,end)
-     if(sel != "" || inp.value == "") {
-	 
-	 var out = "<div class='n'><div class='m'>\n" + sel + "\n</div></div>";
-	 
-	 var part1 = inp.value.substring(0, start);
-	 var part2 = inp.value.substr(end);
-	 
-	 out = part1 + out + part2;
-	 
-	 inp.value = out;
-     }
-     inp.focus();
+	 var inp = document.querySelector("#hon");
+	 var start = inp.selectionStart;
+	 var end = inp.selectionEnd;
+	 var sel = inp.value.substring(start,end)
+	 if(sel != "" || inp.value == "") {
+		 
+		 var out = "<div class='n'><div class='m'>\n" + sel + "\n</div></div>";
+		 
+		 var part1 = inp.value.substring(0, start);
+		 var part2 = inp.value.substr(end);
+		 
+		 out = part1 + out + part2;
+		 
+		 inp.value = out;
+	 }
+	 inp.focus();
  }
  function make_mptr() {
-     var inp = document.querySelector("#hon");
-     var start = inp.selectionStart;
-     var end = inp.selectionEnd;
-     var sel = inp.value.substring(start,end)
-     if(sel != "" || inp.value == "") {
-	 
-	 var out = "<div class='m'><div class='ptr'>\n" + sel + "\n</div></div>";
-	 
-	 var part1 = inp.value.substring(0, start);
-	 var part2 = inp.value.substr(end);
-	 
-	 out = part1 + out + part2;
-	 
-	 inp.value = out;
-     }
-     inp.focus();
+	 var inp = document.querySelector("#hon");
+	 var start = inp.selectionStart;
+	 var end = inp.selectionEnd;
+	 var sel = inp.value.substring(start,end)
+	 if(sel != "" || inp.value == "") {
+		 
+		 var out = "<div class='m'><div class='ptr'>\n" + sel + "\n</div></div>";
+		 
+		 var part1 = inp.value.substring(0, start);
+		 var part2 = inp.value.substr(end);
+		 
+		 out = part1 + out + part2;
+		 
+		 inp.value = out;
+	 }
+	 inp.focus();
  }
  function make_ptrptrh() {
-     var inp = document.querySelector("#hon");
-     var start = inp.selectionStart;
-     var end = inp.selectionEnd;
-     var sel = inp.value.substring(start,end)
-     if(sel != "" || inp.value == "") {
-	 
-	 var out = "<div class='ptr ptrh'>\n" + sel + "\n</div>";
-	 
-	 var part1 = inp.value.substring(0, start);
-	 var part2 = inp.value.substr(end);
-	 
-	 out = part1 + out + part2;
-	 
-	 inp.value = out;
-     }
-     inp.focus();
+	 var inp = document.querySelector("#hon");
+	 var start = inp.selectionStart;
+	 var end = inp.selectionEnd;
+	 var sel = inp.value.substring(start,end)
+	 if(sel != "" || inp.value == "") {
+		 
+		 var out = "<div class='ptr ptrh'>\n" + sel + "\n</div>";
+		 
+		 var part1 = inp.value.substring(0, start);
+		 var part2 = inp.value.substr(end);
+		 
+		 out = part1 + out + part2;
+		 
+		 inp.value = out;
+	 }
+	 inp.focus();
  }
 
  function getPitew ()
  {
-     const getPitewIdTxt = document.getElementById('getPitewIdTxt');
-     const id = getPitewIdTxt.value;
-     const request = '/script/php/admin/get-pitew.php?id='+id;
-     getUrl(request, function (response) {
-	 response = isJson(response);
-	 if(!response) return;
-
-	 document.getElementById('name').value = response.poemName;
-	 document.getElementById('hdesc').value = 'نووسین: '+response.contributor;
-	 document.getElementById('hon').value = response.poem;
-     });
-     localStorage.setItem('pitew-id', id);
+	 const getPitewIdTxt = document.getElementById('getPitewIdTxt');
+	 const setPitewStatusTxt = document.getElementById('setPitewStatusTxt');
+	 const setPitewAdrsTxt = document.getElementById('setPitewAdrsTxt');
+	 const setPitewDescTxt = document.getElementById('setPitewDescTxt');
+	 const pitewPoet = document.getElementById('pitewPoet');
+	 const pitewBook = document.getElementById('pitewBook');
+	 const id = getPitewIdTxt.value;
+	 const request = '/script/php/admin/get-pitew.php?id='+id;
+	 getUrl(request, function (response) {
+		 response = isJson(response);
+		 if(!response) return;
+		 
+		 document.getElementById('name').value = response.poemName;
+		 document.getElementById('hdesc').value = 'نووسین: '+response.contributor;
+		 document.getElementById('hon').value = response.poem;
+		 setPitewStatusTxt.value = response.status;
+		 setPitewAdrsTxt.value = response.adrs;
+		 setPitewDescTxt.value = response.desc;
+		 pitewPoet.innerText = response.poet;
+		 pitewBook.innerText = response.book;
+	 });
+	 localStorage.setItem('pitew-id', id);
+ }
+ let setPitewBtn, originSetPitewBtn;
+ window.addEventListener("load", function () {
+	 setPitewBtn = document.getElementById('setPitewBtn');
+	 originSetPitewBtn = setPitewBtn.innerHTML;
+ })
+ function setPitew ()
+ {
+	 const getPitewIdTxt = document.getElementById('getPitewIdTxt');
+	 const setPitewStatusTxt = document.getElementById('setPitewStatusTxt');
+	 const setPitewAdrsTxt = document.getElementById('setPitewAdrsTxt');
+	 const setPitewDescTxt = document.getElementById('setPitewDescTxt');
+	 const id = getPitewIdTxt.value;
+	 const status = setPitewStatusTxt.value.trim()
+	 const adrs = setPitewAdrsTxt.value.trim()
+	 const desc = encodeURIComponent(setPitewDescTxt.value.trim())
+	 const request = '/script/php/admin/set-pitew.php?id='+id+
+			 '&status='+status+'&adrs='+adrs+'&desc='+desc;
+	 getUrl(request, function (response) {
+		 if(response == '1')
+			 setPitewBtn.innerHTML = '<i class="material-icons color-blue">check</i>';
+		 else
+			 setPitewBtn.innerHTML = '<i class="material-icons color-red">close</i>"';
+		 setTimeout(function () {
+			 setPitewBtn.innerHTML = originSetPitewBtn;
+		 }, 3000);
+	 });
  }
  
  function num_convert() {
-     const en_num = [/0/g,/1/g,/2/g,/3/g,/4/g,/5/g,/6/g,/7/g,/8/g,/9/g],
-	   fa_num = [/۰/g,/۱/g,/۲/g,/۳/g,/۴/g,/۵/g,/۶/g,/۷/g,/۸/g,/۹/g],
-	   ku_num = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
-     
-     const not_allow = [
-	 /\"/g, /&#34;/g,/&#۳۴;/g,
+	 const en_num = [/0/g,/1/g,/2/g,/3/g,/4/g,/5/g,/6/g,/7/g,/8/g,/9/g],
+	       fa_num = [/۰/g,/۱/g,/۲/g,/۳/g,/۴/g,/۵/g,/۶/g,/۷/g,/۸/g,/۹/g],
+	       ku_num = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+	 
+	 const not_allow = [
+		 /\"/g, /&#34;/g,/&#۳۴;/g,
 	     ];
              const allowed = ["\'", "\'","\'"];
 	     
@@ -186,30 +223,30 @@ include(ABSPATH . 'script/php/header.php');
 	 function nbr_convert() {
 	     
 	     var input = document.querySelector('#hon');
-	 var output = input.value;
-	 
-	 output = output.replace(/\n/g, "<br>\n");
-	 
-	 input.value = output;
+		 var output = input.value;
+		 
+		 output = output.replace(/\n/g, "<br>\n");
+		 
+		 input.value = output;
  }
-	 function make_sup() {
-	     var inp = document.querySelector("#hon");
-	     var start = inp.selectionStart;
-	     var end = inp.selectionEnd;
-	     var sel = inp.value.substring(start,end)
-	     if(sel != "" || inp.value == "") {
-		 
-		 var out = "<sup>" + sel + "</sup>";
-		 
-		 var part1 = inp.value.substring(0, start);
-		 var part2 = inp.value.substr(end);
-		 
-		 out = part1 + out + part2;
-		 
-		 inp.value = out;
-	     }
-	     inp.focus();
-	 }
+		 function make_sup() {
+			 var inp = document.querySelector("#hon");
+			 var start = inp.selectionStart;
+			 var end = inp.selectionEnd;
+			 var sel = inp.value.substring(start,end)
+			 if(sel != "" || inp.value == "") {
+				 
+				 var out = "<sup>" + sel + "</sup>";
+				 
+				 var part1 = inp.value.substring(0, start);
+				 var part2 = inp.value.substr(end);
+				 
+				 out = part1 + out + part2;
+				 
+				 inp.value = out;
+			 }
+			 inp.focus();
+		 }
 </script>
 <style>
  #poets * {
@@ -352,7 +389,7 @@ if($dbcache=='') {
 	    $link = $pre_link . "/poem:{$res["id"]}";
 	    echo("<div class='not g'>
 					دۆزیمەوە!
-<a href='/{$link}' target='_blank'>$link</a>
+<a href='"._R."{$link}' target='_blank'>$link</a>
 					</div>");
 	} else {
 	    $q = "UPDATE `" . $_tbl . "` SET `id`=$rowd,`name`='$name',`hon`=" . '"'.$hon . '"' . ",`hdesc`='$hdesc' WHERE id=" . $rowd;
@@ -366,7 +403,7 @@ if($dbcache=='') {
 		$link = $pre_link . "/poem:{$rowd}";
 		echo("<div class='not g'>
 						شیعرەکە بەڕۆژ بۆوە!
-<a href='/{$link}' target='_blank'>$link</a>
+<a href='"._R."{$link}' target='_blank'>$link</a>
 						</div>");
 		
 		$f = fopen("../../../desktop/update/books/update-version.txt","r+");
@@ -452,7 +489,7 @@ if($dbcache=='') {
 </div>
 <form method='POST' id='frmbash'>
     <div style="display:flex;margin-bottom:.5em">
-	<p>شاعیر: </p>
+	<p id="pitewPoet">شاعیر: </p>
 	    <select name='db' onchange='form.submit()'>
 		<option value=''></option>
 		<?php
@@ -468,7 +505,7 @@ if($dbcache=='') {
 		    
 		<?php } } mysqli_close($conn); ?>
 	    </select>
-	    <p>کتێب: </p>
+	    <p id="pitewBook">کتێب: </p>
 	    <select name='tbl'>
 		<?php
 		$db = _DEFAULT_DB;
@@ -508,10 +545,22 @@ if($dbcache=='') {
 	
 	<div id="tools">
 	    <button class='button' type='button' onclick="make_mdcf()">m d cf</button><button class='button' type='button' onclick="make_b()">b</button><button class='button' type='button' onclick="make_n()">n</button><button class='button' type='button' onclick="make_mptr()">m ptr</button><button class='button' type='button' onclick="make_ptrptrh()">ptr ptrh</button><button class='button' type='button' onclick="nbr_convert()" style="direction:ltr">\n -> br</button><button class='button' type='button' onclick="make_sup()">sup</button><button class='button' type='button' onclick="num_convert()">ژمارەی کوردی</button><button class="button" type="button" onclick="chDirection()">RTL<>LTR</button>
-		<div style="display:flex;width:100%;margin-bottom:.5em;border:1px solid;border-radius:.5em">
-		    <input style="margin:0;border:0" type="text" id="getPitewIdTxt" placeholder="ژمارەی شێعری ناردراو" />
-		    <button style="margin:0 .5em 0 0;border:0;padding:0 2em" type="button" id="getPitewBtn" onclick="getPitew()">وەرگرتن</button>
-		</div>
+		    <div style="display:flex;width:100%;margin-bottom:.5em;border:1px solid;border-radius:.5em">
+			    <input style="margin:0;border:0" type="text" id="getPitewIdTxt" placeholder="پتەو-ژمارەی شێعری ناردراو" />
+			    <button style="margin:0 .5em 0 0;border:0;padding:0 2em" type="button" id="getPitewBtn" onclick="getPitew()">وەرگرتن</button>
+		    </div>
+		    <div style="display:flex;width:100%;margin-bottom:.5em;border:1px solid;border-radius:.5em">
+			    <input style="margin:0;border:0" type="text" id="setPitewStatusTxt" placeholder="پتەو-وەزعیەت: ٢-، ١-، ٠، ١" 
+				   <?php  
+				   if($link) echo " value='1' ";
+				   ?>/>
+			    <input style="margin:0;border:0;direction:ltr;text-align:left" type="text" id="setPitewAdrsTxt" placeholder="پتەو-نیشانی" 
+				   <?php 
+				   if($link) echo "value='$link'";
+				   ?>/>
+			    <input style="margin:0;border:0" type="text" id="setPitewDescTxt" placeholder="پتەو-سەبارەت" />
+			    <button style="margin:0 .5em 0 0;border:0;padding:0 2em" type="button" id="setPitewBtn" onclick="setPitew()">ناردن</button>
+		    </div>
 		<script>
 		 const getPitewIdTxt = document.getElementById('getPitewIdTxt');
 		 getPitewIdTxt.value = localStorage.getItem('pitew-id');
