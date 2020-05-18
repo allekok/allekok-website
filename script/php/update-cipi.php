@@ -1,36 +1,43 @@
 <?php
-include_once('constants.php');
-function redirect($url, $statusCode = 303)
-{
-    header('Location: ' . $url, true, $statusCode);
-    die();
-}
+/*
+ * This program will accept GET(uri) as input and
+ * will increase its ranking in search database by 1
+ * and at last will redirect to GET(uri).
+ */
+include_once("constants.php");
 
-$uri = @filter_var($_GET['uri'],FILTER_SANITIZE_STRING);
-$address = explode('/', $uri);
+/* Input: GET(uri) */
+$uri = @filter_var($_GET["uri"],FILTER_SANITIZE_STRING);
+$address = explode("/", $uri);
 if(count($address) != 3) die();
-foreach($address as $i=>$ad)
-{
-    $address[$i] = intval(explode(":",$ad)[1]);
-}
+foreach($address as $i=>$part)
+	$address[$i] = intval(explode(":",$part)[1]);
+$poet_id = $address[0];
+$book_id = $address[1];
+$poem_id = $address[2];
 
+/* Lookup poem */
 $db = _SEARCH_DB;
 $q = "SELECT Cipi FROM poems WHERE 
-poet_id='$address[0]' and book_id='$address[1]' and poem_id='$address[2]'";
-include("condb.php");
+poet_id=$poet_id and 
+book_id=$book_id and 
+poem_id=$poem_id";
+include(ABSPATH . "script/php/condb.php");
+if(mysqli_num_rows($query) !== 1) die();
 
-if(mysqli_num_rows($query)===1)
-{
-    $res = mysqli_fetch_assoc($query);
-    $Cipi = $res['Cipi']+1;
-    
-    $query = mysqli_query($conn,"UPDATE `poems` SET 
-`Cipi`=$Cipi WHERE poet_id='$address[0]' and 
-book_id='$address[1]' and poem_id='$address[2]'");
+/* Update Cipi */
+$res = mysqli_fetch_assoc($query);
+$Cipi = $res["Cipi"] + 1;
+$query = mysqli_query($conn, "UPDATE `poems` SET `Cipi`=$Cipi 
+WHERE poet_id=$poet_id and book_id=$book_id and poem_id=$poem_id");
+mysqli_close($conn);
 
-    mysqli_close($conn);
-    
-    // if($query)
-    redirect(_SITE . $uri);
+/* Redirection */
+redirect(_SITE . $uri);
+
+/* Functions */
+function redirect($url, $statusCode = 303) {
+	header("Location: " . $url, true, $statusCode);
+	die();
 }
 ?>
