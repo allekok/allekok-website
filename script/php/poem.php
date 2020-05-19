@@ -512,40 +512,19 @@ style='display:inline-block'
 				      `<a target='_blank' href='<?php echo _R; ?>tewar-legacy/?q=${q}'>گەڕانی زیاتر لە فەرهەنگە ئانلاینەکان‌دا &rsaquo;</a>`;
 	 }
 	 
-	 try
-	 {
-		 document.getElementById("like-icon").
-			  addEventListener("click", Liked);
-	 } catch(e) {}
-
-	 try
-	 {
-		 document.getElementById("copy-sec").
-			  addEventListener("click", copyPoem);
-	 } catch(e) {}
-
-	 try
-	 {
-		 document.querySelector(".smaller").
-			  addEventListener("click", function()
-				  {
-					  save_fs("smaller")
-			  });
-	 } catch(e) {}
-
-	 try
-	 {
-		 document.querySelector(".bigger").
-			  addEventListener("click", function()
-				  {
-					  save_fs("bigger")
-			  });
-	 } catch(e) {}
-	 
 	 <?php
 	 if(!$no_foot)
 		 echo "window.addEventListener('load', function () { ";
 	 ?>
+	 document.querySelector(".smaller").onclick = function () {
+		 save_fs("smaller");
+	 }
+	 document.querySelector(".bigger").onclick = function () {
+		 save_fs("bigger");
+	 }
+	 document.getElementById("like-icon").onclick = Liked;
+	 document.getElementById("copy-sec").onclick = copyPoem;
+	 
 	 const likeico = document.getElementById('like-icon');
 	 const favs = get_bookmarks();
 	 if(favs)

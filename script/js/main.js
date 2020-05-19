@@ -57,7 +57,7 @@ var ar2IL = ar2IL || function (s) {
 		     (prev_ch2 != ch_v && prev_ch == ch_v && !next_v)) && 
 		   (pos == 0 || prev_v || next_v ||
 		    (prev_ch != ch_n && !is_v(next_ch2) && pos !== 1 &&
-		     (is_v(prev_ch2) && prev_ch == "y")))) i = 2; // c
+		     is_v(prev_ch2) && prev_ch == "y"))) i = 2; // c
 		return i;
 	}
 	return replace_sure(add_bizroke(replace_notsure(s, notsure, determine_notsure),
@@ -540,43 +540,21 @@ var save_fs = save_fs || function (how)
 	      scale = 3;
 	let fs = parseInt(hon.style.fontSize);
 	
-	if(isNaN(fs))
-	{
-		if(wW > 600)
-			fs=30;
-		else
-			fs=24;
+	if(isNaN(fs)) {
+		if(wW > 600) fs=28;
+		else fs=24;
 	}
 	
-	/* Bigger */
-	if(hows[1] == how)
-	{
-		if(fs >= 120)
-			return;
-		fs += scale;
-	}
+	if(hows[1] == how) fs += scale;	/* Bigger */
+	else if(hows[0] == how && fs > 3) fs -= scale; /* Smaller */
 	
-	/* Smaller */
-	else if(hows[0] == how)
-	{
-		if(fs <= 6)
-			return;
-		fs -= scale;
-	}
 	localStorage.setItem('fontsize', fs);
 	hon.style.fontSize = `${fs}px`;
 }
 
-var isJson = isJson || function (str)
-{
-	try
-	{
-		return JSON.parse(str);
-	}
-	catch(e)
-	{
-		return false;
-	}
+var isJson = isJson || function (str) {
+	try      { return JSON.parse(str) }
+	catch(e) { return false }
 }
 
 var parse_allekok_link = parse_allekok_link || function (link)
@@ -986,36 +964,6 @@ try
 {
 	document.getElementById("tS").
 		addEventListener("click", toggle_search);
-} catch(e) {}
-
-try
-{
-	document.getElementById("like-icon").
-		addEventListener("click", Liked);
-} catch(e) {}
-
-try
-{
-	document.getElementById("copy-sec").
-		addEventListener("click", copyPoem);
-} catch(e) {}
-
-try
-{
-	document.querySelector(".smaller").
-		addEventListener("click", () =>
-			{
-				save_fs("smaller")
-			});
-} catch(e) {}
-
-try
-{
-	document.querySelector(".bigger").
-		addEventListener("click", () =>
-			{
-				save_fs("bigger")
-			});
 } catch(e) {}
 
 /* Garbage Collector */
