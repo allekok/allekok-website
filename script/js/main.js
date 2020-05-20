@@ -34,34 +34,37 @@ var tokenizer = tokenizer || function (str, include) {
 }
 
 var ar2IL = ar2IL || function (s) {
-	const notsure = [["ی", "î", "y"],
+	const exceptions = [["مەحوی", "مەحwî"]];
+	s = replace_sure(s, exceptions);
+	const notsure = [["وو", "û", "uw", "wu", "ww"],
+			 ["یی", "î", "îy", "yî", "yy"],
+			 ["ی", "î", "y"],
 			 ["و", "u", "w"]];
 	const bizroke = 'i';
 	const v = "ەeێêۆoاaiuîû";
 	const n = "قwرڕتyئحعپسشدفگغهژکلڵزخجچڤبنمھ";
-	function is_v (ch) { return is_x(ch, v) }
+	function is_v (ch) { return is_(ch, v) }
 	function determine_notsure (R, str) {
 		const pos = R[0];
 		const ch = R[1][0];
-		const ch_v = R[1][1];
-		const ch_n = R[1][2];
+		const ch_len = ch.length;
 		let prev_ch = L(str, pos-1);
 		if(prev_ch == "‌") prev_ch = L(str, pos-2);
-		const next_ch = L(str, pos+1);
+		const next_ch = L(str, pos+ch_len);
 		const prev_v = is_v(prev_ch);
 		const next_v = is_v(next_ch);
-		const next_ch2 = L(str, pos+2);
-		const prev_ch2 = L(str, pos-2);
 		let i = 1; // v
-		if(!(is_x(str, ["و","وو","ی","یی"]) ||
-		     (prev_ch2 != ch_v && prev_ch == ch_v && !next_v)) && 
-		   (pos == 0 || prev_v || next_v ||
-		    (prev_ch != ch_n && !is_v(next_ch2) && pos !== 1 &&
-		     is_v(prev_ch2) && prev_ch == "y"))) i = 2; // c
+		if(is_(str, ["وو","یی","ی","و"]));
+		else if(ch_len == 2) {
+			if(prev_v && next_v) i = 4;
+			else if(pos == 0 || prev_v) i = 3;
+			else if(next_v) i = 2;
+		}
+		else if(pos == 0 || prev_v || next_v) i = 2;
 		return i;
 	}
-	return replace_sure(add_bizroke(replace_notsure(s, notsure, determine_notsure),
-					n, bizroke), [["uu", "û"], ["îî", "î"]]);
+	return add_bizroke(replace_notsure(s, notsure, determine_notsure),
+			   n, bizroke);
 }
 var ar2lat = ar2lat || function (s) {
 	const sure = [["ھ", "h"],
@@ -128,8 +131,8 @@ var ar2per = ar2per || function (s) {
 	/* Tashdid */
 	function add_tashdid (str, n, v, tashdid="\u{651}") {
 		for (let i = 0; i < str.length-2; i++) {
-			if(str[i] == str[i+1] && is_x(str[i], n) &&
-			   is_x(str[i-1], v) && is_x(str[i+2], v))
+			if(str[i] == str[i+1] && is_(str[i], n) &&
+			   is_(str[i-1], v) && is_(str[i+2], v))
 				str = str_replace_pos(
 					str[i]+str[i], str[i]+tashdid, str, i);
 		}
@@ -171,14 +174,14 @@ var assoc_first = assoc_first || function (str, arr, i=0, off=0) {
 	const str_len = str.length;
 	for(let j = off; j < str_len; j++)
 		for(const o of arr)
-			if(o[i] == str[j])
+			if(o[i] == str.substr(j, o[i].length))
 				return [j, o];
 	return false;
 }
 
 var L = L || function (str, pos, len=1) { return str.substr(pos, len); }
 
-var is_x = is_x || function (c, x) {
+var is_ = is_ || function (c, x) {
 	if(c && x.indexOf(c) !== -1) return true;
 	return false;
 }
@@ -190,7 +193,7 @@ var str_replace_pos = str_replace_pos || function (from, to, str, pos) {
 
 var add_bizroke = add_bizroke || function (str, n, bizroke="") {
 	/* I don't know the exact specification for this procedure. */
-	function is_n (ch) { return is_x(ch, n) }
+	function is_n (ch) { return is_(ch, n) }
 	const L1 = L(str, 0);
 	const L2 = L(str, 1);
 	if(is_n(L1) && (!L2 || is_n(L2)))
