@@ -522,7 +522,9 @@ style='display:inline-block'
 	 document.querySelector(".bigger").onclick = function () {
 		 save_fs("bigger");
 	 }
-	 document.getElementById("like-icon").onclick = Liked;
+	 try {
+		 document.getElementById("like-icon").onclick = Liked;
+	 } catch (e) {};
 	 document.getElementById("copy-sec").onclick = copyPoem;
 	 
 	 const likeico = document.getElementById('like-icon');
