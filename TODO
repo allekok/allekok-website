@@ -18,3 +18,5 @@
 * TODO (pitew/*) Show copyright notice for contributors.
 * TODO Users should be able to write comments on all pages.
 * TODO Add key bindings especially for search(in the page and whole site)
+* TODO A button to navigate to a random poem
+* TODO Add a javascript plugin to understand context of search strings. for example, شێعرەکانی پیرەمێرد -> Show all پیرەمێرد's poems.
