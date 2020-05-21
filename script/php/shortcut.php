@@ -4,6 +4,9 @@
  * Redirect to matched url by key(q)
  */
 
+require_once("constants.php");
+require_once(ABSPATH."script/php/functions.php");
+
 /* Input */
 $q = isset($_REQUEST['q']) ?
      strtolower(trim(
@@ -31,10 +34,4 @@ $assoc = [
 
 /* Redirection */
 if(isset($assoc[$q])) redirect($assoc[$q]);
-
-/* Functions */
-function redirect ($url, $statusCode = 303) {
-	header('Location: ' . $url, true, $statusCode);
-	die();
-}
 ?>

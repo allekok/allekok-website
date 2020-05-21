@@ -5,6 +5,7 @@
  * and at last will redirect to GET(uri).
  */
 include_once("constants.php");
+include_once(ABSPATH."script/php/functions.php");
 
 /* Input: GET(uri) */
 $uri = @filter_var($_GET["uri"],FILTER_SANITIZE_STRING);
@@ -34,10 +35,4 @@ mysqli_close($conn);
 
 /* Redirection */
 redirect(_SITE . $uri);
-
-/* Functions */
-function redirect($url, $statusCode = 303) {
-	header("Location: " . $url, true, $statusCode);
-	die();
-}
 ?>

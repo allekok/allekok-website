@@ -1,3 +1,29 @@
+<a id="rdm-pm-a" target="_blank"
+   href="<?php echo _R; ?>script/php/random-poem.php?redirect"
+   title="<?php P("random-poem-title"); ?>"><?php P("random-poem"); ?></a>
+<script>
+ document.getElementById("rdm-pm-a").onclick = function (e) {
+	 e.preventDefault();
+	 const loading = document.getElementById('main-loader');
+	 loading.style.display = 'block';
+	 getUrl(`${_R}script/php/random-poem.php`, function (url) {
+		 const parent='body', target='#MAIN',
+		       p = document.querySelector(parent);
+		 
+		 const href = url;
+		 url = concat_url_query(href, 'nohead&nofoot');
+		 
+		 let content;
+		 if(ajax_save_p && (content = ajax_findstate(url)))
+			 ajax_load(url, href, content, parent, target, loading);
+		 else
+			 getUrl(url, function (content) {
+				 ajax_load(url, href, content, parent, target, loading);
+				 ajax_savestate(url, content);
+			 });
+	 });
+ }
+</script>
 <a href="<?php echo _R; ?>donate/"
    class="color-blue"><?php P("donate"); ?></a>
 <a title="<?php P("about allekok"); ?>"

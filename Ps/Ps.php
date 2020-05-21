@@ -234,6 +234,18 @@ $Ps = [
 		"ku" => "",
 		"en" => "",
 	],
+	"random-poem" => [
+		"ckb" => "هات‌ونەهات",
+		"fa" => "یا شانس",
+		"ku" => "",
+		"en" => "I'm feeling lucky",
+	],
+	"random-poem-title" => [
+		"ckb" => "شێعرێک بە هەڵکەوت",
+		"fa" => "",
+		"ku" => "",
+		"en" => "I'm feeling lucky",
+	],
 	"" => [
 		"ckb" => "",
 		"fa" => "",
