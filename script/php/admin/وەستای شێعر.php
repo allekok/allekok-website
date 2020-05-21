@@ -200,7 +200,7 @@ include(ABSPATH . 'script/php/header.php');
 	       ku_num = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
 	 
 	 const not_allow = [
-		 /\"/g, /&#34;/g,/&#۳۴;/g,
+		 /\"/g, /&#3[49];/g, /&#۳[۴٩];/g,
 	     ];
              const allowed = ["\'", "\'","\'"];
 	     
