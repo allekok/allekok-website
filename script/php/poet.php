@@ -15,7 +15,7 @@
 	   style="position:absolute;bottom:0;left:0;
 		 padding:.5em .5em 0;font-size:.9em"
 	   class="material-icons"
-	   title="ناردنی وێنە">add_a_photo</a>
+	   title="<?php P("ناردنی وێنە"); ?>">add_a_photo</a>
     </div>
     <!-- Address bar -->
     <div id='adrs'>
@@ -30,9 +30,9 @@
 	<div class='bks'>
 	    <p><?php
 	       if($row['kind'] != "bayt")
-		   echo "بەرهەمەکان";
+		       P("بەرهەمەکان");
 	       else
-		   echo "بەیتەکان";
+		       P("بەیتەکان");
 	       ?></p>
 	    <?php
 	    $rbks = explode(',',$row['bks']);
@@ -46,37 +46,37 @@
 	</div>
 	<!-- Poet information -->
 	<div class="poetdesc">	    
-	    <?php
-	    echo "<p>سەبارەت</p>";
-	    if(strlen($row['hdesc'])>0) {
-		$_hd = explode("[n]",$row['hdesc']);
-		foreach($_hd as $__hd) {
-		    $__hd = explode("[t]",$__hd);
-		    echo "<h3 class='poetnm'>";
-		    echo "<span>";
-		    echo $__hd[0];
-		    echo "</span>";
-		    echo " : ";
-		    echo $__hd[1];
-		    echo "</h3>";
+		<?php
+		echo "<p>".SP("سەبارەت")."</p>";
+		if(strlen($row['hdesc'])>0) {
+			$_hd = explode("[n]",$row['hdesc']);
+			foreach($_hd as $__hd) {
+				$__hd = explode("[t]",$__hd);
+				echo "<h3 class='poetnm'>";
+				echo "<span>";
+				echo $__hd[0];
+				echo "</span>";
+				echo " : ";
+				echo $__hd[1];
+				echo "</h3>";
+			}
 		}
-	    }
-	    /* Poet pictures */
-	    foreach(scandir(ABSPATH."style/img/poets/new")
-		as $file)
-	    {
-		$file_poet = explode("_",$file)[0];
-		if($file_poet == $row['takh'])
+		/* Poet pictures */
+		foreach(scandir(ABSPATH."style/img/poets/new")
+			as $file)
 		{
-		    echo "<h3 class='poetnm'><a class='link'
-style='border-bottom:0;margin:0'
-href='" . _R . "pitew/image-list.php?poet={$row['takh']}'
-><i class='material-icons'>photo_library</i> وێنەکان</a></h3>";
-		    break;
+			$file_poet = explode("_",$file)[0];
+			if($file_poet == $row['takh'])
+			{
+				echo "<h3 class='poetnm'><a class='link'
+			style='border-bottom:0;margin:0'
+			href='" . _R . "pitew/image-list.php?poet={$row['takh']}'
+			><i class='material-icons'>photo_library</i> ".SP("وێنەکان")."</a></h3>";
+				break;
+			}
 		}
-	    }
-	    $edit_uri = _R . "pitew/edit-poet.php?poet={$row['takh']}";
-	    ?>
+		$edit_uri = _R . "pitew/edit-poet.php?poet={$row['takh']}";
+		?>
 	</div>
 	<div class="poetdesc">
 		<!-- Infos written by users -->
@@ -109,7 +109,7 @@ href='" . _R . "pitew/image-list.php?poet={$row['takh']}'
 		    }
 		    closedir($dir);
 
-		    echo "<p>زانیاریەکانی بەکارهێنەران";
+		    echo "<p>" . SP("زانیارییەکانی بەکارهێنەران");
 		    echo "<a style='padding:1em'
 		   href='{$edit_uri}' class='material-icons'>add</a>";
 		    echo "</p>";

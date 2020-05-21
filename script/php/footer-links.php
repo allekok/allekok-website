@@ -9,14 +9,15 @@
 <a title="<?php P("thanks.."); ?>"
    href="<?php echo _R; ?>thanks/"><?php P("thanks"); ?></a>
 <a title="<?php P("desktop"); ?>" href="<?php echo _R; ?>desktop/">
-    <i class="material-icons">phone_iphone‌laptop</i>
+	<i class="material-icons">phone_iphone‌laptop</i>
 </a>
 <a title="<?php P("code"); ?>" href="<?php echo _R; ?>dev/tools/">
-    <i class="material-icons">code</i>
+	<i class="material-icons">code</i>
 </a>
 <a title="<?php P("customize"); ?>" href="<?php echo _R; ?>customize/">
-    <i class="material-icons">settings</i>
+	<i class="material-icons">settings</i>
 </a>
-<a title="مافی کۆپی‌کردن" href="<?php echo _R; ?>dev/tools/license.php">
-    <i class="material-icons">copyright</i>
+<a title="<?php P("copyright"); ?>"
+   href="<?php echo _R; ?>dev/tools/license.php">
+	<i class="material-icons">copyright</i>
 </a>
