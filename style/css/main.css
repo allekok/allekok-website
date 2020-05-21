@@ -243,7 +243,7 @@ header
 header a h1
 {
 	font-size:1.3em;
-	margin:0 0 .2em
+	margin:0;
 }
 #poets
 {
@@ -709,7 +709,7 @@ footer i
 	body
 	{
 		font-size:28px;
-		padding:1em;
+		padding:.5em 1em 1em;
 	}
 	.sli:nth-child(even)
 	{

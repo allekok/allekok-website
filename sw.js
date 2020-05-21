@@ -80,7 +80,7 @@ self.addEventListener('install', function(event) {
 		profile+'45.jpg',
 		profile+'70.jpg',
 		'script/js/main-comp.js?v312',
-		'style/css/main-comp.css?v87',
+		'style/css/main-comp.css?v90',
 		'favicon/favicon.ico',
 		'style/font/DroidNaskh-Regular.woff2',
 		'style/font/Material-Icons.woff2',

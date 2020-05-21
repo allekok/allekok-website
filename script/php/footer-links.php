@@ -24,14 +24,13 @@
 	 });
  }
 </script>
-<a href="<?php echo _R; ?>donate/"
-   class="color-blue"><?php P("donate"); ?></a>
 <a title="<?php P("about allekok"); ?>"
    href="<?php echo _R; ?>about/"><?php P("allekok?"); ?></a>
 <a title="<?php P("allekok news"); ?>"
    href="<?php echo _R; ?>pitew/news.php"><?php P("news"); ?></a>
 <a title="<?php P("allekok pitew"); ?>"
    href="<?php echo _R; ?>pitew/first.php"><?php P("pitew"); ?></a>
+<a href="<?php echo _R; ?>donate/"><?php P("donate"); ?></a>
 <a title="<?php P("thanks.."); ?>"
    href="<?php echo _R; ?>thanks/"><?php P("thanks"); ?></a>
 <a title="<?php P("desktop"); ?>" href="<?php echo _R; ?>desktop/">
