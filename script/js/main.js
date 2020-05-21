@@ -316,11 +316,7 @@ var search = search || function (e)
 		      url = `${_R}script/php/search-quick.php?q=${q}`;
 		if(currentKey == 27)
 		{
-			Res.innerHTML = "";
-			Res.style.display="none";
-			Key.value="";
-			/* Clear The Search Stack */
-			sessionStorage.removeItem('searchStack');
+			toggle_search();
 			return;
 		}
 		if(noActionKeys.indexOf(currentKey) !== -1) return;
