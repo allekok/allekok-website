@@ -98,7 +98,7 @@ include(ABSPATH . "script/php/header.php");
 			<?php
 			$donations = @file_get_contents("donations");
 			if($donations) {
-				echo "<p>زۆرسپاس بۆ یارمەتیەکانتان:</p>";
+				echo "<p>زۆرسپاس بۆ یارمەتییەکانتان:</p>";
 				$donations = explode("-----", $donations);
 				foreach($donations as $d) {
 					if(!($d = trim($d))) continue;
