@@ -1,6 +1,6 @@
 <?php
 require_once("../constants.php");
-require_once(ABSPATH."script/php/constants.php");
+require_once(ABSPATH."script/php/functions.php");
 session_start();
 if(! isset($_SESSION['admin'])) {
 	$IP = $_SERVER['REMOTE_ADDR'];
