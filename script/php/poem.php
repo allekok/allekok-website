@@ -475,7 +475,8 @@ style='display:inline-block'
 		 const result_el = document.getElementById(result_el_id),
 		       q = encodeURIComponent(q_el.value.trim()),
 		       url = '<?php echo _R; ?>tewar/src/backend/lookup.php',
-		       request = `q=${q}&dicts=all&output=json&n=1`,
+		       dicts_str = 'xal,kameran,henbane-borine,bashur,kawe,e2k,zkurd',
+		       request = `q=${q}&dicts=${dicts_str}&output=json&n=1`,
 		       loading = '<div class="loader"></div>',
 		       wordMore = document.getElementById('wordMore');
 		 
@@ -497,14 +498,9 @@ style='display:inline-block'
 			 {
 				 if(i == 'time') continue;
 				 
-				 const res = response[i];
-				 for(const i in res)
-				 {
-					 const w = res[i][1];
-					 const m = res[i][2];
-					 if(! m) continue;
-					 toprint += `<i class='color-blue'>${w}</i>: ${m}<br>`;
-				 }
+				 const w = response[i][1],
+				       m = response[i][2];
+				 toprint += m ? `<i class='color-blue'>${w}</i>: ${m}<br>` : '';
 			 }
 			 result_el.innerHTML = toprint;
 		 });
