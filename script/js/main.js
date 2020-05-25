@@ -34,9 +34,10 @@ var tokenizer = tokenizer || function (str, include) {
 }
 
 var ar2IL = ar2IL || function (s) {
-	const exceptions = [["مەحوی", "مەحwî"],
-			    ["سەروی", "سەرwî"],
-			    ["پەروین", "پەرwîن"]];
+	const exceptions = [["مەحوی", "مەحwی"],
+			    ["سەروی", "سەرwی"],
+			    ["پەروین", "پەرwین"],
+			    ["عیوونی", "عyوونی"]];
 	s = replace_sure(s, exceptions);
 	const notsure = [["وو", "û", "uw", "wu", "ww"],
 			 ["یی", "î", "îy", "yî", "yy"],
