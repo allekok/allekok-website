@@ -77,6 +77,8 @@ include(ABSPATH . "script/php/header.php");
 	     'comments.txt', 'question_answer', _R.'comments/'],
 	    ['pdfs', 'ناردنی دیوانی شاعیران', 'pdfs.txt',
 	     'cloud_download', _R.'pitew/pdfs.php'],
+	    ['donations', 'یارمەتیی ماڵی', 'donations.txt',
+	     "money", _R.'donate/'],
 	];
 
 	foreach ($array as $E)
