@@ -44,8 +44,9 @@ include(ABSPATH . 'script/php/header.php');
 	</div>
     </div>
     <?php
+    $_name2 = $_name1 == "ناشناس" ? "" : $_name1;
     $q = $_name1 ?
-	 "SELECT `contributor`,`status`,`poem-name`,`poet` FROM `pitew` WHERE `status`!='{\"status\":-2,\"url\":\"\",\"desc\":\"\"}' AND `contributor`='$_name1' ORDER BY `id` DESC" :
+	 "SELECT `contributor`,`status`,`poem-name`,`poet` FROM `pitew` WHERE `status`!='{\"status\":-2,\"url\":\"\",\"desc\":\"\"}' AND `contributor`='$_name2' ORDER BY `id` DESC" :
 	 "SELECT `contributor`,`status`,`poem-name`,`poet` FROM `pitew` WHERE `status`!='{\"status\":-2,\"url\":\"\",\"desc\":\"\"}' ORDER BY `id` DESC";
     include(ABSPATH . "script/php/condb.php");
     if(!$query) die();
