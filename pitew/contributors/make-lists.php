@@ -1,5 +1,6 @@
 <?php
 require_once('../../script/php/constants.php');
+require_once(ABSPATH.'script/php/functions.php');
 
 function poem_writers () {
 	$q = 'SELECT contributor FROM pitew WHERE status LIKE \'{\"status\":1%\'';
@@ -106,10 +107,12 @@ function donations () {
 		if(!($donation = trim($donation))) continue;
 		$donation = explode("\t", $donation);
 		$name = $donation[0];
+		$money = intval(num_convert(
+			str_replace(",", "", $donation[1]), "ckb", "en"));
 		if(isset($arr[$name]))
-			$arr[$name][0] += 1;
+			$arr[$name][0] += $money;
 		else
-			$arr[$name] = [1, $name];
+			$arr[$name] = [$money, $name];
 	}
 	rsort($arr);
 	return $arr;
