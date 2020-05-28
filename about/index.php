@@ -74,7 +74,6 @@ include(ABSPATH."script/php/header.php");
         </h1>
         <div id="Acomms"
 	     style="font-size:.6em;
-		 background:white;border-radius:1em;
 		 margin:auto<?php if(!$nzuri) echo ";display:none" ?>">
 	    <div class="loader" style="padding:0"></div>
 	    <script>
@@ -135,7 +134,6 @@ font-size:.5em'>ژمارەی پیتەکان نابێ لە ۲۶۸۵ پیت زیا
 	     Acomms.style.display = "block";
 	     AcommsTitle.style.display = "block";
 	     Acomms.innerHTML = respond.comm + Acomms.innerHTML;
-	     window.location = "#Acomms-title";
 	     comm.value="";
          }
 	 else

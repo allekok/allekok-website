@@ -96,7 +96,7 @@ include(ABSPATH . "script/php/header.php");
 		</h2>
 		<div style="padding-right:1em">
 			<?php
-			$donations = @file_get_contents("donations");
+			$donations = @file_get_contents("donations.txt");
 			if($donations) {
 				echo "<p>زۆرسپاس بۆ یارمەتییەکانتان:</p>";
 				$donations = explode("-----", $donations);

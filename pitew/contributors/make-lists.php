@@ -101,7 +101,7 @@ function pdf_contributors () {
 
 function donations () {
 	$donations = explode("-----", file_get_contents(
-		ABSPATH.'donate/donations'));
+		ABSPATH.'donate/donations.txt'));
 	$arr = [];
 	foreach($donations as $donation) {
 		if(!($donation = trim($donation))) continue;

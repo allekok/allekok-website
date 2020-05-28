@@ -363,7 +363,6 @@ style='display:inline-block'
 							 {name: res.name}
 					 ));
 				 }
-				 window.location = "#hon-comments-body";
 			 }
 		 });
 	 }

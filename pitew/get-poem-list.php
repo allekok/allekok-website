@@ -1,8 +1,6 @@
 <?php
 require_once("../script/php/constants.php");
-$_name1 = isset($_GET['name']) ?
-	  filter_var($_GET['name'],FILTER_SANITIZE_STRING) : '';
-if($_name1 == "ناشناس") $_name1 = "";
+$_name1 = @trim(filter_var($_GET['name'],FILTER_SANITIZE_STRING));
 // number of poems
 $n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
      $_GET['n'] : 20;
@@ -21,9 +19,7 @@ while($_l = mysqli_fetch_assoc($query))
 	$_l['status'] = json_decode($_l['status'], true);
 	if($_l['poem-name'] == "")
 		$_l['poem-name'] = "شێعر";
-	if($_l["contributor"] == "")
-		$_l["contributor"] = "ناشناس";
-
+	
 	echo "<div class='pmlist-container'><section>";
 	if($_l['status']['status'] === 1)
 	{

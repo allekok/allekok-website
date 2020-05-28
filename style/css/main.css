@@ -56,7 +56,7 @@ input, textarea
 {
 	border-radius:1em
 }
-a
+a, a:hover, button:hover, #wordMore a:hover
 {
 	text-decoration:none;
 }
@@ -83,10 +83,6 @@ a
 	display:block;
 	font-size:.75em;
 	text-align:center;
-	/* <Constant across diff. themes> */
-	background:rgba(255,255,255,.5);
-	color:black;
-	/* </Constant across diff. themes> */
 	border-radius:0 1.5em 0 0;
 	padding:0 1em
 }
@@ -120,10 +116,6 @@ textarea
 i
 {
 	font-style:normal
-}
-a:hover, button:hover
-{
-	text-decoration:none;
 }
 .poet-pic-small
 {
@@ -274,11 +266,12 @@ header a h1
 	display:block;
 	margin:auto
 }
-.m, .b span, .n span, .m span, .m1 span, .m2 span, .m3 span, .poetnm, #adrs i
+.m, .b span, .n span, .m span, .m1 span, .m2 span,
+.m3 span, .poetnm, #adrs i, footer button
 {
 	font-size:inherit
 }
-#poet-info
+#poet-info, .fbody-nav
 {
 	margin-top:1em;
 }
@@ -494,30 +487,16 @@ header a h1
 	text-align:justify;
 	padding:1em 1em 3em 1em;
 	position:relative;
-	margin-bottom:1px;
+	margin-bottom:1em;
 	word-break:break-word;
-}
-#Acomms div:nth-child(1)
-{
-	border-radius:1em 1em 0 0;
-}
-#Acomms div:nth-last-child(1)
-{
-	border-radius:0 0 1em 1em;
-}
-.h::before
-{
-	content:'date_range ';
-	font-family:'Material Icons';
-	font-size:1.4em;
-	vertical-align:middle
+	border-bottom:1px solid;
 }
 .h::after
 {
 	content:' favorite';
 	font-family:'Material Icons';
 	font-size:1.4em;
-	vertical-align:middle
+	vertical-align:middle;
 }
 .link
 {
@@ -566,10 +545,6 @@ footer
 	font-size:.6em;
 	text-align:center
 }
-footer button
-{
-	font-size:inherit;
-}
 footer a, footer button
 {
 	display:inline-block;
@@ -617,10 +592,6 @@ footer i
 #poem_dict p
 {
 	text-align:justify
-}
-.fbody-nav
-{
-	margin-top:1em
 }
 .fbody-nav a
 {
@@ -698,10 +669,6 @@ footer i
 	text-align:left;
 	padding:.2em .5em;
 	display:block;
-}
-#wordMore a:hover
-{
-	text-decoration:none;
 }
 /* Different screen sizes */
 @media only screen and (min-width:600px)

@@ -5,26 +5,27 @@
  * Output: JSON
  */
 require_once('constants.php');
-include(ABSPATH.'script/php/functions.php');
+require_once(ABSPATH.'script/php/functions.php');
+require_once(ABSPATH.'script/php/calendar-lib.php');
 
 header('Content-type: application/json; Charset=UTF-8');
 $null = json_encode(NULL);
 
-$comment = isset($_POST['comment']) ?
-	   trim(filter_var($_POST['comment'], FILTER_SANITIZE_STRING)) :
-	   die($null);
-if(empty($comment)) die($null);
+$comment = @trim(filter_var($_POST['comment'], FILTER_SANITIZE_STRING));
+if(!$comment) die($null);
 
-$address = isset($_POST['address']) ?
-	   filter_var($_POST['address'], FILTER_SANITIZE_STRING) :
-	   die($null);
-if(empty($address)) die($null);
+$address = @trim(filter_var($_POST['address'], FILTER_SANITIZE_STRING));
+if(!$address) die($null);
 
-$name = isset($_POST['name']) ?
-	trim(filter_var($_POST['name'], FILTER_SANITIZE_STRING)) :
-	'';
+$name = @trim(filter_var($_POST['name'], FILTER_SANITIZE_STRING));
+if(!$name) $name = 'ناشناس';
 
-$date = date("Y-m-d h:i:sa");
+$date = explode("-", date("m-d-Y"));
+$date = calendarKurdishFromGregorian($date);
+$date = "{$date[1]}؍{$date[0]}؍{$date[2]}";
+$time = date("H:i:s");
+$date = "$time $date";
+$date = num_convert($date, "en", "ckb");
 
 $_ = explode('/', $address);
 $poet_id = explode(':', $_[0])[1];
@@ -39,24 +40,17 @@ if(!$query) die($null);
 $q = "INSERT INTO comments(address, date, name, comment) VALUES('$address', '$date', '$name', '$comment')";
 $query = mysqli_query($conn, $q);
 
-if($query)
-{    
-    $date = num_convert($date, "en", "ckb");
-    $date = str_replace(["am","pm"],
-			[" بەیانی "," پاش‌نیوەڕۆ "],
-			$date);
-    
-    if($name == '') $name = 'ناشناس';
-    
-    $res = [
-        'message'=>'',
-        'status'=>1,
-        'name'=>$name,
-        'comment'=>$comment,
-        'date'=>$date,
-    ];
-    
-    echo json_encode($res);
+if($query) {    
+
+	$res = [
+		'message'=>'',
+		'status'=>1,
+		'name'=>$name,
+		'comment'=>$comment,
+		'date'=>$date,
+	];
+	
+	echo json_encode($res);
 }
 
 mysqli_close($conn);

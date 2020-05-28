@@ -45,3 +45,6 @@ about/comments.txt
 # favicon
 /favicon/browserconfig.xml
 /favicon/site.webmanifest
+
+# donations
+/donate/donations.txt

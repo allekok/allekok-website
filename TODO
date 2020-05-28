@@ -8,6 +8,7 @@
 * DONE (/script/php/search.php) Fix search poet names bug + Add more options
 * DONE (about/index.php) Fix the error on submitting very first comment.
 * DONE A button to navigate to a random poem
+* DONE Using Kurdish calendar for dates
 * TODO Let users verify poems and publish them by doing some heavy work on cpu. something like mining Bitcoin.
 * TODO Build PDFs from text.
 * TODO (/script/php/book.php) Let users download a whole book (ie. build PDFs).
@@ -20,4 +21,3 @@
 * TODO Users should be able to write comments on all pages.
 * TODO Add key bindings especially for search(in the page and whole site)
 * TODO Add a javascript plugin to understand context of search strings. for example, شێعرەکانی پیرەمێرد -> Show all پیرەمێرد's poems.
-* TODO Using Kurdish calendar for dates

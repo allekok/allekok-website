@@ -2,15 +2,15 @@
 const comments_file = "comments.txt";
 const comment_sign = "[comment]";
 
-function color_random ()
-{
-    $R = mt_rand(0,255);
-    $G = mt_rand(0,255);
-    $B = mt_rand(0,255);
-    $color = [
-	'back' => "rgba($R,$G,$B,.125)",
-	'fore' => '#000',
-    ];
-    return $color;
+function calendar_kurdish_string ($date=NULL) {
+	if(!$date)
+		$date = calendarKurdishFromGregorian(
+			explode("-", date("m-d-Y")));
+	$year = calendarExtractYear($date);
+	$month = calendarKurdishMonth(
+		calendarExtractMonth($date));
+	$day = calendarExtractDay($date);
+
+	return "{$day}ی {$month}ی {$year}ی کوردی";
 }
 ?>
