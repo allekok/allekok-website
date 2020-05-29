@@ -9,6 +9,7 @@
 * DONE (about/index.php) Fix the error on submitting very first comment.
 * DONE A button to navigate to a random poem
 * DONE Using Kurdish calendar for dates
+
 * TODO Let users verify poems and publish them by doing some heavy work on cpu. something like mining Bitcoin.
 * TODO Build PDFs from text.
 * TODO (/script/php/book.php) Let users download a whole book (ie. build PDFs).
