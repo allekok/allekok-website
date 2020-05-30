@@ -1,4 +1,8 @@
 <?php
+require_once("../script/php/constants.php");
+require_once(ABSPATH . "script/php/functions.php");
+require_once(ABSPATH . "script/php/kurdish-calendar.php");
+
 const comments_file = "comments.txt";
 const comment_sign = "[comment]";
 
@@ -11,6 +15,7 @@ function calendar_kurdish_string ($date=NULL) {
 		calendarExtractMonth($date));
 	$day = calendarExtractDay($date);
 
-	return "{$day}ی {$month}ی {$year}ی کوردی";
+	$str = "{$day}ی {$month}ی {$year}ی کوردی";
+	return num_convert($str, "en", "ckb");
 }
 ?>

@@ -31,7 +31,8 @@ function mod ($x, $y) {
 
 /* 
    Translated from:
-   emacs/lisp/calendar/calendar.el:
+   gnu-emacs/lisp/calendar/calendar.el:
+   You can download a copy of GNU Emacs source code from 'emacs.org'
    Copyright (C) 1988-1995, 1997, 2000-2020 Free Software Foundation, Inc.
    Author: Edward M. Reingold <reingold@cs.uiuc.edu>
  */
@@ -132,7 +133,8 @@ function calendarLastDayOfMonth ($month, $year) {
 
 /*
    Translated from:
-   emacs/lisp/calendar/cal-julian.el:
+   gnu-emacs/lisp/calendar/cal-julian.el:
+   You can download a copy of GNU Emacs source code from 'emacs.org'
    Copyright (C) 1995, 1997, 2001-2020 Free Software Foundation, Inc.
    Author: Edward M. Reingold <reingold@cs.uiuc.edu>
  */
@@ -148,12 +150,15 @@ function calendarJulianToAbsolute ($date) {
 	     - 2;
 }
 
-/*
+/* 
    Translated from:
-   emacs/lisp/calendar/cal-persia.el:
+   gnu-emacs/lisp/calendar/cal-persia.el:
+   You can download a copy of GNU Emacs source code from 'emacs.org'
    Copyright (C) 1996-1997, 2001-2020 Free Software Foundation, Inc.
    Author: Edward M. Reingold <reingold@cs.uiuc.edu>
  */
+define('calendarPersianEpoch', calendarJulianToAbsolute([3, 19, 622]));
+
 function calendarPersianLeapYearP ($year) {
 	return (mod((mod(mod(($year <= 0) ?
 			     ($year + 2346) :
@@ -171,7 +176,6 @@ function calendarPersianLastDayOfMonth ($month, $year) {
 }
 
 function calendarPersianToAbsolute ($date) {
-	$calendarPersianEpoch = calendarJulianToAbsolute([3, 19, 622]);
 	$month = calendarExtractMonth($date);
 	$day = calendarExtractDay($date);
 	$year = calendarExtractYear($date);
@@ -179,15 +183,15 @@ function calendarPersianToAbsolute ($date) {
 		return calendarPersianToAbsolute(
 			[$month, $day, mod($year, 2820) + 1]) + (
 				1029983 * div($year, 2820));
-	return ($calendarPersianEpoch - 1) +
+	return (calendarPersianEpoch - 1) +
 	       (365 * ($year - 1)) +
 	       (683 * div(($year + 2345), 2820)) +
 	       (186 * div(mod(($year + 2345), 2820), 768)) +
 	       div(683 * mod(mod(($year + 2345), 2820), 768), 2820) +
 	      -568 +
-	       calendarSum(1, function ($idx,$month,$year,$date) {
+	       calendarSum(1, function ($idx,$month,$_,$__) {
 		       return ($idx < $month);
-	       }, function ($idx,$month,$year) {
+	       }, function ($idx,$_,$year) {
 		       return (calendarPersianLastDayOfMonth($idx,$year));
 	       }, $month, $year, NULL) +
 	       $day;
@@ -207,13 +211,81 @@ function calendarPersianYearFromAbsolute ($date) {
 
 function calendarPersianFromAbsolute ($date) {
 	$year = calendarPersianYearFromAbsolute($date);
-	$month = 1 + calendarSum(1, function ($idx,$month,$year,$date) {
+	$month = 1 + calendarSum(1, function ($idx,$_,$year,$date) {
 		return ($date > calendarPersianToAbsolute(
 			[$idx,
 			 calendarPersianLastDayOfMonth($idx, $year),
 			 $year]));
-	}, function ($idx,$month,$year) { return 1; }, NULL, $year, $date);
+	}, function ($_,$__,$___) { return 1; }, NULL, $year, $date);
 	$day = $date - (calendarPersianToAbsolute([$month, 1, $year]) - 1);
+	return [$month, $day, $year];
+}
+
+/* 
+   Translated from:
+   gnu-emacs/lisp/calendar/cal-islam.el:
+   You can download a copy of GNU Emacs source code from 'emacs.org'
+   Copyright (C) 1995, 1997, 2001-2020 Free Software Foundation, Inc.
+   Author: Edward M. Reingold <reingold@cs.uiuc.edu>
+ */
+define('calendarIslamicEpoch', calendarJulianToAbsolute([7,16,622]));
+
+function calendarIslamicLeapYearP ($year) {
+	return in_array(mod($year, 30),
+			[2, 5, 7, 10, 13, 16, 18, 21, 24, 26, 29]);
+}
+
+function calendarIslamicLastDayOfMonth ($month, $year) {
+	if(in_array($month, [1, 3, 5, 7, 9, 11]))
+		return 30;
+	else if(in_array($month, [2, 4, 6, 8, 10]))
+		return 29;
+	return calendarIslamicLeapYearP($year) ? 30 : 29;
+}
+
+function calendarIslamicDayNumber ($date) {
+	$month = calendarExtractMonth($date);
+	return (30 * div($month, 2)) +
+	       (29 * div(($month - 1), 2)) +
+	       calendarExtractDay($date);
+}
+
+function calendarIslamicToAbsolute ($date) {
+	$month = calendarExtractMonth($date);
+	$day = calendarExtractDay($date);
+	$year = calendarExtractYear($date);
+	$y = mod($year, 30);
+	$leapYearsInCycle = ($y < 3) ? 0 :
+			    (($y < 6) ? 1 :
+			     (($y < 8) ? 2 :
+			      (($y < 11) ? 3 :
+			       (($y < 14) ? 4 :
+				(($y < 17) ? 5 :
+				 (($y < 19) ? 6 :
+				  (($y < 22) ? 7 :
+				   (($y < 25) ? 8 :
+				    (($y < 27) ? 9 : 10)))))))));
+	return calendarIslamicDayNumber($date) +
+	       (($year - 1) * 354) +
+	       (11 * div($year, 30)) +
+	       $leapYearsInCycle +
+	       (calendarIslamicEpoch - 1);
+}
+
+function calendarIslamicFromAbsolute ($date) {
+	if ($date < calendarIslamicEpoch)
+		return [0,0,0];
+	$approx = div(($date - calendarIslamicEpoch), 355);
+	$year = $approx + calendarSum($approx, function($idx,$_,$__,$date) {
+		return $date >= calendarIslamicToAbsolute([1,1,($idx + 1)]);
+	}, function ($_,$__,$___) { return 1; }, NULL, NULL, $date);
+	$month = 1 + calendarSum(1, function ($idx,$_,$year,$date) {
+		return ($date > calendarIslamicToAbsolute(
+			[$idx,
+			 calendarIslamicLastDayOfMonth($idx, $year),
+			 $year]));
+	}, function ($_,$__,$___) { return 1; }, NULL, $year, $date);
+	$day = $date - ((calendarIslamicToAbsolute([$month, 1, $year])) - 1);
 	return [$month, $day, $year];
 }
 
@@ -235,7 +307,7 @@ function calendarKurdishFromPersian ($date) {
 
 function calendarKurdishToPersian ($date) {
 	return calendarUpdateYear(
-		$date, calendarExtractYear(date) - 1321);
+		$date, calendarExtractYear($date) - 1321);
 }
 
 function calendarKurdishFromGregorian ($date) {
@@ -245,6 +317,16 @@ function calendarKurdishFromGregorian ($date) {
 
 function calendarKurdishToGregorian ($date) {
 	return calendarGregorianFromAbsolute(
+		calendarKurdishToAbsolutePersian($date));
+}
+
+function calendarKurdishFromIslamic ($date) {
+	return calendarKurdishFromAbsolutePersian(
+		calendarIslamicToAbsolute($date));
+}
+
+function calendarKurdishToIslamic ($date) {
+	return calendarIslamicFromAbsolute(
 		calendarKurdishToAbsolutePersian($date));
 }
 

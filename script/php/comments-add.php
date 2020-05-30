@@ -6,7 +6,7 @@
  */
 require_once('constants.php');
 require_once(ABSPATH.'script/php/functions.php');
-require_once(ABSPATH.'script/php/calendar-lib.php');
+require_once(ABSPATH.'script/php/kurdish-calendar.php');
 
 header('Content-type: application/json; Charset=UTF-8');
 $null = json_encode(NULL);
