@@ -1,6 +1,6 @@
--*- mode:org -*-
 * DONE (/pitew/*.php) change background color of submit button on check().
-* DONE (script/js/main.js) Add previously viewed pages into "indexeddb" to restore them back again when viewer goes back in history.
+* DONE (script/js/main.js) Add previously viewed pages into "indexeddb" to
+  restore them back again when viewer goes back in history.
 * DONE (/script/php/search.php) Fix bugs and make it work AJAXly.
 * DONE (script/js/main.js) Compress 'main.js'.
 * DONE Make (2nd DONE) optional, adjustable in 'customize/index.php'
@@ -10,15 +10,19 @@
 * DONE A button to navigate to a random poem
 * DONE Using Kurdish calendar for dates
 
-* TODO Let users verify poems and publish them by doing some heavy work on cpu. something like mining Bitcoin.
+* TODO Let users verify poems and publish them by proof of work.
 * TODO Build PDFs from text.
 * TODO (/script/php/book.php) Let users download a whole book (ie. build PDFs).
-* TODO (/script/php/book.php) Link to reference pdfs located in (/pitew/pdfs.php).
+* TODO (/script/php/book.php) Link to reference pdfs located in
+  (/pitew/pdfs.php).
 * TODO (/customize/package) Build a package system.
-* TODO Make 'Allekok' less server-dependent. Try not to download poems that had been viewed before and haven't changed since then. (like 'allekok-client' but more intelligent)
+* TODO Make 'Allekok' less server-dependent. Try not to download poems that had
+  been viewed before and haven't changed since then. (like 'allekok-client' but
+  more intelligent)
 * TODO news.txt: Group following poems of the same book in one entry
 * TODO Correct links to 'vejinbooks.com' + Add a search link instead.
 * TODO (pitew/*) Show copyright notice for contributors.
 * TODO Users should be able to write comments on all pages.
 * TODO Add key bindings especially for search(in the page and whole site)
-* TODO Add a javascript plugin to understand context of search strings. for example, شێعرەکانی پیرەمێرد -> Show all پیرەمێرد's poems.
+* TODO Add a javascript plugin to understand the meaning of search strings. for
+  example, شێعرەکانی پیرەمێرد -> Show all پیرەمێرد's poems.
