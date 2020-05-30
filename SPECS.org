@@ -1,4 +1,4 @@
-* Allekok website system specifications
+* allekok website system specification
 ** Source code
 Languages: PHP, HTML, CSS, JS, SHELL
 /No 3rd party JS/CSS libraries/
