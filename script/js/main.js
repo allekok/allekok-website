@@ -17,20 +17,19 @@ var apply_to_text = apply_to_text || function (el, proc) {
 	el.innerHTML = html;
 }
 
-var apply_to_words = apply_to_words || function (poem, fun) {
-	let tokens = tokenizer(poem, "«»`1234567890-=~!@#$%^&*()_+[]{}\\|;:'\",./<>?؛،؟١٢٣٤٥٦٧٨٩٠ \n\t\r");
-	return tokens.map(fun).join('');
-}
-
-var tokenizer = tokenizer || function (str, include) {
-	let tokens = [], i = 0;
+var apply_to_words = apply_to_words || function (str, fun) {
+	let include = "«»`1234567890-=~!@#$%^&*()_+[]{}\\|;:'\",./<>?؛،؟١٢٣٤٥٦٧٨٩٠ \n\t\r",
+	    i = 0, new_str = '';
 	while(str[i] !== undefined) {
 		let token = '';
-		while(str[i] !== undefined && include.indexOf(str[i]) === -1) token += str[i++];
-		if(!token) while(include.indexOf(str[i]) !== -1) token += str[i++];
-		tokens.push(token);
+		while(str[i] !== undefined && include.indexOf(str[i]) === -1)
+			token += str[i++];
+		if(!token)
+			while(include.indexOf(str[i]) !== -1)
+				token += str[i++];
+		new_str += fun(token);
 	}
-	return tokens;
+	return new_str;
 }
 
 var ar2IL = ar2IL || function (s) {
@@ -44,17 +43,18 @@ var ar2IL = ar2IL || function (s) {
 	const bizroke = 'i';
 	const v = "ەeێêۆoاaiuîû";
 	const n = "قwرڕتyئحعپسشدفگغهژکلڵزخجچڤبنمھ";
-	function is_v (ch) { return is_(ch, v) }
 	function determine_notsure (R, str) {
-		const pos = R[0];
-		const ch = R[1][0];
-		const ch_len = ch.length;
-		let prev_ch = L(str, pos-1);
-		if(prev_ch == "‌") prev_ch = L(str, pos-2);
-		const next_ch = L(str, pos+ch_len);
-		const prev_v = is_v(prev_ch);
-		const next_v = is_v(next_ch);
-		let i = 1; // v
+		let pos = R[0],
+		    ch = R[1][0],
+		    ch_len = ch.length,
+		    prev_ch = L(str, pos-1),
+		    next_ch = L(str, pos+ch_len),
+		    prev_v = is_(prev_ch, v),
+		    next_v = is_(next_ch, v),
+		    i = 1; // v
+		if(prev_ch == "‌")
+			prev_ch = L(str, pos-2);
+		
 		if(is_(str, ["وو","یی","ی","و"]));
 		else if(ch_len == 2) {
 			if(prev_v && next_v) i = 4;
@@ -151,10 +151,10 @@ var ar2per = ar2per || function (s) {
 }
 
 var transliterate_ar2lat = transliterate_ar2lat || function (str)
-{ return apply_to_words(str, (w) => ar2lat(w)) }
+{ return apply_to_words(str, w => ar2lat(w)) }
 
 var transliterate_ar2per = transliterate_ar2per || function (str)
-{ return apply_to_words(str, (w) => ar2per(w)) }
+{ return apply_to_words(str, w => ar2per(w)) }
 
 var replace_sure = replace_sure || function (str, sure, f=0, t=1) {
 	for(const o of sure)
