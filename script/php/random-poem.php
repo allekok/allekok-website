@@ -26,7 +26,7 @@ $url = _R."poet:{$res["poet_id"]}/" .
 
 if(isset($_random_poem_noprint));
 elseif(isset($_REQUEST["redirect"])) {
-	$red_url = _R."?ath={$res["poet_id"]}" .
+	$red_url = _SITE."?ath={$res["poet_id"]}" .
 		   "&bk={$res["book_id"]}" .
 		   "&id={$res["poem_id"]}";
 	if(isset($_REQUEST["nohead"])) $red_url .= "&nohead";
