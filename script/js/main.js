@@ -18,14 +18,16 @@ var apply_to_text = apply_to_text || function (el, proc) {
 }
 
 var apply_to_words = apply_to_words || function (str, fun) {
-	let include = "«»`1234567890-=~!@#$%^&*()_+[]{}\\|;:'\",./<>?؛،؟١٢٣٤٥٦٧٨٩٠ \n\t\r",
+	let include = "«»`1234567890-=~!@#$%^&*()_+[]{}\\|;:'\",./<>?؛،؟١٢٣٤٥٦٧٨٩٠ \n\t\rABCDEFGHIJKLMNOPQRSTUVWXYZ",
 	    i = 0, new_str = '';
 	while(str[i] !== undefined) {
 		let token = '';
-		while(str[i] !== undefined && include.indexOf(str[i]) === -1)
+		while(str[i] !== undefined &&
+		      include.indexOf(str[i].toUpperCase()) === -1)
 			token += str[i++];
 		if(!token)
-			while(include.indexOf(str[i]) !== -1)
+			while(str[i] !== undefined &&
+			      include.indexOf(str[i].toUpperCase()) !== -1)
 				token += str[i++];
 		new_str += fun(token);
 	}
@@ -33,6 +35,7 @@ var apply_to_words = apply_to_words || function (str, fun) {
 }
 
 var ar2IL = ar2IL || function (s) {
+	s = standardizing(s);
 	const exceptions = [[/([مسپ])ە([حر])و(ی.*)/g, "$1ە$2w$3"],
 			    ["عیوونی", "عyوونی"]];
 	s = replace_sure(s, exceptions);
@@ -42,7 +45,7 @@ var ar2IL = ar2IL || function (s) {
 			 ["و", "u", "w"]];
 	const bizroke = 'i';
 	const v = "ەeێêۆoاaiuîû";
-	const n = "قwرڕتyئحعپسشدفگغهژکلڵزخجچڤبنمھ";
+	const n = "قwرڕتyئحعپسشدفگغهژکلڵزخجچڤبنمڎصۊۉ";
 	function determine_notsure (R, str) {
 		let pos = R[0],
 		    ch = R[1][0],
@@ -52,8 +55,6 @@ var ar2IL = ar2IL || function (s) {
 		    prev_v = is_(prev_ch, v),
 		    next_v = is_(next_ch, v),
 		    i = 1; // v
-		if(prev_ch == "‌")
-			prev_ch = L(str, pos-2);
 		
 		if(is_(str, ["وو","یی","ی","و"]));
 		else if(ch_len == 2) {
@@ -68,8 +69,7 @@ var ar2IL = ar2IL || function (s) {
 			   n, bizroke);
 }
 var ar2lat = ar2lat || function (s) {
-	const sure = [["ھ", "h"],
-		      ["ە", "e"],
+	const sure = [["ە", "e"],
 		      ["ێ", "ê"],
 		      ["ۆ", "o"],
 		      ["ا", "a"],
@@ -100,16 +100,20 @@ var ar2lat = ar2lat || function (s) {
 		      ["ب", "b"],
 		      ["ن", "n"],
 		      ["م", "m"],
-		      ["١", "1"],
-		      ["٢", "2"],
-		      ["٣", "3"],
-		      ["٤", "4"],
-		      ["٥", "5"],
-		      ["٦", "6"],
-		      ["٧", "7"],
-		      ["٨", "8"],
-		      ["٩", "9"],
-		      ["٠", "0"],
+		      ["ڎ", "ḍ"],
+		      ["ص", "ṣ"],
+		      ["ۊ", "ü"],
+		      ["ۉ", "ṿ"],
+		      ["٠|۰", "0"],
+		      ["١|۱", "1"],
+		      ["٢|۲", "2"],
+		      ["٣|۳", "3"],
+		      ["٤|۴", "4"],
+		      ["٥|۵", "5"],
+		      ["٦|۶", "6"],
+		      ["٧|۷", "7"],
+		      ["٨|۸", "8"],
+		      ["٩|۹", "9"],
 		      ["،", ","],
 		      ["؛", ";"],
 		      ["؟", "?"]];
@@ -126,8 +130,18 @@ var ar2per = ar2per || function (s) {
 		      ["w", "و"],
 		      ["y", "ی"],
 		      ["î", "ی"],
-		      ["i", "\u{652}"]];
-	const n = "قرڕتئحعپسشدفگغهژکلڵزخجچڤبنمھ";
+		      ["i", "\u{652}"],
+		      ["٠", "۰"],
+		      ["١", "۱"],
+		      ["٢", "۲"],
+		      ["٣", "۳"],
+		      ["٤", "۴"],
+		      ["٥", "۵"],
+		      ["٦", "۶"],
+		      ["٧", "۷"],
+		      ["٨", "۸"],
+		      ["٩", "۹"]];
+	const n = "قرڕتئحعپسشدفگغهژکلڵزخجچڤبنمڎصۊۉھكڪ";
 	const v = "ەێۆاuûîi";
 	/* Tashdid */
 	function add_tashdid (str, n, v, tashdid="\u{651}") {
@@ -180,7 +194,9 @@ var assoc_first = assoc_first || function (str, arr, i=0, off=0) {
 	return false;
 }
 
-var L = L || function (str, pos, len=1) { return str.substr(pos, len); }
+var L = L || function (str, pos, len=1) {
+	return standardizing(str.substr(pos, len));
+}
 
 var is_ = is_ || function (c, x) {
 	if(c && x.indexOf(c) !== -1) return true;
@@ -200,6 +216,25 @@ var add_bizroke = add_bizroke || function (str, n, bizroke="") {
 	if(is_n(L1) && (!L2 || is_n(L2)))
 		str = str_replace_pos("", bizroke, str, 1);
 	return str;
+}
+
+var standardizing = standardizing || function (str) {
+	return replace_sure(str, [
+		["ھ","ه"],
+		["ك|ڪ", "ک"],
+		["ي|ى|ے", "ی"],
+		["ض|ظ|ذ","ز"],
+		["ث","س"],
+		["ط|ة","ت"],
+		["أ","ئە"],
+		["إ","ئی"],
+		["آ","ئا"],
+		["ؤ","ۆ"],
+		["ـ",""],
+		["‌",""],
+		["َ", "ە"],
+		["ِ", "î"],
+		["ُ", "u"]]);
 }
 
 var poetImage = poetImage || function (pID, callback)
