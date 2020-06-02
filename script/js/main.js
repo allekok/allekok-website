@@ -52,9 +52,10 @@ var ar2IL = ar2IL || function (s) {
 		    ch_len = ch.length,
 		    prev_ch = L(str, pos-1),
 		    next_ch = L(str, pos+ch_len),
-		    prev_v = is_(prev_ch, v),
 		    next_v = is_(next_ch, v),
 		    i = 1; // v
+		if(prev_ch == '‌') prev_ch = L(str, pos-2);
+		let prev_v = is_(prev_ch, v);
 		
 		if(is_(str, ["وو","یی","ی","و"]));
 		else if(ch_len == 2) {
