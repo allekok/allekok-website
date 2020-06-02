@@ -44,8 +44,8 @@ var ar2IL = ar2IL || function (s) {
 			 ["ی", "î", "y"],
 			 ["و", "u", "w"]];
 	const bizroke = 'i';
-	const v = "ەeێêۆoاaiuîû";
-	const n = "قwرڕتyئحعپسشدفگغهژکلڵزخجچڤبنمڎصۊۉ";
+	const v = "ەeێêۆoاaiuîûأإآ";
+	const n = "قwرڕتyئحعپسشدفگغهژکلڵزخجچڤبنمڎصۊۉثذضظةطؤ";
 	function determine_notsure (R, str) {
 		let pos = R[0],
 		    ch = R[1][0],
@@ -69,19 +69,25 @@ var ar2IL = ar2IL || function (s) {
 			   n, bizroke);
 }
 var ar2lat = ar2lat || function (s) {
-	const sure = [["ە", "e"],
+	const sure = [["أ","ئە"],
+		      ["إ","ئی"],
+		      ["آ","ئا"],
+		      ["َ", "e"],
+		      ["ِ", "î"],
+		      ["ُ", "u"],
+		      ["ە", "e"],
 		      ["ێ", "ê"],
 		      ["ۆ", "o"],
 		      ["ا", "a"],
 		      ["ق", "q"],
 		      ["ر", "r"],
 		      ["ڕ", "ř"],
-		      ["ت", "t"],
-		      ["ئ", "'"],
+		      ["ت|ط|ة", "t"],
+		      ["ئ|ء|ؤ|ع", "'"],
 		      ["ح", "ḧ"],
-		      ["ع", "'"],
 		      ["پ", "p"],
-		      ["س", "s"],
+		      ["س|ث", "s"],
+		      ["ص", "ṣ"],
 		      ["ش", "ş"],
 		      ["د", "d"],
 		      ["ف", "f"],
@@ -92,7 +98,7 @@ var ar2lat = ar2lat || function (s) {
 		      ["ک", "k"],
 		      ["ل", "l"],
 		      ["ڵ", "ɫ"],
-		      ["ز", "z"],
+		      ["ز|ض|ظ|ذ", "z"],
 		      ["خ", "x"],
 		      ["ج", "c"],
 		      ["چ", "ç"],
@@ -101,7 +107,6 @@ var ar2lat = ar2lat || function (s) {
 		      ["ن", "n"],
 		      ["م", "m"],
 		      ["ڎ", "ḍ"],
-		      ["ص", "ṣ"],
 		      ["ۊ", "ü"],
 		      ["ۉ", "ṿ"],
 		      ["٠|۰", "0"],
@@ -141,8 +146,8 @@ var ar2per = ar2per || function (s) {
 		      ["٧", "۷"],
 		      ["٨", "۸"],
 		      ["٩", "۹"]];
-	const n = "قرڕتئحعپسشدفگغهژکلڵزخجچڤبنمڎصۊۉھكڪ";
-	const v = "ەێۆاuûîi";
+	const n = "قرڕتئحعپسشدفگغهژکلڵزخجچڤبنمڎصۊۉثذضظةطؤ";
+	const v = "ەێۆاuûîiأإآ";
 	/* Tashdid */
 	function add_tashdid (str, n, v, tashdid="\u{651}") {
 		for (let i = 0; i < str.length-2; i++) {
@@ -195,7 +200,7 @@ var assoc_first = assoc_first || function (str, arr, i=0, off=0) {
 }
 
 var L = L || function (str, pos, len=1) {
-	return standardizing(str.substr(pos, len));
+	return str.substr(pos, len);
 }
 
 var is_ = is_ || function (c, x) {
@@ -220,21 +225,11 @@ var add_bizroke = add_bizroke || function (str, n, bizroke="") {
 
 var standardizing = standardizing || function (str) {
 	return replace_sure(str, [
+		["ـ",""],
+		["‌+","‌"],
 		["ھ","ه"],
 		["ك|ڪ", "ک"],
-		["ي|ى|ے", "ی"],
-		["ض|ظ|ذ","ز"],
-		["ث","س"],
-		["ط|ة","ت"],
-		["أ","ئە"],
-		["إ","ئی"],
-		["آ","ئا"],
-		["ؤ","ۆ"],
-		["ـ",""],
-		["‌",""],
-		["َ", "ە"],
-		["ِ", "î"],
-		["ُ", "u"]]);
+		["ي|ى|ے", "ی"]]);
 }
 
 var poetImage = poetImage || function (pID, callback)
