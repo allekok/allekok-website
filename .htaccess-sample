@@ -3,12 +3,12 @@
 RewriteEngine On
 
 # Map 'http' -> 'https'
-RewriteCond %{HTTP_HOST} ^allekok\.com [NC]
+RewriteCond %{HTTP_HOST} ^allekok\.ir [NC]
 RewriteCond %{SERVER_PORT} 80 
-RewriteRule ^(.*)$ https://allekok.com/$1 [R,L]
-RewriteCond %{HTTP_HOST} www.allekok\.com [NC]
+RewriteRule ^(.*)$ https://allekok.ir/$1 [R,L]
+RewriteCond %{HTTP_HOST} www.allekok\.ir [NC]
 RewriteCond %{SERVER_PORT} 80 
-RewriteRule ^(.*)$ https://www.allekok.com/$1 [R,L]
+RewriteRule ^(.*)$ https://www.allekok.ir/$1 [R,L]
 
 # Map '?ath=1&bk=2&id=3' -> 'poet:1/book:2/poem:3'
 # Poets
