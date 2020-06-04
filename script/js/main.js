@@ -36,8 +36,12 @@ var apply_to_words = apply_to_words || function (str, fun) {
 
 var ar2IL = ar2IL || function (s) {
 	s = standardizing(s);
-	const exceptions = [[/([مسپ])ە([حر])و(ی.*)/g, "$1ە$2w$3"],
-			    ["عیوونی", "عyوونی"]];
+	const exceptions = [["عیوونی", "عiیوونی"],
+			    ["ئەیوب", "ئەyوب"],
+			    ["ئەییوب", "ئەyyوب"],
+			    ["ئەییووب", "ئەyyووب"],
+			    ["دەرویش", "دەرwیش"],
+			    ["خوین", "خiوین"]];
 	s = replace_sure(s, exceptions);
 	const notsure = [["وو", "û", "uw", "wu", "ww"],
 			 ["یی", "î", "îy", "yî", "yy"],
@@ -63,7 +67,8 @@ var ar2IL = ar2IL || function (s) {
 			else if(pos == 0 || prev_v) i = 3;
 			else if(next_v) i = 2;
 		}
-		else if(pos == 0 || prev_v || next_v) i = 2;
+		else if(pos == 0 || prev_v || next_v ||
+			(ch == 'و' && next_ch == 'ی' && !L(str, pos+2))) i = 2;
 		return i;
 	}
 	return add_bizroke(replace_notsure(s, notsure, determine_notsure),
