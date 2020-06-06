@@ -399,7 +399,6 @@ style='display:inline-block'
 				  if(extlnk.style.display != "block")
 				  {
 					  extlnk.style.display = "block";
-					  extlnk.style.animation = ".25s tL";
 				  }
 				  else
 				  {
@@ -419,7 +418,6 @@ style='display:inline-block'
 		       title = document.getElementById("current-location"),
 		       desc = document.getElementById("bhondesc");
 		 
-		 tar.style.animation = "";
 		 void tar.offsetWidth;
 		 let props;
 		 
@@ -532,7 +530,6 @@ style='display:inline-block'
 			 {
 				 likeico.innerHTML = 'bookmark';
 				 likeico.classList.add('back-blue');
-				 likeico.style.animation = 'll .4s ease-out forwards';
 				 break;
 			 }
 		 }

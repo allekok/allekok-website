@@ -325,7 +325,6 @@ margin-left:.5em'>${favs[a].poetName} &rsaquo; ${favs[a].poem}</a>`;
 	document.getElementById('tL-res-res').innerHTML = favsString;
 	
 	bookmarksSection.style.display = "block";
-	bookmarksSection.style.animation = "tL .2s";
 	bookmarksIcon.classList.add('color-blue');
 
 	imgs.map(function(pID) {
@@ -528,7 +527,6 @@ var Liked = Liked || function ()
 				     JSON.stringify([poemObject]));
 		ico.innerHTML = "bookmark";
 		ico.classList.add("back-blue");
-		ico.style.animation = "ll .4s ease-out forwards";
 		bookmarksIcon.style.display = "block";
 		return;
 	}
@@ -549,7 +547,6 @@ var Liked = Liked || function ()
 		localStorage.setItem(bookmarks_name,JSON.stringify(bookmarks));
 		ico.innerHTML = "bookmark";
 		ico.classList.add("back-blue");
-		ico.style.animation = "ll .4s ease-out forwards";        
 	}
 	else
 	{
@@ -566,7 +563,6 @@ var Liked = Liked || function ()
 		}
 		ico.innerHTML = "bookmark_border";
 		ico.classList.remove("back-blue");
-		ico.style.animation = "";        
 	}
 }
 

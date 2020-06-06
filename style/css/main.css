@@ -13,7 +13,6 @@ table, tr, td, th, textarea, span, i, sup, sub
 	border:0;
 	font-family:inherit;
 	font-weight:normal;
-	transition:all .15s ease-out;
 	text-align:inherit;
 	box-sizing:border-box
 }
@@ -207,12 +206,9 @@ i
 }
 .tt
 {
-	margin:-2em 0 1em;
-	opacity:0;
 	font-size:.65em;
 	padding:5px 0;
 	display:none;
-	animation:tooltip .1s forwards
 }
 .material-icons
 {
@@ -330,15 +326,10 @@ header a h1
 {
 	font-size:.6em;
 	padding:0 0 7px;
-	transition:none
 }
 #hon
 {
 	margin-bottom:1em
-}
-#hon,.b,.m1,.m2,.n,.m,.m3, .b span, .ptr,#hon sup
-{
-	transition:none
 }
 #search-form,.pmlist-container
 {
@@ -670,6 +661,17 @@ footer i
 	padding:.2em .5em;
 	display:block;
 }
+::-webkit-scrollbar {
+	width:.5em;
+}
+#global-back {
+	position:fixed;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	z-index:-9999;
+}
 /* Different screen sizes */
 @media only screen and (min-width:600px)
 {
@@ -703,38 +705,6 @@ footer i
 	}
 }
 /* Animations */
-@keyframes tL
-{
-	0% {opacity:0}
-	100% {opacity:1}
-}
-@keyframes tL-top
-{
-	0%
-	{
-		opacity:0;
-		margin-top:3em
-	}
-	40% {opacity:0}
-	100%
-	{
-		opacity:1;
-		margin-top:0
-	}
-}
-@keyframes tooltip
-{
-	0%
-	{
-		opacity:0;
-		margin-top:-1.5em
-	}
-	100%
-	{
-		opacity:1;
-		margin-top:0
-	}
-}
 @keyframes loading
 {
 	0%,100% {width:2em}
@@ -746,15 +716,4 @@ footer i
 	0%,100% { }
 	15% {transform:scale(.5)}
 	70% {transform:scale(.8)}
-}
-::-webkit-scrollbar {
-	width:.5em;
-}
-#global-back {
-	position:fixed;
-	width:100%;
-	height:100%;
-	left:0;
-	top:0;
-	z-index:-9999;
 }
