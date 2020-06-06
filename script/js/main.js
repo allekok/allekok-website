@@ -44,7 +44,7 @@ var ar2IL = ar2IL || function (s) {
 			    ["خوین", "خiوین"]];
 	s = replace_sure(s, exceptions);
 	const notsure = [["وو", "û", "uw", "wu", "ww"],
-			 ["یی", "î", "îy", "yî", "yy"],
+			 ["یی", "îy", "îy", "yî", "yy"],
 			 ["ی", "î", "y"],
 			 ["و", "u", "w"]];
 	const bizroke = 'i';

@@ -12,7 +12,7 @@ if(!$no_foot) {
 		   >arrow_upward</i></button>
 	</footer>
 	<div class="loader-round" id="main-loader"></div>
-	<script defer src='<?php echo _R; ?>script/js/main-comp.js?v331'></script>
+	<script defer src='<?php echo _R; ?>script/js/main-comp.js?v332'></script>
 	<script>
 	 /* Colors */
 	 let colors = [<?php
