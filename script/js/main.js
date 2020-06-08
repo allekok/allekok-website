@@ -441,7 +441,7 @@ var tewar = tewar || function (e)
 						for(const i in response) {
 							let w = response[i][1],
 							    m = response[i][2];
-							if(m) wm_html += `<p style='font-size:.55em'>${w}: ${m}</p>`;
+							if(m) wm_html += `<p style='font-size:.55em'><i class='color-blue'>${w}</i>: ${m}</p>`;
 						}
 						let toprint = wm_html ?
 						    wm_html :
