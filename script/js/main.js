@@ -253,26 +253,47 @@ var poetImage = poetImage || function (pID, callback)
 	client.send();
 }
 
-var toggle_search = toggle_search || function ()
-{
+var toggle_x = toggle_x || function (searchProc, placeholder, action) {
 	const Sec = document.getElementById('search'),
 	      Key = document.getElementById("search-key"),
-	      Icon = document.getElementById('tS');
+	      Icon = document.getElementById('tS'),
+	      Frm = document.getElementById("search-form");
 	
-	if(Sec.style.display != "block")
-	{
+	if(Sec.style.display != "block") {
 		Sec.style.display = "block";
 		Icon.classList.add('color-blue');
+		Key.onkeyup = (e => searchProc(e));
+		Key.placeholder = placeholder;
 		Key.focus();
+		Frm.action = action;
 	}
-	else
-	{
+	else if(Key.placeholder != placeholder) {
+		Key.onkeyup = (e => searchProc(e));
+		Key.placeholder = placeholder;
+		Key.focus();
+		Frm.action = action;
+	}
+	else {
 		Sec.style.display="none";
 		Icon.classList.remove('color-blue');
 	}
+}
 
+var toggle_search = toggle_search || function ()
+{
+	toggle_x(search, 'گەڕان بۆ ...', _R);
 	/* Clear The Search Stack */
 	sessionStorage.removeItem('searchStack');
+}
+
+var toggle_tewar = toggle_tewar || function () {
+	toggle_x(tewar, 'گەڕان بۆ واتای وشە ...', `${_R}tewar/`);
+	/* Clear The Search Stack */
+	sessionStorage.removeItem('searchStack');
+}
+
+var toggle_findPage = toggle_findPage || function () {
+	toggle_x(findPage_, 'گەڕان لەم لاپەڕەدا ...', _R);
 }
 
 var get_bookmarks = get_bookmarks || function ()
@@ -358,7 +379,7 @@ var search = search || function (e)
 		if(noActionKeys.indexOf(currentKey) !== -1) return;
 		if(q) {
 			Res.style.display = "block";
-			let content = false;
+			let content;
 			if(content = ajax_findstate(url)) {
 				Res.innerHTML = content;
 				findPage(q, Res);
@@ -375,6 +396,86 @@ var search = search || function (e)
 					}
 				});
 			}
+		}
+		else {
+			Key.value = '';
+			Res.style.display = 'none';
+			findPage('', document.getElementById("MAIN"));
+		}
+	}, 100);
+}
+
+var tewar = tewar || function (e)
+{
+	setTimeout(() => {
+		const Res = document.getElementById("search-res"),
+		      Sec = document.getElementById("search"),
+		      Key = document.getElementById("search-key"),
+		      q = Key.value.trim(),
+		      currentKey = e.keyCode,
+		      noActionKeys = [16, 17, 18, 91, 20, 9, 93,
+				      37, 38, 39, 40, 32, 224, 13],
+		      dicts_str = 'xal,kameran,henbane-borine,bashur,kawe,e2k,zkurd',
+		      url = `${_R}tewar/src/backend/lookup.php?q=${q}&dicts=${dicts_str}&output=json&n=1`;
+		if(currentKey == 27) {
+			toggle_tewar();
+			return;
+		}
+		if(noActionKeys.indexOf(currentKey) !== -1) return;
+		if(q) {
+			Res.style.display = "block";
+			let content;
+			if(content = ajax_findstate(url)) {
+				Res.innerHTML = content;
+			}
+			else {
+				Res.innerHTML = "<div class='loader'></div>";
+				/* Server Search */
+				searchStackPush(q);
+				getUrl(url, (response) => {
+					if(searchStackPop(q)) {
+						response = isJson(response);
+						if(! response) return;
+						delete response['time'];
+						let wm_html = '';
+						for(const i in response) {
+							let w = response[i][1],
+							    m = response[i][2];
+							if(m) wm_html += `<p style='font-size:.55em'>${w}: ${m}</p>`;
+						}
+						let toprint = wm_html ?
+						    wm_html :
+						    "<p style='font-size:.55em'>(نەدۆزرایەوە)</p>";
+						ajax_savestate(url, toprint);
+						Res.innerHTML = toprint;
+					}
+				});
+			}
+		}
+		else {
+			Key.value = '';
+			Res.style.display = 'none';
+			findPage('', document.getElementById("MAIN"));
+		}
+	}, 100);
+}
+
+var findPage_ = findPage_ || function (e) {
+	setTimeout(() => {
+		const Key = document.getElementById("search-key"),
+		      Res = document.getElementById("MAIN"),
+		      q = Key.value.trim(),
+		      currentKey = e.keyCode;
+		if(currentKey == 27) {
+			toggle_findPage();
+			return;
+		}
+		if(q) findPage(q, Res);
+		else {
+			Key.value = '';
+			document.getElementById("search-res").
+				style.display = 'none';
+			findPage('', Res);
 		}
 	}, 100);
 }
@@ -782,7 +883,7 @@ var concat_url_query = concat_url_query || function (url, q)
 var match_all = match_all || function (str, needle, n=-1)
 {
 	let res = [];
-	let p = 0, r = -1;
+	let p = 0, r;
 	while(-1 !== (r=str.indexOf(needle, p)))
 	{
 		if(n == 0) break;
@@ -926,7 +1027,7 @@ var ajax_popstate = ajax_popstate || function ()
 	
 	loading.style.display = 'block';
 
-	let content = "";
+	let content;
 	if(content = ajax_findstate(url))
 	{
 		t.outerHTML = content;
@@ -1002,3 +1103,41 @@ try
 
 /* Garbage Collector */
 garbageCollector();
+
+/* Key bindings */
+window.addEventListener("keyup", function (e) {
+	if(e.altKey) return;
+	if(e.srcElement.nodeName == 'INPUT' &&
+	   e.srcElement.getAttribute('type') == 'text') return;
+
+	/* Key dispatch */
+	if(e.code == 'KeyG')       toggle_search();
+	else if(e.code == 'KeyT')  toggle_tewar();
+	else if(e.code == 'KeyF')  toggle_findPage();
+	else if(e.code == 'KeyL')
+		apply_to_text(document.body, transliterate_ar2lat);
+	else if(e.code == 'KeyP')
+		apply_to_text(document.body, transliterate_ar2per);
+	else if(e.code == 'KeyB') {
+		try {toggle_Like()} catch (e) {}
+	}
+	/* poem.php */
+	else if(e.ctrlKey && e.code == 'ArrowUp') {
+		try {save_fs("bigger")} catch (e) {}
+	}
+	else if(e.ctrlKey && e.code == 'ArrowDown') {
+		try {save_fs("smaller")} catch (e) {}
+	}
+	else if(e.ctrlKey && e.code == 'ArrowRight') {
+		try {document.querySelector(".prev a").click()}	catch (e) {}
+	}
+	else if(e.ctrlKey && e.code == 'ArrowLeft') {
+		try {document.querySelector(".next a").click()}	catch (e) {}
+	}
+	else if(e.code == 'KeyK') {
+		try {copyPoem()} catch (e) {}
+	}
+	else if(e.code == 'KeyN') {
+		try {Liked()} catch (e) {}
+	}
+});

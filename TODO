@@ -9,6 +9,7 @@
 * DONE (about/index.php) Fix the error on submitting very first comment.
 * DONE A button to navigate to a random poem
 * DONE Using Kurdish calendar for dates
+* DONE Add key bindings especially for search(in the page and whole site)
 
 * TODO Let users verify poems and publish them by proof of work.
 * TODO Build PDFs from text.
@@ -23,6 +24,5 @@
 * TODO Correct links to 'vejinbooks.com' + Add a search link instead.
 * TODO (pitew/*) Show copyright notice for contributors.
 * TODO Users should be able to write comments on all pages.
-* TODO Add key bindings especially for search(in the page and whole site)
 * TODO Add a javascript plugin to understand the meaning of search strings. for
   example, شێعرەکانی پیرەمێرد -> Show all پیرەمێرد's poems.
