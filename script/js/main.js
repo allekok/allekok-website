@@ -1107,8 +1107,9 @@ garbageCollector();
 /* Key bindings */
 window.addEventListener("keyup", function (e) {
 	if(e.altKey) return;
-	if(e.srcElement.nodeName == 'INPUT' &&
-	   e.srcElement.getAttribute('type') == 'text') return;
+	if((e.srcElement.nodeName == 'INPUT' &&
+	    e.srcElement.getAttribute('type') == 'text') ||
+	   e.srcElement.nodeName == 'TEXTAREA') return;
 
 	/* Key dispatch */
 	if(e.code == 'KeyG')       toggle_search();
