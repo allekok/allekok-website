@@ -1122,6 +1122,8 @@ window.addEventListener("keyup", function (e) {
 	else if(e.code == 'KeyB') {
 		try {toggle_Like()} catch (e) {}
 	}
+	else if(e.code == 'KeyM')
+		document.querySelector("header a").click()
 	/* poem.php */
 	else if(e.ctrlKey && e.code == 'ArrowUp') {
 		try {save_fs("bigger")} catch (e) {}
