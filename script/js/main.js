@@ -1105,7 +1105,7 @@ try
 garbageCollector();
 
 /* Key bindings */
-window.addEventListener("keyup", function (e) {
+var keyDispatch = keyDispatch || function (e) {
 	if(e.altKey) return;
 	if((e.srcElement.nodeName == 'INPUT' &&
 	    e.srcElement.getAttribute('type') == 'text') ||
@@ -1120,7 +1120,10 @@ window.addEventListener("keyup", function (e) {
 	else if(e.code == 'KeyP')
 		apply_to_text(document.body, transliterate_ar2per);
 	else if(e.code == 'KeyB') {
-		try {toggle_Like()} catch (e) {}
+		try {
+			toggle_Like()
+			document.querySelector("#tL-res-res a").focus()
+		} catch (e) {}
 	}
 	else if(e.code == 'KeyM')
 		document.querySelector("header a").click()
@@ -1143,4 +1146,5 @@ window.addEventListener("keyup", function (e) {
 	else if(e.code == 'KeyN') {
 		try {Liked()} catch (e) {}
 	}
-});
+}
+window.addEventListener("keyup", keyDispatch);
