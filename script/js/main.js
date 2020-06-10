@@ -253,25 +253,39 @@ var poetImage = poetImage || function (pID, callback)
 	client.send();
 }
 
+var getSelTxt = getSelTxt || function () {
+	return window.getSelection().toString()
+}
+
 var toggle_x = toggle_x || function (searchProc, placeholder, action) {
-	const Sec = document.getElementById('search'),
-	      Key = document.getElementById("search-key"),
-	      Icon = document.getElementById('tS'),
-	      Frm = document.getElementById("search-form");
+	let Sec = document.getElementById('search'),
+	    Key = document.getElementById("search-key"),
+	    Icon = document.getElementById('tS'),
+	    Frm = document.getElementById("search-form"),
+	    selTxt = getSelTxt();
 	
 	if(Sec.style.display != "block") {
+		if(selTxt) Key.value = selTxt;
 		Sec.style.display = "block";
 		Icon.classList.add('color-blue');
 		Key.onkeyup = (e => searchProc(e));
 		Key.placeholder = placeholder;
 		Key.focus();
+		searchProc();
 		Frm.action = action;
 	}
 	else if(Key.placeholder != placeholder) {
+		if(selTxt) Key.value = selTxt;
 		Key.onkeyup = (e => searchProc(e));
 		Key.placeholder = placeholder;
 		Key.focus();
+		searchProc();
 		Frm.action = action;
+	}
+	else if(selTxt) {
+		Key.value = selTxt;
+		Key.focus();
+		searchProc();
 	}
 	else {
 		Sec.style.display="none";
@@ -367,7 +381,7 @@ var search = search || function (e)
 		      Sec = document.getElementById("search"),
 		      Key = document.getElementById("search-key"),
 		      q = Key.value.trim(),
-		      currentKey = e.keyCode,
+		      currentKey = e === undefined ? false : e.keyCode,
 		      noActionKeys = [16, 17, 18, 91, 20, 9, 93,
 				      37, 38, 39, 40, 32, 224, 13],
 		      url = `${_R}script/php/search-quick.php?q=${q}`;
@@ -412,7 +426,7 @@ var tewar = tewar || function (e)
 		      Sec = document.getElementById("search"),
 		      Key = document.getElementById("search-key"),
 		      q = Key.value.trim(),
-		      currentKey = e.keyCode,
+		      currentKey = e === undefined ? false : e.keyCode,
 		      noActionKeys = [16, 17, 18, 91, 20, 9, 93,
 				      37, 38, 39, 40, 32, 224, 13],
 		      dicts_str = 'xal,kameran,henbane-borine,bashur,kawe,e2k,zkurd',
@@ -465,7 +479,7 @@ var findPage_ = findPage_ || function (e) {
 		const Key = document.getElementById("search-key"),
 		      Res = document.getElementById("MAIN"),
 		      q = Key.value.trim(),
-		      currentKey = e.keyCode;
+		      currentKey = e === undefined ? false : e.keyCode;
 		if(currentKey == 27) {
 			toggle_findPage();
 			return;
