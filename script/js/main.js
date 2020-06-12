@@ -1130,7 +1130,11 @@ var keyDispatch = keyDispatch || function (e) {
 	else if(e.code == 'KeyT')  toggle_tewar();
 	else if(e.code == 'KeyF')  toggle_findPage();
 	else if(e.code == 'KeyL')
-		apply_to_text(document.body, transliterate_ar2lat);
+		apply_to_text(document.body, x => {
+			y = transliterate_ar2lat(x);
+			if(!y.trim()) return y;
+			return `<span style='direction:ltr;display:inline-block'>${y}</span>`;
+		});
 	else if(e.code == 'KeyP')
 		apply_to_text(document.body, transliterate_ar2per);
 	else if(e.code == 'KeyB') {
