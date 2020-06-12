@@ -6,8 +6,13 @@ var bookmarks_name = bookmarks_name || 'favorites';
 var apply_to_text = apply_to_text || function (el, proc) {
 	let html = '';
 	for(const o of el.childNodes) {
-		if(o.nodeName == '#text')
-			html += proc(o.data);
+		if(o.nodeName == '#text') {
+			if(o.parentElement.className.
+			   indexOf('material-icons') === -1)
+				html += proc(o.data);
+			else
+				html += o.data;
+		}
 		else {
 			apply_to_text(o, proc);
 			if(o.outerHTML !== undefined)
@@ -1131,9 +1136,9 @@ var keyDispatch = keyDispatch || function (e) {
 	else if(e.code == 'KeyF')  toggle_findPage();
 	else if(e.code == 'KeyL')
 		apply_to_text(document.body, x => {
-			y = transliterate_ar2lat(x);
-			if(!y.trim()) return y;
-			return `<span style='direction:ltr;display:inline-block'>${y}</span>`;
+			x = transliterate_ar2lat(x);
+			if(!x.trim()) return x;
+			return `<allekok style='direction:ltr;display:inline-block'>${x}</allekok>`;
 		});
 	else if(e.code == 'KeyP')
 		apply_to_text(document.body, transliterate_ar2per);
