@@ -76,7 +76,7 @@ function format_DD($date_diff)
 	if($date_diff->days)
 		$ret = $date_diff->days . ' ڕۆژ';
 	elseif($date_diff->h)
-		$ret = $date_diff->h . ' کاژێر';
+		$ret = $date_diff->h . ' کاتکۆ';
 	elseif($date_diff->i)
 		$ret = $date_diff->i . ' خولەک';
 	elseif($date_diff->s)
