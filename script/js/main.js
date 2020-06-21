@@ -419,7 +419,6 @@ var search = search || function (e)
 		else {
 			Key.value = '';
 			Res.style.display = 'none';
-			findPage('', document.getElementById("MAIN"));
 		}
 	}, 100);
 }
@@ -474,7 +473,6 @@ var tewar = tewar || function (e)
 		else {
 			Key.value = '';
 			Res.style.display = 'none';
-			findPage('', document.getElementById("MAIN"));
 		}
 	}, 100);
 }
@@ -494,7 +492,6 @@ var findPage_ = findPage_ || function (e) {
 			Key.value = '';
 			document.getElementById("search-res").
 				style.display = 'none';
-			findPage('', Res);
 		}
 	}, 100);
 }
