@@ -27,7 +27,7 @@ if($comm and mb_strlen($comm) < 2685) {
 		["am", "pm"],
 		[" بەیانی", " پاش‌نیوەڕۆ"],
 		$time);
-	$date = "{$dayname} {$date} {$time}";
+	$date = "{$dayname} {$date} {$time} بەکاتی مەهاباد";
 	$header = "<i class='h'>{$date}</i>";
 	$div = "<div>";
 	
