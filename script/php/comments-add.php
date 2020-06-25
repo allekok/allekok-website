@@ -24,7 +24,7 @@ $date = explode("-", date("m-d-Y"));
 $date = calendarKurdishFromGregorian($date);
 $date = "{$date[1]}؍{$date[0]}؍{$date[2]}";
 $time = date("H:i:s");
-$date = "$date - $time بەکاتی مەهاباد";
+$date = "$date - $time بە کاتی مەهاباد";
 $date = num_convert($date, "en", "ckb");
 
 $_ = explode('/', $address);
