@@ -40,21 +40,20 @@ var apply_to_words = apply_to_words || function (str, fun) {
 }
 
 var ar2IL = ar2IL || function (s) {
-	s = standardizing(s);
-	const exceptions = [["عیوونی", "عiیوونی"],
-			    ["ئەیوب", "ئەyوب"],
-			    ["ئەییوب", "ئەyyوب"],
-			    ["ئەییووب", "ئەyyووب"],
-			    ["ئارەزوی", "ئارەزuی"],
-			    ["ئارزوی", "ئارزuی"]];
-	s = replace_sure(s, exceptions);
+	const bizroke = 'i';
+	const v = "ەeێêۆoاaiuîûأإآ";
+	const n = "قwرڕتyئحعپسشدفگغهژکلڵزخجچڤبنمڎصۊۉثذضظةطؤ";
+	const before = [["عیوونی", "عiیوونی"],
+			["ئارەزوی", "ئارەزuی"],
+			["ئارزوی", "ئارزuی"],
+			["^([رڕ])وی$", "$1uی"],
+			["^لە([رڕ])وی$", "لە$1uی"]];
+	const after = [["ûyyî$", "ûyîy"],
+		       [`^([مس])ە([رح])u$`, "$1ە$2w"]];
 	const notsure = [["وو", "û", "uw", "wu", "ww"],
 			 ["یی", "îy", "îy", "yî", "yy"],
 			 ["ی", "î", "y"],
 			 ["و", "u", "w"]];
-	const bizroke = 'i';
-	const v = "ەeێêۆoاaiuîûأإآ";
-	const n = "قwرڕتyئحعپسشدفگغهژکلڵزخجچڤبنمڎصۊۉثذضظةطؤ";
 	function determine_notsure (R, str) {
 		let pos = R[0],
 		    ch = R[1][0],
@@ -70,16 +69,19 @@ var ar2IL = ar2IL || function (s) {
 		
 		if(is_(str, ["وو","یی","ی","و"]));
 		else if(ch_len == 2) {
-			if(prev_v && (next_v || next_ch == 'ی')) i = 4;
+			if(prev_v && !next_v_2 &&
+			   (next_v || is_(next_ch,'یو'))) i = 4;
 			else if(pos == 0 || prev_v) i = 3;
 			else if(next_v) i = 2;
 		}
 		else if(pos == 0 || prev_v || next_v ||
-			(ch == 'و' && next_ch == 'ی' && !next_v_2)) i = 2;
+			(prev_ch != 'y' && ch == 'و' &&
+			 next_ch == 'ی' && !next_v_2)) i = 2;
 		return i;
 	}
-	return add_bizroke(replace_notsure(s, notsure, determine_notsure),
-			   n, bizroke);
+	return add_bizroke(replace_sure(replace_notsure(replace_sure(
+		standardizing(s), before), notsure, determine_notsure),
+					after), n, v, bizroke);
 }
 var ar2lat = ar2lat || function (s) {
 	const sure = [["أ","ئە"],
@@ -226,7 +228,7 @@ var str_replace_pos = str_replace_pos || function (from, to, str, pos) {
 		str.substr(pos + from.length);
 }
 
-var add_bizroke = add_bizroke || function (str, n, bizroke="") {
+var add_bizroke = add_bizroke || function (str, n, v, bizroke="") {
 	/* I don't know the exact specification for this procedure. */
 	function is_n (ch) { return is_(ch, n) }
 	const L1 = L(str, 0);
@@ -612,9 +614,7 @@ var copyPoem = copyPoem || function ()
 	    desc = document.getElementById("bhondesc").innerText.trim();
 	
 	for(const hc in htmlchars)
-	{
 		body = body.replace(htmlchars[hc], "");
-	}
 	body = body.replace(/<sup>/gi, "[").replace(/<\/sup>/gi, "]");
 	body = body.replace(/\n\n+/g, "\n\n");
 	body = body.trim();
