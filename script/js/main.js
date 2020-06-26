@@ -1063,6 +1063,29 @@ var ajax_popstate = ajax_popstate || function ()
 	}
 }
 
+var get_cookie = get_cookie || function (key) {
+	if(document.cookie) {
+		const cookies = document.cookie.split(';');
+		for(const i in cookies)	{
+			const c = cookies[i].split('=');
+			if(c[0].trim() == key) {
+				return c[1];
+				break;
+			}
+		}
+	}
+	return false;
+}
+
+var set_cookie = set_cookie || function (cookie_name, value, days=1000, path="/") {
+	let expires = new Date();
+	expires.setTime(expires.getTime() + (days*24*3600*1000));
+	expires = expires.toUTCString();
+	const cookie = `${cookie_name}=${value};expires=${expires};path=${path}`;
+	document.cookie = cookie;
+	return cookie;
+}
+
 try { ajax() } catch (e) {}
 
 window.onpopstate = ajax_popstate;
@@ -1165,6 +1188,12 @@ var keyDispatch = keyDispatch || function (e) {
 	}
 	else if(e.code == 'KeyN') {
 		try {Liked()} catch (e) {}
+	}
+	else if(e.code == 'KeyR') {
+		if(get_cookie('theme') == 'dark')
+			set_cookie('theme', 'light');
+		else    set_cookie('theme', 'dark');
+		window.location.reload();
 	}
 }
 window.addEventListener("keyup", keyDispatch);
