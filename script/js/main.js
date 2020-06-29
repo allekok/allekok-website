@@ -1189,7 +1189,7 @@ var keyDispatch = keyDispatch || function (e) {
 	else if(e.code == 'KeyN') {
 		try {Liked()} catch (e) {}
 	}
-	else if(e.code == 'KeyR') {
+	else if(e.code == 'KeyR' && !e.ctrlKey) {
 		if(get_cookie('theme') == 'dark')
 			set_cookie('theme', 'light');
 		else    set_cookie('theme', 'dark');
