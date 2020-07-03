@@ -4,10 +4,10 @@ $inputs = ["browserconfig-sample.xml",
 	   "site-sample.webmanifest"];
 foreach($inputs as $f)
 {
-    file_put_contents(
-	str_replace("-sample", "", $f),
-	str_replace("/favicon/", _R."favicon/",
-		    file_get_contents($f))
-    );
+	file_put_contents(
+		str_replace("-sample", "", $f),
+		str_replace("/favicon/", _R."favicon/",
+			    file_get_contents($f))
+	);
 }
 ?>

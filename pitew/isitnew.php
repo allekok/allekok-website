@@ -11,29 +11,29 @@ $img = 0;
 
 if( isset($_GET['poet']) )
 {
-    $_poet = trim(filter_var($_GET['poet'], FILTER_SANITIZE_STRING));
-    
-    $q = "select id from auth where 
+	$_poet = trim(filter_var($_GET['poet'], FILTER_SANITIZE_STRING));
+	
+	$q = "select id from auth where 
 takh='$_poet' or profname='$_poet'";
-    require(ABSPATH.'script/php/condb.php');
-    if($query)
-    {
-	$res = mysqli_fetch_assoc($query);
-	$id = $res['id'];
-	$new = 0;
-    }
-    mysqli_close($conn);
+	require(ABSPATH.'script/php/condb.php');
+	if($query)
+	{
+		$res = mysqli_fetch_assoc($query);
+		$id = $res['id'];
+		$new = 0;
+	}
+	mysqli_close($conn);
 }
 else
-    $new=0;
+	$new=0;
 
 if(file_exists(ABSPATH."style/img/poets/profile/profile_{$id}.jpg"))
-    $img = $id;
+	$img = $id;
 
 $_res = [
-    'new' => $new,
-    'id' => $id,
-    'img' => $img,
+	'new' => $new,
+	'id' => $id,
+	'img' => $img,
 ];
 
 header('Content-Type: application/json; charset=UTF-8');

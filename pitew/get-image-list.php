@@ -13,7 +13,7 @@ $poet = isset($_GET['poet']) ?
 $_list = make_list(ABSPATH."style/img/poets/new/");
 foreach($_list as $_l)
 {
-    echo "<div class='imglist-con'><section 
+	echo "<div class='imglist-con'><section 
 class='imglist'
 >" . $_l['name'] . "</section><section class='imglist'
 >" . $_l['poet'] . "</section><section class='imglist'
@@ -23,34 +23,34 @@ target='_blank'>وێنە</a></section></div>";
 
 function make_list($path)
 {
-    global $name,$poet,$n;
-    $not = [".","..","README.md","list.txt"];
-    $d = file_exists($path) ?
-	 opendir($path) : die();
-    $list = [];
+	global $name,$poet,$n;
+	$not = [".","..","README.md","list.txt"];
+	$d = file_exists($path) ?
+	     opendir($path) : die();
+	$list = [];
 
-    while( false !== ($e_name = readdir($d)) ) {
-	if(in_array($e_name , $not)) continue;
-	$exp_e_name = explode(
-	    "_",str_replace(
-		[".jpeg",".jpg",".png"],"",
-		$e_name));
-	if($poet and
-	    $exp_e_name[0] != $poet)
-	continue;
-	if($name and
-	    $exp_e_name[1] != $name)
-	continue;
-	if($n-- == 0) break;
-	$e = [
-	    "filemtime"=>filemtime($path.$e_name),
-	    "filename"=>$e_name,
-	    "poet"=>$exp_e_name[0],
-	    "name"=>$exp_e_name[1],
-	];
-	$list[] = $e;
-    }
-    rsort($list);
-    return $list;
+	while( false !== ($e_name = readdir($d)) ) {
+		if(in_array($e_name , $not)) continue;
+		$exp_e_name = explode(
+			"_",str_replace(
+				[".jpeg",".jpg",".png"],"",
+				$e_name));
+		if($poet and
+			$exp_e_name[0] != $poet)
+		continue;
+		if($name and
+			$exp_e_name[1] != $name)
+		continue;
+		if($n-- == 0) break;
+		$e = [
+			"filemtime"=>filemtime($path.$e_name),
+			"filename"=>$e_name,
+			"poet"=>$exp_e_name[0],
+			"name"=>$exp_e_name[1],
+		];
+		$list[] = $e;
+	}
+	rsort($list);
+	return $list;
 }
 ?>

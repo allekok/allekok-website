@@ -16,9 +16,9 @@ $limit = false === filter_var(@$_GET['num'], FILTER_VALIDATE_INT) ?
 
 foreach($comments as $c)
 {
-    if($limit-- == 0) break;
-    if(!isset($_GET["plain"]))
-	$c = str_replace("\n", "<br>", $c);
-    echo $c;
+	if($limit-- == 0) break;
+	if(!isset($_GET["plain"]))
+		$c = str_replace("\n", "<br>", $c);
+	echo $c;
 }
 ?>

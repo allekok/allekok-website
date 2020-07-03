@@ -37,50 +37,50 @@ $poems = [];
 
 foreach($_pms as $_pm)
 {    
-    if(! filter_var($_bk, FILTER_VALIDATE_INT))
-    {
-	$_bk = array_search($_bk, $poet['bks']);        
-        if($_bk === false) die($null);        
-        $_bk++;
-    }
-    elseif($_bk > count($poet['bks']))
-	die($null);
-    
-    $_tbl = "tbl{$poet['id']}_{$_bk}";
-    if($_pm == "all")
-	$where = "";
-    else
-	$where = filter_var($_pm, FILTER_VALIDATE_INT) ?
-		 "WHERE id=$_pm" : "WHERE name='$_pm'";
-    $q = "SELECT * FROM $_tbl $where ORDER BY id";
-    $query = mysqli_query($conn, $q);
-    
-    while($_ = mysqli_fetch_assoc($query))
-	$poems[] = $_;
+	if(! filter_var($_bk, FILTER_VALIDATE_INT))
+	{
+		$_bk = array_search($_bk, $poet['bks']);        
+		if($_bk === false) die($null);        
+		$_bk++;
+	}
+	elseif($_bk > count($poet['bks']))
+		die($null);
+	
+	$_tbl = "tbl{$poet['id']}_{$_bk}";
+	if($_pm == "all")
+		$where = "";
+	else
+		$where = filter_var($_pm, FILTER_VALIDATE_INT) ?
+			 "WHERE id=$_pm" : "WHERE name='$_pm'";
+	$q = "SELECT * FROM $_tbl $where ORDER BY id";
+	$query = mysqli_query($conn, $q);
+	
+	while($_ = mysqli_fetch_assoc($query))
+		$poems[] = $_;
 }
 mysqli_close($conn);
 if(empty($poems)) die($null);
 
 if(! isset($_REQUEST['html']))
 {
-    foreach($poems as $k => $p)
-    {
-	$p['hon'] = str_replace(["\r","&#39;","&#34;","&laquo;","&raquo;","<sup>","</sup>"],
-                                ["","'","\"","«","»"," [","] "], $p['hon']);
-	$p['hon'] = preg_replace("/\n\n+/", "\n\n", $p['hon']);
-	$p['hon'] = trim(filter_var($p['hon'],
-				    FILTER_SANITIZE_STRING));
-	
-        $poems[$k]['hon'] = $p['hon'];
-    }
+	foreach($poems as $k => $p)
+	{
+		$p['hon'] = str_replace(["\r","&#39;","&#34;","&laquo;","&raquo;","<sup>","</sup>"],
+					["","'","\"","«","»"," [","] "], $p['hon']);
+		$p['hon'] = preg_replace("/\n\n+/", "\n\n", $p['hon']);
+		$p['hon'] = trim(filter_var($p['hon'],
+					    FILTER_SANITIZE_STRING));
+		
+		$poems[$k]['hon'] = $p['hon'];
+	}
 }
 
 $reses = [
-    "poet" => $poet['takh'],
-    "poetID" => $poet['id'],
-    "book" => $poet['bks'][$_bk-1],
-    "bookID" => $_bk,
-    "poems" => $poems,
+	"poet" => $poet['takh'],
+	"poetID" => $poet['id'],
+	"book" => $poet['bks'][$_bk-1],
+	"bookID" => $_bk,
+	"poems" => $poems,
 ];
 $reses_str = json_encode($reses);
 

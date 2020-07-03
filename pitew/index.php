@@ -76,11 +76,11 @@ $_book1 = @trim(filter_var($_GET['book'], FILTER_SANITIZE_STRING));
 			<div id="message"></div>
 
 			<button type="submit" class="button bth"
-				style="font-size:.7em;border-radius:1em;
+				      style="font-size:.7em;border-radius:1em;
 				      margin-top:1em;padding:.8em 2.5em"
 			>ناردن</button>
 			<button type="button" id="clearBtn" class='button'
-				style="font-size:.7em;margin-top:1em;
+				      style="font-size:.7em;margin-top:1em;
 				      padding:.8em 2.5em"
 			>پاک کردنەوە</button>
 		</form>	

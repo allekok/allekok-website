@@ -19,7 +19,7 @@ LIKE '{\"status\":1%'";
 require(ABSPATH."script/php/condb.php");
 
 if($query)
-    echo num_convert(mysqli_num_rows($query),"en","ckb");
+	echo num_convert(mysqli_num_rows($query),"en","ckb");
 
 mysqli_close($conn);
 ?>

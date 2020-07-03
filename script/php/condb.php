@@ -7,9 +7,9 @@
 require_once("constants.php");
 
 if(! @$q)
-    die();
+	die();
 if(! @$db)
-    $db=_DEFAULT_DB;
+	$db=_DEFAULT_DB;
 
 $conn = mysqli_connect(_HOST, _USER, _PASS) or die();
 mysqli_select_db($conn, $db);

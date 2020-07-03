@@ -12,9 +12,9 @@ const converter = new showdown.Converter();
 
 for (const i in files)
 {
-    const text = fs.readFileSync(`${files[i]}.md`).toString();
-    const html = converter.makeHtml(text);
-    fs.writeFileSync(`${files[i]}.html`, html);
+	const text = fs.readFileSync(`${files[i]}.md`).toString();
+	const html = converter.makeHtml(text);
+	fs.writeFileSync(`${files[i]}.html`, html);
 
-    console.log(`${files[i]}.md -> ${files[i]}.html`);
+	console.log(`${files[i]}.md -> ${files[i]}.html`);
 }

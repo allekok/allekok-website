@@ -87,18 +87,18 @@ opacity:{$_back_img_op}}";
 				</a>
 				<!-- Search Icon -->
 				<button id='tS' class='header-icon material-icons'
-					    style='<?php echo $site_anti_align; ?>:0'>search</button>
+					style='<?php echo $site_anti_align; ?>:0'>search</button>
 				<!-- Bookmarks Icon -->
 				<button id='tL' class='header-icon material-icons'
-					    style='<?php echo $site_anti_align; ?>:1.3em;display:none'
+					style='<?php echo $site_anti_align; ?>:1.3em;display:none'
 				>bookmark</button>
 			</header>
 			<!-- Search Section -->
 			<div id='search'>
 				<form id='search-form' action='<?php echo _R; ?>' method='GET'
 				><input type='text'
-					      id='search-key'
-					      placeholder='<?php P("search for"); ?>' name='q'
+					id='search-key'
+					placeholder='<?php P("search for"); ?>' name='q'
 				 ><button type='submit'
 					  id='search-btn'
 					  class='material-icons'

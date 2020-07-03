@@ -17,7 +17,7 @@ require(ABSPATH."script/php/condb.php");
 $poets_num = mysqli_num_rows($query);
 $books[0] = [];
 while($res=mysqli_fetch_assoc($query)) {
-    $books[] = explode("," , $res['bks']);
+	$books[] = explode("," , $res['bks']);
 }
 $books_num_all = $poems_num_all = 0;
 
@@ -26,26 +26,26 @@ fwrite($sm , "<urlset xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\nx
 fwrite($sm , "\n<url>\n<loc>" . _SITE . "</loc>\n</url>");
 
 for($i=1;$i<=$poets_num;$i++) {    
-    fwrite($sm , "\n<url>\n<loc>".
-		 _SITE.
-		 "poet:$i</loc>\n</url>");
-    $books_num = count($books[$i]);
-    $books_num_all += $books_num;
-    for($j = 1; $j <= $books_num; $j++) {
-        fwrite($sm , "\n<url>\n<loc>".
+	fwrite($sm , "\n<url>\n<loc>".
 		     _SITE.
-		     "poet:$i/book:$j</loc>\n</url>");
-	
-        $_tbl = "tbl{$i}_{$j}";
-        $q = "select * from `{$_tbl}`";
-        $query = mysqli_query($conn, $q);
-        $poems_num = mysqli_num_rows($query);
-        $poems_num_all += $poems_num;
-        for($u=1; $u<=$poems_num; $u++)
-            fwrite($sm,"\n<url>\n<loc>".
-		       _SITE.
-		       "poet:$i/book:$j/poem:$u</loc>\n</url>");
-    }
+		     "poet:$i</loc>\n</url>");
+	$books_num = count($books[$i]);
+	$books_num_all += $books_num;
+	for($j = 1; $j <= $books_num; $j++) {
+		fwrite($sm , "\n<url>\n<loc>".
+			     _SITE.
+			     "poet:$i/book:$j</loc>\n</url>");
+		
+		$_tbl = "tbl{$i}_{$j}";
+		$q = "select * from `{$_tbl}`";
+		$query = mysqli_query($conn, $q);
+		$poems_num = mysqli_num_rows($query);
+		$poems_num_all += $poems_num;
+		for($u=1; $u<=$poems_num; $u++)
+			fwrite($sm,"\n<url>\n<loc>".
+				   _SITE.
+				   "poet:$i/book:$j/poem:$u</loc>\n</url>");
+	}
 }
 
 fwrite($sm,"\n</urlset>");
@@ -62,7 +62,7 @@ $q = "UPDATE `stats` SET `aths_num`='$poets_num_all',
 `k`=1 WHERE 1";
 $query = mysqli_query($conn, $q);
 if($query)
-    echo "Ok! Stats updated.<br>Number of Poems: $poems_num_all<br>Number of books: {$books_num_all}<br>Number of poets: $poets_num_all<br>Sitemap: "._SITE."$sitemap<br>";
+	echo "Ok! Stats updated.<br>Number of Poems: $poems_num_all<br>Number of books: {$books_num_all}<br>Number of poets: $poets_num_all<br>Sitemap: "._SITE."$sitemap<br>";
 mysqli_close($conn);
 
 ?>

@@ -31,12 +31,12 @@ $poet['bksdesc'] = explode(',', $poet['bksdesc']);
 
 if(!filter_var($_bk, FILTER_VALIDATE_INT))
 {
-    $_bk = array_search($_bk, $poet['bks']);
-    if($_bk === false) die($null);
-    $_bk++;
+	$_bk = array_search($_bk, $poet['bks']);
+	if($_bk === false) die($null);
+	$_bk++;
 }
 elseif($_bk > count($poet['bks']))
-    die($null);
+	die($null);
 
 $_tbl = "tbl{$poet['id']}_{$_bk}";    
 $q = "SELECT name FROM `$_tbl` ORDER BY id";
@@ -46,16 +46,16 @@ if(!$query) die($null);
 $pms_num = mysqli_num_rows($query);
 $poems = [];
 while($_ = mysqli_fetch_assoc($query))
-    $poems[] = $_['name'];
+	$poems[] = $_['name'];
 
 $res = [
-    'poetID' => intval($poet['id']),
-    'poet' => $poet['takh'],
-    'book' => $poet['bks'][$_bk-1],
-    'bookID' => intval($_bk),
-    'desc' => @$poet['bksdesc'][$_bk-1],
-    'poems-num' => $pms_num,
-    'poems' => $poems,
+	'poetID' => intval($poet['id']),
+	'poet' => $poet['takh'],
+	'book' => $poet['bks'][$_bk-1],
+	'bookID' => intval($_bk),
+	'desc' => @$poet['bksdesc'][$_bk-1],
+	'poems-num' => $pms_num,
+	'poems' => $poems,
 ];
 
 mysqli_close($conn);

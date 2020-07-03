@@ -11,10 +11,10 @@ $t_desc = "";
 include(ABSPATH . 'script/php/header.php');
 ?>
 <div id="poets">
-    <h1 style='font-size:1em'>
-	<i class="material-icons">info</i>
-        ئەم لاپەڕە لەسەر ئاڵەکۆک نییە.
-    </h1>
+	<h1 style='font-size:1em'>
+		<i class="material-icons">info</i>
+		ئەم لاپەڕە لەسەر ئاڵەکۆک نییە.
+	</h1>
 </div>
 <?php
 /* Footer is gonna be loaded by index.php */

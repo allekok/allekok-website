@@ -50,8 +50,8 @@ title='".SP("book-completed")."'>check</i>";
 		       style="display:none"
 		       name="order" value="asc">
 		<button type='submit'
-			      class="icon-round"
-			      style="padding:.2em .35em 0;
+			class="icon-round"
+			style="padding:.2em .35em 0;
 			      display:inline-block;
 			      font-size:1.2em;margin-left:.2em"
 		><i style="font-size:.9em"><?php P("ئا");
@@ -80,10 +80,10 @@ title='".SP("book-completed")."'>check</i>";
 		?>
 			<div class="poem-item">
 				<button class="material-icons"
-					style="font-size:1em;
+					       style="font-size:1em;
 					       padding:0 0 0 .5em"
-					type="button"
-					title="<?php P("poem-snippet"); ?>"
+					       type="button"
+					       title="<?php P("poem-snippet"); ?>"
 				>dehaze</button
 				       ><a href="<?php 
 						 echo _R . 'poet:'.$ath.

@@ -6,12 +6,12 @@ $f = @fopen("update-log.txt" , "r");
 if(!$f) die();
 
 while(! feof($f) ) {
-    $l = fgets($f);
-    $l = json_decode($l);
-    if($l->ver > $ver && $pt == $l->poetID ) {
-        echo "true";
-        break;
-    }
+	$l = fgets($f);
+	$l = json_decode($l);
+	if($l->ver > $ver && $pt == $l->poetID ) {
+		echo "true";
+		break;
+	}
 }
 
 fclose($f);

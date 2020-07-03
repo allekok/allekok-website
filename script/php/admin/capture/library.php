@@ -8,42 +8,42 @@ $image_archive_path = ABSPATH.
 
 function remove_dir($path)
 {
-    global $ignore;
-    $files = array_diff(scandir($path), $ignore);
-    foreach($files as $f) {
-	if(is_dir("$path/$f")) {
-	    remove_dir("$path/$f");
+	global $ignore;
+	$files = array_diff(scandir($path), $ignore);
+	foreach($files as $f) {
+		if(is_dir("$path/$f")) {
+			remove_dir("$path/$f");
+		}
+		else {
+			unlink("$path/$f");
+		}
 	}
-	else {
-	    unlink("$path/$f");
-	}
-    }
-    rmdir($path);
+	rmdir($path);
 }
 
 function copy_dir($from,$to)
 {
-    global $ignore;
-    $files = array_diff(scandir($from), $ignore);
-    
-    if(!is_dir($to))
-	mkdir($to, 0755, true);
-    foreach($files as $f)
-    {
-	copy($from.$f, $to.$f);
-    }
+	global $ignore;
+	$files = array_diff(scandir($from), $ignore);
+	
+	if(!is_dir($to))
+		mkdir($to, 0755, true);
+	foreach($files as $f)
+	{
+		copy($from.$f, $to.$f);
+	}
 }
 
 function archive($from_dir,$to_archive)
 {
-    /* From php manual */
-    $phar = new PharData($to_archive);
-    $phar->buildFromDirectory($from_dir);
+	/* From php manual */
+	$phar = new PharData($to_archive);
+	$phar->buildFromDirectory($from_dir);
 }
 
 function unarchive($archive_path, $to, $overwrite) {
-    /* https://www.php.net/manual/en/phardata.extractto.php */
-    $phar = new PharData($archive_path);
-    $phar->extractTo($to,null,$overwrite);
+	/* https://www.php.net/manual/en/phardata.extractto.php */
+	$phar = new PharData($archive_path);
+	$phar->extractTo($to,null,$overwrite);
 }
 ?>
