@@ -24,7 +24,13 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 		</a>
 		<i> &rsaquo; </i>
 		<div id="current-location">
-			<?php echo $row[1]['ckbid'].'. '.$row[1]['name']; ?>
+			<?php
+			if( !($ath == 10 and
+				$bk == 1 and
+				$row[1]['id'] == 1) )
+			{ echo $row[1]['ckbid'].'. '; }
+			echo $row[1]['name'];
+			?>
 		</div>
 	</div>
 	<!-- Navigation -->
