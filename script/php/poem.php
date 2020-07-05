@@ -18,16 +18,27 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 		<a href="<?php echo _R . "poet:$ath"; ?>">
 			<?php echo $info['takh']; ?>
 		</a>
-		<i> &rsaquo; </i>
-		<a href="<?php echo _R . "poet:$ath/book:$bk"; ?>">
-			<?php echo $bknow[$bk-1]; ?>
-		</a>
-		<i> &rsaquo; </i>
+		<i> <?php
+		    $X = !($ath == 10 and $bk == 1 and $row[1]['id'] == 1);
+		    if($X) echo "&rsaquo;";
+		    else echo "&lsaquo;";
+		    ?> </i>
+		<?php  if($X) { ?>
+			<a href="<?php echo _R . "poet:$ath/book:$bk"; ?>">
+				<?php echo $bknow[$bk-1]; ?>
+			</a>
+		<?php } else { ?>
+			<a href="<?php echo _R . "poet:$ath/book:$bk"; ?>" class="material-icons">
+				favorite
+			</a>
+			<?php  } ?>
+		<i> <?php
+		    if($X) echo "&rsaquo;";
+		    else echo "&lsaquo;";
+		    ?> </i>
 		<div id="current-location">
 			<?php
-			if( !($ath == 10 and
-				$bk == 1 and
-				$row[1]['id'] == 1) )
+			if($X)
 			{ echo $row[1]['ckbid'].'. '; }
 			echo $row[1]['name'];
 			?>
@@ -101,9 +112,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 		 >content_copy
 		</button
 		><?php
-		 if( !($ath == 10 and
-			 $bk == 1 and
-			 $row[1]['id'] == 1) )
+		 if($X)
 		 {
 		 ?><button id='like-icon' class='material-icons icon-round icon-round-poem'
 			   style="padding:.5em"
