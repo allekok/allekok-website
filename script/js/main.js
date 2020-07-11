@@ -422,7 +422,7 @@ var search = search || function (e)
 			Key.value = '';
 			Res.style.display = 'none';
 		}
-	}, 100);
+	}, 250);
 }
 
 var tewar = tewar || function (e)
@@ -476,7 +476,7 @@ var tewar = tewar || function (e)
 			Key.value = '';
 			Res.style.display = 'none';
 		}
-	}, 100);
+	}, 250);
 }
 
 var findPage_ = findPage_ || function (e) {
