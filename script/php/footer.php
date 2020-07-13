@@ -6,10 +6,7 @@ if(!$no_foot) {
 	<footer id="footer">
 		<?php
 		include('footer-links.php');
-		?><button onclick="window.scrollTo(0,0)"
-			  title="<?php P("top"); ?>" 
-		  ><i class="material-icons"
-		   >arrow_upward</i></button>
+		?>
 	</footer>
 	<div class="loader-round" id="main-loader"></div>
 	<script defer src='<?php echo _R; ?>script/js/main-comp.js?v444'></script>
