@@ -46,3 +46,7 @@
    href="<?php echo _R; ?>dev/tools/license.php">
 	<i class="material-icons">copyright</i>
 </a>
+<a title="<?php P("allekok-apps"); ?>" target="_blank"
+   href="https://allekok.github.io/">
+	<i class="material-icons">dehaze</i>
+</a>
