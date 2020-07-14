@@ -16,7 +16,7 @@ include(ABSPATH . "script/php/header.php");
  }
  #donation {
 	 display:flex;
-	 font-size:.6em;
+	 font-size:.5em;
 	 border-bottom:1px solid;
  }
  #donation div {
