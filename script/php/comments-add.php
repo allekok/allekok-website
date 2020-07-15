@@ -20,6 +20,8 @@ if(!$address) die($null);
 $name = @trim(filter_var($_POST['name'], FILTER_SANITIZE_STRING));
 if(!$name) $name = 'ناشناس';
 
+$comment = str_replace("\n", "<br>", $comment);
+
 $date = explode("-", date("m-d-Y"));
 $date = calendarKurdishFromGregorian($date);
 $date = "{$date[1]}؍{$date[0]}؍{$date[2]}";

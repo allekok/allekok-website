@@ -9,10 +9,23 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 ?>
 <div id="poets">
 	<!-- Poet picture -->
-	<img src="<?php 
-		  echo _R . get_poet_image($info['id'], false); 
-		  ?>" class="poet-pic-small"
-	     alt="<?php echo $info['profname']; ?>">
+	<div style="position:relative;max-width:180px;
+		    margin:auto">
+		<img src="<?php 
+			  echo _R . get_poet_image($info['id'],false);
+			  ?>"
+		     class="poet-pic-small"
+		     alt="<?php echo $info['profname']; ?>"
+		>
+		<a href='<?php echo _R;
+			 ?>pitew/poet-image.php?poet=<?php
+						     echo $info['takh'];
+						     ?>'
+		   style="position:absolute;bottom:0;left:0;
+			 padding:.5em .5em 0;font-size:.9em"
+		   class="material-icons"
+		   title="<?php P("ناردنی وێنە"); ?>">add_a_photo</a>
+	</div>
 	<!-- Address -->
 	<div id='adrs'>
 		<a href="<?php echo _R . "poet:$ath"; ?>">
@@ -31,7 +44,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 			<a href="<?php echo _R . "poet:$ath/book:$bk"; ?>" class="material-icons">
 				favorite
 			</a>
-			<?php  } ?>
+		<?php  } ?>
 		<i> <?php
 		    if($X) echo "&rsaquo;";
 		    else echo "&lsaquo;";
@@ -120,11 +133,20 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 		 </button
 		 ><?php
 		  }
-		  ?><button id='extlnkico'
-			    style='padding:.5em'
-			    class='material-icons icon-round icon-round-poem' 
-			    title='ئامێرەکانی‌تر'>more_horiz
-		  </button>
+		  ?><?php
+		    if($X)
+		    {
+		    ?><button id='issue-icon' class='material-icons icon-round icon-round-poem'
+			      style="padding:.5em"
+		      >question_answer
+		    </button
+		    ><?php
+		     }
+		     ?><button id='extlnkico'
+			       style='padding:.5em'
+			       class='material-icons icon-round icon-round-poem' 
+			       title='ئامێرەکانی‌تر'>more_horiz
+		     </button>
 	</div>
 	<!--
 	   - Toolbar
@@ -279,38 +301,46 @@ style='display:inline-block'
 		<?php } ?>
 	</div>
 	<!-- Comments -->
-	<h1 class="color-blue" id="hon-comments-title"
-	    style="font-size:1em;
-		   padding-top:.5em;
-		   cursor:pointer;
-		   text-align:right">
-		<i class="material-icons">question_answer</i>
-		پەراوێز نووسین
-	</h1>
-	<div id="hon-comments" style="display:none">
-		<div style="padding:.5em 0;font-size:.6em;text-align:right">
-			دەتوانن بیر و ڕای خۆتان سەبارەت بەم شێعرە لێرە بنووسن.
-			<br>
-			تکایە ئەگەر ئەم دەقە هەڵەی تێدایە پێمانی ڕا بگەیێنن.
+	<div id="hon-comments">
+		<h1 class="color-blue"
+		    style="font-size:1em;
+			   padding-top:.5em;
+			   text-align:right">
+			<i class="material-icons">question_answer</i>
+			پەراوێز
+			<i class="material-icons color-black"
+			   id="hon-comments-title"
+			   style="padding:0 .5em;
+				  cursor:pointer;
+				  text-align:right">
+				edit
+			</i>
+		</h1>
+		<div id="hon-comments-form" style="display:none">
+			<div style="padding:.5em 0;font-size:.6em;text-align:right">
+				دەتوانن بیر و ڕای خۆتان سەبارەت بەم شێعرە لێرە بنووسن.
+				<br>
+				تکایە ئەگەر ئەم دەقە هەڵەی تێدایە پێمانی ڕا بگەیێنن.
+			</div>
+			<form id="frmComm"
+			      style="margin:auto"
+			      action="<?php echo _R; ?>script/php/comments-add.php"
+			      method="POST">
+				<!--
+				     Comment submition form
+				-->
+				<input type='text' name='name'
+				       id='commNameTxt'
+				       placeholder="نێوی خۆتان لێرە بنووسن.">
+				<textarea
+					placeholder="بیر و ڕای خۆتان سەبارەت بەو شێعرە لێرە بنووسن... *" 
+					id="commTxt" name='comment'></textarea>
+				<div id="message"></div>
+				<button class='button bth' type="submit"
+					style="font-size:.7em;padding:.5em 1.5em"
+				>ناردن</button>
+			</form>
 		</div>
-		<form id="frmComm"
-		      style="margin:auto"
-		      action="<?php echo _R; ?>script/php/comments-add.php"
-		      method="POST">
-			<!--
-			     Comment submition form
-			-->
-			<input type='text' name='name'
-			       id='commNameTxt'
-			       placeholder="نێوی خۆتان لێرە بنووسن.">
-			<textarea
-				placeholder="بیر و ڕای خۆتان سەبارەت بەو شێعرە لێرە بنووسن... *" 
-				id="commTxt" name='comment'></textarea>
-			<div id="message"></div>
-			<button class='button bth' type="submit"
-				       style="font-size:.7em;padding:.5em 1.5em"
-			>ناردن</button>
-		</form>
 		<!--
 		     Comments
 		-->
@@ -533,6 +563,16 @@ style='display:inline-block'
 	 try {
 		 document.getElementById("like-icon").onclick = Liked;
 	 } catch (e) {};
+	 
+	 try {
+		 document.getElementById("issue-icon").onclick = () => {
+			 const t = document.getElementById(
+				 "hon-comments-title"); 
+			 t.click();
+			 window.scrollTo(0, t.offsetTop - 10);
+		 }
+	 } catch (e) {};
+	 
 	 document.getElementById("copy-sec").onclick = copyPoem;
 	 
 	 const likeico = document.getElementById('like-icon');
@@ -551,50 +591,49 @@ style='display:inline-block'
 	 }
 	 if(document.getElementById("hon").offsetHeight < 300)
 		 document.getElementById("bottom-nav").style.display = "none";
-	 <?php if(!$no_foot) echo ' });' ?>
-	 
-	 document.getElementById("hon-comments-title").onclick = function () {
-		 const commentsSec = document.getElementById("hon-comments");
-		 if(commentsSec.style.display != "none")
-			 commentsSec.style.display = "none";
-		 else {
-			 commentsSec.style.display = "";
-			 <?php
-			 /* Check for comments */
-			 $address = 'poet:'.$info['id'].
-				    '/book:'.$bk.
-				    '/poem:'.$row[1]['id'];
-			 $q = "select id from comments where 
+
+	 <?php
+	 /* Check for comments */
+	 $address = 'poet:'.$info['id'].
+		    '/book:'.$bk.
+		    '/poem:'.$row[1]['id'];
+	 $q = "select id from comments where 
 address='$address' and blocked=0"; // Add limit 0,1
-			 require('condb.php');
-			 
-			 if($query and
-				 mysqli_num_rows($query)>0)
+	 require('condb.php');
+	 
+	 if($query and
+		 mysqli_num_rows($query)>0)
+	 {
+	 ?>
+	 document.getElementById("hon-comments-body").style.padding = "1em .2em";
+	 getUrl('<?php echo _R; ?>script/php/comments-get.php?address='+
+		poem_adrs, function(responseText)
+		 {
+			 const res = isJson(responseText);
+			 if(res && res.err != 1)
 			 {
-			 ?>
-			 document.getElementById("hon-comments-body").style.padding = "1em .2em";
-			 getUrl('<?php echo _R; ?>script/php/comments-get.php?address='+
-				poem_adrs, function(responseText)
+				 let newComm = "";
+				 for(const a in res)
 				 {
-					 const res = isJson(responseText);
-					 if(res && res.err != 1)
-					 {
-						 let newComm = "";
-						 for(const a in res)
-						 {
-							 newComm += "<div class='comment'\
+					 newComm += "<div class='comment'\
 			><div class='comm-name'>"+res[a].name+":</div><div \
 									   class='comm-body'>"+res[a].comment+"</div><div \
 															  class='comm-footer'>"+res[a].date+"</div></div>";
-						 }
-						 comments.innerHTML = newComm;
-					 }
-			 });
-			 <?php
+				 }
+				 comments.innerHTML = newComm;
 			 }
-			 ?>
-			 
-		 }
+	 });
+	 <?php
+	 }
+	 ?>
+	 <?php if(!$no_foot) echo ' });' ?>
+	 
+	 document.getElementById("hon-comments-title").onclick = function () {
+		 const commentsSec = document.getElementById("hon-comments-form");
+		 if(commentsSec.style.display != "none")
+			 commentsSec.style.display = "none";
+		 else
+			 commentsSec.style.display = "";
 	 }
 	</script>
 </div>

@@ -1,15 +1,26 @@
 <div id="poets">
 	<!-- Poet picture -->
-	<img src="<?php 
-		  echo _R . get_poet_image($info['id'],false);
-		  ?>"
-	     class="poet-pic-small"
-	     alt="<?php echo $info['profname']; ?>"
-	><?php 
-	 $bbk = explode("/", $bknow[$bk-1]);
-	 $bbk = !isset($bbk[1]) ? $bbk[0] :
-		"{$bbk[0]}<i style='color:{$colors[0][3]};font-size: .9em;padding: 0 .1em;'> / </i>{$bbk[1]}";
-	 ?>
+	<div style="position:relative;max-width:180px;
+		    margin:auto">
+		<img src="<?php 
+			  echo _R . get_poet_image($info['id'],false);
+			  ?>"
+		     class="poet-pic-small"
+		     alt="<?php echo $info['profname']; ?>"
+		>
+		<a href='<?php echo _R;
+			 ?>pitew/poet-image.php?poet=<?php
+						     echo $info['takh'];
+						     ?>'
+		   style="position:absolute;bottom:0;left:0;
+			 padding:.5em .5em 0;font-size:.9em"
+		   class="material-icons"
+		   title="<?php P("ناردنی وێنە"); ?>">add_a_photo</a>
+	</div><?php 
+	      $bbk = explode("/", $bknow[$bk-1]);
+	      $bbk = !isset($bbk[1]) ? $bbk[0] :
+		     "{$bbk[0]}<i style='color:{$colors[0][3]};font-size: .9em;padding: 0 .1em;'> / </i>{$bbk[1]}";
+	      ?>
 	<!-- Address bar -->
 	<div id='adrs'>
 		<a href="<?php echo _R; ?>poet:<?php echo $ath; ?>">

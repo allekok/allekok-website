@@ -111,7 +111,7 @@
 
 				echo "<p>" . SP("زانیارییەکانی بەکارهێنەران");
 				echo "<a style='padding:1em'
-		   href='{$edit_uri}' class='material-icons'>add</a>";
+		   href='{$edit_uri}' class='material-icons'>edit</a>";
 				echo "</p>";
 				
 				foreach($result as $n) {

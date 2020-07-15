@@ -422,7 +422,7 @@ var search = search || function (e)
 			Key.value = '';
 			Res.style.display = 'none';
 		}
-	}, 250);
+	}, 150);
 }
 
 var tewar = tewar || function (e)
@@ -476,7 +476,7 @@ var tewar = tewar || function (e)
 			Key.value = '';
 			Res.style.display = 'none';
 		}
-	}, 250);
+	}, 150);
 }
 
 var findPage_ = findPage_ || function (e) {
@@ -495,7 +495,7 @@ var findPage_ = findPage_ || function (e) {
 			document.getElementById("search-res").
 				style.display = 'none';
 		}
-	}, 100);
+	}, 50);
 }
 
 var searchStackPush = searchStackPush || function (item) {
@@ -1151,24 +1151,24 @@ var keyDispatch = keyDispatch || function (e) {
 	   e.srcElement.nodeName == 'TEXTAREA') return;
 
 	/* Key dispatch */
-	if(e.code == 'KeyG')       toggle_search();
-	else if(e.code == 'KeyT')  toggle_tewar();
-	else if(e.code == 'KeyF')  toggle_findPage();
-	else if(e.code == 'KeyL')
+	if(e.code == 'KeyG' && !e.ctrlKey)       toggle_search();
+	else if(e.code == 'KeyT' && !e.ctrlKey)  toggle_tewar();
+	else if(e.code == 'KeyF' && !e.ctrlKey)  toggle_findPage();
+	else if(e.code == 'KeyL' && !e.ctrlKey)
 		apply_to_text(document.body, x => {
 			x = transliterate_ar2lat(x);
 			if(!x.trim()) return x;
 			return `<allekok style='direction:ltr;display:inline-block'>${x}</allekok>`;
 		});
-	else if(e.code == 'KeyP')
+	else if(e.code == 'KeyP' && !e.ctrlKey)
 		apply_to_text(document.body, transliterate_ar2per);
-	else if(e.code == 'KeyB') {
+	else if(e.code == 'KeyB' && !e.ctrlKey) {
 		try {
 			toggle_Like()
 			document.querySelector("#tL-res-res a").focus()
 		} catch (e) {}
 	}
-	else if(e.code == 'KeyM')
+	else if(e.code == 'KeyM' && !e.ctrlKey)
 		document.querySelector("header a").click()
 	/* poem.php */
 	else if(e.ctrlKey && e.code == 'ArrowUp') {
@@ -1183,10 +1183,10 @@ var keyDispatch = keyDispatch || function (e) {
 	else if(e.ctrlKey && e.code == 'ArrowLeft') {
 		try {document.querySelector(".next a").click()}	catch (e) {}
 	}
-	else if(e.code == 'KeyK') {
+	else if(e.code == 'KeyK' && !e.ctrlKey) {
 		try {copyPoem()} catch (e) {}
 	}
-	else if(e.code == 'KeyN') {
+	else if(e.code == 'KeyN' && !e.ctrlKey) {
 		try {Liked()} catch (e) {}
 	}
 	else if(e.code == 'KeyR' && !e.ctrlKey) {

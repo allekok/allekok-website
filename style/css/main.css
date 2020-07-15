@@ -267,9 +267,13 @@ header a h1
 {
 	font-size:inherit
 }
-#poet-info, .fbody-nav
+#poet-info
 {
 	margin-top:1em;
+}
+.fbody-nav
+{
+	margin-top:.5em;
 }
 .bks,.poetdesc
 {
@@ -531,9 +535,11 @@ header a h1
 }
 footer
 {
-	padding:1em 0 0;
+	border-top:1px solid;
+	margin:1em 0 0;
+	padding:.5em 0;
 	width:100%;
-	font-size:.6em;
+	font-size:.55em;
 	text-align:center
 }
 footer a, footer button
