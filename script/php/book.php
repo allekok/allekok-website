@@ -23,13 +23,13 @@
 			echo $bbk;
 			$bknowdesc = explode(',',$info['bksdesc']);	    
 			$bknowcomp = explode(',',$info['bks_completion']);
-			if($bknowcomp[$bk-1] == 100)
+			if(@$bknowcomp[$bk-1] == 100)
 				echo "<i class='material-icons bk-comp' 
 title='".SP("book-completed")."'>check</i>";
 			?>
 		</div>
 		<?php
-		if($bknowcomp[$bk-1] == 100)
+		if(@$bknowcomp[$bk-1] == 100)
 			echo("<span class='tt' id='bk-comp-tt'
 >".SP("book-completed")."</span>");
 		?>
