@@ -113,7 +113,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 		     Bookmark button
 		-->
 		<button class='bigger material-icons icon-round icon-round-poem'
-			       style="padding:.5em"
+			style="padding:.5em"
 		>arrow_upward
 		</button
 		><button class='smaller material-icons icon-round icon-round-poem'
@@ -124,29 +124,19 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 			 style="padding:.5em"
 		 >content_copy
 		</button
-		><?php
-		 if($X)
-		 {
-		 ?><button id='like-icon' class='material-icons icon-round icon-round-poem'
-			   style="padding:.5em"
-		   >bookmark_border
-		 </button
-		 ><?php
-		  }
-		  ?><?php
-		    if($X)
-		    {
-		    ?><button id='issue-icon' class='material-icons icon-round icon-round-poem'
-			      style="padding:.5em"
-		      >question_answer
-		    </button
-		    ><?php
-		     }
-		     ?><button id='extlnkico'
-			       style='padding:.5em'
-			       class='material-icons icon-round icon-round-poem' 
-			       title='ئامێرەکانی‌تر'>more_horiz
-		     </button>
+		><button id='like-icon' class='material-icons icon-round icon-round-poem'
+			 style="padding:.5em"
+		 >bookmark_border
+		</button
+		><button id='issue-icon' class='material-icons icon-round icon-round-poem'
+			 style="padding:.5em"
+		 >question_answer
+		</button
+		><button id='extlnkico'
+			 style='padding:.5em'
+			 class='material-icons icon-round icon-round-poem' 
+			 title='ئامێرەکانی‌تر'>more_horiz
+		</button>
 	</div>
 	<!--
 	   - Toolbar
@@ -226,8 +216,8 @@ style='display:inline-block'
 				</section
 				><section style="margin:auto">
 					<button type="submit" id="wordBtn"
-						      class='material-icons'
-						      style="font-size:2em;
+						class='material-icons'
+						style="font-size:2em;
 						      padding:0 .5em"
 					>search</button>
 				</section>
@@ -334,10 +324,10 @@ style='display:inline-block'
 				       placeholder="نێوی خۆتان لێرە بنووسن.">
 				<textarea
 					placeholder="بیر و ڕای خۆتان سەبارەت بەو شێعرە لێرە بنووسن... *" 
-					id="commTxt" name='comment'></textarea>
+						     id="commTxt" name='comment'></textarea>
 				<div id="message"></div>
 				<button class='button bth' type="submit"
-					style="font-size:.7em;padding:.5em 1.5em"
+					       style="font-size:.7em;padding:.5em 1.5em"
 				>ناردن</button>
 			</form>
 		</div>
