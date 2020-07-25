@@ -1151,49 +1151,59 @@ var keyDispatch = keyDispatch || function (e) {
 	   e.srcElement.nodeName == 'TEXTAREA') return;
 
 	/* Key dispatch */
-	if(e.code == 'KeyG' && !e.ctrlKey)       toggle_search();
-	else if(e.code == 'KeyT' && !e.ctrlKey)  toggle_tewar();
-	else if(e.code == 'KeyF' && !e.ctrlKey)  toggle_findPage();
-	else if(e.code == 'KeyL' && !e.ctrlKey)
-		apply_to_text(document.body, x => {
-			x = transliterate_ar2lat(x);
-			if(!x.trim()) return x;
-			return `<allekok style='direction:ltr;display:inline-block'>${x}</allekok>`;
-		});
-	else if(e.code == 'KeyP' && !e.ctrlKey)
-		apply_to_text(document.body, transliterate_ar2per);
-	else if(e.code == 'KeyB' && !e.ctrlKey) {
-		try {
-			toggle_Like()
-			document.querySelector("#tL-res-res a").focus()
-		} catch (e) {}
+	if(e.ctrlKey) {
+		if(e.code == 'ArrowUp') {
+			try {save_fs("bigger")} catch (e) {}
+		}
+		else if(e.code == 'ArrowDown') {
+			try {save_fs("smaller")} catch (e) {}
+		}
+		else if(e.code == 'ArrowRight') {
+			try {document.querySelector(".prev a").click()}
+			catch (e) {}
+		}
+		else if(e.code == 'ArrowLeft') {
+			try {document.querySelector(".next a").click()}
+			catch (e) {}
+		}
 	}
-	else if(e.code == 'KeyM' && !e.ctrlKey)
-		document.querySelector("header a").click()
-	/* poem.php */
-	else if(e.ctrlKey && e.code == 'ArrowUp') {
-		try {save_fs("bigger")} catch (e) {}
-	}
-	else if(e.ctrlKey && e.code == 'ArrowDown') {
-		try {save_fs("smaller")} catch (e) {}
-	}
-	else if(e.ctrlKey && e.code == 'ArrowRight') {
-		try {document.querySelector(".prev a").click()}	catch (e) {}
-	}
-	else if(e.ctrlKey && e.code == 'ArrowLeft') {
-		try {document.querySelector(".next a").click()}	catch (e) {}
-	}
-	else if(e.code == 'KeyK' && !e.ctrlKey) {
-		try {copyPoem()} catch (e) {}
-	}
-	else if(e.code == 'KeyN' && !e.ctrlKey) {
-		try {Liked()} catch (e) {}
-	}
-	else if(e.code == 'KeyR' && !e.ctrlKey) {
-		if(get_cookie('theme') == 'dark')
-			set_cookie('theme', 'light');
-		else    set_cookie('theme', 'dark');
-		window.location.reload();
+	else {
+		if(e.code == 'KeyG')       toggle_search();
+		else if(e.code == 'KeyT')  toggle_tewar();
+		else if(e.code == 'KeyF')  toggle_findPage();
+		else if(e.code == 'KeyL')
+			apply_to_text(document.body, x => {
+				x = transliterate_ar2lat(x);
+				if(!x.trim()) return x;
+				return `<allekok style='direction:ltr;display:inline-block'>${x}</allekok>`;
+			});
+		else if(e.code == 'KeyP')
+			apply_to_text(document.body, transliterate_ar2per);
+		else if(e.code == 'KeyB') {
+			try {
+				toggle_Like()
+				document.querySelector("#tL-res-res a").focus()
+			} catch (e) {}
+		}
+		else if(e.code == 'KeyM')
+			document.querySelector("header a").click()
+		else if(e.code == 'KeyK') {
+			try {copyPoem()} catch (e) {}
+		}
+		else if(e.code == 'KeyN') {
+			try {Liked()} catch (e) {}
+		}
+		else if(e.code == 'KeyR') {
+			if(get_cookie('theme') == 'dark')
+				set_cookie('theme', 'light');
+			else    set_cookie('theme', 'dark');
+			window.location.reload();
+		}
+		else if(e.code == 'KeyS')
+			window.scrollTo(0,0);
+		else if(e.code == 'KeyX')
+			window.scrollTo(
+				0,document.getElementById("footer").offsetTop);
 	}
 }
 window.addEventListener("keyup", keyDispatch);

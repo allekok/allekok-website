@@ -295,14 +295,12 @@ style='display:inline-block'
 		<h1 class="color-blue"
 		    style="font-size:1em;
 			   padding-top:.5em;
-			   text-align:right">
-			<i class="material-icons">question_answer</i>
+			   text-align:left;
+			   cursor:pointer"
+		    id="hon-comments-title">
 			پەراوێز
 			<i class="material-icons color-black"
-			   id="hon-comments-title"
-			   style="padding:0 .5em;
-				  cursor:pointer;
-				  text-align:right">
+			   style="padding:0 .5em">
 				edit
 			</i>
 		</h1>
@@ -539,7 +537,6 @@ style='display:inline-block'
 		 wordMore.innerHTML = `<a target='_blank' href='<?php echo _R; ?>tewar/?q=${q}'>گەڕانی زیاتر لە تەواردا &rsaquo;</a>` +
 				      `<a target='_blank' href='<?php echo _R; ?>tewar-legacy/?q=${q}'>گەڕانی زیاتر لە فەرهەنگە ئانلاینەکان‌دا &rsaquo;</a>`;
 	 }
-	 
 	 <?php
 	 if(!$no_foot)
 		 echo "window.addEventListener('load', function () { ";
@@ -556,10 +553,10 @@ style='display:inline-block'
 	 
 	 try {
 		 document.getElementById("issue-icon").onclick = () => {
-			 const t = document.getElementById(
-				 "hon-comments-title"); 
-			 t.click();
-			 window.scrollTo(0, t.offsetTop - 10);
+			 const commentsSec = document.getElementById("hon-comments-form");
+			 if(commentsSec.style.display == "none")
+				 commentsSec.style.display = "";
+			 window.scrollTo(0, commentsSec.offsetTop - 10);
 		 }
 	 } catch (e) {};
 	 
@@ -622,8 +619,10 @@ address='$address' and blocked=0"; // Add limit 0,1
 		 const commentsSec = document.getElementById("hon-comments-form");
 		 if(commentsSec.style.display != "none")
 			 commentsSec.style.display = "none";
-		 else
+		 else {
 			 commentsSec.style.display = "";
+			 window.scrollTo(0, commentsSec.offsetTop - 10);
+		 }
 	 }
 	</script>
 </div>
