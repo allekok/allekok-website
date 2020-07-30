@@ -609,7 +609,7 @@ var copyPoem = copyPoem || function ()
 		      /<div class="m dltr">/gi,
 		      /\r+/gi,
 	      ];
-	let title = document.getElementById("current-location").innerText.trim(),
+	let title = document.getElementById("adrs").innerText.trim(),
 	    body = document.getElementById("hon").innerHTML,
 	    desc = document.getElementById("bhondesc").innerText.trim();
 	
