@@ -23,12 +23,12 @@ $to_nums = [
 
 /* Letters */
 $to_letters = [
-	"b","c","ç","d","f","g","h","j","k","l",
-	"m","n","p","q","r","s","ş","t","",
-	"x","","z","","","","","k","","h",
-	"z","s","t","z","r","h","x","","",
-	"","r","l","z","s","h","r","m","","",
-	"l","s","","","","h"
+	"b","c","ç","d","u","g","e","j","k","l",
+	"m","n","p","q","r","s","ş","t","u",
+	"x","y","z","","e","e","e","k","y","e",
+	"z","s","t","z","r","e","x","u","u",
+	"y","r","l","z","s","t","r","m","e","e",
+	"l","s","u","e","y","e"
 ];
 
 $from_letters = [
@@ -98,6 +98,8 @@ function san_data($in, $lastChance=false)
 	$in = str_replace($from_nums, $to_nums, $in);
 	$in = str_replace($from_letters,$to_letters,$in);
 	$in = preg_replace("/\s+/", "", $in);
+	foreach($to_letters as $tl)
+		if($tl)	$in = preg_replace("/$tl{2,}/ui", $tl, $in);
 	
 	if($lastChance)
 		$in = san_data_more($in);
