@@ -157,6 +157,12 @@ LIKE '{\"status\":1%'";
 		   class="link-underline"
 		>دیوانی سەوڵم پۆڵا کەناریش دووری، پەشێو</a>
 	</p>
+	<p>
+		ڕێزان عەلیپوور &rsaquo; بۆ نووسینی بەشێک لە 
+		<a href="<?php echo _R; ?>poet:91/book:10"
+		   class="link-underline"
+		>دیوانی سەوڵم پۆڵا کەناریش دووری، پەشێو</a>
+	</p>
 </div>
 <?php
 include_once(ABSPATH."script/php/footer.php");
