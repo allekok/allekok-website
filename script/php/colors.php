@@ -27,6 +27,6 @@ if($_theme_custom) {
 		if(!($_back_img_op >= 0 and $_back_img_op <= 1)) $_back_img_op = "1.0";
 	}
 }
-elseif($_theme_dark) $_colors = ['#222','#fff','#cf0','#f55'];
+elseif($_theme_dark) $_colors = ['#000','#fff','#5f5','#f55'];
 else $_colors = ['#fff','#000','#00e','#e00'];
 ?>
