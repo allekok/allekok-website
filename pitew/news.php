@@ -16,8 +16,9 @@ $n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
 <style>
  .link-news {
 	 display:block;
-	 border-bottom:0;
-	 padding:0;margin:0
+	 padding-top:.75em;
+	 margin:0;
+	 border-top:1px solid;
  }
  .tmi-news
  {

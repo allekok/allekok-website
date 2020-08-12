@@ -14,7 +14,9 @@ include(ABSPATH . "script/php/header.php");
  .thanks-main p {
 	 font-size:.55em;
 	 text-align:justify;
-	 padding:.4em 1em .4em .5em;
+	 margin:.5em 1em 0 0;
+	 padding:.5em 1em .5em 0;
+	 border-top:1px solid;
  }
 </style>
 <div id="poets" class="thanks-main">

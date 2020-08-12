@@ -11,7 +11,10 @@ $t_desc = "";
 include(ABSPATH . 'script/php/header.php');
 ?>
 <style>
- .pitewsec-first small{display:block;text-align:justify}
+ .pitewsec-first small {
+	 display:block;
+	 text-align:justify;
+ }
 </style>
 <div id="poets" style="text-align:right">
 	<h1 class="color-blue" style="text-align:right;
@@ -127,7 +130,7 @@ include(ABSPATH . 'script/php/header.php');
 						echo "<div class='comment'";
 						echo "><div ";
 						if($i%2)
-							echo "style='border-right:2px dashed' ";
+							echo "style='border-left:1px solid;border-right:0' ";
 						echo "class='comm-body'>".$c."</div></div>";
 						$i++;
 					}

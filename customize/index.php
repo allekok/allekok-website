@@ -24,7 +24,7 @@ include(ABSPATH . "script/php/header.php");
  #set_theme button
  {
 	 font-size:inherit;
-	 margin:0 1em 0 0;
+	 margin:0 .5em 0 0;
  }
  #set_theme_custom_colors
  {
@@ -69,8 +69,7 @@ include(ABSPATH . "script/php/header.php");
  }
  #user_codes small
  {
-	 font-family:'kurd',monospace;
-	 font-size:.75em;
+	 font-size:.85em;
 	 text-indent:1em;
 	 display:block;
  }
@@ -80,8 +79,8 @@ include(ABSPATH . "script/php/header.php");
 	 text-align:left;
 	 width:100%;
 	 font-family:'kurd',monospace;
-	 font-size:.6em;
-	 height:20em;
+	 font-size:.8em;
+	 height:15em;
  }
  #user_codes button
  {

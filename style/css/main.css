@@ -80,10 +80,10 @@ a, a:hover, button:hover, #wordMore a:hover
 	bottom:0;
 	left:0;
 	display:block;
-	font-size:.75em;
+	font-size:.7em;
 	text-align:center;
 	border-radius:0 1.5em 0 0;
-	padding:0 1em
+	padding:0;
 }
 .icon-round
 {
@@ -109,7 +109,7 @@ a, a:hover, button:hover, #wordMore a:hover
 }
 textarea
 {
-	height:15em;
+	height:13em;
 	min-height:5em
 }
 i
@@ -169,7 +169,7 @@ i
 }
 #commNameTxt,#commTxt
 {
-	font-size:.6em;
+	font-size:.55em;
 	width:100%;
 	margin-top:.5em
 }
@@ -480,17 +480,17 @@ header a h1
 #Acomms div
 {
 	text-align:justify;
-	padding:1em 1em 3em 1em;
+	padding:1em 0 3em 0;
 	position:relative;
 	margin-bottom:1em;
 	word-break:break-word;
-	border-bottom:1px solid;
+	border-top:1px solid;
 }
 .h::after
 {
 	content:' favorite';
 	font-family:'Material Icons';
-	font-size:1.4em;
+	font-size:1em;
 	vertical-align:middle;
 }
 .link

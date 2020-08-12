@@ -15,11 +15,10 @@ include(ABSPATH . "script/php/header.php");
 	 font-size:1.2em
  }
  .comment {
-	 border-bottom:1px solid;
+	 border-top:1px solid;
  }
  .comm-body {
 	 border:0;
-	 margin-left:.5em;
  }
 </style>
 <div id="poets" style="text-align:right">
@@ -79,7 +78,7 @@ include(ABSPATH . "script/php/header.php");
 			<button type="submit" class='button btn-desktop'>ناردن</button>
 		</form>
 		
-		<div>
+		<div style="padding-top:1em">
 			<?php
 			if(@filesize("QA.txt") > 0) {
 				

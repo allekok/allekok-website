@@ -14,17 +14,26 @@ include(ABSPATH . "script/php/header.php");
  .donate-main p {
 	 font-size:.6em
  }
- #donation {
+ .donation {
 	 display:flex;
 	 font-size:.5em;
-	 border-bottom:1px solid;
+	 padding:.5em 0 0;
+	 margin:.5em 0;
+	 border-top:1px solid;
  }
- #donation div {
+ .donation-desc {
+	 font-size:.5em;
+	 padding:0 1em 0 0;
+ }
+ .donation div {
 	 width:100%;
 	 padding:0 .5em;
  }
- #donation .material-icons {
+ .donation .material-icons {
 	 padding-left:.2em;
+ }
+ .donate-main p {
+	 text-align:justify;
  }
 </style>
 <div id="poets" class="donate-main" style="text-align:right">
@@ -41,10 +50,9 @@ include(ABSPATH . "script/php/header.php");
 				if(!($d = trim($d))) continue;
 				$d = explode("\t", $d);
 				echo "
-<div id='donation'>
+<div class='donation'>
 <div><i class='material-icons color-blue'>favorite</i>$d[0]</div>
-<div>$d[1]</div><div>$d[2]</div><div>$d[3]</div>
-</div>";
+<div>$d[1]</div><div>$d[2]</div></div><div class='donation-desc'>$d[3]</div>";
 			}
 		}
 		else 
@@ -114,8 +122,6 @@ include(ABSPATH . "script/php/header.php");
 				  direction:ltr;display:inline-block;
 				  font-family:monospace;padding:0 .5em"
 			>@allekok</i>
-		</p>
-		<p style="padding-right:1em">
 		</p>
 	</div>
 </div>
