@@ -130,7 +130,7 @@ include(ABSPATH . 'script/php/header.php');
 						echo "<div class='comment'";
 						echo "><div ";
 						if($i%2)
-							echo "style='border-left:1px solid;border-right:0' ";
+							echo "style='border-left:2px solid;border-right:0' ";
 						echo "class='comm-body'>".$c."</div></div>";
 						$i++;
 					}
