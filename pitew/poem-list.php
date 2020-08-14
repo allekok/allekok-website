@@ -23,7 +23,7 @@ include(ABSPATH . 'script/php/header.php');
 	 padding:0 .6em;
 	 font-size:1.1em;
  }
- .pmlist-container{border-bottom:1px solid}
+ .pmlist-container{border-top:1px solid}
  .pmlist-container section{vertical-align:top;padding:.2em 1em;font-size:.55em;text-align:right}
 </style>
 <div id="poets">

@@ -22,7 +22,7 @@ $poet = isset($_GET['poet']) ?
 	"";
 ?>
 <style>
- .imglist-con{display:flex;text-align:right}
+ .imglist-con{display:flex;text-align:right;border-top:1px solid}
  .imglist{vertical-align:top;padding:.2em 1em;
 	 font-size:.55em;width:100%}
 </style>
