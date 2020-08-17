@@ -13,10 +13,13 @@ RewriteRule ^(.*)$ https://www.allekok.ir/$1 [R,L]
 # Map '?ath=1&bk=2&id=3' -> 'poet:1/book:2/poem:3'
 # Poets
 RewriteRule ^poet:([0-9]+)/?$ index.php?ath=$1    [NC,L]
+RewriteRule ^([0-9]+)/?$ index.php?ath=$1    [NC,L]
 # Books
 RewriteRule ^poet:([0-9]+)/book:([0-9]+)/?$ index.php?ath=$1&bk=$2    [NC,L]
+RewriteRule ^([0-9]+)/([0-9]+)/?$ index.php?ath=$1&bk=$2    [NC,L]
 # Poems
 RewriteRule ^poet:([0-9]+)/book:([0-9]+)/poem:([0-9]+)/?$ index.php?ath=$1&bk=$2&id=$3    [NC,L]
+RewriteRule ^([0-9]+)/([0-9]+)/([0-9]+)/?$ index.php?ath=$1&bk=$2&id=$3    [NC,L]
 # New poets
 RewriteRule ^new/? index.php?new    [NC,L]
 
