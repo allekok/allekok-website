@@ -186,7 +186,8 @@ i
 	text-align:justify;
 	border-right:2px solid;
 	margin-right:.5em;
-	word-break:break-word
+	word-break:break-word;
+	white-space:pre-line;
 }
 .comm-footer
 {
@@ -333,7 +334,7 @@ header a h1
 }
 #hon
 {
-	margin-bottom:1em
+	margin-bottom:1em;
 }
 #search-form,.pmlist-container
 {
@@ -437,7 +438,8 @@ header a h1
 .n
 {
 	margin-bottom:1.45em;
-	font-size:.6em
+	font-size:.6em;
+	text-align:right;
 }
 .b .m1, .b .m2, .b .m3, .ptr .m1, .ptr .m2, .ptr .m3
 {
@@ -447,7 +449,7 @@ header a h1
 .m
 {
 	padding:3px 13px 3px 7px;
-	text-align:right
+	text-align:justify;
 }
 .loader
 {
