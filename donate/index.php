@@ -37,35 +37,12 @@ include(ABSPATH . "script/php/header.php");
  }
 </style>
 <div id="poets" class="donate-main" style="text-align:right">
-	<h2 class="color-blue" style="font-size:1em">
-		یارمەتیدەران
-	</h2>
-	<div style="padding-right:1em">
-		<?php
-		$donations = @file_get_contents("donations.txt");
-		if($donations) {
-			echo "<p>زۆرسپاس بۆ یارمەتییەکانتان:</p>";
-			$donations = explode("-----", $donations);
-			foreach($donations as $d) {
-				if(!($d = trim($d))) continue;
-				$d = explode("\t", $d);
-				echo "
-<div class='donation'>
-<div><i class='material-icons color-blue'>favorite</i>$d[0]</div>
-<div>$d[1]</div><div>$d[2]</div></div><div class='donation-desc'>$d[3]</div>";
-			}
-		}
-		else 
-			echo "<p>
-تا ئێستا هیچ کەس یارمەتی نەناردووە. ئێوە یەکەم کەس بن.</p>";
-		?>
-	</div>
 	<h1 class="color-blue"
 	    style="font-size:1em;
 		   padding:1em 0 .3em">
 		یارمەتی‌دانی ماڵی ئاڵەکۆک
 	</h1>
-	<div style="padding-right:1em;padding-bottom:2em">
+	<div style="padding-right:1em">
 		<p>
 			سڵاو بۆ هاوڕێیانی بەڕێزی ئاڵەکۆک، 
 		</p>
@@ -123,6 +100,29 @@ include(ABSPATH . "script/php/header.php");
 				  font-family:monospace;padding:0 .5em"
 			>@allekok</i>
 		</p>
+	</div>
+	<h2 class="color-blue" style="font-size:1em">
+		یارمەتیدەران
+	</h2>
+	<div style="padding-right:1em">
+		<?php
+		$donations = @file_get_contents("donations.txt");
+		if($donations) {
+			echo "<p>زۆرسپاس بۆ یارمەتییەکانتان:</p>";
+			$donations = explode("-----", $donations);
+			foreach($donations as $d) {
+				if(!($d = trim($d))) continue;
+				$d = explode("\t", $d);
+				echo "
+<div class='donation'>
+<div><i class='material-icons color-blue'>favorite</i>$d[0]</div>
+<div>$d[1]</div><div>$d[2]</div></div><div class='donation-desc'>$d[3]</div>";
+			}
+		}
+		else 
+			echo "<p>
+تا ئێستا هیچ کەس یارمەتی نەناردووە. ئێوە یەکەم کەس بن.</p>";
+		?>
 	</div>
 </div>
 <?php

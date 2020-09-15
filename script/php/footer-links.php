@@ -1,3 +1,5 @@
+<a href="<?php echo _R; ?>donate/"
+   class="color-blue"><?php P("donate"); ?></a>
 <a id="rdm-pm-a" target="_blank"
    href="<?php echo _R; ?>script/php/random-poem.php?redirect"
    title="<?php P("random-poem-title"); ?>"><?php P("random-poem"); ?></a>
@@ -30,7 +32,6 @@
    href="<?php echo _R; ?>pitew/news.php"><?php P("news"); ?></a>
 <a title="<?php P("allekok pitew"); ?>"
    href="<?php echo _R; ?>pitew/first.php"><?php P("pitew"); ?></a>
-<a href="<?php echo _R; ?>donate/"><?php P("donate"); ?></a>
 <a title="<?php P("thanks.."); ?>"
    href="<?php echo _R; ?>thanks/"><?php P("thanks"); ?></a>
 <a title="<?php P("desktop"); ?>" href="<?php echo _R; ?>desktop/">
