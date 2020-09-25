@@ -22,11 +22,7 @@ if($comm and mb_strlen($comm) < 2685) {
 		["شەممە", "یەک‌شەممە", "دووشەممە", "سێ‌شەممە",
 		 "چوارشەممە", "پێنج‌شەممە", "هەینی"],
 		$dayname);
-	$time = num_convert(date("h:i:sa"), "en", "ckb");
-	$time = str_replace(
-		["am", "pm"],
-		[" بەیانی", " پاش‌نیوەڕۆ"],
-		$time);
+	$time = num_convert(date("H:i:s"), "en", "ckb");
 	$date = "{$dayname} {$date} {$time} بە کاتی مەهاباد";
 	$header = "<i class='h'>{$date}</i>";
 	$div = "<div>";
