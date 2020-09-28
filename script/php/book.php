@@ -81,6 +81,19 @@ title='".SP("book-completed")."'>check</i>";
 						     $bknow[$bk-1];
 						?>"
 		>note_add</a>
+		<a style="display:inline-block;
+			  font-size:1.2em;
+			  padding:.58em;"
+		   class="material-icons icon-round"
+		   target="_blank"
+		   title="<?php P("داگرتنی ئەم کتێبە"); ?>"
+		   href="<?php echo _R; 
+			 ?>dev/tools/poem-plain.php?poet=<?php 
+							 echo $info['id'].
+							      "&book=$bk".
+							      "&poem=all";
+							 ?>"
+		>cloud_download</a>		
 	</form>
 	<!-- List of poems -->
 	<div id="sp">
