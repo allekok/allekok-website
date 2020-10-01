@@ -10,10 +10,10 @@
 * DONE A button to navigate to a random poem
 * DONE Using Kurdish calendar for dates
 * DONE Add key bindings especially for search(in the page and whole site)
+* DONE (/script/php/book.php) Let users download a whole book (ie. build PDFs).
 
 * TODO Let users verify poems and publish them by proof of work.
 * TODO Build PDFs from text.
-* TODO (/script/php/book.php) Let users download a whole book (ie. build PDFs).
 * TODO (/script/php/book.php) Link to reference pdfs located in
   (/pitew/pdfs.php).
 * TODO (/customize/package) Build a package system.
