@@ -76,7 +76,7 @@ include(ABSPATH . 'script/php/header.php');
 		</section></section><section class='pitewsec pitewsec-first'>
 			<a href="<?php echo _R; ?>about">
 				<i class='material-icons'
-				><img src='<?php echo _R; ?>logo/logo-64.jpg'
+				><img src='<?php echo _R; ?>style/img/logo/logo-64.jpg'
 				      style='border:2px solid;
 					   border-radius:50%;
 					   padding:.02em;width:.9em;

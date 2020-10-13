@@ -45,8 +45,8 @@ about/comments.txt
 /.well-known/
 
 # favicon
-/favicon/browserconfig.xml
-/favicon/site.webmanifest
+/style/img/favicon/browserconfig.xml
+/style/img/favicon/site.webmanifest
 
 # donations
 /donate/donations.txt

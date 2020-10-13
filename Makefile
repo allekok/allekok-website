@@ -6,7 +6,7 @@ setup: db
 db:
 	cd script/php/admin/ && php install.php
 	@echo -e "\e[94mDB Done.\e[0m"
-favicon: favicon/site.webmanifest
+favicon: style/img/favicon/site.webmanifest
 css: style/css/main-comp.css
 js: script/js/main-comp.js
 md: dev contributing
@@ -24,6 +24,6 @@ dev/tools/CONTRIBUTING/CONTRIBUTING.html: dev/tools/CONTRIBUTING/CONTRIBUTING.md
 dev/tools/dev.html: dev/tools/dev.md
 	./build-tools/md-to-html/md-to-html
 	@echo -e "\e[94mDev Done.\e[0m"
-favicon/site.webmanifest: favicon/site-sample.webmanifest
-	cd favicon && php make.php
+style/img/favicon/site.webmanifest: style/img/favicon/site-sample.webmanifest
+	cd style/img/favicon && php make.php
 	@echo -e "\e[94mFavicon Done.\e[0m"

@@ -5,8 +5,8 @@ Languages: PHP, HTML, CSS, JS, SHELL
 - PHP
   Required Libraries: JSON, MBString, MySQLi
 ** Images
-- Icons: [[../favicon][../favicons]]
-- Logos: [[../logo][../logo]]
+- Icons: [[../style/img/favicon][../style/img/favicon]]
+- Logos: [[../style/img/logo][../style/img/logo]]
 - Poets: [[../style/img/poets/profile/][../style/img/poets/profile]]
 - Sent by users: [[../style/img/poets/new][../style/img/poets/new]]
 ** Texts

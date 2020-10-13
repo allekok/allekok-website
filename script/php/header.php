@@ -7,7 +7,7 @@ if(!$no_head) {
 	if(@$ath)
 		$ogimg = _SITE.get_poet_image($ath,false);
 	else 
-		$ogimg = _SITE.'logo/logo-128.jpg';
+		$ogimg = _SITE.'style/img/logo/logo-128.jpg';
 	?>
 	<html dir='<?php echo $site_dir; ?>' lang='<?php echo $site_lang_cc; ?>'>
 		<head>
@@ -67,14 +67,14 @@ opacity:{$_back_img_op}}";
 			<meta property='og:description' content='' />
 			<meta property='og:type' content='website' />
 			<meta property='og:image' content='<?php echo $ogimg; ?>' />
-			<link rel="apple-touch-icon" sizes="180x180" href="<?php echo _R; ?>favicon/apple-touch-icon.png">
-			<link rel="icon" type="image/png" sizes="32x32" href="<?php echo _R; ?>favicon/favicon-32x32.png">
-			<link rel="icon" type="image/png" sizes="16x16" href="<?php echo _R; ?>favicon/favicon-16x16.png">
-			<link rel="manifest" href="<?php echo _R; ?>favicon/site.webmanifest">
-			<link rel="mask-icon" href="<?php echo _R; ?>favicon/safari-pinned-tab.svg" color="#5bbad5">
-			<link rel="shortcut icon" href="<?php echo _R; ?>favicon/favicon.ico">
+			<link rel="apple-touch-icon" sizes="180x180" href="<?php echo _R; ?>style/img/favicon/apple-touch-icon.png">
+			<link rel="icon" type="image/png" sizes="32x32" href="<?php echo _R; ?>style/img/favicon/favicon-32x32.png">
+			<link rel="icon" type="image/png" sizes="16x16" href="<?php echo _R; ?>style/img/favicon/favicon-16x16.png">
+			<link rel="manifest" href="<?php echo _R; ?>style/img/favicon/site.webmanifest">
+			<link rel="mask-icon" href="<?php echo _R; ?>style/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+			<link rel="shortcut icon" href="<?php echo _R; ?>style/img/favicon/favicon.ico">
 			<meta name="msapplication-TileColor" content="#2d89ef">
-			<meta name="msapplication-config" content="<?php echo _R; ?>favicon/browserconfig.xml">
+			<meta name="msapplication-config" content="<?php echo _R; ?>style/img/favicon/browserconfig.xml">
 			<meta name="theme-color" content="#ffffff">
 		</head>
 		<body>
