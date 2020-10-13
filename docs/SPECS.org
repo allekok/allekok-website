@@ -5,21 +5,21 @@ Languages: PHP, HTML, CSS, JS, SHELL
 - PHP
   Required Libraries: JSON, MBString, MySQLi
 ** Images
-- Icons: [[./favicon][./favicons]]
-- Logos: [[./logo][./logo]]
-- Poets: [[./style/img/poets/profile/][./style/img/poets/profile]]
-- Sent by users: [[./style/img/poets/new][./style/img/poets/new]]
+- Icons: [[../favicon][../favicons]]
+- Logos: [[../logo][../logo]]
+- Poets: [[../style/img/poets/profile/][../style/img/poets/profile]]
+- Sent by users: [[../style/img/poets/new][../style/img/poets/new]]
 ** Texts
-- Lists: [[./pitew/res/list.txt][./pitew/res/list.txt]] , [[./style/img/poets/new/list.txt][./style/img/poets/new/list.txt]]
-- Infos written by users: [[./pitew/res/][./pitew/res/*.txt]]
-- Date and time of last poem updates: [[./last-update.txt][./last-update.txt]]
-- A detailed list of pdfs: [[./pitew/pdfs.txt][./pitew/pdfs.txt]]
-- A list of recently added/edited poems: [[./pitew/news.txt][./pitew/news.txt]]
-- Update-version(s), Update-log(s): [[./desktop/update/][./desktop/update*.txt]]
+- Lists: [[../pitew/res/list.txt][../pitew/res/list.txt]] , [[../style/img/poets/new/list.txt][../style/img/poets/new/list.txt]]
+- Infos written by users: [[../pitew/res/][../pitew/res/*.txt]]
+- Date and time of last poem updates: [[../last-update.txt][../last-update.txt]]
+- A detailed list of pdfs: [[../pitew/pdfs.txt][../pitew/pdfs.txt]]
+- A list of recently added/edited poems: [[../pitew/news.txt][../pitew/news.txt]]
+- Update-version(s), Update-log(s): [[../desktop/update/][../desktop/update*.txt]]
   Version update files that notify Allekok apps based on '[[https://github.com/allekok/allekok-client][allekok-client]]'.
 - Q&A text files: QA.txt (There are many, all over the repository)
-- User comments on 'Allekok website': [[./about/comments.txt][./about/comments.txt]]
-- Donations: [[./donate/donations.txt][./donate/donations.txt]]
+- User comments on 'Allekok website': [[../about/comments.txt][../about/comments.txt]]
+- Donations: [[../donate/donations.txt][../donate/donations.txt]]
 ** Databases
    MySQL databases
 *** Database: index
