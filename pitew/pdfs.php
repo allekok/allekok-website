@@ -16,7 +16,7 @@ include(ABSPATH . 'script/php/header.php');
 <style>
  #pdfs-main .eee {
 	 text-align:right;
-	 font-size:.6em;
+	 font-size:.55em;
 	 padding:.2em 1em;
  }
  #pdfs-main .eee-nfo {
@@ -28,14 +28,13 @@ include(ABSPATH . 'script/php/header.php');
  }
  #pdfs-main .eee-desc {
 	 font-size:.85em;
-	 padding:0 1em 1em;
+	 padding:0 1em 0 0;
 	 margin-right:1em;
 	 display:none;
  }
  #pdfs-main .eee .material-icons {
-	 vertical-align: middle;
 	 font-size: 1.5em;
-	 margin-right: .1em;
+	 margin-right: .2em;
 	 cursor:pointer;
  }
  #pdfs-main .eee .material-icons:hover {
@@ -44,7 +43,7 @@ include(ABSPATH . 'script/php/header.php');
  #pdfs-search #filter-txt {
 	 width: 100%;
 	 font-size: .65em;
-	 margin-bottom:.5em;
+	 margin:.5em 0;
  }
 </style>
 <div id="poets">
