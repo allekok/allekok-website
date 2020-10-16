@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html dir="rtl">
+	<head>
+		<title></title>
+		<meta charset="utf-8" >
+		<meta name="viewport" content="width=device-width" >
+		<style>
+		 @keyframes fade-in {
+			 20%,60% {
+				 opacity:1;
+			 }
+			 80%,100% {
+				 opacity:0;
+			 }
+		 }
+		 @keyframes flower-anim {
+			 0%, 80% {
+				 box-shadow:none;
+				 transform:rotate(0);
+				 -webkit-transform:rotate(0);
+			 }
+			 100% {
+				 box-shadow:auto;
+				 transform:rotate(45deg);
+				 -webkit-transform:rotate(45deg);
+			 }
+		 }
+		 @keyframes fly {
+			 50% {
+				 box-shadow:none;
+				 transform:rotate(0);
+				 -webkit-transform:rotate(0);
+			 }
+			 0%,100% {
+				 box-shadow:auto;
+				 transform:rotate(45deg);
+				 -webkit-transform:rotate(45deg);
+			 }
+		 }
+		 body {
+			 font-size:16px;
+		 }
+		 .flower {
+			 margin:1em;
+			 width:1em;
+			 height:1em;
+			 border-radius:50%;
+			 animation:flower-anim ease 12s forwards;
+			 display:inline-block;
+		 }
+		 .red {
+			 background:red;
+			 box-shadow:
+				 -.7em 0 0 rgba(255,0,0,.4),
+				 .7em 0 0 rgba(255,0,0,.4),
+				 0 -.7em 0 rgba(255,0,0,.4),
+				 0 .7em 0 rgba(255,0,0,.4);
+		 }
+		 .yellow {
+			 background:#FF0;
+			 box-shadow:
+				 -.7em 0 0 rgba(255,200,0,.4),
+				 .7em 0 0 rgba(255,200,0,.4),
+				 0 -.7em 0 rgba(255,200,0,.4),
+				 0 .7em 0 rgba(255,200,0,.4);
+		 }
+		 .orange {
+			 background:#F90;
+			 box-shadow:
+				 -.7em 0 0 rgba(255,155,0,.4),
+				 .7em 0 0 rgba(255,155,0,.4),
+				 0 -.7em 0 rgba(255,155,0,.4),
+				 0 .7em 0 rgba(255,155,0,.4);
+		 }
+		 .blue {
+			 background:#09F;
+			 box-shadow:
+				 -.7em 0 0 rgba(0,155,255,.4),
+				 .7em 0 0 rgba(0,155,255,.4),
+				 0 -.7em 0 rgba(0,155,255,.4),
+				 0 .7em 0 rgba(0,155,255,.4);
+		 }
+		 .green {
+			 background:#9F0;
+			 box-shadow:
+				 -.7em 0 0 rgba(155,255,0,.4),
+				 .7em 0 0 rgba(155,255,0,.4),
+				 0 -.7em 0 rgba(155,255,0,.4),
+				 0 .7em 0 rgba(155,255,0,.4);
+		 }
+		 .pink {
+			 background:#F09;
+			 box-shadow:
+				 -.7em 0 0 rgba(255,0,155,.4),
+				 .7em 0 0 rgba(255,0,155,.4),
+				 0 -.7em 0 rgba(255,0,155,.4),
+				 0 .7em 0 rgba(255,0,155,.4);
+		 }
+		 .violet {
+			 background:#90F;
+			 box-shadow:
+				 -.7em 0 0 rgba(155,0,255,.4),
+				 .7em 0 0 rgba(155,0,255,.4),
+				 0 -.7em 0 rgba(155,0,255,.4),
+				 0 .7em 0 rgba(155,0,255,.4);
+		 }
+		 .that-color {
+			 background:#0F9;
+			 box-shadow:
+				 -.7em 0 0 rgba(0,255,155,.4),
+				 .7em 0 0 rgba(0,255,155,.4),
+				 0 -.7em 0 rgba(0,255,155,.4),
+				 0 .7em 0 rgba(0,255,155,.4);
+		 }
+		 .super {
+			 background:yellow;
+			 box-shadow:
+				 -.9em 0 0 rgba(255,0,0,.4),
+				 -.7em -.6em 0 rgba(255,200,0,.4),
+				 .9em 0 0 rgba(255,155,0,.4),
+				 .7em .6em 0 rgba(0,155,255,.4),
+				 0 -.9em 0 rgba(155,255,0,.4),
+				 .6em -.7em 0 rgba(255,0,155,.4),
+				 0 .9em 0 rgba(155,0,255,.4),
+				 -.6em .7em 0 rgba(0,255,155,.4);
+		 }
+		 #portrait {
+			 position:fixed;
+			 background:white;
+			 color:#222;
+			 border-radius:50%;
+			 z-index:999;
+			 opacity:0;
+			 animation:fade-in ease 10s 2s forwards;
+			 text-align:center;
+			 font-size:1.4em;
+			 line-height:2.2;
+		 }
+		</style>
+	</head>
+	<body>
+		<div id="portrait">
+			<span id="num" style="color:#900">
+				١٨٠
+			</span>
+			گوڵ بۆ تۆ.
+		</div>
+	</body>
+	<script>
+	 function flower (color, x, y) {
+		 let el = document.createElement("DIV");
+		 el.className = `flower ${color}`;
+		 el.style = `position:fixed;top:${y};left:${x}`;
+		 document.body.appendChild(el);
+	 }
+	 function bringToMiddle (el) {
+		 let top = (window.innerHeight / 2) -
+			   (el.offsetHeight / 2) - 20
+		 if(top < 0) top = 0
+		 el.style.marginTop = `${top}px`
+	 }
+	 function ckNum (str) {
+		 let en = ["1","2","3","4","5","6","7","8","9","0"],
+		     ck = ["١","٢","٣","٤","٥","٦","٧","٨","٩","٠"];
+		 for(const i in en)
+			 str = str.replace(new RegExp(en[i], "g"), ck[i]);
+		 return str;
+	 }
+	 let colors = ["red", "yellow", "orange", "blue",
+		       "green", "pink", "violet", "that-color",
+		       "super"],
+	     flowers_x = Math.round(window.innerWidth / (41)),
+	     flowers_y = Math.round(window.innerHeight / (40.5)),
+	     x = 1, y = 1, flowers_len = flowers_x * flowers_y;
+	 for(let i = 1; i <= flowers_len; i++) {
+		 flower(colors[Math.round(Math.random() * (colors.length-1))],
+			`${x}px`, `${y}px`);
+		 x += 41;
+		 if(!(i % flowers_x)) {
+			 y += 40.5;
+			 x = 0;
+		 }
+	 }
+	 let portrait = document.getElementById("portrait");
+	 portrait.style.width = `${window.innerWidth - 80}px`;
+	 portrait.style.padding = `${window.innerWidth / 2 - 118}px 0`;
+	 portrait.style.left = "40px";
+	 bringToMiddle(portrait);
+	 document.getElementById("num").innerHTML = ckNum(flowers_len.toString());
+	</script>
+</html>
