@@ -47,7 +47,8 @@ var ar2IL = ar2IL || function (s) {
 			["ئارەزوی", "ئارەزuی"],
 			["ئارزوی", "ئارزuی"],
 			["^([رڕ])وی$", "$1uی"],
-			["^لە([رڕ])وی$", "لە$1uی"]];
+			["^لە([رڕ])وی$", "لە$1uی"],
+			["هاووڵا", "هاwwڵا"]];
 	const after = [["ûyyî$", "ûyîy"],
 		       [`^([مس])ە([رح])u$`, "$1ە$2w"]];
 	const notsure = [["وو", "û", "uw", "wu", "ww"],
@@ -83,6 +84,7 @@ var ar2IL = ar2IL || function (s) {
 		standardizing(s), before), notsure, determine_notsure),
 					after), n, v, bizroke);
 }
+
 var ar2lat = ar2lat || function (s) {
 	const sure = [["أ","ئە"],
 		      ["إ","ئی"],
