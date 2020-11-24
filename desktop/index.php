@@ -4,7 +4,7 @@ include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
 $title = $_TITLE . " &rsaquo; داگرتنی بەرنامەی ئاڵەکۆک";
-$desc = "داگرتنی بەرنامەی ئاڵەکۆک بۆ لینوکس و ئەندرۆید";
+$desc = "داگرتنی بەرنامەی ئاڵەکۆک بۆ لینوکس و ئەندرۆید و ئای ئۆ ئێس";
 $keys = $_KEYS;
 $t_desc = "";
 
@@ -48,12 +48,40 @@ include(ABSPATH . "script/php/header.php");
 					</a>
 				</small>
 			</small>
+		</section><section class='pitewsec pitewsec-desktop'>
+			<svg style="width:2em;vertical-align:middle;fill:<?php echo $_colors[1]; ?>" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM127 384.5c-5.5 9.6-17.8 12.8-27.3 7.3-9.6-5.5-12.8-17.8-7.3-27.3l14.3-24.7c16.1-4.9 29.3-1.1 39.6 11.4L127 384.5zm138.9-53.9H84c-11 0-20-9-20-20s9-20 20-20h51l65.4-113.2-20.5-35.4c-5.5-9.6-2.2-21.8 7.3-27.3 9.6-5.5 21.8-2.2 27.3 7.3l8.9 15.4 8.9-15.4c5.5-9.6 17.8-12.8 27.3-7.3 9.6 5.5 12.8 17.8 7.3 27.3l-85.8 148.6h62.1c20.2 0 31.5 23.7 22.7 40zm98.1 0h-29l19.6 33.9c5.5 9.6 2.2 21.8-7.3 27.3-9.6 5.5-21.8 2.2-27.3-7.3-32.9-56.9-57.5-99.7-74-128.1-16.7-29-4.8-58 7.1-67.8 13.1 22.7 32.7 56.7 58.9 102h52c11 0 20 9 20 20 0 11.1-9 20-20 20z"/></svg>
+			<small>
+				<a href="https://allekok.ir/offline/"
+				   target="_blank">دابەزاندن بۆ ئای ئۆ ئێس</a>
+				<small style='font-size:.7em;display:block'>
+					هاوڕێیان بۆ دابەزاندنی بەرنامەی ئاڵەکۆک بۆ ئای ئۆ ئێس سەردانی
+					<a target="_blank"
+					   href="https://allekok.ir/offline/"
+					   class="color-blue">
+						ئەم لاپەڕە
+					</a>
+					بکەن و ئەو کارانەی وێنەی خوارەوە ئەنجام بدەن.
+				</small>
+				<a target="_blank"
+				   href="allekok-web.jpg">
+					<img src="allekok-web.jpg"
+					     style="display:block;
+						  margin:auto;
+						  max-width:100%;
+						  border-radius:.5em">
+				</a>
+			</small>
 		</section>
 	</div>
 	<h1 class="color-blue" style="font-size:1em">
 		کۆدەکانی بەرنامەی ئاڵەکۆک
 	</h1>
 	<div style="padding-right:1em">
+		<a target="_blank" rel="noopener noreferrer nofollow"
+		   href="https://github.com/allekok/allekok-web"
+		   style="display:block;font-size:.6em" 
+		   title="کۆدەکانی بەرنامەی ئای ئۆ ئێسی ئاڵەکۆک"
+		>کۆدەکانی بەرنامەی ئای ئۆ ئێسی ئاڵەکۆک</a>
 		<a target="_blank" rel="noopener noreferrer nofollow"
 		   href="https://github.com/allekok/allekok-android"
 		   style="display:block;font-size:.6em" 
