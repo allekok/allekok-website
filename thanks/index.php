@@ -44,7 +44,7 @@ include(ABSPATH . "script/php/header.php");
 		<a href="https://www.pinterest.com/rebwarkalid/"
 		   target='_blank' rel='noopener noreferrer nofollow'
 		   class="link-underline"
-		>Rebwar Tahir</a> &rsaquo; بۆ بەشێکی زۆر لە وێنەی شاعیران
+		>Rebwar Kalid</a> &rsaquo; بۆ بەشێکی زۆر لە وێنەی شاعیران
 	</p>
 	<p>
 		<a href="https://vejinbooks.com/"
