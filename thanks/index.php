@@ -47,7 +47,7 @@ include(ABSPATH . "script/php/header.php");
 		>Rebwar Kalid</a> &rsaquo; بۆ بەشێکی زۆر لە وێنەی شاعیران
 	</p>
 	<p>
-		<a href="https://vejinbooks.com/"
+		<a href="https://books.vejin.net/"
 		   target='_blank' rel='noopener noreferrer nofollow'
 		   class="link-underline"
 		>ڤەژینبوکس</a> &rsaquo; بۆ بەشێکی زۆر لە شێعرەکان
