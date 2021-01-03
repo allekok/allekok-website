@@ -2,6 +2,7 @@
 const _R = _relativePath || "/";
 const _R_LEN = _R.length;
 var bookmarks_name = bookmarks_name || 'favorites';
+var search_delay = search_delay || 150;
 
 var apply_to_text = apply_to_text || function (el, proc) {
 	let html = '';
@@ -328,21 +329,8 @@ var get_bookmarks = get_bookmarks || function ()
 	}
 	catch(e)
 	{
-		return update_bookmarks(bookmarks);
+		return false;
 	}
-}
-
-var update_bookmarks = update_bookmarks || function (bookmarks)
-{
-	bookmarks = bookmarks.split("[fav]");
-	let newBookmarks = [];
-	for(const i in bookmarks)
-	{
-		if(bookmarks[i])
-			newBookmarks.push(JSON.parse(bookmarks[i]));
-	}
-	localStorage.setItem(bookmarks_name, JSON.stringify(newBookmarks));
-	return newBookmarks;
 }
 
 var toggle_Like = toggle_Like || function ()
@@ -424,7 +412,7 @@ var search = search || function (e)
 			Key.value = '';
 			Res.style.display = 'none';
 		}
-	}, 150);
+	}, search_delay);
 }
 
 var tewar = tewar || function (e)
@@ -478,7 +466,7 @@ var tewar = tewar || function (e)
 			Key.value = '';
 			Res.style.display = 'none';
 		}
-	}, 150);
+	}, search_delay);
 }
 
 var findPage_ = findPage_ || function (e) {
