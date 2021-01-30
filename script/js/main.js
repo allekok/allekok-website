@@ -140,7 +140,13 @@ var ar2lat = ar2lat || function (s) {
 		      ["،", ","],
 		      ["؛", ";"],
 		      ["؟", "?"]];
-	return replace_sure(ar2IL(s), sure);
+	/* Tashdid */
+	function remove_tashdid (s, tashdid="\u{651}") {
+		return replace_sure(s, [
+			[`(.)([َُِ])${tashdid}`, "$1$1$2"],
+			[`(.)${tashdid}`, "$1$1"]]);
+	}
+	return replace_sure(remove_tashdid(ar2IL(s)), sure);
 }
 
 var ar2per = ar2per || function (s) {
@@ -246,8 +252,27 @@ var standardizing = standardizing || function (str) {
 		["ـ",""],
 		["‌+","‌"],
 		["ھ","ه"],
-		["ك|ڪ", "ک"],
-		["ي|ى|ے", "ی"]]);
+		["ه‌","ە"],
+		["ك|ﮐ|ڪ","ک"],
+		["ﯿ|ﯽ|ﯼ|ي|ى|ے","ی"],
+		["ﻦ|ﻥ|ﻧ","ن"],
+		["ﺪ|ﺩ","د"],
+		["ﻡ|ﻤ|ﻢ|ﻣ","م"],
+		["ﺍ|ﺎ","ا"],
+		["ﻭ","و"],
+		["ﺭ|ﺮ","ر"],
+		["ﺯ","ز"],
+		["ﮊ","ژ"],
+		["ﮔ|ﮓ","گ"],
+		["ﺑ","ب"],
+		["ﭘ","پ"],
+		["ﺖ|ﺗ","ت"],
+		["ﺟ","ج"],
+		["ﭼ","چ"],
+		["ﻗ","ق"],
+		["ﺋ","ئ"],
+		["ﺱ|ﺳ","س"],
+		["ﺸ|ﺷ","ش"]]);
 }
 
 var poetImage = poetImage || function (pID, callback)
