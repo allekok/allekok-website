@@ -356,12 +356,13 @@ header a h1
 	font-size:1.4em;
 	padding:0 .3em
 }
+#search-res-container {
+	display:none;
+}
 #search-res
 {
-	display:none;
 	padding:1em .3em;
 	position:relative;
-	margin:auto
 }
 #search-res a
 {

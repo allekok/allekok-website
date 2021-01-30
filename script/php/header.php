@@ -16,7 +16,7 @@ if(!$no_head) {
 				 navigator.serviceWorker.register('<?php echo _R; ?>sw.js');
 			</script>
 			<link rel='stylesheet'
-			      href='<?php echo _R; ?>style/css/main-comp.css?v141'/>
+			      href='<?php echo _R; ?>style/css/main-comp.css?v145'/>
 			<title>
 				<?php echo $title; ?>
 			</title>
@@ -103,7 +103,11 @@ opacity:{$_back_img_op}}";
 					  id='search-btn'
 					  class='material-icons'
 				  >search</button></form>
-				<div id='search-res'></div>
+				<div id="search-res-container">
+					<div class="loader"
+					     style="visibility:hidden;margin:.7em auto 0"></div>
+					<div id='search-res'></div>
+				</div>
 			</div>
 			<!-- Bookmarks -->
 			<div id='tL-res' style='display:none'>

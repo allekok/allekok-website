@@ -396,37 +396,49 @@ margin-left:.5em'>${favs[a].poetName} &rsaquo; ${favs[a].poem}</a>`;
 	ajax();
 }
 
-var search = search || function (e)
+var search_x = search_x || function (e, search_fn, toggle_fn)
 {
 	setTimeout(() => {
-		const Res = document.getElementById("search-res"),
-		      Sec = document.getElementById("search"),
+		const ResCon = document.getElementById("search-res-container"),
+		      Res = document.getElementById("search-res"),
 		      Key = document.getElementById("search-key"),
+		      loading = ResCon.querySelector('.loader'),
 		      q = Key.value.trim(),
 		      currentKey = e === undefined ? false : e.keyCode,
 		      noActionKeys = [16, 17, 18, 91, 20, 9, 93,
-				      37, 38, 39, 40, 32, 224, 13],
-		      url = `${_R}script/php/search-quick.php?q=${q}`;
+				      37, 38, 39, 40, 32, 224, 13];
 		if(currentKey == 27)
 		{
-			toggle_search();
+			toggle_fn();
 			return;
 		}
 		if(noActionKeys.indexOf(currentKey) !== -1) return;
+		
+		search_fn(ResCon, Res, Key, loading, q);
+		
+	}, search_delay);
+}
+
+var search = search || function (e)
+{
+	search_x(e, (ResCon, Res, Key, loading, q) => {
 		if(q) {
-			Res.style.display = "block";
+			const url = `${_R}script/php/search-quick.php?q=${q}`;
+			ResCon.style.display = "block";
 			let content;
 			if(content = ajax_findstate(url)) {
 				Res.innerHTML = content;
 				findPage(q, Res);
 			}
 			else {
-				Res.innerHTML = "<div class='loader'></div>";
+				loading.style.visibility = ''
 				/* Server Search */
 				searchStackPush(q);
 				getUrl(url, (response) => {
 					ajax_savestate(url, response);
 					if(searchStackPop(q)) {
+						loading.style.visibility =
+							'hidden';
 						Res.innerHTML = response;
 						findPage(q, Res);
 					}
@@ -435,36 +447,24 @@ var search = search || function (e)
 		}
 		else {
 			Key.value = '';
-			Res.style.display = 'none';
+			ResCon.style.display = 'none';
 		}
-	}, search_delay);
+	}, toggle_search);
 }
 
 var tewar = tewar || function (e)
 {
-	setTimeout(() => {
-		const Res = document.getElementById("search-res"),
-		      Sec = document.getElementById("search"),
-		      Key = document.getElementById("search-key"),
-		      q = Key.value.trim(),
-		      currentKey = e === undefined ? false : e.keyCode,
-		      noActionKeys = [16, 17, 18, 91, 20, 9, 93,
-				      37, 38, 39, 40, 32, 224, 13],
-		      dicts_str = 'xal,kameran,henbane-borine,bashur,kawe,e2k,zkurd',
+	search_x(e, (ResCon, Res, Key, loading, q) => {
+		const dicts_str = 'xal,kameran,henbane-borine,bashur,kawe,e2k,zkurd',
 		      url = `${_R}tewar/src/backend/lookup.php?q=${q}&dicts=${dicts_str}&output=json&n=1`;
-		if(currentKey == 27) {
-			toggle_tewar();
-			return;
-		}
-		if(noActionKeys.indexOf(currentKey) !== -1) return;
 		if(q) {
-			Res.style.display = "block";
+			ResCon.style.display = "block";
 			let content;
 			if(content = ajax_findstate(url)) {
 				Res.innerHTML = content;
 			}
 			else {
-				Res.innerHTML = "<div class='loader'></div>";
+				loading.style.visibility = ''
 				/* Server Search */
 				searchStackPush(q);
 				getUrl(url, (response) => {
@@ -482,6 +482,8 @@ var tewar = tewar || function (e)
 						    wm_html :
 						    "<p style='font-size:.55em'>(نەدۆزرایەوە)</p>";
 						ajax_savestate(url, toprint);
+						loading.style.visibility =
+							'hidden';
 						Res.innerHTML = toprint;
 					}
 				});
@@ -489,9 +491,9 @@ var tewar = tewar || function (e)
 		}
 		else {
 			Key.value = '';
-			Res.style.display = 'none';
+			ResCon.style.display = 'none';
 		}
-	}, search_delay);
+	}, toggle_tewar);
 }
 
 var findPage_ = findPage_ || function (e) {
