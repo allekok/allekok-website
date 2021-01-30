@@ -108,7 +108,7 @@ function san_data($in, $lastChance=false)
 
 function san_data_more($in)
 {
-	/* Remove 'h' and Numbers */
+	/* Remove Vowels and Numbers */
 	$to_nums = [
 		"0","1","2","3","4","5","6","7","8","9",
 	];
