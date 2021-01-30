@@ -16,7 +16,7 @@ if(!$no_head) {
 				 navigator.serviceWorker.register('<?php echo _R; ?>sw.js');
 			</script>
 			<link rel='stylesheet'
-			      href='<?php echo _R; ?>style/css/main-comp.css?v145'/>
+			      href='<?php echo _R; ?>style/css/main-comp.css?v147'/>
 			<title>
 				<?php echo $title; ?>
 			</title>
