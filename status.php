@@ -1,99 +1,118 @@
 <?php
+/* Include Libraries */
 require_once("script/php/constants.php");
 require_once(ABSPATH."script/php/functions.php");
 
+/* Sending HTTP headers */
 header("Content-type:text/plain; charset=UTF-8");
 
-/* Statistics */
-include(ABSPATH."script/php/stats.php");
-echo "شاعیر:";
-echo $aths_num;
-echo "\tکتێب:";
-echo $bks_num;
-echo "\tشێعر:";
-echo $hons_num;
+/* Getting 'N: Number of Items' */
+$N = @filter_var($_GET["n"], FILTER_VALIDATE_INT) ? $_GET["n"] : 5;
 
-/* New-Poems */
-echo "\n\n/نووسینی شێعر/\n";
+/* Statistics */
+echo "ئەژمار:\n";
+
+include_once(ABSPATH."script/php/stats.php");
+echo "\tشاعیر:" . $aths_num;
+echo "\tکتێب:" . $bks_num;
+echo "\tشێعر:" . $hons_num;
+
+/* New Poems */
+echo "\n\nنووسینی شێعر:\n";
+echo "["._SITE."pitew/poem-list.php]\n";
+
 $q = "select * from pitew where status LIKE '{\"status\":0%' order by id DESC";
 require(ABSPATH."script/php/condb.php");
-if($query and (mysqli_num_rows($query) > 0))
-{
-	while($res = mysqli_fetch_assoc($query))
-	{
-		$res['poem-name'] = $res['poem-name'] ? $res['poem-name'] : "شێعر";
-		echo "- {$res['contributor']} :: {$res['poet']} › {$res['book']} › {$res['poem-name']}\n";
+if($query and mysqli_num_rows($query) > 0) {
+	while($res = mysqli_fetch_assoc($query)) {
+		$contrib = $res['contributor'];
+		$pt = $res['poet'];
+		$bk = $res['book'];
+		$pm = $res['poem-name'] ? $res['poem-name'] : "شێعر";
+		echo "\t- {$contrib} :: {$pt} › {$bk} › {$pm}\n";
 	}
 }
 else
-	echo "+•+\n";
+	echo "\t•\n";
 
-/* New-Images */
-echo "\n/ناردنی وێنەی شاعیران/\n";
-$_list = make_list(ABSPATH."style/img/poets/new/");
-foreach($_list as $i=>$_l)
-{
-	if($i == 2) break;
-	echo "- {$_l['name']} › {$_l['poet']}\n";
-}
-if(!$_list)
-	echo "+•+\n";
+/* New Comments */
+echo "\nبیر و ڕای شێعرەکان:\n";
+echo "["._SITE."comments/index.php]\n";
 
-/* New-Poet-Descs */
-echo "\n/نووسینی زانیاری سەبارەت بە شاعیران/\n";
-$_list = make_list(ABSPATH."pitew/res/");
-foreach($_list as $i=>$_l)
-{
-	if($i == 2)	break;
-	echo "- {$_l['poet']} › {$_l['name']}\n";
-}
-if(!$_list)
-	echo "+•+\n";
-
-/* New-Comments */
-echo "\n/بیر و ڕای شێعرەکان/\n";
-$q = "select * from `comments` where `read`=0 order by `id` DESC";
+$q = "SELECT * FROM comments WHERE `read`=0 ORDER BY id DESC";
 $query = mysqli_query($conn, $q);
-if($query and (mysqli_num_rows($query) > 0))
-{
-	while($res = mysqli_fetch_assoc($query))
-	{
+if($query and mysqli_num_rows($query) > 0) {
+	while($res = mysqli_fetch_assoc($query)) {
 		$res['name'] = $res['name'] ? $res['name'] : "ناشناس";
-		echo "- {$res['name']} › "._SITE."{$res['address']}\n";
+		echo "\t- {$res['name']} › ["._SITE."{$res['address']}]\n";
 	}
 }
 else
-	echo "+•+\n";
+	echo "\t•\n";
 
+/* Terminate MySQL Connection */
 mysqli_close($conn);
 
-/* about */
-echo "\n/ئاڵەکۆک؟/\n";
-echo filter_var(
-	str_replace("<i class='h'>", "\t",
-		    file_get_contents(
-			    _SITE . 'about/about-comments.php?num=1')),
-	FILTER_SANITIZE_STRING) . "\n";
+/* New Images */
+echo "\nناردنی وێنەی شاعیران:\n";
+echo "["._SITE."pitew/image-list.php]\n";
+print_new_images($N);
 
-/* pitew */
-echo "\n/پتەوکردنی ئاڵەکۆک/\n";
+/* New Poet Descs */
+echo "\nنووسینی زانیاری سەبارەت بە شاعیران:\n";
+echo "["._SITE."pitew/poetdesc-list.php]\n";
+print_new_poet_descs($N);
+
+/* Pitew */
+echo "\nپتەوکردنی ئاڵەکۆک:\n";
+echo "["._SITE."pitew/first.php]\n";
 echo last(ABSPATH . "pitew/QA.txt") . "\n";
 
-/* allekok-desktop */
-echo "\n/دابەزاندنی بەرنامەی ئاڵەکۆک/\n";
+/* Allekok Desktop */
+echo "\nدابەزاندنی بەرنامەی ئاڵەکۆک:\n";
+echo "["._SITE."desktop/index.php]\n";
 echo last(ABSPATH . "desktop/QA.txt") . "\n";
 
-/* dev/tools */
-echo "\n/کۆدەکانی ئاڵەکۆک/\n";
+/* Dev Tools */
+echo "\nکۆدەکانی ئاڵەکۆک:\n";
+echo "["._SITE."dev/tools/index.php]\n";
 echo last(ABSPATH . "dev/tools/QA.txt") . "\n";
 
 /* CONTRIBUTING */
-echo "\n/بەشداربوون لە نووسینی کۆدەکانی ئاڵەکۆک/\n";
+echo "\nبەشداربوون لە نووسینی کۆدەکانی ئاڵەکۆک:\n";
+echo "["._SITE."dev/tools/CONTRIBUTING/index.php]\n";
 echo last(ABSPATH . "dev/tools/CONTRIBUTING/QA.txt") . "\n";
 
-/* Tools */
-function make_list($_dir)
-{
+/* About */
+echo "\nسەبارەت بە ئاڵەکۆک:\n";
+echo "["._SITE."about/index.php]\n";
+print_about_comments($N);
+
+/* Functions */
+function last ($path, $n = 5) {
+	/* Get 'n' items from end of a 'QA.txt' file. */
+	if(!file_exists($path))
+		return "\t•";
+	
+	$file = file_get_contents($path);
+	$file = explode("\nend\n", $file);
+	$file = array_reverse($file);
+	$return = "";
+	
+	foreach($file as $item) {
+		if(!($item = trim($item)))
+			continue;
+		if($n-- == 0)
+			break;
+		$item = str_replace("\n", "\n\t", $item);
+		$return .= "\t- $item\n\n";
+	}
+
+	$return = rtrim($return);
+	return $return ? $return : "\t•";
+}
+
+function make_list($_dir) {
 	if(!is_dir($_dir)) return [];
 	$d = opendir($_dir);
 	$not = [".","..","README.md"];
@@ -109,34 +128,45 @@ function make_list($_dir)
 		array_unshift($entry, filemtime($uri));
 		$_list[] = $entry;
 	}
-	@closedir($_dir);
+	closedir($d);
 	rsort($_list);
 	return $_list;
 }
 
-function last ($path, $n=1)
-{
-	/* Get 'n' items from the tail of a 'QA.txt' */
-	if(! file_exists($path))
-		return '+•+';
-	
-	$file = file_get_contents($path);
-	$file = explode("\nend\n", $file);
-	$file = array_reverse($file);
-	$return = '';
-	
-	foreach($file as $item)
-	{
-		if($n == 0) break;
-		$item = trim($item);
-		if(!$item) continue;
-		$return .= "- $item\n";
-		$n--;
+function print_new_images($n = 5) {
+	$list = make_list(ABSPATH."style/img/poets/new/");
+	if($list) {
+		foreach($list as $i => $l) {
+			if($i == $n) break;
+			echo "\t- {$l['name']} › (شاعیر:{$l['poet']})\n";
+		}
 	}
-	$return = trim($return);
-	if($return)
-		return $return;
 	else
-		return '+•+';
+		echo "\t•\n";
+}
+
+function print_new_poet_descs($n = 5) {
+	$list = make_list(ABSPATH."pitew/res/");
+	if($list) {
+		foreach($list as $i => $l) {
+			if($i == $n) break;
+			echo "\t- {$l['poet']} › [شاعیر: {$l['name']}]\n";
+		}
+	}
+	else
+		echo "\t•\n";
+}
+
+function print_about_comments($n = 5) {
+	$s = file_get_contents(_SITE."about/about-comments.php?num={$n}");
+	if($s) {
+		echo "\t";
+		echo filter_var(str_replace(
+			["<i class='h'>", "</i>"],
+			["\n\t\t[", "]\n\n\t"],$s),
+				FILTER_SANITIZE_STRING) . "\n";
+	}
+	else
+		echo "\t•\n";
 }
 ?>
