@@ -138,7 +138,7 @@ function print_new_images($n = 5) {
 	if($list) {
 		foreach($list as $i => $l) {
 			if($i == $n) break;
-			echo "\t- {$l['name']} › (شاعیر:{$l['poet']})\n";
+			echo "\t- {$l['name']} › [شاعیر: {$l['poet']}]\n";
 		}
 	}
 	else
