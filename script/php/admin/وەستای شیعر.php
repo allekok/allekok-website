@@ -16,6 +16,85 @@ include(ABSPATH . 'script/php/header.php');
  window.onload = () =>
 	 document.querySelector("footer").style.display = "none";
  document.body.style.padding = "0 1em";
+ function normalizeTxt() {
+	 const input = document.getElementById("hon");
+	 input.value = normalize(input.value);
+ }
+ function normalize(text) {
+	 const filters = [
+		 /* [،؛].. -> [،؛] */
+		 [/([،؛])+/g, '$1'],
+		 
+		 /* [،؛.!؟:] -> [،؛.!؟:]\s */
+		 [/ *([،؛\.!؟:]) */g, '$1 '],
+
+		 /* !\s! -> !! */
+		 [/(! +){2}/g, '!!'],
+
+		 /* ?\s? -> ?? */
+		 [/(؟ +){2}/g, '؟؟'],
+
+		 /* :\s: -> :: */
+		 [/(: +){2}/g, '::'],
+		 
+		 /* .\s. -> .. */
+		 [/(\. +){2}/g, '..'],
+
+		 /* .\w -> . \w */
+		 [/\.(\w)/g, '. $1'],
+
+		 /* .... -> ... . */
+		 [/(\.{3})\./g, '$1 .'],
+
+		 /* [،؛!؟:]\w -> [،؛!؟:]\s\w */
+		 [/ *([،؛!؟:])(\w)/g, '$1 $2'],
+		 
+		 /* (( -> « */
+		 [/\(( *\()+ */g, '«'],
+
+		 /* )) -> » */
+		 [/ *\)( *\))+/g, '»'],
+
+		 /* << -> « */
+		 [/<( *<)+ */g, '«'],
+
+		 /* >> -> » */
+		 [/ *>( *>)+/g, '»'],
+
+		 /* :« -> : « */
+		 [/: *«/g, ': «'],
+
+		 /* «\s -> « */
+		 [/« +/g, '«'],
+
+		 /* \s» -> » */
+		 [/ +»/g, '»'],
+
+		 /* [0-9][.،!؟؛]\s[0-9] -> [0-9][.،!؟؛][0-9] */
+		 [/([0-9])([.،!؟؛]) +([0-9])/g, '$1$2$3'],
+
+		 /* [٠-٩][.،!؟؛]\s[٠-٩] -> [٠-٩][.،!؟؛][٠-٩] */
+		 [/([٠-٩])([.،!؟؛]) +([٠-٩])/g, '$1$2$3'],
+
+		 /* [۰-۹][.،!؟؛]\s[۰-۹] -> [۰-۹][.،!؟؛][۰-۹] */
+		 [/([۰-۹])([.،!؟؛]) +([۰-۹])/g, '$1$2$3'],
+
+		 /* \w\s..\w -> \w\s\w */
+		 [/(\w) {2,}(\w)/g, '$1 $2'],
+
+		 /* \s..$ -> $ */
+		 [/ +$/gm, ''],
+	 ]
+	 
+	 /* Apply Filters */
+	 for(const filter of filters)
+		 text = text.replace(filter[0], filter[1])
+	 
+	 /* Trim Text */
+	 text = text.trim()
+
+	 return text
+ }
  function chDirection() {
 	 var poem = document.getElementById("hon");
 	 if(poem.style.direction=="rtl") {
@@ -328,14 +407,6 @@ include(ABSPATH . 'script/php/header.php');
 </style>
 <div id="poets">
 	<div>
-		<div id="toolbox">
-			<a onclick="event.preventDefault();window.open('<?php echo _SITE; ?>script/php/admin/sitemap.php', '_blank','width=300,height=320','')" href="sitemap.php">
-				زیاد کردن
-			</a><a onclick="event.preventDefault();window.open('<?php echo _SITE; ?>script/php/admin/search-poems.php', '_blank','width=300,height=320','')" href="search-poems.php">
-				دروست کردن
-			</a>
-		</div>
-		
 <?php
 function tbl_name_to_address($_tbl) {
 	$_tbl = explode("_", $_tbl);
@@ -544,7 +615,7 @@ if($dbcache=='') {
 		</div>
 		
 		<div id="tools">
-			<button class='button' type='button' onclick="make_mdcf()">m d cf</button><button class='button' type='button' onclick="make_b()">b</button><button class='button' type='button' onclick="make_n()">n</button><button class='button' type='button' onclick="make_mptr()">m ptr</button><button class='button' type='button' onclick="make_ptrptrh()">ptr ptrh</button><button class='button' type='button' onclick="nbr_convert()" style="direction:ltr">\n -> br</button><button class='button' type='button' onclick="make_sup()">sup</button><button class='button' type='button' onclick="num_convert()">ژمارەی کوردی</button><button class="button" type="button" onclick="chDirection()">RTL<>LTR</button>
+			<button class='button' type='button' onclick="make_mdcf()">m d cf</button><button class='button' type='button' onclick="make_b()">b</button><button class='button' type='button' onclick="make_n()">n</button><button class='button' type='button' onclick="make_mptr()">m ptr</button><button class='button' type='button' onclick="make_ptrptrh()">ptr ptrh</button><button class='button' type='button' onclick="nbr_convert()" style="direction:ltr">\n -> br</button><button class='button' type='button' onclick="make_sup()">sup</button><button class='button' type='button' onclick="num_convert()">ژمارەی کوردی</button><button class="button" type="button" onclick="chDirection()">RTL<>LTR</button><button class="button" type="button" onclick="normalizeTxt()">جوانکاری</button>
 				<div style="display:flex;width:100%;margin-bottom:.5em;border:1px solid;border-radius:.5em">
 					<input style="margin:0;border:0" type="text" id="getPitewIdTxt" placeholder="پتەو-ژمارەی شێعری ناردراو" />
 					<button style="margin:0 .5em 0 0;border:0;padding:0 2em" type="button" id="getPitewBtn" onclick="getPitew()">وەرگرتن</button>

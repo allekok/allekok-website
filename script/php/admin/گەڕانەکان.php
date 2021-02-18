@@ -13,15 +13,16 @@ include(ABSPATH . 'script/php/header.php');
 ?>
 <div id="poets">        
 	<?php
+	$cipi_gt = 4;
 	$db = _SEARCH_DB;
 	$q = "select Cipi, rtakh, rbook, rname, 
 poet_id, book_id, poem_id, id from poems 
-where Cipi>2 order by Cipi DESC";
+where Cipi>{$cipi_gt} order by Cipi DESC";
 	
 	require(ABSPATH . "script/php/condb.php");
 	
 	$_ths = [
-		["Cipi",
+		["کرتە",
 		 "5%"],
 		["شێعر",
 		 "90%"],

@@ -19,8 +19,6 @@ include(ABSPATH . 'script/php/header.php');
  }
 </style>
 <div id="poets">
-	<a style="font-size:.65em;display:block"
-	   class="link" href="search-poems.php">شێعرەکان</a>
 	<?php
 	/* READ */
 	$q = "SELECT * FROM auth ORDER BY takh ASC";

@@ -13,13 +13,12 @@ include(ABSPATH . 'script/php/header.php');
 ?>
 <style>
  .line {
-	 direction:ltr;
-	 text-align:left;
+	 text-align:right;
 	 font-family:'kurd',monospace;
-	 font-size:.8em;
+	 font-size:.7em;
  }
  .line a {
-	 padding:.5em;
+	 padding:.3em;
 	 display:block;
  }
 </style>
@@ -32,8 +31,8 @@ include(ABSPATH . 'script/php/header.php');
 		"SHA512.php","capture","comment-block.php","comment-read.php",
 		"index.php","link-ganjoor.php","login.php","password.php",
 		"password-sample.php","session.php","error_log",".htaccess",
-		"sql-columns.php","sanitize-poems.php","get-pitew.php",
-		"set-pitew.php",
+		"sql-columns.php","get-pitew.php","set-pitew.php",
+		"normalize.php", "install.php",
 	];
 	foreach($files as $f)
 	{

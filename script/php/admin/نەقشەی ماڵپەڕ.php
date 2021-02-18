@@ -66,8 +66,3 @@ if($query)
 mysqli_close($conn);
 
 ?>
-<meta charset="utf-8">
-<br><br>
-<button onclick="window.open('<?php echo _SITE; ?>script/php/admin/search-poets.php', '_blank','width=300,height=200','')" type="button">search-poets.php</button><br>
-<button onclick="window.open('<?php echo _SITE; ?>script/php/admin/search-books.php', '_blank','width=300,height=200','')" type="button">search-books.php</button><br>
-<button onclick="window.open('<?php echo _SITE; ?>script/php/admin/search-poems.php', '_blank','width=300,height=200','')" type="button">search-poems.php</button>

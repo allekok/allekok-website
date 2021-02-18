@@ -221,15 +221,6 @@ if(! empty($_REQUEST['id'])) {
 </style>
 
 <div id="poets">
-	<div id="toolbox">
-		<a href="poets.php">
-			شاعیران
-		</a>
-		<a onclick="event.preventDefault();window.open('<?php echo _SITE; ?>script/php/admin/search-poets.php', '_blank','width=300,height=200','')" style="background:rgb(102, 0, 51);" href="search-poets.php" target='_blank'>
-			search-poets.php
-		</a>
-	</div>
-	
 	<!-- info sec -->
 	
 	<div id="frmInfoMess">
