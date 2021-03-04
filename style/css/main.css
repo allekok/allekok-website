@@ -580,7 +580,7 @@ footer i
 	width:90%;
 	vertical-align:middle
 }
-.next i,.prev i
+.next .arr,.prev .arr
 {
 	font-size:inherit;
 	display:inline-block;

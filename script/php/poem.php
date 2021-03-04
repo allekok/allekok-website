@@ -73,7 +73,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 					 echo _R . "poet:".$info['id']."/book:".
 					      $bk."/poem:".$row[0]['id'];
 					 ?>"
-				><i
+				><i class="arr"
 				 >&lsaquo;</i><div
 					      ><?php 
 					       echo $row[0]['ckbid'].". ".
@@ -98,7 +98,7 @@ if($row[2]) $row[2]['ckbid'] = num_convert(
 				  echo $row[2]['ckbid'].". ".
 				       trim($row[2]['name']);
 				  ?>
-				</div><i>&rsaquo;</i>
+				</div><i class="arr">&rsaquo;</i>
 				</a>
 			</div>
 		<?php } ?>
@@ -260,7 +260,7 @@ style='display:inline-block'
 					 echo _R . "poet:".$info['id']."/book:".
 					      $bk."/poem:".$row[0]['id'];
 					 ?>"
-				><i
+				><i class="arr"
 				 >&lsaquo;</i><div
 					      ><?php 
 					       echo $row[0]['ckbid'].". ".
@@ -285,7 +285,7 @@ style='display:inline-block'
 				  echo $row[2]['ckbid'].". ".
 				       trim($row[2]['name']);
 				  ?>
-				</div><i>&rsaquo;</i>
+				</div><i class="arr">&rsaquo;</i>
 				</a>
 			</div>
 		<?php } ?>
