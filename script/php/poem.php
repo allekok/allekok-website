@@ -181,25 +181,39 @@ style='display:inline-block'
 			<!--
 			     Latin <-> Arabic
 			-->
-			<i class='material-icons icon-round icon-round-poem'
+			<i class="material-icons icon-round icon-round-poem"
 			>compare_arrows</i>
-			ئەلفوبێ: 
-			<button class='link convertToEtcBtn' type="button"
-				style="font-size:1em;margin-right:.5em;
-				       font-weight:bold"
-			>کوردی</button>
-			<button class='link convertToEtcBtn' type="button"
-				style="font-size:1em;margin-right:.5em;
-				       font-family:monospace;font-weight:bold"
-			>Kurdî</button>
-			<button class='link convertToEtcBtn' type="button"
-				style="font-size:1em;margin-right:.5em;
-				       font-weight:bold"
+			ئەلفووبێ: 
+			<button class="link convertToEtcBtn" type="button"
+				style="font-size:inherit;padding:0 .6em"
+			>کوردی</button>-
+			<button class="link convertToEtcBtn" type="button"
+				style="font-size:inherit;padding:0 .6em"
+			>Kurdî</button>-
+			<button class="link convertToEtcBtn" type="button"
+				style="font-size:inherit;padding:0 .6em"
 			>فارسی</button>
 		</div>
-		<div style='text-align:center;
+		<div style="text-align:center;
 			    border-top:1px solid;
-			    padding-top:1em;margin-top:1em'>
+			    padding-top:1em;margin-top:1em;
+			    display:flex;">
+			<!--
+			     Find page
+			-->
+			<i class="material-icons icon-round icon-round-poem"
+			   style="height:100%;margin:auto 0 auto .5em">
+				search
+			</i>
+			<section style="width:100%;margin:auto">
+				<input type="text" id="find-page-txt"
+				       style="width:100%"
+				       placeholder="گەڕان لە دەقی ئەم شیعرەدا...">
+			</section>
+		</div>
+		<div style="text-align:center;
+			    border-top:1px solid;
+			    padding-top:1em;margin-top:1em">
 			<!--
 			     Dictionary lookup form
 			-->
@@ -216,7 +230,7 @@ style='display:inline-block'
 				</section
 				><section style="margin:auto">
 					<button type="submit" id="wordBtn"
-						      class='material-icons'
+						      class="material-icons"
 						      style="font-size:2em;
 						      padding:0 .5em"
 					>search</button>
@@ -537,6 +551,14 @@ style='display:inline-block'
 		 wordMore.innerHTML = `<a target='_blank' href='<?php echo _R; ?>tewar/?q=${q}'>گەڕانی زیاتر لە تەواردا &rsaquo;</a>` +
 				      `<a target='_blank' href='<?php echo _R; ?>tewar-legacy/?q=${q}'>گەڕانی زیاتر لە فەرهەنگە ئانلاینەکان‌دا &rsaquo;</a>`;
 	 }
+
+	 const findPageTxt = document.getElementById("find-page-txt");
+	 findPageTxt.addEventListener(
+		 "keyup", () => {
+			 findPage(findPageTxt.value,
+				  document.getElementById("hon"));
+	 });
+	 
 	 <?php
 	 if(!$no_foot)
 		 echo "window.addEventListener('load', function () { ";
