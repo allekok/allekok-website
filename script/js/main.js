@@ -506,12 +506,7 @@ var findPage_ = findPage_ || function (e) {
 			toggle_findPage();
 			return;
 		}
-		if(q) findPage(q, Res);
-		else {
-			Key.value = '';
-			document.getElementById("search-res").
-				style.display = 'none';
-		}
+		findPage(q, Res);
 	}, 50);
 }
 
@@ -532,11 +527,84 @@ var searchStackPop = searchStackPop || function (item) {
 	return false;
 }
 
+var remove_duplicate_letters = remove_duplicate_letters || function (str) {
+	let new_str = str[0];
+	let last_letter = str[0];
+	
+	for(let i = 1; i < str.length; i++) {
+		if(last_letter != str[i]) {
+			new_str += str[i];
+			last_letter = str[i];
+		}
+	}
+	
+	return new_str;
+}
+
+var apply_proc_to_chars = apply_proc_to_chars || function (str, assoc, found_proc, not_found_proc) {
+	let new_str = '';
+	let found;
+
+	for(const i in str) {
+		found = false;
+		for(const o of assoc) {
+			if(o[0].indexOf(str[i]) !== -1) {
+				new_str += found_proc(o);
+				found = true;
+				break;
+			}
+		}
+		if(!found)
+			new_str += not_found_proc(str[i]);
+	}
+
+	return new_str;
+}
+
+var make_regexp = make_regexp || function (str) {
+	if(str.length == 0)
+		return str;
+	
+	const assoc = [
+		['لڵ',
+		 'ل'],
+		['یێ',
+		 'ی'],
+		['وۆ',
+		 'و'],
+		['رڕ',
+		 'ر'],
+		['زذضظ',
+		 'ز'],
+		['تطة',
+		 'ت'],
+		['ھه',
+		 'ھ'],
+	];
+
+	str = str.replace(/ /g, '');
+
+	str = apply_proc_to_chars(str, assoc, o => o[1], o => o);
+	
+	str = remove_duplicate_letters(str);
+
+	str = apply_proc_to_chars(str, assoc, o => `[${o[0]}]+\\s*`, o => `${o}+\\s*`);
+
+	str = str.substr(0, str.length-3);
+	
+	return str;
+}
+
 var findPage = findPage || function (q_str, input_el) {
 	let input_html = input_el.innerHTML;
-	input_html = input_html.replace(/<i style="background:#FF5;color:#000">([^<]*)<\/i>/g,"$1");
-	input_html = input_html.replace(new RegExp(`>([^<>]*)(${q_str})([^<>]*)<`,"g"),
-					'>$1<i style="background:#FF5;color:#000">$2</i>$3<');
+	input_html = input_html.replace(/<i class="found" style="background:#FF5;color:#000">([^<]*)<\/i>/g,"$1");
+	
+	if(q_str.length > 0) {
+		q_str = make_regexp(q_str);
+		input_html = input_html.replace(new RegExp(`>([^<>]*)(${q_str})([^<>]*)<`,"g"),
+						'>$1<i class="found" style="background:#FF5;color:#000">$2</i>$3<');
+	}
+	
 	input_el.innerHTML = input_html;
 }
 

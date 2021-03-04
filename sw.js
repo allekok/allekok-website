@@ -2,7 +2,7 @@
 const cacheVer = 'v112'
 const notFound = 'not-found.html?v8'
 const toSave = [
-	'script/js/main-comp.js?v466',
+	'script/js/main-comp.js?v510',
 	'style/css/main-comp.css?v147',
 	'style/font/Material-Icons.woff2',
 	'style/font/DroidNaskh-Regular.woff2',
