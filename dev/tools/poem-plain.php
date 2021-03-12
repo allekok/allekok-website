@@ -76,7 +76,7 @@ foreach($poems as $k => $p)
 	$p["hdesc"] = str_replace(["&#34;","&#39;"],["\"","'"],$p["hdesc"]);
 	$p["hdesc"] = trim($p["hdesc"]);
 	if($p["hdesc"])
-		$reses_str .= "\nلەبارەی شێعر: {$p["hdesc"]}";
+		$reses_str .= "\nلەبارەی شیعر: {$p["hdesc"]}";
 	$reses_str .= "\n\n{$p["hon"]}\n\n++++++++++++++++++++++\n";
 }
 

@@ -73,7 +73,7 @@ title='".SP("book-completed")."'>check</i>";
 		       font-size:1.2em;
 		       padding:.58em"
 		   class="material-icons icon-round"
-		   title="<?php P("نووسینی شێعرێکی تازە"); ?>"
+		   title="<?php P("نووسینی شیعرێکی تازە"); ?>"
 		   href="<?php echo _R; 
 			 ?>pitew/index.php?poet=<?php 
 						echo $info['takh'].

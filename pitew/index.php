@@ -3,8 +3,8 @@ include_once("../script/php/constants.php");
 include_once(ABSPATH."script/php/colors.php");
 include_once(ABSPATH."script/php/functions.php");
 
-$title = $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; نووسینی شێعر";
-$desc = "نووسینی شێعر لەسەر ئاڵەکۆک";
+$title = $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; نووسینی شیعر";
+$desc = "نووسینی شیعر لەسەر ئاڵەکۆک";
 $keys = $_KEYS;
 $t_desc = "";
 
@@ -28,13 +28,13 @@ $_book1 = @trim(filter_var($_GET['book'], FILTER_SANITIZE_STRING));
 		<i style='font-style:normal;'> &rsaquo; </i>
 		<div id='current-location'>
 			<i class='material-icons'>note_add</i>
-			نووسینی شێعر
+			نووسینی شیعر
 		</div>
 	</div>
 	
 	<div>
 		<div style='font-size:.6em;text-align:right;padding:.5em 1em 1.5em'>
-			دەتوانن بۆ نووسینەوەی شێعر ئەم دیوانانە بەکار بهێنن: 
+			دەتوانن بۆ نووسینەوەی شیعر ئەم دیوانانە بەکار بهێنن: 
 			<a class='link-underline'
 			   style='display:inline-block;padding:0' href="pdfs.php">
 				داگرتنی دیوانی شاعیران
@@ -65,10 +65,10 @@ $_book1 = @trim(filter_var($_GET['book'], FILTER_SANITIZE_STRING));
 			<div class="input-label-box-index" style="margin-top:1em">
 				<input type="text" id="poemNameTxt" name="poemName"
 				       style="font-size:.7em;width:100%"
-				       placeholder="سەرناوی شێعر">
+				       placeholder="سەرناوی شیعر">
 			</div>
 			<div class="input-label-box-index" style="margin-top:1em">
-				<textarea id="poemConTxt" name="poem" style="font-size:.7em;max-width:100%;min-width:100%;height:20em" placeholder="دەقی شێعر *"></textarea>
+				<textarea id="poemConTxt" name="poem" style="font-size:.7em;max-width:100%;min-width:100%;height:20em" placeholder="دەقی شیعر *"></textarea>
 			</div>
 
 			<div class='loader' style="display:none"></div>
@@ -87,7 +87,7 @@ $_book1 = @trim(filter_var($_GET['book'], FILTER_SANITIZE_STRING));
 	</div>
 	<div style="margin-top:2em;font-size:.65em">
 		<a id='poems-list' class='link' href="poem-list.php">
-			ئەو شێعرانەی کە نووسیوتانە
+			ئەو شیعرانەی کە نووسیوتانە
 		</a>
 	</div>
 </div>

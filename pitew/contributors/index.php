@@ -67,13 +67,13 @@ include(ABSPATH . "script/php/header.php");
 		}
 		
 		$array = [
-			['poems', 'نووسینی شێعر', 'poems.txt',
+			['poems', 'نووسینی شیعر', 'poems.txt',
 			 'note_add', _R.'pitew/poem-list.php', 'جار'],
 			['images', 'ناردنی وێنەی شاعیران', 'images.txt',
 			 'image', _R.'pitew/image-list.php', 'جار'],
 			['poet-descs', 'نووسینی زانیاری سەبارەت بە شاعیران',
 			 'poet-descs.txt', 'person', _R.'pitew/poetdesc-list.php', 'جار'],
-			['comments', 'ڕاست‌کردنەوەی هەڵەکانی ناو شێعر',
+			['comments', 'ڕاست‌کردنەوەی هەڵەکانی ناو شیعر',
 			 'comments.txt', 'question_answer', _R.'comments/', 'جار'],
 			['pdfs', 'ناردنی دیوانی شاعیران', 'pdfs.txt',
 			 'cloud_download', _R.'pitew/pdfs.php', 'جار'],

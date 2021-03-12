@@ -25,6 +25,6 @@
 * TODO (pitew/*) Show copyright notice for contributors.
 * TODO Users should be able to write comments on all pages.
 * TODO Add a javascript plugin to understand the meaning of search strings. for
-  example, شێعرەکانی پیرەمێرد -> Show all پیرەمێرد's poems.
+  example, شیعرەکانی پیرەمێرد -> Show all پیرەمێرد's poems.
 * TODO Show images of poems if the text version wasn't available. (Convert PDFs
   to images and show them in "poem.php:#hon")

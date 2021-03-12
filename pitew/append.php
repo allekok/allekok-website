@@ -34,7 +34,7 @@ if($query) {
 	$res = [
 		"state" => 1,
 		"message" => "<i class='color-blue' style='font-size:.55em;padding:1em .5em;display:block'
->زۆر سپاس بۆ ئێوە. ئەو شێعرە دوای پێداچوونەوە لەسەر ئاڵەکۆک دادەندرێ.</i>",
+>زۆر سپاس بۆ ئێوە. ئەو شیعرە دوای پێداچوونەوە لەسەر ئاڵەکۆک دادەندرێ.</i>",
 		"contributor" => [
 			"name" => $contributor,
 		],

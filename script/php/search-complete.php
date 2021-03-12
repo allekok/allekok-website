@@ -241,9 +241,9 @@ if($res_poets_html != "")
 if($res_books_html != "")
 	echo "<div class='search-book'><h3 id='bhon'>کتێب و بەرهەم</h3>$res_books_html</div>";
 if($res_poems_html != "")
-	echo "<div class='search-hon'><h3 id='bhon'>شێعر</h3>$res_poems_html</div>";
+	echo "<div class='search-hon'><h3 id='bhon'>شیعر</h3>$res_poems_html</div>";
 else
-	echo "<h3 class='search-notfound'>هیچ شێعرێکم بۆ نەدۆزرایەوە</h3>";
+	echo "<h3 class='search-notfound'>هیچ شیعرێکم بۆ نەدۆزرایەوە</h3>";
 
 /* Timer */
 /* $timer_end = microtime(true);

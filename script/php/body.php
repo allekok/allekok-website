@@ -45,9 +45,9 @@ bks,kind FROM auth WHERE id={$ath}";
 		mysqli_close($conn);
 		
 		$title = $_TITLE . " &rsaquo; " . $row["profname"];        
-		$desc = "شێعرەکانی " . $row['profname'];
+		$desc = "شیعرەکانی " . $row['profname'];
 		$keys = "{$row["takh"]},{$row["profname"]},{$row["name"]},"
-		      . "شاعیر,شێعر,شعر";
+		      . "شاعیر,شیعر,شعر";
 		
 		include("header.php");
 		include("poet.php"); 
@@ -79,7 +79,7 @@ elseif ($ath and $bk and !$id) {
 			$title = $_TITLE . " &rsaquo; {$info["profname"]} &rsaquo; {$bknow[$bk-1]}";
 			$desc = "کتێبی " . $bknow[$bk-1] . "، " . $info["profname"];
 			$keys = "{$bknow[$bk-1]},{$info["takh"]},{$info["profname"]},{$info["name"]},"
-			      . "بەرهەم,شێعر,شعر,شیعر";
+			      . "بەرهەم,شیعر,شعر,شیعر";
 			
 			include("header.php");
 			include("book.php");
@@ -145,9 +145,9 @@ elseif ($ath and $bk and $id) {
 
 				$title = $_TITLE . " &rsaquo; "
 				       . "{$info["profname"]} &rsaquo; {$bknow[$bk-1]} &rsaquo; {$row[1]["name"]}";
-				$desc = "شێعری " . $row[1]["name"] . "، " . $info["profname"];
+				$desc = "شیعری " . $row[1]["name"] . "، " . $info["profname"];
 				$keys = "{$row[1]["name"]},{$bknow[$bk-1]},{$info["takh"]},{$info["profname"]},{$info["name"]},"
-				      . "شێعر,شعر";
+				      . "شیعر,شعر";
 				
 				include("header.php");
 				include("poem.php");
@@ -177,7 +177,7 @@ elseif ($ath and $bk and $id) {
 	$is_it_search = 1;
 	$title = $_TITLE . " &rsaquo; گەڕان: " . $q;
 	$desc = "گەڕان بۆ " . $q . " لە ئاڵەکۆک دا";
-	$keys = "$q," . "ئاڵەکۆک,شێعر,شعر";
+	$keys = "$q," . "ئاڵەکۆک,شیعر,شعر";
 	
 	include("header.php");
 	include("search.php");

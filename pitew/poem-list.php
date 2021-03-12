@@ -9,9 +9,9 @@ $n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
      $_GET['n'] : 20;
 
 $title = $_name1 ?
-	 $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; نووسینی شێعر &rsaquo; شێعرەکانی \"$_name1\"" :
-	 $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; نووسینی شێعر &rsaquo; شێعرەکان";
-$desc = "ئەو شێعرانەی کە نووسیوتانە";
+	 $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; نووسینی شیعر &rsaquo; شیعرەکانی \"$_name1\"" :
+	 $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; نووسینی شیعر &rsaquo; شیعرەکان";
+$desc = "ئەو شیعرانەی کە نووسیوتانە";
 $keys = $_KEYS;
 $t_desc = "";
 
@@ -34,12 +34,12 @@ include(ABSPATH . 'script/php/header.php');
 		<i> &rsaquo; </i>
 		<a href="index.php">
 			<i class='material-icons'>note_add</i>
-			نووسینی شێعر
+			نووسینی شیعر
 		</a>
 		<i> &rsaquo; </i>
 		<div id="current-location">
 			<i class='material-icons'></i>
-			شێعرەکان
+			شیعرەکان
 		</div>
 	</div>
 	<?php
@@ -55,7 +55,7 @@ include(ABSPATH . 'script/php/header.php');
 		    margin:1em 0">
 		<div style="width:100%;text-align:right;
 			    padding:0 .5em">
-			ئەژماری شێعرەکان<?php
+			ئەژماری شیعرەکان<?php
 					if($_name1)
 						echo "ی \"$_name1\"";
 					echo " : <span style='letter-spacing:1.5px'>". $_pmnum . "</span>";
@@ -65,7 +65,7 @@ include(ABSPATH . 'script/php/header.php');
 			    padding:0 .5em'>
 			<?php if($_name1) { ?>
 				<a href="<?php echo _R; ?>pitew/poem-list.php">
-					تەواوی شێعرەکان &rsaquo;
+					تەواوی شیعرەکان &rsaquo;
 				</a>
 			<?php } ?>
 		</div>
@@ -105,7 +105,7 @@ include(ABSPATH . 'script/php/header.php');
 		<section style="width:100%"
 			 class='color-blue'>یارمەتیدەر</section>
 		<section style="width:100%"
-			 class='color-blue'>شێعر</section>
+			 class='color-blue'>شیعر</section>
 	</div>
 	<div id="result"></div>
 	<script>

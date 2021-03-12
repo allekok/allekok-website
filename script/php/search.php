@@ -33,7 +33,7 @@
 	<section class="sli" style="text-align:right;padding-left:.5em">
 		<div id="search-options">
 			<p style="text-align:right;font-size:.6em;padding-bottom:.6em">
-				گەڕان لە شێعرەکانی: 
+				گەڕان لە شیعرەکانی: 
 			</p>
 			<div style="text-align:center">
 				<div class="dropdown">
@@ -125,12 +125,12 @@ search_deep(which_PT_selected(), checks());"
 				</div>
 				<div id="cb-pm-nm" class='cb'>
 					<i class='material-icons'>check_box</i>
-					<span>نێوی شێعرەکان</span>
+					<span>نێوی شیعرەکان</span>
 				</div>
 				<div>
 					<div id="cb-pm" class='cb'>
 						<i class='material-icons'>check_box</i>
-						<span>دەقی شێعرەکان</span>
+						<span>دەقی شیعرەکان</span>
 					</div>
 					<form onsubmit="event.preventDefault();
 search_deep(which_PT_selected(), checks());"

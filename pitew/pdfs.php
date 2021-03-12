@@ -55,7 +55,7 @@ include(ABSPATH . 'script/php/header.php');
 		<i> &rsaquo; </i>
 		<a href="index.php">
 			<i class='material-icons'>note_add</i>
-			نووسینی شێعر
+			نووسینی شیعر
 		</a>
 		<i> &rsaquo; </i>
 		<div id="current-location">

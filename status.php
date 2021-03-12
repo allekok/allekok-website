@@ -15,10 +15,10 @@ echo "ئەژمار:\n";
 include_once(ABSPATH."script/php/stats.php");
 echo "\tشاعیر:" . $aths_num;
 echo "\tکتێب:" . $bks_num;
-echo "\tشێعر:" . $hons_num;
+echo "\tشیعر:" . $hons_num;
 
 /* New Poems */
-echo "\n\nنووسینی شێعر:\n";
+echo "\n\nنووسینی شیعر:\n";
 echo "["._SITE."pitew/poem-list.php]\n";
 
 $q = "select * from pitew where status LIKE '{\"status\":0%' order by id DESC";
@@ -28,7 +28,7 @@ if($query and mysqli_num_rows($query) > 0) {
 		$contrib = $res['contributor'];
 		$pt = $res['poet'];
 		$bk = $res['book'];
-		$pm = $res['poem-name'] ? $res['poem-name'] : "شێعر";
+		$pm = $res['poem-name'] ? $res['poem-name'] : "شیعر";
 		echo "\t- {$contrib} :: {$pt} › {$bk} › {$pm}\n";
 	}
 }
@@ -36,7 +36,7 @@ else
 	echo "\t•\n";
 
 /* New Comments */
-echo "\nبیر و ڕای شێعرەکان:\n";
+echo "\nبیر و ڕای شیعرەکان:\n";
 echo "["._SITE."comments/index.php]\n";
 
 $q = "SELECT * FROM comments WHERE `read`=0 ORDER BY id DESC";

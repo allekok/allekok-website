@@ -18,7 +18,7 @@ while($_l = mysqli_fetch_assoc($query))
 	if($n-- == 0) break;
 	$_l['status'] = json_decode($_l['status'], true);
 	if($_l['poem-name'] == "")
-		$_l['poem-name'] = "شێعر";
+		$_l['poem-name'] = "شیعر";
 	
 	echo "<div class='pmlist-container'><section>";
 	if($_l['status']['status'] === 1)

@@ -4,8 +4,8 @@ include_once("../constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = $_TITLE . " &rsaquo; شێعرەکان";
-$desc = "شێعرەکان";
+$title = $_TITLE . " &rsaquo; شیعرەکان";
+$desc = "شیعرەکان";
 $keys = $_KEYS;
 $t_desc = "";
 
@@ -130,7 +130,7 @@ class='link' href='/poet:$poet_id/book:$book_id/poem:$poem_id'
 	     num_convert($aths_num,'en','ckb').
 	     "</p><p class='line'>ئەژماری کتێبەکان: ".
 	     num_convert($bks_num,'en','ckb').
-	     "</p><p class='line'>ئەژماری شێعرەکان: ".
+	     "</p><p class='line'>ئەژماری شیعرەکان: ".
 	     num_convert($pms_num,'en','ckb')."</p>";
 	echo $string;
 	if(!$error)

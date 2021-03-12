@@ -320,7 +320,7 @@ style='display:inline-block'
 		</h1>
 		<div id="hon-comments-form" style="display:none">
 			<div style="padding:.5em 0;font-size:.6em;text-align:right">
-				دەتوانن بیر و ڕای خۆتان سەبارەت بەم شێعرە لێرە بنووسن.
+				دەتوانن بیر و ڕای خۆتان سەبارەت بەم شیعرە لێرە بنووسن.
 				<br>
 				تکایە ئەگەر ئەم دەقە هەڵەی تێدایە پێمانی ڕا بگەیێنن.
 			</div>
@@ -335,7 +335,7 @@ style='display:inline-block'
 				       id='commNameTxt'
 				       placeholder="نێوی خۆتان لێرە بنووسن.">
 				<textarea
-					placeholder="بیر و ڕای خۆتان سەبارەت بەو شێعرە لێرە بنووسن... *" 
+					placeholder="بیر و ڕای خۆتان سەبارەت بەو شیعرە لێرە بنووسن... *" 
 					id="commTxt" name='comment'></textarea>
 				<div id="message"></div>
 				<button class='button bth' type="submit"

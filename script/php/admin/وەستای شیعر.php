@@ -4,8 +4,8 @@ include_once("../constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = $_TITLE . " &rsaquo; وەستای شێعر";
-$desc = "وەستای شێعر";
+$title = $_TITLE . " &rsaquo; وەستای شیعر";
+$desc = "وەستای شیعر";
 $keys = $_KEYS;
 $t_desc = "";
 
@@ -617,7 +617,7 @@ if($dbcache=='') {
 		<div id="tools">
 			<button class='button' type='button' onclick="make_mdcf()">m d cf</button><button class='button' type='button' onclick="make_b()">b</button><button class='button' type='button' onclick="make_n()">n</button><button class='button' type='button' onclick="make_mptr()">m ptr</button><button class='button' type='button' onclick="make_ptrptrh()">ptr ptrh</button><button class='button' type='button' onclick="nbr_convert()" style="direction:ltr">\n -> br</button><button class='button' type='button' onclick="make_sup()">sup</button><button class='button' type='button' onclick="num_convert()">ژمارەی کوردی</button><button class="button" type="button" onclick="chDirection()">RTL<>LTR</button><button class="button" type="button" onclick="normalizeTxt()">جوانکاری</button>
 				<div style="display:flex;width:100%;margin-bottom:.5em;border:1px solid;border-radius:.5em">
-					<input style="margin:0;border:0" type="text" id="getPitewIdTxt" placeholder="پتەو-ژمارەی شێعری ناردراو" />
+					<input style="margin:0;border:0" type="text" id="getPitewIdTxt" placeholder="پتەو-ژمارەی شیعری ناردراو" />
 					<button style="margin:0 .5em 0 0;border:0;padding:0 2em" type="button" id="getPitewBtn" onclick="getPitew()">وەرگرتن</button>
 				</div>
 				<div style="display:flex;width:100%;margin-bottom:.5em;border:1px solid;border-radius:.5em">

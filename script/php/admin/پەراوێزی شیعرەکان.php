@@ -15,7 +15,7 @@ include(ABSPATH . "script/php/header.php");
 <div id="poets" style="font-size:.55em;
 	 text-align:right;padding-right:1em">
 	<h1 style="font-size:2em" class="color-blue">
-		پەراوێزی شێعرەکان
+		پەراوێزی شیعرەکان
 	</h1>
 	
 	<section class='pitewsec' style="padding-right:1em">

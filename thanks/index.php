@@ -50,13 +50,13 @@ include(ABSPATH . "script/php/header.php");
 		<a href="https://books.vejin.net/"
 		   target='_blank' rel='noopener noreferrer nofollow'
 		   class="link-underline"
-		>ڤەژینبوکس</a> &rsaquo; بۆ بەشێکی زۆر لە شێعرەکان
+		>ڤەژینبوکس</a> &rsaquo; بۆ بەشێکی زۆر لە شیعرەکان
 	</p>
 	<p>
 		<a href="http://diyako.yageyziman.com/هۆنراوە/"
 		   target='_blank' rel='noopener noreferrer nofollow'
 		   class="link-underline"
-		>فێرگەی زمانی کوردی</a> &rsaquo; بۆ دیوانی شێعری بەشێک لە شاعیران
+		>فێرگەی زمانی کوردی</a> &rsaquo; بۆ دیوانی شیعری بەشێک لە شاعیران
 	</p>
 	<p>
 		<a href="http://www.bokan.de/laperekan/Edebiat/awat/Awat.htm"
@@ -99,7 +99,7 @@ LIKE '{\"status\":1%'";
 
 			mysqli_close($conn);
 			?>
-			شێعر لەسەر ئاڵەکۆک
+			شیعر لەسەر ئاڵەکۆک
 		</a>
 	</p>
 	<p>
@@ -110,7 +110,7 @@ LIKE '{\"status\":1%'";
 		بۆ بەشێکی چووک لە 
 		<a href="<?php echo _R; ?>poet:82/book:1"
 		   class="link-underline"
-		>شێعرەکانی سافیی هیرانی</a>
+		>شیعرەکانی سافیی هیرانی</a>
 	</p>
 	<p>
 		<a href="https://www.kurditgroup.org/"

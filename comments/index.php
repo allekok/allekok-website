@@ -4,7 +4,7 @@ include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
 $title = $_TITLE . " &rsaquo; پەراوێز";
-$desc = "بیر و ڕای ئێوە سەبارەت بە شێعرەکان";
+$desc = "بیر و ڕای ئێوە سەبارەت بە شیعرەکان";
 $keys = $_KEYS;
 $t_desc = "";
 
@@ -67,7 +67,7 @@ $n = @filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE ?
 			 for(const comment of resp) {
 				 accum += `<div class='comment'><div class='comm-name'
 >${comment.name}<span 
-style='font-size:.7em'> سەبارەت بە شێعری </span><a
+style='font-size:.7em'> سەبارەت بە شیعری </span><a
 style='font-size:.75em;padding:0 .3em' 
 href='${_R + comment.address}'><i class='color-blue'>${comment.ptn}</i
 > &rsaquo; <i class='color-blue'>${comment.pmn}</i></a

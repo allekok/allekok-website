@@ -17,10 +17,10 @@ include(ABSPATH."script/php/header.php");
 	</h1>
 	<div style="text-align:right;font-size:.6em;padding-right:1em">
 		<p>
-			ئاڵەکۆک هەلێکە بۆ خوێندنەوەی شێعری کوردی.
+			ئاڵەکۆک هەلێکە بۆ خوێندنەوەی شیعری کوردی.
 		</p>
 		<p>
-			ئاخیرین نوێ‌کردنەوەی شێعرەکان: 
+			ئاخیرین نوێ‌کردنەوەی شیعرەکان: 
 			<?php
 			$last_update_date = date_create(
 				@file_get_contents(ABSPATH."last-update.txt"));
@@ -36,7 +36,7 @@ include(ABSPATH."script/php/header.php");
 			شاعیر
 			&rsaquo;
 			<i class='sub-num'><?php echo $hons_num; ?></i>
-			شێعر
+			شیعر
 		</p>
 	</div>
 	<div style="margin:0 auto">
