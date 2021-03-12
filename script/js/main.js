@@ -1,10 +1,13 @@
 /* -*- compile-command: "cd ../.. && make" -*- */
+
+/** Constants **/
 const _R = _relativePath || "/";
 const _R_LEN = _R.length;
 var bookmarks_name = bookmarks_name || 'favorites';
 var search_delay = search_delay || 150;
 
-var apply_to_text = apply_to_text || function (el, proc) {
+/** Functions **/
+var apply_to_text = apply_to_text || ((el, proc) => {
 	let html = '';
 	for(const o of el.childNodes) {
 		if(o.nodeName == '#text') {
@@ -21,9 +24,9 @@ var apply_to_text = apply_to_text || function (el, proc) {
 		}
 	}
 	el.innerHTML = html;
-}
+})
 
-var apply_to_words = apply_to_words || function (str, fun) {
+var apply_to_words = apply_to_words || ((str, fun) => {
 	let include = "«»`1234567890-=~!@#$%^&*()_+[]{}\\|;:'\",./<>?؛،؟١٢٣٤٥٦٧٨٩٠ \n\t\rABCDEFGHIJKLMNOPQRSTUVWXYZ",
 	    i = 0, new_str = '';
 	while(str[i] !== undefined) {
@@ -38,9 +41,9 @@ var apply_to_words = apply_to_words || function (str, fun) {
 		new_str += fun(token);
 	}
 	return new_str;
-}
+})
 
-var ar2IL = ar2IL || function (s) {
+var ar2IL = ar2IL || ((s) => {
 	const bizroke = 'i';
 	const v = "ەeێêۆoاaiuîûأإآ";
 	const n = "قwرڕتyئحعپسشدفگغهژکلڵزخجچڤبنمڎصۊۉثذضظةطؤ";
@@ -84,9 +87,9 @@ var ar2IL = ar2IL || function (s) {
 	return add_bizroke(replace_sure(replace_notsure(replace_sure(
 		standardizing(s), before), notsure, determine_notsure),
 					after), n, v, bizroke);
-}
+})
 
-var ar2lat = ar2lat || function (s) {
+var ar2lat = ar2lat || ((s) => {
 	const sure = [["أ","ئە"],
 		      ["إ","ئی"],
 		      ["آ","ئا"],
@@ -147,9 +150,9 @@ var ar2lat = ar2lat || function (s) {
 			[`(.)${tashdid}`, "$1$1"]]);
 	}
 	return replace_sure(remove_tashdid(ar2IL(s)), sure);
-}
+})
 
-var ar2per = ar2per || function (s) {
+var ar2per = ar2per || ((s) => {
 	const sure = [["wu", "و\u{64F}"],
 		      ["û", "و\u{64F}"],
 		      ["ە", "\u{64E}"],
@@ -191,53 +194,55 @@ var ar2per = ar2per || function (s) {
 		return s;
 	}
 	return replace_sure(add_tashdid(determine_hemze(ar2IL(s)), n, v), sure);
-}
+})
 
-var transliterate_ar2lat = transliterate_ar2lat || function (str)
-{ return apply_to_words(str, w => ar2lat(w)) }
+var transliterate_ar2lat = transliterate_ar2lat || ((str) => {
+	return apply_to_words(str, w => ar2lat(w));
+})
 
-var transliterate_ar2per = transliterate_ar2per || function (str)
-{ return apply_to_words(str, w => ar2per(w)) }
+var transliterate_ar2per = transliterate_ar2per || ((str) => {
+	return apply_to_words(str, w => ar2per(w));
+})
 
-var replace_sure = replace_sure || function (str, sure, f=0, t=1) {
+var replace_sure = replace_sure || ((str, sure, f=0, t=1) => {
 	for(const o of sure)
 		str = str.replace(new RegExp(o[f],"g"), o[t]);
 	return str;
-}
+})
 
-var replace_notsure = replace_notsure || function (str, notsure, determine_fun, i=0) {
+var replace_notsure = replace_notsure || ((str, notsure, determine_fun, i=0) => {
 	let R;
 	while(false !== (R = assoc_first(str, notsure, i))) {
 		const j = determine_fun(R, str);
 		str = str_replace_pos(R[1][i], R[1][j], str, R[0]);
 	}
 	return str;
-}
+})
 
-var assoc_first = assoc_first || function (str, arr, i=0, off=0) {
+var assoc_first = assoc_first || ((str, arr, i=0, off=0) => {
 	const str_len = str.length;
 	for(let j = off; j < str_len; j++)
 		for(const o of arr)
 			if(o[i] == str.substr(j, o[i].length))
 				return [j, o];
 	return false;
-}
+})
 
-var L = L || function (str, pos, len=1) {
+var L = L || ((str, pos, len=1) => {
 	return str.substr(pos, len);
-}
+})
 
-var is_ = is_ || function (c, x) {
+var is_ = is_ || ((c, x) => {
 	if(c && x.indexOf(c) !== -1) return true;
 	return false;
-}
+})
 
-var str_replace_pos = str_replace_pos || function (from, to, str, pos) {
+var str_replace_pos = str_replace_pos || ((from, to, str, pos) => {
 	return str.substr(0, pos) + to +
 		str.substr(pos + from.length);
-}
+})
 
-var add_bizroke = add_bizroke || function (str, n, v, bizroke="") {
+var add_bizroke = add_bizroke || ((str, n, v, bizroke="") => {
 	/* I don't know the exact specification for this procedure. */
 	function is_n (ch) { return is_(ch, n) }
 	const L1 = L(str, 0);
@@ -245,9 +250,9 @@ var add_bizroke = add_bizroke || function (str, n, v, bizroke="") {
 	if(is_n(L1) && (!L2 || is_n(L2)))
 		str = str_replace_pos("", bizroke, str, 1);
 	return str;
-}
+})
 
-var standardizing = standardizing || function (str) {
+var standardizing = standardizing || ((str) => {
 	return replace_sure(str, [
 		["ـ",""],
 		["‌+","‌"],
@@ -273,26 +278,24 @@ var standardizing = standardizing || function (str) {
 		["ﺋ","ئ"],
 		["ﺱ|ﺳ","س"],
 		["ﺸ|ﺷ","ش"]]);
-}
+})
 
-var poetImage = poetImage || function (pID, callback)
-{
+var poetImage = poetImage || ((pID, callback) => {
 	const client = new XMLHttpRequest(),
 	      url = `${_R}style/img/poets/profile/profile_${pID}.jpg`;
 	client.open("get", url);
-	client.onload = function()
-	{
+	client.onload = function() {
 		if(this.status != 404)
 			callback(url);
 	}
 	client.send();
-}
+})
 
-var getSelTxt = getSelTxt || function () {
-	return window.getSelection().toString()
-}
+var getSelTxt = getSelTxt || (() => {
+	return window.getSelection().toString();
+})
 
-var toggle_x = toggle_x || function (searchProc, placeholder, action) {
+var toggle_x = toggle_x || ((searchProc, placeholder, action) => {
 	let Sec = document.getElementById('search'),
 	    Key = document.getElementById("search-key"),
 	    Icon = document.getElementById('tS'),
@@ -326,52 +329,40 @@ var toggle_x = toggle_x || function (searchProc, placeholder, action) {
 		Sec.style.display="none";
 		Icon.classList.remove('color-blue');
 	}
-}
+})
 
-var toggle_search = toggle_search || function ()
-{
+var toggle_search = toggle_search || (() => {
 	toggle_x(search, 'گەڕان بۆ ...', _R);
 	/* Clear The Search Stack */
 	sessionStorage.removeItem('searchStack');
-}
+})
 
-var toggle_tewar = toggle_tewar || function () {
+var toggle_tewar = toggle_tewar || (() => {
 	toggle_x(tewar, 'گەڕان بۆ واتای وشە ...', `${_R}tewar/`);
 	/* Clear The Search Stack */
 	sessionStorage.removeItem('searchStack');
-}
+})
 
-var toggle_findPage = toggle_findPage || function () {
+var toggle_findPage = toggle_findPage || (() => {
 	toggle_x(findPage_, 'گەڕان لەم لاپەڕەدا ...', _R);
-}
+})
 
-var get_bookmarks = get_bookmarks || function ()
-{
+var get_bookmarks = get_bookmarks || (() => {
 	const bookmarks = localStorage.getItem(bookmarks_name);
-	try
-	{
-		return JSON.parse(bookmarks);
-	}
-	catch(e)
-	{
-		return false;
-	}
-}
+	return isJson(bookmarks);
+})
 
-var toggle_Like = toggle_Like || function ()
-{
+var toggle_Like = toggle_Like || (() => {
 	const bookmarksSection = document.getElementById('tL-res'),
 	      bookmarksIcon = document.getElementById('tL');    
-	if(bookmarksSection.style.display == "block")
-	{
+	if(bookmarksSection.style.display == "block") {
 		bookmarksSection.style.display = "none";
 		bookmarksIcon.classList.remove('color-blue');
 		return;
 	}    
 	const favs = get_bookmarks();
 	let favsString="", imgs=[];
-	for(let a=(favs.length-1); a>=0; a--)
-	{
+	for(let a=(favs.length-1); a>=0; a--) {
 		favsString += `<a href='${_R}${favs[a].url}'
 ><img class='PI${favs[a].poetID}' src='${_R}style/img/poets/profile/profile_0.png'
 style='display:inline-block;vertical-align:middle;width:2.5em;border-radius:50%;
@@ -394,10 +385,9 @@ margin-left:.5em'>${favs[a].poetName} &rsaquo; ${favs[a].poem}</a>`;
 		});
 	});
 	ajax();
-}
+})
 
-var search_x = search_x || function (e, search_fn, toggle_fn)
-{
+var search_x = search_x || ((e, search_fn, toggle_fn) => {
 	setTimeout(() => {
 		const ResCon = document.getElementById("search-res-container"),
 		      Res = document.getElementById("search-res"),
@@ -417,10 +407,9 @@ var search_x = search_x || function (e, search_fn, toggle_fn)
 		search_fn(ResCon, Res, Key, loading, q);
 		
 	}, search_delay);
-}
+})
 
-var search = search || function (e)
-{
+var search = search || ((e) => {
 	search_x(e, (ResCon, Res, Key, loading, q) => {
 		if(q) {
 			const url = `${_R}script/php/search-quick.php?q=${q}`;
@@ -450,10 +439,9 @@ var search = search || function (e)
 			ResCon.style.display = 'none';
 		}
 	}, toggle_search);
-}
+})
 
-var tewar = tewar || function (e)
-{
+var tewar = tewar || ((e) => {
 	search_x(e, (ResCon, Res, Key, loading, q) => {
 		const dicts_str = 'xal,kameran,henbane-borine,bashur,kawe,e2k,zkurd',
 		      url = `${_R}tewar/src/backend/lookup.php?q=${q}&dicts=${dicts_str}&output=json&n=1`;
@@ -494,9 +482,9 @@ var tewar = tewar || function (e)
 			ResCon.style.display = 'none';
 		}
 	}, toggle_tewar);
-}
+})
 
-var findPage_ = findPage_ || function (e) {
+var findPage_ = findPage_ || ((e) => {
 	setTimeout(() => {
 		const Key = document.getElementById("search-key"),
 		      Res = document.getElementById("MAIN"),
@@ -508,15 +496,15 @@ var findPage_ = findPage_ || function (e) {
 		}
 		findPage(q, Res);
 	}, 50);
-}
+})
 
-var searchStackPush = searchStackPush || function (item) {
+var searchStackPush = searchStackPush || ((item) => {
 	let array = isJson(sessionStorage.getItem('searchStack')) || [];
 	array.push(item);
 	sessionStorage.setItem('searchStack', JSON.stringify(array));
-}
+})
 
-var searchStackPop = searchStackPop || function (item) {
+var searchStackPop = searchStackPop || ((item) => {
 	let array = isJson(sessionStorage.getItem('searchStack')) || [];
 	let idx;
 	if((idx = array.lastIndexOf(item)) !== -1) {
@@ -525,9 +513,9 @@ var searchStackPop = searchStackPop || function (item) {
 		return true;
 	}
 	return false;
-}
+})
 
-var remove_duplicate_letters = remove_duplicate_letters || function (str) {
+var remove_duplicate_letters = remove_duplicate_letters || ((str) => {
 	let new_str = str[0];
 	let last_letter = str[0];
 	
@@ -539,9 +527,9 @@ var remove_duplicate_letters = remove_duplicate_letters || function (str) {
 	}
 	
 	return new_str;
-}
+})
 
-var apply_proc_to_chars = apply_proc_to_chars || function (str, assoc, found_proc, not_found_proc) {
+var apply_proc_to_chars = apply_proc_to_chars || ((str, assoc, found_proc, not_found_proc) => {
 	let new_str = '';
 	let found;
 
@@ -559,9 +547,9 @@ var apply_proc_to_chars = apply_proc_to_chars || function (str, assoc, found_pro
 	}
 
 	return new_str;
-}
+})
 
-var make_regexp = make_regexp || function (str) {
+var make_regexp = make_regexp || ((str) => {
 	if(str.length == 0)
 		return str;
 	
@@ -593,74 +581,23 @@ var make_regexp = make_regexp || function (str) {
 	str = str.substr(0, str.length-3);
 	
 	return str;
-}
+})
 
-var findPage = findPage || function (q_str, input_el) {
+var findPage = findPage || ((q_str, input_el) => {
 	let input_html = input_el.innerHTML;
-	input_html = input_html.replace(/<i class="found" style="background:#FF5;color:#000">([^<]*)<\/i>/g,"$1");
+	input_html = input_html.replace(/<i class="found">([^<]*)<\/i>/g,"$1");
 	
 	if(q_str.length > 0) {
 		q_str = make_regexp(q_str);
-		input_html = input_html.replace(new RegExp(`>([^<>]*)(${q_str})([^<>]*)<`,"g"),
-						'>$1<i class="found" style="background:#FF5;color:#000">$2</i>$3<');
+		input_html = input_html.replace(
+			new RegExp(`>([^<>]*)(${q_str})([^<>]*)<`,"g"),
+			'>$1<i class="found">$2</i>$3<');
 	}
 	
 	input_el.innerHTML = input_html;
-}
+})
 
-window.Clipboard = (function (window, document, navigator) {
-	let textArea, copy;
-	
-	function iOS()
-	{
-		return navigator.userAgent.match(/ipad|iphone/i);
-	}
-	
-	function createTextArea(text)
-	{
-		textArea = document.createElement('textArea');
-		textArea.value = text;
-		document.body.insertBefore(textArea, document.body.firstChild);
-	}
-
-	function selectText()
-	{
-		let range, selection;
-
-		if (iOS())
-		{
-			range = document.createRange();
-			range.selectNodeContents(textArea);
-			selection = window.getSelection();
-			selection.removeAllRanges();
-			selection.addRange(range);
-			textArea.setSelectionRange(0, 999999);
-		}
-		else
-		{
-			textArea.select();
-		}
-	}
-
-	function copyToClipboard()
-	{
-		document.execCommand('copy');
-		document.body.removeChild(textArea);
-	}
-
-	copy = function(text)
-	{
-		createTextArea(text);
-		selectText();
-		copyToClipboard();
-	};
-
-	return { copy: copy };
-	
-})(window, document, navigator);
-
-var copyPoem = copyPoem || function ()
-{
+var copyPoem = copyPoem || (() => {
 	const copySec = document.getElementById("copy-sec"),
 	      htmlchars = [
 		      /<div class="ptr">/gi,
@@ -715,16 +652,14 @@ var copyPoem = copyPoem || function ()
 		copySec.innerHTML = "content_copy";
 		copySec.classList.remove("back-blue");
 	}, 3000);
-}
+})
 
-var Liked = Liked || function ()
-{
+var Liked = Liked || (() => {
 	const bookmarksIcon = document.getElementById('tL'),
 	      ico = document.getElementById("like-icon");
 	let bookmarks = get_bookmarks();
 	
-	if(!bookmarks)
-	{
+	if(!bookmarks) {
 		localStorage.setItem(bookmarks_name,
 				     JSON.stringify([poemObject]));
 		ico.innerHTML = "bookmark";
@@ -734,45 +669,40 @@ var Liked = Liked || function ()
 	}
 	
 	let where = -1;
-	for(const i in bookmarks)
-	{
-		if(bookmarks[i].url == poemObject.url)
-		{
+	for(const i in bookmarks) {
+		if(bookmarks[i].url == poemObject.url) {
 			where = i;
 			break;
 		}
 	}
 	
-	if(where == -1)
-	{
+	if(where == -1) {
 		bookmarks.push(poemObject);
-		localStorage.setItem(bookmarks_name,JSON.stringify(bookmarks));
+		localStorage.setItem(bookmarks_name,
+				     JSON.stringify(bookmarks));
 		ico.innerHTML = "bookmark";
 		ico.classList.add("back-blue");
 	}
-	else
-	{
+	else {
 		bookmarks.splice(where, 1);
 		
-		if(bookmarks.length>0)
-		{
-			localStorage.setItem(bookmarks_name,JSON.stringify(bookmarks));
+		if(bookmarks.length > 0) {
+			localStorage.setItem(bookmarks_name,
+					     JSON.stringify(bookmarks));
 		}
-		else
-		{
+		else {
 			localStorage.removeItem(bookmarks_name);
 			bookmarksIcon.style.display = "none";
 		}
 		ico.innerHTML = "bookmark_border";
 		ico.classList.remove("back-blue");
 	}
-}
+})
 
-var save_fs = save_fs || function (how)
-{
-	const hon = document.getElementById("hon"),
+var save_fs = save_fs || ((how) => {
+	const hon = document.getElementById('hon'),
 	      wW = window.innerWidth,
-	      hows = ["smaller", "bigger"],
+	      hows = ['smaller', 'bigger'],
 	      scale = 3;
 	let fs = parseInt(hon.style.fontSize);
 	
@@ -781,24 +711,24 @@ var save_fs = save_fs || function (how)
 		else fs=24;
 	}
 	
-	if(hows[1] == how) fs += scale;	/* Bigger */
-	else if(hows[0] == how && fs > 3) fs -= scale; /* Smaller */
+	if(hows[1] == how)
+		fs += scale;	/* Bigger */
+	else if(hows[0] == how && fs > 3)
+		fs -= scale;    /* Smaller */
 	
 	localStorage.setItem('fontsize', fs);
 	hon.style.fontSize = `${fs}px`;
-}
+})
 
-var isJson = isJson || function (str) {
+var isJson = isJson || ((str) => {
 	try      { return JSON.parse(str) }
 	catch(e) { return false }
-}
+})
 
-var parse_allekok_link = parse_allekok_link || function (link)
-{
+var parse_allekok_link = parse_allekok_link || ((link) => {
 	link = link.split('/');
-	for(let i=0; i<3; i++)
-	{
-		if(! link[i]) link[i] = '';
+	for(let i=0; i<3; i++) {
+		if(!link[i]) link[i] = '';
 		link[i] = link[i].split(':')[1];
 	}
 	
@@ -807,54 +737,45 @@ var parse_allekok_link = parse_allekok_link || function (link)
 		bk: link[1] || '',
 		pm: link[2] || '',
 	};
-}
+})
 
-var parse_search_link = parse_search_link || function (link)
-{
-	link = link.substr(link.indexOf('=')+1);
+var parse_search_link = parse_search_link || ((link) => {
+	link = link.substr(link.indexOf('=') + 1);
 	return parse_allekok_link(link);
-}
+})
 
-var parse_poem_link = parse_poem_link || function (link)
-{
+var parse_poem_link = parse_poem_link || ((link) => {
 	link = link.substr(_R_LEN);
 	return parse_allekok_link(link);
-}
+})
 
-var show_summary = show_summary || function (button, parse_func)
-{
+var show_summary = show_summary || ((button, parse_func) => {
 	button.innerHTML = "<div class='loader-round' \
 style='width:1em;height:1em'></div>";
 	
-	const href = button.parentNode.querySelector('a').
-	      getAttribute('href');
+	const href = button.parentNode.querySelector('a').getAttribute('href');
 	const href_parsed = parse_func(href);
 	const pt = href_parsed.pt,
 	      bk = href_parsed.bk,
 	      pm = href_parsed.pm;
 	
 	getUrl(`${_R}script/php/poem-summary.php?pt=${pt}&bk=${bk}&pm=${pm}`,
-	       function(response)
-	       {
+	       function(response) {
 		       button.innerHTML = "dehaze";
 		       const san_txt = response.replace(/\n/g, "<br>");
 		       button.parentNode.outerHTML += `<div style='padding:1em;font-size:.55em'>${san_txt}</div>`;
 	       });
-}
+})
 
-var show_summary_search = show_summary_search || function (btn)
-{
+var show_summary_search = show_summary_search || ((btn) => {
 	show_summary(btn, parse_search_link);
-}
+})
 
-var show_summary_poem = show_summary_poem || function (btn)
-{
+var show_summary_poem = show_summary_poem || ((btn) => {
 	show_summary(btn, parse_poem_link);
-}
+})
 
-var filterp = filterp || function (needle="", context, lastChance=false,
-				   toDo=(x,r)=>{x.style.display = r ? "" : "none"})
-{
+var filterp = filterp || ((needle="", context, lastChance=false, toDo=(x,r)=>{x.style.display = r ? "" : "none"}) => {
 	let res = false;
 	
 	needle = san_data(needle, lastChance);
@@ -869,10 +790,9 @@ var filterp = filterp || function (needle="", context, lastChance=false,
 
 	if(!res && !lastChance)
 		filterp(needle, context, true, toDo);
-}
+})
 
-var KurdishNumbers = KurdishNumbers || function (inp="")
-{
+var KurdishNumbers = KurdishNumbers || ((inp="") => {
 	const en = [/0/g,/1/g,/2/g,/3/g,/4/g,/5/g,/6/g,/7/g,/8/g,/9/g],
 	      fa = [/۰/g,/۱/g,/۲/g,/۳/g,/۴/g,/۵/g,/۶/g,/۷/g,/۸/g,/۹/g],
 	      ku = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
@@ -881,10 +801,9 @@ var KurdishNumbers = KurdishNumbers || function (inp="")
 		inp = inp.replace(en[i], ku[i]).replace(fa[i], ku[i]);
 	
 	return inp;
-}
+})
 
-var san_data = san_data || function (inp="", lastChance=false)
-{
+var san_data = san_data || ((inp="", lastChance=false) => {
 	if (inp == "") return "";
 
 	const extras = [
@@ -924,53 +843,40 @@ var san_data = san_data || function (inp="", lastChance=false)
 	inp = KurdishNumbers(inp);
 	if (lastChance) inp = san_data_more(inp);
 	return inp;
-}
+})
 
-var san_data_more = san_data_more || function (inp)
-{
+var san_data_more = san_data_more || ((inp) => {
 	/* Remove 'ه' and Numbers */
 	const nums = [/٠/g,/١/g,/٢/g,/٣/g,/٤/g,/٥/g,/٦/g,/٧/g,/٨/g,/٩/g];
 	inp = inp.replace(/ه/g, '');
 	for(const i in nums)
 		inp = inp.replace(nums[i], '');
 	return inp;
-}
+})
 
-var getUrl = getUrl || function (url, callback)
-{
+var getUrl = getUrl || ((url, callback) => {
 	const client = new XMLHttpRequest();
 	client.open('get', url);
-	client.onload = function ()
-	{
-		callback(client.responseText);
-	}
+	client.onload = () => callback(client.responseText);
 	client.send();
-}
+})
 
-var postUrl = postUrl || function (url, request, callback)
-{
+var postUrl = postUrl || ((url, request, callback) => {
 	const client = new XMLHttpRequest();
 	client.open('post', url);
-	client.onload = function ()
-	{
-		callback(this.responseText);
-	}
-	client.setRequestHeader(
-		"Content-type","application/x-www-form-urlencoded");
+	client.onload = () => callback(client.responseText);
+	client.setRequestHeader('Content-type',
+				'application/x-www-form-urlencoded');
 	client.send(request);
-}
+})
 
-var poem_kind = poem_kind || function (poem)
-{
+var poem_kind = poem_kind || ((poem) => {
 	if(poem.indexOf("<div class=\"n\">")!=-1)
-	{
-		return "new";
-	}
-	return "classic";
-}
+		return 'new';
+	return 'classic';
+})
 
-var concat_url_query = concat_url_query || function (url, q)
-{
+var concat_url_query = concat_url_query || ((url, q) => {
 	const c = parse_poem_link(url);
 	if(c.pt)
 		url = `${_R}?ath=${c.pt}&bk=${c.bk}&id=${c.pm}`;
@@ -979,10 +885,9 @@ var concat_url_query = concat_url_query || function (url, q)
 		return url + '&' + q;
 	
 	return url + '?' + q;	
-}
+})
 
-var match_all = match_all || function (str, needle, n=-1)
-{
+var match_all = match_all || ((str, needle, n=-1) => {
 	let res = [];
 	let p = 0, r;
 	while(-1 !== (r=str.indexOf(needle, p)))
@@ -994,22 +899,20 @@ var match_all = match_all || function (str, needle, n=-1)
 		p = r+1;
 	}
 	return res || false;
-}
+})
 
-var eval_js = eval_js || function (str)
-{
+var eval_js = eval_js || ((str) => {
 	const scripts_beg = match_all(str, '<script>'),
 	      scripts_end = match_all(str, '</script>');
-	for(const i in scripts_beg)
-	{
+	for(const i in scripts_beg) {
 		const s_b = scripts_beg[i];
 		const s_e = scripts_end[i];
 		const js = str.substring(s_b+8, s_e);
 		eval(js);
 	}
-}
+})
 
-var garbageCollector = garbageCollector || function (interval = 750) {
+var garbageCollector = garbageCollector || ((interval = 750) => {
 	function collectHistList () {
 		let list = [];
 		let k = null;
@@ -1030,37 +933,31 @@ var garbageCollector = garbageCollector || function (interval = 750) {
 		else
 			ajax_findstate(hist_item.substr(5));
 	}, interval);
-}
+})
 
-var hashStr = hashStr || function (str)
-{
+var hashStr = hashStr || ((str) => {
 	return str;
-}
+})
 
-var ajax_findstate = ajax_findstate || function (url, max_delta=-1)
-{
+var ajax_findstate = ajax_findstate || ((url, max_delta=-1) => {
 	if(max_delta == -1)
 		max_delta = ajax_save_duration;
 	const time = Date.now(),
 	      db_name = `hist_${hashStr(url)}`;
-	try
-	{
+	try {
 		const db_obj = JSON.parse(localStorage.getItem(db_name));
-		if((time - db_obj.time) > max_delta)
-		{
+		if((time - db_obj.time) > max_delta) {
 			localStorage.removeItem(db_name);
 			return false;
 		}
 		return db_obj.content;
 	}
-	catch (e)
-	{
+	catch(e) {
 		return false;
 	}
-}
+})
 
-var ajax_savestate = ajax_savestate || function (url,content)
-{
+var ajax_savestate = ajax_savestate || ((url, content) => {
 	let tmp;
 	if(!(tmp = content.trim()) || tmp == "<script>const repeater=setInterval(()=>{if(navigator.onLine){window.location.reload();clearInterval(repeater);}},1000);</script>")
 		return;
@@ -1068,20 +965,17 @@ var ajax_savestate = ajax_savestate || function (url,content)
 	      db_name = `hist_${hashStr(url)}`,
 	      db_obj = {url:url, time:time, content:content};
 	localStorage.setItem(db_name, JSON.stringify(db_obj));
-}
+})
 
-var ajax = ajax || function (parent='body', target='#MAIN')
-{
+var ajax = ajax || ((parent='body', target='#MAIN') => {
 	const p = document.querySelector(parent),
 	      loading = document.getElementById('main-loader');
 	
 	p.querySelectorAll('a').forEach(function (o) {
-		if(o.getAttribute('target') != '_blank')
-		{
+		if(o.getAttribute('target') != '_blank') {
 			o.onclick = function (e) {
 				const href = o.getAttribute('href');
-				if(href.indexOf('#') === -1)
-				{
+				if(href.indexOf('#') === -1) {
 					e.preventDefault();
 					
 					loading.style.display = 'block';
@@ -1089,8 +983,9 @@ var ajax = ajax || function (parent='body', target='#MAIN')
 					const url = concat_url_query(href, 'nohead&nofoot');
 
 					let content;
-					if(ajax_save_p && (content = ajax_findstate(url)))
-					{ ajax_load(url, href, content, parent, target, loading); }
+					if(ajax_save_p && (content = ajax_findstate(url))) {
+						ajax_load(url, href, content, parent, target, loading);
+					}
 					else {
 						getUrl(url, function (content) {
 							ajax_load(url, href, content, parent, target, loading);
@@ -1101,9 +996,9 @@ var ajax = ajax || function (parent='body', target='#MAIN')
 			}
 		}
 	});
-}
+})
 
-var ajax_load = ajax_load || function (url, href, content, parent, target, loading) {
+var ajax_load = ajax_load || ((url, href, content, parent, target, loading) => {
 	const t = document.querySelector(target);
 	window.history.pushState({url: url}, '', href);
 	window.scrollTo(0,0);
@@ -1111,10 +1006,9 @@ var ajax_load = ajax_load || function (url, href, content, parent, target, loadi
 	eval_js(content);
 	ajax(parent, target);
 	loading.style.display = 'none';
-}
+})
 
-var ajax_popstate = ajax_popstate || function ()
-{
+var ajax_popstate = ajax_popstate || (() => {
 	const loading = document.getElementById('main-loader'),
 	      t = document.querySelector('#MAIN'),
 	      S = window.history.state;
@@ -1129,15 +1023,13 @@ var ajax_popstate = ajax_popstate || function ()
 	loading.style.display = 'block';
 
 	let content;
-	if(content = ajax_findstate(url))
-	{
+	if(content = ajax_findstate(url)) {
 		t.outerHTML = content;
 		eval_js(content);
 		ajax();
 		loading.style.display = 'none';
 	}
-	else
-	{
+	else {
 		getUrl(url, function (response) {
 			t.outerHTML = response;
 			eval_js(response);
@@ -1146,9 +1038,9 @@ var ajax_popstate = ajax_popstate || function ()
 			ajax_savestate(url, response);
 		});
 	}
-}
+})
 
-var get_cookie = get_cookie || function (key) {
+var get_cookie = get_cookie || ((key) => {
 	if(document.cookie) {
 		const cookies = document.cookie.split(';');
 		for(const i in cookies)	{
@@ -1160,76 +1052,18 @@ var get_cookie = get_cookie || function (key) {
 		}
 	}
 	return false;
-}
+})
 
-var set_cookie = set_cookie || function (cookie_name, value, days=1000, path="/") {
+var set_cookie = set_cookie || ((cookie_name, value, days=1000, path="/") => {
 	let expires = new Date();
 	expires.setTime(expires.getTime() + (days*24*3600*1000));
 	expires = expires.toUTCString();
 	const cookie = `${cookie_name}=${value};expires=${expires};path=${path}`;
 	document.cookie = cookie;
 	return cookie;
-}
+})
 
-try { ajax() } catch (e) {}
-
-window.onpopstate = ajax_popstate;
-try {
-	/* Check if bookmarks? */
-	const bookmarksIcon = document.getElementById('tL'),
-	      favs = get_bookmarks(),
-	      tS = document.getElementById('tS'),
-	      bookmarksIconLeft = bookmarksIcon.style.left;
-	if(favs)
-	{
-		if(bookmarksIcon)
-		{
-			bookmarksIcon.style.display = "block";
-			if(tS)
-			{
-				if(bookmarksIconLeft)
-					bookmarksIcon.style.left = "1.3em";
-				else
-					bookmarksIcon.style.right = "1.3em";
-			}
-			else
-			{
-				if(bookmarksIconLeft)
-					bookmarksIcon.style.left = "0";
-				else
-					bookmarksIcon.style.right = "0";
-			}
-		}
-	}
-
-	document.getElementById("search-form").
-		addEventListener("submit", function(e) {
-			const Key = document.getElementById("search-key");
-			if(Key.value == "")
-			{
-				e.preventDefault();
-				Key.focus();
-			}
-		});
-} catch (e) {}
-
-try
-{
-	document.getElementById("tL").
-		addEventListener("click", toggle_Like);
-} catch(e) {}
-
-try
-{
-	document.getElementById("tS").
-		addEventListener("click", toggle_search);
-} catch(e) {}
-
-/* Garbage Collector */
-garbageCollector();
-
-/* Key bindings */
-var keyDispatch = keyDispatch || function (e) {
+var keyDispatch = keyDispatch || ((e) => {
 	if(e.altKey) return;
 	if((e.srcElement.nodeName == 'INPUT' &&
 	    e.srcElement.getAttribute('type') == 'text') ||
@@ -1290,5 +1124,110 @@ var keyDispatch = keyDispatch || function (e) {
 			window.scrollTo(
 				0,document.getElementById("footer").offsetTop);
 	}
-}
+})
+
+/** Run **/
+/* Clipboard */
+window.Clipboard = ((window, document, navigator) => {
+	let textArea, copy;
+	
+	function iOS() {
+		return navigator.userAgent.match(/ipad|iphone/i);
+	}
+	
+	function createTextArea(text) {
+		textArea = document.createElement('textArea');
+		textArea.value = text;
+		document.body.insertBefore(textArea, document.body.firstChild);
+	}
+
+	function selectText() {
+		let range, selection;
+
+		if(iOS()) {
+			range = document.createRange();
+			range.selectNodeContents(textArea);
+			selection = window.getSelection();
+			selection.removeAllRanges();
+			selection.addRange(range);
+			textArea.setSelectionRange(0, 999999);
+		}
+		else
+			textArea.select();
+	}
+
+	function copyToClipboard() {
+		document.execCommand('copy');
+		document.body.removeChild(textArea);
+	}
+
+	copy = function(text) {
+		createTextArea(text);
+		selectText();
+		copyToClipboard();
+	};
+
+	return { copy: copy };
+	
+})(window, document, navigator);
+
+/* Ajax Navigation */
+try {
+	ajax();
+} catch(e) {}
+window.onpopstate = ajax_popstate;
+
+/* Bookmarks */
+try {
+	/* Check if bookmarks? */
+	const bookmarksIcon = document.getElementById('tL'),
+	      favs = get_bookmarks(),
+	      tS = document.getElementById('tS'),
+	      bookmarksIconLeft = bookmarksIcon.style.left;
+	if(favs) {
+		if(bookmarksIcon) {
+			bookmarksIcon.style.display = "block";
+			if(tS) {
+				if(bookmarksIconLeft)
+					bookmarksIcon.style.left = "1.3em";
+				else
+					bookmarksIcon.style.right = "1.3em";
+			}
+			else {
+				if(bookmarksIconLeft)
+					bookmarksIcon.style.left = "0";
+				else
+					bookmarksIcon.style.right = "0";
+			}
+		}
+	}
+} catch (e) {}
+
+/* Search Form */
+try {
+	document.getElementById("search-form").addEventListener("submit", e => {
+		const Key = document.getElementById("search-key");
+		if(Key.value == "") {
+			e.preventDefault();
+			Key.focus();
+		}
+	});
+} catch(e) {}
+
+/* Toggle Bookmarks Button */
+try {
+	document.getElementById("tL").
+		addEventListener("click", toggle_Like);
+} catch(e) {}
+
+/* Toggle Search Button */
+try {
+	document.getElementById("tS").
+		addEventListener("click", toggle_search);
+} catch(e) {}
+
+/* Garbage Collector */
+garbageCollector();
+
+/* Key bindings */
 window.addEventListener("keyup", keyDispatch);
