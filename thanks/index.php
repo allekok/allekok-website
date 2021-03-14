@@ -165,6 +165,9 @@ LIKE '{\"status\":1%'";
 		   class="link-underline"
 		>دیوانی سەوڵم پۆڵا کەناریش دووری، پەشێو</a>
 	</p>
+	<p>
+		ئاکۆ مارانی &rsaquo; بۆ هێنانە سەر ڕێنووسی هۆرامی کۆمەڵێک لە شیعرەکان
+	</p>
 </div>
 <?php
 include_once(ABSPATH."script/php/footer.php");
