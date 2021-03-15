@@ -63,6 +63,9 @@ function normalize($text) {
 
 		/* \s..$ -> $ */
 		["/ +$/um", ""],
+
+		/* ^\s.. -> ^ */
+		["/^ +/um", ""],
 	];
 	
 	/* Apply Filters */

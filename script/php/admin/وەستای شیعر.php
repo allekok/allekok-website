@@ -84,6 +84,9 @@ include(ABSPATH . 'script/php/header.php');
 
 		 /* \s..$ -> $ */
 		 [/ +$/gm, ''],
+
+		 /* ^\s.. -> ^ */
+		 [/^ +/gm, ''],
 	 ]
 	 
 	 /* Apply Filters */
@@ -94,6 +97,16 @@ include(ABSPATH . 'script/php/header.php');
 	 text = text.trim()
 
 	 return text
+ }
+ 
+ /* Apply Filters */
+ for(const filter of filters)
+	 text = text.replace(filter[0], filter[1])
+ 
+ /* Trim Text */
+ text = text.trim()
+
+ return text
  }
  function chDirection() {
 	 var poem = document.getElementById("hon");
