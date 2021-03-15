@@ -168,6 +168,12 @@ LIKE '{\"status\":1%'";
 	<p>
 		ئاکۆ مارانی &rsaquo; بۆ هێنانە سەر ڕێنووسی هۆرامی کۆمەڵێک لە شیعرەکان
 	</p>
+	<p>
+		سیروان دیلان (ئەحمەدپوور) &rsaquo; بۆ نووسینی بەشێک لە
+		<a href="<?php echo _R; ?>poet:102/book:1"
+		   class="link-underline"
+		>دیوانی پیر عابدینی جاف</a>
+	</p>
 </div>
 <?php
 include_once(ABSPATH."script/php/footer.php");
