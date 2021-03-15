@@ -41,7 +41,7 @@ input, textarea {
 	border-radius:1em;
 	border:1px solid;
 	display:block;
-	margin:auto
+	margin:auto;
 	padding:1em;
 	text-align:right;
 }
@@ -158,12 +158,12 @@ i {
 }
 .comm-footer {
 	font-size:.45em
-	text-align:left;
+		  text-align:left;
 }
 .nav {
 	font-size:.6em;
 	padding:.5em
-	width:100%;
+		width:100%;
 }
 .prev,.next {
 	display:inline-block;
