@@ -98,16 +98,6 @@ include(ABSPATH . 'script/php/header.php');
 
 	 return text
  }
- 
- /* Apply Filters */
- for(const filter of filters)
-	 text = text.replace(filter[0], filter[1])
- 
- /* Trim Text */
- text = text.trim()
-
- return text
- }
  function chDirection() {
 	 var poem = document.getElementById("hon");
 	 if(poem.style.direction=="rtl") {
