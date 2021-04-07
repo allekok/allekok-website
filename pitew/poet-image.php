@@ -134,7 +134,7 @@ include(ABSPATH . 'script/php/header.php');
 			 btns.forEach( function(e)
 				 {
 					 e.style.background = '';
-					 e.classList.remove("color-white");
+					 e.classList.remove("color-black");
 			 });
 			 return;
 		 }
@@ -152,7 +152,7 @@ include(ABSPATH . 'script/php/header.php');
 					 btns.forEach( function(e)
 						 {
 							 e.style.background = '<?php echo $_colors[2]; ?>';
-							 e.classList.add("color-white");
+							 e.classList.add("color-black");
 					 });
 					 poet.style.backgroundImage = `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg`;
 					 poet.style.backgroundRepeat = "no-repeat";
@@ -184,7 +184,7 @@ include(ABSPATH . 'script/php/header.php');
 				  const filebtn = document.querySelector(".file-btn");
 				  filebtn.innerHTML = "هەڵبژێردرا.";
 				  filebtn.style.background = '<?php echo $_colors[2]; ?>';
-				  filebtn.classList.add("color-white");
+				  filebtn.classList.add("color-black");
 		  });
 
 	 const contri = isJson(localStorage.getItem("contributor"));

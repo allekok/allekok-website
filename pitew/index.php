@@ -33,12 +33,17 @@ $_book1 = @trim(filter_var($_GET['book'], FILTER_SANITIZE_STRING));
 	</div>
 	
 	<div>
-		<div style='font-size:.6em;text-align:right;padding:.5em 1em 1.5em'>
-			دەتوانن بۆ نووسینەوەی شیعر ئەم دیوانانە بەکار بهێنن: 
+		<div style='font-size:.52em;text-align:right;padding:.5em 0 1.5em'>
+			<i class="color-blue">
+				سەرنج بدەن:
+			</i>
+			ئەو دەقەی کە بۆمان دەنێرن بەرانبەر بە
 			<a class='link-underline'
-			   style='display:inline-block;padding:0' href="pdfs.php">
-				داگرتنی دیوانی شاعیران
+			   style='display:inline-block;padding:0'
+			   href="<?php echo _R; ?>dev/tools/license.php">
+				ئەم مافنامەیە
 			</a>
+			لە سەر ئاڵەکۆک بڵاو دەکرێتەوە.
 		</div>
 		<form id="frmComm" action="append.php" method="POST">
 			<div class="input-label-box-index">
@@ -47,27 +52,26 @@ $_book1 = @trim(filter_var($_GET['book'], FILTER_SANITIZE_STRING));
 				       value="<?php echo $_name1; ?>"
 				       placeholder="نێوی خۆتان لێرە بنووسن.">
 			</div>
-			<div class="border-eee" style="margin:.8em 0"></div>
-			<div class="input-label-box-index">
+			<div class="input-label-box-index" style="margin-top:.5em">
 				<label for="poetTxt">شاعیر: </label>
 				<input type="text" id="poetTxt"
 				       name="poet" style="font-size:.7em;width:94%"
 				       value="<?php echo $_poet1; ?>"
 				       placeholder="ناوی شاعیر *">
 			</div>
-			<div class="input-label-box-index" style="margin-top:1em;">
+			<div class="input-label-box-index" style="margin-top:.5em;">
 				<label for="bookTxt">کتێب: </label>
 				<input type="text" id="bookTxt" name="book"
 				       style="font-size:.7em;width:94%"
 				       value="<?php echo $_book1; ?>"
 				       placeholder="ناوی کتێب">
 			</div>
-			<div class="input-label-box-index" style="margin-top:1em">
+			<div class="input-label-box-index" style="margin-top:.5em">
 				<input type="text" id="poemNameTxt" name="poemName"
 				       style="font-size:.7em;width:100%"
 				       placeholder="سەرناوی شیعر">
 			</div>
-			<div class="input-label-box-index" style="margin-top:1em">
+			<div class="input-label-box-index" style="margin-top:.5em">
 				<textarea id="poemConTxt" name="poem" style="font-size:.7em;max-width:100%;min-width:100%;height:20em" placeholder="دەقی شیعر *"></textarea>
 			</div>
 
@@ -189,7 +193,7 @@ $_book1 = @trim(filter_var($_GET['book'], FILTER_SANITIZE_STRING));
 		 btns.forEach( function(e)
 			 {
 				 e.style.background = "";
-				 e.classList.add("color-white");
+				 e.classList.add("color-black");
 		 });
 		 return;
 	 }
@@ -207,7 +211,7 @@ $_book1 = @trim(filter_var($_GET['book'], FILTER_SANITIZE_STRING));
 				 btns.forEach( function(e)
 					 {
 						 e.style.background = '<?php echo $_colors[2]; ?>';
-						 e.classList.add("color-white");
+						 e.classList.add("color-black");
 				 });
 				 
 				 poet.style.backgroundImage = `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg)`;
@@ -226,7 +230,7 @@ $_book1 = @trim(filter_var($_GET['book'], FILTER_SANITIZE_STRING));
 				 btns.forEach( function(e)
 					 {
 						 e.style.background = "";
-						 e.classList.remove("color-white");
+						 e.classList.remove("color-black");
 				 });
 			 }
 	 });
