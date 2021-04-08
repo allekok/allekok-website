@@ -107,7 +107,7 @@ $_poet1 = isset($_GET['poet']) ?
 		 btns.forEach( function(e)
 			 {
 				 e.style.background = "";
-				 e.classList.remove("color-black");
+				 e.classList.remove("color-white");
 		 });
 		 return;
 	 }
@@ -125,7 +125,7 @@ $_poet1 = isset($_GET['poet']) ?
 				 btns.forEach( function(e)
 					 {
 						 e.style.background = '<?php echo $_colors[2]; ?>';
-						 e.classList.add("color-black");
+						 e.classList.add("color-white");
 				 });
 				 poet.style.backgroundImage =
 					 `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg`;
@@ -143,7 +143,7 @@ $_poet1 = isset($_GET['poet']) ?
 				 btns.forEach( function(e)
 					 {
 						 e.style.background = "";
-						 e.classList.remove("color-black");
+						 e.classList.remove("color-white");
 				 });
 			 }
 	 });
@@ -238,7 +238,7 @@ font-size:.55em;padding:.3em'>زۆر سپاس. بە ئاڵەکۆکەوە زیا�
 		 btns.forEach( function(e)
 			 {
 				 e.style.background = '';
-				 e.classList.remove("color-black");
+				 e.classList.remove("color-white");
 		 });
  });
 </script>

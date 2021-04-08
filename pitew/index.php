@@ -193,7 +193,7 @@ $_book1 = @trim(filter_var($_GET['book'], FILTER_SANITIZE_STRING));
 		 btns.forEach( function(e)
 			 {
 				 e.style.background = "";
-				 e.classList.add("color-black");
+				 e.classList.remove("color-white");
 		 });
 		 return;
 	 }
@@ -211,7 +211,7 @@ $_book1 = @trim(filter_var($_GET['book'], FILTER_SANITIZE_STRING));
 				 btns.forEach( function(e)
 					 {
 						 e.style.background = '<?php echo $_colors[2]; ?>';
-						 e.classList.add("color-black");
+						 e.classList.add("color-white");
 				 });
 				 
 				 poet.style.backgroundImage = `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg)`;
@@ -230,7 +230,7 @@ $_book1 = @trim(filter_var($_GET['book'], FILTER_SANITIZE_STRING));
 				 btns.forEach( function(e)
 					 {
 						 e.style.background = "";
-						 e.classList.remove("color-black");
+						 e.classList.remove("color-white");
 				 });
 			 }
 	 });
