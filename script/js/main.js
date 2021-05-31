@@ -568,6 +568,8 @@ var make_regexp = make_regexp || ((str) => {
 		 'ت'],
 		['ھه',
 		 'ھ'],
+		['کك',
+		 'ک'],
 	];
 
 	str = str.replace(/ /g, '');
