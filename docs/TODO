@@ -11,6 +11,7 @@
 * DONE Using Kurdish calendar for dates
 * DONE Add key bindings especially for search(in the page and whole site)
 * DONE (/script/php/book.php) Let users download a whole book (ie. build PDFs).
+* DONE (pitew/*) Show copyright notice for contributors.
 
 * TODO Let users verify poems and publish them by proof of work.
 * TODO Build PDFs from text.
@@ -22,7 +23,6 @@
   more intelligent)
 * TODO news.txt: Group following poems of the same book in one entry
 * TODO Correct links to 'vejinbooks.com' + Add a search link instead.
-* TODO (pitew/*) Show copyright notice for contributors.
 * TODO Users should be able to write comments on all pages.
 * TODO Add a javascript plugin to understand the meaning of search strings. for
   example, شیعرەکانی پیرەمێرد -> Show all پیرەمێرد's poems.
