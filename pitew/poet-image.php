@@ -52,16 +52,9 @@ include(ABSPATH . 'script/php/header.php');
  }
 </style>
 <div id="poets">
-	<div id='adrs'>
-		<a href="first.php">
-			پتەوکردنی ئاڵەکۆک
-		</a>
-		<i style='font-style:normal;'> &rsaquo; </i>
-		<div id="current-location">
-			<i class='material-icons'>image</i>
-			ناردنی وێنەی شاعیران
-		</div>
-	</div>
+	<h1 class="color-blue" style="text-align:right;font-size:1em">
+		ناردنی وێنەی شاعیران
+	</h1>
 
 	<div style='font-size:.75em'>
 		<?php echo @$uploaded; ?>

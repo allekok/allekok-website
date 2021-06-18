@@ -47,22 +47,9 @@ include(ABSPATH . 'script/php/header.php');
  }
 </style>
 <div id="poets">
-	
-	<div id='adrs'>
-		<a href="first.php">
-			پتەوکردنی ئاڵەکۆک
-		</a>
-		<i> &rsaquo; </i>
-		<a href="index.php">
-			<i class='material-icons'>note_add</i>
-			نووسینی شیعر
-		</a>
-		<i> &rsaquo; </i>
-		<div id="current-location">
-			<i class='material-icons'>cloud_download</i>
-			داگرتنی دیوانی شاعیران
-		</div>
-	</div>
+	<h1 class="color-blue" style="text-align:right;font-size:1em">
+		داگرتنی دیوانی شاعیران
+	</h1>
 	
 	<div id="pdfs-search">
 		<input type="text" id="filter-txt"

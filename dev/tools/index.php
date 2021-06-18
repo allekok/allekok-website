@@ -24,12 +24,11 @@ include(ABSPATH . 'script/php/header.php');
  }
  #dev-main h2, #dev-main h3, #dev-main h4 {
 	 text-align:right;
-	 padding-top:.5em;
-	 margin-top:.5em;
+	 margin-top:1em;
 	 color:<?php echo $_colors[2]; ?>;
  }
  #dev-main p {
-	 padding:1em 0
+	 padding-bottom:.5em;
  }
  #dev-main a {
 	 margin:0;
@@ -75,14 +74,22 @@ include(ABSPATH . 'script/php/header.php');
 	</h1>
 	<div style='padding-right:1em;text-align:right'>
 		<small style="display:block;font-size:.6em;">
-			ئەگەر سەبارەت بەم بابەتە پرسیارێک‌و هەیە لێرە بینووسن.
+			ئەگەر سەبارەت بەم بابەتە پرسیارێک‌تان هەیە لێرە بینووسن.
 			<br>
 			بۆ وەرگرتنی وەڵامی پرسیارەکەتان سەردانی ئەم لاپەڕە بکەنەوە.
 		</small>
-		<form id="frmQA" action="save.php" method="POST" style="">
-			<div style='text-align:center'>
-				<button type="button" class='button' style="display:inline-block;padding:.7em;font-size:.45em;cursor:pointer;margin:0 auto 5px 10px;font-weight:bold;font-family:monospace;" id="make-code">Code</button><span style="font-size:.55em">ئەگەر کۆدی تێدایە لە پرسیارەکەتان تکایە "Code" بەکار بێنن.
-				</span>
+		<form id="frmQA" action="save.php" method="POST">
+			<div style="text-align:center;font-size:.55em">
+				ئەگەر لە پرسیارەکەتان‌ کۆدی تێدایە
+				<button type="button" class='button'
+					style="display:inline-block;
+					      padding:.5em;
+					      font-size:.8em;cursor:pointer;
+					      font-weight:bold;
+					      font-family:monospace;"
+					id="make-code"
+				>Code</button>
+				بەکار بێنن.
 			</div>
 			<textarea id="QAtxt" class="QAtxt-dev"></textarea>
 			<div id="QAres"></div>
@@ -132,7 +139,9 @@ include(ABSPATH . 'script/php/header.php');
 			 {
 				 if(this.responseText == "1")
 				 {
-					 t.innerHTML = "<span style='background:rgba(0,255,0,.08);color:green;display:block;padding:1em;font-size:.6em'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
+					 t.innerHTML = "<p class='color-blue'\
+ style='padding-top:1em;font-size:.6em'>\
+زۆر سپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</p>";
 				 }
 			 }
 			 x.open("POST", "save.php");

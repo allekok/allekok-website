@@ -21,19 +21,12 @@ $_book1 = @trim(filter_var($_GET['book'], FILTER_SANITIZE_STRING));
  }
 </style>
 <div id="poets">
-	<div id='adrs' style="font-size:.9em">
-		<a href="first.php">
-			پتەوکردنی ئاڵەکۆک
-		</a>
-		<i style='font-style:normal;'> &rsaquo; </i>
-		<div id='current-location'>
-			<i class='material-icons'>note_add</i>
-			نووسینی شیعر
-		</div>
-	</div>
+	<h1 class="color-blue" style="text-align:right;font-size:1em">
+		نووسینی شیعر
+	</h1>
 	
 	<div>
-		<div style='font-size:.52em;text-align:right;padding:.5em 0 1.5em'>
+		<div style='font-size:.52em;text-align:justify;padding:.5em 1em 1.5em'>
 			<i class="color-blue">
 				سەرنج بدەن:
 			</i>

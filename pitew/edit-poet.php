@@ -22,19 +22,12 @@ $_poet1 = isset($_GET['poet']) ?
  }
 </style>
 <div id="poets">
-	<div id='adrs'>
-		<a href="first.php">
-			پتەوکردنی ئاڵەکۆک
-		</a>
-		<i> &rsaquo; </i>
-		<div id="current-location">
-			<i class='material-icons'>person</i>
-			نووسینی زانیاری سەبارەت بە شاعیران
-		</div>
-	</div>
+	<h1 class="color-blue" style="text-align:right;font-size:1em">
+		نووسینی زانیاری سەبارەت بە شاعیران
+	</h1>
 	
 	<div>
-		<div style='font-size:.52em;text-align:right;padding:.5em 0 1.5em'>
+		<div style='font-size:.52em;text-align:justify;padding:.5em 1em 1.5em'>
 			<i class="color-blue">
 				سەرنج بدەن:
 			</i>

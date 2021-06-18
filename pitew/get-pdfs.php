@@ -10,7 +10,7 @@ $list_uri = "pdfs.txt";
 $list = file_exists($list_uri) ?
 	explode("\n\n",
 		file_get_contents($list_uri)) : [];
-$list[] = "سافی هیرانی - دیوان ۲\t\t234.1MB\t\tلەلایان \"کەماڵ ڕەحمانی\".";
+$list[] = "سافی هیرانی - دیوان ۲\t\t234.1MB\t\tناردن: کەماڵ ڕەحمانی";
 sort($list);
 
 for($i = 0; $i<count($list); $i++)
