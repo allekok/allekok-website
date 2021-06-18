@@ -3,7 +3,7 @@ include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; داگرتنی دیوانی شاعیران";
+$title = $_TITLE . " &rsaquo; داگرتنی دیوانی شاعیران";
 $desc = "داگرتنی دیوانی شاعیران بە فۆڕمەتی PDF";
 $keys = $_KEYS;
 $t_desc = "";
@@ -11,7 +11,7 @@ $t_desc = "";
 $n = @filter_var($_GET["n"], FILTER_VALIDATE_INT) !== FALSE ?
      $_GET["n"] : -1;
 
-include(ABSPATH . 'script/php/header.php');
+include(ABSPATH . "script/php/header.php");
 ?>
 <style>
  #pdfs-main .eee {

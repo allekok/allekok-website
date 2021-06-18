@@ -3,7 +3,7 @@ include_once("../../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; بەشداربووان";
+$title = $_TITLE . " &rsaquo; بەشداربووان لە پتەوکردنی ئاڵەکۆک‌دا";
 $desc = "بەشداربووان و یارمەتیدەرانی ئاڵەکۆک";
 $keys = $_KEYS;
 $t_desc = "";
@@ -36,17 +36,10 @@ include(ABSPATH . "script/php/header.php");
  }
 </style>
 <div id="poets" style="text-align:right">
-	<div id='adrs'>
-		<a href="<?php echo _R; ?>pitew/first.php">
-			پتەوکردنی ئاڵەکۆک
-		</a>
-		<i> &rsaquo; </i>
-		<div id='current-location'>
-			<i class='material-icons'>favorite</i>
-			بەشداربووان
-		</div>
-	</div>
-
+	<h1 class="color-blue" style="text-align:right;font-size:1em">
+		بەشداربووان لە ئاڵەکۆک‌دا
+	</h1>
+	
 	<div id="contributions">
 		<?php
 		function open ($uri, $limit=-2)
@@ -72,9 +65,11 @@ include(ABSPATH . "script/php/header.php");
 			['images', 'ناردنی وێنەی شاعیران', 'images.txt',
 			 'image', _R.'pitew/image-list.php', 'جار'],
 			['poet-descs', 'نووسینی زانیاری سەبارەت بە شاعیران',
-			 'poet-descs.txt', 'person', _R.'pitew/poetdesc-list.php', 'جار'],
+			 'poet-descs.txt', 'person',
+			 _R.'pitew/poetdesc-list.php', 'جار'],
 			['comments', 'ڕاست‌کردنەوەی هەڵەکانی ناو شیعر',
-			 'comments.txt', 'question_answer', _R.'comments/', 'جار'],
+			 'comments.txt', 'question_answer',
+			 _R.'comments/', 'جار'],
 			['pdfs', 'ناردنی دیوانی شاعیران', 'pdfs.txt',
 			 'cloud_download', _R.'pitew/pdfs.php', 'جار'],
 			['donations', 'یارمەتیی ماڵی', 'donations.txt',
