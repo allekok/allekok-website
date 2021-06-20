@@ -3,10 +3,8 @@ include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title =
-	$_TITLE .
-	" &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; ناردنی وێنەی شاعیران &rsaquo; وێنەکان";
-$desc = "ئەو وێنانەی کە بۆتان ناردوویین";
+$title = $_TITLE . " &rsaquo; ئەو وێنانەی ناردووتانە";
+$desc = "ئەو وێنانەی ناردووتانە";
 $keys = $_KEYS;
 $t_desc = "";
 
@@ -26,22 +24,11 @@ $poet = isset($_GET['poet']) ?
  .imglist{vertical-align:top;padding:.2em 1em;
 	 font-size:.55em;width:100%}
 </style>
-<div id="poets">  
-	<div id='adrs'>
-		<a href="first.php">
-			پتەوکردنی ئاڵەکۆک
-		</a>
-		<i> &rsaquo; </i>
-		<a href="poet-image.php">
-			<i style='vertical-align:middle;'
-			   class='material-icons'>image</i>
-			ناردنی وێنەی شاعیران
-		</a>
-		<i> &rsaquo; </i>
-		<div id="current-location">
-			وێنەکان
-		</div>
-	</div>
+<div id="poets">
+	<h1 class="color-blue" style="text-align:right;font-size:1em">
+		ئەو وێنانەی ناردووتانە
+	</h1>
+	
 	<div>
 		<div class="imglist-con">
 			<section class='imglist color-blue'

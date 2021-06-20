@@ -3,9 +3,8 @@ include_once("../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo;
- نووسینی زانیاری سەبارەت بە شاعیران &rsaquo; زانیاریەکان";
-$desc = "ئەو زانیاریانەی کە لەسەر ئاڵەکۆک‌تان نووسیوە";
+$title = $_TITLE . " &rsaquo; ئەو زانیاریانەی نووسیوتانە";
+$desc = "ئەو زانیاریانەی لە سەر ئاڵەکۆک‌تان نووسیوە";
 $keys = $_KEYS;
 $t_desc = "";
 
@@ -16,7 +15,7 @@ $_name = isset($_GET['name']) ?
 $_poet = isset($_GET['poet']) ?
 	 filter_var($_GET['poet'], FILTER_SANITIZE_STRING) : '';
 
-include(ABSPATH . 'script/php/header.php');
+include(ABSPATH . "script/php/header.php");
 ?>
 <style>
  #poetdesc-list-main .epld {
@@ -46,21 +45,10 @@ include(ABSPATH . 'script/php/header.php');
 	 font-size:1.1em;
  }
 </style>
-<div id="poets">    
-	<div id='adrs'>
-		<a href="first.php">
-			پتەوکردنی ئاڵەکۆک
-		</a>
-		<i> &rsaquo; </i>
-		<a href="edit-poet.php">
-			<i class='material-icons'>person</i>
-			نووسینی زانیاری سەبارەت بە شاعیران
-		</a>
-		<i> &rsaquo; </i>
-		<div id="current-location">
-			زانیاریەکان
-		</div>
-	</div>    
+<div id="poets">
+	<h1 class="color-blue" style="text-align:right;font-size:1em">
+		ئەو زانیاریانەی نووسیوتانە
+	</h1>
 	<div id="result"></div>
 </div>
 <script>

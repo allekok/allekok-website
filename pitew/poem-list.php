@@ -9,9 +9,9 @@ $n = (@filter_var($_GET['n'], FILTER_VALIDATE_INT) !== FALSE) ?
      $_GET['n'] : 20;
 
 $title = $_name1 ?
-	 $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; نووسینی شیعر &rsaquo; شیعرەکانی \"$_name1\"" :
-	 $_TITLE . " &rsaquo; پتەوکردنی ئاڵەکۆک &rsaquo; نووسینی شیعر &rsaquo; شیعرەکان";
-$desc = "ئەو شیعرانەی کە نووسیوتانە";
+	 $_TITLE . " &rsaquo; ئەو شیعرانەی \"$_name1\" نووسیویەتی" :
+	 $_TITLE . " &rsaquo; ئەو شیعرانەی نووسیوتانە";
+$desc = "ئەو شیعرانەی نووسیوتانە";
 $keys = $_KEYS;
 $t_desc = "";
 
@@ -27,21 +27,10 @@ include(ABSPATH . 'script/php/header.php');
  .pmlist-container section{vertical-align:top;padding:.2em 1em;font-size:.55em;text-align:right}
 </style>
 <div id="poets">
-	<div id='adrs'>
-		<a href="first.php">
-			پتەوکردنی ئاڵەکۆک
-		</a>
-		<i> &rsaquo; </i>
-		<a href="index.php">
-			<i class='material-icons'>note_add</i>
-			نووسینی شیعر
-		</a>
-		<i> &rsaquo; </i>
-		<div id="current-location">
-			<i class='material-icons'></i>
-			شیعرەکان
-		</div>
-	</div>
+	<h1 class="color-blue" style="text-align:right;font-size:1em">
+		ئەو شیعرانەی نووسیوتانە
+	</h1>
+	
 	<?php
 	$q = $_name1 ?
 	     "SELECT `contributor`,`status`,`poem-name`,`poet` FROM `pitew` WHERE `status`!='{\"status\":-2,\"url\":\"\",\"desc\":\"\"}' AND `contributor`='$_name1' ORDER BY `id` DESC" :
