@@ -3,7 +3,7 @@ include_once("../../script/php/constants.php");
 include_once(ABSPATH . "script/php/colors.php");
 include_once(ABSPATH . "script/php/functions.php");
 
-$title = $_TITLE . " &rsaquo; بەشداربووان لە پتەوکردنی ئاڵەکۆک‌دا";
+$title = $_TITLE . " &rsaquo; بەشداربووان و یارمەتیدەرانی ئاڵەکۆک";
 $desc = "بەشداربووان و یارمەتیدەرانی ئاڵەکۆک";
 $keys = $_KEYS;
 $t_desc = "";
@@ -37,7 +37,7 @@ include(ABSPATH . "script/php/header.php");
 </style>
 <div id="poets" style="text-align:right">
 	<h1 class="color-blue" style="text-align:right;font-size:1em">
-		بەشداربووان لە ئاڵەکۆک‌دا
+		بەشداربووانی ئاڵەکۆک
 	</h1>
 	
 	<div id="contributions">
