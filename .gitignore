@@ -4,6 +4,7 @@ QA.txt
 error_log
 .htaccess
 node_modules
+package.json
 package-lock.json
 
 # script
