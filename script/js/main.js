@@ -961,7 +961,7 @@ var ajax_findstate = ajax_findstate || ((url, max_delta=-1) => {
 
 var ajax_savestate = ajax_savestate || ((url, content) => {
 	let tmp;
-	if(!(tmp = content.trim()) || tmp == "<script>const repeater=setInterval(()=>{if(navigator.onLine){window.location.reload();clearInterval(repeater);}},1000);</script>")
+	if(!(tmp = content.trim()) || tmp == "<script>let r=setInterval(_=>{if(navigator.onLine){window.location.reload();clearInterval(r)}},1e3)</script>")
 		return;
 	const time = Date.now(),
 	      db_name = `hist_${hashStr(url)}`,

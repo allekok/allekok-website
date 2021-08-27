@@ -9,7 +9,7 @@ if(!$no_foot) {
 		?>
 	</footer>
 	<div class="loader-round" id="main-loader"></div>
-	<script defer src='<?php echo _R; ?>script/js/main-comp.js?v524'></script>
+	<script defer src='<?php echo _R; ?>script/js/main-comp.js?v525'></script>
 	<script>
 	 /* Colors */
 	 let colors = [<?php
