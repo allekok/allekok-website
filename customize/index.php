@@ -11,6 +11,11 @@ $t_desc = "";
 include(ABSPATH . "script/php/header.php");
 ?>
 <style>
+ @font-face {
+	 font-family:'orig';
+	 font-display:swap;
+	 src:url('<?php echo _R; ?>style/font/DroidNaskh-Regular.woff2') format('woff2')
+ }
  #set_theme, #set_lang, #toggle_ajaxsave, #set_font
  {
 	 border-bottom:1px solid;
@@ -133,16 +138,18 @@ include(ABSPATH . "script/php/header.php");
  }
  .dd-frame img
  {
-	 max-width:100%;
+	 max-width:40%;
 	 display:block;
+	 margin:auto;
  }
- .dd-frame img:hover
+ .dd-frame .fontOpt:hover
  {
-	 opacity:.5;
+	 opacity:.7;
+	 color:initial;
  }
  #dd-font .dd-frame
  {
-	 max-width:320px;
+	 max-width:250px;
  }
  .fontOpt p
  {
@@ -153,7 +160,6 @@ include(ABSPATH . "script/php/header.php");
  {
 	 border-bottom:1px solid;
 	 padding:.5em 0;
-	 font-family:none;
  }
  #toggle_ajaxsave button
  {
@@ -343,28 +349,11 @@ include(ABSPATH . "script/php/header.php");
 				>keyboard_arrow_down</span></div>
 			<div class="dd-frame">
 				<ul>
-					<li style="margin:0 .5em;padding:1em 0;
-						   border-bottom:1px solid">
-						<p style="font-size:.8em">
-							بەکارهێنانی قەڵەمێکی سەرهێڵ: 
-						</p>
-						<div style="display:flex">
-							<input type="text" placeholder="نیشانی ئینتێرنێتی قەڵەم"
-							       id="internet-font-txt"
-							       style="direction:ltr;text-align:center;width:100%"
-							       value="<?php echo @$_COOKIE["interfont"]; ?>" />
-							<button type="button" id="internet-font-btn"
-								style="text-align:center;width:20%;
-								      font-size:.8em;border-radius:50%;
-								      margin-right:.5em"
-							>ناردن</button>
-						</div>
-					</li>
 					<li>
 						<button style="text-align:center;
-							       border-bottom:1px solid;
-							       padding:1em 0"
-							       class="fontOpt" type="button" L=""
+							       padding:.5em 0;
+							       font-family:'orig'"
+							class="fontOpt" type="button" L=""
 						>نەسخ</button>
 					</li>
 					<?php
@@ -373,9 +362,28 @@ include(ABSPATH . "script/php/header.php");
 					foreach($fonts as $o)
 					{
 						echo "<li><button type='button' class='fontOpt' F='{$o[0]}.{$o[2]}'
-><p>{$o[0]}</p><img lsrc='fonts/font-imgs/{$o[0]}.{$o[1]}'></button></li>";
+><img lsrc='fonts/font-imgs/{$o[0]}.{$o[1]}'></button></li>";
 					}
 					?>
+					<li style="margin:0 .5em;padding:1em 0">
+						<div>
+							<input type="text" placeholder="نیشانی ئینتێرنێتی قەڵەم"
+							       id="internet-font-txt"
+							       style="direction:ltr;
+								     text-align:center;
+								     width:100%;
+								     border-radius:1em 1em 0 0;
+								     border-bottom:0;"
+							       value="<?php echo @$_COOKIE["interfont"]; ?>" />
+							<button type="button" id="internet-font-btn"
+								      style="text-align:center;
+								      font-size:.8em;
+								      border-radius:0 0 1em 1em;
+								      padding:.5em 0"
+								      class="button"
+							>ناردن</button>
+						</div>
+					</li>
 				</ul>
 			</div>
 		</div>
