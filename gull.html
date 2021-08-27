@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html dir="rtl">
+<html dir="rtl" lang="ckb">
 	<head>
-		<title></title>
-		<meta charset="utf-8" >
-		<meta name="viewport" content="width=device-width" >
+		<title>
+			گوڵ
+		</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
 		<style>
 		 @keyframes fade-in {
-			 20%,60% {
+			 20%, 60% {
 				 opacity:1;
 			 }
-			 80%,100% {
+			 80%, 100% {
 				 opacity:0;
 			 }
 		 }
@@ -31,7 +33,7 @@
 				 transform:rotate(0);
 				 -webkit-transform:rotate(0);
 			 }
-			 0%,100% {
+			 0%, 100% {
 				 box-shadow:auto;
 				 transform:rotate(45deg);
 				 -webkit-transform:rotate(45deg);
@@ -40,13 +42,25 @@
 		 body {
 			 font-size:16px;
 		 }
+		 #portrait {
+			 position:fixed;
+			 background:white;
+			 color:#222;
+			 border-radius:50%;
+			 z-index:999;
+			 opacity:0;
+			 animation:fade-in ease 10s 2s forwards;
+			 text-align:center;
+			 font-size:1.4em;
+			 line-height:2.2;
+		 }
 		 .flower {
 			 margin:1em;
 			 width:1em;
 			 height:1em;
 			 border-radius:50%;
 			 animation:flower-anim ease 12s forwards;
-			 display:inline-block;
+			 position:fixed;
 		 }
 		 .red {
 			 background:red;
@@ -124,68 +138,65 @@
 				 0 .9em 0 rgba(155,0,255,.4),
 				 -.6em .7em 0 rgba(0,255,155,.4);
 		 }
-		 #portrait {
-			 position:fixed;
-			 background:white;
-			 color:#222;
-			 border-radius:50%;
-			 z-index:999;
-			 opacity:0;
-			 animation:fade-in ease 10s 2s forwards;
-			 text-align:center;
-			 font-size:1.4em;
-			 line-height:2.2;
-		 }
 		</style>
 	</head>
 	<body>
 		<div id="portrait">
 			<span id="num" style="color:#900">
-				١٨٠
+				١
 			</span>
 			گوڵ بۆ تۆ.
 		</div>
 	</body>
 	<script>
-	 function flower (color, x, y) {
-		 let el = document.createElement("DIV");
-		 el.className = `flower ${color}`;
-		 el.style = `position:fixed;top:${y};left:${x}`;
-		 document.body.appendChild(el);
+	 /* Functions */
+	 function flower(color, x, y) {
+		 const el = document.createElement("DIV")
+		 el.className = `flower ${color}`
+		 el.style = `position:fixed;top:${y};left:${x}`
+		 document.body.appendChild(el)
 	 }
-	 function bringToMiddle (el) {
-		 let top = (window.innerHeight / 2) -
-			   (el.offsetHeight / 2) - 20
-		 if(top < 0) top = 0
-		 el.style.marginTop = `${top}px`
+	 function bringToMiddle(el) {
+		 const top = (window.innerHeight / 2) -
+			     (el.offsetHeight / 2) - 20
+		 el.style.marginTop = `${top < 0 ? 0 : top}px`
 	 }
-	 function ckNum (str) {
-		 let en = ["1","2","3","4","5","6","7","8","9","0"],
-		     ck = ["١","٢","٣","٤","٥","٦","٧","٨","٩","٠"];
+	 function ckNum(str) {
+		 const en = ["1","2","3","4","5","6","7","8","9","0"],
+		       ck = ["١","٢","٣","٤","٥","٦","٧","٨","٩","٠"]
 		 for(const i in en)
-			 str = str.replace(new RegExp(en[i], "g"), ck[i]);
-		 return str;
+			 str = str.replace(new RegExp(en[i], "g"),
+					   ck[i])
+		 return str
 	 }
-	 let colors = ["red", "yellow", "orange", "blue",
-		       "green", "pink", "violet", "that-color",
-		       "super"],
-	     flowers_x = Math.round(window.innerWidth / (41)),
-	     flowers_y = Math.round(window.innerHeight / (40.5)),
-	     x = 1, y = 1, flowers_len = flowers_x * flowers_y;
+
+	 /* Constants */
+	 const portrait = document.getElementById("portrait")
+	 const colors = ["red", "yellow", "orange",
+			 "blue", "green", "violet",
+			 "pink", "that-color", "super"]
+	 const flowers_x = Math.round(window.innerWidth / (41))
+	 const flowers_y = Math.round(window.innerHeight / (40.5))
+	 const flowers_len = flowers_x * flowers_y
+
+	 /* Drawing Flowers */
+	 let x = 1, y = 1
 	 for(let i = 1; i <= flowers_len; i++) {
-		 flower(colors[Math.round(Math.random() * (colors.length-1))],
-			`${x}px`, `${y}px`);
-		 x += 41;
-		 if(!(i % flowers_x)) {
-			 y += 40.5;
-			 x = 0;
+		 const idx = Math.floor(Math.random() * colors.length)
+		 flower(colors[idx], `${x}px`, `${y}px`)
+		 x += 41
+		 if(i % flowers_x == 0) {
+			 y += 40.5
+			 x = 0
 		 }
 	 }
-	 let portrait = document.getElementById("portrait");
-	 portrait.style.width = `${window.innerWidth - 80}px`;
-	 portrait.style.padding = `${window.innerWidth / 2 - 118}px 0`;
-	 portrait.style.left = "40px";
-	 bringToMiddle(portrait);
-	 document.getElementById("num").innerHTML = ckNum(flowers_len.toString());
+
+	 /* The Popup */
+	 portrait.style.left = "40px"
+	 portrait.style.width = `${window.innerWidth - 80}px`
+	 portrait.style.padding = `${window.innerWidth / 2 - 118}px 0`
+	 bringToMiddle(portrait)
+	 document.getElementById("num").innerHTML = ckNum(
+		 flowers_len.toString())
 	</script>
 </html>
