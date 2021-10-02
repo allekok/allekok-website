@@ -78,7 +78,7 @@ if(isset($_REQUEST["name"]) &&
 		file_put_contents($ver_file, $ver);
 		$f = fopen($ver_log, "a");
 		$log = json_encode([
-			"ver" => $new_ver,
+			"ver" => $ver,
 			"poetID" => intval($_id),
 		]) . "\n";
 		fwrite($f, $log);
