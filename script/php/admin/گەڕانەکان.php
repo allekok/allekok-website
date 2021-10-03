@@ -1,27 +1,38 @@
 <?php
-require('session.php');
-include_once("../constants.php");
-include_once(ABSPATH . "script/php/colors.php");
-include_once(ABSPATH . "script/php/functions.php");
+require_once("session.php");
+require_once("../constants.php");
+require_once("../colors.php");
+require_once("../functions.php");
 
-$title = $_TITLE . " &rsaquo; گەڕانەکان";
+$title = $_TITLE . " › گەڕانەکان";
 $desc = "گەڕانەکان";
 $keys = $_KEYS;
 $t_desc = "";
 
-include(ABSPATH . 'script/php/header.php');
+require_once("../header.php");
 ?>
-<div id="poets">        
+<div id="poets">
+	<h1 style="text-align:right;font-size:1.1em"
+	    class="color-blue">
+		گەڕانەکان
+	</h1>
 	<?php
-	$cipi_gt = 4;
+	$c = (isset($_REQUEST["c"]) &&
+	      filter_var($_REQUEST["c"], FILTER_VALIDATE_INT)) ?
+	     intval($c) :
+	     0;
+	$n = (isset($_REQUEST["n"]) &&
+	      filter_var($_REQUEST["n"], FILTER_VALIDATE_INT)) ?
+	     intval($n) :
+	     25;
+
 	$db = _SEARCH_DB;
-	$q = "select Cipi, rtakh, rbook, rname, 
-poet_id, book_id, poem_id, id from poems 
-where Cipi>{$cipi_gt} order by Cipi DESC";
+	$q = "SELECT Cipi, rtakh, rbook, rname, " .
+	     "poet_id, book_id, poem_id, id FROM poems " .
+	     "WHERE Cipi > {$c} ORDER BY Cipi DESC LIMIT 0, {$n}";
+	require_once("../condb.php");
 	
-	require(ABSPATH . "script/php/condb.php");
-	
-	$_ths = [
+	$columns = [
 		["کرتە",
 		 "5%"],
 		["شیعر",
@@ -29,42 +40,36 @@ where Cipi>{$cipi_gt} order by Cipi DESC";
 		["ژمارە",
 		 "5%"],
 	];
-	
 	echo "<table style='font-size:.6em'>";
 	echo "<tr>";
-	
-	foreach($_ths as $_th) {
-		
-		echo "<th class='color-blue' style='width:{$_th[1]};'>";
-		echo $_th[0];
-		echo "</th>";
+	foreach($columns as $column) {
+		echo "<th class='color-blue' " .
+		     "style='width:{$column[1]}'>" .
+		     $column[0] .
+		     "</th>";
 	}
-	
 	echo "</tr>";
 	
-	while($res = mysqli_fetch_assoc($query))
-	{
-		echo "<tr style='text-align:right'>";
-
-		echo "<td>";
-		echo num_convert($res['Cipi'], 'en', 'ckb');
-		echo "</td>";
-
-		$adrs = 'poet:'.$res['poet_id'].
-			'/book:'.$res['book_id'].
-			'/poem:'.$res['poem_id'];
-		echo "<td>";
-		echo "<a href='/$adrs'>".
-		     $res['rtakh'].' &rsaquo; '.
-		     $res['rbook'].' &rsaquo; '.
-		     $res['rname'] . '</a>';
-		echo "</td>";
+	while($res = mysqli_fetch_assoc($query)) {
+		echo "<tr style='text-align:right'>" .
+		     "<td>" .
+		     num_convert($res["Cipi"], "en", "ckb") .
+		     "</td>";
 		
-		echo "<td>";
-		echo num_convert($res['id'], 'en', 'ckb');
-		echo "</td>";
+		$adrs = "poet:" . $res["poet_id"] .
+			"/book:" . $res["book_id"] .
+			"/poem:" . $res["poem_id"];
+		echo "<td>" .
+		     "<a href='/$adrs'>" .
+		     $res["rtakh"] . " › " .
+		     $res["rbook"] . " › " .
+		     $res["rname"] . "</a>" .
+		     "</td>";
 		
-		echo "</tr>";
+		echo "<td>" .
+		     num_convert($res["id"], "en", "ckb") .
+		     "</td>" .
+		     "</tr>";
 	}
 	
 	echo "</table>";
@@ -72,5 +77,5 @@ where Cipi>{$cipi_gt} order by Cipi DESC";
 	?>
 </div>
 <?php
-include_once(ABSPATH . "script/php/footer.php");
+require_once("../footer.php");
 ?>
