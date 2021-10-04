@@ -146,12 +146,12 @@ mysqli_close($conn);
 		شاعیری نوێ
 	</h1>
 	
-	<!-- info sec -->
+	<!-- Info message -->
 	<div id="frmInfoMess">
 		<?php echo $submitted; ?>
 	</div>
 
-	<!-- Submit form -->
+	<!-- Info form -->
 	<form id="frmInfo" method="POST">
 		<input type="text"
 		       name="id"
