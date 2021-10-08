@@ -1,14 +1,14 @@
 <?php
-include_once("../constants.php");
-include_once(ABSPATH . "script/php/colors.php");
-include_once(ABSPATH . "script/php/functions.php");
+require_once("../constants.php");
+require_once("../colors.php");
+require_once("../functions.php");
 
-$title = $_TITLE . " &rsaquo; چوونەژوورەوە";
-$desc = $title;
+$title = $_TITLE . " › چوونەژوور";
+$desc = "چوونەژوور";
 $keys = $_KEYS;
 $t_desc = "";
 
-include(ABSPATH . "script/php/header.php");
+require_once("../header.php");
 ?>
 <style>
  form {
@@ -17,17 +17,23 @@ include(ABSPATH . "script/php/header.php");
  }
  input {
 	 width:100%;
-	 font-size:.6em;
+	 font-size:1.1em;
 	 text-align:center;
  }
 </style>
-<div id="poets">
+<div id="poets" style="font-size:.55em;text-align:right">
+	<h1 style="font-size:2em" class="color-blue">
+		چوونەژوور
+	</h1>
 	<form method="post" action="index.php">
-		<input type="password" name="password"
-		       placeholder="تێپەڕوشە" />
+		<input type="password"
+		       name="password"
+		       placeholder="تێپەڕوشە">
 	</form>
 	<script>
-	 document.querySelector("input[name=password]").focus();
+	 document.querySelector("input[name=password]").focus()
 	</script>
 </div>
-<?php include_once(ABSPATH . "script/php/footer.php"); ?>
+<?php
+require_once("../footer.php");
+?>
