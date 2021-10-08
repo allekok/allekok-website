@@ -29,7 +29,7 @@ require_once("../header.php");
 	</h1>
 	<?php
 	$files = scandir(".");
-	rsort($files);
+	sort($files);
 	$ignore = [
 		".",
 		"..",
@@ -47,11 +47,15 @@ require_once("../header.php");
 		"session.php",
 		"error_log",
 		".htaccess",
-		"sql-columns.php",
+		"modify-columns.php",
 		"get-pitew.php",
 		"set-pitew.php",
 		"normalize.php",
 		"install.php",
+		"image-apply.php",
+		"image-capture.php",
+		"image-library.php",
+		"گۆڕینی شاعیر.php",
 	];
 	foreach($files as $f) {
 		if(!in_array($f, $ignore)) {
