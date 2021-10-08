@@ -129,7 +129,7 @@ if(isset($_REQUEST["id"]) &&
         			
         			$f = fopen($ver_log, "a");
         			$log = json_encode([
-        				"ver" => $new_ver,
+        				"ver" => $ver,
         				"poetID" => intval($_id)
         			]) . "\n";
         			fwrite($f, $log);
