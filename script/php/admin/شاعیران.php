@@ -13,14 +13,13 @@ require_once("../header.php");
 ?>
 <style>
  input {
-	 font-size:.6em;
+	 font-size:1.1em;
 	 margin-bottom:1rem;
  }
  table {
 	 margin:auto;
 	 width:100%;
 	 max-width:800px;
-	 font-size:.6em;
  }
  td {
 	 border:0;
@@ -40,7 +39,10 @@ require_once("../header.php");
 	 border-radius:50%;
  }
 </style>
-<div id="poets">	
+<div id="poets" style="font-size:.55em;text-align:right">
+	<h1 style="font-size:2em" class="color-blue">
+		شاعیران
+	</h1>
 	<input type="text"
 	       id="filter-txt"
 	       style="width:100%"
