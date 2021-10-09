@@ -19,11 +19,11 @@ require_once("../header.php");
 	<?php
 	$c = (isset($_REQUEST["c"]) &&
 	      filter_var($_REQUEST["c"], FILTER_VALIDATE_INT)) ?
-	     intval($c) :
+	     intval($_REQUEST["c"]) :
 	     0;
 	$n = (isset($_REQUEST["n"]) &&
 	      filter_var($_REQUEST["n"], FILTER_VALIDATE_INT)) ?
-	     intval($n) :
+	     intval($_REQUEST["n"]) :
 	     25;
 
 	$db = _SEARCH_DB;
