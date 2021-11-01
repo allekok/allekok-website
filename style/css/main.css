@@ -14,7 +14,7 @@ table, tr, td, th, textarea, span, i, sup, sub {
 	padding:0;
 	text-align:inherit;
 }
-.cf,.ptr {
+.cf, .ptr {
 	border-radius:1em;
 	border:2px solid;
 }
@@ -55,7 +55,7 @@ a, a:hover, button:hover, #wordMore a:hover {
 	cursor:pointer;
 	padding:0 3px;
 }
-.bks p,.poetdesc p {
+.bks p, .poetdesc p {
 	font-size:1.2em;
 }
 #search-res #bhon, .bhoh-newdaq {
@@ -76,7 +76,7 @@ a, a:hover, button:hover, #wordMore a:hover {
 .icon-round {
 	border-radius:50%;
 }
-.link-underline,#main-contributing a {
+.link-underline, #main-contributing a {
 	border-bottom:1px solid;
 }
 #main-contributing h1 {
@@ -104,7 +104,7 @@ i {
 	max-width:100px;
 	width:100%;
 }
-.poetnm a,header a,.fontsize button {
+.poetnm a, header a, .fontsize button {
 	display:inline-block;
 }
 #tL-res {
@@ -138,7 +138,7 @@ i {
 .pitewsec small {
 	font-size:.6em;
 }
-#commNameTxt,#commTxt {
+#commNameTxt, #commTxt {
 	font-size:.55em;
 	margin-top:.5em;
 	width:100%;
@@ -165,7 +165,7 @@ i {
 	padding:.5em;
 	width:100%;
 }
-.prev,.next {
+.prev, .next {
 	display:inline-block;
 	width:50%;
 }
@@ -203,7 +203,7 @@ header a h1 {
 	vertical-align:top;
 	width:24%;
 }
-.poet h3,.poet a {
+.poet h3, .poet a {
 	color:inherit;
 }
 .poet h3 {
@@ -227,13 +227,13 @@ header a h1 {
 .fbody-nav {
 	margin-top:.5em;
 }
-.bks,.poetdesc {
+.bks, .poetdesc {
 	font-size:.65em;
 	margin:0 auto 1.5em;
 	text-align:right;
 	width:100%;
 }
-.bks a,.poetnm {
+.bks a, .poetnm {
 	display:block;
 	padding:.2em 2em .2em .2em;
 }
@@ -260,7 +260,7 @@ header a h1 {
 	padding:.3em .2em;
 	width:100%;
 }
-#bkondesc,#bhondesc {
+#bkondesc, #bhondesc {
 	display:block;
 	font-size:.6em;
 	padding:0 1em;
@@ -276,7 +276,7 @@ header a h1 {
 #hon {
 	margin-bottom:1em;
 }
-#search-form,.pmlist-container {
+#search-form, .pmlist-container {
 	display:flex;
 }
 #search {
@@ -341,7 +341,7 @@ header a h1 {
 	text-align:right;
 	width:100%;
 }
-.search-hon a i,.search-book a i,.link-news i {
+.search-hon a i, .search-book a i, .link-news i {
 	font-size:.85em;
 }
 .search-book a {
@@ -462,7 +462,7 @@ footer i {
 	margin-left:.5em;
 	padding:.3em;
 }
-.eee-desc,.border-right-eee,.border-right-999 {
+.eee-desc, .border-right-eee, .border-right-999 {
 	border-right:2px solid;
 }
 #extlnk {
@@ -472,7 +472,7 @@ footer i {
 	padding:0 1em;
 	text-align:right;
 }
-.next div,.prev div {
+.next div, .prev div {
 	display:inline-block;
 	overflow:hidden;
 	text-overflow:ellipsis;
@@ -480,7 +480,7 @@ footer i {
 	white-space:nowrap;
 	width:90%;
 }
-.next .arr,.prev .arr {
+.next .arr, .prev .arr {
 	display:inline-block;
 	font-size:inherit;
 	max-width:.8em;
@@ -495,7 +495,7 @@ footer i {
 	font-size:.65em;
 	padding:0 1em;
 }
-.QAtxt-dev,.QAtxt-desktop,#frm-contributing #QAtxt,.QAtxt-first {
+.QAtxt-dev, .QAtxt-desktop, #frm-contributing #QAtxt, .QAtxt-first {
 	display:block;
 	font-size:.65em;
 	margin:auto;
@@ -503,7 +503,7 @@ footer i {
 	text-align:justify;
 	width:100%;
 }
-.comment,.prev,#main-contributing h1,
+.comment, .prev, #main-contributing h1,
 #main-contributing h2, #main-contributing h3 {
 	text-align:right;
 }
@@ -513,7 +513,7 @@ footer i {
 	display:flex;
 	margin:0 .5em;
 }
-.btn-first,#frm-contributing .btn,.btn-dev,.btn-desktop {
+.btn-first, #frm-contributing .btn, .btn-dev, .btn-desktop {
 	display:block;
 	font-size:.7em;
 	margin:1em auto 0;
@@ -548,7 +548,7 @@ footer i {
 	font-size:.6em;
 	padding:.5em 1em;
 }
-#wordMore,.next {
+#wordMore, .next {
 	text-align:left;
 }
 #wordMore a {
@@ -600,12 +600,22 @@ footer i {
 
 /* Animations */
 @keyframes loading {
-	0%,100% {width:2em}
-	25%,80% {width:4em}
-	65%     {width:1em}
+	0%, 100% {
+		width:2em;
+	}
+	25%, 80% {
+		width:4em;
+	}
+	65% {
+		width:1em;
+	}
 }
 @keyframes loading-round {
 	0%, 100% { }
-	15%      {transform:scale(.5)}
-	70%      {transform:scale(.8)}
+	15% {
+		transform:scale(.5);
+	}
+	70% {
+		transform:scale(.8);
+	}
 }
