@@ -1,7 +1,7 @@
 <?php
-include_once('script/php/constants.php');
-include_once(ABSPATH . 'script/php/colors.php');
-include_once(ABSPATH . 'script/php/functions.php');
-include(ABSPATH . 'script/php/body.php');
-include(ABSPATH . 'script/php/footer.php');
+require_once("script/php/constants.php");
+require_once("script/php/colors.php");
+require_once("script/php/functions.php");
+require_once("script/php/body.php");
+require_once("script/php/footer.php");
 ?>
