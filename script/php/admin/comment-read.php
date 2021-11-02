@@ -12,7 +12,7 @@ if($query and mysqli_fetch_assoc($query)["read"])
 	$read = 0;
 
 $q = "UPDATE `comments` SET `read`={$read} WHERE `id`={$id}";
-if($query = mysqli_query($conn, $q))
+if(mysqli_query($conn, $q))
 	echo 1;
 
 mysqli_close($conn);

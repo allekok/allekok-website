@@ -17,7 +17,7 @@ if($query and mysqli_fetch_assoc($query)["blocked"]) {
 $q = "UPDATE `comments` " .
      "SET `blocked`={$block}, `read`={$read} " .
      "WHERE `id`={$id}";
-if($query = mysqli_query($conn, $q))
+if(mysqli_query($conn, $q))
 	echo 1;
 
 mysqli_close($conn);
