@@ -77,7 +77,7 @@ include(ABSPATH . 'script/php/header.php');
 			array_unshift($entry, filemtime($uri));
 			$_list[] = $entry;
 		}
-		@closedir($_dir);
+		@closedir($d);
 		rsort($_list);
 		return $_list;
 	}
