@@ -1,6 +1,6 @@
 <?php
 /*
-   Copyright (C) 2020 allekok.
+   Copyright (C) 2020-2021 allekok.
    Author: Payam <payambapiri.97@gmail.com>
 
    This software is free software: you can redistribute it and/or modify
@@ -23,10 +23,8 @@ function div ($x, $y) {
 }
 
 function mod ($x, $y) {
-	$m = $x % $y;
-	if($m < 0 xor $y < 0)
-		return $y >= 0 ? $y + $m : $m + $y;
-	return $m;
+	$r = $x % $y;
+	return $y * $r < 0 ? $r + $y : $r;
 }
 
 /* 
@@ -49,8 +47,7 @@ function calendarExtractYear ($date) {
 }
 
 function calendarUpdateYear ($date, $year) {
-	$date[2] = $year;
-	return $date;
+	return [$date[0], $date[1], $year];
 }
 
 function calendarLeapYearP ($year) {
@@ -129,6 +126,12 @@ function calendarLastDayOfMonth ($month, $year) {
 		return 29;
 	return [31, 28, 31, 30, 31, 30,
 		31, 31, 30, 31, 30, 31][--$month];
+}
+
+function calendarDayOfWeek ($date, $absFunc="calendarAbsoluteFromGregorian") {
+	/* With a slight modification to the original version:
+	   An additional argument for different calendars */
+	return mod($absFunc($date), 7);
 }
 
 /*
@@ -221,6 +224,10 @@ function calendarPersianFromAbsolute ($date) {
 	return [$month, $day, $year];
 }
 
+function calendarPersianDayOfWeek ($date) {
+	return calendarDayOfWeek($date, "calendarPersianToAbsolute");
+}
+
 /* 
    Translated from:
    gnu-emacs/lisp/calendar/cal-islam.el:
@@ -289,6 +296,10 @@ function calendarIslamicFromAbsolute ($date) {
 	return [$month, $day, $year];
 }
 
+function calendarIslamicDayOfWeek ($date) {
+	return calendarDayOfWeek($date, "calendarIslamicToAbsolute");
+}
+
 /* Kurdish Calendar */
 function calendarKurdishFromAbsolutePersian ($date) {
 	return calendarKurdishFromPersian(
@@ -346,5 +357,22 @@ function calendarKurdishMonth ($month) {
 		"ڕەشەمە"
 	];
 	return $calendarKurdishMonthNameArray[--$month];
+}
+
+function calendarKurdishDayOfWeek ($date) {
+	return calendarDayOfWeek($date, "calendarKurdishToAbsolutePersian");
+}
+
+function calendarKurdishDayOfWeekName ($date) {
+	$calendarKurdishDayNameArray = [
+		"یەک‌شەممە",
+		"دووشەممە",
+		"سێ‌شەممە",
+		"چوارشەممە",
+		"پێنج‌شەممە",
+		"هەینی",
+		"شەممە",
+	];
+	return $calendarKurdishDayNameArray[calendarKurdishDayOfWeek($date)];
 }
 ?>
