@@ -4,7 +4,7 @@
  * Input: GET[num, plain]
  * Output: Text, HTML
  */
-require("functions.php");
+require_once("functions.php");
 
 if(!file_exists(comments_file))
 	die();
@@ -12,9 +12,7 @@ $comments = file_get_contents(comments_file);
 $comments = explode("[comment]", $comments);
 $last_comment_idx = count($comments) - 1;
 
-$limit = filter_var(@$_GET["num"], FILTER_VALIDATE_INT) === false ?
-	-1 :
-	 $_GET["num"];
+$limit = isset($_GET["num"]) ? intval($_GET["num"]) : -1;
 $plain = isset($_GET["plain"]);
 
 if($plain) {
