@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
-# Start a server and open the browser
+# Start a PHP server and open the browser
+
 Browser=chromium
 Port=8080
 

@@ -1,20 +1,17 @@
 #!/usr/bin/node
 
-/* 
- * This file will be executed in '/' dir. 
- * So the paths are relative to '/'.
- */
+/* Convert Markdown files to HTML. */
+
 const files = ['dev/tools/CONTRIBUTING/CONTRIBUTING',
-	       'dev/tools/dev'];
-const fs = require('fs');
-const showdown = require('showdown');
-const converter = new showdown.Converter();
+	       'dev/tools/dev']
 
-for (const i in files)
-{
-	const text = fs.readFileSync(`${files[i]}.md`).toString();
-	const html = converter.makeHtml(text);
-	fs.writeFileSync(`${files[i]}.html`, html);
+const fs = require('fs')
+const showdown = require('showdown')
+const converter = new showdown.Converter()
 
-	console.log(`${files[i]}.md -> ${files[i]}.html`);
+for(const file of files) {
+	const md = fs.readFileSync(`${file}.md`).toString()
+	const html = converter.makeHtml(md)
+	fs.writeFileSync(`${file}.html`, html)
+	console.log(`${file}.md -> ${file}.html`)
 }
