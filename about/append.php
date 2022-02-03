@@ -16,7 +16,7 @@ if($comment and mb_strlen($comment) < 2685) {
 	$date = calendar_kurdish_string();
 	$date = "<i class='h'>{$date} {$time} بە کاتی مەهاباد</i>";
 	$div = "<div>{$comment}{$date}</div>";	
-	$com = file_exists(comments_file) and filesize(comments_file) > 0 ?
+	$com = file_exists(comments_file) && filesize(comments_file) > 0 ?
 	       comment_sign . $div :
 	       $div;
 	
