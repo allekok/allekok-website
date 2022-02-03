@@ -7,15 +7,12 @@ const comments_file = "comments.txt";
 const comment_sign = "[comment]";
 
 function calendar_kurdish_string($date=NULL) {
-	if(!$date)
-		$date = calendarKurdishFromGregorian(
-			explode("-", date("m-d-Y")));
-	$year = calendarExtractYear($date);
-	$month = calendarKurdishMonth(
-		calendarExtractMonth($date));
+	$date = calendarKurdishFromGregorian(
+		$date ? $date : explode("-", date("m-d-Y")));
+	$month = calendarKurdishMonth(calendarExtractMonth($date));
 	$day = calendarExtractDay($date);
+	$year = calendarExtractYear($date);
 	$dayname = calendarKurdishDayOfWeekName($date);
-	
 	$str = "{$dayname} {$day}ی {$month}ی {$year}ی کوردی";
 	return num_convert($str, "en", "ckb");
 }
