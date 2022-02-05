@@ -1,1 +1,1 @@
-[["Parastoo-WOL","jpg","woff2"],["Sahel-SemiBold-WOL","jpg","woff2"],["Vazir-Light-WOL-UI","jpg","woff2"]]
+{"Parastoo-WOL":["\u067e\u06d5\u0631\u06d5\u0633\u062a\u0648\u0648\n","Parastoo-WOL","jpg","woff2"],"Sahel-SemiBold-WOL":["\u0633\u0627\u062d\u06ce\u0644\n","Sahel-SemiBold-WOL","jpg","woff2"],"Vazir-Light-WOL-UI":["\u0648\u06d5\u0632\u06cc\u0631\n","Vazir-Light-WOL-UI","jpg","woff2"]}
