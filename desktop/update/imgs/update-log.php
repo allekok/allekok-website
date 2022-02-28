@@ -1,16 +1,22 @@
 <?php
-$ver = @$_GET['ver'];
-$pt = @$_GET['pt'];
+/*
+ * Input: GET[ver, pt]
+ * Output: Text[true | ""]
+ */
+header("Content-type: text/plain; charset=UTF-8");
 
-$f = @fopen("update-log.txt" , "r");
-if(!$f) die();
+$ver = isset($_GET["ver"]) ? $_GET["ver"] : die();
+$pt = isset($_GET["pt"]) ? $_GET["pt"] : die();
 
-while(! feof($f) ) {
-	$l = fgets($f);
-	$l = json_decode($l);
-	if($l->ver > $ver && $pt == $l->poetID ) {
-		echo "true";
-		break;
+$f = fopen("update-log.txt", "r") or die();
+
+while(!feof($f)) {
+	if($l = fgets($f)) {
+		$l = json_decode($l);
+		if($l->ver > $ver and $l->poetID == $pt) {
+			echo "true";
+			break;
+		}
 	}
 }
 
