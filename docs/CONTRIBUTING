@@ -1,7 +1,8 @@
 بەشداربوون
-	ئەگەر دەتانهەوێ لە پتەوکردنی کۆدەکانی ئاڵەکۆک‌دا یارمەتی‌مان بدەن،
-	هەنگاوەکانی خوارەوە بپێون. ئەگەر پرسیارێک‌و هەبوو پەیوەندیم پێوە بکەن.
-	بۆ بینینی ڕێگاکانی پەیوەندی سەردانی فایلی 'CONTACT' بکەن.
+	ئەگەر دەتانهەوێ لە پتەوکردنی کۆدەکانی ئاڵەکۆک‌دا یارمەتی‌مان
+	بدەن، هەنگاوەکانی خوارەوە بپێون. ئەگەر پرسیارێک‌تان هەبوو
+	پەیوەندیم پێوە بکەن. بۆ بینینی ڕێگاکانی پەیوەندی سەردانی فایلی
+	'CONTACT' بکەن.
 	
 	# First, fork 'allekok-website' repository
 	# Fill [your_username] field with your username on github
@@ -19,8 +20,8 @@
 	# Fill [your_branch_name] with your previously created branch
 	$ git push origin [your_branch_name]
 	# Create a pull request on github
-	# If you don't have github, send the patch for your changes over to me
-	# by email. My email address is in 'CONTACT' file.
+	# If you are not on github, send the patch for your changes to
+	# my email. My email address is in 'CONTACT' file.
 	# Done. thank you!
 	
 	
