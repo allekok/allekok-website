@@ -1,4 +1,4 @@
-/* -*- compile-command: "cd ../.. && make" -*- */
+/* -*- compile-command: "cd ../.. && make js" -*- */
 
 /** Constants **/
 const _R = _relativePath || "/";
