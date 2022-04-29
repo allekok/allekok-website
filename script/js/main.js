@@ -284,8 +284,8 @@ var poetImage = poetImage || ((pID, callback) => {
 	const client = new XMLHttpRequest(),
 	      url = `${_R}style/img/poets/profile/profile_${pID}.jpg`;
 	client.open("get", url);
-	client.onload = function() {
-		if(this.status != 404)
+	client.onload = () => {
+		if(client.status != 404)
 			callback(url);
 	}
 	client.send();
@@ -375,13 +375,11 @@ margin-left:.5em'>${favs[a].poetName} &rsaquo; ${favs[a].poem}</a>`;
 	bookmarksSection.style.display = "block";
 	bookmarksIcon.classList.add('color-blue');
 
-	imgs.map(function(pID) {
-		poetImage(pID, function(url) {
+	imgs.map(pID => {
+		poetImage(pID, url => {
 			document.getElementById("tL-res-res").
 				querySelectorAll(`.PI${pID}`).
-				forEach(function(item) {
-					item.src = url;
-				});
+				forEach(item => item.src = url);
 		});
 	});
 	ajax();
@@ -650,7 +648,7 @@ var copyPoem = copyPoem || (() => {
 	
 	copySec.innerHTML = "check";
 	copySec.classList.add("back-blue");
-	setTimeout(function() {
+	setTimeout(() => {
 		copySec.innerHTML = "content_copy";
 		copySec.classList.remove("back-blue");
 	}, 3000);
@@ -762,7 +760,7 @@ style='width:1em;height:1em'></div>";
 	      pm = href_parsed.pm;
 	
 	getUrl(`${_R}script/php/poem-summary.php?pt=${pt}&bk=${bk}&pm=${pm}`,
-	       function(response) {
+	       response => {
 		       button.innerHTML = "dehaze";
 		       const san_txt = response.replace(/\n/g, "<br>");
 		       button.parentNode.outerHTML += `<div style='padding:1em;font-size:.55em'>${san_txt}</div>`;
@@ -782,7 +780,7 @@ var filterp = filterp || ((needle="", context, lastChance=false, toDo=(x,r)=>{x.
 	
 	needle = san_data(needle, lastChance);
 	
-	context.forEach(function(item) {
+	context.forEach(item => {
 		const cx = san_data(item.textContent, lastChance),
 		      _filterp = (needle == "") ? true :
 		      (cx.indexOf(needle) !== -1);
@@ -928,7 +926,7 @@ var garbageCollector = garbageCollector || ((interval = 750) => {
 	}
 	const hist_list = collectHistList();
 	if(!hist_list) return;
-	const GCT = setInterval(function () {
+	const GCT = setInterval(() => {
 		const hist_item = hist_list.pop();
 		if(typeof(hist_item) == 'undefined')
 			clearInterval(GCT);
@@ -973,9 +971,9 @@ var ajax = ajax || ((parent='body', target='#MAIN') => {
 	const p = document.querySelector(parent),
 	      loading = document.getElementById('main-loader');
 	
-	p.querySelectorAll('a').forEach(function (o) {
+	p.querySelectorAll('a').forEach(o => {
 		if(o.getAttribute('target') != '_blank') {
-			o.onclick = function (e) {
+			o.onclick = e => {
 				const href = o.getAttribute('href');
 				if(href.indexOf('#') === -1) {
 					e.preventDefault();
@@ -989,7 +987,7 @@ var ajax = ajax || ((parent='body', target='#MAIN') => {
 						ajax_load(url, href, content, parent, target, loading);
 					}
 					else {
-						getUrl(url, function (content) {
+						getUrl(url, content => {
 							ajax_load(url, href, content, parent, target, loading);
 							ajax_savestate(url, content);
 						});
@@ -1032,7 +1030,7 @@ var ajax_popstate = ajax_popstate || (() => {
 		loading.style.display = 'none';
 	}
 	else {
-		getUrl(url, function (response) {
+		getUrl(url, response => {
 			t.outerHTML = response;
 			eval_js(response);
 			ajax();
@@ -1163,7 +1161,7 @@ window.Clipboard = ((window, document, navigator) => {
 		document.body.removeChild(textArea);
 	}
 
-	copy = function(text) {
+	copy = text => {
 		createTextArea(text);
 		selectText();
 		copyToClipboard();
