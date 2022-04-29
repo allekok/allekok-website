@@ -1,18 +1,19 @@
 <?php
 /*
- * Input: GET:(pt)
- * Output: Base-64 Plain Text
+ * Input: REQUEST[pt]
+ * Output: Base 64 plain text
  */
-require_once('../../script/php/constants.php');
+require_once("../../script/php/constants.php");
 
-$pt = isset($_GET['pt']) ?
-      filter_var($_GET['pt'], FILTER_SANITIZE_STRING) :
+header("Content-type:text/plain; charset=UTF-8");
+
+$pt = isset($_REQUEST["pt"]) ?
+      filter_var($_REQUEST["pt"], FILTER_SANITIZE_STRING) :
       die();
 
-$img = ABSPATH."style/img/poets/profile/profile_$pt.jpg";
-if(! file_exists($img))
-	$img = ABSPATH.'style/img/poets/profile/profile_0.jpg';
+$img = "../../style/img/poets/profile/profile_{$pt}.jpg";
+if(!file_exists($img))
+	$img = "../../style/img/poets/profile/profile_0.jpg";
 
-header('Content-type:text/plain; Charset=UTF-8');
 echo base64_encode(file_get_contents($img));
 ?>

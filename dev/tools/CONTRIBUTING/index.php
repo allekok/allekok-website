@@ -1,20 +1,20 @@
 <?php
-include_once("../../../script/php/constants.php");
-include_once(ABSPATH . "script/php/colors.php");
-include_once(ABSPATH . "script/php/functions.php");
+require_once("../../../script/php/constants.php");
+require_once("../../../script/php/colors.php");
+require_once("../../../script/php/functions.php");
 
-$title = $_TITLE . " &rsaquo; کۆد &rsaquo; بەشداربوون";
-$desc = "ئاڵەکۆک - کۆد - بەشداربوون";
+$title = $_TITLE . " › کۆد › بەشداربوون";
+$desc = "بەشداربوون لە نووسینی کۆدەکانی ئاڵەکۆک";
 $keys = $_KEYS;
 $t_desc = "";
 
-include(ABSPATH . 'script/php/header.php');
+require_once("../../../script/php/header.php");
 ?>
 <style>
  #main-contributing code {
 	 direction:ltr;
 	 text-align:left;
-	 font-family:'kurd', monospace;
+	 font-family:"kurd", monospace;
 	 padding:0 .3em;
 	 margin:0 .3em;
  }
@@ -41,13 +41,13 @@ include(ABSPATH . 'script/php/header.php');
  }
  #main-contributing img {
 	 display:block;
-	 margin: 1em auto;
+	 margin:1em auto;
 	 max-width:100%;
 	 cursor:pointer;
  }
  #main-contributing .material-icons {
-	 display: inline;
-	 font-size: 1.5em;
+	 display:inline;
+	 font-size:1.5em;
  }
 </style>
 <div id="poets" style="text-align:right">
@@ -62,111 +62,119 @@ include(ABSPATH . 'script/php/header.php');
 			/ &gt;
 		</i>
 	</h1>
-	<div id="main-contributing" style="font-size:.6em;
-		 text-align:justify;padding-right:1em">
+	<div id="main-contributing"
+	     style="font-size:.6em;text-align:justify;padding-right:1em">
 		<?php
-		@include('CONTRIBUTING.html');
+		const contrib_file = "CONTRIBUTING.html";
+		if(file_exists(contrib_file))
+			echo file_get_contents(contrib_file);
 		?>
 	</div>
-	<script>
-	 function make_code() {
-		 var inp = document.querySelector("#QAtxt");
-		 var start = inp.selectionStart;
-		 var end = inp.selectionEnd;
-		 var sel = inp.value.substring(start,end)
-		 if(sel != "" || inp.value == "") {
-			 
-			 var out = "[code]" + sel + "[/code]";
-			 
-			 var part1 = inp.value.substring(0, start);
-			 var part2 = inp.value.substr(end);
-			 
-			 out = part1 + out + part2;
-			 
-			 inp.value = out;
-		 } else {
-			 inp.value += "[code][/code]";
-		 }
-		 
-		 inp.style.direction="ltr";
-		 inp.style.textAlign="left";
-		 inp.focus();
-	 }
-	</script>
-
-	<h1 class='color-blue' style="font-size:1em">
+	<h1 class="color-blue" style="font-size:1em">
 		پرسیار و وەڵام
 	</h1>
 	<div id="frm-contributing" style="padding-right:1em">
 		<small style="font-size:.6em;display:block">
-			ئەگەر سەبارەت بەم بابەتە پرسیارێک‌و هەیە لێرە بینووسن.
+			ئەگەر سەبارەت بەم بابەتە پرسیارێک‌تان هەیە لێرە بینووسن.
 			<br>
-			بۆ وەرگرتنی وەڵامی پرسیارەکەتان سەردانی ئەم لاپەڕە بکەنەوە.
+			بۆ وەرگرتنی وەڵامی پرسیارەکەتان تکایە سەردانی ئەم لاپەڕە بکەنەوە.
 		</small>
 		<form id="frmQA" action="save.php" method="POST">
-			<div style='text-align:center'>
-				<button type="button" class='back-blue color-white' style="display:inline-block;padding:.7em;font-size:.45em;cursor:pointer;margin:0 auto 5px 10px;font-weight:bold;font-family:monospace;" onclick="make_code()">Code</button><span style="font-size:.55em">ئەگەر کۆدی تێدایە لە پرسیارەکەتان تکایە "Code" بەکار بێنن.
-				</span>
+			<div style="text-align:center;font-size:.55em">
+				ئەگەر لە پرسیارەکەتان‌ کۆدی تێدایە
+				<button type="button"
+					id="make-code"
+					class="button"
+					style="display:inline-block;
+					      padding:.5em;
+					      font-size:.8em;
+					      cursor:pointer;
+					      font-weight:bold;
+					      font-family:monospace">
+					Code
+				</button>
+				بەکار بێنن.
 			</div>
 			<textarea id="QAtxt"></textarea>
 			<div id="QAres"></div>
-			<button type="submit" class='button btn'>ناردن</button>
+			<button type="submit" class="button btn">ناردن</button>
 		</form>
-		
 		<div>
 			<?php
-			if(@filesize("QA.txt") > 0) {
-				
-				$f = fopen("QA.txt", "r");
-				$cc = fread($f, filesize("QA.txt"));
+			const QA_path = "QA.txt";
+			if(file_exists(QA_path) and filesize(QA_path) > 0) {
+				$cc = file_get_contents(QA_path);
 				$cc = explode("\nend\n", $cc);
-				
 				foreach($cc as $c) {
-					if(!empty($c)) {
-						$c = preg_replace(
-							["/\[code\]\n*/","/\n*\[\/code\]/"],
-							["<code class='bash'>","</code>"], $c);
-						$c = str_replace(["\n"], ["<br>"], $c);
-						echo "<div class='comment'><div class='comm-body'>".$c."</div></div>";
-					}
+					if(empty($c))
+						continue;
+					$c = preg_replace(
+						["/\[code\]\n*/",
+						 "/\n*\[\/code\]/"],
+						["<code class='bash'>",
+						 "</code>"],
+						$c);
+					$c = str_replace(["\n"], ["<br>"], $c);
+					echo "<div class='comment'>" .
+					     "<div class='comm-body'>" .
+					     $c . "</div></div>";
 				}
-				
-				fclose($f);
 			}
-			
 			?>
 		</div>
-		
-		<script>
-		 
-		 document.querySelector("#frmQA").addEventListener("submit", function(e) {
-			 e.preventDefault();
-			 
-			 const txt = document.querySelector("#QAtxt"),
-			       t = document.querySelector("#QAres"),
-			       loader = "<div class='loader'></div>";
-			 
-			 if(txt.value == "")
-			 {
-				 txt.focus();
-				 return;
-			 }
-			 
-			 t.innerHTML = loader;
-			 
-			 const x = new XMLHttpRequest();
-			 x.onload = function() {
-				 if(this.responseText == "1") {
-					 t.innerHTML = "<span style='background:rgba(0,255,0,.08); color:green; display:block;padding:1em; font-size:.6em;'>زۆرسپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان سەردانی ئەم لاپەڕە بکەنەوە.</span>";
-				 }
-			 }
-			 x.open("POST", "save.php");
-			 x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			 x.send(`txt=${encodeURIComponent(txt.value)}`);
-		 });
-		</script>        
 	</div>    
 </div>
+<script>
+ document.getElementById('frmQA').addEventListener('submit', e => {
+	 const txt = document.getElementById('QAtxt'),
+	       t = document.getElementById('QAres'),
+	       loader = '<div class="loader"></div>'
+	 
+	 e.preventDefault()
+	 
+	 if(!txt.value) {
+		 txt.focus()
+		 return
+	 }
+	 
+	 t.innerHTML = loader
+	 
+	 const x = new XMLHttpRequest
+	 x.onload = () => {
+		 if(x.responseText != '1')
+			 return
+		 t.innerHTML = '<span style="background:' +
+			       'rgba(0, 255, 0, .08);color:green;' +
+			       'display:block;padding:1em;font-size:.6em">' +
+			       'زۆر سپاس. تکایە بۆ وەرگرتنی وەڵامەکەتان ' +
+			       'سەردانی ئەم لاپەڕە بکەنەوە.</span>'
+	 }
+	 x.open('post', 'save.php')
+	 x.setRequestHeader('Content-type',
+			    'application/x-www-form-urlencoded')
+	 x.send(`txt=${encodeURIComponent(txt.value)}`)
+ })
+ 
+ document.getElementById('make-code').addEventListener('click', make_code)
+ 
+ function make_code() {
+	 const inp = document.getElementById('QAtxt'),
+	       start = inp.selectionStart,
+	       end = inp.selectionEnd,
+	       sel = inp.value.substring(start, end)
+	 if(sel || !inp.value) {
+		 inp.value = inp.value.substring(0, start) +
+			     `[code]${sel}[/code]` +
+			     inp.value.substr(end)
+	 }
+	 else {
+		 inp.value += '[code][/code]'
+	 }	 
+	 inp.style.direction = 'ltr'
+	 inp.style.textAlign = 'left'
+	 inp.focus()
+ }
+</script>
 <?php
-include_once(ABSPATH . "script/php/footer.php");
+require_once("../../../script/php/footer.php");
 ?>

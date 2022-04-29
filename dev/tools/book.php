@@ -1,64 +1,69 @@
 <?php
 /*
- * Input: REQUEST:(poet,book)
+ * Input: REQUEST[poet, book]
  * Output: JSON
  */
-require_once('../../script/php/constants.php');
-require(ABSPATH . 'script/php/functions.php');
+require_once("../../script/php/functions.php");
 
-header('Content-type:application/json; charset=UTF-8');
+header("Content-type:application/json; charset=UTF-8");
+
 $null = json_encode(null);
 
-$_pt = isset($_REQUEST['poet']) ?
-       filter_var($_REQUEST['poet'], FILTER_SANITIZE_STRING) :
+$pt = isset($_REQUEST["poet"]) ?
+       filter_var($_REQUEST["poet"], FILTER_SANITIZE_STRING) :
        die($null);
-if(empty($_pt)) die($null);
-$_bk = isset($_REQUEST['book']) ?
-       filter_var($_REQUEST['book'], FILTER_SANITIZE_STRING) :
+$bk = isset($_REQUEST["book"]) ?
+       filter_var($_REQUEST["book"], FILTER_SANITIZE_STRING) :
        die($null);
-if(empty($_bk)) die($null);
 
-$where = filter_var($_pt, FILTER_VALIDATE_INT) ?
-	 "id=$_pt" :
-	 "takh='$_pt' or profname='$_pt' or name='$_pt'";
-$q = "SELECT * FROM auth WHERE $where";
-require(ABSPATH . 'script/php/condb.php');
-if(!$query) die($null);
-$poet = mysqli_fetch_assoc($query);
-
-$poet['bks'] = explode(',', $poet['bks']);
-$poet['bksdesc'] = explode(',', $poet['bksdesc']);
-
-if(!filter_var($_bk, FILTER_VALIDATE_INT))
-{
-	$_bk = array_search($_bk, $poet['bks']);
-	if($_bk === false) die($null);
-	$_bk++;
-}
-elseif($_bk > count($poet['bks']))
+if(empty($pt) or empty($bk))
 	die($null);
 
-$_tbl = "tbl{$poet['id']}_{$_bk}";    
+$where = filter_var($pt, FILTER_VALIDATE_INT) ?
+	 "id=$pt" :
+	 "takh='$pt' or profname='$pt' or name='$pt'";
+$q = "SELECT * FROM auth WHERE $where";
+require_once("../../script/php/condb.php");
+if(!$query)
+	die($null);
+
+$poet = mysqli_fetch_assoc($query);
+$poet["bks"] = explode(",", $poet["bks"]);
+$poet["bksdesc"] = explode(",", $poet["bksdesc"]);
+
+if(!filter_var($bk, FILTER_VALIDATE_INT)) {
+	$bk = array_search($bk, $poet["bks"]);
+	if($bk === FALSE)
+		die($null);
+	$bk++;
+}
+elseif($bk > count($poet["bks"])) {
+	die($null);
+}
+
+$bk_desc = isset($poet["bksdesc"][$bk - 1]) ? $poet["bksdesc"][$bk - 1] : "";
+
+$_tbl = "tbl{$poet["id"]}_{$bk}";
 $q = "SELECT name FROM `$_tbl` ORDER BY id";
 $query = mysqli_query($conn, $q);
-if(!$query) die($null);
+if(!$query)
+	die($null);
 
 $pms_num = mysqli_num_rows($query);
 $poems = [];
-while($_ = mysqli_fetch_assoc($query))
-	$poems[] = $_['name'];
-
-$res = [
-	'poetID' => intval($poet['id']),
-	'poet' => $poet['takh'],
-	'book' => $poet['bks'][$_bk-1],
-	'bookID' => intval($_bk),
-	'desc' => @$poet['bksdesc'][$_bk-1],
-	'poems-num' => $pms_num,
-	'poems' => $poems,
-];
+while($pm = mysqli_fetch_assoc($query))
+	$poems[] = $pm["name"];
 
 mysqli_close($conn);
 
+$res = [
+	"poetID" => intval($poet["id"]),
+	"poet" => $poet["takh"],
+	"book" => $poet["bks"][$bk - 1],
+	"bookID" => intval($bk),
+	"desc" => $bk_desc,
+	"poems-num" => $pms_num,
+	"poems" => $poems,
+];
 echo json_encode($res);
 ?>
