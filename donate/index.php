@@ -1,18 +1,18 @@
 <?php
-include_once("../script/php/constants.php");
-include_once(ABSPATH . "script/php/colors.php");
-include_once(ABSPATH . "script/php/functions.php");
+require_once("../script/php/constants.php");
+require_once("../script/php/colors.php");
+require_once("../script/php/functions.php");
 
-$title = $_TITLE . " &rsaquo; یارمەتی ماڵی";
-$desc = "ناردنی پارە بۆ پشتیوانی ئاڵەکۆک";
+$title = $_TITLE . " › یارمەتیی ماڵی";
+$desc = "یارمەتیی ماڵی بۆ ئاڵەکۆک";
 $keys = $_KEYS;
 $t_desc = "";
 
-include(ABSPATH . "script/php/header.php");
+require_once("../script/php/header.php");
 ?>
 <style>
  .donate-main p {
-	 font-size:.6em
+	 font-size:.6em;
  }
  .donation {
 	 display:flex;
@@ -37,68 +37,87 @@ include(ABSPATH . "script/php/header.php");
  }
 </style>
 <div id="poets" class="donate-main" style="text-align:right">
-	<h1 class="color-blue"
-	    style="font-size:1em;
-		   padding:1em 0 .3em">
-		یارمەتی‌دانی ماڵی ئاڵەکۆک
+	<h1 class="color-blue" style="font-size:1em;padding:1em 0 .3em">
+		یارمەتیی ماڵیی ئاڵەکۆک
 	</h1>
 	<div style="padding-right:1em">
 		<p>
-			سڵاو بۆ هاوڕێیانی بەڕێزی ئاڵەکۆک، 
+			سڵاو بۆ هاوڕێیانی خۆشەویستی ئاڵەکۆک،
 		</p>
 		<p>
-			هەر بەم جۆرەی کە ئاگادارن ئاڵەکۆک بەرنامەیەکە کە لە بەکارهێنەرانی هیچ پارەیەکی وەرناگرێ و هیچ پارەیەکیش عاییدی بەکارهێنەرانی نابێ و بەکارهێنەرانی تەنیا بە ویستی خۆیان ئەم بەرنامەی ڕادەگرن و ئەگەر بکرێ پتەوی دەکەن.
+			هەر ئەو جۆرەی ئاگادارن ئاڵەکۆک بەرنامەیەکە کە
+			لە بەکارهێنەرانی هیچ پارەیەکی وەرناگرێ و هیچ
+			پارەیەکیش عاییدی بەکارهێنەرانی نابێ و
+			بەکارهێنەرانی تەنیا بە ویستی خۆیان ئەم
+			بەرنامەی ڕادەگرن و ئەگەر بکرێ پتەوی دەکەن.
 			<br>
-			بەڵام ڕاگرتنی ماڵپەڕی ئاڵەکۆک لەسەر هێڵی ئینتێڕنێت پارەی پێویستە هەر بۆیە
-			تکایە هەرچەندێکی لەتواناتان دایە یارمەتی‌مان بدەن.
-			پێشەکی زۆرسپاسی یارمەتیەکان‌و دەکەم.
+			بەڵام ڕاگرتنی ماڵپەڕی ئاڵەکۆک لەسەر هێڵی
+			ئینتێرنێت پارەی پێویستە هەر بۆیە تکایە
+			هەرچەندێکی لە تواناتان دا هەیە یارمەتیمان
+			بدەن. پێشەکی زۆر سپاسی یارمەتیەکانتان دەکەم.
 		</p>
 		<h3 class="color-blue" style="font-size:.7em;padding-top:1em">
 			ناردنی پارە لەسەر ئینتێرنێت
 		</h3>
 		<p style="padding-right:1em">
-			بۆ ئەم شێوە لە یارمەتی دەرگای ئەمنی (زرین‌پال)مان بەکارهێناوە. تکایە لەسەر لینکی خوارەوە کرتە بکەن. پێشەکی سپاس‌و دەکەین.
+			بۆ ئەم شێوە لە یارمەتی دەرگای ئەمنی
+			(زرین‌پال)مان بەکارهێناوە. تکایە لەسەر لینکی
+			خوارەوە کرتە بکەن. پێشەکی سپاستان دەکەیین.
 			<br>
 			<a href="https://zarinp.al/@allekok"
-			   title="یارمەتی‌دانی ماڵی ئاڵەکۆک"
-			   class="link-underline" style="display:inline-block;font-weight:bold;text-align:center"
-			   target="_blank">
-				ناردنی پارە بەشێوەی ئینتێرنێتی
+			   title="یارمەتیی ماڵیی ئاڵەکۆک"
+			   class="link-underline"
+			   target="_blank"
+			   style="display:inline-block;
+				 font-weight:bold;
+				 text-align:center">
+				ناردنی پارە بە شێوەی ئینتێرنێتی
 			</a>
 		</p>
 		<h3 class="color-blue" style="font-size:.7em;padding-top:1em">
-			ناردنی پارە بەشێوەی ڕاستەوخۆ (کارت بە کارت)
+			ناردنی پارە بە شێوەی ڕاستەوخۆ (کارت بە کارت)
 		</h3>
 		<p style="padding-right:1em">
-			تکایە یارمەتی‌تان بۆ ژمارە کارتی خوارەوە بنێرن. پێشەکی سپاس‌و دەکەین.
+			تکایە یارمەتییەکانتان بۆ ژمارە کارتی خوارەوە
+			بنێرن. پێشەکی سپاستان دەکەیین.
 			<br>
-			<span style="padding: .5em 1em;
-				     display: block;
-				     text-align: center;
+			<span style="padding:.5em 1em;
+				     display:block;
+				     text-align:center;
 				     border:2px solid;
 				     border-radius:1em;
 				     margin:1em 0">
-				<span style="letter-spacing: .2em;font-size: 1.3em">
+				<span style="letter-spacing:.2em;
+					     font-size:1.3em">
 					٦٠٣٧٩٩٧١٣٥٣٩٤٥٨٤
 				</span>
 				<br>
-				کارتی بانکی ملی
+				کارتی بانکی «ملی»
 				<br>
 				بە نێوی: پیام باپیری
 			</span>
-			تکایە ئەگەر بەشێوەی ڕاستەوخۆ (کارت بە کارت) یارمەتی‌مان دەدەن، نێوی خۆتان و ئەندازەی یارمەتیەکەتان‌ بە ئیمەیل یان لەسەر تێلێگرام بۆمان بنێرن.
+			تکایە ئەگەر بە شێوەی ڕاستەوخۆ (کارت بە کارت)
+			یارمەتیمان دەدەن، نێوی خۆتان و ئەندازەی
+			یارمەتییەکەتان‌ بە ئیمەیل یان تێلێگرام بۆمان
+			بنێرن.
 			<br>
 			ئیمەیلی ئاڵەکۆک:
 			<i style="font-weight:bold;
-				  direction:ltr;display:inline-block;
-				  font-family:monospace;padding:0 .5em"
-			>one@allekok.ir</i>
+				  direction:ltr;
+				  display:inline-block;
+				  font-family:monospace;
+				  padding:0 .5em">
+				one@allekok.ir
+			</i>
 			<br>
 			ئایدی تێلێگرامی ئاڵەکۆک:
 			<i style="font-weight:bold;
-				  direction:ltr;display:inline-block;
-				  font-family:monospace;padding:0 .5em"
-			>@allekok</i>
+				  direction:ltr;
+				  display:inline-block;
+				  font-family:monospace;
+				  padding:0 .5em">
+				@allekok
+			</i>
 		</p>
 	</div>
 	<h2 class="color-blue" style="font-size:1em">
@@ -106,25 +125,34 @@ include(ABSPATH . "script/php/header.php");
 	</h2>
 	<div style="padding-right:1em">
 		<?php
-		$donations = @file_get_contents("donations.txt");
+		const donations_file = "donations.txt";
+		$donations = file_exists(donations_file) ?
+			     file_get_contents(donations_file) :
+			     null;
 		if($donations) {
-			echo "<p>زۆرسپاس بۆ یارمەتییەکانتان:</p>";
+			echo "<p>زۆر سپاس بۆ یارمەتییەکانتان:</p>";
 			$donations = explode("-----", $donations);
 			foreach($donations as $d) {
-				if(!($d = trim($d))) continue;
+				$d = trim($d);
+				if(!$d)
+					continue;
 				$d = explode("\t", $d);
-				echo "
-<div class='donation'>
-<div><i class='material-icons color-blue'>favorite</i>$d[0]</div>
-<div>$d[1]</div><div>$d[2]</div></div><div class='donation-desc'>$d[3]</div>";
+				echo "<div class='donation'><div>" .
+				     "<i class='material-icons color-blue'>" .
+				     "favorite</i>{$d[0]}</div><div>" .
+				     "{$d[1]}</div><div>{$d[2]}</div>" .
+				     "</div><div class='donation-desc'>" .
+				     "{$d[3]}</div>";
 			}
 		}
-		else 
-			echo "<p>
-تا ئێستا هیچ کەس یارمەتی نەناردووە. ئێوە یەکەم کەس بن.</p>";
+		else {
+			echo "<p>" .
+			     "تا ئێستا هیچ کەس یارمەتی نەناردووە. ئێوە یەکەم کەس بن." .
+			     "</p>";
+		}
 		?>
 	</div>
 </div>
 <?php
-include_once(ABSPATH . "script/php/footer.php");
+require_once("../script/php/footer.php");
 ?>
