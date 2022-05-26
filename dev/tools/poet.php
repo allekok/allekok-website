@@ -48,7 +48,7 @@ function get_poet() {
 			$q = "SELECT * FROM auth WHERE name='$pt' or " .
 			     "takh='$pt' or profname='$pt'";
 		}
-		require_once("../../script/php/condb.php");
+		require("../../script/php/condb.php");
 		if($query) {
 			while($r = mysqli_fetch_assoc($query)) {
 				unset($r["ord"]);
