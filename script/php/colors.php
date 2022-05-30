@@ -1,14 +1,22 @@
 <?php
-require_once("constants.php");
-require_once(ABSPATH."script/php/functions.php");
+require_once("functions.php");
 
-$_theme = @filter_var($_COOKIE['theme'], FILTER_SANITIZE_STRING);
-$_theme_dark = ($_theme == 'dark');
-$_theme_custom = ($_theme == 'custom');
+$all_colors = [
+	"light" => ["#fff", "#000", "#00e", "#e00"],
+	"dark" => ["#000", "#fff", "#5f5", "#f55"]
+];
+$_theme = @filter_var($_COOKIE["theme"], FILTER_SANITIZE_STRING);
+$_theme_light = ($_theme == "light");
+$_theme_dark = ($_theme == "dark");
+$_theme_custom = ($_theme == "custom");
 $_colors = [];
-if($_theme_custom) {
+if($_theme_light)
+	$_colors = $all_colors["light"];
+elseif($_theme_dark)
+	$_colors = $all_colors["dark"];
+elseif($_theme_custom) {
 	$_colors = explode(",", @filter_var(
-		$_COOKIE['colors'],
+		$_COOKIE["colors"],
 		FILTER_SANITIZE_STRING));
 	for($i = 0; $i < 4; $i++)
 		if(!isset($_colors[$i]))
@@ -27,6 +35,11 @@ if($_theme_custom) {
 		if(!($_back_img_op >= 0 and $_back_img_op <= 1)) $_back_img_op = "1.0";
 	}
 }
-elseif($_theme_dark) $_colors = ['#000','#fff','#5f5','#f55'];
-else $_colors = ['#fff','#000','#00e','#e00'];
+else {
+	$_sys_theme = @filter_var($_COOKIE["system_theme"],
+				  FILTER_SANITIZE_STRING);
+	$_colors = $all_colors[isset($all_colors[$_sys_theme]) ?
+			       $_sys_theme :
+			       "light"];
+}
 ?>

@@ -156,6 +156,10 @@ require_once("../script/php/header.php");
 		<span>
 			گۆڕینی ڕەنگ: 
 		</span>
+		<button type="button" id="set_theme_system">
+			<i class="material-icons">brightness_4</i>
+			خۆکار
+		</button>
 		<button type="button" id="set_theme_light">
 			<i class="material-icons">brightness_5</i>
 			ڕووناک
@@ -455,7 +459,7 @@ require_once("../script/php/header.php");
 </div>
 <script>
  /* Constants */
- const themes = ['light', 'dark', 'custom'],
+ const themes = ['system', 'light', 'dark', 'custom'],
        dd_lang = document.getElementById('dd-lang'),
        dd_lang_label = dd_lang.querySelector('.dd-label'),
        dd_lang_frame = dd_lang.querySelector('.dd-frame'),
@@ -467,6 +471,12 @@ require_once("../script/php/header.php");
        user_codes_storage = localStorage.getItem(user_codes_storage_name)
  
  /* Event Listeners */
+ document.getElementById('set_theme_system').onclick = () => {
+	 set_theme('system')
+	 const sys_theme = window.matchMedia('(prefers-color-scheme: dark)').
+				  matches ? 'dark' : 'light'
+	 set_cookie('system_theme', sys_theme)
+ }
  document.getElementById('set_theme_light').onclick = () => set_theme('light')
  document.getElementById('set_theme_dark').onclick = () => set_theme('dark')
  document.getElementById('set_theme_custom').onclick = () => set_theme('custom')
@@ -508,12 +518,12 @@ require_once("../script/php/header.php");
 			 break
 		 }
 		 else {
-			 button_select('light')
+			 button_select('system')
 		 }
 	 }
  }
  else {
-	 button_select('light')
+	 button_select('system')
  }
 
  if(get_cookie('ajax_save_p') === '0') {

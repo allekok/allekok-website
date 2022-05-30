@@ -1126,6 +1126,15 @@ var keyDispatch = keyDispatch || ((e) => {
 	}
 })
 
+var update_system_theme = update_system_theme || ((e) => {
+	const sys_theme = e.matches ? 'dark' : 'light'
+	const prev_theme = get_cookie('system_theme')
+	set_cookie('system_theme', sys_theme)
+	set_cookie('theme', 'system')
+	if(prev_theme != sys_theme)
+		window.location.reload()
+})
+
 /** Run **/
 /* Clipboard */
 window.Clipboard = ((window, document, navigator) => {
@@ -1231,3 +1240,12 @@ garbageCollector();
 
 /* Key bindings */
 window.addEventListener("keyup", keyDispatch);
+
+/* Theme */
+var __themes = __themes || ['system', 'light', 'dark', 'custom']
+var __theme = __theme || get_cookie('theme')
+var __media = __media || window.matchMedia('(prefers-color-scheme: dark)')
+if(__themes.indexOf(__theme) == -1 || __theme == 'system') {
+	update_system_theme(__media)
+	__media.addEventListener('change', e => update_system_theme(e))
+}
