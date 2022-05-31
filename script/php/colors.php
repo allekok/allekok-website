@@ -9,12 +9,9 @@ $_theme = @filter_var($_COOKIE["theme"], FILTER_SANITIZE_STRING);
 $_theme_light = ($_theme == "light");
 $_theme_dark = ($_theme == "dark");
 $_theme_custom = ($_theme == "custom");
+$_auto_theme = false;
 $_colors = [];
-if($_theme_light)
-	$_colors = $all_colors["light"];
-elseif($_theme_dark)
-	$_colors = $all_colors["dark"];
-elseif($_theme_custom) {
+if($_theme_custom) {
 	$_colors = explode(",", @filter_var(
 		$_COOKIE["colors"],
 		FILTER_SANITIZE_STRING));
@@ -35,11 +32,12 @@ elseif($_theme_custom) {
 		if(!($_back_img_op >= 0 and $_back_img_op <= 1)) $_back_img_op = "1.0";
 	}
 }
+elseif($_theme_dark)
+	$_colors = $all_colors["dark"];
+elseif($_theme_light)
+	$_colors = $all_colors["light"];
 else {
-	$_sys_theme = @filter_var($_COOKIE["system_theme"],
-				  FILTER_SANITIZE_STRING);
-	$_colors = $all_colors[isset($all_colors[$_sys_theme]) ?
-			       $_sys_theme :
-			       "light"];
+	$_auto_theme = true;
+	$_colors = $all_colors["light"];
 }
 ?>

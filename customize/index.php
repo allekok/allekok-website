@@ -471,12 +471,7 @@ require_once("../script/php/header.php");
        user_codes_storage = localStorage.getItem(user_codes_storage_name)
  
  /* Event Listeners */
- document.getElementById('set_theme_system').onclick = () => {
-	 set_theme('system')
-	 const sys_theme = window.matchMedia('(prefers-color-scheme: dark)').
-				  matches ? 'dark' : 'light'
-	 set_cookie('system_theme', sys_theme)
- }
+ document.getElementById('set_theme_system').onclick = () => set_theme('system')
  document.getElementById('set_theme_light').onclick = () => set_theme('light')
  document.getElementById('set_theme_dark').onclick = () => set_theme('dark')
  document.getElementById('set_theme_custom').onclick = () => set_theme('custom')
