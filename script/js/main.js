@@ -196,12 +196,74 @@ var ar2per = ar2per || ((s) => {
 	return replace_sure(add_tashdid(determine_hemze(ar2IL(s)), n, v), sure);
 })
 
+var ar2cyr = ar2cyr || ((s) => {
+	const sure = [["أ", "ئە"],
+		      ["إ", "ئی"],
+		      ["آ", "ئا"],
+		      ["َ", "ә"],
+		      ["ِ", "и"],
+		      ["ُ", "ӧ"],
+		      ["ا", "a"],
+		      ["ب", "б"],
+		      ["ج", "щ"],
+		      ["چ", "ч"],
+		      ["د", "д"],
+		      ["ە", "ә"],
+		      ["ێ", "э"],
+		      ["ف", "ф"],
+		      ["گ", "г"],
+		      ["غ", "г"],
+		      ["ه|ح", "һ"],
+		      ["ژ", "ж"],
+		      ["ک", "к"],
+		      ["ل", "л"],
+		      ["ڵ", "л'"],
+		      ["م", "м"],
+		      ["ن", "н"],
+		      ["ۆ", "o"],
+		      ["پ", "п"],
+		      ["ق", "ԛ"],
+		      ["ر", "р"],
+		      ["ڕ", "р'"],
+		      ["س|ث|ص", "с"],
+		      ["ش", "ш"],
+		      ["ت|ط|ة", "т"],
+		      ["ڤ", "в"],
+		      ["خ", "х"],
+		      ["ز|ض|ظ|ذ", "з"],
+		      ["ئ|ء|ؤ|ع", ""],
+		      ["î", "и"],
+		      ["y", "й"],
+		      ["u", "ӧ"],
+		      ["û", "у"],
+		      ["w", "ԝ"],
+		      ["i", "ь"],
+		      ["٠|۰", "0"],
+		      ["١|۱", "1"],
+		      ["٢|۲", "2"],
+		      ["٣|۳", "3"],
+		      ["٤|۴", "4"],
+		      ["٥|۵", "5"],
+		      ["٦|۶", "6"],
+		      ["٧|۷", "7"],
+		      ["٨|۸", "8"],
+		      ["٩|۹", "9"],
+		      ["،", ","],
+		      ["؛", ";"],
+		      ["؟", "?"]];
+	return replace_sure(ar2IL(s), sure);
+})
+
 var transliterate_ar2lat = transliterate_ar2lat || ((str) => {
 	return apply_to_words(str, w => ar2lat(w));
 })
 
 var transliterate_ar2per = transliterate_ar2per || ((str) => {
 	return apply_to_words(str, w => ar2per(w));
+})
+
+var transliterate_ar2cyr = transliterate_ar2cyr || ((str) => {
+	return apply_to_words(str, w => ar2cyr(w));
 })
 
 var replace_sure = replace_sure || ((str, sure, f=0, t=1) => {

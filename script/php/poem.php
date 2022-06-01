@@ -192,7 +192,10 @@ style='display:inline-block'
 			>Kurdî</button>-
 			<button class="link convertToEtcBtn" type="button"
 				style="font-size:inherit;padding:0 .6em"
-			>فارسی</button>
+			>فارسی</button>-
+			<button class="link convertToEtcBtn" type="button"
+				style="font-size:inherit;padding:0 .6em"
+			>Cyrillic</button>
 		</div>
 		<div style="text-align:center;
 			    border-top:1px solid;
@@ -468,8 +471,12 @@ style='display:inline-block'
 		 void tar.offsetWidth;
 		 let props;
 		 
-		 if(to == "Kurdî") props = [transliterate_ar2lat, "ltr"];
-		 else if(to == "فارسی") props = [transliterate_ar2per, "rtl"];
+		 if(to == "Kurdî")
+			 props = [transliterate_ar2lat, "ltr"];
+		 else if(to == "فارسی")
+			 props = [transliterate_ar2per, "rtl"];
+		 else if(to == "Cyrillic")
+			 props = [transliterate_ar2cyr, "ltr"];
 		 if(to == "کوردی")
 		 {
 			 title.innerHTML = origin_poem_title;
