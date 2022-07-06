@@ -41,6 +41,14 @@ include(ABSPATH . "script/php/header.php");
 		>گنجور</a> &rsaquo; بۆ بوون بە هۆی دروست بوونی ئاڵەکۆک
 	</p>
 	<p>
+		<a href="<?php echo _R; ?>poet:1/book:4/poem:38"
+		   class="link-underline">
+			سارینا
+		</a>
+		&rsaquo;
+		بۆ بوون بە هۆی مانی ئاڵەکۆک
+	</p>
+	<p>
 		<a href="https://www.pinterest.com/rebwarkalid/"
 		   target='_blank' rel='noopener noreferrer nofollow'
 		   class="link-underline"
