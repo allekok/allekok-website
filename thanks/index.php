@@ -46,7 +46,7 @@ include(ABSPATH . "script/php/header.php");
 			سارینا
 		</a>
 		&rsaquo;
-		بۆ بوون بە هۆی مانی ئاڵەکۆک
+		کە جێ پەنجەی بوو بە هۆی مانی ئاڵەکۆک
 	</p>
 	<p>
 		<a href="https://www.pinterest.com/rebwarkalid/"
