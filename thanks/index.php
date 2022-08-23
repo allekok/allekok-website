@@ -182,6 +182,19 @@ LIKE '{\"status\":1%'";
 		   class="link-underline"
 		>دیوانی پیر عابدینی جاف</a>
 	</p>
+	<p>
+		<a href="https://t.me/Aso_Piri"
+		   target="_blank"
+		   class="link-underline"
+		   rel="noopener noreferrer nofollow">
+			ئاسۆ پیری
+		</a>
+		&rsaquo;
+		بۆ نووسینی کتێبەشیعری
+		<a href="<?php echo _R; ?>poet:58/book:10"
+		   class="link-underline"
+		>گۆڕستانی چراکان، شێرکۆ بێکەس</a>
+	</p>
 </div>
 <?php
 include_once(ABSPATH."script/php/footer.php");
