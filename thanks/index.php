@@ -195,6 +195,20 @@ LIKE '{\"status\":1%'";
 		   class="link-underline"
 		>گۆڕستانی چراکان، شێرکۆ بێکەس</a>
 	</p>
+	<p>
+		<a href="https://t.me/ahvanii"
+		   target="_blank"
+		   class="link-underline"
+		   rel="noopener noreferrer nofollow">
+			هۆشمەند ڕۆستەمی
+		</a>
+		&rsaquo;
+		بۆ دروست کردنی
+		<a href="https://t.me/allekokBot"
+		   target="_blank"
+		   class="link-underline"
+		>ڕۆباتی تێلێگرامی ئاڵەکۆک</a>
+	</p>
 </div>
 <?php
 include_once(ABSPATH."script/php/footer.php");
