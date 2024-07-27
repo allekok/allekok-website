@@ -194,6 +194,10 @@ LIKE '{\"status\":1%'";
 		<a href="<?php echo _R; ?>poet:58/book:10"
 		   class="link-underline"
 		>گۆڕستانی چراکان، شێرکۆ بێکەس</a>
+		و
+		<a href="<?php echo _R; ?>poet:58/book:11"
+		   class="link-underline"
+		>ئێستا کچێک نیشتمانمە، شێرکۆ بێکەس</a>
 	</p>
 	<p>
 		<a href="https://t.me/ahvanii"
