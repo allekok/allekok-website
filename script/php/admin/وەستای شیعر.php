@@ -100,12 +100,12 @@ include(ABSPATH . 'script/php/header.php');
  }
  function chDirection() {
 	 var poem = document.getElementById("hon");
-	 if(poem.style.direction=="rtl") {
-		 poem.style.direction = "ltr";
-		 poem.style.textAlign = "left";
-	 } else {
+	 if(poem.style.direction=="ltr") {
 		 poem.style.direction = "rtl";
 		 poem.style.textAlign = "right";
+	 } else {
+		 poem.style.direction = "ltr";
+		 poem.style.textAlign = "left";
 	 }
  }
  function newr() {
@@ -357,8 +357,8 @@ include(ABSPATH . 'script/php/header.php');
  textarea {
 	 height:27em;
 	 max-width:100%;
-	 direction:ltr;
-	 text-align:left;
+	 direction:rtl;
+	 text-align:right;
  }
  .not {
 	 text-align:center;
