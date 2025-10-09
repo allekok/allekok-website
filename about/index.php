@@ -16,7 +16,7 @@ require_once("../script/php/header.php");
 	</h1>
 	<div style="text-align:right;font-size:.6em;padding-right:1em">
 		<p>
-			ئاڵەکۆک، هەلێکە بۆ خوێندنەوەی شیعری کوردی.
+			ئاڵەکۆک، هەلێکە بۆ خوێندنەوەی هۆنراوەی کوردی.
 		</p>
 		<p>
 			دواهەمین نوێ کردنەوەی شیعرەکان: 
