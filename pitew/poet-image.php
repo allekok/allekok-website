@@ -88,11 +88,11 @@ include(ABSPATH . "script/php/header.php");
 			    font-size:.7em;font-family:'kurd',monospace;
 			    text-align:right">
 			&bull; فۆرمەتی وێنەکەتان دەبێ 
-			<span style='padding:0 .2em'>JPG, JPEG, PNG</span>
+			<span style='padding:0 .2em;font-weight:bold'>JPG, JPEG, PNG</span>
 			بێت.
 			<br>
 			&bull; گەورەیی وێنەکە نابێ لە 
-			<span style='padding:0 .2em'>5MiB</span>
+			<span style='padding:0 .2em;font-weight:bold'>5MiB</span>
 			زیاتر بێت.
 		</div>
 		<input type="file" style='display:none'
@@ -104,9 +104,9 @@ include(ABSPATH . "script/php/header.php");
 		>ناردن</button>
 	</form>
 	
-	<div style="margin-top:2em;font-size:.65em">
+	<div style="margin:1em 0;font-size:.65em;text-align:left;">
 		<a class='link' href="image-list.php">
-			ئەو وێنانەی کە ناردووتانە
+			ئەو وێنانەی ناردووتانە &rsaquo;
 		</a>
 	</div>
 	
@@ -121,12 +121,12 @@ include(ABSPATH . "script/php/header.php");
 		 {
 			 txts.forEach( function(e)
 				 {
-					 e.style.borderColor = "";
+					 e.classList.remove("border-blue")
 					 e.style.background = "";
 			 });
 			 btns.forEach( function(e)
 				 {
-					 e.style.background = '';
+					 e.classList.remove("back-blue");
 					 e.classList.remove("color-white");
 			 });
 			 return;
@@ -140,11 +140,11 @@ include(ABSPATH . "script/php/header.php");
 				 {
 					 txts.forEach( function(e)
 						 {
-							 e.style.borderColor = '<?php echo $_colors[2]; ?>';
+							 e.classList.add("border-blue")
 					 });
 					 btns.forEach( function(e)
 						 {
-							 e.style.background = '<?php echo $_colors[2]; ?>';
+							 e.classList.add("back-blue");
 							 e.classList.add("color-white");
 					 });
 					 poet.style.backgroundImage = `url(<?php echo _R; ?>style/img/poets/profile/profile_${res.img}.jpg`;
@@ -156,12 +156,12 @@ include(ABSPATH . "script/php/header.php");
 				 {
 					 txts.forEach( function(e)
 						 {
-							 e.style.borderColor = "";
+							 e.classList.remove("border-blue")
 							 e.style.background = "";
 					 });
 					 btns.forEach( function(e)
 						 {
-							 e.style.background = "";
+							 e.classList.remove("back-blue");
 							 e.classList.remove("color-white");
 					 });
 				 }
