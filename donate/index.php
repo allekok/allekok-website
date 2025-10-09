@@ -35,6 +35,14 @@ require_once("../script/php/header.php");
  .donate-main p {
 	 text-align:justify;
  }
+ .donate-main code {
+	 direction:ltr;
+	 text-align:left;
+	 display:block;
+	 border-left:.5rem solid;
+	 padding-left:1rem;
+	 font-weight:bold;
+ }
 </style>
 <div id="poets" class="donate-main" style="text-align:right">
 	<h1 class="color-blue" style="font-size:1em;padding:1em 0 .3em">
@@ -42,64 +50,46 @@ require_once("../script/php/header.php");
 	</h1>
 	<div style="padding-right:1em">
 		<p>
-			سڵاو بۆ هاوڕێیانی خۆشەویستی ئاڵەکۆک،
+			سڵاو بۆ تۆ، هاوڕێی ئاڵەکۆک،
 		</p>
 		<p>
-			هەر ئەو جۆرەی ئاگادارن ئاڵەکۆک بەرنامەیەکە کە
-			لە بەکارهێنەرانی هیچ پارەیەکی وەرناگرێ و هیچ
-			پارەیەکیش عاییدی بەکارهێنەرانی نابێ و
-			بەکارهێنەرانی تەنیا بە ویستی خۆیان ئەم
-			بەرنامەی ڕادەگرن و ئەگەر بکرێ پتەوی دەکەن.
+			ئاڵەکۆک بەرنامەیەکی ئازادە و بۆ هەمیشە ئازاد دەمێنێتەوە.
 			<br>
-			بەڵام ڕاگرتنی ماڵپەڕی ئاڵەکۆک لەسەر هێڵی
-			ئینتێرنێت پارەی پێویستە هەر بۆیە تکایە
-			هەرچەندێکی لە تواناتان دا هەیە یارمەتیمان
-			بدەن. پێشەکی زۆر سپاسی یارمەتیەکانتان دەکەم.
+			بەکارهێنانی ئاڵەکۆک هیچ پارەیەکی نەویستووە و هیچ کاتیش نایهەوێ.
+			<br>
+			بەڵام ڕاگرتنی ئاڵەکۆک لەسەر هێڵی ئینتێرنێت پارەی پێویستە.
+			<br>
+			هەر بۆیە ئەوەندەی لە تواناییت دا هەیە یارمەتی بدە.
 		</p>
 		<h3 class="color-blue" style="font-size:.7em;padding-top:1em">
-			ناردنی پارە لەسەر ئینتێرنێت
+			ڕێگاکانی یارمەتی
 		</h3>
 		<p style="padding-right:1em">
-			بۆ ئەم شێوە لە یارمەتی دەرگای ئەمنی
-			(زرین‌پال)مان بەکارهێناوە. تکایە لەسەر لینکی
-			خوارەوە کرتە بکەن. پێشەکی سپاستان دەکەیین.
+			١.
+			کارتی بانکی "ملی" ئێران بە نێوی "پیام باپیری"
 			<br>
-			<a href="https://zarinp.al/@allekok"
-			   title="یارمەتیی ماڵیی ئاڵەکۆک"
-			   class="link-underline"
-			   target="_blank"
-			   style="display:inline-block;
-				 font-weight:bold;
-				 text-align:center">
-				ناردنی پارە بە شێوەی ئینتێرنێتی
-			</a>
-		</p>
-		<h3 class="color-blue" style="font-size:.7em;padding-top:1em">
-			ناردنی پارە بە شێوەی ڕاستەوخۆ (کارت بە کارت)
-		</h3>
-		<p style="padding-right:1em">
-			تکایە یارمەتییەکانتان بۆ ژمارە کارتی خوارەوە
-			بنێرن. پێشەکی سپاستان دەکەیین.
+			<code>
+6037997135394584
+			</code>
 			<br>
-			<span style="padding:.5em 1em;
-				     display:block;
-				     text-align:center;
-				     border:2px solid;
-				     border-radius:1em;
-				     margin:1em 0">
-				<span style="letter-spacing:.2em;
-					     font-size:1.3em">
-					٦٠٣٧٩٩٧١٣٥٣٩٤٥٨٤
-				</span>
-				<br>
-				کارتی بانکی «ملی»
-				<br>
-				بە نێوی: پیام باپیری
-			</span>
-			تکایە ئەگەر بە شێوەی ڕاستەوخۆ (کارت بە کارت)
-			یارمەتیمان دەدەن، نێوی خۆتان و ئەندازەی
-			یارمەتییەکەتان‌ بە ئیمەیل یان تێلێگرام بۆمان
-			بنێرن.
+			٢.
+			بیت‌کۆین
+			<br>
+			<code>
+bc1qwxqxxpaez8w7y5u4jwf2802txp4h50t825l9kp
+			</code>
+			<br>
+			٣.
+			ئیتێریۆم و تێتێر
+			<br>
+			<code>
+0xe918c51034e62e72166645e94c6de66de62ec8b6
+			</code>
+			<br>
+			تکایە نێوی خۆت و ئەندازەی
+			یارمەتییەکەت بە ئیمەیل یان تێلێگرام بۆم
+			بنێرە.
+			زۆر سپاس.
 			<br>
 			ئیمەیلی ئاڵەکۆک:
 			<i style="font-weight:bold;
