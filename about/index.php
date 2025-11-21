@@ -38,12 +38,12 @@ require_once("../script/php/header.php");
 			<i class="sub-num">
 				<?php echo $aths_num; ?>
 			</i>
-			شاعیر
+			هۆنەر
 			›
 			<i class="sub-num">
 				<?php echo $hons_num; ?>
 			</i>
-			شیعر
+			هۆنراوە
 		</p>
 	</div>
 	<div style="margin:0 auto">
