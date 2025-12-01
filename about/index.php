@@ -19,7 +19,7 @@ require_once("../script/php/header.php");
 			ئاڵەکۆک، هەلێکە بۆ خوێندنەوەی هۆنراوەی کوردی.
 		</p>
 		<p>
-			دواهەمین نوێ کردنەوەی شیعرەکان: 
+			دواهەمین نوێ کردنەوەی هۆنراوەکان: 
 			<?php
 			$last_upd_file = "../last-update.txt";
 			if(file_exists($last_upd_file)) {
