@@ -25,14 +25,15 @@ include(ABSPATH . "script/php/header.php");
 		سپاس و پێزانین بۆ...
 	</h1>
 	<p>
-		<i>سپاس</i> &rsaquo; بۆ 
 		<a href="<?php echo _R; ?>pitew/contributors/"
 		   class="link-underline"
-		>هەموو ئەو کەسانەی</a> لە
+		>ئەو کەسانەی</a>
+		&rsaquo;
+		لە
 		<a href="<?php echo _R; ?>pitew/first.php"
 		   class="link-underline"
 		>پتەوکردنی ئاڵەکۆک</a>
-		‌دا یارمەتی‌مان دەدەن.
+		‌دا یارمەتیمان دەدەن
 	</p>
 	<p>
 		<a href="https://ganjoor.net/" target='_blank'
