@@ -44,7 +44,7 @@ bks,kind FROM auth WHERE id={$ath}";
 	if($row = mysqli_fetch_assoc($query)) {
 		mysqli_close($conn);
 		
-		$title = $_TITLE . " &rsaquo; " . $row["profname"];        
+		$title = $row["profname"] . " &lsaquo; " . $_TITLE;
 		$desc = "شیعرەکانی " . $row['profname'];
 		$keys = "{$row["takh"]},{$row["profname"]},{$row["name"]},"
 		      . "شاعیر,شیعر,شعر";
@@ -76,7 +76,7 @@ elseif ($ath and $bk and !$id) {
 			
 			$bknow = explode(",",$info["bks"]);
 			
-			$title = $_TITLE . " &rsaquo; {$info["profname"]} &rsaquo; {$bknow[$bk-1]}";
+			$title = "{$bknow[$bk-1]} &lsaquo; {$info["profname"]} &lsaquo; $_TITLE";
 			$desc = "کتێبی " . $bknow[$bk-1] . "، " . $info["profname"];
 			$keys = "{$bknow[$bk-1]},{$info["takh"]},{$info["profname"]},{$info["name"]},"
 			      . "بەرهەم,شیعر,شعر,شیعر";
@@ -143,8 +143,8 @@ elseif ($ath and $bk and $id) {
 					$row = [0,$row[0],0];
 				
 
-				$title = $_TITLE . " &rsaquo; "
-				       . "{$info["profname"]} &rsaquo; {$bknow[$bk-1]} &rsaquo; {$row[1]["name"]}";
+				$title = "{$row[1]["name"]} &lsaquo; {$bknow[$bk-1]} &lsaquo; " .
+					 "{$info["profname"]} &lsaquo; $_TITLE";
 				$desc = "شیعری " . $row[1]["name"] . "، " . $info["profname"];
 				$keys = "{$row[1]["name"]},{$bknow[$bk-1]},{$info["takh"]},{$info["profname"]},{$info["name"]},"
 				      . "شیعر,شعر";
