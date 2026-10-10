@@ -23,9 +23,4 @@ require(ABSPATH.'script/php/condb.php');
 	}
 	mysqli_close($conn);
 	?>
-	<div class='fbody-nav'>
-		<?php 
-		echo '<a href="' . _R . 'poet:73">' . SP("beyt") . '</a>';
-		?>
-	</div>
 </div>
