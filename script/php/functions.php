@@ -64,7 +64,7 @@ function get_poet_image($_pID, $_slash)
 		"style/img/poets/profile/profile_{$_pID}.jpg"))
 	$_img = "style/img/poets/profile/profile_{$_pID}.jpg";
 	else
-		$_img = "style/img/poets/profile/profile_0.png";
+		$_img = "style/img/poets/profile/profile_0.jpg";
 	
 	if($_slash)
 		$_img = "/$_img";
