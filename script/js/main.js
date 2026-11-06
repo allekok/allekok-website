@@ -1251,9 +1251,9 @@ try {
 			bookmarksIcon.style.display = "block";
 			if(tS) {
 				if(bookmarksIconLeft)
-					bookmarksIcon.style.left = "1.3em";
+					bookmarksIcon.style.left = "2.6em";
 				else
-					bookmarksIcon.style.right = "1.3em";
+					bookmarksIcon.style.right = "2.6em";
 			}
 			else {
 				if(bookmarksIconLeft)

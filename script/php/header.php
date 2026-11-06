@@ -16,7 +16,7 @@ if(!$no_head) {
 				 navigator.serviceWorker.register('<?php echo _R; ?>sw.js');
 			</script>
 			<link rel='stylesheet'
-			      href='<?php echo _R; ?>style/css/main-comp.css?v169'/>
+			      href='<?php echo _R; ?>style/css/main-comp.css?v170'/>
 			<title>
 				<?php echo $title; ?>
 			</title>
@@ -93,9 +93,12 @@ opacity:{$_back_img_op}}";
 				<!-- Search Icon -->
 				<button id='tS' class='header-icon material-icons'
 					style='<?php echo $site_anti_align; ?>:0'>search</button>
+				<!-- Dice Icon -->
+				<button id='tD' class='header-icon material-icons'
+					style='<?php echo $site_anti_align; ?>:1.3em'>casino</button>
 				<!-- Bookmarks Icon -->
 				<button id='tL' class='header-icon material-icons'
-					style='<?php echo $site_anti_align; ?>:1.3em;display:none'
+					style='<?php echo $site_anti_align; ?>:2.6em;display:none'
 				>bookmark</button>
 			</header>
 			<!-- Search Section -->
@@ -121,6 +124,29 @@ opacity:{$_back_img_op}}";
 <?php
 } // no-head
 ?>
+<script>
+ document.getElementById('tD').onclick = function (e) {
+	 e.preventDefault();
+	 const loading = document.getElementById('main-loader');
+	 loading.style.display = 'block';
+	 getUrl(`${_R}script/php/random-poem.php`, function (url) {
+		 const parent='body', target='#MAIN',
+		       p = document.querySelector(parent);
+		 
+		 const href = url;
+		 url = concat_url_query(href, 'nohead&nofoot');
+		 
+		 let content;
+		 if(ajax_save_p && (content = ajax_findstate(url)))
+			 ajax_load(url, href, content, parent, target, loading);
+		 else
+			 getUrl(url, function (content) {
+				 ajax_load(url, href, content, parent, target, loading);
+				 ajax_savestate(url, content);
+			 });
+	 });
+ }
+</script>
 <main id="MAIN">
 	<?php
 	if($no_head) {
